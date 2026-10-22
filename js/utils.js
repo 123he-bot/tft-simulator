@@ -53,7 +53,9 @@ window.TFT = window.TFT || {};
   U.iconBase = 'https://raw.communitydragon.org/latest/game/';
   U.itemIcon = function (item) {
     if (!item || !item.icon) return null;
-    return (TFT.D && TFT.D.items && TFT.D.items.iconBase ? TFT.D.items.iconBase : U.iconBase) + item.icon;
+    const ic = item.icon;
+    if (/^(https?:)?\/\//.test(ic) || ic.indexOf('assets/') === 0) return ic; // 已是完整 URL 或本地相对路径
+    return (TFT.D && TFT.D.items && TFT.D.items.iconBase ? TFT.D.items.iconBase : U.iconBase) + ic;
   };
   U.traitIcon = (t) => (t && t.icon) || null;
   U.champIcon = (c) => (c && c.icon) || null;

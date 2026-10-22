@@ -1612,6 +1612,8 @@ window.TFT = window.TFT || {};
     if (gn) {
       const tools = [
         { act: 'app', t: '阵容工作台', d: '棋盘 / 羁绊 / 概率 / AI 多智能体' },
+        { act: 'optimizer', t: '阵容优化器', d: '按现有棋子搜最优过渡路径' },
+        { act: 'share', t: '复制分享链接', d: '把当前棋盘编码进 URL' },
         { act: 'meta', t: 'Meta 梯度榜', d: 'S/A/B/C 评级与羁绊热度' },
         { act: 'charts', t: '数据图表', d: '费用 / 类别 / 层级分布' },
         { act: 'roll', t: '抽卡模拟器', d: '真实概率 + 牌池搜卡' },
@@ -1648,6 +1650,8 @@ window.TFT = window.TFT || {};
   Main.homeAction = function (act) {
     switch (act) {
       case 'app': Main.go('app'); break;
+      case 'optimizer': Main.go('app'); Main.openOptimizer(); break;
+      case 'share': Main.copyShareLink(); break;
       case 'meta': Main.openMeta(); break;
       case 'charts': Main.openCharts(); break;
       case 'roll': Main.openRollSim(); break;

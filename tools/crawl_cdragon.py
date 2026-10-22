@@ -23,7 +23,7 @@ from concurrent.futures import ThreadPoolExecutor
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'data')
 ASSETS = os.path.join(ROOT, 'assets', 'icons')
-CACHE = '/tmp/cd'
+CACHE = os.environ.get('CD_CACHE') or os.path.join(os.environ.get('TEMP', os.path.expanduser('~')), 'cd')
 CDN = 'https://raw.communitydragon.org/latest/cdragon/tft'
 ICON_BASE = 'https://raw.communitydragon.org/latest/game/'
 
@@ -256,9 +256,10 @@ def build(zh, en, refresh=False):
     return augments, items, set_by_name
 
 
-def localize_assets():
-    """把棋子 / 羁绊 / 装备图标下载到本地 assets/icons/，让界面不依赖远程 CDN 也能显示图片。
-    会就地改写 data/*.json 里的 icon 字段为本地相对路径（幂等：已是本地路径则跳过）。"""
+def localize_assets(augments=None, items=None):
+    """把棋子 / 羁绊 / 装备 / 海克斯图标下载到本地 assets/icons/，让界面不依赖远程 CDN 也能显示图片。
+    会就地改写 data/*.json 里的 icon 字段为本地相对路径（幂等：已是本地路径则跳过）。
+    augments / items 为内存中的全量目录（会直接进入 bundle），也一并改写。"""
     os.makedirs(ASSETS, exist_ok=True)
     jobs, seen = [], {}
 
@@ -305,8 +306,19 @@ def localize_assets():
                 loc = register(base + (e.get('icon') or ''))
                 if loc:
                     e['icon'] = loc
+        it['iconBase'] = ''   # icon 已改写为本地相对路径，运行时不再拼接远程 base
         with open(ip, 'w', encoding='utf-8') as f:
             json.dump(it, f, ensure_ascii=False, indent=1)
+
+    # 全量目录（augmentsFull / itemsFull 直接进入 bundle）的图标也本地化
+    for e in augments or []:
+        loc = register(e.get('icon'))
+        if loc:
+            e['icon'] = loc
+    for e in items or []:
+        loc = register(e.get('icon'))
+        if loc:
+            e['icon'] = loc
 
     uniq = {u: fn for u, fn in jobs}
 
@@ -440,13 +452,13 @@ def main():
         'perSet': {s: {'augments': per_set_aug.get(s, 0), 'items': per_set_item.get(s, 0)} for s in SETS},
         'seasons': season_stats(),
     }
+    localize_assets(augments, items)
     for name, obj in (('augments.full.json', augments), ('items.full.json', items), ('source.json', source)):
         p = os.path.join(DATA, name)
         with open(p, 'w', encoding='utf-8') as f:
             json.dump(obj, f, ensure_ascii=False, indent=1)
         print('已写入', p, '(', round(os.path.getsize(p) / 1024), 'KB )')
 
-    localize_assets()
     rebuild_bundle(augments, items)
     archive_snapshot()
 
