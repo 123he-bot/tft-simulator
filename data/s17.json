@@ -1,0 +1,2686 @@
+{
+ "set": "S17",
+ "name": "Set17",
+ "champions": [
+  {
+   "id": "TFT17_Briar",
+   "name": "贝蕾亚",
+   "cost": 1,
+   "traits": [
+    "幻灵战队",
+    "海魔人",
+    "游侠"
+   ],
+   "hp": 650.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 35.0,
+   "mr": 35.0,
+   "ad": 40.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "鱼群狂欢",
+    "desc": "被动：每损失1.0%生命值，获得2.0% ()攻击速度。主动：对目标造成— ()物理伤害，如果目标是坦克，则此伤害提升50%%。"
+   },
+   "icon": "assets/icons/tft17_briar_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_briar/skins/base/images/tft17_briar_splash_tile_10.png"
+  },
+  {
+   "id": "TFT17_Belveth",
+   "name": "卑尔维斯",
+   "cost": 2,
+   "traits": [
+    "海魔人",
+    "挑战者",
+    "狂战士"
+   ],
+   "hp": 750.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 47.0,
+   "as": 0.75,
+   "range": 2.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "潮汐连斩",
+    "desc": "在2.0秒里持续对当前目标进行共— ()次斩击，每击造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft17_belveth_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_belveth/skins/base/images/tft17_belveth_splash_tile_19.png"
+  },
+  {
+   "id": "TFT17_MissFortune",
+   "name": "厄运小姐",
+   "cost": 3,
+   "traits": [
+    "武装战姬",
+    "选择羁绊"
+   ],
+   "hp": 650.0,
+   "mana": 100,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 50.0,
+   "as": 0.75,
+   "range": 6.0,
+   "role": null,
+   "ability": {
+    "name": "武装战姬武库",
+    "desc": "登场【厄运小姐】即可在【神谕模式】、【挑战者模式】、以及【魔术师模式】中选择一个以供她激活。所选的模式会决定她的技能和羁绊。"
+   },
+   "icon": "assets/icons/tft17_missfortune_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_missfortune/skins/base/images/tft17_missfortune_splash_tile_16.png"
+  },
+  {
+   "id": "TFT17_Akali",
+   "name": "阿卡丽",
+   "cost": 2,
+   "traits": [
+    "新星特攻队",
+    "狂战士"
+   ],
+   "hp": 750.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 45.0,
+   "as": 0.8,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "群星打击",
+    "desc": "重新定位至目标附近，以打击最多的敌人。随后投掷5.0枚透体苦无，每枚对首个命中的敌人造成— ()物理伤害，对每个后续目标的伤害降低至— ()。苦无削减1.0护甲，这个数额在暴击时为2.0。新星特攻：斩击所有敌人，对其施加持续至战斗结束的重伤和流血效果，每秒造成— ()物理伤害，持续至战斗结束。苦无使该流血效果的伤害提升12%%。"
+   },
+   "icon": "assets/icons/tft17_akali_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_akali/skins/base/images/tft17_akali_splash_tile_68.png"
+  },
+  {
+   "id": "TFT17_Bard",
+   "name": "巴德",
+   "cost": 5,
+   "traits": [
+    "木灵族",
+    "神谕"
+   ],
+   "hp": 900.0,
+   "mana": 65.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 30.0,
+   "as": 0.85,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "超友好飞碟",
+    "desc": "在当前目标上空召唤一个飞碟，持续5.04.0秒。每秒，它对该目标造成2.0()魔法伤害，外加由半径1.0格内的所有敌人们分摊的2.0()魔法伤害。飞碟对坦克造成30%%额外伤害。如果飞碟下方的一个敌人阵亡，那么【巴德】有40%%几率诱拐这个敌人并在你的备战席上生成该敌人的一个1星版本。木灵加成：在对战开始时，为相距最近的—(%i:set14AmpIcon%)个【木灵族】友军提供一个额外的木灵。已诱拐的朋友数量：@TFTUnitProperty.:TFT17_Bard_FriendsAbducted@"
+   },
+   "icon": "assets/icons/tft17_bard_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_bard/skins/base/images/tft17_bard_splash_tile_8.png"
+  },
+  {
+   "id": "TFT17_Jinx",
+   "name": "金克丝",
+   "cost": 2,
+   "traits": [
+    "幻灵战队",
+    "挑战者"
+   ],
+   "hp": 550.0,
+   "mana": 80.0,
+   "initialMana": 20.0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 55.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "易爆态势",
+    "desc": "在一个锥形范围内发射一道由— ()枚火箭组成的弹幕，每枚火箭对命中的第一个目标造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft17_jinx_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_jinx/skins/base/images/tft17_jinx_splash_tile_38.png"
+  },
+  {
+   "id": "TFT17_Illaoi",
+   "name": "俄洛伊",
+   "cost": 3,
+   "traits": [
+    "幻灵战队",
+    "重装战士",
+    "牧羊人"
+   ],
+   "hp": 1100.0,
+   "mana": 100,
+   "initialMana": 40.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 50.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "灵魂试炼",
+    "desc": "获得持续3.0秒的250.0()护盾值。在持续期间，从相距最近的3.0名敌人身上吸取40.0()生命值。然后向下猛击，对半径2格内的所有敌人造成80.0()魔法伤害。"
+   },
+   "icon": "assets/icons/tft17_illaoi_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_illaoi/skins/base/images/tft17_illaoi_splash_tile_27.png"
+  },
+  {
+   "id": "TFT17_Aurora",
+   "name": "阿萝拉",
+   "cost": 3,
+   "traits": [
+    "幻灵战队",
+    "旅人"
+   ],
+   "hp": 700.0,
+   "mana": 80.0,
+   "initialMana": 20.0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 30.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "跃升黑客攻击",
+    "desc": "开启一个2.0格的裂隙，将目标困于其中，对裂隙内的敌人进行4.0秒黑客攻击，对每个敌人造成2.5 ()魔法伤害，并额外造成由被命中的敌人们分摊的3.0 ()魔法伤害。被黑客攻击的敌人将存储其承受伤害的10%%。黑客攻击结束时，目标将承受等同于已存储伤害的真实伤害。黑客攻击会在能够击杀目标时提前结束。"
+   },
+   "icon": "assets/icons/tft17_aurora_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_aurora/skins/base/images/tft17_aurora_splash_tile_1.png"
+  },
+  {
+   "id": "TFT17_Fiora",
+   "name": "菲奥娜",
+   "cost": 5,
+   "traits": [
+    "斗神",
+    "幻灵战队",
+    "狂战士"
+   ],
+   "hp": 1200.0,
+   "mana": 70.0,
+   "initialMana": 0,
+   "armor": 65.0,
+   "mr": 65.0,
+   "ad": 80.0,
+   "as": 0.9,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "完美剑技",
+    "desc": "被动：每2.0次普攻，显露目标的一个破绽。如果存在一个破绽，则冲刺并攻击该破绽以造成50.0 ()额外真实伤害，并回复相当于15%%造成伤害的生命值。主动：显露目标的6.0个破绽，并迅速攻击所有破绽。若目标阵亡，则剩余破绽将传递给相距最近的那个敌人。在攻击最后一个破绽时，创造一个半径2格的光环，为其中的友军回复— ()生命值，持续5.0秒。"
+   },
+   "icon": "assets/icons/tft17_fiora_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_fiora/skins/base/images/tft17_fiora_splash_tile_51.png"
+  },
+  {
+   "id": "TFT17_Gnar",
+   "name": "纳尔",
+   "cost": 2,
+   "traits": [
+    "木灵族",
+    "斗士",
+    "狙神"
+   ],
+   "hp": 550.0,
+   "mana": 5.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 48.0,
+   "as": 0.75,
+   "range": 6.0,
+   "role": "ADSpecialist",
+   "ability": {
+    "name": "弹弓机动",
+    "desc": "被动：每第5次攻击，向目标投掷一个会折返的回力镖，在命中首个敌人后继续向前穿透2格。它造成— ()物理伤害，每命中一个敌人减少75%%。木灵加成 — (%i:set14AmpIcon%)个木灵会伴随【纳尔】进行攻击，每秒造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft17_gnar_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_gnar/skins/base/images/tft17_gnar_splash_tile_15.png"
+  },
+  {
+   "id": "TFT17_Fizz",
+   "name": "菲兹",
+   "cost": 3,
+   "traits": [
+    "木灵族",
+    "游侠"
+   ],
+   "hp": 850.0,
+   "mana": 20.0,
+   "initialMana": 0,
+   "armor": 55.0,
+   "mr": 55.0,
+   "ad": 30.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "APReaper",
+   "ability": {
+    "name": "木灵诱饵",
+    "desc": "冲刺穿过当前目标，造成— ()魔法伤害。每第三次施放还会在短暂延迟后召唤一个究极木灵，以短暂击飞目标并造成— (%i:set14AmpIcon%)魔法伤害。邻格的敌人们受到50%%伤害。木灵加成：朝诱饵再派出— (%i:set14AmpIcon%)个木灵，以使究极木灵伤害提升— (%i:set14AmpIcon%)。"
+   },
+   "icon": "assets/icons/tft17_fizz_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_fizz/skins/base/images/tft17_fizz_splash_tile_26.png"
+  },
+  {
+   "id": "TFT17_Rammus",
+   "name": "拉莫斯",
+   "cost": 4,
+   "traits": [
+    "木灵族",
+    "堡垒卫士"
+   ],
+   "hp": 1300.0,
+   "mana": 80.0,
+   "initialMana": 20.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 60.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "引力旋转",
+    "desc": "获得— ()护盾值，持续4.0秒。随后，打击一条长3格的直线，造成 — ()魔法伤害。木灵加成：令即将到来的攻击降低— (%i:set14AmpIcon%)伤害。受到20.0次攻击后，在一个半径2格的范围内造成— (%i:set14AmpIcon%)魔法伤害。"
+   },
+   "icon": "assets/icons/tft17_rammus_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_rammus/skins/base/images/tft17_rammus_splash_tile_17.png"
+  },
+  {
+   "id": "TFT17_Poppy",
+   "name": "波比",
+   "cost": 1,
+   "traits": [
+    "木灵族",
+    "堡垒卫士"
+   ],
+   "hp": 700.0,
+   "mana": 100,
+   "initialMana": 30.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 60.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "蜷缩起来！",
+    "desc": "获得300.0 ()护盾值，持续4.0秒。持续期间，2格内的友军们获得36.0 ()护甲和魔抗。木灵加成：木灵为相距最近的—(%i:set14AmpIcon%)名友军提供持续4.0秒的300.0()护盾值。"
+   },
+   "icon": "assets/icons/tft17_poppy_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_poppy/skins/base/images/tft17_poppy_splash_tile_16.png"
+  },
+  {
+   "id": "TFT17_Corki",
+   "name": "库奇",
+   "cost": 4,
+   "traits": [
+    "木灵族",
+    "织命人"
+   ],
+   "hp": 850.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 45.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "小行星魔炮",
+    "desc": "扫射至一个附近位置，释放21.0枚导弹，由目标与半径2格内的全体敌人分摊。导弹造成— ()物理伤害，有20.0%幸运几率发射一个究极导弹，转而造成— ()伤害。木灵加成：每— (%i:set14AmpIcon%)秒，对目标发射一个爆炸木灵，碰撞时在半径1格内造成150.0 ()物理伤害。幸运：进行两次判定，选择较优的结果。"
+   },
+   "icon": "assets/icons/tft17_corki_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_corki/skins/base/images/tft17_corki_splash_tile_26.png"
+  },
+  {
+   "id": "TFT17_Veigar",
+   "name": "维迦",
+   "cost": 1,
+   "traits": [
+    "木灵族",
+    "魔术师"
+   ],
+   "hp": 500.0,
+   "mana": 50.0,
+   "initialMana": 10.0,
+   "armor": 15.0,
+   "mr": 15.0,
+   "ad": 30.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "木灵流星雨",
+    "desc": "召唤一颗木灵流星落在目标上，造成250.0 ()魔法伤害。木灵加成：召唤额外— (%i:set14AmpIcon%)个迷你木灵流星落在附近的目标上，每个造成250.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft17_veigar_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_veigar/skins/base/images/tft17_veigar_splash_tile_32.png"
+  },
+  {
+   "id": "TFT17_Aatrox",
+   "name": "亚托克斯",
+   "cost": 1,
+   "traits": [
+    "新星特攻队",
+    "堡垒卫士"
+   ],
+   "hp": 700.0,
+   "mana": 90.0,
+   "initialMana": 30.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 50.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "星界斩击",
+    "desc": "回复— ()生命值，随后对当前目标造成— ()物理伤害。新星特攻：顺劈整个战场，短暂击飞所有敌人，并造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft17_aatrox_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_aatrox/skins/base/images/tft17_aatrox_splash_tile_30.png"
+  },
+  {
+   "id": "TFT17_Caitlyn",
+   "name": "凯特琳",
+   "cost": 1,
+   "traits": [
+    "新星特攻队",
+    "织命人"
+   ],
+   "hp": 500.0,
+   "mana": 0.0,
+   "initialMana": 0,
+   "armor": 15.0,
+   "mr": 15.0,
+   "ad": 65.0,
+   "as": 0.55,
+   "range": 4.0,
+   "role": "ADSpecialist",
+   "ability": {
+    "name": "瞄准脑袋",
+    "desc": "被动：普攻有15.0%幸运几率打出一次强化【爆头】，造成145.0 ()物理伤害。新星特攻：标记所有敌人，使其承受的伤害提升10%%。当标记目标生命值首次降至50%%以下时，对其进行【爆头】，造成145.0 ()物理伤害。幸运：进行两次判定，选择较优的结果。"
+   },
+   "icon": "assets/icons/tft17_caitlyn_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_caitlyn/skins/base/images/tft17_caitlyn_splash_tile_48.png"
+  },
+  {
+   "id": "TFT17_Maokai",
+   "name": "茂凯",
+   "cost": 3,
+   "traits": [
+    "新星特攻队",
+    "斗士"
+   ],
+   "hp": 1100.0,
+   "mana": 100,
+   "initialMana": 30.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 60.0,
+   "as": 0.7,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "聚合之握",
+    "desc": "被动：从所有来源获得50%%额外最大生命值。主动：在目标处汇聚一个X形藤蔓，对每个命中敌人造成— ()魔法伤害并使其晕眩1.5秒。新星特攻：向前派出一波龙潮，使所有敌人晕眩1.5秒。战斗结束前，【茂凯】的普攻造成100.0 ()额外物理伤害。"
+   },
+   "icon": "assets/icons/tft17_maokai_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_maokai/skins/base/images/tft17_maokai_splash_tile_33.png"
+  },
+  {
+   "id": "TFT17_Kindred",
+   "name": "千珏",
+   "cost": 4,
+   "traits": [
+    "新星特攻队",
+    "挑战者"
+   ],
+   "hp": 850.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 58.0,
+   "as": 0.8,
+   "range": 6.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "星界追寻",
+    "desc": "被动：普攻和技能会标记目标。当一个敌人身上的标记达到3.0个时，狼灵消耗所有标记以造成— ()物理伤害。主动：跳跃至多1.0格，并朝相距最近的3.0个目标发射箭矢，每支箭矢造成— ()物理伤害。新星特攻：获得15%%伤害增幅。现在以及之后的每4.5秒，添加一个标记至所有敌人。"
+   },
+   "icon": "assets/icons/tft17_kindred_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_kindred/skins/base/images/tft17_kindred_splash_tile_23.png"
+  },
+  {
+   "id": "TFT17_Kaisa",
+   "name": "卡莎",
+   "cost": 3,
+   "traits": [
+    "暗星",
+    "游侠"
+   ],
+   "hp": 650.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 45.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "子弹星团",
+    "desc": "被动：参与击杀后，获得10.0法力值。主动：对当前目标附近的一个半径2.0格的范围发射16.0颗飞弹，每颗造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft17_kaisa_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_kaisa/skins/base/images/tft17_kaisa_splash_tile_69.png"
+  },
+  {
+   "id": "TFT17_Karma",
+   "name": "卡尔玛",
+   "cost": 4,
+   "traits": [
+    "暗星",
+    "旅人"
+   ],
+   "hp": 850.0,
+   "mana": 55.0,
+   "initialMana": 10.0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 40.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "奇点",
+    "desc": "召集黑洞之力，造成0.0 ()魔法伤害，由目标及与其相距最近的2.0名敌人分摊。该目标受到额外的0.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft17_karma_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_karma/skins/base/images/tft17_karma_splash_tile_8.png"
+  },
+  {
+   "id": "TFT17_Jhin",
+   "name": "烬",
+   "cost": 5,
+   "traits": [
+    "暗星",
+    "灭星尊",
+    "狙神"
+   ],
+   "hp": 900.0,
+   "mana": 44.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 80.0,
+   "as": 0.9,
+   "range": 6.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "太空歌剧",
+    "desc": "被动：【烬】的攻击速度固定为0.0，并将每1%%额外攻击速度转化为0.75额外物理加成。主动：召唤4.0个幽魂之手，在接下来4.0次攻击与【烬】一同射击。每个幽魂之手每次射击造成— ()物理伤害。最后一击造成244%%额外伤害，并穿透敌人最多的那一条直线，每命中一个目标，这个伤害就衰减44%%。"
+   },
+   "icon": "assets/icons/tft17_jhin_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_jhin/skins/base/images/tft17_jhin_splash_tile_37.png"
+  },
+  {
+   "id": "TFT17_Urgot",
+   "name": "厄加特",
+   "cost": 3,
+   "traits": [
+    "霸天机甲",
+    "斗士",
+    "狂战士"
+   ],
+   "hp": 600.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 60.0,
+   "as": 0.8,
+   "range": 2.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "不可阻挡的无畏战车",
+    "desc": "被动 - 感应轰击：当有敌人进入半径— ()格内时，以锥形范围向最近的相邻格子射出一道轰击，造成90.0 ()物理伤害，这个伤害每相距1格衰减30%%。每个相邻格子各有5.0秒冷却时间，并且在战斗开始时处于未冷却状态。主动：获得持续3.0秒的— ()护盾值并进行至多一格的走位，以最大化【感应轰击】半径内的目标数量。重置【感应轰击】的冷却时间。"
+   },
+   "icon": "assets/icons/tft17_urgot_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_urgot/skins/base/images/tft17_urgot_splash_tile_32.png"
+  },
+  {
+   "id": "TFT17_AurelionSol",
+   "name": "奥瑞利安·索尔",
+   "cost": 4,
+   "traits": [
+    "霸天机甲",
+    "神谕"
+   ],
+   "hp": 850.0,
+   "mana": 75.0,
+   "initialMana": 15.0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 30.0,
+   "as": 0.75,
+   "range": 6.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "死亡射线",
+    "desc": "朝当前目标沿直线引导一道死亡射线，持续4.03.0秒。射线每秒造成— ()魔法伤害，每穿过一名敌人，伤害降低80%%。死亡射线无视敌人30%%的魔抗。"
+   },
+   "icon": "assets/icons/tft17_aurelionsol_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_aurelionsol/skins/base/images/tft17_aurelionsol_splash_tile_2.png"
+  },
+  {
+   "id": "TFT17_Galio",
+   "name": "超级机甲",
+   "cost": 4,
+   "traits": [
+    "霸天机甲",
+    "旅人"
+   ],
+   "hp": 1300.0,
+   "mana": 100,
+   "initialMana": 40.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 70.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "引力矩阵",
+    "desc": "进入持续4.0秒的防御姿态，从而获得0%% 伤害减免。处于防御姿态时，吸引附近的敌方投射物并持续回复0.0 ()生命值。当这个效果结束时，释放一道冲击波，在一个半径2.0格的范围内造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft17_galio_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_galio/skins/base/images/tft17_galio_mobile.png"
+  },
+  {
+   "id": "TFT17_Viktor",
+   "name": "维克托",
+   "cost": 3,
+   "traits": [
+    "灵能特工",
+    "神谕"
+   ],
+   "hp": 650.0,
+   "mana": 80.0,
+   "initialMana": 20.0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 30.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "灵能风暴",
+    "desc": "在战场上引导一个半径1格的灵能风暴跟随敌人5.04.0秒。每秒，它会变得更大并且对其中的敌人们造成200.0 ()魔法伤害，这个伤害每与中心相距1格就会衰减60%%。"
+   },
+   "icon": "assets/icons/tft17_viktor_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_viktor/skins/base/images/tft17_viktor_splash_tile_5.png"
+  },
+  {
+   "id": "TFT17_Pyke",
+   "name": "派克",
+   "cost": 2,
+   "traits": [
+    "灵能特工",
+    "旅人"
+   ],
+   "hp": 700.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 45.0,
+   "as": 0.8,
+   "range": 1.0,
+   "role": "ADReaper",
+   "ability": {
+    "name": "死亡标记",
+    "desc": "重新走位至多1格，朝最远的敌人投掷一个鱼叉。鱼叉会将命中的首名敌人向前拖拽1格，并造成— ()物理伤害。随后传送到目标身后并进行顺劈，对其造成0.0 ()物理伤害并对附近的敌人们造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft17_pyke_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_pyke/skins/base/images/tft17_pyke_splash_tile_25.png"
+  },
+  {
+   "id": "TFT17_MasterYi",
+   "name": "易",
+   "cost": 4,
+   "traits": [
+    "灵能特工",
+    "狂战士"
+   ],
+   "hp": 1100.0,
+   "mana": 60.0,
+   "initialMana": 20.0,
+   "armor": 65.0,
+   "mr": 65.0,
+   "ad": 60.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "灵能打击",
+    "desc": "被动：每第三次攻击是一次双连斩，造成60.0 ()额外物理伤害。主动：在短暂的冥想之后，进入一个持续5.0秒的灵能状态，从而获得10%%全能吸血、70%%攻击速度、以及额外移动速度。每秒两次，发射一道灵能投影至附近的一个随机敌人，造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft17_masteryi_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_masteryi/skins/base/images/tft17_masteryi_splash_tile_33.png"
+  },
+  {
+   "id": "TFT17_Gragas",
+   "name": "古拉加斯",
+   "cost": 2,
+   "traits": [
+    "灵能特工",
+    "斗士"
+   ],
+   "hp": 950.0,
+   "mana": 80.0,
+   "initialMana": 30.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 50.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "化学狂怒",
+    "desc": "2.0秒内持续回复— ()生命值。然后，对目标和目标邻格的敌人们造成— ()魔法伤害和持续2.0秒的30%%冰冷效果。{{TFT_Keyword_Chill}}"
+   },
+   "icon": "assets/icons/tft17_gragas_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_gragas/skins/base/images/tft17_gragas_splash_tile_10.png"
+  },
+  {
+   "id": "TFT17_Teemo",
+   "name": "提莫",
+   "cost": 1,
+   "traits": [
+    "太空律动",
+    "牧羊人"
+   ],
+   "hp": 450.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 15.0,
+   "mr": 15.0,
+   "ad": 15.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCarry",
+   "ability": {
+    "name": "双倍时间",
+    "desc": "被动：普攻造成100.0 ()额外魔法伤害，并在6.0秒内持续造成额外的60.0 ()可叠加魔法伤害。敌人的层数达到5.0或以上时，【提莫】进入{{TFT17_SpaceGroove_TheGroove}}状态。主动：获得150%%攻击速度，持续3.0次普攻。"
+   },
+   "icon": "assets/icons/tft17_teemo_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_teemo/skins/base/images/tft17_teemo_splash_tile_47.png"
+  },
+  {
+   "id": "TFT17_Nasus",
+   "name": "内瑟斯",
+   "cost": 1,
+   "traits": [
+    "太空律动",
+    "重装战士"
+   ],
+   "hp": 700.0,
+   "mana": 120.0,
+   "initialMana": 60.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 40.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "律动苏珊",
+    "desc": "变形6.0秒，临时获得400.0最大生命值、进入{{TFT17_SpaceGroove_TheGroove}}状态、并且每秒对邻格的敌人们造成— ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft17_nasus_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_nasus/skins/base/images/tft17_nasus_splash_tile_25.png"
+  },
+  {
+   "id": "TFT17_Gwen",
+   "name": "格温",
+   "cost": 2,
+   "traits": [
+    "太空律动",
+    "游侠"
+   ],
+   "hp": 750.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 50.0,
+   "as": 0.8,
+   "range": 2.0,
+   "role": "APReaper",
+   "ability": {
+    "name": "舞出机运",
+    "desc": "被动：普攻造成魔法伤害。格温在瞄准一个50%%生命值以下的敌人时处于{{TFT17_SpaceGroove_TheGroove}}状态。主动：冲刺至一个附近的格子，剪击生命值百分比最低的那个敌人，对其造成180.0 ()魔法伤害，并对一个锥形范围内的敌人们造成180.0 ()魔法伤害。若此技能击杀了一名敌人，则冲刺并再次剪击，造成65%%伤害！"
+   },
+   "icon": "assets/icons/tft17_gwen_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_gwen/skins/base/images/tft17_gwen_splash_tile_1.png"
+  },
+  {
+   "id": "TFT17_Samira",
+   "name": "莎弥拉",
+   "cost": 3,
+   "traits": [
+    "太空律动",
+    "狙神"
+   ],
+   "hp": 650.0,
+   "mana": 65.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 50.0,
+   "as": 0.75,
+   "range": 6.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "蹦跳摇摆",
+    "desc": "被动：每当一个敌人被击飞时，对其射击，造成260.0 ()物理伤害并进入{{TFT17_SpaceGroove_TheGroove}}状态3.0秒。主动：对目标发射一连串子弹，造成260.0 ()物理伤害和0.75秒击飞。"
+   },
+   "icon": "assets/icons/tft17_samira_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_samira/skins/base/images/tft17_samira_splash_tile_10.png"
+  },
+  {
+   "id": "TFT17_Ornn",
+   "name": "奥恩",
+   "cost": 3,
+   "traits": [
+    "太空律动",
+    "堡垒卫士"
+   ],
+   "hp": 950.0,
+   "mana": 100,
+   "initialMana": 40.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 50.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "迪斯科炼狱",
+    "desc": "被动：对战开始时，锻造一件临时成装。如果已经装备了3件装备，则转而在这场对战内将一件随机成装升为光明版。主动：获得100.0()护盾值，持续3.0秒。随后呈锥形喷吐火焰，造成200.0()魔法伤害。在身上的任意护盾失效之后，【奥恩】进入{{TFT17_SpaceGroove_TheGroove}}状态，持续2.5秒。"
+   },
+   "icon": "assets/icons/tft17_ornn_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_ornn/skins/base/images/tft17_ornn_splash_tile_11.png"
+  },
+  {
+   "id": "TFT17_Nami",
+   "name": "娜美",
+   "cost": 4,
+   "traits": [
+    "太空律动",
+    "魔术师"
+   ],
+   "hp": 850.0,
+   "mana": 65.0,
+   "initialMana": 20.0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 40.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "泡泡弹跳",
+    "desc": "朝目标投掷一个迪斯科泡泡，造成260.0 ()伤害，由半径1格内的敌人们分摊。这个爆炸会朝附近的敌人们射出3.0团黏液，黏液造成260.0 ()魔法伤害。施放技能时，娜美进入{{TFT17_SpaceGroove_TheGroove}}状态，持续3.0秒。"
+   },
+   "icon": "assets/icons/tft17_nami_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_nami/skins/base/images/tft17_nami_splash_tile_41.png"
+  },
+  {
+   "id": "TFT17_Blitzcrank",
+   "name": "布里茨",
+   "cost": 5,
+   "traits": [
+    "汪星机器人",
+    "太空律动",
+    "重装战士"
+   ],
+   "hp": 1000.0,
+   "mana": 120.0,
+   "initialMana": 30.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 50.0,
+   "as": 0.9,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "派对破坏王",
+    "desc": "被动：每2.0秒，在附近生命值最高的那个敌人上空召唤一道雷电，以造成90.0 ()魔法伤害。主动：在最大的敌群上空召唤一个迪斯科灯球，然后击飞当前目标到灯球中，造成170.0 ()魔法伤害并将其击飞。该敌人将撞到迪斯科灯球，在一个半径3格的范围内造成200.0 ()魔法伤害。进入{{TFT17_SpaceGroove_TheGroove}}状态，每命中一个敌人都会提供1.0秒持续时长。"
+   },
+   "icon": "assets/icons/tft17_blitzcrank_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_blitzcrank/skins/base/images/tft17_blitzcrank_splash_tile_65.png"
+  },
+  {
+   "id": "TFT17_Sona",
+   "name": "娑娜",
+   "cost": 5,
+   "traits": [
+    "最高指挥官",
+    "灵能特工",
+    "牧羊人"
+   ],
+   "hp": 900.0,
+   "mana": 25.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 35.0,
+   "as": 0.9,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "灵能碾压",
+    "desc": "对距离最近且没有磁性残片的目标投掷一大块残片，造成300.0 ()魔法伤害并将它附着在其身上。如果带有残片的敌人阵亡，则会把残片传递给相距最近且没有残片的敌人。每5.0次施放，转而将所有残片撕扯下来，造成160.0 ()魔法伤害，然后将所有残片碾向目标，造成2.5 ()魔法伤害，并将其短暂晕眩。"
+   },
+   "icon": "assets/icons/tft17_sona_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_sona/skins/base/images/tft17_sona_splash_tile_17.png"
+  },
+  {
+   "id": "TFT17_TwistedFate",
+   "name": "崔斯特",
+   "cost": 1,
+   "traits": [
+    "观星者",
+    "织命人"
+   ],
+   "hp": 500.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 15.0,
+   "mr": 15.0,
+   "ad": 30.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "命运的断言",
+    "desc": "按幸运几率随机抽取一张数值在1到9之间的卡牌，然后将其扔向目标。根据所抽取卡牌，造成180.0 ()到330.0 ()之间的魔法伤害。过量伤害会弹射至相距最近的敌人。如果扔出一个9，则生成1金币。如果扔出一个1，则受到15%%最大生命值的真实伤害。幸运：进行两次判定，选择较优的结果。"
+   },
+   "icon": "assets/icons/tft17_twistedfate_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_twistedfate/skins/base/images/tft17_twistedfate_splash_tile_45.png"
+  },
+  {
+   "id": "TFT17_Talon",
+   "name": "泰隆",
+   "cost": 1,
+   "traits": [
+    "观星者",
+    "游侠"
+   ],
+   "hp": 650.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 35.0,
+   "mr": 35.0,
+   "ad": 35.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "ADReaper",
+   "ability": {
+    "name": "圣神审判",
+    "desc": "戳刺目标，使其流血，在18.0秒内持续造成— ()物理伤害。这次攻击之后，跳跃至3.0格内生命值百分比最高的那个敌人处。"
+   },
+   "icon": "assets/icons/tft17_talon_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_talon/skins/base/images/tft17_talon_splash_tile_39.png"
+  },
+  {
+   "id": "TFT17_Jax",
+   "name": "贾克斯",
+   "cost": 2,
+   "traits": [
+    "观星者",
+    "堡垒卫士"
+   ],
+   "hp": 950.0,
+   "mana": 80.0,
+   "initialMana": 20.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 50.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "反星打击",
+    "desc": "进入3.0秒的防御姿态，令即将到来的伤害降低0.0，并获得— ()护盾值。姿态结束时，打击附近所有敌人，造成— ()魔法伤害和1.5秒晕眩效果。"
+   },
+   "icon": "assets/icons/tft17_jax_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_jax/skins/base/images/tft17_jax_mobile.png"
+  },
+  {
+   "id": "TFT17_Lulu",
+   "name": "璐璐",
+   "cost": 3,
+   "traits": [
+    "观星者",
+    "魔术师"
+   ],
+   "hp": 650.0,
+   "mana": 55.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 30.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "繁星雨！",
+    "desc": "被动：每局游戏都会获得一个不同的次要效果，基于【观星者】的星座。主动：从天空中召唤某物，对3.0名附近敌人造成2.0 ()魔法伤害并且基于这局游戏的【观星者】星座来造成一些特殊效果。"
+   },
+   "icon": "assets/icons/tft17_lulu_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_lulu/skins/base/images/tft17_lulu_splash_tile_14.png"
+  },
+  {
+   "id": "TFT17_Nunu",
+   "name": "努努和威朗普",
+   "cost": 4,
+   "traits": [
+    "观星者",
+    "重装战士"
+   ],
+   "hp": 1300.0,
+   "mana": 145.0,
+   "initialMana": 40.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 60.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "祸患",
+    "desc": "获得持续4.0秒的0.0 ()护盾值。召唤一个星盘并砸落到一个附近的格子上，对2格内的敌人们造成0.0 ()魔法伤害。随后，将星盘推向战场尽头，造成0.0 ()魔法伤害。所有被星盘命中的敌人会被击飞0.0秒。"
+   },
+   "icon": "assets/icons/tft17_nunu_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_nunu/skins/base/images/tft17_nunu_splash_tile_35.png"
+  },
+  {
+   "id": "TFT17_Vex",
+   "name": "薇古丝",
+   "cost": 5,
+   "traits": [
+    "末日使者",
+    "观星者"
+   ],
+   "hp": 900.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 15.0,
+   "as": 0.8,
+   "range": 6.0,
+   "role": "APCarry",
+   "ability": {
+    "name": "帮我一手，黑影！",
+    "desc": "被动：【薇古丝】每次攻击时，【黑影】就会打击一个附近的敌人，造成2.5 ()魔法伤害。每当一个敌人被【黑影】击中5.0次时，【黑影】就会再次打击这个敌人。主动：【黑影】进行3.0次强化打击，转而造成200.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft17_vex_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_vex/skins/base/images/tft17_vex_splash_tile_10.png"
+  },
+  {
+   "id": "TFT17_Riven",
+   "name": "锐雯",
+   "cost": 4,
+   "traits": [
+    "未来战士",
+    "游侠"
+   ],
+   "hp": 1100.0,
+   "mana": 20.0,
+   "initialMana": 0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 0.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "HFighter",
+   "ability": {
+    "name": "时光发条",
+    "desc": "被动：此技能的伤害类型会基于物理加成或法术加成进行适应，取较高一项。普攻造成180.0 ()魔法180.0 ()物理伤害。主动：冲向附近一个格子，获得持续2.0秒的160.0护盾值，并斩击邻格敌人们，造成180.0 ()魔法180.0 ()物理伤害。每三次施放，跳到空中，发射一道能量波，对一条直线上的敌人造成180.0 ()魔法180.0 ()物理伤害。"
+   },
+   "icon": "assets/icons/tft17_riven_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_riven/skins/base/images/tft17_riven_splash_tile_18.png"
+  },
+  {
+   "id": "TFT17_Shen",
+   "name": "慎",
+   "cost": 5,
+   "traits": [
+    "暮光铁壁",
+    "未来战士",
+    "堡垒卫士"
+   ],
+   "hp": 1300.0,
+   "mana": 70.0,
+   "initialMana": 20.0,
+   "armor": 65.0,
+   "mr": 65.0,
+   "ad": 50.0,
+   "as": 0.9,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "实界撕裂",
+    "desc": "被动：施放时，攻击获得— ()可叠加的额外魔法伤害。从第三次施放开始，转而获得真实伤害。主动：获得持续3.0秒的— ()护盾值，然后在最大弈子群的上方切割开一条裂隙，对其中的所有敌人造成被动的额外伤害。敌人被减缓50%%攻击速度同时友军获得80%%攻击速度，两个效果都会在3.0秒里急速衰减。慎在此期间总会获得他的裂隙的全额加成。"
+   },
+   "icon": "assets/icons/tft17_shen_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_shen/skins/base/images/tft17_shen_splash_tile_49.png"
+  },
+  {
+   "id": "TFT17_Milio",
+   "name": "米利欧",
+   "cost": 2,
+   "traits": [
+    "未来战士",
+    "织命人"
+   ],
+   "hp": 550.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 30.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "百万时间飞踢！",
+    "desc": "朝当前目标踢出一颗火球，火球会造成200.0  ()魔法伤害。产生碰撞时，火球有100% 幸运几率弹跳至一个新目标，造成200.0 ()魔法伤害。这些弹跳还可以触发更多弹跳，但每弹跳一次概率减半。【米利欧】有40%几率施放对一个额外目标进行额外的一次施放。额外的施放可以触发更多额外的施放。幸运：进行两次判定，选择较优的结果。"
+   },
+   "icon": "assets/icons/tft17_milio_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_milio/skins/base/images/tft17_milio_splash_tile_0.png"
+  },
+  {
+   "id": "TFT17_Ezreal",
+   "name": "伊泽瑞尔",
+   "cost": 1,
+   "traits": [
+    "未来战士",
+    "狙神"
+   ],
+   "hp": 450.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 15.0,
+   "mr": 15.0,
+   "ad": 45.0,
+   "as": 0.7,
+   "range": 6.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "时空射击",
+    "desc": "主动：对当前目标发射一道震波，造成— ()物理伤害。每参与击杀7.0次，获得一架无人机，它会在施放技能时对当前目标造成0.0 ()物理伤害。(总参与击杀数：@TFTUnitProperty.:TFT17_Ezreal_Takedowns@)"
+   },
+   "icon": "assets/icons/tft17_ezreal_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_ezreal/skins/base/images/tft17_ezreal_splash_tile_5.png"
+  },
+  {
+   "id": "TFT17_Leona",
+   "name": "蕾欧娜",
+   "cost": 1,
+   "traits": [
+    "法官",
+    "重装战士"
+   ],
+   "hp": 700.0,
+   "mana": 110.0,
+   "initialMana": 50.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 50.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "破晓之盾",
+    "desc": "获得持续4.0秒的— ()护盾值。猛击当前目标，造成0.0 ()魔法伤害和0.0秒晕眩。"
+   },
+   "icon": "assets/icons/tft17_leona_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_leona/skins/base/images/tft17_leona_splash_tile_64.png"
+  },
+  {
+   "id": "TFT17_Zoe",
+   "name": "佐伊",
+   "cost": 2,
+   "traits": [
+    "法官",
+    "神谕"
+   ],
+   "hp": 550.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 30.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "飞星乱入！",
+    "desc": "对当前目标发射一颗飞星，对命中的首个目标造成50.0 ()魔法伤害，并对途经的其他敌人造成50.0 ()魔法伤害。飞星到达目的地时，会转向至一个远处的敌人，同时提升飞星的速度并重复造成该伤害。此转向效果可重复5.04.0次。"
+   },
+   "icon": "assets/icons/tft17_zoe_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_zoe/skins/base/images/tft17_zoe_splash_tile_43.png"
+  },
+  {
+   "id": "TFT17_Diana",
+   "name": "黛安娜",
+   "cost": 3,
+   "traits": [
+    "法官",
+    "挑战者"
+   ],
+   "hp": 850.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": null,
+   "as": 0.8,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "苍白之瀑",
+    "desc": "被动：普攻造成0.0 ()额外魔法伤害。主动：获得100.0 ()护盾并召唤3颗环绕法球，持续3.0秒。法球穿过敌人时造成— ()魔法伤害，并根据攻击速度加速旋转。"
+   },
+   "icon": "assets/icons/tft17_diana_teamplanner_splash.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_diana/skins/base/images/tft17_dianasplash_mobile.png"
+  },
+  {
+   "id": "TFT17_Leblanc",
+   "name": "乐芙兰",
+   "cost": 4,
+   "traits": [
+    "法官",
+    "牧羊人"
+   ],
+   "hp": 850.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 0.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCarry",
+   "ability": {
+    "name": "破碎实界",
+    "desc": "被动：普攻转而造成— ()魔法伤害。主动：召唤5.0个复制体，伴随攻击5.0次，从而造成0%%伤害。发动最终攻击时，复制体发射一枚飞弹，造成0.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft17_leblanc_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_leblanc/skins/base/images/tft17_leblanc_splash_tile_29.png"
+  },
+  {
+   "id": "TFT17_Chogath",
+   "name": "科加斯",
+   "cost": 1,
+   "traits": [
+    "暗星",
+    "斗士"
+   ],
+   "hp": 700.0,
+   "mana": 70.0,
+   "initialMana": 30.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 45.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "积聚",
+    "desc": "对距离内生命值最低的敌人造成— ()魔法伤害，并永久获得0.0最大生命值。如果这个技能击杀了该敌人，则转而获得35.0最大生命值。(当前加成：+@TFTUnitProperty.:TFT17_ChoGathBonusHealth@生命值)"
+   },
+   "icon": "assets/icons/tft17_chogath_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_chogath/skins/base/images/tft17_chogath_splash_tile_7.png"
+  },
+  {
+   "id": "TFT17_Lissandra",
+   "name": "丽桑卓",
+   "cost": 1,
+   "traits": [
+    "暗星",
+    "牧羊人",
+    "魔术师"
+   ],
+   "hp": 450.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 15.0,
+   "mr": 15.0,
+   "ad": 30.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "黑暗物质",
+    "desc": "向当前目标投掷一个碎片，对命中的首个敌人造成200.0 ()魔法伤害。在命中首个目标后或到达它的飞行终点时，匕首会爆炸，对附近的目标们造成200.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft17_lissandra_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_lissandra/skins/base/images/tft17_lissandra_splash_tile_12.png"
+  },
+  {
+   "id": "TFT17_Zed",
+   "name": "劫",
+   "cost": 5,
+   "traits": [
+    "天煞"
+   ],
+   "hp": 1100.0,
+   "mana": 100,
+   "initialMana": 40.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 85.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "量子克隆",
+    "desc": "在目标身后创造一个分身，其最大生命值降低33%%且法力消耗提高30.0。分身会继承本尊的装备、属性和当前生命值，并且可以施放【量子克隆】。"
+   },
+   "icon": "assets/icons/tft17_zed_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_zed/skins/base/images/tft17_zed_splash_tile_68.png"
+  },
+  {
+   "id": "TFT17_IvernMinion",
+   "name": "小木灵",
+   "cost": 2,
+   "traits": [
+    "木灵族",
+    "牧羊人",
+    "旅人"
+   ],
+   "hp": 950.0,
+   "mana": 55.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 20.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "宇宙大爆炸",
+    "desc": "被动：普攻造成300.0 (%i:set14AmpIcon%)额外魔法伤害：主动：跳跃至2.0格内的最大敌群并猛砸地面，从而在一个半径三格的范围内造成— ()魔法伤害，每远离中心一格，这个伤害就降低35%%。相距最近的3.0个敌人会被击飞1.0秒。木灵加成：被动的额外伤害提升，幅度为50%%x木灵数。"
+   },
+   "icon": "assets/icons/tft17_ivernminion_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_ivernminion/skins/base/images/tft17_ivernminion_splash_tile_27.png"
+  },
+  {
+   "id": "TFT17_MissFortune_TraitClone",
+   "name": "厄运小姐",
+   "cost": 3,
+   "traits": [
+    "神谕",
+    "挑战者",
+    "魔术师"
+   ],
+   "hp": 1200.0,
+   "mana": 100,
+   "initialMana": 0,
+   "armor": 70.0,
+   "mr": 70.0,
+   "ad": 70.0,
+   "as": 1.0,
+   "range": 1.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "武装战姬武库",
+    "desc": "登场【厄运小姐】即可在【神谕模式】、【挑战者模式】、以及【魔术师模式】中选择一个以供她激活。所选的模式会决定她的技能和羁绊。"
+   },
+   "icon": "assets/icons/tft17_missfortune_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_missfortune/skins/base/images/tft17_missfortune_splash_tile_16.png"
+  },
+  {
+   "id": "TFT17_Mordekaiser",
+   "name": "莫德凯撒",
+   "cost": 2,
+   "traits": [
+    "暗星",
+    "神谕",
+    "重装战士"
+   ],
+   "hp": 950.0,
+   "mana": 100,
+   "initialMana": 40.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 40.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "不坏之身",
+    "desc": "获得0.0()护盾值。接下来的6.04.0秒内，每秒额外获得0.0()护盾值，并对所有邻格敌人造成0.0()魔法伤害。该技能结束时，消耗剩余所有护盾值，回复相当于该数值40%%的生命值。"
+   },
+   "icon": "assets/icons/tft17_mordekaiser_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_mordekaiser/skins/base/images/tft17_mordekaiser_splash_tile_6.png"
+  },
+  {
+   "id": "TFT17_Xayah",
+   "name": "霞",
+   "cost": 4,
+   "traits": [
+    "观星者",
+    "狙神"
+   ],
+   "hp": 850.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 49.0,
+   "as": 0.75,
+   "range": 6.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "星界弹射",
+    "desc": "被动：普攻会造成弹跳，打击3.0次，每命中一次目标造成的伤害降低60%%，并在最终目标处留下一柄羽刃。主动：获得75%%攻击速度，持续下6.0次攻击。最终，从相距最近的3.0名敌人处召回所有羽刃，每支羽刃造成— ()物理伤害。每支羽刃对霞的当前目标造成10.0 ()额外物理伤害。"
+   },
+   "icon": "assets/icons/tft17_xayah_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_xayah/skins/base/images/tft17_xayah_splash_tile_1.png"
+  },
+  {
+   "id": "TFT17_Graves",
+   "name": "格雷福斯",
+   "cost": 5,
+   "traits": [
+    "军工1号"
+   ],
+   "hp": 900.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 60.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "终极爆弹",
+    "desc": "被动：普攻会在锥形范围内发射5.0枚飞弹，每枚造成400.0 ()物理伤害。主动：发射一枚爆弹，对目标造成400.0 ()物理伤害，并对邻格的所有敌人造成400.0 )物理伤害。"
+   },
+   "icon": "assets/icons/tft17_graves_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_graves/skins/base/images/tft17_graves_splash_tile_18.png"
+  },
+  {
+   "id": "TFT17_TahmKench",
+   "name": "塔姆",
+   "cost": 4,
+   "traits": [
+    "命运祭司",
+    "斗士"
+   ],
+   "hp": 1300.0,
+   "mana": 110.0,
+   "initialMana": 50.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 75.0,
+   "as": 0.5,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "巨舌鞭笞",
+    "desc": "被动：每场战斗一次，在跌下35%%生命值时，获得持续4.0秒的护盾，护盾值相当于40%%本场战斗受到的治疗值。主动：回复— ()生命值，然后用舌头鞭笞两格内的所有敌人，造成— ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft17_tahmkench_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_tahmkench/skins/base/images/tft17_tahmkench_splash_tile_11.png"
+  },
+  {
+   "id": "TFT17_Rhaast",
+   "name": "拉亚斯特",
+   "cost": 3,
+   "traits": [
+    "救世主"
+   ],
+   "hp": 1200.0,
+   "mana": 90.0,
+   "initialMana": 30.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 60.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "神圣镰刃",
+    "desc": "获得持续1.0秒的20%%伤害减免，持续期间回复— ()生命值。随后，向前斩击一个直线范围，对命中的敌人们造成0.20000000298023224 ()物理伤害和1.0秒击飞。"
+   },
+   "icon": "assets/icons/tft17_kayn_slay_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_rhaast/skins/base/images/tft17_kaynsplash_tile.png"
+  },
+  {
+   "id": "TFT17_RekSai",
+   "name": "雷克塞",
+   "cost": 1,
+   "traits": [
+    "海魔人",
+    "斗士"
+   ],
+   "hp": 700.0,
+   "mana": 100,
+   "initialMana": 40.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 50.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "地壳隆起",
+    "desc": "回复— ()生命值，然后短暂击飞邻格敌人，造成0.0 () 魔法伤害。"
+   },
+   "icon": "assets/icons/tft17_reksai_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_reksai/skins/base/images/tft17_reksai_splash_tile_26.png"
+  },
+  {
+   "id": "TFT17_Pantheon",
+   "name": "潘森",
+   "cost": 2,
+   "traits": [
+    "未来战士",
+    "斗士",
+    "魔术师"
+   ],
+   "hp": 900.0,
+   "mana": 80.0,
+   "initialMana": 20.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 50.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "先进防御",
+    "desc": "获得— ()护盾值与15%%伤害减免，持续4.0秒。在此期间，每秒对锥形范围内的敌人造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft17_pantheon_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_pantheon/skins/base/images/tft17_pantheon_splash_tile_16.png"
+  },
+  {
+   "id": "TFT17_Morgana",
+   "name": "莫甘娜",
+   "cost": 4,
+   "traits": [
+    "黑暗魔女",
+    "神谕"
+   ],
+   "hp": 1300.0,
+   "mana": 95.0,
+   "initialMana": 45.0,
+   "armor": 70.0,
+   "mr": 70.0,
+   "ad": 60.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "黑暗形态",
+    "desc": "变形3.0秒，从而获得— ()生命值并与附近的弈子们生成灵链。在持续期间，对相距最近的3.0个敌人造成—()魔法伤害并为相距最近的2.0个受伤友军回复—()生命值。"
+   },
+   "icon": "assets/icons/tft17_morgana_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft17_morgana/skins/base/images/tft17_morgana_splash_tile_50.png"
+  }
+ ],
+ "traits": [
+  {
+   "name": "末日使者",
+   "desc": "对战开始时：将所有敌人刻印上【末日】标记。每场对战敌人首次受到伤害时，他们的【末日】标记将被消耗，你最强大的【薇古丝】会从他们身上窃取12.0%物理加成和法术加成。",
+   "icon": "assets/icons/trait_icon_17_doomer.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "ADAP1": 12.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "挑战者",
+   "desc": "你的队伍获得10%%攻击速度。【挑战者】获得额外攻击速度。当其目标阵亡时，【挑战者】会冲刺向一个新的目标，并提高他们的攻击速度50%%，持续2.5秒。(—) 15%% (—) 15%% (—) 15%% (—) 15%%",
+   "icon": "assets/icons/trait_icon_17_challenger.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "AttackSpeedPercent": 0.15000000596046448,
+      "BurstDuration": 2.5,
+      "BurstPercent": 0.5,
+      "DamageReduction": null,
+      "TeamwideAS": 0.10000000149011612
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "AttackSpeedPercent": 0.2800000011920929,
+      "BurstDuration": 2.5,
+      "BurstPercent": 0.5,
+      "DamageReduction": null,
+      "TeamwideAS": 0.10000000149011612
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "AttackSpeedPercent": 0.41999998688697815,
+      "BurstDuration": 2.5,
+      "BurstPercent": 0.5,
+      "DamageReduction": null,
+      "TeamwideAS": 0.10000000149011612
+     }
+    },
+    {
+     "min": 5,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AttackSpeedPercent": 0.550000011920929,
+      "BurstDuration": 2.5,
+      "BurstPercent": 0.5,
+      "DamageReduction": null,
+      "TeamwideAS": 0.10000000149011612
+     }
+    }
+   ]
+  },
+  {
+   "name": "观星者",
+   "desc": "【观星者】每局游戏会观测到一个不同的星座。本局游戏：野猪。赢下玩家对战时获得金币。强化格中的友军获得8%%生命值、物理加成和法术加成。【观星者】获得更多。(已获得的金币数：@TFTUnitProperty.trait:TFT17_Stargazer_Wolf_TotalGold@)(—) 1金币，2%% ，10.0% 玩家等级每提升1级，就会有更多格子显露出来",
+   "icon": "assets/icons/trait_icon_17_stargazer.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "Wolf_ADAP": 10.0,
+      "Wolf_Gold": 1,
+      "Wolf_Health": 0.019999999552965164,
+      "Wolf_Health_Teamwide": 0.07999999821186066,
+      "{f5b00dd5}": 8.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "Wolf_ADAP": 15.0,
+      "Wolf_Gold": 2,
+      "Wolf_Health": 0.07999999821186066,
+      "Wolf_Health_Teamwide": 0.07999999821186066,
+      "{f5b00dd5}": 8.0
+     }
+    },
+    {
+     "min": 5,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "Wolf_ADAP": 25.0,
+      "Wolf_Gold": 4,
+      "Wolf_Health": 0.15000000596046448,
+      "Wolf_Health_Teamwide": 0.07999999821186066,
+      "{f5b00dd5}": 8.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "Wolf_ADAP": 30.0,
+      "Wolf_Gold": 6,
+      "Wolf_Health": 0.2199999988079071,
+      "Wolf_Health_Teamwide": 0.07999999821186066,
+      "{f5b00dd5}": 8.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "魔术师",
+   "desc": "【魔术师】施放技能时，会以削减过的效能触发第二次。(—) 22%%效能",
+   "icon": "assets/icons/trait_icon_17_replicator.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "Effectiveness": 0.2199999988079071
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "Effectiveness": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "重装战士",
+   "desc": "【重装战士】在拥有护盾时获得5%%伤害减免。对战开始时以及50%% 生命值时：获得一个最大生命值护盾，持续10.0秒。(—) 16%%最大生命值(—) 16%%最大生命值(—) 16%%最大生命值；拥有护盾时：8%%",
+   "icon": "assets/icons/trait_icon_12_vanguard.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "DamageReductionPct": 0.05000000074505806,
+      "EnhancedDurability": 0.07999999821186066,
+      "HealthThreshold": 0.5,
+      "ShieldDuration": 10.0,
+      "ShieldPercentAmount": 0.1599999964237213
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "DamageReductionPct": 0.05000000074505806,
+      "EnhancedDurability": 0.07999999821186066,
+      "HealthThreshold": 0.5,
+      "ShieldDuration": 10.0,
+      "ShieldPercentAmount": 0.30000001192092896
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "DamageReductionPct": 0.05000000074505806,
+      "EnhancedDurability": 0.07999999821186066,
+      "HealthThreshold": 0.5,
+      "ShieldDuration": 10.0,
+      "ShieldPercentAmount": 0.4000000059604645
+     }
+    }
+   ]
+  },
+  {
+   "name": "灵能特工",
+   "desc": "获得【灵能特工装备】，任何友军都可以携带。(—) 获得【@TFTUnitProperty.trait:TFT17_PsyOps_Item1@】(—) 获得【@TFTUnitProperty.trait:TFT17_PsyOps_Item2@】，【灵能特工】携带【灵能特工装备】时获得额外效果",
+   "icon": "assets/icons/trait_icon_17_psyops.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "{1b889d1c}": null
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "{1b889d1c}": 50.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "灭星尊",
+   "desc": "敌人的护甲和魔抗降低10%%。",
+   "icon": "assets/icons/trait_icon_17_singularity.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 4,
+     "vars": {
+      "PctResists": 0.10000000149011612
+     }
+    }
+   ]
+  },
+  {
+   "name": "未来战士",
+   "desc": "(—) 友军获得12%%攻击速度。(—) 并且当你输掉对战时，获得免费刷新次数。当你赢下对战时，将经验值储存至【时空核心】中(随阶段提升)。(—) 并且【未来战士】们额外获得?%攻击速度从失败中获得的刷新次数：@TFTUnitProperty.:TFT17_Timebreaker_NumRerollsTooltip@从胜利中获得的经验值：@TFTUnitProperty.:TFT17_Timebreaker_NumXPTooltip@",
+   "icon": "assets/icons/trait_icon_17_timebreaker.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "AttackSpeed": 0.11999999731779099,
+      "TimebreakerAdditionalAS": null,
+      "{aaae13a0}": null
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "AttackSpeed": 0.11999999731779099,
+      "TimebreakerAdditionalAS": null,
+      "{aaae13a0}": 1.0
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AttackSpeed": 0.11999999731779099,
+      "TimebreakerAdditionalAS": 0.5,
+      "{aaae13a0}": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "狂战士",
+   "desc": "你的队伍获得5%%全能吸血。【狂战士】获得额外全能吸血、物理加成，并且其全能吸血的过量治疗将转化为护盾(至多至25%%最大生命值)(—) 5%% , 18%% (—) 5%% , 18%% (—) 5%% , 18%%",
+   "icon": "assets/icons/trait_icon_16_slayer.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "AD": 0.18000000715255737,
+      "MaxPercentHealthShield": 0.25,
+      "Omnivamp": 0.05000000074505806,
+      "ShieldAD": null,
+      "TeamwideBonus": 0.05000000074505806
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "AD": 0.3499999940395355,
+      "MaxPercentHealthShield": 0.25,
+      "Omnivamp": 0.07000000029802322,
+      "ShieldAD": null,
+      "TeamwideBonus": 0.05000000074505806
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AD": 0.550000011920929,
+      "MaxPercentHealthShield": 0.25,
+      "Omnivamp": 0.10000000149011612,
+      "ShieldAD": 0.20000000298023224,
+      "TeamwideBonus": 0.05000000074505806
+     }
+    }
+   ]
+  },
+  {
+   "name": "武装战姬",
+   "desc": "当你登场【厄运小姐】时，需要在【神谕模式】、【挑战者模式】、以及【魔术师模式】中选择一种。【厄运小姐】的每个模式都会为其提供1个独特的技能，同时她获得对应的羁绊。",
+   "icon": "assets/icons/trait_icon_17_gungoddess.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "Allies": 2.0,
+      "DamageAmp": 0.009999999776482582,
+      "FlatDamage": 100.0,
+      "Mana": 2.0,
+      "NumAttacks": 3.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "幻灵战队",
+   "desc": "在输掉1场玩家对战后，获得20.0【科技点】，并且会额外增加相当于你连败回合数5.0倍的【科技点】。此外，每个【幻灵战队】参与击杀时都会获得2【科技点】。每当【幻灵战队】们获得100.0【科技点】，他们就会制造新的幻灵武器原型。你可以选择立刻拿走这些装备，或者保留你的【科技点】直到下一次获取更加强力的武器。(—) 研发启动！(—) 在每场玩家对战之后，获得战利品！在双人作战中，如果你输掉一场对战而你的搭档获胜，那么你会获得85%%【科技点】。",
+   "icon": "assets/icons/trait_icon_17_animatech.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 4,
+     "style": 1,
+     "vars": {
+      "PairsPartnerWinMultiplier": 0.8500000238418579,
+      "TechBreakpoint": 100.0,
+      "TechPerCombat": 20.0,
+      "TechPerCombat_DU": 20,
+      "TechPerDeath_PVE": 1.0,
+      "TechPerKill": 2,
+      "TechPerLoss": 5.0,
+      "TechPerLoss_DU": 5,
+      "TechPerRound_PVE": 20.0
+     }
+    },
+    {
+     "min": 5,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "PairsPartnerWinMultiplier": 0.8500000238418579,
+      "TechBreakpoint": 100.0,
+      "TechPerCombat": 20.0,
+      "TechPerCombat_DU": 20,
+      "TechPerDeath_PVE": 1.0,
+      "TechPerKill": 2,
+      "TechPerLoss": 5.0,
+      "TechPerLoss_DU": 5,
+      "TechPerRound_PVE": 20.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "织命人",
+   "desc": "固有能力：【织命人】拥有技能暴击。(—) 技能中几率触发的效果拥有幸运。(—) 获得@CritChance*100@%暴击几率和None% 暴击伤害。暴击也会拥有幸运。{{TFT_Keyword_Precision}}幸运：触发时进行两次判定，取最优结果输出。",
+   "icon": "assets/icons/trait_icon_17_fateweaver.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "CritDamage": null
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "CritChance": 0.20000000298023224,
+      "CritDamage": 20.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "天煞",
+   "desc": "【劫】仅可通过强化符文【天煞灭影：劫】获得。当至少有1个影分身存活时，【劫】额外获得40%%物理加成。",
+   "icon": "assets/icons/trait_icon_17_galaxyhunter.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "BonusAD": 0.4000000059604645
+     }
+    }
+   ]
+  },
+  {
+   "name": "暮光铁壁",
+   "desc": "召唤一个可放置的【圣物】。对战开始时，【圣物】可为邻格友军提供一个10%%最大生命值的护盾和10%%攻击速度。",
+   "icon": "assets/icons/trait_icon_17_bulwark.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "AttackSpeed": 0.10000000149011612,
+      "AttackSpeedDuration": 60.0,
+      "PercentHealthShield": 0.10000000149011612,
+      "ShieldDuration": 60.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "最高指挥官",
+   "desc": "(—) 每2.0回合，娑娜都会提供一个随机【指令模块】，它可允许你变更一个友军在战斗期间的行为方式。【指令模块】持续2.0个玩家战斗回合，不论是否被装备。",
+   "icon": "assets/icons/trait_icon_17_commander.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "AS": 0.15000000596046448,
+      "HealthRatio": 0.15000000596046448,
+      "RoundsPerMod": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "游侠",
+   "desc": "【游侠】们获得物理加成和法术加成。当其生命值首次降至50%%时，他们会遁入暗影。原本以其为目标的敌人将会选取1名附近的敌人作为新的目标(坦克优先)。(—) 12.0%  (—) 12.0%  (—) 12.0%  (—) 12.0%",
+   "icon": "assets/icons/trait_icon_17_rogue.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "AD": 0.11999999731779099,
+      "AP": 12.0,
+      "Duration": 3.0,
+      "HealthThreshold": 0.5
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "AD": 0.25,
+      "AP": 25.0,
+      "Duration": 3.0,
+      "HealthThreshold": 0.5
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "AD": 0.44999998807907104,
+      "AP": 45.0,
+      "Duration": 3.0,
+      "HealthThreshold": 0.5
+     }
+    },
+    {
+     "min": 5,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AD": 0.6000000238418579,
+      "AP": 60.0,
+      "Duration": 3.0,
+      "HealthThreshold": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "暗星",
+   "desc": "(—) 【暗星】创造【黑洞】，【黑洞】会吞噬最大生命值低于@TFTUnitProperty.trait:TFT17_Augment_DarkStar_NeutronStar_BonusExecutePercent*100@%8%%的敌人。(—) 并且他们获得45% 。(—) 并且最强大的【暗星】单位进入【超大质量】状态，获得70%%效能的【暗星】加成，并生成2个小型【黑洞】。(—) 所有的【暗星】进入【超大质量】状态。达到10级后，吞！噬！天！地！万！物！。",
+   "icon": "assets/icons/trait_icon_17_darkstar.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "ADAP": 45,
+      "ExecuteHPPercent": 0.07999999821186066,
+      "PercentHealth": 0.25,
+      "SupermassivePercentBonus": 0.699999988079071
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "ADAP": 45,
+      "ExecuteHPPercent": 0.07999999821186066,
+      "PercentHealth": 0.25,
+      "SupermassivePercentBonus": 0.699999988079071
+     }
+    },
+    {
+     "min": 6,
+     "max": 8,
+     "style": 5,
+     "vars": {
+      "ADAP": 45,
+      "ExecuteHPPercent": 0.07999999821186066,
+      "PercentHealth": 0.25,
+      "SupermassivePercentBonus": 0.699999988079071
+     }
+    },
+    {
+     "min": 9,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "ADAP": 45,
+      "ExecuteHPPercent": 0.07999999821186066,
+      "PercentHealth": 0.25,
+      "SupermassivePercentBonus": 0.699999988079071
+     }
+    }
+   ]
+  },
+  {
+   "name": "海魔人",
+   "desc": "(—) 造成伤害时会基于独特【海魔人】的星级召唤【狂潮虫】。(—) 召唤额外的45%【狂潮虫】！在每场玩家对战后，获得1个随机的1费或2费弈子。8%%承受伤害会被计算至召唤【狂潮虫】的所需伤害。",
+   "icon": "assets/icons/trait_icon_17_primordian.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "DamageMultiplier": 1.0,
+      "DamageTakenPercentModifier": 0.07999999821186066,
+      "PercentMoreSwarmlings": 45,
+      "{3ed71f24}": 6
+     }
+    },
+    {
+     "min": 3,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "DamageMultiplier": 1.4500000476837158,
+      "DamageTakenPercentModifier": 0.07999999821186066,
+      "PercentMoreSwarmlings": 45,
+      "{3ed71f24}": 6
+     }
+    }
+   ]
+  },
+  {
+   "name": "太空律动",
+   "desc": "(—) 【太空律动】舞者们能够进入{{TFT17_SpaceGroove_TheGroove}}。当进入这种状态时，他们获得攻击速度和最大生命值回复，你的队伍每有1名【太空律动】舞者还会进一步提升该加成。(—) 所有【太空律动】舞者在对战开始时进入{{TFT17_SpaceGroove_TheGroove}}，持续None秒。(—) 在{{TFT17_SpaceGroove_TheGroove}}状态中每秒会获得None%可叠加的物理加成和法术加成。(—) 提升这些加成None%!(—) {{TFT17_SpaceGroove_Groove}}{{TFT17_SpaceGroove_TheGroove}}: @TFTUnitProperty.:TFT17_SpaceGroove_AS*100@% ，@TFTUnitProperty.:TFT17_SpaceGroove_HealthRegen*100@%",
+   "icon": "assets/icons/trait_icon_17_spacegroove.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "ADAPPerSecond": null,
+      "EffectBonus": null,
+      "StartOfCombatDuration": null
+     }
+    },
+    {
+     "min": 3,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "ADAPPerSecond": null,
+      "EffectBonus": null,
+      "StartOfCombatDuration": 4.0
+     }
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 3,
+     "vars": {
+      "ADAPPerSecond": 5.0,
+      "EffectBonus": null,
+      "StartOfCombatDuration": 4.0
+     }
+    },
+    {
+     "min": 7,
+     "max": 9,
+     "style": 5,
+     "vars": {
+      "ADAPPerSecond": 5.0,
+      "EffectBonus": 10.0,
+      "StartOfCombatDuration": 4.0
+     }
+    },
+    {
+     "min": 10,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "ADAPPerSecond": 10.0,
+      "EffectBonus": 500.0,
+      "StartOfCombatDuration": 60.0,
+      "{32ed1fda}": 800.0,
+      "{3e46e556}": 1500.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "法官",
+   "desc": "制订一份独特的神圣律法，可使你选择一个成因，以及该成因达成时施加至【法官】们的一个效果。(—) 为你的律法选择1个成因和效果(—) 效果变得更强。",
+   "icon": "assets/icons/trait_icon_17_arbiter.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "DamageInstances": 10,
+      "HealthThreshold": 0.4000000059604645,
+      "ManaToSpend": 50,
+      "NumAttacks": 3,
+      "NumSeconds": 4,
+      "ShieldDuration": 4,
+      "{fefec6fb}": 1.0
+     }
+    },
+    {
+     "min": 3,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "DamageInstances": 10,
+      "HealthThreshold": 0.4000000059604645,
+      "ManaToSpend": 50,
+      "NumAttacks": 3,
+      "NumSeconds": 4,
+      "ShieldDuration": 4,
+      "{fefec6fb}": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "牧羊人",
+   "desc": "【牧羊人】召唤【群星誓约】并辅助其战斗。(—) 召唤【羊咩咩】(—) 召唤【咩咩羊】(—) 【羊咩咩】和【咩咩羊】的誓约更加深厚 【羊咩咩】和【咩咩羊】的强度会随所有【牧羊人】的星级总数而提升",
+   "icon": "assets/icons/trait_icon_17_shepherd.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 4,
+     "style": 1,
+     "vars": {}
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 3,
+     "vars": {}
+    },
+    {
+     "min": 7,
+     "max": null,
+     "style": 5,
+     "vars": {}
+    }
+   ]
+  },
+  {
+   "name": "救世主",
+   "desc": "(—) 每激活一个非单人羁绊，你的队伍获得2%%攻击速度，以及2.0护甲和魔抗。队伍获得的攻击速度：@TFTUnitProperty.trait:TFT17_RhaastUnique_OffensiveStatToGain@% 队伍获得的双抗：@TFTUnitProperty.trait:TFT17_RhaastUnique_DefensiveStatToGain@",
+   "icon": "assets/icons/trait_icon_17_redeemer.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "BonusDefensiveStat1": 2.0,
+      "BonusDefensiveStat2": 2.0,
+      "BonusDefensiveStat3": 2.0,
+      "BonusOffensiveStat1": 0.019999999552965164,
+      "BonusOffensiveStat2": 0.019999999552965164,
+      "BonusOffensiveStat3": 0.019999999552965164
+     }
+    }
+   ]
+  },
+  {
+   "name": "斗士",
+   "desc": "你的队伍获得5%%生命值。【斗士】获得更多。(—) +25%%最大生命值",
+   "icon": "assets/icons/trait_icon_brawler.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "HealthBonus": 0.25,
+      "TeamwideBonus": 0.05000000074505806
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "HealthBonus": 0.44999998807907104,
+      "TeamwideBonus": 0.05000000074505806
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "HealthBonus": 0.6499999761581421,
+      "TeamwideBonus": 0.05000000074505806
+     }
+    }
+   ]
+  },
+  {
+   "name": "堡垒卫士",
+   "desc": "你的队伍获得15.0护甲和魔抗。【堡垒卫士】们获得更多，并且该加成在对战的最初10.0秒内翻倍。(—) 16.0 (—) 16.0 (—) 16.0 ；非【堡垒卫士】单位额外获得20.0",
+   "icon": "assets/icons/trait_icon_9_bastion.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "BonusArmor": 16.0,
+      "BonusMR": 16.0,
+      "Duration": 10.0,
+      "EnhancedTeamwideArmor": 20.0,
+      "StatMultiplier": 2.0,
+      "TeamwideResists": 15.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "BonusArmor": 40.0,
+      "BonusMR": 40.0,
+      "Duration": 10.0,
+      "EnhancedTeamwideArmor": 20.0,
+      "StatMultiplier": 2.0,
+      "TeamwideResists": 15.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BonusArmor": 60.0,
+      "BonusMR": 60.0,
+      "Duration": 10.0,
+      "EnhancedTeamwideArmor": 20.0,
+      "StatMultiplier": 2.0,
+      "TeamwideResists": 15.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "木灵族",
+   "desc": "【木灵族】吸引木灵，木灵会以木灵的方式强化【木灵族】的技能。他们还会获得额外生命值。(—) 2.0 %i:set14AmpIcon%，100.0 (—) 2.0 %i:set14AmpIcon%，100.0 (—) 2.0 %i:set14AmpIcon%，100.0 。在你的备战席上生成一个克隆栏位。在克隆完成时，获得放置在该栏位的弈子的一个1星版本以及金币。(—) 2.0 %i:set14AmpIcon%，100.0 。召唤四大木灵领主！克隆时间 = 弈子费用",
+   "icon": "assets/icons/trait_icon_17_astronaut.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 4,
+     "style": 1,
+     "vars": {
+      "BonusHealth": 100.0,
+      "Meeps": 2.0
+     }
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 3,
+     "vars": {
+      "BonusHealth": 350.0,
+      "Meeps": 3.0
+     }
+    },
+    {
+     "min": 7,
+     "max": 9,
+     "style": 5,
+     "vars": {
+      "BonusHealth": 450.0,
+      "Meeps": 4.0
+     }
+    },
+    {
+     "min": 10,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "BonusHealth": 550.0,
+      "Meeps": 6.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "神谕",
+   "desc": "固有能力：【神谕】们从所有来源中获得额外20%%法力值。你的队伍获得法力回复，【神谕】们获得更多。(—) 1.0  | 3.0",
+   "icon": "assets/icons/trait_icon_17_channeler.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "ChannelerManaRegen": 3.0,
+      "InnateManaGain": 0.20000000298023224,
+      "TeamManaRegen": 1.0
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "ChannelerManaRegen": 5.0,
+      "InnateManaGain": 0.20000000298023224,
+      "TeamManaRegen": 1.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "ChannelerManaRegen": 7.0,
+      "InnateManaGain": 0.20000000298023224,
+      "TeamManaRegen": 2.0
+     }
+    },
+    {
+     "min": 5,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "ChannelerManaRegen": 9.0,
+      "InnateManaGain": 0.20000000298023224,
+      "TeamManaRegen": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "霸天机甲",
+   "desc": "固有能力：【霸天机甲】单位们可以变形为其【究极形态】，升级其技能并获得40%%生命值。【已变形的霸天机甲】占用2个弈子栏位，并为【霸天机甲】羁绊提供双倍羁绊计数。(—) 能量电芯：【霸天机甲】们获得25.0% 。(—) 超频电容：提升至25.0% 。(—) 精密工学：+1最大队伍规模使用【霸天机甲变形器】道具来给你的【霸天机甲】们切换形态",
+   "icon": "assets/icons/trait_icon_17_mecha.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "AD": 0.25,
+      "AP": 25.0,
+      "TeamSize": 1,
+      "TransformedPercentHealth": 0.4000000059604645
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "AD": 0.4000000059604645,
+      "AP": 40.0,
+      "TeamSize": 1,
+      "TransformedPercentHealth": 0.4000000059604645
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AD": 0.4000000059604645,
+      "AP": 40.0,
+      "TeamSize": 1,
+      "TransformedPercentHealth": 0.4000000059604645
+     }
+    }
+   ]
+  },
+  {
+   "name": "军工1号",
+   "desc": "参与对战后，打开一个武器库为你最强大的【格雷福斯】购买*永久*【升级】。每有3.0个【升级】，后续【升级】都将多需要1回合。下一个【升级】@TFTUnitProperty.trait:TFT17_GravesTrait_RoundsUntilUpgrade@回合。",
+   "icon": "assets/icons/trait_icon_17_factorynew.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "NumberOfUpgradesBeforeRoundCostIncrease": 3.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "旅人",
+   "desc": "战斗开始时：你的坦克们获得持续15.0秒的护盾。你的其他友军获得伤害增幅。【旅人】获得两倍此加成。(—) 175.0护盾；9%%",
+   "icon": "assets/icons/trait_icon_17_voyager.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "BonusDA": 0.09000000357627869,
+      "ShieldDuration": 15.0,
+      "ShieldHP": 175.0,
+      "{2ad3e251}": 2.0
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "BonusDA": 0.15000000596046448,
+      "ShieldDuration": 15.0,
+      "ShieldHP": 250.0,
+      "{2ad3e251}": 2.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "BonusDA": 0.18000000715255737,
+      "ShieldDuration": 15.0,
+      "ShieldHP": 350.0,
+      "{2ad3e251}": 2.0
+     }
+    },
+    {
+     "min": 5,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "BonusDA": 0.2199999988079071,
+      "ShieldDuration": 15.0,
+      "ShieldHP": 500.0,
+      "{2ad3e251}": 2.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BonusDA": 0.27000001072883606,
+      "ShieldDuration": 15.0,
+      "ShieldHP": 700.0,
+      "{2ad3e251}": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "汪星机器人",
+   "desc": "每场战斗仅一次，在生命值降至45%%后，变得不可被选取并且每秒回复15%%最大生命值。生命值回满或没有其他友军存活时，返回战斗。如果生命值已回满，【布里茨】进入{{TFT17_SpaceGroove_TheGroove}}状态，并且【派对破坏王】的被动会以四倍速召唤雷电，持续至战斗结束。",
+   "icon": "assets/icons/trait_icon_17_partyanimal.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "HealthThreshold": 0.44999998807907104,
+      "PercentHealthHeal": 0.15000000596046448
+     }
+    }
+   ]
+  },
+  {
+   "name": "新星特攻队",
+   "desc": "(—) 对战开始6.0秒后，【新星特攻队】基于弈子效果，为友军提供一阵【能量激增】。(—) 获得1个【特攻队员选择器】。被选择的【新星特攻队】弈子会在【能量激增】期间激活其特攻技能。【亚托克斯】：友军的伤害对敌人会施加30%%魔抗击碎和护甲击碎【亚托克斯】：对敌人施加魔抗击碎和护甲击碎【凯特琳】：为友军提供20%%攻击速度【凯特琳】：提供攻击速度【阿卡丽】：友军获得技能暴击【阿卡丽】：友军获得技能暴击【茂凯】：友军治疗12%%最大生命值【茂凯】：治疗友军【千珏】：为你最强大的那个坦克提供800.0护盾值【千珏】：为1名友军提供护盾【纹章】：友军造成10%%可叠加的额外真实伤害【纹章】：造成额外真实伤害",
+   "icon": "assets/icons/trait_icon_17_nova.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 4,
+     "style": 1,
+     "vars": {
+      "AS": 0.20000000298023224,
+      "BonusTrueDamage": 0.10000000149011612,
+      "Heal": 0.11999999731779099,
+      "ShieldValue": 800.0,
+      "ShredAndSunder": 0.30000001192092896,
+      "TeamAttackDelay": 6.0
+     }
+    },
+    {
+     "min": 5,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AS": 0.20000000298023224,
+      "BonusTrueDamage": 0.10000000149011612,
+      "Heal": 0.11999999731779099,
+      "ShieldValue": 800.0,
+      "ShredAndSunder": 0.30000001192092896,
+      "TeamAttackDelay": 6.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "命运祭司",
+   "desc": "每—回合，【塔姆】都会提供一个奖励！剩余回合：@TFTUnitProperty.trait:TFT17_TahmKench_RoundsRemaining@最后一次的奖励：@TFTUnitProperty.trait:TFT17_TahmKench_LastReward@",
+   "icon": "assets/icons/trait_icon_12_arcana.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "rounds": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "狙神",
+   "desc": "【狙神】获得伤害增幅，这个加成会在对抗更远目标时获得提升。(—) 18.0% ；+2.0% 每格(—) 18.0% ；+2.0% 每格(—) 18.0% ；+2.0% 每格",
+   "icon": "assets/icons/trait_icon_6_sniper.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "PerHexIncrease": 2.0,
+      "PercentDamageIncrease": 18.0
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "PerHexIncrease": 3.0,
+      "PercentDamageIncrease": 25.0
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "PerHexIncrease": 4.0,
+      "PercentDamageIncrease": 35.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "斗神",
+   "desc": "你的小小英雄在获胜时回复相当于15%%造成小小英雄伤害的生命值。【菲奥娜】总会在一对一的对决中胜出。",
+   "icon": "assets/icons/trait_icon_17_divineduelist.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "DUHeal": 1,
+      "PVEHP": 1,
+      "PVENumWins": 4,
+      "PlayerOmnivamp": 0.15000000596046448
+     }
+    }
+   ]
+  },
+  {
+   "name": "黑暗魔女",
+   "desc": "你的队伍获得4%%伤害减免，在【莫甘娜】处于她的【黑暗形态】之中时，该数值提升至10%%。",
+   "icon": "assets/icons/trait_icon_17_darklady.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 4,
+     "vars": {
+      "Durability": 0.03999999910593033,
+      "TransformedDurability": 0.10000000149011612
+     }
+    }
+   ]
+  }
+ ]
+}

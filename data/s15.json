@@ -1,0 +1,5396 @@
+{
+ "set": "S15",
+ "name": "Set15",
+ "champions": [
+  {
+   "id": "TFT15_Aatrox",
+   "name": "亚托克斯",
+   "cost": 1,
+   "traits": [
+    "超级战队",
+    "主宰",
+    "重量级斗士"
+   ],
+   "hp": 650.0,
+   "mana": 80.0,
+   "initialMana": 20.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 60.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "赐死剑气",
+    "desc": "治疗— ()生命值并对当前目标造成— ()物理伤害。基于【亚托克斯】的已损失生命值，治疗和伤害至多获得100%%提升。"
+   },
+   "icon": "assets/icons/tft15_aatrox_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_aatrox/skins/base/images/tft15_aatrox_mobile.png"
+  },
+  {
+   "id": "TFT15_Ahri",
+   "name": "阿狸",
+   "cost": 3,
+   "traits": [
+    "星之守护者",
+    "法师"
+   ],
+   "hp": 650.0,
+   "mana": 50.0,
+   "initialMana": 10.0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 40.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "伊甸之果",
+    "desc": "对当前目标造成0.0 ()魔法伤害，至多提升至50%，基于该目标的已损失生命值。如果该目标阵亡，则造成80%%过度击杀伤害，由2.0个相距最近的敌人均摊，外加对每个目标造成0.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft15_ahri_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_ahri/skins/base/images/tft15_ahri_mobile.png"
+  },
+  {
+   "id": "TFT15_Akali",
+   "name": "阿卡丽",
+   "cost": 4,
+   "traits": [
+    "兵王",
+    "裁决使者"
+   ],
+   "hp": 1050.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 65.0,
+   "mr": 65.0,
+   "ad": 30.0,
+   "as": 0.7,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "乱舞影杀",
+    "desc": "标记4.0格内相距最远且未被标记的目标，然后按顺序冲刺穿过所有被标记的敌人。每次冲刺会对其目标造成— ()魔法伤害并对命中的其他敌人造成— ()魔法伤害。如果只剩下1个敌人，转而冲刺3.0次。"
+   },
+   "icon": "assets/icons/tft15_akali_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_akali/skins/base/images/tft15_akali_mobile.png"
+  },
+  {
+   "id": "TFT15_Ashe",
+   "name": "艾希",
+   "cost": 4,
+   "traits": [
+    "水晶玫瑰",
+    "决斗大师"
+   ],
+   "hp": 850.0,
+   "mana": 70.0,
+   "initialMana": 0,
+   "armor": 35.0,
+   "mr": 35.0,
+   "ad": 68.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "阿瓦罗萨门扉",
+    "desc": "下8.0次攻击会发射额外箭矢，箭矢造成— ()总物理伤害，由目标和2格内至多2个随机敌人均摊。"
+   },
+   "icon": "assets/icons/tft15_ashe_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_ashe/skins/base/images/tft15_ashe_mobile.png"
+  },
+  {
+   "id": "TFT15_Braum",
+   "name": "布隆",
+   "cost": 5,
+   "traits": [
+    "魄罗之心",
+    "假面摔角手",
+    "护卫"
+   ],
+   "hp": 1200.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 70.0,
+   "mr": 70.0,
+   "ad": 80.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "猛虎龙卷风",
+    "desc": "晕眩目标然后将其旋转1.5秒，对目标造成— ()物理伤害并对半径2.0格内的其它敌人们造成0.0 ()物理伤害。然后，将目标向前投掷，在目标周围1格区域内造成— ()伤害。如果目标跌下— ()生命值，则转而将其扔出棋盘。"
+   },
+   "icon": "assets/icons/tft15_braum_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_braum/skins/base/images/tft15_braum_mobile.png"
+  },
+  {
+   "id": "TFT15_Caitlyn",
+   "name": "凯特琳",
+   "cost": 3,
+   "traits": [
+    "战斗学院",
+    "狙神"
+   ],
+   "hp": 650.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 55.0,
+   "as": 0.8,
+   "range": 6.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "魔法跳弹",
+    "desc": "朝相距最远的那个敌人发射一颗子弹，对命中的首个目标造成— ()物理伤害。子弹随后弹跳至附近一名敌人，造成— ()物理伤害。潜能 (@TFTUnitProperty.:TFT15_BattleAcademia_CurrentPotential@ %i:set14AmpIcon%)：@TFTUnitProperty.:TFT15_BattleAcademia_Caitlyn_FullPotential_TRA@"
+   },
+   "icon": "assets/icons/tft15_caitlyn_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_caitlyn/skins/base/images/tft15_caitlyn_mobile.png"
+  },
+  {
+   "id": "TFT15_Darius",
+   "name": "德莱厄斯",
+   "cost": 3,
+   "traits": [
+    "兵王",
+    "重量级斗士"
+   ],
+   "hp": 850.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 50.0,
+   "as": 0.8,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "冠位断头台",
+    "desc": "为自身回复— ()生命值，然后对当前目标造成— ()物理伤害，在对抗坦克时提升60%%。如果该目标阵亡，则立刻再次施放，造成75%%伤害。"
+   },
+   "icon": "assets/icons/tft15_darius_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_darius/skins/base/images/tft15_darius_mobile.png"
+  },
+  {
+   "id": "TFT15_Ezreal",
+   "name": "伊泽瑞尔",
+   "cost": 1,
+   "traits": [
+    "战斗学院",
+    "天才"
+   ],
+   "hp": 500.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 50.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "HCaster",
+   "ability": {
+    "name": "咒能高涨",
+    "desc": "对当前目标发射一道震波，造成130.0 ()魔法伤害和150.0 ()物理伤害。潜能 (@TFTUnitProperty.:TFT15_BattleAcademia_CurrentPotential@ %i:set14AmpIcon%)：@TFTUnitProperty.:TFT15_BattleAcademia_Ezreal_FullPotential_TRA@"
+   },
+   "icon": "assets/icons/tft15_ezreal_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_ezreal/skins/base/images/tft15_ezreal_mobile.png"
+  },
+  {
+   "id": "TFT15_Garen",
+   "name": "盖伦",
+   "cost": 1,
+   "traits": [
+    "战斗学院",
+    "护卫"
+   ],
+   "hp": 700.0,
+   "mana": 80.0,
+   "initialMana": 20.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 55.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "审判巨剑",
+    "desc": "治疗— ()生命值并对目标造成— ()物理伤害。潜能 (@TFTUnitProperty.:TFT15_BattleAcademia_CurrentPotential@ %i:set14AmpIcon%)：@TFTUnitProperty.:TFT15_BattleAcademia_Garen_FullPotential_TRA@"
+   },
+   "icon": "assets/icons/tft15_garen_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_garen/skins/base/images/tft15_garen_mobile.png"
+  },
+  {
+   "id": "TFT15_Gwen",
+   "name": "格温",
+   "cost": 5,
+   "traits": [
+    "斗魂战士",
+    "法师"
+   ],
+   "hp": 1150.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 20.0,
+   "as": 0.85,
+   "range": 2.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "丝缕缠魂 / 纵魂线断",
+    "desc": "被动：攻击造成— ()魔法伤害，并在一个锥形范围内造成由其中敌人们均摊的0.0 ()魔法伤害。每第3次施放是【纵魂线断】。丝缕缠魂：发射3.0根刺针穿过棋盘，对命中的敌人们造成— ()魔法伤害并留下细线。纵魂线断：造成由所有敌人均摊的— ()伤害并对每个敌人造成— ()额外魔法伤害。附近有至少一条细线的敌人会受到10%%额外伤害。"
+   },
+   "icon": "assets/icons/tft15_gwen_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_gwen/skins/base/images/tft15_gwen_mobile.png"
+  },
+  {
+   "id": "TFT15_Janna",
+   "name": "迦娜",
+   "cost": 2,
+   "traits": [
+    "水晶玫瑰",
+    "圣盾使",
+    "司令"
+   ],
+   "hp": 600.0,
+   "mana": 60.0,
+   "initialMana": 10.0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 35.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "水晶蝶蛹",
+    "desc": "为2.0个生命值最低的友军提供持续4.0秒的— ()护盾值并发射4.0只蝴蝶，造成由2.0个相距最近的敌人均摊的— ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft15_janna_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_janna/skins/base/images/tft15_janna_mobile.png"
+  },
+  {
+   "id": "TFT15_JarvanIV",
+   "name": "嘉文四世",
+   "cost": 4,
+   "traits": [
+    "超级战队",
+    "司令"
+   ],
+   "hp": 1100.0,
+   "mana": 150.0,
+   "initialMana": 45.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 60.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "裂地钻击",
+    "desc": "获得持续4.0秒的— ()护盾值，然后砸入一团敌人中，对一个半径2.0格范围内的敌人们造成0.0 ()魔法伤害和2.5秒晕眩。"
+   },
+   "icon": "assets/icons/tft15_jarvaniv_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_jarvaniv/skins/base/images/tft15_jarvaniv_mobile.png"
+  },
+  {
+   "id": "TFT15_Jayce",
+   "name": "杰斯",
+   "cost": 3,
+   "traits": [
+    "战斗学院",
+    "重量级斗士"
+   ],
+   "hp": 850.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 90.0,
+   "as": 0.7,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "雷霆一击",
+    "desc": "对以目标为中心的一个半径1格范围内的敌人们造成— ()物理伤害。潜能 (@TFTUnitProperty.:TFT15_BattleAcademia_CurrentPotential@ %i:set14AmpIcon%)：@TFTUnitProperty.:TFT15_BattleAcademia_Jayce_FullPotential_TRA@"
+   },
+   "icon": "assets/icons/tft15_jayce_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_jayce/skins/base/images/tft15_jayce_mobile.png"
+  },
+  {
+   "id": "TFT15_Jhin",
+   "name": "烬",
+   "cost": 2,
+   "traits": [
+    "至高天",
+    "狙神"
+   ],
+   "hp": 550.0,
+   "mana": 4.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 64.0,
+   "as": 0.9,
+   "range": 6.0,
+   "role": "ADSpecialist",
+   "ability": {
+    "name": "完美谢幕",
+    "desc": "被动 ：攻击速度恒定为0.75。将1额外攻击速度转化为0.8%物理加成。每第四发子弹获得强化，造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft15_jhin_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_jhin/skins/base/images/tft15_jhin_mobile.png"
+  },
+  {
+   "id": "TFT15_Jinx",
+   "name": "金克丝",
+   "cost": 4,
+   "traits": [
+    "星之守护者",
+    "狙神"
+   ],
+   "hp": 850.0,
+   "mana": 80.0,
+   "initialMana": 10.0,
+   "armor": 35.0,
+   "mr": 35.0,
+   "ad": 70.0,
+   "as": 0.75,
+   "range": 6.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "超究极星守飞弹",
+    "desc": "被动：攻击提供—% ()可叠加的攻击速度，至多至6.0% ()。暴击则转而提供—% ()。主动：对目标造成— ()物理伤害，并在目标为中心的一个半径2.0格范围内造成由范围内敌人均摊的— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft15_jinx_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_jinx/skins/base/images/tft15_jinx_mobile.png"
+  },
+  {
+   "id": "TFT15_KSante",
+   "name": "奎桑提",
+   "cost": 4,
+   "traits": [
+    "至高天",
+    "圣盾使"
+   ],
+   "hp": 950.0,
+   "mana": 90.0,
+   "initialMana": 30.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 60.0,
+   "as": 0.7,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "潜力爆发",
+    "desc": "被动(全盛姿态)：在首次阵亡时，转而回复至满血，获得100%%攻击速度，将50%%护甲和魔抗转化为物理加成，然后将最大法力值设置为30.0。随后冲刺穿过目标并将其暂时晕眩。在【全盛姿态】状态下，每秒损失20%% 生命值并且击杀时回复— ()。主动：获得持续3.0秒的0.4000000059604645 ()伤害减免，随后对目标造成— ()物理伤害。主动(全盛姿态)：对目标造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft15_ksante_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_ksante/skins/base/images/tft15_ksante_mobile.png"
+  },
+  {
+   "id": "TFT15_KaiSa",
+   "name": "卡莎",
+   "cost": 2,
+   "traits": [
+    "兵王",
+    "决斗大师"
+   ],
+   "hp": 550.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 45.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "狂轰滥炸",
+    "desc": "被动：击杀提供1.0%永久物理加成(+@TFTUnitProperty.:TFT15_KaiSaSpell_PermanentAD@% )。主动：发射8枚导弹，分散至目标和附近敌人。每枚造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft15_kaisa_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_kaisa/skins/base/images/tft15_kaisa_mobile.png"
+  },
+  {
+   "id": "TFT15_Kalista",
+   "name": "卡莉丝塔",
+   "cost": 1,
+   "traits": [
+    "斗魂战士",
+    "裁决使者"
+   ],
+   "hp": 500.0,
+   "mana": 90.0,
+   "initialMana": 10.0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 55.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "贯体魂矛",
+    "desc": "朝相距最远的那个敌人猛掷一根长矛，对命中的首个敌人造成— ()物理伤害。如果该敌人阵亡，则长矛将继续飞行，并对接下来命中的那个敌人造成过量击杀伤害。"
+   },
+   "icon": "assets/icons/tft15_kalista_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_kalista/skins/base/images/tft15_kalista_mobile.png"
+  },
+  {
+   "id": "TFT15_Katarina",
+   "name": "卡特琳娜",
+   "cost": 2,
+   "traits": [
+    "战斗学院",
+    "裁决使者"
+   ],
+   "hp": 800.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 55.0,
+   "mr": 55.0,
+   "ad": 35.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "追影步",
+    "desc": "闪烁至2格内生命值最低的那个敌人身后，并对一个半径1格范围内的敌人们造成0.0 ()魔法伤害。潜能 (@TFTUnitProperty.:TFT15_BattleAcademia_CurrentPotential@%i:set14AmpIcon%): @TFTUnitProperty.:TFT15_BattleAcademia_Katarina_FullPotential_TRA@"
+   },
+   "icon": "assets/icons/tft15_katarina_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_katarina/skins/base/images/tft15_katarina_mobile.png"
+  },
+  {
+   "id": "TFT15_Kayle",
+   "name": "凯尔",
+   "cost": 1,
+   "traits": [
+    "至高天",
+    "决斗大师"
+   ],
+   "hp": 500.0,
+   "mana": 0.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 30.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APSpecialist",
+   "ability": {
+    "name": "释魔降世",
+    "desc": "被动：普攻造成25.0 ()额外魔法伤害。获得基于你弈士等级的额外强度。6.0级：每第3次攻击发射一道焰浪，对敌人们造成25.0 ()魔法伤害和持续3.0秒的20.0%魔抗击碎效果。9.0级：每次攻击发射一道焰浪。焰浪移动得更远。魔抗击碎：降低魔抗"
+   },
+   "icon": "assets/icons/tft15_kayle_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_kayle/skins/base/images/tft15_kayle_mobile.png"
+  },
+  {
+   "id": "TFT15_Kennen",
+   "name": "凯南",
+   "cost": 1,
+   "traits": [
+    "兵王",
+    "圣盾使",
+    "法师"
+   ],
+   "hp": 700.0,
+   "mana": 85.0,
+   "initialMana": 30.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 45.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "风暴之眼",
+    "desc": "回复— ()生命值，然后对2个相距最近的敌人造成— ()魔法伤害和1.0秒晕眩。"
+   },
+   "icon": "assets/icons/tft15_kennen_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_kennen/skins/base/images/tft15_kennen_mobile.png"
+  },
+  {
+   "id": "TFT15_Kobuko",
+   "name": "可酷伯",
+   "cost": 2,
+   "traits": [
+    "大宗师",
+    "重量级斗士"
+   ],
+   "hp": 800.0,
+   "mana": 85.0,
+   "initialMana": 30.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 50.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "金爪真言",
+    "desc": "获得持续3.0秒的—()护盾值。下一次普攻造成— ()额外物理伤害和1.75秒晕眩。"
+   },
+   "icon": "assets/icons/tft15_kobuko_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_kobuko/skins/base/images/tft15_kobuko_mobile.png"
+  },
+  {
+   "id": "TFT15_LeeSin",
+   "name": "李青",
+   "cost": 5,
+   "traits": [
+    "龙的传人"
+   ],
+   "hp": 1200.0,
+   "mana": 100,
+   "initialMana": 0,
+   "armor": 75.0,
+   "mr": 75.0,
+   "ad": 70.0,
+   "as": 0.9,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "百武操演",
+    "desc": "登场【李青】以选定一个姿态。每个姿态都有一个独特技能，并且会为【李青】提供一个额外羁绊。"
+   },
+   "icon": "assets/icons/tft15_leesin_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_leesin/skins/base/images/tft15_leesin_mobile.png"
+  },
+  {
+   "id": "TFT15_Leona",
+   "name": "蕾欧娜",
+   "cost": 4,
+   "traits": [
+    "战斗学院",
+    "护卫"
+   ],
+   "hp": 1200.0,
+   "mana": 90.0,
+   "initialMana": 30.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 60.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "不破晨曦之盾",
+    "desc": "获得持续4.0秒的— ()护盾值并对半径2格内的敌人们造成— ()魔法伤害。潜能  (@TFTUnitProperty.:TFT15_BattleAcademia_CurrentPotential@ %i:set14AmpIcon%)：@TFTUnitProperty.:TFT15_BattleAcademia_Leona_FullPotential_TRA@"
+   },
+   "icon": "assets/icons/tft15_leona_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_leona/skins/base/images/tft15_leona_mobile.png"
+  },
+  {
+   "id": "TFT15_Lulu",
+   "name": "璐璐",
+   "cost": 3,
+   "traits": [
+    "小怪兽训练师"
+   ],
+   "hp": 650.0,
+   "mana": 100,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 45.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "选择一头怪兽",
+    "desc": "登场【璐璐】以选择一个小怪兽进行训练！每个小怪兽都有独特技能。"
+   },
+   "icon": "assets/icons/tft15_lulu_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_lulu/skins/base/images/tft15_lulu_mobile.png"
+  },
+  {
+   "id": "TFT15_Lux",
+   "name": "拉克丝",
+   "cost": 2,
+   "traits": [
+    "斗魂战士",
+    "法师"
+   ],
+   "hp": 550.0,
+   "mana": 50.0,
+   "initialMana": 10.0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 35.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "燃魂光爆",
+    "desc": "朝敌人最密集且包含目标的位置投掷一颗手雷。在抵达时，对半径1格范围内的敌人们造成持续5.0秒的20%魔抗击碎和由他们均摊的— ()魔法伤害，并对每个敌人造成0.0 ()魔法伤害。魔抗击碎：降低魔抗值"
+   },
+   "icon": "assets/icons/tft15_lux_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_lux/skins/base/images/tft15_lux_mobile.png"
+  },
+  {
+   "id": "TFT15_Malphite",
+   "name": "墨菲特",
+   "cost": 1,
+   "traits": [
+    "天下无双：奥德赛",
+    "圣盾使"
+   ],
+   "hp": 700.0,
+   "mana": 100,
+   "initialMana": 0,
+   "armor": 55.0,
+   "mr": 55.0,
+   "ad": 60.0,
+   "as": 0.55,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "风化岩壁",
+    "desc": "被动：每携带一件装备就会获得12.0 护甲。主动：对一个锥形范围内的敌人们造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft15_malphite_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_malphite/skins/base/images/tft15_malphite_mobile.png"
+  },
+  {
+   "id": "TFT15_Malzahar",
+   "name": "玛尔扎哈",
+   "cost": 3,
+   "traits": [
+    "至高天",
+    "天才"
+   ],
+   "hp": 800.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 40.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "幽深呢喃",
+    "desc": "感染1.0个相距最近且未被感染的目标，在15.0秒内持续造成0.0 ()魔法伤害。如果一名被感染的目标阵亡，感染就会散播给相距最近且未被感染的目标，直到剩余时长结束为止。如果所有敌人都已被感染，那么这个效果可以叠加。"
+   },
+   "icon": "assets/icons/tft15_malzahar_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_malzahar/skins/base/images/tft15_malzahar_mobile.png"
+  },
+  {
+   "id": "TFT15_Naafiri",
+   "name": "纳亚菲利",
+   "cost": 1,
+   "traits": [
+    "斗魂战士",
+    "主宰"
+   ],
+   "hp": 650.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 55.0,
+   "as": 0.8,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "灵魂旋切",
+    "desc": "获得持续2.0秒的— ()护盾值，随后对目标造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft15_naafiri_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_naafiri/skins/base/images/tft15_naafiri_mobile.png"
+  },
+  {
+   "id": "TFT15_Poppy",
+   "name": "波比",
+   "cost": 4,
+   "traits": [
+    "星之守护者",
+    "重量级斗士"
+   ],
+   "hp": 1100.0,
+   "mana": 105.0,
+   "initialMana": 45.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 65.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "旋舞星系大锤",
+    "desc": "获得持续4.0秒的280.0()护盾值。在护盾被打破时，对目标造成— ()物理伤害并对以目标为中心的半径1格内的其他敌人们造成— ()物理伤害。目标被晕眩2.0-2.0秒，时长基于护盾的存留时间，而其他敌人则被短暂晕眩。"
+   },
+   "icon": "assets/icons/tft15_poppy_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_poppy/skins/base/images/tft15_poppy_mobile.png"
+  },
+  {
+   "id": "TFT15_Rakan",
+   "name": "洛",
+   "cost": 2,
+   "traits": [
+    "战斗学院",
+    "圣盾使"
+   ],
+   "hp": 800.0,
+   "mana": 75.0,
+   "initialMana": 25.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 50.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "全体目光，向我看齐！",
+    "desc": "回复— ()生命值并对3.0个相距最近的敌人造成— ()魔法伤害。潜能 (@TFTUnitProperty.:TFT15_BattleAcademia_CurrentPotential@ %i:set14AmpIcon%)： @TFTUnitProperty.:TFT15_BattleAcademia_Rakan_FullPotential_TRA@"
+   },
+   "icon": "assets/icons/tft15_rakan_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_rakan/skins/base/images/tft15_rakan_mobile.png"
+  },
+  {
+   "id": "TFT15_Rell",
+   "name": "芮尔",
+   "cost": 1,
+   "traits": [
+    "星之守护者",
+    "护卫"
+   ],
+   "hp": 750.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 50.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "不毁天体长枪",
+    "desc": "对穿过目标的一个短直线范围内的敌人们造成300.0 ()魔法伤害，随后获得持续4.0秒的— ()伤害减免。"
+   },
+   "icon": "assets/icons/tft15_rell_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_rell/skins/base/images/tft15_rell_mobile.png"
+  },
+  {
+   "id": "TFT15_Ryze",
+   "name": "瑞兹",
+   "cost": 4,
+   "traits": [
+    "大宗师",
+    "裁决使者",
+    "司令"
+   ],
+   "hp": 850.0,
+   "mana": 60.0,
+   "initialMana": 10.0,
+   "armor": 35.0,
+   "mr": 35.0,
+   "ad": 50.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "津波光线",
+    "desc": "在3.0秒里对目标持续造成0.0 ()魔法伤害。目标周围半径1格内的敌人们受到持续相同时长的0.0 ()伤害。"
+   },
+   "icon": "assets/icons/tft15_ryze_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_ryze/skins/base/images/tft15_ryze_mobile.png"
+  },
+  {
+   "id": "TFT15_Samira",
+   "name": "莎弥拉",
+   "cost": 4,
+   "traits": [
+    "斗魂战士",
+    "刀锋领主"
+   ],
+   "hp": 850.0,
+   "mana": 15.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 50.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "直击灵魂/火力全开",
+    "desc": "被动：在施放后，获得1层评价等级和@VampBonus*100%@% 全能吸血，至多至4层。在满层时，下一次施放会【火力全开】直击灵魂：对目标造成2.0 ()物理伤害并冲刺一小段距离。火力全开：将被动加成翻倍并跃至一个附近的敌群，对半径2.0格内的所有敌人们造成— ()伤害。将你的评价等级重置至0。"
+   },
+   "icon": "assets/icons/tft15_samira_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_samira/skins/base/images/tft15_samira_mobile.png"
+  },
+  {
+   "id": "TFT15_Seraphine",
+   "name": "萨勒芬妮",
+   "cost": 5,
+   "traits": [
+    "星之守护者",
+    "天才"
+   ],
+   "hp": 900.0,
+   "mana": 140.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 50.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "终极友谊炸弹",
+    "desc": "被动： 【终极友谊炸弹】的伤害受益于友谊能量，后者是基于你的小队的所有加成属性()。【萨勒芬妮】的属性贡献更多能量。主动：对— ()格内向敌人最密集的位置发射一颗友谊炸弹，在半径2.0格的范围内造成@TFTUnitProperty.trait:TFT15_Seraphine_PowerOfFriendship@ (友谊能量)魔法伤害。"
+   },
+   "icon": "assets/icons/tft15_seraphine_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_seraphine/skins/base/images/tft15_seraphine_mobile.png"
+  },
+  {
+   "id": "TFT15_Sett",
+   "name": "瑟提",
+   "cost": 4,
+   "traits": [
+    "斗魂战士",
+    "主宰"
+   ],
+   "hp": 1100.0,
+   "mana": 100,
+   "initialMana": 40.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 60.0,
+   "as": 0.7,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "在所不惜",
+    "desc": "在一段短时间里，回复— ()生命值并对目标造成— ()物理伤害。随后，在一个锥形范围内造成— ()物理伤害。中心线的敌人们受到—额外物理伤害，基于这场战斗中获得的治疗效果而提升。"
+   },
+   "icon": "assets/icons/tft15_sett_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_sett/skins/base/images/tft15_sett_mobile.png"
+  },
+  {
+   "id": "TFT15_Swain",
+   "name": "斯维因",
+   "cost": 3,
+   "traits": [
+    "水晶玫瑰",
+    "护卫",
+    "法师"
+   ],
+   "hp": 950.0,
+   "mana": 80.0,
+   "initialMana": 20.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 60.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "羽制名流华服",
+    "desc": "获得— ()最大生命值，然后对半径2格内的敌人们每秒造成— ()魔法伤害。后续施放回复— ()生命值并将该伤害提升20.0 ()。"
+   },
+   "icon": "assets/icons/tft15_swain_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_swain/skins/base/images/tft15_swain_mobile.png"
+  },
+  {
+   "id": "TFT15_Syndra",
+   "name": "辛德拉",
+   "cost": 1,
+   "traits": [
+    "水晶玫瑰",
+    "星之守护者",
+    "天才"
+   ],
+   "hp": 450.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 40.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "炫星击",
+    "desc": "对目标造成2.0 ()魔法伤害和持续到战斗结束的10.0魔抗削减。"
+   },
+   "icon": "assets/icons/tft15_syndra_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_syndra/skins/base/images/tft15_syndra_mobile.png"
+  },
+  {
+   "id": "TFT15_Udyr",
+   "name": "乌迪尔",
+   "cost": 3,
+   "traits": [
+    "大宗师",
+    "主宰",
+    "决斗大师"
+   ],
+   "hp": 900.0,
+   "mana": 80.0,
+   "initialMana": 40.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 45.0,
+   "as": 0.7,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "熊熊凰焰",
+    "desc": "进行3.0次快速攻击。每次攻击回复【乌迪尔】0.0 ()生命值并对半径1格内的敌人们造成— ()额外伤害。"
+   },
+   "icon": "assets/icons/tft15_udyr_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_udyr/skins/base/images/tft15_udyr_mobile.png"
+  },
+  {
+   "id": "TFT15_Varus",
+   "name": "韦鲁斯",
+   "cost": 5,
+   "traits": [
+    "至高天",
+    "狙神"
+   ],
+   "hp": 900.0,
+   "mana": 85.0,
+   "initialMana": 10.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 60.0,
+   "as": 0.8,
+   "range": 6.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "0级：百猎魔矢",
+    "desc": "被动：在有单位阵亡时获得法力值。敌人提供5.0，友军提供3.0。主动：每秒对随机敌人发射— ()支有穿透性的箭矢，直到【韦鲁斯】法力值耗尽。每支箭矢花费10.0法力值并造成— ()物理伤害，每次命中一个敌人，就会衰减35%%伤害值。"
+   },
+   "icon": "assets/icons/tft15_varus_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_varus/skins/base/images/tft15_varus_mobile.png"
+  },
+  {
+   "id": "TFT15_Viego",
+   "name": "佛耶戈",
+   "cost": 3,
+   "traits": [
+    "斗魂战士",
+    "决斗大师",
+    "刀锋领主"
+   ],
+   "hp": 850.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 30.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "破败王者连技",
+    "desc": "被动：攻击造成— ()魔法伤害。主动：接下来的三次攻击释放一套毁灭性的连招。剑首击：造成100.0 ()魔法伤害。升魂斩：造成100.0 ()魔法伤害并短暂晕眩目标。降魂斩：造成100.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft15_viego_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_viego/skins/base/images/tft15_viego_mobile.png"
+  },
+  {
+   "id": "TFT15_Xayah",
+   "name": "霞",
+   "cost": 2,
+   "traits": [
+    "星之守护者",
+    "刀锋领主"
+   ],
+   "hp": 550.0,
+   "mana": 70.0,
+   "initialMana": 20.0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 45.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "锐翎锋芒",
+    "desc": "获得持续3.0次攻击的0.800000011920929 ()攻击速度。这些攻击对目标和2.0个附近敌人造成0.25 ()额外物理伤害。"
+   },
+   "icon": "assets/icons/tft15_xayah_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_xayah/skins/base/images/tft15_xayah_mobile.png"
+  },
+  {
+   "id": "TFT15_XinZhao",
+   "name": "赵信",
+   "cost": 2,
+   "traits": [
+    "斗魂战士",
+    "护卫"
+   ],
+   "hp": 700.0,
+   "mana": 65.0,
+   "initialMana": 10.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 60.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "保卫家园",
+    "desc": "回复— ()生命值，对一个半径2格范围内的敌人们造成— ()物理伤害，并标记当前目标。在3.0秒期间，所受的来自未标记敌人的伤害降低40.0%。"
+   },
+   "icon": "assets/icons/tft15_xinzhao_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_xinzhao/skins/base/images/tft15_xinzhao_mobile.png"
+  },
+  {
+   "id": "TFT15_Yasuo",
+   "name": "亚索",
+   "cost": 3,
+   "traits": [
+    "大宗师",
+    "刀锋领主"
+   ],
+   "hp": 850.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 70.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "剑出风吟",
+    "desc": "对3.0个相距最近的目标造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft15_yasuo_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_yasuo/skins/base/images/tft15_yasuo_mobile.png"
+  },
+  {
+   "id": "TFT15_Yone",
+   "name": "永恩",
+   "cost": 5,
+   "traits": [
+    "超级战队",
+    "刀锋领主"
+   ],
+   "hp": 1300.0,
+   "mana": 180.0,
+   "initialMana": 80.0,
+   "armor": 75.0,
+   "mr": 75.0,
+   "ad": 40.0,
+   "as": 0.9,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "双刃绝技：明镜止水",
+    "desc": "被动：攻击提供@ASperAttack*100@%可叠加的攻击速度和移动速度，并且交替造成20.0 ()额外真实伤害和30.0 ()额外魔法伤害。主动：朝相距最远的两个敌人发送一道回响，造成— ()物理伤害并对命中的敌人们造成短暂晕眩。"
+   },
+   "icon": "assets/icons/tft15_yone_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_yone/skins/base/images/tft15_yone_mobile.png"
+  },
+  {
+   "id": "TFT15_Yuumi",
+   "name": "悠米",
+   "cost": 4,
+   "traits": [
+    "战斗学院",
+    "天才"
+   ],
+   "hp": 850.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 35.0,
+   "mr": 35.0,
+   "ad": 40.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "读或死",
+    "desc": "发射4.0张书页，每张造成— ()魔法伤害，由当前目标和2格内的敌人们均摊。每次后续施放多发射4.0张书页。潜能 (@TFTUnitProperty.:TFT15_BattleAcademia_CurrentPotential@%i:set14AmpIcon%)：@TFTUnitProperty.:TFT15_BattleAcademia_Yuumi_FullPotential_TRA@"
+   },
+   "icon": "assets/icons/tft15_yuumi_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_yuumi/skins/base/images/tft15_yuumi_mobile.png"
+  },
+  {
+   "id": "TFT15_Zac",
+   "name": "扎克",
+   "cost": 1,
+   "traits": [
+    "至高天",
+    "重量级斗士"
+   ],
+   "hp": 650.0,
+   "mana": 75.0,
+   "initialMana": 30.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 60.0,
+   "as": 0.55,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "真实浪涌",
+    "desc": "回复0.0 ()生命值并对半径1格内的敌人们造成— ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft15_zac_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_zac/skins/base/images/tft15_zac_mobile.png"
+  },
+  {
+   "id": "TFT15_Ziggs",
+   "name": "吉格斯",
+   "cost": 3,
+   "traits": [
+    "天下无双：奥德赛",
+    "司令"
+   ],
+   "hp": 650.0,
+   "mana": 90.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 20.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCarry",
+   "ability": {
+    "name": "轨道敕令",
+    "desc": "被动：攻击将投掷弹跳炸弹，对第一个命中的敌人造成— ()魔法伤害。主动：对以目标为中心的一个半径1格范围内的敌人们造成200.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft15_ziggs_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_ziggs/skins/base/images/tft15_ziggs_mobile.png"
+  },
+  {
+   "id": "TFT15_Volibear",
+   "name": "沃利贝尔",
+   "cost": 4,
+   "traits": [
+    "假面摔角手",
+    "刀锋领主"
+   ],
+   "hp": 1050.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 65.0,
+   "mr": 65.0,
+   "ad": 80.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "熊之野性",
+    "desc": "被动：每第4.0次攻击对以目标为中心的一个半径1格范围内的敌人们造成—()物理伤害。在变更目标时，即刻猛砸造成70%%伤害。主动：获得持续5.0秒的0.0攻击速度、0.15000000596046448% ()全能吸血和控制免疫。"
+   },
+   "icon": "assets/icons/tft15_volibear_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_volibear/skins/base/images/tft15_volibear_mobile.png"
+  },
+  {
+   "id": "TFT15_KogMaw",
+   "name": "克格莫",
+   "cost": 3,
+   "traits": [
+    "小怪兽训练师"
+   ],
+   "hp": 650.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 15.0,
+   "as": 0.8,
+   "range": 6.0,
+   "role": "APCarry",
+   "ability": {
+    "name": "静电脉冲",
+    "desc": "被动：普攻造成— ()额外魔法伤害。最大攻击速度提升至6.0。主动：下一次攻击对目标和2.0个相距最近的敌人造成200.0 ()额外魔法伤害，然后对他们造成持续4.0秒的30%护甲击碎和魔抗击碎。在施放时，获得持续至战斗结束的15%%攻击速度。魔抗击碎：降低魔抗值护甲击碎：降低护甲值"
+   },
+   "icon": "assets/icons/tft15_kogmaw_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_kogmaw/skins/base/images/tft15_kogmaw_mobile.png"
+  },
+  {
+   "id": "TFT15_Smolder",
+   "name": "斯莫德",
+   "cost": 3,
+   "traits": [
+    "小怪兽训练师"
+   ],
+   "hp": 650.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 50.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "焚火爆刃",
+    "desc": "被动：伤害造成持续5.0秒的灼烧和重伤。无视目标30%%的护甲。主动：对目标造成— ()物理伤害，并对3个相距最近的目标造成30.0 ()魔法伤害。每2.0次施放，对下一个相距最近的敌人发射一个额外火球，造成75%%伤害。{{TFT_Keyword_Burn}}{{TFT_Keyword_Wound}}"
+   },
+   "icon": "assets/icons/tft15_smolder_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_smolder/skins/base/images/tft15_smolder_mobile.png"
+  },
+  {
+   "id": "TFT15_Senna",
+   "name": "赛娜",
+   "cost": 3,
+   "traits": [
+    "超级战队",
+    "裁决使者"
+   ],
+   "hp": 650.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 55.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "动感光波炮",
+    "desc": "在1秒持续期间，在穿过当前目标的一个直线范围内造成— ()物理伤害。后续命中的敌人转而受到— ()伤害。当不剩下目标时，基于剩余持续时长回复法力值。"
+   },
+   "icon": "assets/icons/tft15_senna_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_senna/skins/base/images/tft15_senna_mobile.png"
+  },
+  {
+   "id": "TFT15_Lucian",
+   "name": "卢锡安",
+   "cost": 1,
+   "traits": [
+    "超级战队",
+    "法师"
+   ],
+   "hp": 500.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 30.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "双枪齐射",
+    "desc": "朝目标发射0.0颗子弹。每颗子弹对命中的首个敌人造成— ()魔法伤害。每落空一次则回复10.0 法力值。"
+   },
+   "icon": "assets/icons/tft15_lucian_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_lucian/skins/base/images/tft15_lucian_mobile.png"
+  },
+  {
+   "id": "TFT15_Gangplank",
+   "name": "普朗克",
+   "cost": 2,
+   "traits": [
+    "超级战队",
+    "决斗大师"
+   ],
+   "hp": 750.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 55.0,
+   "mr": 55.0,
+   "ad": 50.0,
+   "as": 0.8,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "枪火谈判",
+    "desc": "对— 格内生命值最低的那个敌人造成— ()物理伤害。如果目标阵亡，有—% 几率获得1金币。已赚取的金币：@TFTUnitProperty.:TFT15_GangplankSpell_GoldCount@"
+   },
+   "icon": "assets/icons/tft15_gangplank_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_gangplank/skins/base/images/tft15_gangplank_mobile.png"
+  },
+  {
+   "id": "TFT15_DrMundo",
+   "name": "蒙多医生",
+   "cost": 2,
+   "traits": [
+    "假面摔角手",
+    "主宰"
+   ],
+   "hp": 800.0,
+   "mana": 90.0,
+   "initialMana": 30.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 50.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "铁椅暴扣",
+    "desc": "被动：每7.0秒，下一次攻击造成— ()额外物理伤害。主动：在1.5秒里持续获得— ()最大生命值并立刻触发被动。"
+   },
+   "icon": "assets/icons/tft15_drmundo_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_drmundo/skins/base/images/tft15_drmundo_mobile.png"
+  },
+  {
+   "id": "TFT15_Gnar",
+   "name": "纳尔",
+   "cost": 1,
+   "traits": [
+    "假面摔角手",
+    "狙神"
+   ],
+   "hp": 500.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 50.0,
+   "as": 0.7,
+   "range": 6.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "咚！咚！咚！",
+    "desc": "被动：对相同目标的每次攻击获得0.10999999940395355 ()攻击速度，至多至— ()。主动：在6.0秒里，获得90%%物理加成，并为两个附近友军提供30%%物理加成，优先选择物理型英雄。"
+   },
+   "icon": "assets/icons/tft15_gnar_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_gnar/skins/base/images/tft15_gnar_mobile.png"
+  },
+  {
+   "id": "TFT15_Karma",
+   "name": "卡尔玛",
+   "cost": 4,
+   "traits": [
+    "超级战队",
+    "法师"
+   ],
+   "hp": 850.0,
+   "mana": 65.0,
+   "initialMana": 0,
+   "armor": 35.0,
+   "mr": 35.0,
+   "ad": 40.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "灭世圆盘",
+    "desc": "发射一个能量圆盘，在以目标为中心的一个半径1格范围内造成800.0 ()总魔法伤害。"
+   },
+   "icon": "assets/icons/tft15_karma_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_karma/skins/base/images/tft15_karma_mobile.png"
+  },
+  {
+   "id": "TFT15_Vi",
+   "name": "蔚",
+   "cost": 2,
+   "traits": [
+    "水晶玫瑰",
+    "主宰"
+   ],
+   "hp": 800.0,
+   "mana": 75.0,
+   "initialMana": 20.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 50.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "透体劲拳",
+    "desc": "被动：获得2.0x己方弈子携带基础装备数量的。主动：回复— ()生命值，在以目标为中心的半径1格内造成3.0 ()物理伤害和持续4.0秒的20%%护甲击碎。护甲击碎：降低护甲值。"
+   },
+   "icon": "assets/icons/tft15_vi_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_vi/skins/base/images/tft15_vi_mobile.png"
+  },
+  {
+   "id": "TFT15_Sivir",
+   "name": "希维尔",
+   "cost": 1,
+   "traits": [
+    "天下无双：奥德赛",
+    "狙神"
+   ],
+   "hp": 450.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 50.0,
+   "as": 0.7,
+   "range": 6.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "星体切割",
+    "desc": "发射一道会折返的锋刃，穿过当前目标2格。它对命中的敌人们造成— ()物理伤害，每命中一个敌人就会衰减40%%伤害值。"
+   },
+   "icon": "assets/icons/tft15_sivir_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_sivir/skins/base/images/tft15_sivir_mobile.png"
+  },
+  {
+   "id": "TFT15_TwistedFate",
+   "name": "崔斯特",
+   "cost": 5,
+   "traits": [
+    "卡牌大师",
+    "天下无双：奥德赛"
+   ],
+   "hp": 900.0,
+   "mana": 120.0,
+   "initialMana": 40.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 25.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "HCarry",
+   "ability": {
+    "name": "厄运扑克",
+    "desc": "被动：攻击在4.0个敌人之间弹射，造成0.0 ()额外魔法伤害并将命中的敌人标记。攻击每命中一个敌人，就会衰减30%%伤害值。主动：对4.0个相距最近敌人造成— ()物理伤害，然后引爆他们的标记，每个标记造成— ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft15_twistedfate_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_twistedfate/skins/base/images/tft15_twistedfate_mobile.png"
+  },
+  {
+   "id": "TFT15_Shen",
+   "name": "慎",
+   "cost": 2,
+   "traits": [
+    "天下无双：奥德赛",
+    "护卫",
+    "刀锋领主"
+   ],
+   "hp": 800.0,
+   "mana": 75.0,
+   "initialMana": 25.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 60.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "强能战甲：最大解放",
+    "desc": "持续4.0秒的— ()护盾值。接下来的3.0次攻击造成— () 额外真实伤害。"
+   },
+   "icon": "assets/icons/tft15_shen_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_shen/skins/base/images/tft15_shen_mobile.png"
+  },
+  {
+   "id": "TFT15_Rammus",
+   "name": "拉莫斯",
+   "cost": 3,
+   "traits": [
+    "小怪兽训练师"
+   ],
+   "hp": 1100.0,
+   "mana": 90.0,
+   "initialMana": 30.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 50.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "榴莲甲壳",
+    "desc": "获得持续4.0秒的0.0 ()护盾值。跃向2格内敌人最密集的位置，对命中的敌人们造成— ()魔法伤害和嘲讽。获得— ()x被嘲讽敌人数量的最大生命值。当护盾被打破时，对相距最近的3个敌人发射尖刺，从而对他们重复该伤害并造成1.5秒晕眩。"
+   },
+   "icon": "assets/icons/tft15_rammus_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_rammus/skins/base/images/tft15_rammus_mobile.png"
+  },
+  {
+   "id": "TFT15_Zyra",
+   "name": "婕拉",
+   "cost": 5,
+   "traits": [
+    "水晶玫瑰",
+    "荆棘之兴"
+   ],
+   "hp": 750.0,
+   "mana": 100,
+   "initialMana": 40.0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 60.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "晶棘之兴",
+    "desc": "召唤4.0个不可被选取的【荆棘喷射者】，它们每次攻击造成100.0 ()伤害并攻击4.0次。非植物的友军获得在4.0秒里持续衰减的— ()攻击速度。"
+   },
+   "icon": "assets/icons/tft15_zyra_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_zyra/skins/base/images/tft15_zyra_mobile.png"
+  },
+  {
+   "id": "TFT15_Neeko",
+   "name": "妮蔻",
+   "cost": 3,
+   "traits": [
+    "星之守护者",
+    "圣盾使"
+   ],
+   "hp": 850.0,
+   "mana": 70.0,
+   "initialMana": 20.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 45.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "落花怒盛",
+    "desc": "获得持续2.0 秒的0%%伤害减免并在此期间持续回复0.0 ()生命值，然后对半径2格内的敌人们造成0.0 () 魔法伤害。"
+   },
+   "icon": "assets/icons/tft15_neeko_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_neeko/skins/base/images/tft15_neeko_mobile.png"
+  },
+  {
+   "id": "TFT15_LeeSin_TraitClone",
+   "name": "李青",
+   "cost": 5,
+   "traits": [
+    "裁决使者",
+    "决斗大师",
+    "主宰"
+   ],
+   "hp": 1200.0,
+   "mana": 100,
+   "initialMana": 0,
+   "armor": 70.0,
+   "mr": 70.0,
+   "ad": 70.0,
+   "as": 1.0,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "百武操演",
+    "desc": "登场【李青】以选定一个姿态。每个姿态都有一个独特技能，并且会为【李青】提供一个额外羁绊。"
+   },
+   "icon": "assets/icons/tft15_leesin_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft15_leesin/skins/base/images/tft15_leesin_mobile.png"
+  }
+ ],
+ "traits": [
+  {
+   "name": "裁决使者",
+   "desc": "【裁决使者】获得暴击几率和暴击伤害。其技能可以暴击。(—) 25.0% ；10.0%",
+   "icon": "assets/icons/trait_icon_15_destroyer.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "CritAmpPercent": 10.0,
+      "CritChanceAmpPercent": 25.0
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "CritAmpPercent": 12.0,
+      "CritChanceAmpPercent": 35.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "CritAmpPercent": 18.0,
+      "CritChanceAmpPercent": 50.0
+     }
+    },
+    {
+     "min": 5,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "CritAmpPercent": 28.0,
+      "CritChanceAmpPercent": 55.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "明星学生",
+   "desc": "(—) 获得200.0生命值和+40%潜能%i:set14AmpIcon%(—) 每回合获得—经验值，并且每个存活下来的【明星学生】提供额外的—经验值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "BaseHealth": 200.0,
+      "PctAdditionalPotential": 40
+     }
+    },
+    {
+     "min": 2,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "BaseHealth": 200.0,
+      "BaseXP": 1,
+      "PctAdditionalPotential": 40,
+      "XPPerSurvival": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "炼狱速度",
+   "desc": "获得@TFTTrait.TFT15_MechanicTrait_InfernalSpeed.1:BaseAS@%攻击速度。参与击杀时，生成一个【炼狱熔渣】。每@TFTTrait.TFT15_MechanicTrait_InfernalSpeed.1:NumCinders@个【炼狱熔渣】为己方弈子提供@TFTTrait.TFT15_MechanicTrait_InfernalSpeed.1:CinderAS@%额外。(炼狱熔渣数： @TFTUnitProperty.trait:TFT15_MechanicTrait_InfernalSpeed_CindersCollected@；团队 ： @TFTUnitProperty.trait:TFT15_MechanicTrait_InfernalSpeed_PermanentAS@%)",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "BaseAS": 10.0,
+      "CinderAS": 2.0,
+      "NumCinders": 8.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "不可阻挡",
+   "desc": "获得100生命值，并免疫控制效果。朝新目标冲锋，晕眩途经的敌人0.75秒。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Health": 100,
+      "StunDuration": 0.75
+     }
+    }
+   ]
+  },
+  {
+   "name": "爆弹重拳",
+   "desc": "【蔚】的技能现在会提供持续4.0秒的护盾而非治疗效果，但提升30%%。在转化时，进行4.0次快速打击，每次命中会使目标的双抗降低5。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "FlurryCount": 4.0,
+      "ResistShred": 5,
+      "ShieldBoost": 0.30000001192092896,
+      "ShieldDuration": 4.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "龙的传人",
+   "desc": "在你登场【李青】时，可在【决斗大师】形态、【裁决使者】形态和【主宰】形态之间选择一个！每个形态都有一个独特技能，并且会为【李青】提供相关的羁绊。",
+   "icon": "assets/icons/trait_icon_15_dragonfist.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "{4ac719b4}": 8.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "魔法专家",
+   "desc": "获得@TFTTrait.TFT15_MechanicTrait_MagicExpert.1:BaseAP@%法术加成。所有其它法术加成来源额外提供@TFTTrait.TFT15_MechanicTrait_MagicExpert.1:PctBonusAP@%。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "BaseAP": 10.0,
+      "PctBonusAP": 35.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "首脑",
+   "desc": "战斗开始时：获得50法力值，并给予这个弈子前面一条直线的所有友军25法力值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AllyMana": 25,
+      "SelfishMana": 50
+     }
+    }
+   ]
+  },
+  {
+   "name": "刀锋领主",
+   "desc": "【刀锋领主】获得全能吸血和物理加成。在攻击生命值低于50%%的敌人时，还会获得40%%攻击速度。(—) 10%% ，15%%",
+   "icon": "assets/icons/trait_icon_10_edgelord.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "AD": 0.15000000596046448,
+      "BonusAS": 0.4000000059604645,
+      "HealthThreshold": 0.5,
+      "Omnivamp": 0.10000000149011612
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "AD": 0.30000001192092896,
+      "BonusAS": 0.4000000059604645,
+      "HealthThreshold": 0.5,
+      "Omnivamp": 0.11999999731779099
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AD": 0.6000000238418579,
+      "BonusAS": 0.4000000059604645,
+      "HealthThreshold": 0.5,
+      "Omnivamp": 0.15000000596046448
+     }
+    }
+   ]
+  },
+  {
+   "name": "水晶玫瑰",
+   "desc": "在玩家对战期间的击杀和失败会赚取【水晶能量】。每过3场玩家对战，可选择将【水晶能量】转化为奖励或者“双倍投入”。在“双倍投入”处于激活状态时，失败会提供额外的100%%【水晶能量】，但胜利会损失50%%【水晶能量】并立刻提现。【水晶能量】的获取量会在第3阶段和第4阶段提升。(—) 每次击杀@TFTUnitProperty.trait:TFT15_GemForce_GemPowerPerKill@；每次失败@TFTUnitProperty.trait:TFT15_GemForce_GemPowerPerLoss@(—) 以及每@TFTUnitProperty.trait:TFT15_GemForce_KillRequirement@次击杀，获得额外战利品并重随一个新的击杀数目。(击杀数： @TFTUnitProperty.trait:TFT15_GemForce_TotalKills@)(—) 130%%奖励。【水晶玫瑰】弈子们获得300.0 和15%% 。",
+   "icon": "assets/icons/trait_icon_15_gemforce.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 4,
+     "style": 1,
+     "vars": {
+      "7PeiceMult": 1.2999999523162842,
+      "7PieceAmp": 0.15000000596046448,
+      "7PieceHealth": 300.0,
+      "GPPerDeathPVE": 2.0,
+      "GPPerRoundPVE": 10.0,
+      "NumCombats": 3,
+      "NumCombatsPM": 2.0,
+      "NumCombatsPVE": 3,
+      "PercentIncreaseGPPVE": 1.0,
+      "PercentIncreasedGP": 1.0,
+      "PercentLossPVE": 0.5,
+      "PercentLost": 0.5,
+      "{07e0557d}": 10.0,
+      "{0c71c65f}": 1.0,
+      "{2093ecf8}": 1.0,
+      "{4d6b4df4}": 2,
+      "{83265d73}": 15,
+      "{cbe82e8a}": 5.0,
+      "{ce703dbd}": 1.399999976158142,
+      "{d45997e0}": 1.75
+     }
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 5,
+     "vars": {
+      "7PeiceMult": 1.2999999523162842,
+      "7PieceAmp": 0.15000000596046448,
+      "7PieceHealth": 300.0,
+      "GPPerDeathPVE": 3.0,
+      "GPPerRoundPVE": 15.0,
+      "NumCombats": 3,
+      "NumCombatsPM": 2.0,
+      "NumCombatsPVE": 3,
+      "PercentIncreaseGPPVE": 1.0,
+      "PercentIncreasedGP": 1.0,
+      "PercentLossPVE": 0.5,
+      "PercentLost": 0.5,
+      "{07e0557d}": 10.0,
+      "{0c71c65f}": 1.0,
+      "{2093ecf8}": 1.0,
+      "{4d6b4df4}": 2,
+      "{83265d73}": 15,
+      "{cbe82e8a}": 7.0,
+      "{ce703dbd}": 1.399999976158142,
+      "{d45997e0}": 1.75
+     }
+    },
+    {
+     "min": 7,
+     "max": 9,
+     "style": 5,
+     "vars": {
+      "7PeiceMult": 1.2999999523162842,
+      "7PieceAmp": 0.15000000596046448,
+      "7PieceHealth": 300.0,
+      "GPPerDeathPVE": 3.0,
+      "GPPerRoundPVE": 15.0,
+      "NumCombats": 3,
+      "NumCombatsPM": 2.0,
+      "NumCombatsPVE": 3,
+      "PercentIncreaseGPPVE": 1.0,
+      "PercentIncreasedGP": 1.0,
+      "PercentLossPVE": 0.5,
+      "PercentLost": 0.5,
+      "{07e0557d}": 10.0,
+      "{0c71c65f}": 1.0,
+      "{2093ecf8}": 1.0,
+      "{4d6b4df4}": 2,
+      "{83265d73}": 15,
+      "{cbe82e8a}": 7.0,
+      "{ce703dbd}": 1.399999976158142,
+      "{d45997e0}": 1.75
+     }
+    },
+    {
+     "min": 10,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "7PeiceMult": 1.2999999523162842,
+      "7PieceAmp": 0.15000000596046448,
+      "7PieceHealth": 300.0,
+      "DamageReduction": 0.9900000095367432,
+      "GPPerDeathPVE": 3.0,
+      "GPPerRoundPVE": 15.0,
+      "NumCombats": 3,
+      "NumCombatsPM": 2.0,
+      "NumCombatsPVE": 3,
+      "PercentIncreaseGPPVE": 1.0,
+      "PercentIncreasedGP": 1.0,
+      "PercentLossPVE": 0.5,
+      "PercentLost": 0.5,
+      "TrueDamagePerSecond": 500.0,
+      "{07e0557d}": 10.0,
+      "{0c71c65f}": 1.0,
+      "{2093ecf8}": 1.0,
+      "{4d6b4df4}": 2,
+      "{83265d73}": 15,
+      "{cbe82e8a}": 8.0,
+      "{ce703dbd}": 1.399999976158142,
+      "{d45997e0}": 1.75
+     }
+    }
+   ]
+  },
+  {
+   "name": "最好的防御",
+   "desc": "当提供或收到护盾时，下次攻击增加相当于100%%该护盾值的额外物理伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "PercentDamage": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "最大活力",
+   "desc": "战斗开始时，获得40.0永久生命值。该弈子每存活10.0秒，获得额外的20.0永久生命值。(当前：@TFTUnitProperty.trait:TFT15_SetMechanic_PlusPlus_Property@ )",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Amount": 20.0,
+      "Interval": 10.0,
+      "PerCombatAmount": 40.0,
+      "PerCombatAmountEventPM": 80.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "风之障壁",
+   "desc": "【亚索】获得60%%暴击几率，并使来自非邻格敌人们的伤害降低15%%。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "CritChance": 0.6000000238418579,
+      "ReducedDamage": 0.15000000596046448
+     }
+    }
+   ]
+  },
+  {
+   "name": "平平无奇",
+   "desc": "如果这个弈子的各个羁绊都不处于激活状态，就会获得@TFTTrait.TFT15_MechanicTrait_BuiltDifferent.1:HP1@-@TFTTrait.TFT15_MechanicTrait_BuiltDifferent.1:HP4@生命值和@TFTTrait.TFT15_MechanicTrait_BuiltDifferent.1:AS1@-@TFTTrait.TFT15_MechanicTrait_BuiltDifferent.1:AS4@%攻击速度(基于当前阶段)。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AS1": 40.0,
+      "AS2": 55.0,
+      "AS3": 80.0,
+      "AS4": 100.0,
+      "HP1": 300.0,
+      "HP2": 400.0,
+      "HP3": 750.0,
+      "HP4": 1000.0,
+      "Multiplier": 0.20000000298023224
+     }
+    }
+   ]
+  },
+  {
+   "name": "巨像",
+   "desc": "占用2个弈子栏位。获得生命值、伤害减免、和伤害增幅。(—) 900.0 ；20%% ；10%% 。(—) 900.0 ；20%% ；10%% 。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "BonusDA": 0.10000000149011612,
+      "BonusDR": 0.20000000298023224,
+      "BonusHealth": 900.0
+     }
+    },
+    {
+     "min": 2,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "BonusDA": 0.20000000298023224,
+      "BonusDR": 0.25,
+      "BonusHealth": 1250.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "机器连者",
+   "desc": "获得@TFTTrait.TFT15_MechanicTrait_RobustRanger.1:StatsPct@%【超级机甲】的物理加成和法术加成，和其@TFTTrait.TFT15_MechanicTrait_RobustRanger.1:HealthPct@%生命值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "HealthPct": 10.0,
+      "StatsPct": 50.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "最大攻击",
+   "desc": "获得12%%物理加成，并且每2次参与击杀永久获得1%%。(当前：@TFTUnitProperty.trait:TFT15_SetMechanic_PlusPlus_Property*100@% )",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Amount": 0.009999999776482582,
+      "Base": 0.11999999731779099
+     }
+    }
+   ]
+  },
+  {
+   "name": "傲岸雄姿",
+   "desc": "战斗开始时进入全盛姿态，获得20%%伤害减免和60%%物理加成。全盛姿态下不再衰减生命值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AD": 0.6000000238418579,
+      "Durability": 0.20000000298023224
+     }
+    }
+   ]
+  },
+  {
+   "name": "金色锋刃",
+   "desc": "攻击72.0次提供@TFTUnitProperty.trait:TFT15_MechanicTrait_GoldenEdge_Gold@金币。这个金币值会在它每次激活时提升1。(攻击次数：@TFTUnitProperty.trait:TFT15_MechanicTrait_GoldenEdge_NumAttacks@ / 72.0)",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "NumAttacksPerProc": 72.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "勃勃生机",
+   "desc": "每@TFTTrait.TFT15_MechanicTrait_MetabolicExplosion.1:Interval@秒治疗@TFTTrait.TFT15_MechanicTrait_MetabolicExplosion.1:PctRegen@%最大生命值。从所有来源获得10.0%治疗提升。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "IncreasedHealing": 10.0,
+      "Interval": 3.0,
+      "PctRegen": 6.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "不可屈服",
+   "desc": "获得@TFTTrait.TFT15_MechanicTrait_Unflinching.1:OmnivampPct@%全能吸血。在战斗的最初@TFTTrait.TFT15_MechanicTrait_Unflinching.1:Duration@秒获得控制免疫。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Duration": 15.0,
+      "OmnivampPct": 25.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "机械飞爪",
+   "desc": "战斗开始时，获得20%%生命值的护盾值，持续4秒。在你的目标阵亡时，将下一个目标拉到近战距离并重新获得该护盾。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "ShieldDuration": 4,
+      "ShieldPercent": 0.20000000298023224
+     }
+    }
+   ]
+  },
+  {
+   "name": "延展手臂",
+   "desc": "获得10%%攻击速度。参与击杀后，获得+1攻击距离。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "BaseAS": 0.10000000149011612
+     }
+    }
+   ]
+  },
+  {
+   "name": "血亲兄弟",
+   "desc": "【永恩】和【亚索】造成的伤害会使敌人流血，在2.0秒里持续造成20.0%的造成伤害值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "BleedDuration": 2.0,
+      "BleedPct": 20.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "英雄弧光",
+   "desc": "每玩家等级获得@TFTTrait.TFT15_MechanicTrait_HerosArc.1:DA*100@%伤害增幅。在10级时，获得额外的@TFTTrait.TFT15_MechanicTrait_HerosArc.1:DamageIncrease*100@%伤害增幅。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DA": 0.04500000178813934,
+      "DamageIncrease": 0.3499999940395355
+     }
+    }
+   ]
+  },
+  {
+   "name": "狗海战术",
+   "desc": "获得2个狗群伙伴，狗群伙伴可造成22%% ()物理伤害。当【纳亚菲利】施放技能时，狗群伙伴们会冲刺至2格内生命值最低的那个敌人。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DamagePercent": 0.2199999988079071,
+      "NumHexes": 2,
+      "NumPackmates": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "混沌渐起",
+   "desc": "施放时，发射一个额外法球来对一个随机敌人造成7%%伤害。后续施放增加一颗额外的法球。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "PercentDamage": 0.07000000029802322
+     }
+    }
+   ]
+  },
+  {
+   "name": "点金手",
+   "desc": "普攻和技能将处决生命值低于10.0%的敌人。击杀有35.0%几率掉落1金币。(金币：@TFTUnitProperty.trait:TFT15_MechanicTrait_MidasTouch_GoldEarned@)",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "PercentChanceGold": 35.0,
+      "PercentHealthThreshold": 10.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "狙神",
+   "desc": "【狙神】们获得伤害增幅，在对抗更远目标时获得提升。(—) 13.0% ；+3.0% 每格(—) 13.0% ；+3.0% 每格(—) 13.0% ；+3.0% 每格(—) 13.0% ；+3.0% 每格",
+   "icon": "assets/icons/trait_icon_6_sniper.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "BonusHexRangeIncrease": null,
+      "PerHexIncrease": 3.0,
+      "PercentDamageIncrease": 13.0
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "BonusHexRangeIncrease": null,
+      "PerHexIncrease": 5.0,
+      "PercentDamageIncrease": 18.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "BonusHexRangeIncrease": null,
+      "PerHexIncrease": 7.0,
+      "PercentDamageIncrease": 25.0
+     }
+    },
+    {
+     "min": 5,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BonusHexRangeIncrease": null,
+      "PerHexIncrease": 10.0,
+      "PercentDamageIncrease": 25.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "星之守护者",
+   "desc": "【星之守护者】们各有一个独特团队加成，会提供给所有【星之守护者】。每个已登场的【星之守护者】都会提升这个加成！棱彩条件：登场【(11) 星之守护者】然后唤！醒！群！星！棱彩条件：花费16000.0法力值 (@TFTUnitProperty.trait:TFT15_StarGuardian_ManaSpent@)群。星。觉。醒。【芮尔】：获得@TFTUnitProperty.trait:TFT15_StarGuardian_RellValue@护盾值【芮尔】：获得护盾值【辛德拉】：每3.0秒获得@TFTUnitProperty.trait:TFT15_StarGuardian_SyndraValue@%法术加成【辛德拉】：获得法术加成【霞】：每第3次攻击造成@TFTUnitProperty.trait:TFT15_StarGuardian_XayahValue@ (每个阶段获得提升)魔法伤害【霞】： 攻击附带魔法伤害【阿狸】：施放后，在2.0秒里持续获得@TFTUnitProperty.trait:TFT15_StarGuardian_AhriValue@法力值【阿狸】：施放后，获得法力值【妮蔻】： +@TFTUnitProperty.trait:TFT15_StarGuardian_NeekoValue@%治疗和护盾效果【妮蔻】：提升治疗和护盾效果【波比】：在40%生命值，治疗@TFTUnitProperty.trait:TFT15_StarGuardian_PoppyValue@% 。【波比】： 在低生命值时获得治疗【金克丝】： +@TFTUnitProperty.trait:TFT15_StarGuardian_JinxValue@%攻击速度，参与击杀后+@TFTUnitProperty.trait:TFT15_StarGuardian_JinxBonusASValue@% ，3秒里持续衰减。【金克丝】：获得攻击速度【萨勒芬妮】获得@TFTUnitProperty.trait:TFT15_StarGuardian_SeraphineValue@ 和@TFTUnitProperty.trait:TFT15_StarGuardian_SeraphineValue@% 【萨勒芬妮】：获得每种属性纹章：将各个加成提升10%%!纹章：提升其它各个加成。",
+   "icon": "assets/icons/trait_icon_8_starguardian.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "AhriDuration": 2.0,
+      "EmblemBonus": 0.10000000149011612,
+      "ManaToPrismatic": 16000.0,
+      "Multiplier": 1.0,
+      "SyndraTimer": 3.0,
+      "{02914815}": 0.11999999731779099,
+      "{05ce3a8e}": 5.0,
+      "{1bb9c993}": 60.0,
+      "{39509739}": 0.05000000074505806,
+      "{40cdc45f}": 2.0,
+      "{53e50c19}": 0.07999999821186066,
+      "{5416a34e}": 50,
+      "{664e2968}": null,
+      "{7dbabf3e}": 240,
+      "{89a442d6}": null,
+      "{98cfb4a4}": 750.0,
+      "{99ff11e5}": 6.0,
+      "{9db0387d}": 0.20000000298023224,
+      "{a085bd04}": 500,
+      "{ca26eef7}": 0.18000000715255737
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "AhriDuration": 2.0,
+      "EmblemBonus": 0.10000000149011612,
+      "ManaToPrismatic": 16000.0,
+      "Multiplier": 1.0499999523162842,
+      "SyndraTimer": 3.0,
+      "{02914815}": 0.11999999731779099,
+      "{05ce3a8e}": 5.0,
+      "{1bb9c993}": 60.0,
+      "{39509739}": 0.05000000074505806,
+      "{40cdc45f}": 2.0,
+      "{53e50c19}": 0.07999999821186066,
+      "{5416a34e}": 50,
+      "{664e2968}": null,
+      "{7dbabf3e}": 240,
+      "{89a442d6}": null,
+      "{98cfb4a4}": 750.0,
+      "{99ff11e5}": 6.0,
+      "{9db0387d}": 0.20000000298023224,
+      "{a085bd04}": 500,
+      "{ca26eef7}": 0.18000000715255737
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "AhriDuration": 2.0,
+      "EmblemBonus": 0.10000000149011612,
+      "ManaToPrismatic": 16000.0,
+      "Multiplier": 1.100000023841858,
+      "SyndraTimer": 3.0,
+      "{02914815}": 0.11999999731779099,
+      "{05ce3a8e}": 5.0,
+      "{1bb9c993}": 60.0,
+      "{39509739}": 0.05000000074505806,
+      "{40cdc45f}": 2.0,
+      "{53e50c19}": 0.07999999821186066,
+      "{5416a34e}": 50,
+      "{664e2968}": null,
+      "{7dbabf3e}": 240,
+      "{89a442d6}": null,
+      "{98cfb4a4}": 750.0,
+      "{99ff11e5}": 6.0,
+      "{9db0387d}": 0.20000000298023224,
+      "{a085bd04}": 500,
+      "{ca26eef7}": 0.18000000715255737
+     }
+    },
+    {
+     "min": 5,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "AhriDuration": 2.0,
+      "EmblemBonus": 0.10000000149011612,
+      "ManaToPrismatic": 16000.0,
+      "Multiplier": 1.1200000047683716,
+      "SyndraTimer": 3.0,
+      "{02914815}": 0.11999999731779099,
+      "{05ce3a8e}": 5.0,
+      "{1bb9c993}": 60.0,
+      "{39509739}": 0.05000000074505806,
+      "{40cdc45f}": 2.0,
+      "{53e50c19}": 0.07999999821186066,
+      "{5416a34e}": 50,
+      "{664e2968}": null,
+      "{7dbabf3e}": 240,
+      "{89a442d6}": null,
+      "{98cfb4a4}": 750.0,
+      "{99ff11e5}": 6.0,
+      "{9db0387d}": 0.20000000298023224,
+      "{a085bd04}": 500,
+      "{ca26eef7}": 0.18000000715255737
+     }
+    },
+    {
+     "min": 6,
+     "max": 6,
+     "style": 5,
+     "vars": {
+      "AhriDuration": 2.0,
+      "EmblemBonus": 0.10000000149011612,
+      "ManaToPrismatic": 16000.0,
+      "Multiplier": 1.1399999856948853,
+      "SyndraTimer": 3.0,
+      "{02914815}": 0.11999999731779099,
+      "{05ce3a8e}": 5.0,
+      "{1bb9c993}": 60.0,
+      "{39509739}": 0.05000000074505806,
+      "{40cdc45f}": 2.0,
+      "{53e50c19}": 0.07999999821186066,
+      "{5416a34e}": 50,
+      "{664e2968}": null,
+      "{7dbabf3e}": 240,
+      "{89a442d6}": null,
+      "{98cfb4a4}": 750.0,
+      "{99ff11e5}": 6.0,
+      "{9db0387d}": 0.20000000298023224,
+      "{a085bd04}": 500,
+      "{ca26eef7}": 0.18000000715255737
+     }
+    },
+    {
+     "min": 7,
+     "max": 7,
+     "style": 5,
+     "vars": {
+      "AhriDuration": 2.0,
+      "EmblemBonus": 0.10000000149011612,
+      "ManaToPrismatic": 16000.0,
+      "Multiplier": 1.159999966621399,
+      "SyndraTimer": 3.0,
+      "{02914815}": 0.11999999731779099,
+      "{05ce3a8e}": 5.0,
+      "{1bb9c993}": 60.0,
+      "{39509739}": 0.05000000074505806,
+      "{40cdc45f}": 2.0,
+      "{53e50c19}": 0.07999999821186066,
+      "{5416a34e}": 50,
+      "{664e2968}": null,
+      "{7dbabf3e}": 240,
+      "{89a442d6}": null,
+      "{98cfb4a4}": 750.0,
+      "{99ff11e5}": 6.0,
+      "{9db0387d}": 0.20000000298023224,
+      "{a085bd04}": 500,
+      "{ca26eef7}": 0.18000000715255737
+     }
+    },
+    {
+     "min": 8,
+     "max": 8,
+     "style": 5,
+     "vars": {
+      "AhriDuration": 2.0,
+      "EmblemBonus": 0.10000000149011612,
+      "ManaToPrismatic": 16000.0,
+      "Multiplier": 1.1799999475479126,
+      "SyndraTimer": 3.0,
+      "{02914815}": 0.11999999731779099,
+      "{05ce3a8e}": 5.0,
+      "{1bb9c993}": 60.0,
+      "{39509739}": 0.05000000074505806,
+      "{40cdc45f}": 2.0,
+      "{53e50c19}": 0.07999999821186066,
+      "{5416a34e}": 50,
+      "{664e2968}": null,
+      "{7dbabf3e}": 240,
+      "{89a442d6}": null,
+      "{98cfb4a4}": 750.0,
+      "{99ff11e5}": 6.0,
+      "{9db0387d}": 0.20000000298023224,
+      "{a085bd04}": 500,
+      "{ca26eef7}": 0.18000000715255737
+     }
+    },
+    {
+     "min": 9,
+     "max": 10,
+     "style": 5,
+     "vars": {
+      "AhriDuration": 2.0,
+      "EmblemBonus": 0.10000000149011612,
+      "ManaToPrismatic": 16000.0,
+      "Multiplier": 1.2000000476837158,
+      "SyndraTimer": 3.0,
+      "{02914815}": 0.11999999731779099,
+      "{05ce3a8e}": 5.0,
+      "{1bb9c993}": 60.0,
+      "{39509739}": 0.05000000074505806,
+      "{40cdc45f}": 2.0,
+      "{53e50c19}": 0.07999999821186066,
+      "{5416a34e}": 50,
+      "{664e2968}": null,
+      "{7dbabf3e}": 240,
+      "{89a442d6}": null,
+      "{98cfb4a4}": 750.0,
+      "{99ff11e5}": 6.0,
+      "{9db0387d}": 0.20000000298023224,
+      "{a085bd04}": 500,
+      "{ca26eef7}": 0.18000000715255737
+     }
+    },
+    {
+     "min": 11,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "AhriDuration": 2.0,
+      "EmblemBonus": 0.10000000149011612,
+      "ManaToPrismatic": 16000.0,
+      "Multiplier": 1.2000000476837158,
+      "SyndraTimer": 3.0,
+      "{02914815}": 0.11999999731779099,
+      "{05ce3a8e}": 5.0,
+      "{1bb9c993}": 60.0,
+      "{39509739}": 0.05000000074505806,
+      "{40cdc45f}": 2.0,
+      "{53e50c19}": 0.07999999821186066,
+      "{5416a34e}": 50,
+      "{664e2968}": null,
+      "{7dbabf3e}": 240,
+      "{89a442d6}": null,
+      "{98cfb4a4}": 750.0,
+      "{99ff11e5}": 6.0,
+      "{9db0387d}": 0.20000000298023224,
+      "{a085bd04}": 500,
+      "{ca26eef7}": 0.18000000715255737
+     }
+    }
+   ]
+  },
+  {
+   "name": "魔术师",
+   "desc": "双重施放技能，但造成的总伤害降低@TFTTrait.TFT15_MechanicTrait_Mage.1:DAMultiplier*100@%。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DAMultiplier": 0.20000000298023224
+     }
+    }
+   ]
+  },
+  {
+   "name": "更强照耀",
+   "desc": "每隔一次施放，【拉克丝】的技能会在一个半径2格的区域内爆炸，并造成@Percent*100@%额外伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "percent": 0.30000001192092896
+     }
+    }
+   ]
+  },
+  {
+   "name": "阳炎吐息",
+   "desc": "每2.0秒，对相距最近且未被灼烧的那个敌人施加持续10秒的灼烧和重伤效果。对被灼烧敌人造成10%%额外伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "DamageAmp": 0.10000000149011612,
+      "Duration": 10,
+      "HexRange": 12,
+      "ICD": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "怒意爆发",
+   "desc": "获得30%%攻击速度。当你的另一个【强化果实】单位阵亡时，获得爆发性的300%%攻击速度，它会在4.0秒内持续衰减。如果你率先阵亡，则转而提供该加成。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AS": 0.30000001192092896,
+      "ASBurst": 3.0,
+      "Duration": 4.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "精准",
+   "desc": "设置攻击速度至@TFTTrait.TFT15_MechanicTrait_Precision.1:ForcedAttackSpeed@。将@TFTTrait.TFT15_MechanicTrait_Precision.1:ASScale*100@%攻击速度转化为@TFTTrait.TFT15_MechanicTrait_Precision.1:ADScale*100@%物理加成。攻击造成额外的@TFTTrait.TFT15_MechanicTrait_Precision.1:AttackAmount*100@%伤害，并提供额外的@TFTTrait.TFT15_MechanicTrait_Precision.1:Mana@法力值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "ADScale": 0.00800000037997961,
+      "ASScale": 0.009999999776482582,
+      "AttackAmount": 1.2999999523162842,
+      "ForcedAttackSpeed": 0.699999988079071,
+      "Mana": 5.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "冰霜统御",
+   "desc": "战斗开始时：【瑞兹】在战斗的最初3.0秒处于冰封状态。他的技能造成持续1.0秒的20%冰冷效果，并且造成20%%额外伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Chill": 20,
+      "ChillDuration": 1.0,
+      "Duration": 3.0,
+      "PctSpellDamage": 0.20000000298023224
+     }
+    }
+   ]
+  },
+  {
+   "name": "100个俯卧撑",
+   "desc": "获得@TFTTrait.TFT15_MechanicTrait_100PushUps.1:DR*100@%伤害减免。你每花费金币刷新3.0次时，获得@TFTTrait.TFT15_MechanicTrait_100PushUps.1:DAPerReroll*100@%永久伤害增幅。(当前：@TFTUnitProperty.trait:TFT15_MechanicTrait_100PushUps_TotalPercentDA@% )",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DAPerReroll": 0.009999999776482582,
+      "DR": 0.15000000596046448,
+      "NumRerolls": 3.0,
+      "{0f631073}": null,
+      "{7720bbfe}": null
+     }
+    }
+   ]
+  },
+  {
+   "name": "黄金之心",
+   "desc": "如果该弈子在玩家对战回合结束后仍然存活，获得2.0金币。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "NumGold": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "老手",
+   "desc": "这个单位是一个【大宗师】。其提供4%%伤害增幅，并且在【(4) 大宗师】时，其获得30%%物理加成和法术加成而非升级其技能。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "Amp": 0.03999999910593033,
+      "Stats": 0.30000001192092896
+     }
+    }
+   ]
+  },
+  {
+   "name": "哥斯拉坦克",
+   "desc": "获得@TFTTrait.TFT15_MechanicTrait_KaijuSize.1:HealthRatio*100@%最大生命值并且体型变大。在@TFTTrait.TFT15_MechanicTrait_KaijuSize.1:Countdown@秒后，将所有敌人晕眩1.5秒。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Countdown": 15.0,
+      "HealthRatio": 0.20000000298023224
+     }
+    }
+   ]
+  },
+  {
+   "name": "战士之魄",
+   "desc": "(—) 每登场一个战士或刺客，就会获得@TFTTrait.TFT15_MechanicTrait_FighterSpirit.1:Health@ 生命值、@TFTTrait.TFT15_MechanicTrait_FighterSpirit.1:ADAP@%物理加成和@TFTTrait.TFT15_MechanicTrait_FighterSpirit.1:ADAP@%法术加成。 (—) 提升至@TFTTrait.TFT15_MechanicTrait_FighterSpirit.1:Health@ 、@TFTTrait.TFT15_MechanicTrait_FighterSpirit.1:ADAP@% 、和@TFTTrait.TFT15_MechanicTrait_FighterSpirit.1:ADAP@% 。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "ADAP": 5.0,
+      "Health": 75.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "太空王牌",
+   "desc": "这个弈子造成的伤害会贡献额外@Percent*100@%进度至【天下无双：奥德赛星舰】的导弹发射。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "percent": 0.75
+     }
+    }
+   ]
+  },
+  {
+   "name": "负重",
+   "desc": "获得10【负重】。在1以上【负重】时，移动和攻击减慢50%%。玩家对战回合胜利时降低1【负重】，失败时降低2【负重】。在0【负重】时，移动得更快，并获得50%%攻击速度和12%%伤害减免。(剩余负重：@TFTUnitProperty.trait:TFT15_MechanicTrait_Weights_NumWeights@)",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AS": 0.5,
+      "Durability": 0.11999999731779099,
+      "NumWeights": 10,
+      "PercentReduction": 0.5,
+      "WeightPerCombat": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "重量级斗士",
+   "desc": "己方弈子获得100.0生命值。【重量级斗士】获得额外生命值，以及相当于其一部分生命值的物理加成。(—) 20%%  | 0.20000000298023224% 的",
+   "icon": "assets/icons/trait_icon_15_heavyweight.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "BonusPercentHealth": 0.20000000298023224,
+      "HealthPercentToAD": 0.20000000298023224,
+      "TeamBonusHealth": 100.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "BonusPercentHealth": 0.4000000059604645,
+      "HealthPercentToAD": 0.4000000059604645,
+      "TeamBonusHealth": 100.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BonusPercentHealth": 0.6499999761581421,
+      "HealthPercentToAD": 0.6000000238418579,
+      "TeamBonusHealth": 100.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "锥刺护甲",
+   "desc": "获得40.0护甲。攻击该弈子的敌人受到(25.0+8.0x阶段数)物理伤害。(每个攻击者有1.0秒冷却时间)",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Armor": 40.0,
+      "Damage": 25.0,
+      "DamagePerStage": 8.0,
+      "ICD": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "嗨到不行",
+   "desc": "参与击杀会提供在3.0秒内急速衰减的100.0%攻击速度。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AttackSpeed": 100.0,
+      "DecayDuration": 3.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "天下无双：奥德赛",
+   "desc": "每登场一个【天下无双：奥德赛】成员，【天下无双：奥德赛】弈子们就会获得10%%生命值和攻击速度。每个3星【天下无双：奥德赛】弈子都会提供一个额外加成。(1x %i:3StarEnabled%%i:3StarDisabled%)：每次付费刷新+1经验值，并且【天下无双：奥德赛】弈子们的出现概率绝对不会随着玩家等级的提升而下降。(2x %i:3StarEnabled%%i:3StarDisabled%)：每回合+1次免费刷新。(3x %i:3StarEnabled%%i:3StarDisabled%)：造成280.0伤害即可发射一颗导弹，造成75.0。(4x %i:3StarEnabled%%i:3StarDisabled%)：每玩家等级会使导弹的发射频率增加3%%。(5x %i:3StarEnabled%%i:3StarDisabled%)：发射【行星爆裂弹】。",
+   "icon": "assets/icons/trait_icon_15_starcrew.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "BaseDamageThreshold": 280.0,
+      "BaseRocketDamage": 75.0,
+      "RocketRatePerLevel": 0.02500000037252903,
+      "StatBonus": 0.10000000149011612,
+      "XPPerReroll": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "触手猛击",
+   "desc": "在4秒后，使3格内的敌人们晕眩1.0秒。每8秒进行重复。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Cadence": 8,
+      "InitialDelay": 4,
+      "StunDuration": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "机甲驾驶员",
+   "desc": "(—) 驾驶【超级机甲】，为其提供一部分你的属性：35%% ；45%% 。在60%%生命值时脱离。(—) 【超级机甲】受益于驾驶员的羁绊。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "HealthShare": 0.3499999940395355,
+      "MechHealth": 0.6000000238418579,
+      "OtherStatShare": 0.44999998807907104
+     }
+    },
+    {
+     "min": 2,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "HealthShare": 0.3499999940395355,
+      "MechHealth": 0.6000000238418579,
+      "OtherStatShare": 0.44999998807907104
+     }
+    }
+   ]
+  },
+  {
+   "name": "飓风闪击",
+   "desc": "获得攻击速度。战斗开始时，使对位的那个敌人失能3.0秒。(—) 15%% 。(—) 15%% 。使两个敌人失能。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "ASBoost": 0.15000000596046448,
+      "Duration": 3.0
+     }
+    },
+    {
+     "min": 2,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "ASBoost": 0.25,
+      "Duration": 3.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "突破天际",
+   "desc": "伤害对敌人施加持续6秒的30%魔抗击碎与护甲击碎。对被施加了魔抗击碎与护甲击碎的敌人们造成5%%额外伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "DamageAmp": 0.05000000074505806,
+      "Duration": 6
+     }
+    }
+   ]
+  },
+  {
+   "name": "聚集元气",
+   "desc": "施放技能时，获得可叠加的物理加成，相当于40.0%法力花费。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "ADPctFromMana": 40.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "缩角C位",
+   "desc": "获得30%%攻击速度。在75%和25%生命值时，冲刺到最安全的位置并获得无限距离。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AS": 0.30000001192092896
+     }
+    }
+   ]
+  },
+  {
+   "name": "杀手本能",
+   "desc": "技能转而瞄准距离内生命值最低的那个敌人。获得@TFTTrait.TFT15_MechanicTrait_KillerInstinct.1:ManaRegen@法力回复。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "ManaRegen": 3.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "原子能",
+   "desc": "战斗开始时储存10.0％最大生命值，并且每秒多储存2.0%。阵亡时，基于已储存的生命值造成一个大范围的魔法伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "PercentMaxHealthInitial": 10.0,
+      "PercentMaxHealthPerSecond": 2.0,
+      "{b2f29c6b}": 15.0,
+      "{e29ace6a}": 1.75,
+      "{ebd239ac}": 4.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "快速换人",
+   "desc": "在阵亡时，生成一个相同角色定位的单位，且其拥有相同数量的装备。这个单位是低1费的弈子，并且生命值降低@PercentHealth*100%@%。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "PercentHealth": 0.15000000596046448
+     }
+    }
+   ]
+  },
+  {
+   "name": "自私自利",
+   "desc": "获得@TFTTrait.TFT15_MechanicTrait_Selfish.1:DR@%伤害减免。治疗相当于所有其他友军@TFTTrait.TFT15_MechanicTrait_Selfish.1:HealPct@%造成伤害值的生命值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DR": 10.0,
+      "HealPct": 5.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "单打独斗",
+   "desc": "如果该弈子是唯一登场的【斗魂战士】，其获得【(4) 斗魂战士】的加成。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {}
+    }
+   ]
+  },
+  {
+   "name": "孤身站场",
+   "desc": "如果战斗开始时该弈子所在排无友军，获得@TFTTrait.TFT15_MechanicTrait_StandStrong.1:HealthRatio*100@%生命值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "HealthRatio": 0.30000001192092896
+     }
+    }
+   ]
+  },
+  {
+   "name": "兵王",
+   "desc": "上一场战斗中造成最多伤害的【兵王】变为【最强兵王】。【最强兵王】阵亡时，当前伤害最高的【兵王】将成为【最强兵王】。【兵王】获得伤害增幅。【最强兵王】会获得更多伤害增幅并处决生命值低于10%% 的敌人。(—) 8.0%  | 12.0% (—) 8.0%  | 12.0% (—) 8.0%  | 12.0% 。获得第二个【最强兵王】",
+   "icon": "assets/icons/trait_icon_15_supremecells.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "DamageAmp": 8.0,
+      "OverlordDamageAmp": 12.0,
+      "OverlordExecute": 0.10000000149011612,
+      "{86bfdc37}": 1
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "DamageAmp": 18.0,
+      "OverlordDamageAmp": 30.0,
+      "OverlordExecute": 0.10000000149011612,
+      "{86bfdc37}": 1
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "DamageAmp": 28.0,
+      "OverlordDamageAmp": 50.0,
+      "OverlordExecute": 0.10000000149011612,
+      "{86bfdc37}": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "二周目",
+   "desc": "在阵亡时，生成一个装备着同样装备的训练假人。其拥有该弈子@TFTTrait.TFT15_MechanicTrait_RoundTwo.1:PercentHealth@%的生命值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "PercentHealth": 60.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "战斗力超过9000",
+   "desc": "在备战环节开始时，获得一个随机的永久属性加成。当前： +@TFTUnitProperty.trait:TFT15_Over9000_AD*100@% ，+@TFTUnitProperty.trait:TFT15_Over9000_AP@% ，+@TFTUnitProperty.trait:TFT15_Over9000_AS*100@% ，+@TFTUnitProperty.trait:TFT15_Over9000_Armor@ ，+@TFTUnitProperty.trait:TFT15_Over9000_MR@ ，+@TFTUnitProperty.trait:TFT15_Over9000_Health@ ，+@TFTUnitProperty.trait:TFT15_Over9000_Mana@",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "AD": 0.03999999910593033,
+      "AP": 4.0,
+      "AS": 0.03999999910593033,
+      "Armor": 8.0,
+      "Health": 35.0,
+      "MR": 8.0,
+      "Mana": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "最大速度",
+   "desc": "获得15%%攻击速度，并且每3次参与击杀永久获得1%%。(当前：@TFTUnitProperty.trait:TFT15_SetMechanic_PlusPlus_Property*100@% )",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Amount": 0.009999999776482582,
+      "Base": 0.15000000596046448
+     }
+    }
+   ]
+  },
+  {
+   "name": "锐利的眼",
+   "desc": "攻击和技能无视敌人45.0%的魔抗。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "PercentIgnore": 45.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "飘移双人组",
+   "desc": "【赛娜】和【卢锡安】都获得3.0法力回复。如果两个都是3星，则+1至【超级战队】。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "ManaRegen": 3.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "斗魂战士",
+   "desc": "【斗魂战士】们获得额外生命值，并且每秒获得物理加成和法术加成，至多至8.0层。在最大层数时，造成额外真实伤害。最！大！斗！魂！能！量！(—) 120.0 ，1%% ，+10%%伤害(—) 120.0 ，1%% ，+10%%伤害(—) 120.0 ，1%% ，+10%%伤害(—) 120.0 ，1%% ，+10%%伤害(—) 最！大！斗！魂！能！量！",
+   "icon": "assets/icons/trait_icon_15_soulfighter.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "BonusTrueDamage": 0.10000000149011612,
+      "FlatHealth": 120.0,
+      "MaxStacks": 8.0,
+      "PlayerDamageToPrismatic": 10,
+      "StatsPerSecond": 0.009999999776482582
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "BonusTrueDamage": 0.1599999964237213,
+      "FlatHealth": 240.0,
+      "MaxStacks": 8.0,
+      "PlayerDamageToPrismatic": 10,
+      "StatsPerSecond": 0.02500000037252903
+     }
+    },
+    {
+     "min": 6,
+     "max": 7,
+     "style": 3,
+     "vars": {
+      "BonusTrueDamage": 0.2199999988079071,
+      "FlatHealth": 425.0,
+      "MaxStacks": 8.0,
+      "PlayerDamageToPrismatic": 10,
+      "StatsPerSecond": 0.03999999910593033
+     }
+    },
+    {
+     "min": 8,
+     "max": 10,
+     "style": 5,
+     "vars": {
+      "BonusTrueDamage": 0.2800000011920929,
+      "FlatHealth": 600.0,
+      "MaxStacks": 8.0,
+      "PlayerDamageToPrismatic": 10,
+      "StatsPerSecond": 0.03999999910593033
+     }
+    },
+    {
+     "min": 11,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "BonusTrueDamage": 0.30000001192092896,
+      "FlatHealth": 700.0,
+      "MaxStacks": 8.0,
+      "PlayerDamageToPrismatic": 10,
+      "StatsPerSecond": 0.03999999910593033
+     }
+    }
+   ]
+  },
+  {
+   "name": "剑刃风暴",
+   "desc": "普攻对处于目标的攻击距离内的敌人们造成25%%攻击力的物理伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "PercentDamage": 0.25
+     }
+    }
+   ]
+  },
+  {
+   "name": "神奇双子",
+   "desc": "(@TFTTrait.TFT15_MechanicTrait_WonderTwins.1:MinUnits@) 如果你登场了2个或以上的相同弈子，他们都会获得@TFTTrait.TFT15_MechanicTrait_WonderTwins.2:Stats@%的一种属性(基于角色定位)。如果你将其升到3星，获得一个2星的相同弈子。(@TFTTrait.TFT15_MechanicTrait_WonderTwins.2:MinUnits@) @TFTTrait.TFT15_MechanicTrait_WonderTwins.2:Stats@%额外属性！",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "Stats": 40.0
+     }
+    },
+    {
+     "min": 2,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "NumItems": null,
+      "Stats": 60.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "超究极",
+   "desc": "【金克丝】获得30%%物理加成。每第3次施放有两倍大，并且对命中的敌人们造成由他们均摊的50%%额外伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AD": 0.30000001192092896,
+      "SplitDamageIncrease": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "帽子戏法",
+   "desc": "获得16.0%物理加成和法术加成。 每次参与击杀时，戴上一顶帽子，每顶帽子额外提供1.0%。阵亡时，失去你的50%%帽子。(当前帽子数：@TFTUnitProperty.trait:TFT15_SetMechanic_MaxCap_Hats@)",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "ADAPPerHat": 1.0,
+      "BaseADAP": 16.0,
+      "PercentHatLoss": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "超级巨星",
+   "desc": "己方弈子获得4.0%伤害增幅，己方的每个3星弈子都会使该加成提升@TFTTrait.TFT15_MechanicTrait_Superstar.1:DAPer3Star@%。该弈子获得200%%此加成。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "DABase": 4.0,
+      "DAPer3Star": 3.0,
+      "Multiplier": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "最大魔力",
+   "desc": "获得15.0%法术加成，并且每2次参与击杀永久获得1.0%。(当前：@TFTUnitProperty.trait:TFT15_SetMechanic_PlusPlus_Property@% )",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Amount": 1.0,
+      "Base": 15.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "终极飞升",
+   "desc": "在7级和10级时各进行一次额外的飞升。7级：每3次攻击，获得6.0%法术加成10级：发射2道额外波纹，造成60%%伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "APPerAttack": 6.0,
+      "Level1": 7,
+      "Level2": 10,
+      "NumAttacks": 3,
+      "ReducedWaveDamage": 0.6000000238418579
+     }
+    }
+   ]
+  },
+  {
+   "name": "活体城墙",
+   "desc": "获得20.0护甲和魔抗。这个弈子每拥有30.0 和总和，在战斗开始时处在后排的友军们就会获得1.5%攻击速度。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AS": 1.5,
+      "PerXResists": 30.0,
+      "Resists": 20.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "闪烁攻击",
+   "desc": "当转换目标时，闪烁到下一个目标旁。下一次攻击造成@TFTTrait.TFT15_MechanicTrait_TimeSkip.1:PctAdditionalDamage@%的额外魔法伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "PctAdditionalDamage": 200.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "法力倾泻",
+   "desc": "战斗开始时拥有满额法力值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {}
+    }
+   ]
+  },
+  {
+   "name": "魄罗之心",
+   "desc": "【魄罗之心】对玩家的胜利会提供等同于他星级的魄罗粉丝。在失败时，每个魄罗粉丝会防止1.0玩家伤害，然后你会失去你的所有魄罗粉丝。魄罗粉丝数：@TFTUnitProperty.trait:TFT15_Trait_ElTigre_NumPoros@",
+   "icon": "assets/icons/trait_icon_15_thechamp.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "PctPorosLost": 100.0,
+      "PlayerDamagePrevented": 1.0,
+      "PlayerHealthPerVictoryDU": 1,
+      "PoroAmountForHealPVE": 20.0,
+      "PorosPerVictory": 1.0,
+      "PorosPerVictoryDU": 1,
+      "TacticianHealPVE": 1.0,
+      "{0ee2e080}": null
+     }
+    }
+   ]
+  },
+  {
+   "name": "稀有点心",
+   "desc": "你的小怪兽拥有+15【小怪兽训练师】等级。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Levels": 15
+     }
+    }
+   ]
+  },
+  {
+   "name": "电涌66",
+   "desc": "获得20.0%攻击速度和10.0%法术加成。在15.0和66.0次攻击后，这个数额翻倍。(攻击次数：@TFTUnitProperty.trait:TFT15_MechanicTrait_Surge66_NumAttacks@)",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AP": 10.0,
+      "AS": 20.0,
+      "FirstThreshold": 15.0,
+      "SecondThreshold": 66.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "点心时间",
+   "desc": "【布隆】在施放时还会投掷5.0个【魄罗】至随机的敌人们。每个造成相当于200%%【布隆】攻击力的物理伤害。这对【魄罗】们来说很安全。【布隆】是专业的。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DamagePercent": 2.0,
+      "PoroNum": 5.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "最终形态",
+   "desc": "在5-2回合之后，如果该弈子在战斗开始时已经3星，则变成4星。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "AppropriateRound": 2,
+      "AppropriateRoundEventPM": 6,
+      "AppropriateRoundPVE": 7,
+      "AppropriateStage": 5,
+      "AppropriateStageEventPM": 3,
+      "AppropriateStagePVE": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "职业风采",
+   "desc": "这个弈子的最底部羁绊对其提供@TFTTrait.TFT15_MechanicTrait_Classy.1:IncreasedEffectiveness@%额外效能。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "IncreasedEffectiveness": 45
+     }
+    }
+   ]
+  },
+  {
+   "name": "额外绽放",
+   "desc": "获得一株额外的植物。植物们造成的伤害降低20%%，并且生命值降低30%%。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "PctOfDamage": 0.20000000298023224,
+      "PctOfHealth": 0.30000001192092896
+     }
+    }
+   ]
+  },
+  {
+   "name": "起飞咯",
+   "desc": "对每个敌人的首次攻击造成@TFTTrait.TFT15_MechanicTrait_SeriousSlam.1:AttackScale*100@% ()物理伤害，并将其晕眩@TFTTrait.TFT15_MechanicTrait_SeriousSlam.1:KnockupDuration@秒。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AttackScale": 2.0999999046325684,
+      "HealthScale": null,
+      "KnockupDuration": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "法师",
+   "desc": "【法师】们获得额外法术加成。在一个敌人被一个【法师】伤害后阵亡时，该敌人会对其他敌人们造成该敌人一部分最大生命值的伤害。(—) 20% ；8%%最大(—) 20% ；8%%最大(—) 20% ；8%%最大至1个敌人",
+   "icon": "assets/icons/trait_icon_15_sorcerer.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "AbilityPower": 20,
+      "HealthPct": 0.07999999821186066,
+      "TargetNum": 1,
+      "{a34f32df}": 3
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "AbilityPower": 55,
+      "HealthPct": 0.10000000149011612,
+      "TargetNum": 1,
+      "{a34f32df}": 3
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AbilityPower": 80,
+      "HealthPct": 0.11999999731779099,
+      "TargetNum": 2,
+      "{a34f32df}": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "引针簇射",
+   "desc": "每第一次和第二次施放技能时，发射额外的2根缝衣针，造成45%%伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "BonusNeedles": 2,
+      "ReducedDamage": 0.44999998807907104
+     }
+    }
+   ]
+  },
+  {
+   "name": "渴血英雄",
+   "desc": "获得@TFTTrait.TFT15_MechanicTrait_BloodFury.1:BaseHealth@生命值和@TFTTrait.TFT15_MechanicTrait_BloodFury.1:BaseAD*100@%物理加成 。每回合，你可以支付@TFTTrait.TFT15_MechanicTrait_BloodFury.1:PlayerHealthPerSacrifice@玩家生命值来换取@TFTTrait.TFT15_MechanicTrait_BloodFury.1:HealthPerSacrifice@ 和@TFTTrait.TFT15_MechanicTrait_BloodFury.1:ADPerSacrifice*100@ 。(总计：@TFTUnitProperty.:TFT15_MechanicTrait_BloodFury_Health@  @TFTUnitProperty.:TFT15_MechanicTrait_BloodFury_AD*100@ )",
+   "icon": "assets/icons/trait_icon_7_tempest.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "ADPerSacrifice": 0.03999999910593033,
+      "BaseAD": 0.10000000149011612,
+      "BaseAP": null,
+      "BaseHealth": 100,
+      "HealthPerSacrifice": 150.0,
+      "PlayerHealthPerSacrifice": 3.0,
+      "{cc84e244}": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "纯粹弹幕地狱",
+   "desc": "技能发射@TFTTrait.TFT15_MechanicTrait_BulletHell.1:IncreasedProjectiles@%额外飞弹。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "IncreasedProjectiles": 30,
+      "{28c023cc}": 30
+     }
+    }
+   ]
+  },
+  {
+   "name": "有毒陷阱",
+   "desc": "伤害会对敌人们造成持续4.0秒的灼烧、重伤、20%魔抗击碎和20%护甲击碎。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Duration": 4.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "决赛圈选手",
+   "desc": "获得@TFTTrait.TFT15_MechanicTrait_Finalist.1:InitialDA*100@%伤害增幅和@TFTTrait.TFT15_MechanicTrait_Finalist.1:InitialDR*100@%伤害减免，每有一名已被淘汰的玩家，提升@TFTTrait.TFT15_MechanicTrait_Finalist.1:IncreasedDA*100@% 和@TFTTrait.TFT15_MechanicTrait_Finalist.1:IncreasedDR*100@% 。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "IncreasedDA": 0.029999999329447746,
+      "IncreasedDR": 0.029999999329447746,
+      "InitialDA": 0.15000000596046448,
+      "InitialDR": 0.07999999821186066
+     }
+    }
+   ]
+  },
+  {
+   "name": "适应性皮肤",
+   "desc": "在受到伤害时，基于伤害类型获得@TFTTrait.TFT15_MechanicTrait_AdaptiveSkin.1:ResistsPerDamageInstancePhysical@护甲或@TFTTrait.TFT15_MechanicTrait_AdaptiveSkin.1:ResistsPerDamageInstanceMagic@魔抗，至多至@TFTTrait.TFT15_MechanicTrait_AdaptiveSkin.1:TotalResists@总双抗。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "ResistsPerDamageInstanceMagic": 10.0,
+      "ResistsPerDamageInstancePhysical": 3.0,
+      "TotalResists": 80.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "出血",
+   "desc": "技能造成在4.0秒里持续的60.0%额外真实伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "BleedDuration": 4.0,
+      "PercentBleed": 60.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "妖精的尾巴",
+   "desc": "施放技能时，生成2个妖精伙伴，它们每个都会在接下来的@TFTTrait.TFT15_MechanicTrait_FairyTail.1:Duration@秒内对敌人造成@TFTTrait.TFT15_MechanicTrait_FairyTail.1:APDamage1@-@TFTTrait.TFT15_MechanicTrait_FairyTail.1:APDamage4@(基于阶段数)魔法伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "APDamage1": 75.0,
+      "APDamage2": 120.0,
+      "APDamage3": 170.0,
+      "APDamage4": 260.0,
+      "Duration": 8.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "小怪兽训练师",
+   "desc": "为【璐璐】选择一只小怪兽，让她召唤它替自己出战！",
+   "icon": "assets/icons/trait_icon_15_monstertrainer.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "FirstEvolveLevel": 15,
+      "HealthGainPerLevel": 0.009999999776482582,
+      "SecondEvolveLevel": 30,
+      "{74bcb19e}": 50,
+      "{b4bcb37d}": 0.029999999329447746,
+      "{c0bcc661}": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "主宰",
+   "desc": "【主宰】们获得伤害减免，这个加成会在生命值高于50%%时获得提升。当一个【主宰】弈子阵亡时，其他【主宰】回复其10%%最大生命值。(—) 15%% 或 25%%",
+   "icon": "assets/icons/trait_icon_9_juggernaut.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "BaseDR": 0.15000000596046448,
+      "HealRatio": 0.10000000149011612,
+      "HealthBreakpoint": 0.5,
+      "IncreasedDR": 0.25
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "BaseDR": 0.20000000298023224,
+      "HealRatio": 0.10000000149011612,
+      "HealthBreakpoint": 0.5,
+      "IncreasedDR": 0.30000001192092896
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BaseDR": 0.25,
+      "HealRatio": 0.10000000149011612,
+      "HealthBreakpoint": 0.5,
+      "IncreasedDR": 0.3499999940395355
+     }
+    }
+   ]
+  },
+  {
+   "name": "荆棘之兴",
+   "desc": "基于【婕拉】的星级，获得1.0/1.0/8.0个可放置的植物。前两排的植物会成长为坚韧的【缠绕之根】，而后两排的植物会长成【致命棘刺】。【荆棘之兴】植物能从【婕拉】的法术加成和攻击速度中获益。当【婕拉】施放技能时，她的植物会回复 35%%生命值并获得持续至战斗结束的35%%攻击速度。如果植物已阵亡，那么她会转而将其复活。",
+   "icon": "assets/icons/trait_icon_15_rosemother.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 4,
+     "vars": {
+      "1Star": 1.0,
+      "2Star": 1.0,
+      "3Star": 8.0,
+      "BonusHealthAndAS": 0.3499999940395355
+     }
+    }
+   ]
+  },
+  {
+   "name": "暴击威胁",
+   "desc": "技能可以造成暴击。每@TFTTrait.TFT15_MechanicTrait_CriticalThreat.1:Interval@秒，获得@TFTTrait.TFT15_MechanicTrait_CriticalThreat.1:CriticalStrikeChance@%暴击几率。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "CriticalStrikeChance": 5.0,
+      "Interval": 3.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "爆破专家",
+   "desc": "技能伤害造成@TFTTrait.TFT15_MechanicTrait_Demolitionist.1:StunDuration@秒晕眩。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "StunDuration": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "风暴统御",
+   "desc": "(—) 召唤一个风暴，风暴会回响相当于22%%造成伤害值的魔法伤害。 (—) 两个弈子都会贡献伤害。风暴更加大型。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "PercentDamageEcho": 0.2199999988079071,
+      "{44d79b6f}": 8,
+      "{e202a897}": 1,
+      "{e9e2b861}": 2
+     }
+    },
+    {
+     "min": 2,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "PercentDamageEcho": 0.25,
+      "{44d79b6f}": 10,
+      "{e202a897}": 1,
+      "{e9e2b861}": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "机甲神兵",
+   "desc": "获得相当于5%%最大生命值的攻击速度，攻击会提供5.0额外法力值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "BonusMana": 5.0,
+      "PercentHealthAsAS": 0.05000000074505806
+     }
+    }
+   ]
+  },
+  {
+   "name": "末日预言者",
+   "desc": "在@TFTTrait.TFT15_MechanicTrait_Doomsayer.1:Countdown@秒后，如果仍然存活，对所有敌人造成魔法伤害，相当于本场战斗承受伤害的@TFTTrait.TFT15_MechanicTrait_Doomsayer.1:PercentOfDamageTaken*100@%。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Countdown": 15.0,
+      "PercentOfDamageTaken": 0.4000000059604645
+     }
+    }
+   ]
+  },
+  {
+   "name": "影分身",
+   "desc": "创造一个该弈子的完美复制品(携带同样装备)，可造成@TFTTrait.TFT15_MechanicTrait_ShadowJutsu.1:DamagePercent*100@%伤害并拥有@TFTTrait.TFT15_MechanicTrait_ShadowJutsu.1:HealthMod*100@%生命值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DamagePercent": 0.2199999988079071,
+      "HealthMod": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "惧亡笔记",
+   "desc": "(@TFTTrait.TFT15_MechanicTrait_DreadNote.1:MinUnits@) 如果在@TFTTrait.TFT15_MechanicTrait_DreadNote.1:FirstDeath@和@TFTTrait.TFT15_MechanicTrait_DreadNote.1:SecondDeath@秒时存活，处决生命值最高的敌人(@TFTTrait.TFT15_MechanicTrait_DreadNote.2:MinUnits@) 改为在@TFTTrait.TFT15_MechanicTrait_DreadNote.2:FirstDeath@和@TFTTrait.TFT15_MechanicTrait_DreadNote.2:SecondDeath@秒。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "FirstDeath": 18.0,
+      "SecondDeath": 30.0
+     }
+    },
+    {
+     "min": 2,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "FirstDeath": 15.0,
+      "SecondDeath": 25.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "追击",
+   "desc": "【卢锡安】的技能进行冲刺，发射+1颗额外子弹，并提供8%法术加成，持续到战斗环节结束。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "APGain": 8,
+      "NumAdditionalShots": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "堕落使者",
+   "desc": "以休眠状态开始战斗。每当弈子阵亡时，获得@TFTTrait.TFT15_MechanicTrait_Corrupted.1:DAPerSoul*100@%伤害增幅和@TFTTrait.TFT15_MechanicTrait_Corrupted.1:HealthPerSoul@生命值。在@TFTTrait.TFT15_MechanicTrait_Corrupted.1:HealthThreshold*100@%生命值时，苏醒并朝着敌人们闪烁，对他们造成@TFTTrait.TFT15_MechanicTrait_Corrupted.1:StunDuration@秒晕眩。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DAPerSoul": 0.04500000178813934,
+      "HealthPerSoul": 80,
+      "HealthThreshold": 0.6000000238418579,
+      "StunDuration": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "正在热身",
+   "desc": "战斗开始时或在这个果实激活时获得@TFTTrait.TFT15_MechanicTrait_WarmingUp.1:Resists@护甲和魔抗。每秒，将@TFTTrait.TFT15_MechanicTrait_WarmingUp.1:Conversion@双抗转化为@TFTTrait.TFT15_MechanicTrait_WarmingUp.1:Conversion@%物理加成。(至多至@TFTTrait.TFT15_MechanicTrait_WarmingUp.1:Resists@)",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Conversion": 3.0,
+      "Resists": 48.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "腐蚀",
+   "desc": "对2格内的敌人们施加30%魔抗击碎和护甲击碎。所受的来自带有魔抗击碎和护甲击碎的敌人的伤害会降低10.0%。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DamageReduction": 10.0,
+      "Shred": 30
+     }
+    }
+   ]
+  },
+  {
+   "name": "灵魂切削者",
+   "desc": "在造成魔法伤害时使魔抗降低5.0，持续到战斗环节结束。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "MagicResistReduce": 5.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "双人连携",
+   "desc": "获得18%%伤害增幅。当这个单位施放时，你的另一个【强化果实】单位获得相当于20%%的法力花费的法力值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DamageAmp": 0.18000000715255737,
+      "ManaPercent": 0.20000000298023224
+     }
+    }
+   ]
+  },
+  {
+   "name": "刺激追寻者",
+   "desc": "(@TFTTrait.TFT15_MechanicTrait_Thrillseeker.1:MinUnits@) 在击杀时，回复@TFTTrait.TFT15_MechanicTrait_Thrillseeker.1:HealPercent@%最大生命值，并获得持续3秒的@TFTTrait.TFT15_MechanicTrait_Thrillseeker.1:AS*100@%攻击速度。(@TFTTrait.TFT15_MechanicTrait_Thrillseeker.2:MinUnits@) 击杀时@TFTTrait.TFT15_MechanicTrait_Thrillseeker.2:AS*100@% ，并处决生命值低于@TFTTrait.TFT15_MechanicTrait_Thrillseeker.2:ExecuteThreshold*100@%的敌人。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "AS": 0.4000000059604645,
+      "Duration": 3,
+      "HealPercent": 15.0
+     }
+    },
+    {
+     "min": 2,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AS": 0.4000000059604645,
+      "Duration": 3,
+      "ExecuteThreshold": 0.10000000149011612,
+      "HealPercent": 15.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "不可触及",
+   "desc": "在至少有@TFTTrait.TFT15_MechanicTrait_Untouchable.1:NumAllies@个友军存活时处于不可被选取状态。如果该弈子在战斗结束时仍然满生命值，获得永久的@TFTTrait.TFT15_MechanicTrait_Untouchable.1:DamageAmpScaling*100@%伤害增幅。(当前伤害增幅：@TFTUnitProperty.:TFT15_Untouchable_DamageAmp*100@% )",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DamageAmpScaling": 0.019999999552965164,
+      "NumAllies": 4
+     }
+    }
+   ]
+  },
+  {
+   "name": "高效率",
+   "desc": "技能施放所需的法力消耗降低15。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Reduction": 15
+     }
+    }
+   ]
+  },
+  {
+   "name": "卡牌大师",
+   "desc": "【崔斯特】升级【天下无双：奥德赛星舰】以造成其15%%伤害的真实伤害，并且每回合抽取各种提供随机奖励的【悬赏卡牌】。【悬赏卡牌】会随着玩家对战回合数变得更好。(已登场的回合数：@TFTUnitProperty.trait:TFT15_Trait_RogueCaptain_Bounty_NumRoundsLeft@)当前【悬赏卡牌】：@TFTUnitProperty.trait:TFT15_Trait_RogueCaptain_CurrentBounty@在【恭喜发财】中，【崔斯特】在阶段3-5之前将不会抽到【悬赏卡牌】。",
+   "icon": "assets/icons/trait_icon_15_roguecaptain.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 4,
+     "vars": {
+      "Bounty_CasterEmpower_DA": 0.019999999552965164,
+      "Bounty_FreeRerolls_NumRerolls": 2,
+      "Bounty_GainAttackSpeed_AS": 0.15000000596046448,
+      "Bounty_GainGoldLarge_MinGold": 12,
+      "Bounty_GainGold_MinGold": 2,
+      "Bounty_GainXP_Amount": 12,
+      "Bounty_Omnivamp_Omnivamp": 0.15000000596046448,
+      "Bounty_PermanentAP_AP": 18,
+      "Bounty_TankEmpower_MaxHealth": 40,
+      "Bounty_TeamShield_Duration": 8,
+      "Bounty_TeamShield_Shield": 160,
+      "Bounty_TheCrew_GainHealth_PermanentADAP": 5.0,
+      "Bounty_TheCrew_GainHealth_PermanentHealth": 60,
+      "Bounty_TheCrew_GoldPerStar_GoldAmount": 1,
+      "Bounty_TheCrew_RocketUpgrade_TrueDamagePercent": 0.15000000596046448,
+      "Bounty_ThinkFast_Cadence": 3,
+      "Bounty_ThinkFast_Gold": 5,
+      "{0443d547}": 1,
+      "{0d20aaf6}": 1,
+      "{1376c2a6}": 12,
+      "{27dcf059}": 6,
+      "{38d1c1ce}": 0.10000000149011612,
+      "{e74d3d55}": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "灭绝",
+   "desc": "获得12.0%伤害增幅，在每场战斗首次参与击杀后，提升至28.0%伤害增幅。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "BaseDA": 12.0,
+      "IncreasedDA": 28.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "抵抗",
+   "desc": "所受伤害降低@TFTTrait.TFT15_MechanicTrait_Resistant.1:FlatDR@。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "FlatDR": 25.0,
+      "Resists": null
+     }
+    }
+   ]
+  },
+  {
+   "name": "大宗师",
+   "desc": "这个羁绊仅会在你恰好拥有1个或4个各不相同的【大宗师】弈子时激活。(1) 友军们获得该加成(4) 【大宗师】们获得所有加成并且升级其技能。其它友军不获得此羁绊的任何加成。【可酷伯】：6%%伤害减免【乌迪尔】：8%%物理加成和法术加成【亚索】：10%%攻击速度【瑞兹】：攻击获得2.0额外法力值",
+   "icon": "assets/icons/trait_icon_15_oldmentor.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "ADAP": 0.07999999821186066,
+      "AS": 0.10000000149011612,
+      "Durability": 0.05999999865889549,
+      "Mana": 2.0
+     }
+    },
+    {
+     "min": 2,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "ADAP": 0.07999999821186066,
+      "AS": 0.10000000149011612,
+      "Durability": 0.05999999865889549,
+      "Mana": 2.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 5,
+     "vars": {
+      "ADAP": 0.07999999821186066,
+      "AS": 0.10000000149011612,
+      "Durability": 0.05999999865889549,
+      "Mana": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "小讨厌鬼",
+   "desc": "获得@TFTTrait.TFT15_MechanicTrait_TinyTerror.1:AS*100@%攻击速度。在@TFTTrait.TFT15_MechanicTrait_TinyTerror.1:Threshold*100@%生命值时，将此加成翻倍，持续到战斗环节结束。然后，缩小体型@TFTTrait.TFT15_MechanicTrait_TinyTerror.1:Duration@秒，闪避所有攻击。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AS": 0.15000000596046448,
+      "Duration": 3.0,
+      "Threshold": 0.699999988079071
+     }
+    }
+   ]
+  },
+  {
+   "name": "替身忍术",
+   "desc": "(—) 在低生命值时获得4%%伤害增幅，生成一个训练假人，并冲刺至相距最远的那个敌人。(—) 4%% ；训练假人获得250.0",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "DA": 0.03999999910593033,
+      "DummyHealth": 250.0,
+      "HealthThreshold": 0.5
+     }
+    },
+    {
+     "min": 2,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DA": 0.05999999865889549,
+      "DummyHealth": 1250.0,
+      "HealthThreshold": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "游神",
+   "desc": "施放技能时，生命值百分比最低的那个友军获得持续@TFTTrait.TFT15_MechanicTrait_Caretaker.1:Duration@秒的@TFTTrait.TFT15_MechanicTrait_Caretaker.1:ShieldAmount@ ()护盾值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Duration": 6.0,
+      "ShieldAmount": 135.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "思维电池",
+   "desc": "在每场战斗的第一次技能施放后，获得5.0法力回复和30.0%法术加成。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AP": 30.0,
+      "ManaRegen": 5.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "第37次尝试",
+   "desc": "【艾克】的技能优先选取相距最近的那个敌人，但他施放时治疗自身20%%最大生命值并且每次他的技能命中该单位时造成6%%额外魔法伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "BonusDamagePerAttack": 0.05999999865889549,
+      "HealPercent": 0.20000000298023224
+     }
+    }
+   ]
+  },
+  {
+   "name": "秘传奥义",
+   "desc": "每@TFTTrait.TFT15_MechanicTrait_Kahunahuna.1:NumAttacks@次攻击，造成@TFTTrait.TFT15_MechanicTrait_Kahunahuna.1:ADDamage@ ()真实伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "ADDamage": 175.0,
+      "NumAttacks": 6.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "决斗大师",
+   "desc": "【决斗大师】们每次攻击都会获得攻击速度，最多叠加12.0次。(—) 4%% (—) 4%% (—) 4%% ；【决斗大师】们获得None%",
+   "icon": "assets/icons/trait_icon_8_duelist.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "AttackSpeedPercent": 0.03999999910593033,
+      "DamageReduction": null,
+      "MaxStacks": 12.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "AttackSpeedPercent": 0.07000000029802322,
+      "DamageReduction": null,
+      "MaxStacks": 12.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AttackSpeedPercent": 0.10000000149011612,
+      "DamageReduction": 12.0,
+      "MaxStacks": 12.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "攻击专家",
+   "desc": "获得5%%物理加成。所有其它物理加成来源额外提供@TFTTrait.TFT15_MechanicTrait_AttackExpert.1:PctBonusAD@%。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "BaseAD": 0.05000000074505806,
+      "PctBonusAD": 35.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "司令",
+   "desc": "战斗开始时：前2排的友军获得持续15.0秒的护盾值。后2排的友军获得伤害增幅。【司令】们获得三倍。(—) 150护盾值；4%",
+   "icon": "assets/icons/trait_icon_9_strategist.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "DamageAmp": 4,
+      "Shield": 150,
+      "ShieldDuration": 15.0
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "DamageAmp": 6,
+      "Shield": 200,
+      "ShieldDuration": 15.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 5,
+     "vars": {
+      "DamageAmp": 10,
+      "Shield": 300,
+      "ShieldDuration": 15.0
+     }
+    },
+    {
+     "min": 5,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "DamageAmp": 14,
+      "Shield": 400,
+      "ShieldDuration": 15.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "护卫",
+   "desc": "己方弈子获得10.0护甲和魔法抗性。【护卫】获得更多，并且这个数值在战斗的最初10.0秒内翻倍。(—) 18.0 (—) 18.0 (—) 18.0 ；非【护卫】弈子获得额外的25.0 。",
+   "icon": "assets/icons/trait_icon_9_bastion.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "BonusArmor": 18.0,
+      "BonusMR": 18.0,
+      "Duration": 10.0,
+      "EnhancedTeamwideArmor": 25.0,
+      "StatMultiplier": 2.0,
+      "TeamwideResists": 10.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "BonusArmor": 40.0,
+      "BonusMR": 40.0,
+      "Duration": 10.0,
+      "EnhancedTeamwideArmor": 25.0,
+      "StatMultiplier": 2.0,
+      "TeamwideResists": 10.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BonusArmor": 75.0,
+      "BonusMR": 75.0,
+      "Duration": 10.0,
+      "EnhancedTeamwideArmor": 25.0,
+      "StatMultiplier": 2.0,
+      "TeamwideResists": 10.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "星之水手战士",
+   "desc": "(—) 该弈子从【星之守护者】中获得33%%额外加成。(—) 以及会对另一个【星之水手战士】治疗相当于?%造成伤害的生命值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "HealingPercent": null,
+      "StatIncrease": 0.33000001311302185
+     }
+    },
+    {
+     "min": 2,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "HealingPercent": 0.15000000596046448,
+      "StatIncrease": 0.25
+     }
+    }
+   ]
+  },
+  {
+   "name": "决不罢休",
+   "desc": "一旦该弈子已经阵亡6次，就会获得@TFTTrait.TFT15_MechanicTrait_NotDoneYet.1:PctHealth@%生命值、@TFTTrait.TFT15_MechanicTrait_NotDoneYet.1:Omnivamp@%全能吸血、和@TFTTrait.TFT15_MechanicTrait_NotDoneYet.1:Stats@%伤害增幅。(阵亡达成次数：@TFTUnitProperty.trait:TFT15_MechanicTrait_NotDoneYet_DeathsAchieved@)",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "NumDeathsStage2": 6,
+      "NumDeathsStage3": 6,
+      "NumDeathsStage4": 6,
+      "Omnivamp": 10.0,
+      "PctHealth": 18.0,
+      "Stats": 25.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "狂暴渐长",
+   "desc": "每次攻击提供@ASPerAttack*100@%可叠加的攻击速度。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "ASperAttack": 0.03500000014901161
+     }
+    }
+   ]
+  },
+  {
+   "name": "能量源泉",
+   "desc": "战斗开始时，以及每3.0秒，获得1法力回复。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Cadence": 3.0,
+      "Mana": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "最终BOSS",
+   "desc": "获得10%%全能吸血。每当一个友军阵亡时，获得5%%可叠加的伤害增幅。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DamageAmp": 0.04500000178813934,
+      "Omnivamp": 0.10000000149011612
+     }
+    }
+   ]
+  },
+  {
+   "name": "黑暗护符",
+   "desc": "回复相当于15.0%造成魔法伤害的生命值。在施放技能时，受到相当于8.0%最大生命值的真实伤害，但获得12.0%可叠加的法术加成。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "HealPct": 15.0,
+      "HealthLossPct": 8.0,
+      "StackingAP": 12.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "至高天",
+   "desc": "每4.0秒，【暗影国度】会打击3个相距最近的敌人，造成魔法伤害，伤害总和相当于【至高天】弈子们从上次触发起造成的一部分伤害。你的生命值最低的【至高天】弈子会获得治疗，数额相当于由【至高天】弈子们和【暗影国度】造成的18%%伤害值。(—) 20%%伤害。(—) 20%%伤害。(—) 20%%伤害。",
+   "icon": "assets/icons/trait_icon_15_empyrean.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "DamagePercent": 0.20000000298023224,
+      "HealPercent": 0.18000000715255737,
+      "NumEnemy": 3,
+      "RealmTimer": 4.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "DamagePercent": 0.44999998807907104,
+      "HealPercent": 0.18000000715255737,
+      "NumEnemy": 3,
+      "RealmTimer": 4.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "DamagePercent": 0.6000000238418579,
+      "HealPercent": 0.18000000715255737,
+      "NumEnemy": 3,
+      "RealmTimer": 4.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "至尊兵王",
+   "desc": "当这个弈子是【最强兵王】时，会转而处决生命值低于18%%的敌人。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "ExecutePct": 0.18000000715255737
+     }
+    }
+   ]
+  },
+  {
+   "name": "天才",
+   "desc": "己方获得法力回复。【天才】们获得更多。(—) 1.0  | 3.0 (—) 1.0  | 3.0 (—) 1.0  | 3.0 (—) 1.0  | 3.0  | 【天才】们的技能为一名友军治疗相当于@AllyHealing*100@%造成伤害的生命值。",
+   "icon": "assets/icons/trait_icon_15_prodigy.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "ProdigyBonusMana": 3.0,
+      "TeamBonusMana": 1.0
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "ProdigyBonusMana": 4.0,
+      "TeamBonusMana": 1.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "ProdigyBonusMana": 6.0,
+      "TeamBonusMana": 1.0
+     }
+    },
+    {
+     "min": 5,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AllyHealing": 0.11999999731779099,
+      "ProdigyBonusMana": 7.0,
+      "TeamBonusMana": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "奇点",
+   "desc": "变为一个半径2格的奇点，每秒造成1%% ()魔法伤害。当敌人在奇点中阵亡时，获得15永久生命值。(总计：@TFTUnitProperty.:TFT15_MechanicTrait_Singularity_Health@ )",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "NumHexes": 2,
+      "PercentHealth": 0.009999999776482582,
+      "PermanentHealth": 15
+     }
+    }
+   ]
+  },
+  {
+   "name": "群星领袖",
+   "desc": "(—) 该弈子每星级将其【星之守护者】团队加成提升15%%。(—) 两个弈子每星级都会将各自的【星之守护者】团队加成提升15%%",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "StatIncrease": 0.15000000596046448
+     }
+    },
+    {
+     "min": 2,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "StatIncrease": 0.20000000298023224
+     }
+    }
+   ]
+  },
+  {
+   "name": "最棒棒的崽",
+   "desc": "每5.0秒，【璐璐】向她的小怪兽投喂一个零食：治疗【拉莫斯】13%% 、提供【斯莫德】14%%物理加成、或提供【克格莫】14.0%法术加成。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AD": 0.14000000059604645,
+      "AP": 14.0,
+      "Cadence": 5.0,
+      "PercentHeal": 0.12999999523162842
+     }
+    }
+   ]
+  },
+  {
+   "name": "超级天才",
+   "desc": "每2.0秒，获得相当于你法力回复的法术加成。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Cadence": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "2XKO",
+   "desc": "在参与2次击杀后，对2格内的敌人们造成2.0秒晕眩，并获得持续到战斗环节结束的35%%伤害增幅。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DamageAmp": 0.3499999940395355,
+      "StunDuration": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "末日弹幕",
+   "desc": "【韦鲁斯】技能期间，箭矢的法力消耗降低2。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "ManaReduction": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "圣盾使",
+   "desc": "单位们在拥有护盾时获得5%%伤害减免。每场战斗一次：【圣盾使】们在降至50%%生命值时，会为自身和相距最近的那名友军提供基于自身最大生命值的护盾值。护盾可叠加。(—) 18%% 护盾值",
+   "icon": "assets/icons/trait_icon_6_protector.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "DamageReductionPct": 0.05000000074505806,
+      "HealthThreshold": 0.5,
+      "ShieldPercentAmount": 0.18000000715255737
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "DamageReductionPct": 0.05000000074505806,
+      "HealthThreshold": 0.5,
+      "ShieldPercentAmount": 0.36000001430511475
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "DamageReductionPct": 0.05000000074505806,
+      "HealthThreshold": 0.5,
+      "ShieldPercentAmount": 0.550000011920929
+     }
+    }
+   ]
+  },
+  {
+   "name": "霜冻之触",
+   "desc": "攻击有15%几率晕眩目标1.0秒。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DamagePerStage": 55,
+      "PercentageChanceToTrigger": 15,
+      "StunDuration": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "金手套",
+   "desc": "每当你获得利息时，永久获得2%%x已收集金币的物理加成。(当前：@TFTUnitProperty.trait:TFT15_SetMechanic_GoldenGlovesStacks*100@% )",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AD": 0.019999999552965164
+     }
+    }
+   ]
+  },
+  {
+   "name": "英灵剑",
+   "desc": "获得20%%暴击几率。攻击在暴击时造成@TFTTrait.TFT15_MechanicTrait_SpiritSword.1:BonusMagicDamage@%额外魔法伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "BonusMagicDamage": 30.0,
+      "CritChance": 0.20000000298023224
+     }
+    }
+   ]
+  },
+  {
+   "name": "心灵烈焰",
+   "desc": "每2.0秒，对相距最近且未被灼烧的那个敌人施加持续10秒的灼烧效果和重伤效果。所受的来自被灼烧敌人的伤害会降低15%%。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "DamageReduction": 0.15000000596046448,
+      "Duration": 10,
+      "ICD": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "追踪飞镖",
+   "desc": "【阿狸】每获得10法力值，就会朝她的目标发射一个狐火飞镖，来造成相当于8%%她的技能伤害的魔法伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "PercentDamage": 0.07500000298023224
+     }
+    }
+   ]
+  },
+  {
+   "name": "身体变换",
+   "desc": "战斗开始时，变形为相距最近的那个友军，为该友军和这个弈子提供@TFTTrait.TFT15_MechanicTrait_BodyChange.1:PctHealth*100@%生命值的护盾值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "PctHealth": 0.30000001192092896
+     }
+    }
+   ]
+  },
+  {
+   "name": "极致形态",
+   "desc": "获得100生命值并提供额外的+1至所选姿态羁绊。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "BonusHealth": 100,
+      "BonusTraitAmount": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "纯洁心灵",
+   "desc": "每4.0秒，治疗该弈子和2格内的友军各自的18%%已损失生命值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "HealTickRate": 4.0,
+      "MissingHealthHeal": 0.18000000715255737
+     }
+    }
+   ]
+  },
+  {
+   "name": "战斗学院",
+   "desc": "【战斗学院】弈子升级技能并获得潜能%i:set14AmpIcon%。潜能将强化其技能。(—) 3 %i:set14AmpIcon%(—) 3 %i:set14AmpIcon%(—) 3 %i:set14AmpIcon%(—) 解！锁！真！实！潜！能！",
+   "icon": "assets/icons/trait_icon_15_battleclub.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 4,
+     "style": 1,
+     "vars": {
+      "DA": 0.10000000149011612,
+      "DR": 0.05000000074505806,
+      "NumPotential": 3,
+      "PrismaticItemRequirement": 140,
+      "UltimateNumPotential": 10
+     }
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 3,
+     "vars": {
+      "DA": 0.25,
+      "DR": 0.10000000149011612,
+      "NumPotential": 5,
+      "PrismaticItemRequirement": 140,
+      "UltimateNumPotential": 10
+     }
+    },
+    {
+     "min": 7,
+     "max": 9,
+     "style": 5,
+     "vars": {
+      "DA": 0.5,
+      "DR": 0.25,
+      "NumPotential": 7,
+      "PrismaticItemRequirement": 140,
+      "UltimateNumPotential": 10
+     }
+    },
+    {
+     "min": 10,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "DA": 0.75,
+      "DR": 0.4000000059604645,
+      "NumPotential": 12,
+      "PrismaticItemRequirement": 140,
+      "UltimateNumPotential": 10
+     }
+    }
+   ]
+  },
+  {
+   "name": "404强化果实",
+   "desc": "获得8.0%物理加成、法术加成、伤害增幅，以及8.0护甲和魔抗。你是怎么找到这个的？",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Stats": 8.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "假面骑士",
+   "desc": "当你同时登场【超级战队】和【假面摔角手】时，【超级机甲】获得100生命值并成为【假面摔角手】(提供+1【假面摔角手】羁绊) 。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Health": 100
+     }
+    }
+   ]
+  },
+  {
+   "name": "血色面纱",
+   "desc": "获得20.0%全能吸血。全能吸血造成的过量治疗会转化为护盾。(最大：40.0%生命值)",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "MaxPercentHealthShield": 40.0,
+      "Omnivamp": 20.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "兵王霸气",
+   "desc": "每当一个【兵王】处决一个敌人时，就会治疗@Percent*100@%已损失生命值并获得—法力值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Mana": 15.0,
+      "percent": 0.15000000596046448
+     }
+    }
+   ]
+  },
+  {
+   "name": "融合舞",
+   "desc": "战斗开始时，和相距最近的友军融合，从而获得其@TFTTrait.TFT15_MechanicTrait_FusionDance.1:StatShare*100@%生命值、物理加成和法术加成。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "StatShare": 0.44999998807907104
+     }
+    }
+   ]
+  },
+  {
+   "name": "刺杀",
+   "desc": "(@TFTTrait.TFT15_MechanicTrait_Rogue.1:MinUnits@) 战斗开始时：跳跃至敌方后排，在战斗的最初8秒造成的伤害降低20%%。(@TFTTrait.TFT15_MechanicTrait_Rogue.2:MinUnits@) 两个弈子都跳跃。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 4,
+     "vars": {
+      "Duration": 8,
+      "ReducedDamage": 0.20000000298023224
+     }
+    },
+    {
+     "min": 2,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Duration": 8.0,
+      "ReducedDamage": 0.15000000596046448
+     }
+    }
+   ]
+  },
+  {
+   "name": "粉丝福利",
+   "desc": "【霞】和【洛】获得基于彼此星级的额外属性。(—) 8.0%  | 150.0 ，5.0 (—) 8.0%  | 150.0 ，5.0",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "AD": 8.0,
+      "AS": 8.0,
+      "Health": 150.0,
+      "Resists": 5.0
+     }
+    },
+    {
+     "min": 2,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "AD": 15.0,
+      "AS": 15.0,
+      "Health": 275.0,
+      "Resists": 10.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "水晶核心",
+   "desc": "【超级机甲】将8%%承受伤害转化为物理加成和法术加成，并获得100护甲和魔抗。【超级机甲】的技能会将【水晶玫瑰】弈子视作【超级战队】。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Absorption": 0.07999999821186066,
+      "Resists": 100
+     }
+    }
+   ]
+  },
+  {
+   "name": "社交名流",
+   "desc": "战斗开始时：标记邻近格子。处于标记过的格子中的友军们获得6%%伤害增幅和60生命值。这个弈子获得300%%该加成。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DamageAmp": 0.05999999865889549,
+      "Health": 60,
+      "ManaPerSecond": null,
+      "NumRounds": 99,
+      "PercentIncrease": 3.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "动力十足",
+   "desc": "(—) 获得60%%攻击速度，并大幅提高移动速度。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "BonusAS": 0.6000000238418579,
+      "BonusMS": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "2X格斗家",
+   "desc": "每登场【蔚】、【阿狸】、【德莱厄斯】、【亚索】、【金克丝】、【布隆】、和【艾克】的一个独特弈子，他们就会获得5%%伤害增幅和3%%伤害减免。这个单位获得额外的@Percent*100@%。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Amp": 0.05000000074505806,
+      "DR": 0.029999999329447746,
+      "percent": 0.75
+     }
+    }
+   ]
+  },
+  {
+   "name": "极限火花",
+   "desc": "每3.0秒，震击相距最近的那个敌人以造成该敌人11%%最大生命值的魔法伤害。每当一个敌人被晕眩时(任何来源)，对该敌人进行震击。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "Cadence": 3.0,
+      "Damage": 0.10999999940395355
+     }
+    }
+   ]
+  },
+  {
+   "name": "有蓝同享",
+   "desc": "施放技能时，相距最近的2.0个友军获得@TFTTrait.TFT15_MechanicTrait_EssenceShare.1:ManaPct*100@%的消耗法力值。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "ManaPct": 0.3499999940395355,
+      "NumAllies": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "钝器能手",
+   "desc": "攻击和技能无视敌人45.0%的护甲。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "PercentIgnore": 45.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "艺术KO",
+   "desc": "每第4次攻击造成35%%额外伤害。过量击杀伤害会弹射至相距最近的那个敌人。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "IncreasedDamage": 0.3499999940395355,
+      "NumEnemies": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "双重打击",
+   "desc": "普攻有@TFTTrait.TFT15_MechanicTrait_Doublestrike.1:ProcChance@%几率触发一次额外普攻。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "ProcChance": 30.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "假面摔角手",
+   "desc": "【假面摔角手】们获得额外物理加成。在50%%生命值时，【假面摔角手】会净化负面效果，获得治疗，并且跳回战斗中，将半径1格内的敌人们晕眩1.0秒。(—) 15%% ；25%% 治疗(—) 15%% ；25%% 治疗",
+   "icon": "assets/icons/trait_icon_15_ringkings.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "ADBonus": 0.15000000596046448,
+      "HealRatio": 0.25,
+      "HealthRatio": 0.5,
+      "ShieldDuration": 5.0,
+      "StunDuration": 1.0
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "ADBonus": 0.4000000059604645,
+      "HealRatio": 0.5,
+      "HealthRatio": 0.5,
+      "ShieldDuration": 5.0,
+      "StunDuration": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "星之骑士",
+   "desc": "每登场一个1费，就会获得7%%生命值和10.0%法术加成，如果该1费是3星，则提供双倍此加成。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "AP": 10.0,
+      "Health": 0.07000000029802322,
+      "Mult": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "背水佬",
+   "desc": "战斗开始时具有65%%生命值，但获得35%%伤害增幅。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "DA": 0.3499999940395355,
+      "HealthPercent": 0.6499999761581421
+     }
+    }
+   ]
+  },
+  {
+   "name": "秘奥义！慈悲度魂落",
+   "desc": "【慎】的技能同时为生命值最低的友军提供其护盾值50%%的护盾，并且每次施法时获得25可叠加的魔抗。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "MagicResist": 25,
+      "ShieldPercent": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "亡命之徒",
+   "desc": "在每8.0次攻击后，向相距最近的敌人发射5枚飞弹，造成相当于100.0%攻击力的物理伤害。",
+   "icon": "assets/icons/trait_icon_15_secrettechnique.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 1,
+     "vars": {
+      "NumAttacks": 8.0,
+      "PercentBADDamage": 100.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "超级战队",
+   "desc": "获得【超级机甲】。【超级战队】弈子们在造成伤害时会为它提供治疗，数额为12%%造成伤害。解锁【究极机甲】(—) 【超级机甲】登场(—) 超级战刃协议：1级(—) 超级战刃协议：2级每个【超级战队】弈子的星级都会提升【超级机甲】的强度。",
+   "icon": "assets/icons/trait_icon_15_roborangers.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 4,
+     "style": 1,
+     "vars": {
+      "AutoAttackDamage": 65.0,
+      "GalioHealRatio": 0.11999999731779099,
+      "NumItems": 1,
+      "{0d36fce1}": 1.0,
+      "{2b3aecac}": 0.1599999964237213,
+      "{35bd6e0d}": 599,
+      "{3f8b87fb}": 5.0,
+      "{4c8d22b6}": 50,
+      "{4e59afce}": 0.05000000074505806,
+      "{54e3a48d}": null,
+      "{9456c371}": null,
+      "{d13df441}": 2,
+      "{dc8a3667}": 0.15000000596046448
+     }
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 3,
+     "vars": {
+      "AutoAttackDamage": 100.0,
+      "GalioHealRatio": 0.11999999731779099,
+      "Health": 1300.0,
+      "NumItems": 2,
+      "{0d36fce1}": 2.0,
+      "{2b3aecac}": 0.1599999964237213,
+      "{35bd6e0d}": 699,
+      "{3f8b87fb}": 5.0,
+      "{4c8d22b6}": 75,
+      "{4e59afce}": 0.05000000074505806,
+      "{54e3a48d}": null,
+      "{9456c371}": null,
+      "{d13df441}": 2,
+      "{dc8a3667}": 0.15000000596046448
+     }
+    },
+    {
+     "min": 7,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AutoAttackDamage": 110.0,
+      "GalioHealRatio": 0.11999999731779099,
+      "Health": 2000.0,
+      "NumItems": 3,
+      "{0d36fce1}": 3.0,
+      "{2b3aecac}": 0.1599999964237213,
+      "{35bd6e0d}": 949,
+      "{3f8b87fb}": 5.0,
+      "{4c8d22b6}": 85,
+      "{4e59afce}": 0.05000000074505806,
+      "{54e3a48d}": 20.0,
+      "{9456c371}": 60.0,
+      "{d13df441}": 2,
+      "{dc8a3667}": 0.15000000596046448
+     }
+    }
+   ]
+  }
+ ]
+}

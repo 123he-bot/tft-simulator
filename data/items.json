@@ -1,0 +1,483 @@
+{
+ "iconBase": "https://raw.communitydragon.org/latest/game/assets/maps/particles/tft/item_icons/",
+ "components": [
+  {
+   "id": "bf_sword",
+   "name": "暴风大剑",
+   "icon": "assets/icons/bf_sword.png",
+   "stat": "+10 攻击力"
+  },
+  {
+   "id": "recurve_bow",
+   "name": "反曲弓",
+   "icon": "assets/icons/recurve_bow.png",
+   "stat": "+10% 攻击速度"
+  },
+  {
+   "id": "nlrod",
+   "name": "无用大棒",
+   "icon": "assets/icons/needlessly_large_rod.png",
+   "stat": "+10 法术强度"
+  },
+  {
+   "id": "tear",
+   "name": "女神之泪",
+   "icon": "assets/icons/tear_of_the_goddess.png",
+   "stat": "+15 法力值"
+  },
+  {
+   "id": "chain_vest",
+   "name": "锁子甲",
+   "icon": "assets/icons/chain_vest.png",
+   "stat": "+20 护甲"
+  },
+  {
+   "id": "negatron_cloak",
+   "name": "负极斗篷",
+   "icon": "assets/icons/negatron_cloak.png",
+   "stat": "+20 魔法抗性"
+  },
+  {
+   "id": "giants_belt",
+   "name": "巨人腰带",
+   "icon": "assets/icons/gaints_belt.png",
+   "stat": "+150 生命值"
+  },
+  {
+   "id": "sparring_gloves",
+   "name": "拳套",
+   "icon": "assets/icons/sparring_gloves.png",
+   "stat": "+10% 暴击率"
+  },
+  {
+   "id": "spatula",
+   "name": "金铲铲",
+   "icon": "assets/icons/spatula.png",
+   "stat": "与任意小件合成转职纹章"
+  }
+ ],
+ "completed": [
+  {
+   "id": "death_blade",
+   "name": "死亡之刃",
+   "icon": "assets/icons/death_blade.png",
+   "recipe": [
+    "bf_sword",
+    "bf_sword"
+   ],
+   "stat": "+40 攻击力，对生命值低于 60% 的目标额外提升 20% 攻击力"
+  },
+  {
+   "id": "giant_slayer",
+   "name": "巨人杀手",
+   "icon": "assets/icons/giant_slayer.png",
+   "recipe": [
+    "bf_sword",
+    "recurve_bow"
+   ],
+   "stat": "+25 攻击力、+20% 攻击速度；对最大生命值高于 1600 的目标造成额外 25% 伤害"
+  },
+  {
+   "id": "hextech_gunblade",
+   "name": "海克斯科技枪刃",
+   "icon": "assets/icons/hextech_gunblade.png",
+   "recipe": [
+    "bf_sword",
+    "nlrod"
+   ],
+   "stat": "+18 攻击力、+18 法术强度；造成伤害时回复 25% 伤害值的生命"
+  },
+  {
+   "id": "spear_of_shojin",
+   "name": "朔极之矛",
+   "icon": "assets/icons/spear_of_shojin.png",
+   "recipe": [
+    "bf_sword",
+    "tear"
+   ],
+   "stat": "+25 攻击力、+15 法力值；每次攻击额外获得 5 点法力"
+  },
+  {
+   "id": "edge_of_night",
+   "name": "夜之锋刃",
+   "icon": "assets/icons/edge_of_night_xl.png",
+   "recipe": [
+    "bf_sword",
+    "chain_vest"
+   ],
+   "stat": "+20 攻击力、+20 护甲；血量降至 35% 时短暂遁入暗影，清除负面效果"
+  },
+  {
+   "id": "bloodthirster",
+   "name": "饮血剑",
+   "icon": "assets/icons/bloodthirster.png",
+   "recipe": [
+    "bf_sword",
+    "negatron_cloak"
+   ],
+   "stat": "+25 攻击力、+20 魔抗；提供 20% 全能吸血，生命值低于 40% 时获得护盾"
+  },
+  {
+   "id": "steraks_gage",
+   "name": "斯特拉克的挑战护手",
+   "icon": "assets/icons/steraksgage_xl.png",
+   "recipe": [
+    "bf_sword",
+    "giants_belt"
+   ],
+   "stat": "+20 攻击力、+200 生命；生命值低于 60% 时获得 25% 最大生命值护盾"
+  },
+  {
+   "id": "infinity_edge",
+   "name": "无尽之刃",
+   "icon": "assets/icons/infinity_edge.png",
+   "recipe": [
+    "bf_sword",
+    "sparring_gloves"
+   ],
+   "stat": "+35% 暴击率；暴击伤害提升 35%，技能也可以暴击"
+  },
+  {
+   "id": "rapid_firecannon",
+   "name": "疾射火炮",
+   "icon": "assets/icons/rapidfirecannon_xl.png",
+   "recipe": [
+    "recurve_bow",
+    "recurve_bow"
+   ],
+   "stat": "+50% 攻击速度，攻击距离 +1"
+  },
+  {
+   "id": "guinsoo",
+   "name": "鬼索的狂暴之刃",
+   "icon": "assets/icons/guinsoos_rageblade.png",
+   "recipe": [
+    "recurve_bow",
+    "nlrod"
+   ],
+   "stat": "+15% 攻击速度、+10 法术强度；每次攻击永久提升 5% 攻击速度"
+  },
+  {
+   "id": "wits_end",
+   "name": "智慧末刃",
+   "icon": "assets/icons/witsend_xl.png",
+   "recipe": [
+    "recurve_bow",
+    "tear"
+   ],
+   "stat": "+30% 攻击速度、+20 魔抗；普攻附带魔法伤害"
+  },
+  {
+   "id": "titans_resolve",
+   "name": "泰坦的坚决",
+   "icon": "assets/icons/titans_resolve.png",
+   "recipe": [
+    "recurve_bow",
+    "chain_vest"
+   ],
+   "stat": "+15% 攻击速度、+20 护甲；受击或攻击叠加攻击力与法强，满层获得双抗"
+  },
+  {
+   "id": "runaans_hurricane",
+   "name": "卢安娜的飓风",
+   "icon": "assets/icons/runaans_hurricane.png",
+   "recipe": [
+    "recurve_bow",
+    "negatron_cloak"
+   ],
+   "stat": "+20% 攻击速度、+20 魔抗；普攻对邻近敌人发射额外弹道"
+  },
+  {
+   "id": "nashors_tooth",
+   "name": "纳什之牙",
+   "icon": "assets/icons/nashorstooth_xl.png",
+   "recipe": [
+    "recurve_bow",
+    "giants_belt"
+   ],
+   "stat": "+25% 攻击速度、+150 生命；施法后获得 40% 攻击速度"
+  },
+  {
+   "id": "last_whisper",
+   "name": "最后的轻语",
+   "icon": "assets/icons/last_whisper.png",
+   "recipe": [
+    "recurve_bow",
+    "sparring_gloves"
+   ],
+   "stat": "+25% 暴击率；暴击使目标护甲降低 30%"
+  },
+  {
+   "id": "rabadon",
+   "name": "灭世者的死亡之帽",
+   "icon": "assets/icons/rabadons_deathcap.png",
+   "recipe": [
+    "nlrod",
+    "nlrod"
+   ],
+   "stat": "+50 法术强度，额外提升 20% 法术强度"
+  },
+  {
+   "id": "archangel",
+   "name": "大天使之杖",
+   "icon": "assets/icons/archangel_staff.png",
+   "recipe": [
+    "nlrod",
+    "tear"
+   ],
+   "stat": "+30 法术强度、+15 法力；每 5 秒获得 20 法术强度"
+  },
+  {
+   "id": "crownguard",
+   "name": "冕卫",
+   "icon": "assets/icons/crownguard.png",
+   "recipe": [
+    "nlrod",
+    "chain_vest"
+   ],
+   "stat": "+20 法术强度、+20 护甲；战斗开始时获得可格挡一次技能的护盾"
+  },
+  {
+   "id": "ionic_spark",
+   "name": "离子火花",
+   "icon": "assets/icons/ionic_spark.png",
+   "recipe": [
+    "nlrod",
+    "negatron_cloak"
+   ],
+   "stat": "+20 法术强度、+20 魔抗；使邻近敌人魔抗降低 40%，并造成范围魔法伤害"
+  },
+  {
+   "id": "morellonomicon",
+   "name": "莫雷洛秘典",
+   "icon": "assets/icons/morellonomicon.png",
+   "recipe": [
+    "nlrod",
+    "giants_belt"
+   ],
+   "stat": "+25 法术强度、+150 生命；技能造成灼烧，减少目标 33% 治疗"
+  },
+  {
+   "id": "jeweled_gauntlet",
+   "name": "珠光护手",
+   "icon": "assets/icons/jeweled_guantlet.png",
+   "recipe": [
+    "nlrod",
+    "sparring_gloves"
+   ],
+   "stat": "+25 法术强度；技能可以暴击，暴击伤害提升 20%"
+  },
+  {
+   "id": "blue_buff",
+   "name": "蓝霸符",
+   "icon": "assets/icons/blue_buff.png",
+   "recipe": [
+    "tear",
+    "tear"
+   ],
+   "stat": "+40 法力值；施法后返还 20 点法力"
+  },
+  {
+   "id": "frozen_heart",
+   "name": "冰霜之心",
+   "icon": "assets/icons/winters_approach.png",
+   "recipe": [
+    "tear",
+    "chain_vest"
+   ],
+   "stat": "+20 法力、+20 护甲；降低邻近敌人 35% 攻击速度"
+  },
+  {
+   "id": "chalice",
+   "name": "能量圣杯",
+   "icon": "assets/icons/chalice_of_power.png",
+   "recipe": [
+    "tear",
+    "negatron_cloak"
+   ],
+   "stat": "+15 法力、+20 魔抗；战斗开始时为邻近友军提供 20 法术强度"
+  },
+  {
+   "id": "redemption",
+   "name": "救赎",
+   "icon": "assets/icons/redemption.png",
+   "recipe": [
+    "tear",
+    "giants_belt"
+   ],
+   "stat": "+15 法力、+150 生命；生命值降至 40% 时为范围内友军回复 20% 生命"
+  },
+  {
+   "id": "hand_of_justice",
+   "name": "正义之手",
+   "icon": "assets/icons/hand_of_justice.png",
+   "recipe": [
+    "tear",
+    "sparring_gloves"
+   ],
+   "stat": "+20 法力、+20% 暴击；每回合随机获得 30 攻击力与法强或 30% 吸血"
+  },
+  {
+   "id": "bramble_vest",
+   "name": "荆棘之甲",
+   "icon": "assets/icons/bramble_vest.png",
+   "recipe": [
+    "chain_vest",
+    "chain_vest"
+   ],
+   "stat": "+60 护甲；格挡 0.5 秒内 40 点以上的物理伤害并反弹"
+  },
+  {
+   "id": "gargoyle",
+   "name": "石像鬼石板甲",
+   "icon": "assets/icons/gargoyle_stoneplate.png",
+   "recipe": [
+    "chain_vest",
+    "negatron_cloak"
+   ],
+   "stat": "+20 护甲、+20 魔抗；每被一个敌人攻击，双抗提升 10"
+  },
+  {
+   "id": "sunfire_cape",
+   "name": "日炎斗篷",
+   "icon": "assets/icons/sunfire_cape.png",
+   "recipe": [
+    "chain_vest",
+    "giants_belt"
+   ],
+   "stat": "+30 护甲、+150 生命；每 2 秒灼烧邻近敌人并降低其治疗效果"
+  },
+  {
+   "id": "unending_despair",
+   "name": "无终恨意",
+   "icon": "assets/icons/unendingdespair.png",
+   "recipe": [
+    "chain_vest",
+    "sparring_gloves"
+   ],
+   "stat": "+20 护甲、+20% 暴击；每 5 秒偷取邻近敌人护甲并造成伤害"
+  },
+  {
+   "id": "dragons_claw",
+   "name": "巨龙之爪",
+   "icon": "assets/icons/dragons_claw.png",
+   "recipe": [
+    "negatron_cloak",
+    "negatron_cloak"
+   ],
+   "stat": "+65 魔法抗性；每 2 秒回复 2% 最大生命值"
+  },
+  {
+   "id": "spirit_visage",
+   "name": "振奋盔甲",
+   "icon": "assets/icons/spiritvisage_xl.png",
+   "recipe": [
+    "negatron_cloak",
+    "giants_belt"
+   ],
+   "stat": "+20 魔抗、+200 生命；所有生命回复提升 25%"
+  },
+  {
+   "id": "banshees_veil",
+   "name": "女妖面纱",
+   "icon": "assets/icons/bansheesveil_xl.png",
+   "recipe": [
+    "negatron_cloak",
+    "sparring_gloves"
+   ],
+   "stat": "+20 魔抗、+20% 暴击；战斗开始时获得可格挡一次技能的护盾"
+  },
+  {
+   "id": "warmogs",
+   "name": "狂徒铠甲",
+   "icon": "assets/icons/warmogs_armor.png",
+   "recipe": [
+    "giants_belt",
+    "giants_belt"
+   ],
+   "stat": "+500 生命值；每秒回复 2% 已损失生命值"
+  },
+  {
+   "id": "knights_vow",
+   "name": "骑士之誓",
+   "icon": "assets/icons/knightsvow_xl.png",
+   "recipe": [
+    "giants_belt",
+    "sparring_gloves"
+   ],
+   "stat": "+150 生命、+20% 暴击；为一个邻近友军分摊 12% 受到的伤害"
+  },
+  {
+   "id": "thieves_gloves",
+   "name": "窃贼手套",
+   "icon": "assets/icons/thieves_gloves.png",
+   "recipe": [
+    "sparring_gloves",
+    "sparring_gloves"
+   ],
+   "stat": "+20% 暴击；每回合随机装备 2 件成品装备"
+  }
+ ],
+ "artifacts": [
+  {
+   "id": "diamond_hands",
+   "name": "钻石之手",
+   "icon": "assets/icons/tft10_diamondhands.png",
+   "stat": "每 4 秒获得 1 金币，玩家对战后永久 +1 金币收益"
+  },
+  {
+   "id": "rocket_fist",
+   "name": "火箭助推铁拳",
+   "icon": "assets/icons/tft4_ornnitem_rocketpropelledfist.png",
+   "stat": "+30 攻击力、+30 法术强度；技能命中后击退目标并造成额外伤害"
+  },
+  {
+   "id": "hullbreaker",
+   "name": "破舰者",
+   "icon": "assets/icons/tft9_ornnitem_hullbreaker.png",
+   "stat": "+20 攻击力、+20 攻速；对护盾目标造成 150% 额外伤害"
+  },
+  {
+   "id": "prowlers_claw",
+   "name": "暗行者之爪",
+   "icon": "assets/icons/tft9_ornnitem_prowlersclaw.png",
+   "stat": "+40 攻击力、+20% 暴击；击杀后突进至最远敌人并提升 30% 伤害"
+  },
+  {
+   "id": "snipers_focus",
+   "name": "狙击手的专注",
+   "icon": "assets/icons/tft9_ornnitem_snipersfocus.png",
+   "stat": "与目标每相隔 1 格，造成伤害提升 9%"
+  },
+  {
+   "id": "tricksters_glass",
+   "name": "幻影之镜",
+   "icon": "assets/icons/tft9_ornnitem_trickstersglass.png",
+   "stat": "战斗开始时复制自身一个残影，继承 50% 生命与 70% 伤害"
+  },
+  {
+   "id": "cursed_blade",
+   "name": "诅咒之刃",
+   "icon": "assets/icons/tft_item_artifact_cursedblade.png",
+   "stat": "攻击使目标最大生命值永久降低 3%（可叠加）"
+  },
+  {
+   "id": "lich_bane",
+   "name": "巫妖之祸",
+   "icon": "assets/icons/tft_item_artifact_lichbane.png",
+   "stat": "+40 法术强度；施法后下次普攻附加 200% 法强的魔法伤害"
+  },
+  {
+   "id": "lightshield",
+   "name": "光盾徽章",
+   "icon": "assets/icons/tft_item_artifact_lightshieldcrest.png",
+   "stat": "+20 护甲、+20 魔抗；战斗开始时获得 25% 最大生命值护盾"
+  },
+  {
+   "id": "goldmancers_staff",
+   "name": "金匠法杖",
+   "icon": "assets/icons/goldmancersstaff.png",
+   "stat": "+20 法术强度；每 10 秒获得 2 金币"
+  }
+ ]
+}

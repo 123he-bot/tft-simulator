@@ -1,0 +1,2042 @@
+{
+ "set": "S3",
+ "name": "Galaxies",
+ "champions": [
+  {
+   "id": "TFT3_Ziggs",
+   "name": "吉格斯",
+   "cost": 1,
+   "traits": [
+    "银河战争：奥德赛",
+    "爆破专家"
+   ],
+   "hp": 500.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 45.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "炸弹！",
+    "desc": "对当前目标造成70.0 ()魔法伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_ziggs_mobile.png"
+  },
+  {
+   "id": "TFT3_Jinx",
+   "name": "金克丝",
+   "cost": 4,
+   "traits": [
+    "银河战争：奥德赛",
+    "强袭枪手"
+   ],
+   "hp": 600.0,
+   "mana": 0.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 75.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "ADCarryCrit",
+   "ability": {
+    "name": "罪恶快感",
+    "desc": "被动：在首次参与击杀后，获得—额外攻击速度。在第二次参与击杀后，切换成导弹发射器，使攻击对小范围内的所有敌人造成— ()额外魔法伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_jinx_mobile.png"
+  },
+  {
+   "id": "TFT3_Teemo",
+   "name": "提莫",
+   "cost": 4,
+   "traits": [
+    "宇航员",
+    "狙神"
+   ],
+   "hp": 650.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 45.0,
+   "as": 0.85,
+   "range": 6.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "人造卫星陷阱",
+    "desc": "在相距最近的那个敌人附近投掷3个陷阱。陷阱会在有敌人接近(或在0.0秒后)爆炸，对附近的敌人们造成0.0 ()伤害和持续0.0秒的移动速度减缓。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_teemo_mobile.png"
+  },
+  {
+   "id": "TFT3_Yasuo",
+   "name": "亚索",
+   "cost": 2,
+   "traits": [
+    "银河战争：奥德赛",
+    "剑士"
+   ],
+   "hp": 750.0,
+   "mana": 80.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 55.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "狂风绝息斩",
+    "desc": "传送至距离内相距最远的敌人。将其晕眩1.0秒并对其进行— ()次攻击。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_yasuo_mobile.png"
+  },
+  {
+   "id": "TFT3_Malphite",
+   "name": "墨菲特",
+   "cost": 1,
+   "traits": [
+    "银河战争：奥德赛",
+    "斗士"
+   ],
+   "hp": 700.0,
+   "mana": 0.0,
+   "initialMana": 0,
+   "armor": 35.0,
+   "mr": 35.0,
+   "ad": 70.0,
+   "as": 0.55,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "能量护盾",
+    "desc": "被动：战斗开始时：获得— ()护盾值。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_malphite_mobile.png"
+  },
+  {
+   "id": "TFT3_MasterYi",
+   "name": "易",
+   "cost": 3,
+   "traits": [
+    "银河战争：奥德赛",
+    "剑士"
+   ],
+   "hp": 850.0,
+   "mana": 55.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 55.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "天选之子",
+    "desc": "在6.0秒的持续时间里，获得移动速度提升并且攻击造成— ()额外真实伤害。在处于激活状态时，每秒治疗自身— ()生命值。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_masteryi_mobile.png"
+  },
+  {
+   "id": "TFT3_AurelionSol",
+   "name": "奥瑞利安·索尔",
+   "cost": 5,
+   "traits": [
+    "银河战争：奥德赛",
+    "星舰龙神"
+   ],
+   "hp": 1100.0,
+   "mana": 120.0,
+   "initialMana": 120.0,
+   "armor": 55.0,
+   "mr": 40.0,
+   "ad": null,
+   "as": 0.2,
+   "range": 1.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "调动舰队",
+    "desc": "派出4.0架战斗机飞向随机的敌人们，造成0.0 ()魔法伤害并汲取0.0法力值，然后返航。后续施放会派出所有已返航的战斗机，外加2.0架额外战斗机。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_aurelionsol_mobile.png"
+  },
+  {
+   "id": "TFT3_Viktor",
+   "name": "维克托",
+   "cost": 4,
+   "traits": [
+    "战地机甲",
+    "法师"
+   ],
+   "hp": 650.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 45.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "死亡射线",
+    "desc": "在彼此相距最远的2名敌人之间灼烧出一条路径，首先造成0.0% ()最大生命值的魔法伤害，并于1秒后在相同路径上引发一次爆炸，造成0.0 ()魔法伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_viktor_mobile.png"
+  },
+  {
+   "id": "TFT3_KogMaw",
+   "name": "克格莫",
+   "cost": 2,
+   "traits": [
+    "战地机甲",
+    "强袭枪手"
+   ],
+   "hp": 550.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 50.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCarry",
+   "ability": {
+    "name": "弹幕",
+    "desc": "在3.0秒的持续时间里，获得无限攻击距离、60.0%攻击速度并且每次攻击造成目标0.0% ()最大生命值的额外魔法伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_kogmaw_mobile.png"
+  },
+  {
+   "id": "TFT3_Urgot",
+   "name": "厄加特",
+   "cost": 5,
+   "traits": [
+    "战地机甲",
+    "圣盾使"
+   ],
+   "hp": 950.0,
+   "mana": 120.0,
+   "initialMana": 50.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 80.0,
+   "as": 0.7,
+   "range": 2.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "超越死亡的恐惧",
+    "desc": "朝相距最远的那个敌人发射一个钻头并在0.0秒里将命中的第一个目标持续拖进体内。一旦拖进体内，就会快速地反复造成2000.0真实伤害，直至其阵亡。在他首次成功施放技能后，这个技能的法力消耗就会缩减0.0 ()。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_urgot_mobile.png"
+  },
+  {
+   "id": "TFT3_Ekko",
+   "name": "艾克",
+   "cost": 5,
+   "traits": [
+    "源计划",
+    "刺客"
+   ],
+   "hp": 850.0,
+   "mana": 150.0,
+   "initialMana": 80.0,
+   "armor": 30.0,
+   "mr": 20.0,
+   "ad": 60.0,
+   "as": 0.9,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "时空断裂",
+    "desc": "冻结时间内的所有单位，然后进行5.0次攻击，每次造成— ()额外魔法伤害。每次打击会以拥有最高攻速的那个敌人为目标，并对其造成7.0秒冰冷。冰冷：降低30%攻击速度"
+   },
+   "icon": "assets/icons/tft3_ekko_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_ekko_mobile.png"
+  },
+  {
+   "id": "TFT3_Fiora",
+   "name": "菲奥娜",
+   "cost": 1,
+   "traits": [
+    "源计划",
+    "剑士"
+   ],
+   "hp": 600.0,
+   "mana": 85.0,
+   "initialMana": 0,
+   "armor": 35.0,
+   "mr": 35.0,
+   "ad": 40.0,
+   "as": 1.0,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "劳伦特心眼刀",
+    "desc": "在1.5秒里，免疫伤害和敌方的技能效果。然后，对一个附近的敌人造成0.0 ()魔法伤害和1.5秒晕眩。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_fiora_mobile.png"
+  },
+  {
+   "id": "TFT3_Vi",
+   "name": "蔚",
+   "cost": 3,
+   "traits": [
+    "源计划",
+    "斗士"
+   ],
+   "hp": 850.0,
+   "mana": 140.0,
+   "initialMana": 70.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 60.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "天霸横空烈轰",
+    "desc": "冲向相距最远的那个敌人，震开沿途的敌人并对他们造成0.0 ()魔法伤害。当接触到目标时，对其造成100.0 ()魔法伤害和1.5秒晕眩。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_vi_mobile.png"
+  },
+  {
+   "id": "TFT3_Irelia",
+   "name": "艾瑞莉娅",
+   "cost": 4,
+   "traits": [
+    "源计划",
+    "破法战士",
+    "剑士"
+   ],
+   "hp": 900.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 80.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "利刃冲击",
+    "desc": "突进至当前目标并造成— ()物理伤害。如果这个技能击杀了目标，立刻对拥有最高法力值的那个敌人再次施放这个技能。"
+   },
+   "icon": "assets/icons/tft3_irelia_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_irelia_mobile.png"
+  },
+  {
+   "id": "TFT3_Poppy",
+   "name": "波比",
+   "cost": 1,
+   "traits": [
+    "星之守护者",
+    "重装战士"
+   ],
+   "hp": 700.0,
+   "mana": 75.0,
+   "initialMana": 30.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 55.0,
+   "as": 0.55,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "圆盾投掷",
+    "desc": "对相距最远的那个敌人扔出盾牌，造成50.0 ()魔法伤害。在它弹回时，获得— ()护盾值。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_poppy_mobile.png"
+  },
+  {
+   "id": "TFT3_Soraka",
+   "name": "索拉卡",
+   "cost": 4,
+   "traits": [
+    "星之守护者",
+    "秘术师"
+   ],
+   "hp": 700.0,
+   "mana": 120.0,
+   "initialMana": 50.0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 50.0,
+   "as": 0.75,
+   "range": 3.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "祈愿",
+    "desc": "为你的队伍治疗— ()生命值。"
+   },
+   "icon": "assets/icons/tft3_soraka_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_soraka_mobile.png"
+  },
+  {
+   "id": "TFT3_Ahri",
+   "name": "阿狸",
+   "cost": 2,
+   "traits": [
+    "星之守护者",
+    "法师"
+   ],
+   "hp": 600.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 45.0,
+   "as": 0.75,
+   "range": 3.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "欺诈宝珠",
+    "desc": "沿直线发射一颗宝珠，对沿途的所有敌人造成150.0 ()魔法伤害。随后它会折返回阿狸处，对沿途的所有敌人造成150.0 ()真实伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_ahri_mobile.png"
+  },
+  {
+   "id": "TFT3_Syndra",
+   "name": "辛德拉",
+   "cost": 3,
+   "traits": [
+    "星之守护者",
+    "法师"
+   ],
+   "hp": 650.0,
+   "mana": 60.0,
+   "initialMana": 20.0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 45.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "能量倾泻",
+    "desc": "聚集棋盘上的所有法球并创造3.0颗新的法球，随后将它们朝着当前生命值百分比最高的敌人发射，每颗法球造成0.0 ()魔法伤害。若有多个敌人满足条件，则选取总生命值最低的那个。"
+   },
+   "icon": "assets/icons/tft3_syndra_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_syndra_mobile.png"
+  },
+  {
+   "id": "TFT3_Neeko",
+   "name": "妮蔻",
+   "cost": 3,
+   "traits": [
+    "星之守护者",
+    "圣盾使"
+   ],
+   "hp": 850.0,
+   "mana": 110.0,
+   "initialMana": 35.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 50.0,
+   "as": 0.65,
+   "range": 2.0,
+   "role": "APTank",
+   "ability": {
+    "name": "怒放",
+    "desc": "对附近的所有敌人造成— ()魔法伤害和1.0秒晕眩。"
+   },
+   "icon": "assets/icons/tft3_neeko_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_neeko_mobile.png"
+  },
+  {
+   "id": "TFT3_Gangplank",
+   "name": "普朗克",
+   "cost": 5,
+   "traits": [
+    "太空海盗",
+    "佣兵",
+    "爆破专家"
+   ],
+   "hp": 1000.0,
+   "mana": 160.0,
+   "initialMana": 70.0,
+   "armor": 30.0,
+   "mr": 20.0,
+   "ad": 60.0,
+   "as": 1.0,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "轨道打击",
+    "desc": "召唤1.0道轨道打击至当前目标上。在2.0秒后，对3格内的所有敌人造成0.0 ()魔法伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_gangplank_mobile.png"
+  },
+  {
+   "id": "TFT3_Darius",
+   "name": "德莱厄斯",
+   "cost": 2,
+   "traits": [
+    "太空海盗",
+    "破法战士"
+   ],
+   "hp": 750.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 60.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "恐惧新星断头台",
+    "desc": "造成50.0 ()魔法伤害。如果这个技能击杀了目标，立刻再次施放这个技能。低于50.0%生命值的目标们会受到双倍伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_darius_mobile.png"
+  },
+  {
+   "id": "TFT3_Jayce",
+   "name": "杰斯",
+   "cost": 3,
+   "traits": [
+    "太空海盗",
+    "重装战士"
+   ],
+   "hp": 800.0,
+   "mana": 80.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 60.0,
+   "as": 0.7,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "苍穹之跃！",
+    "desc": "对邻格的敌人们造成300.0 ()魔法伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_jayce_mobile.png"
+  },
+  {
+   "id": "TFT3_Annie",
+   "name": "安妮",
+   "cost": 2,
+   "traits": [
+    "银河魔装机神",
+    "法师"
+   ],
+   "hp": 700.0,
+   "mana": 120.0,
+   "initialMana": 50.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 40.0,
+   "as": 0.65,
+   "range": 2.0,
+   "role": "APTank",
+   "ability": {
+    "name": "银河护盾爆裂",
+    "desc": "对一个锥形范围内的敌人们造成100.0 ()魔法伤害并获得持续—秒的— ()护盾值。"
+   },
+   "icon": "assets/icons/tft3_annie_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_annie_mobile.png"
+  },
+  {
+   "id": "TFT3_Fizz",
+   "name": "菲兹",
+   "cost": 4,
+   "traits": [
+    "银河魔装机神",
+    "刺客"
+   ],
+   "hp": 800.0,
+   "mana": 120.0,
+   "initialMana": 50.0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 60.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "APReaper",
+   "ability": {
+    "name": "巨鲨强袭",
+    "desc": "对当前目标投掷一个诱饵。在一段延迟后，一条鲨鱼会浮现而出，对2格内的所有敌人造成0.0 ()魔法伤害和1.0秒晕眩效果并将他们击退。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_fizz_mobile.png"
+  },
+  {
+   "id": "TFT3_Rumble",
+   "name": "兰博",
+   "cost": 3,
+   "traits": [
+    "银河魔装机神",
+    "爆破专家"
+   ],
+   "hp": 850.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 50.0,
+   "as": 0.7,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "纵火盛宴",
+    "desc": "在3.0秒里在一个锥形区域内持续造成共— ()魔法伤害，以及5.0秒重伤。重伤：降低50%受到的治疗效果"
+   },
+   "icon": "assets/icons/tft3_rumble_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_rumble_mobile.png"
+  },
+  {
+   "id": "TFT3_Ezreal",
+   "name": "伊泽瑞尔",
+   "cost": 3,
+   "traits": [
+    "未来战士",
+    "强袭枪手"
+   ],
+   "hp": 650.0,
+   "mana": 80.0,
+   "initialMana": 30.0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 55.0,
+   "as": 0.75,
+   "range": 3.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "电磁脉冲",
+    "desc": "朝一个随机敌人发射一道脉冲，在碰撞时对附近的所有敌人造成0.0 ()魔法伤害和3.0% 破法。破法：使最大法力值提升，持续到下次技能施放为止"
+   },
+   "icon": "assets/icons/tft3_ezreal_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_ezreal_mobile.png"
+  },
+  {
+   "id": "TFT3_Shen",
+   "name": "慎",
+   "cost": 2,
+   "traits": [
+    "未来战士",
+    "剑士"
+   ],
+   "hp": 800.0,
+   "mana": 150.0,
+   "initialMana": 100.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 70.0,
+   "as": 0.7,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "未来庇护",
+    "desc": "附近的所有己方弈子自动闪避即将到来的普通攻击，持续2.0秒。在激活状态下，获得— ()魔抗。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_shen_mobile.png"
+  },
+  {
+   "id": "TFT3_WuKong",
+   "name": "孙悟空",
+   "cost": 4,
+   "traits": [
+    "未来战士",
+    "重装战士"
+   ],
+   "hp": 1000.0,
+   "mana": 150.0,
+   "initialMana": 50.0,
+   "armor": 65.0,
+   "mr": 65.0,
+   "ad": 50.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "大闹宇宙",
+    "desc": "在3.0秒持续时间里对附近的敌人们造成200.0 ()魔法伤害。每个敌人在第一次被命中时，会被晕眩1.5秒。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_wukong_mobile.png"
+  },
+  {
+   "id": "TFT3_Thresh",
+   "name": "锤石",
+   "cost": 5,
+   "traits": [
+    "未来战士",
+    "破法战士"
+   ],
+   "hp": 950.0,
+   "mana": 90.0,
+   "initialMana": 50.0,
+   "armor": 55.0,
+   "mr": 40.0,
+   "ad": 50.0,
+   "as": 0.95,
+   "range": 2.0,
+   "role": "APTank",
+   "ability": {
+    "name": "时空通道",
+    "desc": "朝着你的备战区上的1.0个随机弈子投掷一个灯笼，将其拉到战场上并为其提供— ()额外法力值。羁绊计数不受影响。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_thresh_mobile.png"
+  },
+  {
+   "id": "TFT3_Caitlyn",
+   "name": "凯特琳",
+   "cost": 1,
+   "traits": [
+    "未来战士",
+    "狙神"
+   ],
+   "hp": 500.0,
+   "mana": 110.0,
+   "initialMana": 20.0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 45.0,
+   "as": 0.7,
+   "range": 6.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "让子弹飞",
+    "desc": "在一段延迟后，朝相距最远的那个敌人发射一颗子弹，对命中的第一个敌人造成0.0 ()魔法伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_caitlyn_mobile.png"
+  },
+  {
+   "id": "TFT3_TwistedFate",
+   "name": "崔斯特",
+   "cost": 1,
+   "traits": [
+    "未来战士",
+    "法师"
+   ],
+   "hp": 500.0,
+   "mana": 75.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 45.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "万能牌",
+    "desc": "沿锥形掷出三张卡牌，对沿途的每个敌人造成— ()魔法伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_twistedfate_mobile.png"
+  },
+  {
+   "id": "TFT3_XinZhao",
+   "name": "赵信",
+   "cost": 2,
+   "traits": [
+    "星神",
+    "圣盾使"
+   ],
+   "hp": 750.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 60.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "三重爪击",
+    "desc": "攻击当前目标三次，共造成— ()物理伤害。第三次打击会对目标造成1.0秒晕眩和— ()额外魔法伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_xinzhao_mobile.png"
+  },
+  {
+   "id": "TFT3_Lulu",
+   "name": "璐璐",
+   "cost": 5,
+   "traits": [
+    "星神",
+    "秘术师"
+   ],
+   "hp": 800.0,
+   "mana": 120.0,
+   "initialMana": 50.0,
+   "armor": 25.0,
+   "mr": 20.0,
+   "ad": 45.0,
+   "as": 0.8,
+   "range": 3.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "群体变形",
+    "desc": "对相距最近的0.0个敌人造成0.0秒变形，使他们晕眩并漫无目的地蹦跶。被变形的敌人们会受到0.02500000037252903 ()额外伤害(来自所有来源)。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_lulu_mobile.png"
+  },
+  {
+   "id": "TFT3_Xayah",
+   "name": "霞",
+   "cost": 1,
+   "traits": [
+    "星神",
+    "剑士"
+   ],
+   "hp": 500.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 50.0,
+   "as": 0.9,
+   "range": 3.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "致死羽衣",
+    "desc": "获得持续8.0秒的— ()攻击速度。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_xayah_mobile.png"
+  },
+  {
+   "id": "TFT3_Rakan",
+   "name": "洛",
+   "cost": 2,
+   "traits": [
+    "星神",
+    "圣盾使"
+   ],
+   "hp": 650.0,
+   "mana": 100,
+   "initialMana": 50.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 45.0,
+   "as": 0.7,
+   "range": 2.0,
+   "role": "APTank",
+   "ability": {
+    "name": "盛大登场",
+    "desc": "朝着距离内相距最远的敌人突进，对1.0格内的敌人们造成1.0秒击飞效果和75.0 ()魔法伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_rakan_mobile.png"
+  },
+  {
+   "id": "TFT3_Ashe",
+   "name": "艾希",
+   "cost": 3,
+   "traits": [
+    "星神",
+    "狙神"
+   ],
+   "hp": 650.0,
+   "mana": 100,
+   "initialMana": 40.0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 65.0,
+   "as": 0.8,
+   "range": 6.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "魔法水晶箭",
+    "desc": "朝距离最远的敌人射出一支魔法水晶箭。魔法水晶箭会在命中第一个目标后爆炸，对其附近所有敌人造成250.0 ()魔法伤害和2.0秒晕眩。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_ashe_mobile.png"
+  },
+  {
+   "id": "TFT3_Mordekaiser",
+   "name": "莫德凯撒",
+   "cost": 2,
+   "traits": [
+    "暗星",
+    "重装战士"
+   ],
+   "hp": 750.0,
+   "mana": 90.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 65.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "不坏之身",
+    "desc": "获得持续8.0秒的— ()护盾值。护盾存在时，每秒对邻格的所有敌人造成— ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft3_mordekaiser_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_mordekaiser_mobile.png"
+  },
+  {
+   "id": "TFT3_Shaco",
+   "name": "萨科",
+   "cost": 3,
+   "traits": [
+    "暗星",
+    "刺客"
+   ],
+   "hp": 650.0,
+   "mana": 70.0,
+   "initialMana": 30.0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 65.0,
+   "as": 0.8,
+   "range": 1.0,
+   "role": "ADCarryCrit",
+   "ability": {
+    "name": "欺诈魔术",
+    "desc": "传送到当前目标身后，然后攻击该目标造成— ()物理伤害。这次攻击必定会暴击。"
+   },
+   "icon": "assets/icons/tft3_shaco_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_shaco_mobile.png"
+  },
+  {
+   "id": "TFT3_JarvanIV",
+   "name": "嘉文四世",
+   "cost": 1,
+   "traits": [
+    "暗星",
+    "圣盾使"
+   ],
+   "hp": 700.0,
+   "mana": 100,
+   "initialMana": 60.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 60.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "永恒军旗",
+    "desc": "3.0格内的己方弈子们获得持续6.0秒的— ()攻击速度。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_jarvan_mobile.png"
+  },
+  {
+   "id": "TFT3_Karma",
+   "name": "卡尔玛",
+   "cost": 3,
+   "traits": [
+    "暗星",
+    "秘术师"
+   ],
+   "hp": 650.0,
+   "mana": 100,
+   "initialMana": 75.0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 50.0,
+   "as": 0.65,
+   "range": 3.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "鼓舞",
+    "desc": "被动：在战斗开始时，维系至相距最近的友军。主动：为已维系的那个己方弈子(或在其阵亡后的一个随机己方弈子)提供持续4.0秒的— ()护盾值。在护盾持续时，该弈子拥有— ()额外攻击速度。"
+   },
+   "icon": "assets/icons/tft3_karma_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_karma_mobile.png"
+  },
+  {
+   "id": "TFT3_Jhin",
+   "name": "烬",
+   "cost": 4,
+   "traits": [
+    "暗星",
+    "狙神"
+   ],
+   "hp": 650.0,
+   "mana": 4.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 80.0,
+   "as": 2.0,
+   "range": 6.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "低语",
+    "desc": "被动：攻击速度恒定为0.0。将1%额外攻击速度转化为0.8%攻击力。每第四发子弹造成— ()物理伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_jhin_mobile.png"
+  },
+  {
+   "id": "TFT3_Zoe",
+   "name": "佐伊",
+   "cost": 1,
+   "traits": [
+    "星之守护者",
+    "法师"
+   ],
+   "hp": 500.0,
+   "mana": 80.0,
+   "initialMana": 40.0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 40.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "催眠麻烦泡泡",
+    "desc": "朝当前生命值最高的那个敌人踢出一团泡泡，造成75.0 ()魔法伤害和1.5秒晕眩。若有多个敌人满足条件，则选取总生命值最高的那个。"
+   },
+   "icon": "assets/icons/tft3_zoe_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_zoey_mobile.png"
+  },
+  {
+   "id": "TFT3_Blitzcrank",
+   "name": "布里茨",
+   "cost": 2,
+   "traits": [
+    "未来战士",
+    "斗士"
+   ],
+   "hp": 750.0,
+   "mana": 175.0,
+   "initialMana": 175.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 65.0,
+   "as": 0.55,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "机械飞爪",
+    "desc": "将相距最远的那个敌人拉到近战距离，造成-50.0 ()魔法伤害和2.0秒晕眩。己方弈子会优先攻击该敌人。【布里茨】的下次攻击造成1秒晕眩。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_blitzcrank_mobile.png"
+  },
+  {
+   "id": "TFT3_Leona",
+   "name": "蕾欧娜",
+   "cost": 1,
+   "traits": [
+    "源计划",
+    "重装战士"
+   ],
+   "hp": 700.0,
+   "mana": 80.0,
+   "initialMana": 40.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 60.0,
+   "as": 0.55,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "赛博屏障",
+    "desc": "使接下来所受的所有伤害降低— ()，持续4秒。"
+   },
+   "icon": "assets/icons/tft3_leona_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_leona_mobile.png"
+  },
+  {
+   "id": "TFT3_Lucian",
+   "name": "卢锡安",
+   "cost": 2,
+   "traits": [
+    "源计划",
+    "强袭枪手"
+   ],
+   "hp": 550.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 55.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "冷酷追击",
+    "desc": "冲刺并远离当前目标，然后对其进行两次攻击，第二次攻击造成— ()魔法伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_lucian_mobile.png"
+  },
+  {
+   "id": "TFT3_Graves",
+   "name": "格雷福斯",
+   "cost": 1,
+   "traits": [
+    "太空海盗",
+    "强袭枪手"
+   ],
+   "hp": 650.0,
+   "mana": 80.0,
+   "initialMana": 30.0,
+   "armor": 35.0,
+   "mr": 35.0,
+   "ad": 55.0,
+   "as": 0.55,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "烟幕弹",
+    "desc": "朝拥有最高攻击速度的那个敌人发射一颗烟雾弹。它会在碰撞时爆炸，对邻格的敌人们造成0.0 ()魔法伤害和持续1.0秒的缴械效果。缴械：无法移动或攻击"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_graves_mobile.png"
+  },
+  {
+   "id": "TFT3_Xerath",
+   "name": "泽拉斯",
+   "cost": 5,
+   "traits": [
+    "暗星",
+    "法师"
+   ],
+   "hp": 700.0,
+   "mana": 80.0,
+   "initialMana": 20.0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 60.0,
+   "as": 0.9,
+   "range": 6.0,
+   "role": "APCarry",
+   "ability": {
+    "name": "深渊轰炸",
+    "desc": "在6.0秒的持续期间里，将普通攻击替换为召唤流星，来打击多个随机的敌人。流星在撞击时造成— ()魔法伤害，并且如果击杀了目标，邻格的所有敌人们也会受到175.0 ()魔法伤害和1.5秒晕眩。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_xerath_mobile.png"
+  },
+  {
+   "id": "TFT3_Gnar",
+   "name": "纳尔",
+   "cost": 4,
+   "traits": [
+    "宇航员",
+    "斗士"
+   ],
+   "hp": 900.0,
+   "mana": 120.0,
+   "initialMana": 20.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 65.0,
+   "as": 0.8,
+   "range": 2.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "呐啊！",
+    "desc": "变身并获得50.0生命值和0%%攻击力。跳跃并越过当前目标，然后对邻格的敌人们造成击退和1.0秒晕眩，以及100.0 ()魔法伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_gnar_mobile.png"
+  },
+  {
+   "id": "TFT3_Nautilus",
+   "name": "诺提勒斯",
+   "cost": 2,
+   "traits": [
+    "宇航员",
+    "重装战士"
+   ],
+   "hp": 750.0,
+   "mana": 120.0,
+   "initialMana": 50.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 70.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "陨石坑",
+    "desc": "对当前目标造成0.0 ()魔法伤害和0.0秒晕眩。1格内的敌人们会受到50%此效果。"
+   },
+   "icon": "assets/icons/tft3_nautilus_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_nautilus_mobile.png"
+  },
+  {
+   "id": "TFT3_Illaoi",
+   "name": "俄洛伊",
+   "cost": 1,
+   "traits": [
+    "战地机甲",
+    "斗士"
+   ],
+   "hp": 700.0,
+   "mana": 80.0,
+   "initialMana": 40.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 45.0,
+   "as": 0.7,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "触手猛击",
+    "desc": "沿一条直线拍下一条触手，造成0.0 ()魔法伤害，并从命中的每个目标那里窃取持续0.0秒的0.0%护甲和魔抗。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_illaoi_mobile.png"
+  },
+  {
+   "id": "TFT3_Nocturne",
+   "name": "魔腾",
+   "cost": 1,
+   "traits": [
+    "战地机甲",
+    "刺客"
+   ],
+   "hp": 500.0,
+   "mana": 80.0,
+   "initialMana": 40.0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 50.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "APReaper",
+   "ability": {
+    "name": "无言恐惧",
+    "desc": "对目标造成200.0秒晕眩并在持续期间造成共200.0 ()魔法伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_nocturne_mobile.png"
+  },
+  {
+   "id": "TFT3_Cassiopeia",
+   "name": "卡西奥佩娅",
+   "cost": 3,
+   "traits": [
+    "战地机甲",
+    "秘术师"
+   ],
+   "hp": 750.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 35.0,
+   "mr": 35.0,
+   "ad": 40.0,
+   "as": 0.75,
+   "range": 2.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "瘟毒爆炸",
+    "desc": "对相距最近且未中毒的那个敌人放出毒液，在0.0秒里持续造成共0.0 ()魔法伤害，并使新的护盾的效能降低—%。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_cassiopeia_mobile.png"
+  },
+  {
+   "id": "TFT3_Vayne",
+   "name": "薇恩",
+   "cost": 3,
+   "traits": [
+    "源计划",
+    "狙神"
+   ],
+   "hp": 650.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 60.0,
+   "as": 0.8,
+   "range": 6.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "终极时刻",
+    "desc": "进入持续0.0 ()秒的专注状态，立刻翻滚远离当前目标，并且在之后的每第三次攻击也会这样。在翻滚后，变为不可被选取状态，摆脱各个负面效果，并且下次攻击造成— ()物理伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_vayne_mobile.png"
+  },
+  {
+   "id": "TFT3_Janna",
+   "name": "迦娜",
+   "cost": 5,
+   "traits": [
+    "星之守护者",
+    "大魔法使"
+   ],
+   "hp": 750.0,
+   "mana": 100,
+   "initialMana": 20.0,
+   "armor": 25.0,
+   "mr": 20.0,
+   "ad": 60.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "飓风呼啸",
+    "desc": "召唤5道龙卷风，呈扇形向前飞出。为命中的己方弈子提供持续0.0秒的0.0% ()攻击速度。对命中的敌人们造成0.0秒晕眩。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_janna_mobile.png"
+  },
+  {
+   "id": "TFT3_Riven",
+   "name": "锐雯",
+   "cost": 4,
+   "traits": [
+    "未来战士",
+    "剑士"
+   ],
+   "hp": 950.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 70.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "能量斩",
+    "desc": "冲刺并获得— ()护盾值。然后，对邻格的敌人们造成50.0 ()魔法伤害。每第三次施放会发射一道能量波，来造成0.0 ()魔法伤害。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_riven_mobile.png"
+  },
+  {
+   "id": "TFT3_Bard",
+   "name": "巴德",
+   "cost": 3,
+   "traits": [
+    "宇航员",
+    "秘术师"
+   ],
+   "hp": 700.0,
+   "mana": 90.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 45.0,
+   "as": 0.7,
+   "range": 3.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "旅者的召唤",
+    "desc": "被动：攻击提供0.0 ()额外法力值。在没有敌方英雄的回合中不会提供法力值。主动：在备战区生成一个木灵。木灵可售出以换取1经验值。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_bard_mobile.png"
+  },
+  {
+   "id": "TFT3_Zed",
+   "name": "劫",
+   "cost": 2,
+   "traits": [
+    "银河战争：奥德赛",
+    "刺客"
+   ],
+   "hp": 700.0,
+   "mana": 0.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 50.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "ADReaper",
+   "ability": {
+    "name": "影忍法：灭魂劫",
+    "desc": "被动：每第三次攻击，造成0.0 ()额外魔法伤害并窃取当前目标的25%%攻击力。"
+   },
+   "icon": null,
+   "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_zed_mobile.png"
+  }
+ ],
+ "traits": [
+  {
+   "name": "狙神",
+   "desc": "【狙神】们基于自身与目标的相距格数造成额外伤害。(—) +9.0%每格",
+   "icon": "assets/icons/trait_icon_3_sniper.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "PercentDamageIncrease": 9.0
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "PercentDamageIncrease": 16.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "星神",
+   "desc": "你的弈子们获得全能吸血。(—) 12.0%全能吸血",
+   "icon": "assets/icons/trait_icon_3_celestial.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "HealPercent": 12.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 5,
+     "vars": {
+      "HealPercent": 25.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "HealPercent": 50.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "秘术师",
+   "desc": "你的队伍获得魔抗。(—) 30.0",
+   "icon": "assets/icons/trait_icon_2_mystic.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "MagicResist": 30.0
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "MagicResist": 80.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "银河战争：奥德赛",
+   "desc": "在战斗开始时，【银河战争：奥德赛】弈子们会为邻格的每个【银河战争：奥德赛】弈子提供持续8.0秒的护盾值和额外伤害。(—) 150.0护盾值；+6.0%额外伤害",
+   "icon": "assets/icons/trait_icon_3_rebel.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 5,
+     "style": 1,
+     "vars": {
+      "DamageAmp": 6.0,
+      "ShieldAmount": 150.0,
+      "ShieldDuration": 8.0
+     }
+    },
+    {
+     "min": 6,
+     "max": 8,
+     "style": 5,
+     "vars": {
+      "DamageAmp": 10.0,
+      "ShieldAmount": 225.0,
+      "ShieldDuration": 8.0
+     }
+    },
+    {
+     "min": 9,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "DamageAmp": 20.0,
+      "ShieldAmount": 400.0,
+      "ShieldDuration": 8.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "太空海盗",
+   "desc": "每当一名【太空海盗】完成夺命一击时，就会有一定几率掉落战利品。(—) 50.0%几率掉落1金币(—) 以及None%几率掉落一件装备",
+   "icon": "assets/icons/trait_icon_3_spacepirate.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "CoinDropChance": 50.0,
+      "ItemDropChance": null
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "CoinDropChance": 50.0,
+      "ItemDropChance": 33.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "暗星",
+   "desc": "每当一个己方弈子阵亡时，【暗星】们都会获得攻击力和法术强度。(—) +6.0% ，+6.0",
+   "icon": "assets/icons/trait_icon_3_darkstar.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "ADandSP": 6.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "ADandSP": 15.0
+     }
+    },
+    {
+     "min": 6,
+     "max": 7,
+     "style": 5,
+     "vars": {
+      "ADandSP": 25.0
+     }
+    },
+    {
+     "min": 8,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "ADandSP": 45.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "战地机甲",
+   "desc": "在造成或受到10次伤害后，【战地机甲】弈子们对相距最近的那个敌人造成魔法伤害。如果低于50%生命值，则转而治疗等额的生命值。(—) 90.0魔法伤害",
+   "icon": "assets/icons/trait_icon_3_battlecast.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "HealOrDamageAmount": 90.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "HealOrDamageAmount": 200.0
+     }
+    },
+    {
+     "min": 6,
+     "max": 7,
+     "style": 5,
+     "vars": {
+      "HealOrDamageAmount": 400.0
+     }
+    },
+    {
+     "min": 8,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "HealOrDamageAmount": 1000.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "星舰龙神",
+   "desc": "(—)【星舰龙神】每秒获得40.0法力值，围着棋盘不断回旋，并且免疫移动受损效果，但不会进行攻击。",
+   "icon": "assets/icons/trait_icon_3_starship.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "ManaPerSecond": 40.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "宇航员",
+   "desc": "(—) 【宇航员】们的技能少消耗30.0法力值。",
+   "icon": "assets/icons/trait_icon_3_astro.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "ManaCostReduction": 30.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "剑士",
+   "desc": "【剑士】们的攻击有一定几率对目标触发额外次数的攻击。(—) 30.0%几率。1.0额外攻击次数。",
+   "icon": "assets/icons/trait_icon_2_blademaster.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 5,
+     "style": 1,
+     "vars": {
+      "ExtraAttacks": 1.0,
+      "ProcChance": 30.0
+     }
+    },
+    {
+     "min": 6,
+     "max": 8,
+     "style": 5,
+     "vars": {
+      "ExtraAttacks": 2.0,
+      "ProcChance": 30.0
+     }
+    },
+    {
+     "min": 9,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "ExtraAttacks": 2.0,
+      "ProcChance": 80.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "未来战士",
+   "desc": "在战斗开始时和每过若干秒，你的弈子们获得10.0%攻击速度。(—) 7.0秒(—) 7.0秒(—) 7.0秒(—) 7.0秒",
+   "icon": "assets/icons/trait_icon_3_chrono.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "Frequency": 7.0,
+      "PercentAttackSpeed": 10.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "Frequency": 4.0,
+      "PercentAttackSpeed": 10.0
+     }
+    },
+    {
+     "min": 6,
+     "max": 7,
+     "style": 5,
+     "vars": {
+      "Frequency": 1.5,
+      "PercentAttackSpeed": 10.0
+     }
+    },
+    {
+     "min": 8,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "Frequency": 0.5,
+      "PercentAttackSpeed": 10.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "虚空",
+   "desc": "(—) 【虚空】英雄们的攻击和技能造成真实伤害。",
+   "icon": "assets/icons/trait_icon_void.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": null,
+     "style": 5,
+     "vars": {}
+    }
+   ]
+  },
+  {
+   "name": "重装战士",
+   "desc": "【重装战士】们获得护甲。(—) 70.0",
+   "icon": "assets/icons/trait_icon_3_vanguard.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "Armor": 70.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "Armor": 150.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "Armor": 350.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "圣盾使",
+   "desc": "每当一个【圣盾使】施放其技能时，该弈子就会获得持续4.0秒的护盾值。(—) 30.0%最大",
+   "icon": "assets/icons/trait_icon_3_protector.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "Duration": 4.0,
+      "ShieldPercent": 30.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 5,
+     "vars": {
+      "Duration": 4.0,
+      "ShieldPercent": 40.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "Duration": 4.0,
+      "ShieldPercent": 50.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "星之守护者",
+   "desc": "每当一个【星之守护者】在施放技能时，就会有一定数量的法力值均分给所有其它的【星之守护者】。(—) 15.0",
+   "icon": "assets/icons/trait_icon_3_starguardian.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 5,
+     "style": 1,
+     "vars": {
+      "ManaRestore": 15.0
+     }
+    },
+    {
+     "min": 6,
+     "max": 8,
+     "style": 5,
+     "vars": {
+      "ManaRestore": 25.0
+     }
+    },
+    {
+     "min": 9,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "ManaRestore": 80.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "斗士",
+   "desc": "【斗士】们获得生命值。(—) +350.0",
+   "icon": "assets/icons/trait_icon_brawler.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "BonusHealth": 350.0
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BonusHealth": 600.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "源计划",
+   "desc": "至少携带了1件装备的【源计划】弈子们获得攻击力和生命值。(—) +30%% ，+350.0",
+   "icon": "assets/icons/trait_icon_3_cybernetic.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 5,
+     "style": 1,
+     "vars": {
+      "ADAmp": 0.30000001192092896,
+      "HealthAmp": 350.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "ADAmp": 0.6000000238418579,
+      "HealthAmp": 700.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "法师",
+   "desc": "你的弈子们获得法术强度。(—) 25.0",
+   "icon": "assets/icons/trait_icon_sorcerer.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "AP": 25.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "AP": 45.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AP": 75.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "佣兵",
+   "desc": "(—) 固有能力：【佣兵】们的技能升级项目有一定几率出现在商店中。",
+   "icon": "assets/icons/trait_icon_3_mercenary.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {}
+    }
+   ]
+  },
+  {
+   "name": "女武神",
+   "desc": "(—)【女武神】的攻击和技能总会对生命值低于40.0%的目标造成暴击。",
+   "icon": "assets/icons/trait_icon_3_valkyrie.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "PercentHealth": 40.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "银河魔装机神",
+   "desc": "(—) 战斗开始时：3名随机的【银河魔装机神】机师会被传送到一台【超级魔装机神】中。【超级魔装机神】结合了它的机师们的羁绊、3件来自机师们的装备、并获得机师们的65%总生命值和攻击力。当【超级魔装机神】阵亡时，机师们会被弹出并带着各自的35.0%最大生命值。",
+   "icon": "assets/icons/trait_icon_3_mechpilot.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "CleaveRatio": 0.800000011920929,
+      "EjectedPilotHealthPercent": 35.0,
+      "MechCombinedADRatio": 0.6499999761581421,
+      "{092d19fb}": 1500.0,
+      "{952c9d9c}": 0.6499999761581421,
+      "{dc3931d7}": null,
+      "{ed41c244}": 90.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "破法战士",
+   "desc": "(—) 【破法战士】们的攻击会造成破法效果。破法：使最大法力值提升30.0% ，持续到下次施放技能为止。",
+   "icon": "assets/icons/trait_icon_3_manareaver.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "CostIncreasePercent": 30.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "强袭枪手",
+   "desc": "每第4次攻击，【强袭枪手】们对随机的敌人们发射若干次额外攻击。这些额外攻击可以暴击。(—) 1.0次额外攻击",
+   "icon": "assets/icons/trait_icon_3_blaster.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "AdditionalAttacks": 1.0
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AdditionalAttacks": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "爆破专家",
+   "desc": "(—) 【爆破专家】们的技能会对敌人造成1.5秒晕眩。(每次施放仅一次晕眩)",
+   "icon": "assets/icons/trait_icon_3_demolitionist.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "StunDuration": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "大魔法使",
+   "desc": "(—) 己方队伍的攻击会被转化为魔法伤害。你的【星之守护者】的攻击转而造成真实伤害。",
+   "icon": "assets/icons/trait_icon_3_paragon.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {}
+    }
+   ]
+  },
+  {
+   "name": "刺客",
+   "desc": "固有能力：在战斗开始时，【刺客】们会移动到敌人的后排。【刺客】们在战斗开始时获得持续6.0秒的攻击速度加成，并在参与击杀敌人后刷新。(—) 25.0%",
+   "icon": "assets/icons/trait_icon_3_infiltrator.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "AttackSpeedPercent": 25.0,
+      "Duration": 6.0,
+      "Reset": 1.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "AttackSpeedPercent": 45.0,
+      "Duration": 6.0,
+      "Reset": 1.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AttackSpeedPercent": 75.0,
+      "Duration": 6.0,
+      "Reset": 1.0
+     }
+    }
+   ]
+  }
+ ]
+}

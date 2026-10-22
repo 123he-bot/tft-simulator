@@ -1,0 +1,2744 @@
+{
+ "set": "S13",
+ "name": "Set13",
+ "champions": [
+  {
+   "id": "TFT13_Singed",
+   "name": "辛吉德",
+   "cost": 1,
+   "traits": [
+    "炼金男爵",
+    "哨兵"
+   ],
+   "hp": 650.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 55.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "致命突变",
+    "desc": "获得— ()伤害减免，并为本回合造成伤害最高的那个友军提供在4.0秒内持续衰减的1.0%攻击速度。"
+   },
+   "icon": "assets/icons/tft13_singed_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_singed/skins/base/images/tft13_singed_mobile.png"
+  },
+  {
+   "id": "TFT13_RenataGlasc",
+   "name": "烈娜塔",
+   "cost": 2,
+   "traits": [
+    "炼金男爵",
+    "先知"
+   ],
+   "hp": 600.0,
+   "mana": 85.0,
+   "initialMana": 20.0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 35.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCasterHighMana",
+   "ability": {
+    "name": "忠诚激励",
+    "desc": "向目标发射一对飞弹。飞弹途经的友军获得持续3.0秒的100.0 ()护盾值。飞弹相撞时，会对目标造成0.0 ()魔法伤害，并对邻格的敌人造成0.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft13_renataglasc_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_renataglasc/skins/base/images/tft13_renataglasc_mobile.png"
+  },
+  {
+   "id": "TFT13_Silco",
+   "name": "希尔科",
+   "cost": 4,
+   "traits": [
+    "炼金男爵",
+    "统领"
+   ],
+   "hp": 800.0,
+   "mana": 80.0,
+   "initialMana": 30.0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 40.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCasterHighMana",
+   "ability": {
+    "name": "罐装畸变体",
+    "desc": "向目标投掷一个储罐，造成0.0 ()魔法伤害，并释放出4.0只畸变体。畸变体进行5.0次攻击，每次攻击造成0.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft13_silco_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_silco/skins/base/images/tft13_silco_mobile.png"
+  },
+  {
+   "id": "TFT13_Camille",
+   "name": "卡蜜尔",
+   "cost": 2,
+   "traits": [
+    "执法官",
+    "伏击专家"
+   ],
+   "hp": 700.0,
+   "mana": 25.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 55.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "自适应打击",
+    "desc": "踢击目标，造成— ()自适应伤害。回复相当于33%%造成伤害的生命值。自适应伤害：使用目标抗性较低的伤害类型。"
+   },
+   "icon": "assets/icons/tft13_camille_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_camille/skins/base/images/tft13_camille_mobile.png"
+  },
+  {
+   "id": "TFT13_Blitzcrank",
+   "name": "布里茨",
+   "cost": 3,
+   "traits": [
+    "海克斯机械",
+    "统领"
+   ],
+   "hp": 850.0,
+   "mana": 70.0,
+   "initialMana": 20.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 60.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "静电力场",
+    "desc": "被动：在承受伤害并存活下来后，对目标造成相当于3%%吸收伤害的魔法伤害。主动：获得持续4.0秒的400.0 ()护盾值。震击相距最近的3.0名敌人，造成— ()魔法伤害，同时对该敌人造成持续4.0秒的10%%伤害削减。"
+   },
+   "icon": "assets/icons/tft13_blitzcrank_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_blitzcrank/skins/base/images/tft13_blitzcrank_mobile.png"
+  },
+  {
+   "id": "TFT13_Vi",
+   "name": "蔚",
+   "cost": 4,
+   "traits": [
+    "执法官",
+    "搏击手"
+   ],
+   "hp": 1100.0,
+   "mana": 100,
+   "initialMana": 40.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 75.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "破坏小组",
+    "desc": "获得持续3.0秒的2.0 ()护盾值，然后晕眩目标1.5秒。将其向下猛击，对其造成— ()物理伤害并在其所在的那一排引发一道冲击波。被冲击波命中的敌人们受到— ()物理伤害并被短暂击飞。"
+   },
+   "icon": "assets/icons/tft13_vi_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_vi/skins/base/images/tft13_vi_mobile.png"
+  },
+  {
+   "id": "TFT13_Caitlyn",
+   "name": "凯特琳",
+   "cost": 5,
+   "traits": [
+    "执法官",
+    "狙神"
+   ],
+   "hp": 900.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 80.0,
+   "as": 0.55,
+   "range": 13.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "空袭",
+    "desc": "进入狙击手姿态并呼叫一艘空中炮艇，在战场上空盘旋5.0秒，期间对一个随机敌群投掷4.0枚炸弹。炸弹可对一格圆形范围内造成— ()物理伤害。每当一名敌人被选为空袭中心点，就会削减其20.0护甲和魔抗，随后立即对其射出一颗子弹，造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft13_caitlyn_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_caitlyn/skins/base/images/tft13_caitlyn_mobile.png"
+  },
+  {
+   "id": "TFT13_Ekko",
+   "name": "艾克",
+   "cost": 4,
+   "traits": [
+    "野火帮",
+    "极客",
+    "伏击专家"
+   ],
+   "hp": 1100.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 50.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "APReaper",
+   "ability": {
+    "name": "争分夺秒",
+    "desc": "召唤出残影们进行一次强袭，对目标造成— ()魔法伤害，对附近的其他2.0名敌人造成0.0 ()魔法伤害。残影们会使目标的魔抗降低5.0，持续至战斗环节结束。"
+   },
+   "icon": "assets/icons/tft13_ekko_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_ekko/skins/base/images/tft13_ekko_mobile.png"
+  },
+  {
+   "id": "TFT13_Amumu",
+   "name": "阿木木",
+   "cost": 1,
+   "traits": [
+    "海克斯机械",
+    "监察"
+   ],
+   "hp": 600.0,
+   "mana": 0.0,
+   "initialMana": 0,
+   "armor": 35.0,
+   "mr": 35.0,
+   "ad": 45.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "废弃技术",
+    "desc": "被动：受到的所有伤害降低7.0。每秒发射火花，对邻格敌人们造成20.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft13_amumu_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_amumu/skins/base/images/tft13_amumu_mobile.png"
+  },
+  {
+   "id": "TFT13_Malzahar",
+   "name": "玛尔扎哈",
+   "cost": 5,
+   "traits": [
+    "海克斯机械",
+    "先知"
+   ],
+   "hp": 950.0,
+   "mana": 90.0,
+   "initialMana": 30.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 45.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCasterHighMana",
+   "ability": {
+    "name": "机械召唤",
+    "desc": "在一条横跨目标的5格长直线上召唤一道门。在命中敌人时造成0.0 ()魔法伤害和持续4.0秒的20%魔抗击碎。【玛尔扎哈】在命中的敌人们之间传播5层感染效果。感染每秒造成0.0 ()魔法伤害，持续至战斗环节结束。此效果可无限叠加。受到感染的目标在阵亡时，会将层数传播给附近敌人。魔抗击碎：降低魔抗值"
+   },
+   "icon": "assets/icons/tft13_malzahar_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_malzahar/skins/base/images/tft13_malzahar_mobile.png"
+  },
+  {
+   "id": "TFT13_DrMundo",
+   "name": "蒙多医生",
+   "cost": 4,
+   "traits": [
+    "试验品",
+    "统领"
+   ],
+   "hp": 1100.0,
+   "mana": 100,
+   "initialMana": 30.0,
+   "armor": 66.0,
+   "mr": 66.0,
+   "ad": 60.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "极限剂量",
+    "desc": "进入持续2.0秒的活力充沛状态，并在此期间持续回复共— ()生命值。在活力充沛状态下，每秒对一名附近的敌人造成— ()魔法伤害。随后，对2格内的所有敌人造成— () 魔法伤害。【试验品】加成：获得@TFTUnitProperty.:TFT13_DrMundoBaseHealthExperimentBonus@最大生命值。参与击杀后，获得@TFTUnitProperty.:TFT13_DrMundoCurrentExperimentBonus@额外最大生命值。"
+   },
+   "icon": "assets/icons/tft13_drmundo_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_drmundo/skins/base/images/tft13_drmundo_mobile.png"
+  },
+  {
+   "id": "TFT13_Twitch",
+   "name": "图奇",
+   "cost": 4,
+   "traits": [
+    "试验品",
+    "狙神"
+   ],
+   "hp": 800.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 71.0,
+   "as": 0.75,
+   "range": 6.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "火力全开",
+    "desc": "接下来的8.0次攻击，获得75%%攻击速度、无限射程，并将普攻替换为向随机敌人发射的穿透弩箭。弩箭可造成— ()物理伤害，每穿过一个敌人，它的伤害降低60%%。【试验品】加成：每攻击5.0次后，对相距最近的那个敌人造成相当于其@TFTUnitProperty.:TFT13_TwitchCurrentExperimentBonus@%最大生命值的物理伤害。"
+   },
+   "icon": "assets/icons/tft13_twitch_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_twitch/skins/base/images/tft13_twitch__mobile.png"
+  },
+  {
+   "id": "TFT13_Akali",
+   "name": "阿卡丽",
+   "cost": 2,
+   "traits": [
+    "蓝发小队",
+    "迅击战士"
+   ],
+   "hp": 700.0,
+   "mana": 55.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 45.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "APReaper",
+   "ability": {
+    "name": "隼舞",
+    "desc": "朝目标投掷一支手里剑，造成0.0 ()魔法伤害并对其进行标记，使其在4.0秒里所受伤害提升15%%。随后冲刺远离目标。短暂延迟后，向其冲刺并造成0.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft13_akali_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_akali/skins/base/images/tft13_akali_mobile.png"
+  },
+  {
+   "id": "TFT13_Sett",
+   "name": "瑟提",
+   "cost": 2,
+   "traits": [
+    "蓝发小队",
+    "格斗家",
+    "搏击手"
+   ],
+   "hp": 850.0,
+   "mana": 100,
+   "initialMana": 50.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 60.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "强手裂颅",
+    "desc": "将两侧的各一名敌人拽到一起，使其相撞，并对其造成0.0 ()魔法伤害和1.0秒晕眩。如果仅抓到一名敌人，那么伤害和晕眩时长会提升50%。"
+   },
+   "icon": "assets/icons/tft13_sett_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_sett/skins/base/images/tft13_sett_mobile.png"
+  },
+  {
+   "id": "TFT13_Ezreal",
+   "name": "伊泽瑞尔",
+   "cost": 3,
+   "traits": [
+    "皮城学院",
+    "蓝发小队",
+    "炮手"
+   ],
+   "hp": 700.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 60.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "精华跃动",
+    "desc": "向当前目标发射一枚子弹，对1格内的所有敌人造成— ()物理伤害。然后，对爆炸中心的弈子造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft13_ezreal_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_ezreal/skins/base/images/tft13_ezreal_mobile.png"
+  },
+  {
+   "id": "TFT13_Illaoi",
+   "name": "俄洛伊",
+   "cost": 4,
+   "traits": [
+    "蓝发小队",
+    "哨兵"
+   ],
+   "hp": 1100.0,
+   "mana": 125.0,
+   "initialMana": 65.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 70.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "灵魂试炼",
+    "desc": "获得持续3.0秒的40%%伤害减免。在持续期间，从相距最近的4.0名敌人身上吸取200.0 ()生命值。然后向下猛击，对2格内的所有敌人造成— ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft13_illaoi_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_illaoi/skins/base/images/tft13_illaoi_mobile.png"
+  },
+  {
+   "id": "TFT13_Draven",
+   "name": "德莱文",
+   "cost": 1,
+   "traits": [
+    "铁血征服者",
+    "搏击手"
+   ],
+   "hp": 500.0,
+   "mana": 60.0,
+   "initialMana": 30.0,
+   "armor": 15.0,
+   "mr": 15.0,
+   "ad": 55.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "旋转飞斧",
+    "desc": "被动：如果德莱文手中持有一柄强化飞斧，他的下一次普攻会将它投掷出去，造成共计— ()物理伤害。强化飞斧命中一名敌人后，会折返至德莱文。主动：旋转一柄强化飞斧。"
+   },
+   "icon": "assets/icons/tft13_draven_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_draven/skins/base/images/tft13_draven_mobile.png"
+  },
+  {
+   "id": "TFT13_Rell",
+   "name": "芮尔",
+   "cost": 2,
+   "traits": [
+    "铁血征服者",
+    "哨兵",
+    "先知"
+   ],
+   "hp": 800.0,
+   "mana": 90.0,
+   "initialMana": 40.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 60.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "裂阵",
+    "desc": "获得持续4.0秒的0.0 ()护盾值。用长枪对一条直线上的敌人们造成— ()魔法伤害，并从命中的敌人们身上窃取10.0护甲和魔抗。"
+   },
+   "icon": "assets/icons/tft13_rell_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_rell/skins/base/images/tft13_rell_mobile.png"
+  },
+  {
+   "id": "TFT13_Cassiopeia",
+   "name": "卡西奥佩娅",
+   "cost": 3,
+   "traits": [
+    "黑色玫瑰",
+    "统领"
+   ],
+   "hp": 700.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 40.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "荆棘迷雾",
+    "desc": "轰炸目标，造成200.0 ()魔法伤害。 每第3次施放，对3.0格内的2.0个敌人喷洒迷雾，对每个目标造成200.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft13_cassiopeia_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_cassiopeia/skins/base/images/tft13_cassiopeia_mobile.png"
+  },
+  {
+   "id": "TFT13_Vladimir",
+   "name": "弗拉基米尔",
+   "cost": 2,
+   "traits": [
+    "黑色玫瑰",
+    "监察",
+    "法师"
+   ],
+   "hp": 800.0,
+   "mana": 65.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 45.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "鲜血转换",
+    "desc": "回复0.10000000149011612 ()生命值并对目标造成0.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft13_vladimir_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_vladimir/skins/base/images/tft13_vladimir_mobile.png"
+  },
+  {
+   "id": "TFT13_Elise",
+   "name": "伊莉丝",
+   "cost": 4,
+   "traits": [
+    "黑色玫瑰",
+    "双形战士",
+    "格斗家"
+   ],
+   "hp": 750.0,
+   "mana": 10.0,
+   "initialMana": 0,
+   "armor": 0.0,
+   "mr": null,
+   "ad": 50.0,
+   "as": 0.5,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "结茧",
+    "desc": "跳跃至附近的一格，并用蛛网缠住2.0格内的所有敌人，对其造成1.5秒晕眩和0.0 ()魔法伤害。回复— ()生命值。"
+   },
+   "icon": "assets/icons/tft13_elise_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_elise/skins/base/images/tft13_elise_mobile.png"
+  },
+  {
+   "id": "TFT13_LeBlanc",
+   "name": "乐芙兰",
+   "cost": 5,
+   "traits": [
+    "黑色玫瑰",
+    "法师"
+   ],
+   "hp": 900.0,
+   "mana": 90.0,
+   "initialMana": 45.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 50.0,
+   "as": 0.85,
+   "range": 4.0,
+   "role": "APCasterHighMana",
+   "ability": {
+    "name": "命运锁链",
+    "desc": "用锁链将相距最近的4.0名敌人锁在一起5.0秒，造成由他们均摊的500.0 ()魔法伤害。当其中一人受到伤害时，15%%的伤害额会作为额外真实伤害均摊给其他人。【乐芙兰】的下3.0次攻击会造成500.0 ()额外魔法伤害，每有一名被锁住的敌人阵亡于初始伤害，这个额外伤害就会提升50%%。"
+   },
+   "icon": "assets/icons/tft13_leblanc_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_leblanc/skins/base/images/tft13_leblanc_mobile.png"
+  },
+  {
+   "id": "TFT13_Heimerdinger",
+   "name": "黑默丁格",
+   "cost": 4,
+   "traits": [
+    "皮城学院",
+    "先知"
+   ],
+   "hp": 800.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 40.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "进步！",
+    "desc": "朝随机的敌人们发射9.0枚导弹，造成50.0 ()魔法伤害。每次施放会比前一次施放增加1.0枚导弹。"
+   },
+   "icon": "assets/icons/tft13_heimerdinger_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_heimerdinger/skins/base/images/tft13_heimerdinger_mobile.png"
+  },
+  {
+   "id": "TFT13_Jayce",
+   "name": "杰斯",
+   "cost": 5,
+   "traits": [
+    "皮城学院",
+    "双形战士"
+   ],
+   "hp": 900.0,
+   "mana": 10.0,
+   "initialMana": 0,
+   "armor": 0.0,
+   "mr": null,
+   "ad": 50.0,
+   "as": 0.5,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "特别快递",
+    "desc": "被动：召唤一个可放置的【海克斯科技锻炉】。施放时，与它相距最近的3.0名友军获得持续4.0秒的0.0 ()护盾值。如果锻炉被毁，可使其以100%%生命值重生。主动：召唤2道【海克斯飞门】，然后将目标撞入其中一道门，造成— ()物理伤害然后使其飞回原位置。在飞行时，该目标会对路径中的所有敌人造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft13_jayce_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_jayce/skins/base/images/tft13_jayce_mobile.png"
+  },
+  {
+   "id": "TFT13_Trundle",
+   "name": "特朗德尔",
+   "cost": 1,
+   "traits": [
+    "极客",
+    "格斗家"
+   ],
+   "hp": 650.0,
+   "mana": 80.0,
+   "initialMana": 30.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 50.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "绝望撕咬",
+    "desc": "回复— ()生命值并撕咬目标，造成— ()物理伤害。根据【特朗德尔】已损失的生命值，两个效果至多可提升至75%%。"
+   },
+   "icon": "assets/icons/tft13_trundle_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_trundle/skins/base/images/tft13_trundle_mobile.png"
+  },
+  {
+   "id": "TFT13_Ziggs",
+   "name": "吉格斯",
+   "cost": 2,
+   "traits": [
+    "极客",
+    "统领"
+   ],
+   "hp": 600.0,
+   "mana": 60.0,
+   "initialMana": 15.0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 35.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "子母炸弹",
+    "desc": "向目标投掷一枚炸弹，造成0.0 ()魔法伤害。随后，3.0枚迷你炸弹会从中飞出，对随机敌人们造成0.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft13_ziggs_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_ziggs/skins/base/images/tft13_ziggs_mobile.png"
+  },
+  {
+   "id": "TFT13_Rumble",
+   "name": "兰博",
+   "cost": 5,
+   "traits": [
+    "机械公敌",
+    "极客",
+    "哨兵"
+   ],
+   "hp": 1200.0,
+   "mana": 120.0,
+   "initialMana": 40.0,
+   "armor": 65.0,
+   "mr": 65.0,
+   "ad": 60.0,
+   "as": 0.8,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "恒温灼烧",
+    "desc": "向目标所在的那一排发射5.0枚飞弹，每枚飞弹都会对命中的目标造成0.0 ()魔法伤害、持续5.0秒的重伤和1%灼烧效果。每有一枚未命中敌人的飞弹，回复20.0法力值。如果敌方只剩下1名敌人，则向其发射所有飞弹。灼烧：每秒造成目标一部分最大生命值的真实伤害重伤：受到的治疗效果降低33%@TFTUnitProperty.:TFT13_JunkerKing_UpgradeTRAKeyWrapper@"
+   },
+   "icon": "assets/icons/tft13_rumble_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_rumble/skins/base/images/tft13_rumble_mobile.png"
+  },
+  {
+   "id": "TFT13_Gremlin",
+   "name": "史密奇",
+   "cost": 3,
+   "traits": [
+    "炼金男爵",
+    "伏击专家"
+   ],
+   "hp": 777.0,
+   "mana": 70.0,
+   "initialMana": 20.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 70.0,
+   "as": 0.8,
+   "range": 1.0,
+   "role": "ADReaper",
+   "ability": {
+    "name": "废铁黑客",
+    "desc": "跃向4.0格内携带最少装备的那个敌人。斩击3.0次，总共造成— ()物理伤害。如果目标阵亡，则再次跃击，但伤害值降低30%%。"
+   },
+   "icon": "assets/icons/tft13_gremlin_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_gremlin/skins/base/images/tft13_gremlin_mobile.png"
+  },
+  {
+   "id": "TFT13_Lieutenant",
+   "name": "塞薇卡",
+   "cost": 5,
+   "traits": [
+    "百变铁手",
+    "炼金男爵",
+    "搏击手"
+   ],
+   "hp": 1277.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 80.0,
+   "as": 0.9,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "扭转局势",
+    "desc": "随机施放3个技能中的1个，有机会中头奖！喷火器：{{Spell_TFT13_LieutenantSpell1_Tooltip}}伸缩拳：{{Spell_TFT13_LieutenantSpell2_Tooltip}}嚼一嚼：{{Spell_TFT13_LieutenantSpell3_Tooltip}}"
+   },
+   "icon": "assets/icons/tft13_lieutenant_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_lieutenant/skins/base/images/tft13_lieutenant_mobile.png"
+  },
+  {
+   "id": "TFT13_Chainsaw",
+   "name": "荏妮",
+   "cost": 3,
+   "traits": [
+    "炼金男爵",
+    "格斗家"
+   ],
+   "hp": 850.0,
+   "mana": 90.0,
+   "initialMana": 40.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 55.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "泥奔者重击",
+    "desc": "1.5秒内持续回复共— ()生命值。在持续期间，将目标举到空中，对其造成晕眩和— ()物理伤害。然后将其向下猛击，对邻格的所有敌人造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft13_chainsaw_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_chainsaw/skins/base/images/tft13_chainsaw_mobile.png"
+  },
+  {
+   "id": "TFT13_Beardy",
+   "name": "洛里斯",
+   "cost": 3,
+   "traits": [
+    "执法官",
+    "哨兵"
+   ],
+   "hp": 850.0,
+   "mana": 80.0,
+   "initialMana": 40.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 50.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "皮城坚盾",
+    "desc": "获得持续4.0秒的0.0 ()护盾值。这个护盾可将邻格友军们所受伤害的50%%重新导向。护盾失效时，在锥形范围内造成0.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft13_beardy_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_beardy/skins/base/images/tft13_beardy_mobile.png"
+  },
+  {
+   "id": "TFT13_Fish",
+   "name": "斯特卜",
+   "cost": 1,
+   "traits": [
+    "执法官",
+    "格斗家"
+   ],
+   "hp": 650.0,
+   "mana": 75.0,
+   "initialMana": 25.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 55.0,
+   "as": 0.55,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "战地医疗",
+    "desc": "被动：受到治疗时，相距最近的2.0名友军也会回复25%%该治疗量的生命值。主动：回复0.0 ()生命值并对目标进行打击，造成0.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft13_fish_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_fish/skins/base/images/tft13_fish_mobile.png"
+  },
+  {
+   "id": "TFT13_Shooter",
+   "name": "麦迪",
+   "cost": 1,
+   "traits": [
+    "执法官",
+    "狙神"
+   ],
+   "hp": 500.0,
+   "mana": 120.0,
+   "initialMana": 20.0,
+   "armor": 15.0,
+   "mr": 15.0,
+   "ad": 50.0,
+   "as": 0.7,
+   "range": 6.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "连拨击锤",
+    "desc": "向相距最远的那个敌人发射6.0颗子弹，子弹会对命中的首个敌人造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft13_shooter_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_shooter/skins/base/images/tft13_shooter_mobile.png"
+  },
+  {
+   "id": "TFT13_Blue",
+   "name": "爆爆",
+   "cost": 1,
+   "traits": [
+    "家人",
+    "极客",
+    "伏击专家"
+   ],
+   "hp": 500.0,
+   "mana": 90.0,
+   "initialMana": 0,
+   "armor": 15.0,
+   "mr": 15.0,
+   "ad": 30.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCasterHighMana",
+   "ability": {
+    "name": "不合适的玩具",
+    "desc": "向敌人最密集处派出一只猴子，发生接触时引发一次半径为2格的爆炸。对命中的敌人们造成0.0 ()魔法伤害，敌人每远离爆炸中心一格，这个伤害就会降低33%%。对命中的全体敌人造成持续5.0秒的重伤和1%灼烧效果。灼烧：每秒造成目标一部分最大生命值的真实伤害重伤：降低33%受到的治疗效果"
+   },
+   "icon": "assets/icons/tft13_blue_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_blue/skins/base/images/tft13_blue_mobile.png"
+  },
+  {
+   "id": "TFT13_Prime",
+   "name": "范德尔",
+   "cost": 2,
+   "traits": [
+    "家人",
+    "监察"
+   ],
+   "hp": 800.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 55.0,
+   "as": 0.7,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "地下猎犬",
+    "desc": "停止攻击并摆出持续2.5秒的防御姿态，获得— ()护甲和魔抗。【范德尔】的下一次攻击会被替换为一次打击，造成— ()物理伤害，己方队伍中每有一名1或2费弈子，这个伤害值就会提升— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft13_prime_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_prime/skins/base/images/tft13_prime_mobile.png"
+  },
+  {
+   "id": "TFT13_FlyGuy",
+   "name": "刀疤",
+   "cost": 3,
+   "traits": [
+    "野火帮",
+    "监察"
+   ],
+   "hp": 800.0,
+   "mana": 170.0,
+   "initialMana": 80.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 50.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "水坑狙击惊喜",
+    "desc": "向相距最近的3.0名敌人抛出炸弹，对每名敌人造成1.5秒晕眩和0.0 ()魔法伤害。回复0.029999999329447746 ()生命值。"
+   },
+   "icon": "assets/icons/tft13_flyguy_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_flyguy/skins/base/images/tft13_flyguy_mobile.png"
+  },
+  {
+   "id": "TFT13_NunuWillump",
+   "name": "努努和威朗普",
+   "cost": 3,
+   "traits": [
+    "试验品",
+    "格斗家",
+    "先知"
+   ],
+   "hp": 800.0,
+   "mana": 100,
+   "initialMana": 50.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 50.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "丧尸力量！！\t\t\t\t\t\t",
+    "desc": "在3.0秒内，获得0.5 ()伤害减免，并制造一团蔓延2格的有毒烟雾，对其中的敌人们造成0.0 ()魔法伤害。随后引爆烟雾并对其中的所有敌人造成0.0 ()魔法伤害。【试验品】加成：造成伤害后，造成@TFTUnitProperty.:TFT13_NunuCurrentExperimentBonus@%最大的额外魔法伤害(1.0秒冷却时间)。"
+   },
+   "icon": "assets/icons/tft13_nunuwillump_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_nunuwillump/skins/base/images/tft13_nunuwillump_mobile.png"
+  },
+  {
+   "id": "TFT13_Jinx",
+   "name": "金克丝",
+   "cost": 5,
+   "traits": [
+    "蓝发小队",
+    "伏击专家"
+   ],
+   "hp": 900.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 60.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "破灭一切",
+    "desc": "【金克丝】在震荡电磁波、嚼火者手雷和超究极死神飞弹技能之间来回切换。震荡电磁波：对一条直线上的敌人造成— ()物理伤害和1.5秒晕眩。嚼火者手雷：对3.0个1格圆形范围内的敌人们造成— ()物理伤害。超究极死神飞弹：在棋盘中心发射一颗飞弹，飞弹会对所有敌人们造成— ()物理伤害，敌人每远离爆炸中心一格，这个伤害就会降低10%%。"
+   },
+   "icon": "assets/icons/tft13_jinx_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_jinx/skins/base/images/tft13_jinx_mobile.png"
+  },
+  {
+   "id": "TFT13_Zeri",
+   "name": "泽丽",
+   "cost": 2,
+   "traits": [
+    "野火帮",
+    "狙神"
+   ],
+   "hp": 600.0,
+   "mana": 3.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 51.0,
+   "as": 0.75,
+   "range": 6.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "内能迁转",
+    "desc": "被动：每第3.0次普攻替换为电火花，对目标造成— ()物理伤害，对附近2.0名敌人造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft13_zeri_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_zeri/skins/base/images/tft13_zeri_mobile.png"
+  },
+  {
+   "id": "TFT13_Red",
+   "name": "蔚奥莱",
+   "cost": 1,
+   "traits": [
+    "家人",
+    "搏击手"
+   ],
+   "hp": 650.0,
+   "mana": 65.0,
+   "initialMana": 20.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 46.0,
+   "as": 0.8,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "1-2-3连招",
+    "desc": "戳刺目标2.0次，每次造成— ()物理伤害。随后，对目标进行上勾拳，造成— ()物理伤害，并短暂将其击飞。"
+   },
+   "icon": "assets/icons/tft13_red_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_red/skins/base/images/tft13_red_mobile.png"
+  },
+  {
+   "id": "TFT13_Nami",
+   "name": "娜美",
+   "cost": 3,
+   "traits": [
+    "外交官",
+    "法师"
+   ],
+   "hp": 700.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 40.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "潮落",
+    "desc": "对目标发射一道波浪，它会弹跳至3.0格内的敌人们3.0次，并造成75.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft13_nami_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_nami/skins/base/images/tft13_nami_mobile.png"
+  },
+  {
+   "id": "TFT13_Corki",
+   "name": "库奇",
+   "cost": 4,
+   "traits": [
+    "极客",
+    "炮手"
+   ],
+   "hp": 850.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 70.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "侧舷弹幕",
+    "desc": "锁定目标，横移至一个附近位置，射出21.0枚导弹，由目标与两格范围内全体敌人间均摊。每枚导弹造成— ()物理伤害，并使护甲降低2.0。每第7.0枚导弹造成— ()物理伤害并使护甲降低—。"
+   },
+   "icon": "assets/icons/tft13_corki_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_corki/skins/base/images/tft13_corki_mobile.png"
+  },
+  {
+   "id": "TFT13_Garen",
+   "name": "盖伦",
+   "cost": 4,
+   "traits": [
+    "外交官",
+    "监察"
+   ],
+   "hp": 1000.0,
+   "mana": 125.0,
+   "initialMana": 60.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 65.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "德玛西亚正义",
+    "desc": "被动：造成伤害后，回复— ()生命值。主动：获得持续4.0秒的— ()护盾值。将一柄巨剑砸落在目标上，对其造成— ()物理伤害，对2格内的敌人们造成— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft13_garen_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_garen/skins/base/images/tft13_garen_mobile.png"
+  },
+  {
+   "id": "TFT13_Vex",
+   "name": "薇古丝",
+   "cost": 1,
+   "traits": [
+    "蓝发小队",
+    "先知"
+   ],
+   "hp": 450.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 15.0,
+   "mr": 15.0,
+   "ad": 30.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "溟濛渐染",
+    "desc": "对目标造成0.0 ()魔法伤害，并在其周围创建一个半径为1格的黑暗区域。短暂延迟后，对仍在区域内的敌人们造成0.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft13_vex_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_vex/skins/base/images/tft13_vex_mobile.png"
+  },
+  {
+   "id": "TFT13_Nocturne",
+   "name": "魔腾",
+   "cost": 2,
+   "traits": [
+    "海克斯机械",
+    "迅击战士"
+   ],
+   "hp": 700.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 63.0,
+   "as": 0.8,
+   "range": 1.0,
+   "role": "ADReaper",
+   "ability": {
+    "name": "过载战刃",
+    "desc": "在6.0秒内，攻击还会使当前目标的邻格敌人们流血，在1.0秒内持续造成共— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft13_nocturne_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_nocturne/skins/base/images/tft13_nocturne_mobile.png"
+  },
+  {
+   "id": "TFT13_Darius",
+   "name": "德莱厄斯",
+   "cost": 1,
+   "traits": [
+    "铁血征服者",
+    "监察"
+   ],
+   "hp": 600.0,
+   "mana": 70.0,
+   "initialMana": 30.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 55.0,
+   "as": 0.7,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "大杀四方",
+    "desc": "旋转并对邻格敌人们造成— ()物理伤害，并回复0.0 ()生命值。对目标施加流血效果，在4.0秒内持续造成共— ()物理伤害。"
+   },
+   "icon": "assets/icons/tft13_darius_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_darius/skins/base/images/tft13_darius_mobile.png"
+  },
+  {
+   "id": "TFT13_Irelia",
+   "name": "艾瑞莉娅",
+   "cost": 1,
+   "traits": [
+    "蓝发小队",
+    "哨兵"
+   ],
+   "hp": 700.0,
+   "mana": 70.0,
+   "initialMana": 30.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 45.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "距破之舞",
+    "desc": "进入防御姿态，获得在3.0秒里急速衰减的— ()护盾值。护盾失效时，对【艾瑞莉娅】周围和面前的敌人造成— ()魔法伤害 + 75%%已吸收伤害的伤害。"
+   },
+   "icon": "assets/icons/tft13_irelia_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_irelia/skins/base/images/tft13_irelia_mobile.png"
+  },
+  {
+   "id": "TFT13_Ambessa",
+   "name": "安蓓萨",
+   "cost": 4,
+   "traits": [
+    "外交官",
+    "铁血征服者",
+    "迅击战士"
+   ],
+   "hp": 1100.0,
+   "mana": 70.0,
+   "initialMana": 30.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 70.0,
+   "as": 0.8,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "不懈女猎手",
+    "desc": "在施放时，【安蓓萨】在两种姿态间切换：锁链：获得+1攻击距离。普攻造成— ()物理伤害。在施放时，冲刺至目标处，并在一个半圆区域内进行打击，对命中的敌人们造成— ()物理伤害。拳击：获得— ()全能吸血，且攻击速度翻倍。施放时，短暂晕眩目标，随后将其砸向地面，造成— ()物理伤害，然后冲刺撤离。"
+   },
+   "icon": "assets/icons/tft13_ambessa_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_ambessa/skins/base/images/tft13_ambessa_mobile.png"
+  },
+  {
+   "id": "TFT13_Zyra",
+   "name": "婕拉",
+   "cost": 1,
+   "traits": [
+    "试验品",
+    "法师"
+   ],
+   "hp": 500.0,
+   "mana": 60.0,
+   "initialMana": 10.0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 30.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCasterHighMana",
+   "ability": {
+    "name": "缠绕之根",
+    "desc": "向当前目标放出藤蔓，对其造成1.0秒晕眩和0.0 ()魔法伤害。随后，较小的藤蔓会搜寻2.0名相距最近的敌人，并对其造成0.0 ()魔法伤害。【试验品】加成：技能伤害使敌人流血，在2.0秒里持续造成共@TFTUnitProperty.:TFT13_ZyraCurrentExperimentBonus@%额外真实伤害。"
+   },
+   "icon": "assets/icons/tft13_zyra_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_zyra/skins/base/images/tft13_zyra_mobile.png"
+  },
+  {
+   "id": "TFT13_Gangplank",
+   "name": "普朗克",
+   "cost": 3,
+   "traits": [
+    "极客",
+    "双形战士",
+    "搏击手"
+   ],
+   "hp": 700.0,
+   "mana": 10.0,
+   "initialMana": 0,
+   "armor": 0.0,
+   "mr": null,
+   "ad": 50.0,
+   "as": 0.5,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "烈焰之获",
+    "desc": "回复100.0 ()生命值。然后斩击，对一条线上的敌人造成— ()物理伤害。如果只命中了一名敌人，则该伤害翻倍。"
+   },
+   "icon": "assets/icons/tft13_gangplank_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_gangplank/skins/base/images/tft13_gangplank_mobile.png"
+  },
+  {
+   "id": "TFT13_Leona",
+   "name": "蕾欧娜",
+   "cost": 2,
+   "traits": [
+    "皮城学院",
+    "哨兵"
+   ],
+   "hp": 800.0,
+   "mana": 65.0,
+   "initialMana": 20.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 55.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "日蚀",
+    "desc": "加固自身3.0秒，获得— ()伤害减免。之后，对邻格敌人们造成0.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft13_leona_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_leona/skins/base/images/tft13_leona_mobile.png"
+  },
+  {
+   "id": "TFT13_KogMaw",
+   "name": "克格莫",
+   "cost": 3,
+   "traits": [
+    "海克斯机械",
+    "狙神"
+   ],
+   "hp": 650.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 15.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCarry",
+   "ability": {
+    "name": "升级弹幕模块",
+    "desc": "被动：普攻造成— () 额外魔法伤害。主动：获得25%%可叠加的攻击速度，持续至战斗环节结束。每施放3.0次后，获得+1攻击距离。"
+   },
+   "icon": "assets/icons/tft13_kogmaw_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_kogmaw/skins/base/images/tft13_kogmaw_mobile.png"
+  },
+  {
+   "id": "TFT13_TwistedFate",
+   "name": "崔斯特",
+   "cost": 3,
+   "traits": [
+    "执法官",
+    "迅击战士"
+   ],
+   "hp": 700.0,
+   "mana": 75.0,
+   "initialMana": 25.0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 35.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCasterHighMana",
+   "ability": {
+    "name": "万能牌",
+    "desc": "向不同目标抛出3张卡牌。蓝色卡牌：为生命值最低的那个友军回复— ()生命值。红色卡牌：对敌人们所在的最大圆形区域造成0.0 ()魔法伤害。黄色卡牌：对目标造成0.0 ()魔法伤害和1.0秒晕眩。"
+   },
+   "icon": "assets/icons/tft13_twistedfate_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_twistedfate/skins/base/images/tft13_twistedfate_mobile.png"
+  },
+  {
+   "id": "TFT13_Lux",
+   "name": "拉克丝",
+   "cost": 1,
+   "traits": [
+    "皮城学院",
+    "法师"
+   ],
+   "hp": 500.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 30.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "曲光屏障",
+    "desc": "为生命值最低的友军提供0.0 ()护盾值。拉克丝的下一次攻击造成0.0 ()额外魔法伤害。"
+   },
+   "icon": "assets/icons/tft13_lux_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_lux/skins/base/images/tft13_lux_mobile.png"
+  },
+  {
+   "id": "TFT13_Mordekaiser",
+   "name": "莫德凯撒",
+   "cost": 5,
+   "traits": [
+    "铁血征服者",
+    "统领"
+   ],
+   "hp": 1200.0,
+   "mana": 100,
+   "initialMana": 25.0,
+   "armor": 70.0,
+   "mr": 70.0,
+   "ad": 75.0,
+   "as": 0.55,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "铁铠冥魂之握",
+    "desc": "短暂获得40%%伤害减免，并召唤一只巨爪，在敌人最多的一条直线上造成0.0 ()魔法伤害。相距最近的4.0名敌人受到的伤害提升25%%，并被拉向【莫德凯撒】。在接下来的10.0秒内，获得30%%全能吸血、+1攻击距离、并且将每次攻击替换为猛击，对目标造成0.0 ()魔法伤害，并对2.0格内的所有其他敌人造成0.0 ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft13_mordekaiser_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_mordekaiser/skins/base/images/tft13_mordekaiser_mobile.png"
+  },
+  {
+   "id": "TFT13_Morgana",
+   "name": "莫甘娜",
+   "cost": 1,
+   "traits": [
+    "黑色玫瑰",
+    "先知"
+   ],
+   "hp": 500.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 30.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "受折磨的灵魂",
+    "desc": "诅咒相距最近且未受诅咒的那个敌人，在10.0秒里造成共0.0 ()魔法伤害，并使其受到的护盾效能降低50%%。"
+   },
+   "icon": "assets/icons/tft13_morgana_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_morgana/skins/base/images/tft13_morgana_mobile.png"
+  },
+  {
+   "id": "TFT13_Tristana",
+   "name": "崔丝塔娜",
+   "cost": 2,
+   "traits": [
+    "外交官",
+    "炮手"
+   ],
+   "hp": 550.0,
+   "mana": 60.0,
+   "initialMana": 20.0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 42.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "瞄准",
+    "desc": "朝目标发射一颗炮弹，造成— ()物理伤害。如果该敌人阵亡，那么炮弹会弹射至相距最近的那个敌人，造成过量击杀伤害。此时永久获得@TFTUnitProperty.:TFT13_TristanaASPerStack@%攻击力。(当前加成：@TFTUnitProperty.:TFT13_TristanaASGain@% )"
+   },
+   "icon": "assets/icons/tft13_tristana_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_tristana/skins/base/images/tft13_tristana_mobile.png"
+  },
+  {
+   "id": "TFT13_Swain",
+   "name": "斯维因",
+   "cost": 3,
+   "traits": [
+    "铁血征服者",
+    "双形战士",
+    "法师"
+   ],
+   "hp": 650.0,
+   "mana": 10.0,
+   "initialMana": 0,
+   "armor": 0.0,
+   "mr": null,
+   "ad": 50.0,
+   "as": 0.5,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "恶魔升华",
+    "desc": "回复0.0 ()生命值并飞升6.0秒。处于飞升状态时，每过一秒，就会回复0.0 ()生命值并对邻格的敌人们造成— ()魔法伤害。参与击杀时，飞升的持续时长会延长2.0秒。"
+   },
+   "icon": "assets/icons/tft13_swain_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_swain/skins/base/images/tft13_swain_mobile.png"
+  },
+  {
+   "id": "TFT13_Urgot",
+   "name": "厄加特",
+   "cost": 2,
+   "traits": [
+    "试验品",
+    "搏击手",
+    "炮手"
+   ],
+   "hp": 650.0,
+   "mana": 90.0,
+   "initialMana": 45.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 55.0,
+   "as": 0.75,
+   "range": 2.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "腐蚀电荷",
+    "desc": "发射一道爆炸充能，对目标造成3.0 ()物理伤害，并对邻格的敌人们造成1.5 ()物理伤害。 对命中的所有敌人施加持续6.0秒的20%护甲击碎。护甲击碎： 降低护甲值【试验品】加成：位移至目标处。 在施放技能时，获得@TFTUnitProperty.:TFT13_UrgotCurrentExperimentBonusShield@%最大生命值的护盾值和@TFTUnitProperty.:TFT13_UrgotCurrentExperimentBonusAS@%攻击速度，持续5.0秒。"
+   },
+   "icon": "assets/icons/tft13_urgot_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_urgot/skins/base/images/tft13_urgot_mobile.png"
+  },
+  {
+   "id": "TFT13_Zoe",
+   "name": "佐伊",
+   "cost": 4,
+   "traits": [
+    "蓝发小队",
+    "法师"
+   ],
+   "hp": 800.0,
+   "mana": 80.0,
+   "initialMana": 20.0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 40.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCasterHighMana",
+   "ability": {
+    "name": "飞星乱入！",
+    "desc": "朝目标发射一颗星星，造成0.0 ()魔法伤害。它会弹向4.0格内相距最远的那个敌人，然后弹回目标。该效果会重复2.0次，每次命中一个不同的敌人。"
+   },
+   "icon": "assets/icons/tft13_zoe_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft13_zoe/skins/base/images/tft13_zoe_mobile.png"
+  }
+ ],
+ "traits": [
+  {
+   "name": "海克斯机械",
+   "desc": "【海克斯机械】们会在造成伤害时获得一颗水晶。在20.0颗水晶时，它们会震击它们的当前目标，造成魔法伤害+自上次震击后的25%%已造成伤害，然后重置。它们还会获得护甲与魔抗。(—) 150.0伤害，25.0",
+   "icon": "assets/icons/trait_icon_13_automata.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "ConversionDamagePct": 0.25,
+      "MagicDamage": 150.0,
+      "Resists": 25.0,
+      "TriggerNumCrystals": 20.0,
+      "{a142f31c}": 1.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "ConversionDamagePct": 0.25,
+      "MagicDamage": 450.0,
+      "Resists": 60.0,
+      "TriggerNumCrystals": 20.0,
+      "{a142f31c}": 1.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "ConversionDamagePct": 0.25,
+      "MagicDamage": 1337.0,
+      "Resists": 111.0,
+      "TriggerNumCrystals": 20.0,
+      "{a142f31c}": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "危险人物",
+   "desc": "【爆爆】获得【统领】但不再受益于【家人】。当她的猴子爆炸时，它会生成3.0个【希尔科】的畸变体。",
+   "icon": "assets/icons/teamup_trait_menaces.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "NumMonstrosities": 3.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "法师",
+   "desc": "你的队伍获得10.0法术强度。【法师】们获得更多法术强度。(—) 20.0 (—) 20.0 (—) 20.0 ，技能会对其目标造成持续—秒的@DamageDecrease*100@%伤害削减",
+   "icon": "assets/icons/trait_icon_3_sorcerer.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "BaseAP": 20.0,
+      "TeamAP": 10.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "BaseAP": 55.0,
+      "TeamAP": 10.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BaseAP": 90.0,
+      "DamageDecrease": 0.20000000298023224,
+      "DamageDecreaseDuration": 3.0,
+      "TeamAP": 10.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "极客",
+   "desc": "战斗开始时：【极客】们携带的基础装备会临时转变为成装。己方每持有一件基础装备(包括那些已合成成装的基础装备)，【极客】弈子就获得持续24.0秒的护盾值。(—) 1.0件基础装备，25.0护盾值(—) 1.0件基础装备，25.0护盾值(—) 所有基础装备和成装都会成为幸运装备！25.0护盾值(—) 生成光明版装备！25.0护盾值护盾值：@TFTUnitProperty.:TFT13_Trait_Scrap_ShieldTotal@",
+   "icon": "assets/icons/trait_icon_6_scrap.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "HPShieldAmount": 25.0,
+      "HPShieldAmountCT": 25.0,
+      "NumComponents": 1.0,
+      "ShieldDuration": 24.0,
+      "{659aef8d}": null,
+      "{7e2474c8}": null
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "HPShieldAmount": 35.0,
+      "HPShieldAmountCT": 35.0,
+      "NumComponents": 3.0,
+      "ShieldDuration": 24.0,
+      "{659aef8d}": null,
+      "{7e2474c8}": null
+     }
+    },
+    {
+     "min": 6,
+     "max": 8,
+     "style": 5,
+     "vars": {
+      "HPShieldAmount": 45.0,
+      "HPShieldAmountCT": 45.0,
+      "NumComponents": 20.0,
+      "ShieldDuration": 24.0,
+      "{659aef8d}": 1.0,
+      "{7e2474c8}": null
+     }
+    },
+    {
+     "min": 9,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "HPShieldAmount": 60.0,
+      "HPShieldAmountCT": 60.0,
+      "NumComponents": 20.0,
+      "ShieldDuration": 24.0,
+      "{659aef8d}": 1.0,
+      "{7e2474c8}": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "炮手",
+   "desc": "【炮手】们每攻击5.0次，就会发射一枚火箭，在目标附近造成125%%攻击力的伤害。他们还会获得攻击力。(—) 10%% (—) 10%% (—) 10%% ，每攻击5.0次，发射一枚造成双倍伤害的火箭。",
+   "icon": "assets/icons/trait_icon_13_artillerist.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "AD": 0.10000000149011612,
+      "NumOfAttacks": 5.0,
+      "PercentDamage": 1.25
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 5,
+     "vars": {
+      "AD": 0.44999998807907104,
+      "NumOfAttacks": 5.0,
+      "PercentDamage": 1.25
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AD": 0.699999988079071,
+      "NumOfAttacks": 3.0,
+      "PercentDamage": 2.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "双形战士",
+   "desc": "固有能力：【双形战士】们会基于自己所在的位置（前两排或后两排）而更换他们的技能。前2排的【双形战士】们将获得伤害减免。后2排的【双形战士】们将获得伤害增幅。(—) 15%% 或20%%",
+   "icon": "assets/icons/trait_icon_13_formswapper.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "DA": 0.20000000298023224,
+      "DR": 0.15000000596046448
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "DA": 0.30000001192092896,
+      "DR": 0.2199999988079071
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "DA": 0.4399999976158142,
+      "DR": 0.33000001311302185
+     }
+    }
+   ]
+  },
+  {
+   "name": "外交官",
+   "desc": "这个羁绊仅会在你恰好拥有1个或4个独特的【外交官】时激活。(—) 获得该【外交官】的加成。(—) 获得所有加成。 【外交官】们获得250.0 和20%% 。【安蓓萨】： 己方弈子们获得2.0x已击败对手数量的护甲和魔抗。(@TFTUnitProperty.trait:TFT13_Ambassador_PlayersDefeated@/7)【盖伦】： 战斗开始时，【盖伦】和他左右两侧的己方弈子们获得他的12%%最大生命值。【娜美】： 己方弈子的每次普攻提供3.0额外法力值。【崔丝塔娜】： 己方弈子获得6%%x星级的攻击速度。",
+   "icon": "assets/icons/trait_icon_13_diplomat.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "AmbessaArmor": 2.0,
+      "AmbessaArmor_PVE": 4.0,
+      "BonusAS": null,
+      "BonusHealth": 250.0,
+      "CCImmuneDuration": 8.0,
+      "GarenHealthPercent": 0.11999999731779099,
+      "NamiMana": 3.0,
+      "SelfishDamageAmp": 0.20000000298023224,
+      "StarAS": 0.05999999865889549,
+      "{3854f478}": 2.0,
+      "{4b20f990}": null,
+      "{845be53a}": 4.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 5,
+     "vars": {
+      "AmbessaArmor": 2.0,
+      "AmbessaArmor_PVE": 4.0,
+      "BonusAS": null,
+      "BonusHealth": 250.0,
+      "CCImmuneDuration": 8.0,
+      "GarenHealthPercent": 0.11999999731779099,
+      "NamiMana": 3.0,
+      "SelfishDamageAmp": 0.20000000298023224,
+      "StarAS": 0.05999999865889549,
+      "{3854f478}": 2.0,
+      "{4b20f990}": null,
+      "{845be53a}": 4.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "军事管制",
+   "desc": "当【安蓓萨】施放技能时，【凯特琳】对该目标进行一次强化攻击，造成200%%伤害。【安蓓萨】获得【凯特琳】的18%%攻击力。",
+   "icon": "assets/icons/teamup_trait_mentorship.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "ADShare": 0.18000000715255737,
+      "CaitAD": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "哨兵",
+   "desc": "你的队伍获得护甲和魔抗。【哨兵】们获得三倍。(—) 12.0",
+   "icon": "assets/icons/trait_icon_10_warden.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "BonusArmor": 12.0,
+      "{5921fc26}": 2.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "BonusArmor": 25.0,
+      "{5921fc26}": 2.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BonusArmor": 42.0,
+      "{5921fc26}": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "重新联合",
+   "desc": "当【蔚】施放技能时，【艾克】会朝她的目标释放3个残影，每个残影造成40%%伤害。当【艾克】施放技能时，【蔚】会对他的目标打出一道地震波，造成100%%伤害。",
+   "icon": "assets/icons/teamup_trait_reunion.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "EkkoAfterImageReducedDamage": 0.4000000059604645,
+      "ViEarthquakeReducedDamage": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "家人",
+   "desc": "【家人】们会彼此支持，缩减最大法力值并且获得额外加成。(—) 25%%缩减，20%% (—) 25%%缩减，20%% (—) 25%%缩减，去上城搞钱！在战斗后，获得搞钱进度，并且每个存活的【家人】都会使这个进度提升！@TFTUnitProperty.trait:TFT13_JunkerKing_SelfDestructTRA@",
+   "icon": "assets/icons/trait_icon_13_family.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 3,
+     "style": 5,
+     "vars": {
+      "AttackSpeed": 0.20000000298023224,
+      "DamageReduction": 0.20000000298023224,
+      "ManaReduction": 0.25
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 5,
+     "vars": {
+      "AttackSpeed": 0.20000000298023224,
+      "DamageReduction": 0.20000000298023224,
+      "ManaReduction": 0.30000001192092896
+     }
+    },
+    {
+     "min": 5,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AttackSpeed": 0.20000000298023224,
+      "DamageReduction": 0.20000000298023224,
+      "ManaReduction": 0.4000000059604645,
+      "{01fcc30b}": 0.75,
+      "{217874f1}": 2.5,
+      "{43cb93dd}": 1.25,
+      "{46c3fc24}": 1.5,
+      "{6fc9f267}": 17.0,
+      "{8173be81}": 2.0,
+      "{9000fe5b}": 2.0,
+      "{92029cea}": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "伏击专家",
+   "desc": "来自【伏击专家】的技能的伤害可以暴击。他们还会获得额外的暴击几率和暴击伤害。(—) 25%% ；10%% (—) 25%% ；10%% (—) 25%% ；10%% (—) 25%% ；10%% ；此外，还会获得@DamageReductionPct*100@%伤害减免",
+   "icon": "assets/icons/trait_icon_13_ambusher.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "CritChance": 0.25,
+      "CritDamage": 0.10000000149011612
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "CritChance": 0.3499999940395355,
+      "CritDamage": 0.20000000298023224
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "CritChance": 0.44999998807907104,
+      "CritDamage": 0.25
+     }
+    },
+    {
+     "min": 5,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "CritChance": 0.550000011920929,
+      "CritDamage": 0.25,
+      "DamageReductionPct": 0.15000000596046448
+     }
+    }
+   ]
+  },
+  {
+   "name": "姐妹",
+   "desc": "当【金克丝】参与一次击杀后，【蔚】会获得持续10.0秒的80%%额外攻击力。当【蔚】参与一次击杀后，【金克丝】会获得持续10.0秒的80%%额外攻速。",
+   "icon": "assets/icons/teamup_trait_sisters.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "ADBuff": 0.800000011920929,
+      "ASBuff": 0.800000011920929,
+      "JinxDuration": 10.0,
+      "ViDuration": 10.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "先知",
+   "desc": "每当【先知】们获得法力值时，会获得更多法力值。(—) 25%% (—) 25%% (—) 25%% ，技能会治疗一名友军，数额相当于该技能的@AllyHealing*100@%已造成伤害",
+   "icon": "assets/icons/trait_icon_13_visionary.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "EnlightenedBonusMana": 0.25
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "EnlightenedBonusMana": 0.5
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AllyHealing": 0.1599999964237213,
+      "EnlightenedBonusMana": 0.75
+     }
+    }
+   ]
+  },
+  {
+   "name": "狙神",
+   "desc": "【狙神】们获得伤害增幅并且对距离更远的目标造成更高伤害。(—) 5%% ；每格5.0%伤害(—) 5%% ；每格5.0%伤害(—) 5%% ；每格5.0%伤害；【狙神】们获得+None攻击距离",
+   "icon": "assets/icons/trait_icon_6_sniper.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "BaseDamageAmp": 0.05000000074505806,
+      "BonusHexRangeIncrease": null,
+      "PercentDamageIncrease": 5.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 5,
+     "vars": {
+      "BaseDamageAmp": 0.3499999940395355,
+      "BonusHexRangeIncrease": null,
+      "PercentDamageIncrease": 10.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BaseDamageAmp": 0.75,
+      "BonusHexRangeIncrease": 5.0,
+      "PercentDamageIncrease": 20.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "铁血征服者",
+   "desc": "【铁血征服者】们在参与击杀后会提供【征服】层数。获得足够的【征服】层数后，即可打开一个装满战利品的战争宝箱！【铁血征服者】们获得攻击力和法术强度，并且每打开一个战利品宝箱，这个加成就会提升8%%。(—) 22%% ；1.0x【征服】层数已打开的战争宝箱：@TFTUnitProperty.trait:TFT13_Warband_ChestsCompleted@当前属性：@TFTUnitProperty.trait:TFT13_Warband_CurrentADAP@%",
+   "icon": "assets/icons/trait_icon_13_conqueror.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "ADAPBase": 0.2199999988079071,
+      "PercentIncreasePerChest": 0.07999999821186066,
+      "StacksPerKill": 1.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "ADAPBase": 0.33000001311302185,
+      "PercentIncreasePerChest": 0.07999999821186066,
+      "StacksPerKill": 3.0
+     }
+    },
+    {
+     "min": 6,
+     "max": 8,
+     "style": 5,
+     "vars": {
+      "ADAPBase": 0.4000000059604645,
+      "PercentIncreasePerChest": 0.07999999821186066,
+      "StacksPerKill": 6.0
+     }
+    },
+    {
+     "min": 9,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "ADAPBase": 1.2000000476837158,
+      "PercentIncreasePerChest": 0.07999999821186066,
+      "StacksPerKill": 20.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "百变铁手",
+   "desc": "施放技能时，【塞薇卡】的技能会随机获得一个【金克丝】改件，并获得80%%耐久度，持续1.5秒。改件：- 火箭：发射8.0枚火箭，每枚造成100.0物理伤害- 护盾：获得500.0护盾值，持续4.0秒。- 金币：获得3.0金币- 三倍：强化她随到的那个技能！在【恭喜发财】中，【金币】改件在较前期的阶段提供较少金币。",
+   "icon": "assets/icons/trait_icon_13_highroller.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "Bonus1NumRockets": 8.0,
+      "Bonus1RocketDamage": 100.0,
+      "Bonus2ShieldAmount": 500.0,
+      "Bonus2ShieldDuration": 4.0,
+      "Bonus4Gold": 3.0,
+      "Durability": 0.800000011920929,
+      "Duration": 1.5,
+      "{01148678}": 0.3499999940395355,
+      "{267deafa}": 0.3499999940395355,
+      "{52aec87f}": 0.10000000149011612,
+      "{592d23e5}": 0.3499999940395355,
+      "{699f6a87}": 0.20000000298023224,
+      "{9ad9e572}": 0.004999999888241291,
+      "{9b22c5ec}": null,
+      "{bcedb441}": 1.5,
+      "{e1fc0fa1}": 0.24500000476837158,
+      "{e640e05f}": 0.4000000059604645
+     }
+    }
+   ]
+  },
+  {
+   "name": "皮城学院",
+   "desc": "【皮城学院】在每局游戏会赞助3件装备。赞助装备会提供额外最大生命值和伤害增幅。携带着赞助装备的【皮城学院】弈子们会获得此加成的双倍，外加额外的5%%生命值和伤害增幅。(—) 2%%  ；获得1件赞助装备。(—) 2%%  ；获得1件赞助装备。(—) 2%%  ；获得1件赞助装备。(—) 2%%",
+   "icon": "assets/icons/trait_icon_13_academy.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "BaseValues": 0.05000000074505806,
+      "NumOfItems": 1.0,
+      "PercentIncreaseSponsored": 0.019999999552965164
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "BaseValues": 0.05000000074505806,
+      "NumOfItems": 2.0,
+      "PercentIncreaseSponsored": 0.029999999329447746
+     }
+    },
+    {
+     "min": 5,
+     "max": 5,
+     "style": 5,
+     "vars": {
+      "BaseValues": 0.05000000074505806,
+      "NumOfItems": 3.0,
+      "PercentIncreaseSponsored": 0.05000000074505806
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BaseValues": 0.05000000074505806,
+      "NumOfItems": 3.0,
+      "PercentIncreaseSponsored": 0.09000000357627869
+     }
+    }
+   ]
+  },
+  {
+   "name": "炼金男爵",
+   "desc": "在每个玩家对战回合后获得【微光】。如果你的连败至少在3.0次，则会获得更多。每拥有100.0层【微光】，黑市会向你提供只有【炼金男爵】才能使用的非法装备。 你每次跳过一次黑市【炼金男爵】们就会获得最大生命值。(—) 15.0或35.0；20.0 已跳过的黑市数量：@TFTUnitProperty.trait:TFT13_Crime_PassedMarkets@当前生命值：@TFTUnitProperty.trait:TFT13_Crime_CurrentHealth@",
+   "icon": "assets/icons/trait_icon_13_crime.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "HealthPerSkip": 20.0,
+      "MinStreakLength": 3.0,
+      "ShimmerBreakpoint": 100.0,
+      "ShimmerPerCombat": 15.0,
+      "ShimmerPerCombatStreaking": 35.0,
+      "ShimmerPerCombatStreaking_DU": 25.0,
+      "ShimmerPerCombatStreaking_HR": 50.0,
+      "ShimmerPerCombat_DU": 10.0,
+      "ShimmerPerCombat_HR": 25.0,
+      "ShimmerPerDeath_PVE": 1.0,
+      "ShimmerPerRound_PVE": 15.0,
+      "{ecbc38fd}": 1.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "HealthPerSkip": 60.0,
+      "MinStreakLength": 3.0,
+      "ShimmerBreakpoint": 100.0,
+      "ShimmerPerCombat": 15.0,
+      "ShimmerPerCombatStreaking": 50.0,
+      "ShimmerPerCombatStreaking_DU": 35.0,
+      "ShimmerPerCombatStreaking_HR": 60.0,
+      "ShimmerPerCombat_DU": 10.0,
+      "ShimmerPerCombat_HR": 30.0,
+      "ShimmerPerDeath_PVE": 1.0,
+      "ShimmerPerRound_PVE": 20.0,
+      "{ecbc38fd}": 1.0
+     }
+    },
+    {
+     "min": 5,
+     "max": 5,
+     "style": 5,
+     "vars": {
+      "HealthPerSkip": 100.0,
+      "MinStreakLength": 3.0,
+      "ShimmerBreakpoint": 100.0,
+      "ShimmerPerCombat": 20.0,
+      "ShimmerPerCombatStreaking": 70.0,
+      "ShimmerPerCombatStreaking_DU": 50.0,
+      "ShimmerPerCombatStreaking_HR": 70.0,
+      "ShimmerPerCombat_DU": 15.0,
+      "ShimmerPerCombat_HR": 35.0,
+      "ShimmerPerDeath_PVE": 2.0,
+      "ShimmerPerRound_PVE": 30.0,
+      "{ecbc38fd}": 1.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "HealthPerSkip": 150.0,
+      "MinStreakLength": 3.0,
+      "ShimmerBreakpoint": 100.0,
+      "ShimmerPerCombat": 25.0,
+      "ShimmerPerCombatStreaking": 90.0,
+      "ShimmerPerCombatStreaking_DU": 70.0,
+      "ShimmerPerCombatStreaking_HR": 90.0,
+      "ShimmerPerCombat_DU": 20.0,
+      "ShimmerPerCombat_HR": 45.0,
+      "ShimmerPerDeath_PVE": 3.0,
+      "ShimmerPerRound_PVE": 40.0,
+      "{ecbc38fd}": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "蓝发小队",
+   "desc": "【蓝发小队】们获得15%%最大生命值。在你的队伍失去25%%生命值时，一个烟雾信号会出现，为【蓝发小队】们提供持续5.0秒的60%%攻击速度，以及持续到战斗结束的额外强度。(—) 20%% (—) 20%% ，?% (—) 20%% ，?% ，并晕眩所有敌人None秒(—) 烟雾信号会在战斗开始时以及之后的每 None秒触发。",
+   "icon": "assets/icons/trait_icon_13_rebel.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 4,
+     "style": 1,
+     "vars": {
+      "ADAP": 0.20000000298023224,
+      "BurstAS": 0.6000000238418579,
+      "BurstDuration": 5.0,
+      "ForceDuration": null,
+      "MaxHealthIncrease": 0.15000000596046448,
+      "PercentHealthTrigger": 0.25,
+      "PercentMaxHealthBonus": null,
+      "StunDuration": null,
+      "{1ec59053}": null
+     }
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 3,
+     "vars": {
+      "ADAP": 0.4000000059604645,
+      "BurstAS": 0.6000000238418579,
+      "BurstDuration": 5.0,
+      "ForceDuration": null,
+      "MaxHealthIncrease": 0.15000000596046448,
+      "PercentHealthTrigger": 0.25,
+      "PercentMaxHealthBonus": 0.11999999731779099,
+      "StunDuration": null,
+      "{1ec59053}": null
+     }
+    },
+    {
+     "min": 7,
+     "max": 9,
+     "style": 5,
+     "vars": {
+      "ADAP": 0.44999998807907104,
+      "BurstAS": 0.6000000238418579,
+      "BurstDuration": 5.0,
+      "ForceDuration": null,
+      "MaxHealthIncrease": 0.15000000596046448,
+      "PercentHealthTrigger": 0.25,
+      "PercentMaxHealthBonus": 0.15000000596046448,
+      "StunDuration": 2.0,
+      "{1ec59053}": null
+     }
+    },
+    {
+     "min": 10,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "ADAP": 0.5,
+      "BurstAS": 0.6000000238418579,
+      "BurstDuration": 5.0,
+      "ForceDuration": 12.0,
+      "MaxHealthIncrease": 0.15000000596046448,
+      "PercentHealthTrigger": 0.25,
+      "PercentMaxHealthBonus": 0.30000001192092896,
+      "StunDuration": 2.0,
+      "{1ec59053}": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "统领",
+   "desc": "战斗开始时：【统领】获得持续15.0秒的护盾值。【统领】施放技能时，会基于已消耗的法力值获得可叠加的法术强度。(—) 350.0护盾值，25%%",
+   "icon": "assets/icons/trait_icon_13_dominator.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "APPercent": 0.25,
+      "ShieldAmount": 350.0,
+      "ShieldDuration": 15.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "APPercent": 0.44999998807907104,
+      "ShieldAmount": 550.0,
+      "ShieldDuration": 15.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "APPercent": 0.6499999761581421,
+      "ShieldAmount": 800.0,
+      "ShieldDuration": 15.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "搏击手",
+   "desc": "【搏击手】们获得15%%全能吸血并造成额外真实伤害。每场战斗一次：在50%%生命值时，他们会在2.0秒里持续治疗自身一部分最大生命值。(—) 6%%真实伤害，10%%",
+   "icon": "assets/icons/trait_icon_13_pitfighter.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "Duration": 2.0,
+      "HealPercent": 0.10000000149011612,
+      "HealthThreshold": 0.5,
+      "OmnivampPercent": 0.15000000596046448,
+      "TrueDamagePercent": 0.05999999865889549
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "Duration": 2.0,
+      "HealPercent": 0.3499999940395355,
+      "HealthThreshold": 0.5,
+      "OmnivampPercent": 0.15000000596046448,
+      "TrueDamagePercent": 0.11999999731779099
+     }
+    },
+    {
+     "min": 6,
+     "max": 7,
+     "style": 5,
+     "vars": {
+      "Duration": 2.0,
+      "HealPercent": 0.550000011920929,
+      "HealthThreshold": 0.5,
+      "OmnivampPercent": 0.15000000596046448,
+      "TrueDamagePercent": 0.2199999988079071
+     }
+    },
+    {
+     "min": 8,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "Duration": 2.0,
+      "HealPercent": 0.800000011920929,
+      "HealthThreshold": 0.5,
+      "OmnivampPercent": 0.15000000596046448,
+      "TrueDamagePercent": 0.3499999940395355
+     }
+    }
+   ]
+  },
+  {
+   "name": "本可发生之事",
+   "desc": "【希尔科】每次施放技能时，【范德尔】就会获得@TFTTrait.TFT13_Teamup_BloodBrothers.1:MaxHealthGainPerCast@永久最大生命值。【范德尔】每次阵亡时，【希尔科】就会获得@TFTTrait.TFT13_Teamup_BloodBrothers.1:APGainPerDeath@永久法术强度。加成：@TFTUnitProperty.trait:TFT13_Sidekick_BloodBrothers_HealthGained@  | @TFTUnitProperty.trait:TFT13_Sidekick_BloodBrothers_APGained@",
+   "icon": "assets/icons/teamup_trait_bloodbrothers.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "APGainPerDeath": 6.0,
+      "MaxHealthGainPerCast": 30.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "执法官",
+   "desc": "战斗开始时：【执法官】们获得护盾值和伤害增幅。生命值最高的敌人们会被通缉！当一个被通缉的敌人阵亡时，【执法官】们获得30%%攻击速度。(—) 1.0个敌人被通缉； @PercentMaxHealthShield*100*100@% ，12%% (—) 1.0个敌人被通缉； @PercentMaxHealthShield*100*100@% ， 12%% (—) 1.0个敌人被通缉； @PercentMaxHealthShield*100*100@% ， 12%% (—) 1.0个敌人被通缉； @PercentMaxHealthShield*100*100@% ， 12%% (—) 所有敌人都被通缉；@PercentMaxHealthShield*100*100@% ，12%% ；战斗开始时：没收敌人的所有装备！",
+   "icon": "assets/icons/trait_icon_13_squad.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "AttackSpeedPerWantedKill": 0.30000001192092896,
+      "BaseDA": 0.11999999731779099,
+      "NumOfWantedEnemies": 1.0,
+      "PercentMaxHealthShield": 0.11999999731779099,
+      "{36b1550f}": null,
+      "{9edd4912}": null
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "AttackSpeedPerWantedKill": 0.30000001192092896,
+      "BaseDA": 0.20000000298023224,
+      "NumOfWantedEnemies": 2.0,
+      "PercentMaxHealthShield": 0.2199999988079071,
+      "{36b1550f}": null,
+      "{9edd4912}": null
+     }
+    },
+    {
+     "min": 6,
+     "max": 7,
+     "style": 5,
+     "vars": {
+      "AttackSpeedPerWantedKill": 0.30000001192092896,
+      "BaseDA": 0.33000001311302185,
+      "NumOfWantedEnemies": 4.0,
+      "PercentMaxHealthShield": 0.33000001311302185,
+      "{36b1550f}": null,
+      "{9edd4912}": null
+     }
+    },
+    {
+     "min": 8,
+     "max": 9,
+     "style": 5,
+     "vars": {
+      "AttackSpeedPerWantedKill": 0.30000001192092896,
+      "BaseDA": 0.4399999976158142,
+      "NumOfWantedEnemies": 5.0,
+      "PercentMaxHealthShield": 0.4399999976158142,
+      "{36b1550f}": null,
+      "{9edd4912}": null
+     }
+    },
+    {
+     "min": 10,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "AttackSpeedPerWantedKill": 0.30000001192092896,
+      "BaseDA": 1.5,
+      "NumOfWantedEnemies": 99.0,
+      "PercentMaxHealthShield": 1.0,
+      "{36b1550f}": null,
+      "{9edd4912}": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "野火帮",
+   "desc": "每过6.0秒，【野火帮】们就会冲刺。在冲刺时，他们会进行一次无限距离的攻击并治疗自身，治疗量相当于自上次冲刺后的一部分已承受伤害。(—) 25%%已承受伤害(—) 25%%已承受伤害(—) 25%%已承受伤害。在冲刺时，获得巨额爆发攻速加成。",
+   "icon": "assets/icons/trait_icon_13_hoverboard.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "Duration": 6.0,
+      "PercentDamageTakenHeal": 0.25,
+      "{0a9a9714}": null,
+      "{3c0d594a}": 1.0
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 5,
+     "vars": {
+      "Duration": 6.0,
+      "PercentDamageTakenHeal": 0.4000000059604645,
+      "{0a9a9714}": null,
+      "{3c0d594a}": 1.0
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "Duration": 6.0,
+      "PercentDamageTakenHeal": 0.44999998807907104,
+      "{0a9a9714}": 3.5,
+      "{3c0d594a}": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "意外搭档",
+   "desc": "【金克丝】和【塞薇卡】获得10%%攻击力和100生命值。当其中一个施放技能时，会给另一个提供10法力值。【塞薇卡】的钢臂会更加幸运。",
+   "icon": "assets/icons/teamup_trait_unlikelyduo.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "AD": 0.10000000149011612,
+      "Health": 100,
+      "Mana": 10,
+      "{1e90fa01}": 0.10000000149011612
+     }
+    }
+   ]
+  },
+  {
+   "name": "试验品",
+   "desc": "在你的棋盘上获得【试验格】。战斗开始时：【试验格】上的【试验品】会获得站在【试验格】上的所有【试验品】的【试验品】加成，外加最大生命值。(—) 2.0个【试验格】，100.0 (—) 2.0个【试验格】，100.0 (—) 【试验品】加成提升?%！",
+   "icon": "assets/icons/trait_icon_13_experiment.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 4,
+     "style": 1,
+     "vars": {
+      "ExperimentBonusIncrease": null,
+      "MaxHealth": 100.0,
+      "NumLaboratory": 2.0,
+      "{a02e81c2}": 1.149999976158142
+     }
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 5,
+     "vars": {
+      "ExperimentBonusIncrease": null,
+      "MaxHealth": 450.0,
+      "NumLaboratory": 3.0,
+      "{a02e81c2}": 1.2999999523162842
+     }
+    },
+    {
+     "min": 7,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "ExperimentBonusIncrease": 1.0,
+      "MaxHealth": 450.0,
+      "NumLaboratory": 3.0,
+      "{a02e81c2}": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "格斗家",
+   "desc": "己方弈子获得100.0最大生命值。【格斗家】们获得更多生命值。(—) 20%%",
+   "icon": "assets/icons/trait_icon_6_bruiser.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "BonusPercentHealth": 0.20000000298023224,
+      "TeamFlatHealth": 100.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "BonusPercentHealth": 0.44999998807907104,
+      "TeamFlatHealth": 100.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BonusPercentHealth": 0.800000011920929,
+      "TeamFlatHealth": 100.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "机械公敌",
+   "desc": "每3.0回合开启一个武器库，可为你最强大的那个【兰博】的机甲购买永久升级项目。升级项目所需回合数：@TFTUnitProperty.trait:TFT13_JunkerKing_RoundsUntilOpening@",
+   "icon": "assets/icons/trait_icon_13_junkerking.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "NumRounds1Star": 3.0,
+      "NumRounds1Star_HR": 2.0,
+      "NumRounds2Star": 3.0,
+      "NumRounds2Star_HR": 2.0,
+      "NumRounds3Star": 1.0,
+      "NumRounds3Star_HR": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "黑色玫瑰",
+   "desc": "(—) 召唤一个被束缚的【赛恩】。在【黑色玫瑰】弈子们施放5.0次技能后，或在他跌下65%%生命值时，他会挣脱束缚。(—) 【赛恩】变得更强并且【黑色玫瑰】弈子们会对敌人造成更多伤害。(—) 【赛恩】在挣脱束缚时会释放黑暗能量并回满生命值。(—) 当【赛恩】阵亡时，他会带着超越死亡的能量重获生命！【黑色玫瑰】弈子们的每个星级都会提升【赛恩】的强度",
+   "icon": "assets/icons/trait_icon_13_cabal.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "NumCastsToUnlock": 5.0,
+      "PercentHealthPerStarLevel": 0.15000000596046448,
+      "PercentHealthUnlock": 0.6499999761581421,
+      "{2c6be05c}": 0.15000000596046448,
+      "{2e45fc86}": 40.0,
+      "{85b293ec}": 0.3499999940395355,
+      "{92ef9cd7}": 4.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "NumCastsToUnlock": 5.0,
+      "PercentHealthPerStarLevel": 0.15000000596046448,
+      "PercentHealthUnlock": 0.6499999761581421,
+      "{2c6be05c}": 0.15000000596046448,
+      "{2e45fc86}": 45.0,
+      "{85b293ec}": 0.3499999940395355,
+      "{92ef9cd7}": 4.0
+     }
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 5,
+     "vars": {
+      "NumCastsToUnlock": 5.0,
+      "PercentHealthPerStarLevel": 0.15000000596046448,
+      "PercentHealthUnlock": 0.6499999761581421,
+      "{2c6be05c}": 0.15000000596046448,
+      "{2e45fc86}": 50.0,
+      "{85b293ec}": 0.3499999940395355,
+      "{92ef9cd7}": 4.0
+     }
+    },
+    {
+     "min": 7,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "NumCastsToUnlock": 5.0,
+      "PercentHealthPerStarLevel": 0.15000000596046448,
+      "PercentHealthUnlock": 0.6499999761581421,
+      "{2c6be05c}": 0.15000000596046448,
+      "{2e45fc86}": 100.0,
+      "{85b293ec}": 0.3499999940395355,
+      "{92ef9cd7}": 4.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "迅击战士",
+   "desc": "【迅击战士】移动得更快且获得攻击速度，这个攻速加成基于其目标的已损失生命值。(—) 20%-60%% (—) 20%-60%% (—) 20%-60%% 。在目标阵亡时，【迅击战士】们会冲刺至一个新目标并获得持续—秒的—护盾值。",
+   "icon": "assets/icons/trait_icon_13_quickstriker.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "MaxBonusAS": 0.6000000238418579,
+      "MinBonusAS": 0.20000000298023224,
+      "TeamwideAS": null,
+      "{bdb9953b}": 200.0
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "MaxBonusAS": 0.800000011920929,
+      "MinBonusAS": 0.30000001192092896,
+      "TeamwideAS": null,
+      "{bdb9953b}": 200.0
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "MaxBonusAS": 1.0,
+      "MinBonusAS": 0.4000000059604645,
+      "ShieldAmount": 200.0,
+      "ShieldDuration": 3.0,
+      "TeamwideAS": null,
+      "{bdb9953b}": 200.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "天才",
+   "desc": "当【黑默丁格】施放技能时，【艾克】会释放3.0个残影，每个残影造成50%%伤害。当【艾克】施放技能时，【黑默丁格】会发射3.0枚导弹，每枚导弹造成150%%伤害。",
+   "icon": "assets/icons/teamup_trait_geniuses.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "NumEkkoAfterImages": 3.0,
+      "NumHeimerMissiles": 3.0,
+      "ReducedEkkoDamage": 0.5,
+      "ReducedHeimerDamage": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "监察",
+   "desc": "【监察】们获得伤害减免，这个加成会在高于50%%生命值时提升。(—) 15%%或30%%",
+   "icon": "assets/icons/trait_icon_13_watcher.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "BaseDR": 0.15000000596046448,
+      "HealthBreakpoint": 0.5,
+      "IncreasedDR": 0.30000001192092896
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "BaseDR": 0.25,
+      "HealthBreakpoint": 0.5,
+      "IncreasedDR": 0.44999998807907104
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BaseDR": 0.4000000059604645,
+      "HealthBreakpoint": 0.5,
+      "IncreasedDR": 0.5
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,89 @@
+{
+ "source": "Riot CommunityDragon（官方）",
+ "sourceUrls": [
+  "https://raw.communitydragon.org/latest/cdragon/tft/zh_cn.json",
+  "https://raw.communitydragon.org/latest/cdragon/tft/en_us.json"
+ ],
+ "fetchedAt": "2026-10-18 13:03:48",
+ "locale": "zh_cn",
+ "sets": [
+  "s3",
+  "s7",
+  "s13",
+  "s14",
+  "s15",
+  "s16",
+  "s17"
+ ],
+ "counts": {
+  "augments": 973,
+  "items": 1409
+ },
+ "perSet": {
+  "s3": {
+   "augments": 238,
+   "items": 278
+  },
+  "s7": {
+   "augments": 437,
+   "items": 402
+  },
+  "s13": {
+   "augments": 356,
+   "items": 391
+  },
+  "s14": {
+   "augments": 389,
+   "items": 491
+  },
+  "s15": {
+   "augments": 450,
+   "items": 416
+  },
+  "s16": {
+   "augments": 336,
+   "items": 526
+  },
+  "s17": {
+   "augments": 276,
+   "items": 803
+  }
+ },
+ "seasons": {
+  "s3": {
+   "name": "Galaxies",
+   "champions": 57,
+   "traits": 26
+  },
+  "s7": {
+   "name": "Set7",
+   "champions": 62,
+   "traits": 29
+  },
+  "s13": {
+   "name": "Set13",
+   "champions": 60,
+   "traits": 33
+  },
+  "s14": {
+   "name": "Set14",
+   "champions": 60,
+   "traits": 26
+  },
+  "s15": {
+   "name": "Set15",
+   "champions": 65,
+   "traits": 173
+  },
+  "s16": {
+   "name": "Set16",
+   "champions": 100,
+   "traits": 53
+  },
+  "s17": {
+   "name": "Set17",
+   "champions": 64,
+   "traits": 35
+  }
+ }
+}

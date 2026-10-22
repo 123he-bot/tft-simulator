@@ -1,0 +1,526 @@
+{
+  "silver": [
+    {
+      "id": "swift_tempo",
+      "name": "迅捷",
+      "tier": "银",
+      "rarityKey": "silver",
+      "desc": "你的队伍获得 12% 攻击速度。",
+      "tags": ["战力"],
+      "effects": [{ "k": "asBonus", "v": 12, "label": "全队攻速 +12%" }],
+      "fit": ["狙神", "射手"]
+    },
+    {
+      "id": "helping_hand",
+      "name": "一臂之力",
+      "tier": "银",
+      "rarityKey": "silver",
+      "desc": "你的队伍获得 8% 攻击力。",
+      "tags": ["战力"],
+      "effects": [{ "k": "adBonus", "v": 8, "label": "全队攻击力 +8%" }],
+      "fit": ["德莱文"]
+    },
+    {
+      "id": "arcane_secret",
+      "name": "秘术师之秘",
+      "tier": "银",
+      "rarityKey": "silver",
+      "desc": "你的队伍获得 10% 法术强度。",
+      "tags": ["战力"],
+      "effects": [{ "k": "apBonus", "v": 10, "label": "全队法强 +10%" }],
+      "fit": ["法师"]
+    },
+    {
+      "id": "shopping_spree",
+      "name": "购物流",
+      "tier": "银",
+      "rarityKey": "silver",
+      "desc": "你在接下来的 3 个回合内，每回合额外获得 2 枚金币。",
+      "tags": ["经济"],
+      "effects": [{ "k": "goldPerRound", "v": 2, "label": "每回合金币 +2" }],
+      "fit": []
+    },
+    {
+      "id": "augment_tome",
+      "name": "强化符文",
+      "tier": "银",
+      "rarityKey": "silver",
+      "desc": "立即获得 1 个随机的银色强化符文。",
+      "tags": ["羁绊"],
+      "effects": [],
+      "fit": []
+    },
+    {
+      "id": "temp_shield",
+      "name": "临时护盾",
+      "tier": "银",
+      "rarityKey": "silver",
+      "desc": "你的队伍获得 8% 最大生命值。",
+      "tags": ["战力"],
+      "effects": [{ "k": "hpBonus", "v": 8, "label": "全队生命值 +8%" }],
+      "fit": ["格斗家", "护卫"]
+    },
+    {
+      "id": "treasure_chest",
+      "name": "宝箱",
+      "tier": "银",
+      "rarityKey": "silver",
+      "desc": "立即获得 1 件随机基础装备。",
+      "tags": ["装备"],
+      "effects": [{ "k": "extraItem", "v": 1, "label": "立即获得装备 +1" }],
+      "fit": []
+    },
+    {
+      "id": "forge",
+      "name": "锻炉",
+      "tier": "银",
+      "rarityKey": "silver",
+      "desc": "立即获得 1 个随机的装备组件。",
+      "tags": ["装备"],
+      "effects": [{ "k": "extraItem", "v": 1, "label": "立即获得装备 +1" }],
+      "fit": []
+    },
+    {
+      "id": "hero_medal",
+      "name": "英勇奖章",
+      "tier": "银",
+      "rarityKey": "silver",
+      "desc": "你的队伍获得 6% 攻击力与 6% 法术强度。",
+      "tags": ["战力"],
+      "effects": [
+        { "k": "adBonus", "v": 6, "label": "全队攻击力 +6%" },
+        { "k": "apBonus", "v": 6, "label": "全队法强 +6%" }
+      ],
+      "fit": []
+    },
+    {
+      "id": "dynamic_duo",
+      "name": "双人组",
+      "tier": "银",
+      "rarityKey": "silver",
+      "desc": "你的队伍获得 5% 生命值与 5% 攻击速度。",
+      "tags": ["战力"],
+      "effects": [
+        { "k": "hpBonus", "v": 5, "label": "全队生命值 +5%" },
+        { "k": "asBonus", "v": 5, "label": "全队攻速 +5%" }
+      ],
+      "fit": []
+    },
+    {
+      "id": "spoils_of_war",
+      "name": "战利品",
+      "tier": "银",
+      "rarityKey": "silver",
+      "desc": "立即获得 1 件随机基础装备与 2 枚金币。",
+      "tags": ["装备", "经济"],
+      "effects": [{ "k": "extraItem", "v": 1, "label": "立即获得装备 +1" }],
+      "fit": []
+    },
+    {
+      "id": "holy_relic",
+      "name": "光明圣物",
+      "tier": "银",
+      "rarityKey": "silver",
+      "desc": "立即获得 1 件随机基础装备，并将其升级为光明版本。",
+      "tags": ["装备"],
+      "effects": [{ "k": "extraItem", "v": 1, "label": "立即获得装备 +1" }],
+      "fit": []
+    },
+    {
+      "id": "excavate",
+      "name": "挖宝",
+      "tier": "银",
+      "rarityKey": "silver",
+      "desc": "立即获得 1 件随机基础装备；你的每次装备合成额外获得 1 枚金币。",
+      "tags": ["装备", "经济"],
+      "effects": [{ "k": "extraItem", "v": 1, "label": "立即获得装备 +1" }],
+      "fit": []
+    },
+    {
+      "id": "blessing",
+      "name": "恩赐",
+      "tier": "银",
+      "rarityKey": "silver",
+      "desc": "每回合获得 1 枚额外金币。",
+      "tags": ["经济"],
+      "effects": [{ "k": "goldPerRound", "v": 1, "label": "每回合金币 +1" }],
+      "fit": []
+    },
+    {
+      "id": "econ_master",
+      "name": "经济大师",
+      "tier": "银",
+      "rarityKey": "silver",
+      "desc": "每回合获得 3 枚额外金币。",
+      "tags": ["经济"],
+      "effects": [{ "k": "goldPerRound", "v": 3, "label": "每回合金币 +3" }],
+      "fit": []
+    },
+    {
+      "id": "arcane_torrent",
+      "name": "秘法洪流",
+      "tier": "银",
+      "rarityKey": "silver",
+      "desc": "你的队伍获得 12% 法术强度。",
+      "tags": ["战力"],
+      "effects": [{ "k": "apBonus", "v": 12, "label": "全队法强 +12%" }],
+      "fit": ["法师", "奥术"]
+    }
+  ],
+  "gold": [
+    {
+      "id": "titanic_might",
+      "name": "泰坦之力",
+      "tier": "金",
+      "rarityKey": "gold",
+      "desc": "你的队伍获得 15% 攻击力与 10% 生命值。",
+      "tags": ["战力"],
+      "effects": [
+        { "k": "adBonus", "v": 15, "label": "全队攻击力 +15%" },
+        { "k": "hpBonus", "v": 10, "label": "全队生命值 +10%" }
+      ],
+      "fit": ["德莱文", "格斗家"]
+    },
+    {
+      "id": "pearl_dazzle",
+      "name": "珠光宝气",
+      "tier": "金",
+      "rarityKey": "gold",
+      "desc": "你的队伍获得 15% 攻击速度。",
+      "tags": ["战力"],
+      "effects": [{ "k": "asBonus", "v": 15, "label": "全队攻速 +15%" }],
+      "fit": ["狙神"]
+    },
+    {
+      "id": "three_piece",
+      "name": "三件套",
+      "tier": "金",
+      "rarityKey": "gold",
+      "desc": "立即获得 3 件随机基础装备。",
+      "tags": ["装备"],
+      "effects": [{ "k": "extraItem", "v": 3, "label": "立即获得装备 +3" }],
+      "fit": []
+    },
+    {
+      "id": "pandora_items",
+      "name": "潘多拉的装备",
+      "tier": "金",
+      "rarityKey": "gold",
+      "desc": "立即获得 2 件随机装备组件，并且每回合开始时重铸你未装备的装备。",
+      "tags": ["装备"],
+      "effects": [
+        { "k": "extraItem", "v": 2, "label": "立即获得装备 +2" },
+        { "k": "reforge", "v": 2, "label": "每回合重铸装备 +2" }
+      ],
+      "fit": []
+    },
+    {
+      "id": "elementalism",
+      "name": "元素主义",
+      "tier": "金",
+      "rarityKey": "gold",
+      "desc": "你的队伍获得 10% 攻击力、法术强度与攻击速度。",
+      "tags": ["战力"],
+      "effects": [
+        { "k": "adBonus", "v": 10, "label": "全队攻击力 +10%" },
+        { "k": "apBonus", "v": 10, "label": "全队法强 +10%" },
+        { "k": "asBonus", "v": 10, "label": "全队攻速 +10%" }
+      ],
+      "fit": []
+    },
+    {
+      "id": "demon_arrival",
+      "name": "恶魔降临",
+      "tier": "金",
+      "rarityKey": "gold",
+      "desc": "你的队伍获得 20% 法术强度；施放技能后有 30% 概率再次施放。",
+      "tags": ["战力"],
+      "effects": [{ "k": "apBonus", "v": 20, "label": "全队法强 +20%" }],
+      "fit": ["法师", "恶魔"]
+    },
+    {
+      "id": "endless_grudge",
+      "name": "无终恨意",
+      "tier": "金",
+      "rarityKey": "gold",
+      "desc": "你的队伍获得 15% 生命值，并回复造成伤害的 10% 生命值。",
+      "tags": ["战力"],
+      "effects": [{ "k": "hpBonus", "v": 15, "label": "全队生命值 +15%" }],
+      "fit": ["格斗家"]
+    },
+    {
+      "id": "empyrean_treasure",
+      "name": "至高天财宝",
+      "tier": "金",
+      "rarityKey": "gold",
+      "desc": "立即获得 12 枚金币，并在之后每回合额外获得 4 枚金币。",
+      "tags": ["经济"],
+      "effects": [{ "k": "goldPerRound", "v": 4, "label": "每回合金币 +4" }],
+      "fit": []
+    },
+    {
+      "id": "heroic_augment",
+      "name": "英雄强化",
+      "tier": "金",
+      "rarityKey": "gold",
+      "desc": "立即获得 1 个随机的金色英雄强化符文。",
+      "tags": ["羁绊"],
+      "effects": [],
+      "fit": []
+    },
+    {
+      "id": "warband_medal",
+      "name": "战团勋章",
+      "tier": "金",
+      "rarityKey": "gold",
+      "desc": "你的队伍获得 12% 攻击力与 12% 生命值。",
+      "tags": ["战力"],
+      "effects": [
+        { "k": "adBonus", "v": 12, "label": "全队攻击力 +12%" },
+        { "k": "hpBonus", "v": 12, "label": "全队生命值 +12%" }
+      ],
+      "fit": []
+    },
+    {
+      "id": "golden_age",
+      "name": "黄金时代",
+      "tier": "金",
+      "rarityKey": "gold",
+      "desc": "你的利息上限提升 2，并立刻获得 8 枚金币。",
+      "tags": ["经济"],
+      "effects": [{ "k": "interestCap", "v": 2, "label": "利息上限 +2" }],
+      "fit": []
+    },
+    {
+      "id": "stellar_grace",
+      "name": "星辰赐福",
+      "tier": "金",
+      "rarityKey": "gold",
+      "desc": "你的队伍获得 12% 生命值与 12% 法术强度。",
+      "tags": ["战力"],
+      "effects": [
+        { "k": "hpBonus", "v": 12, "label": "全队生命值 +12%" },
+        { "k": "apBonus", "v": 12, "label": "全队法强 +12%" }
+      ],
+      "fit": ["法师"]
+    },
+    {
+      "id": "hunter_instinct",
+      "name": "猎手本性",
+      "tier": "金",
+      "rarityKey": "gold",
+      "desc": "你的队伍获得 18% 攻击速度。",
+      "tags": ["战力"],
+      "effects": [{ "k": "asBonus", "v": 18, "label": "全队攻速 +18%" }],
+      "fit": ["狙神", "射手"]
+    },
+    {
+      "id": "amped_ammo",
+      "name": "强化弹药",
+      "tier": "金",
+      "rarityKey": "gold",
+      "desc": "你的队伍获得 18% 攻击力。",
+      "tags": ["战力"],
+      "effects": [{ "k": "adBonus", "v": 18, "label": "全队攻击力 +18%" }],
+      "fit": ["射手"]
+    },
+    {
+      "id": "econ_engine",
+      "name": "经济引擎",
+      "tier": "金",
+      "rarityKey": "gold",
+      "desc": "每 8 枚金币即可获得 1 利息，且利息上限提升 1。",
+      "tags": ["经济"],
+      "effects": [
+        { "k": "interestPer", "v": 8, "label": "每 8 金币 1 利息" },
+        { "k": "interestCap", "v": 1, "label": "利息上限 +1" }
+      ],
+      "fit": []
+    },
+    {
+      "id": "unlimited_power",
+      "name": "无限火力",
+      "tier": "金",
+      "rarityKey": "gold",
+      "desc": "你的队伍获得 20% 攻击速度。",
+      "tags": ["战力"],
+      "effects": [{ "k": "asBonus", "v": 20, "label": "全队攻速 +20%" }],
+      "fit": ["射手", "刺客"]
+    }
+  ],
+  "prismatic": [
+    {
+      "id": "pearl_lotus",
+      "name": "珠光莲花",
+      "tier": "棱彩",
+      "rarityKey": "prismatic",
+      "desc": "你的队伍的技能可以暴击，并获得 25% 法术强度。",
+      "tags": ["战力", "羁绊"],
+      "effects": [{ "k": "apBonus", "v": 25, "label": "全队法强 +25%" }],
+      "fit": ["法师"]
+    },
+    {
+      "id": "big_package",
+      "name": "大礼包",
+      "tier": "棱彩",
+      "rarityKey": "prismatic",
+      "desc": "立即获得 3 件随机基础装备，并在之后每 3 回合再获得 1 件。",
+      "tags": ["装备"],
+      "effects": [{ "k": "extraItem", "v": 3, "label": "立即获得装备 +3" }],
+      "fit": []
+    },
+    {
+      "id": "dominance",
+      "name": "统治地位",
+      "tier": "棱彩",
+      "rarityKey": "prismatic",
+      "desc": "你的队伍获得 25% 攻击力、法术强度与攻击速度。",
+      "tags": ["战力"],
+      "effects": [
+        { "k": "adBonus", "v": 25, "label": "全队攻击力 +25%" },
+        { "k": "apBonus", "v": 25, "label": "全队法强 +25%" },
+        { "k": "asBonus", "v": 25, "label": "全队攻速 +25%" }
+      ],
+      "fit": []
+    },
+    {
+      "id": "treasure_hoard",
+      "name": "百宝箱",
+      "tier": "棱彩",
+      "rarityKey": "prismatic",
+      "desc": "立即获得 1 个随机的棱彩强化符文与 1 个随机的金色强化符文。",
+      "tags": ["羁绊"],
+      "effects": [],
+      "fit": []
+    },
+    {
+      "id": "cybernetic_enhance",
+      "name": "源计划：增强",
+      "tier": "棱彩",
+      "rarityKey": "prismatic",
+      "desc": "你的队伍获得 30% 攻击力与 30% 法术强度。",
+      "tags": ["战力"],
+      "effects": [
+        { "k": "adBonus", "v": 30, "label": "全队攻击力 +30%" },
+        { "k": "apBonus", "v": 30, "label": "全队法强 +30%" }
+      ],
+      "fit": []
+    },
+    {
+      "id": "celestial_blessing",
+      "name": "星界赐福",
+      "tier": "棱彩",
+      "rarityKey": "prismatic",
+      "desc": "你的等级上限提升 2 级。",
+      "tags": ["经济"],
+      "effects": [{ "k": "maxLevel", "v": 2, "label": "最高等级 +2" }],
+      "fit": []
+    },
+    {
+      "id": "money_flow",
+      "name": "财源滚滚",
+      "tier": "棱彩",
+      "rarityKey": "prismatic",
+      "desc": "每回合获得 8 枚额外金币。",
+      "tags": ["经济"],
+      "effects": [{ "k": "goldPerRound", "v": 8, "label": "每回合金币 +8" }],
+      "fit": []
+    },
+    {
+      "id": "prodigy",
+      "name": "天赋异禀",
+      "tier": "棱彩",
+      "rarityKey": "prismatic",
+      "desc": "每回合获得 6 点额外经验。",
+      "tags": ["经济"],
+      "effects": [{ "k": "expBonus", "v": 6, "label": "每回合经验 +6" }],
+      "fit": []
+    },
+    {
+      "id": "empyrean",
+      "name": "至高天",
+      "tier": "棱彩",
+      "rarityKey": "prismatic",
+      "desc": "你的至高天羁绊获得 +1 人口，且相关英雄获得双倍加成。",
+      "tags": ["羁绊"],
+      "effects": [{ "k": "traitBoost", "v": 1, "label": "至高天 +1 人口" }],
+      "fit": ["至高天"]
+    },
+    {
+      "id": "giants_will",
+      "name": "巨人的意志",
+      "tier": "棱彩",
+      "rarityKey": "prismatic",
+      "desc": "你的队伍获得 30% 生命值。",
+      "tags": ["战力"],
+      "effects": [{ "k": "hpBonus", "v": 30, "label": "全队生命值 +30%" }],
+      "fit": ["格斗家", "护卫"]
+    },
+    {
+      "id": "loot_hunter",
+      "name": "战利品猎手",
+      "tier": "棱彩",
+      "rarityKey": "prismatic",
+      "desc": "立即获得 3 件随机基础装备，并每回合重铸 1 件装备。",
+      "tags": ["装备"],
+      "effects": [
+        { "k": "extraItem", "v": 3, "label": "立即获得装备 +3" },
+        { "k": "reforge", "v": 1, "label": "每回合重铸装备 +1" }
+      ],
+      "fit": []
+    },
+    {
+      "id": "econ_miracle",
+      "name": "经济奇迹",
+      "tier": "棱彩",
+      "rarityKey": "prismatic",
+      "desc": "你的利息上限提升 5。",
+      "tags": ["经济"],
+      "effects": [{ "k": "interestCap", "v": 5, "label": "利息上限 +5" }],
+      "fit": []
+    },
+    {
+      "id": "master_of_augments",
+      "name": "强化符文大师",
+      "tier": "棱彩",
+      "rarityKey": "prismatic",
+      "desc": "立即获得 2 个额外的强化符文。",
+      "tags": ["羁绊"],
+      "effects": [],
+      "fit": []
+    },
+    {
+      "id": "frenzy_heart",
+      "name": "狂暴之心",
+      "tier": "棱彩",
+      "rarityKey": "prismatic",
+      "desc": "你的队伍获得 40% 攻击速度。",
+      "tags": ["战力"],
+      "effects": [{ "k": "asBonus", "v": 40, "label": "全队攻速 +40%" }],
+      "fit": ["射手", "刺客"]
+    },
+    {
+      "id": "divine_sentinel",
+      "name": "光明哨兵",
+      "tier": "棱彩",
+      "rarityKey": "prismatic",
+      "desc": "你的队伍获得 20% 生命值与 20% 攻击力。",
+      "tags": ["战力", "装备"],
+      "effects": [
+        { "k": "hpBonus", "v": 20, "label": "全队生命值 +20%" },
+        { "k": "adBonus", "v": 20, "label": "全队攻击力 +20%" }
+      ],
+      "fit": []
+    },
+    {
+      "id": "odds_surge",
+      "name": "概率飙升",
+      "tier": "棱彩",
+      "rarityKey": "prismatic",
+      "desc": "刷新商店时，高费棋子的出现概率大幅提升。",
+      "tags": ["卡池", "经济"],
+      "effects": [{ "k": "oddsBoost", "v": 100, "label": "高费棋子概率 +100%" }],
+      "fit": []
+    }
+  ]
+}

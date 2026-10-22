@@ -1,0 +1,4 @@
+/* Tailwind 输入文件：编译后输出到 css/tailwind.css（本地静态，离线可用） */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

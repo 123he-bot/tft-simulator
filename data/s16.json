@@ -1,0 +1,4089 @@
+{
+ "set": "S16",
+ "name": "Set16",
+ "champions": [
+  {
+   "id": "TFT16_Tristana",
+   "name": "崔丝塔娜",
+   "cost": 2,
+   "traits": [
+    "约德尔人",
+    "枪手"
+   ],
+   "hp": 550.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 55.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "毁灭射击\t\t\t\t\t\t",
+    "desc": "对目标发射一枚巨大的炮弹，造成—()物理伤害。如果目标在2.0格内，则将其击退2.0格，并对其造成短暂晕眩。"
+   },
+   "icon": "assets/icons/tft16_tristana_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_tristana/skins/base/images/tft16_tristana_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Lulu",
+   "name": "璐璐",
+   "cost": 1,
+   "traits": [
+    "约德尔人",
+    "法师"
+   ],
+   "hp": 500.0,
+   "mana": 55.0,
+   "initialMana": 10.0,
+   "armor": 15.0,
+   "mr": 15.0,
+   "ad": 25.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "奇思妙想",
+    "desc": "对目标造成0.0()魔法伤害并使其跳舞1.0秒。弹体会弹跳至相距最近的那个目标，造成0.0()魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_lulu_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_lulu/skins/base/images/tft16_lulu_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Teemo",
+   "name": "提莫",
+   "cost": 2,
+   "traits": [
+    "约德尔人",
+    "狙神"
+   ],
+   "hp": 550.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 35.0,
+   "as": 0.75,
+   "range": 6.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "剧毒吹箭",
+    "desc": "射向相距最近且未中毒的那个敌人，造成—()魔法伤害和—秒中毒效果。中毒的敌人每秒受到0.0()魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_teemo_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_teemo/skins/base/images/tft16_teemo_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Rumble",
+   "name": "兰博",
+   "cost": 1,
+   "traits": [
+    "约德尔人",
+    "护卫"
+   ],
+   "hp": 700.0,
+   "mana": 110.0,
+   "initialMana": 40.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 45.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "机械重组",
+    "desc": "获得持续4.0秒的—()护盾值。发射一阵火焰，在一个锥形内造成—()魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_rumble_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_rumble/skins/base/images/tft16_rumble_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Nautilus",
+   "name": "诺提勒斯",
+   "cost": 3,
+   "traits": [
+    "比尔吉沃特",
+    "主宰",
+    "神盾使"
+   ],
+   "hp": 900.0,
+   "mana": 120.0,
+   "initialMana": 60.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 50.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "泰坦之怒",
+    "desc": "被动：每4.0秒以及施放技能时，下一次攻击在一个半径1格的圆形范围内造成伤害，并造成—()额外魔法伤害。主动：获得持续4.0秒的—()护盾值。"
+   },
+   "icon": "assets/icons/tft16_nautilus_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_nautilus/skins/base/images/tft16_nautilus_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_TwistedFate",
+   "name": "崔斯特",
+   "cost": 2,
+   "traits": [
+    "比尔吉沃特",
+    "迅击战士"
+   ],
+   "hp": 550.0,
+   "mana": 3.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": null,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APSpecialist",
+   "ability": {
+    "name": "卡牌骗术",
+    "desc": "被动：攻击造成0.0()额外魔法伤害。每第3.0次攻击后，呈锥形掷出3张卡牌，造成—()魔法伤害，卡牌每途经一个敌人就会降低50%%伤害值。搞事搭档：当你登场【格雷福斯】和【崔斯特】时，他俩都会获得加成。"
+   },
+   "icon": "assets/icons/tft16_twistedfate_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_twistedfate/skins/base/images/tft16_twistedfate_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Gangplank",
+   "name": "普朗克",
+   "cost": 3,
+   "traits": [
+    "比尔吉沃特",
+    "裁决战士",
+    "征服者"
+   ],
+   "hp": 850.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 55.0,
+   "mr": 55.0,
+   "ad": 45.0,
+   "as": 0.8,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "火药桶",
+    "desc": "对3个相距最近的敌人投掷火药桶然后引爆它们。它们造成—()伤害，连锁中的每个火药桶都会使这个伤害降低25%%。火药桶会使其目标的护甲值降低10.0，如果这个伤害产生暴击，则这个效果提升至20.0。"
+   },
+   "icon": "assets/icons/tft16_gangplank_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_gangplank/skins/base/images/tft16_gangplank_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Illaoi",
+   "name": "俄洛伊",
+   "cost": 1,
+   "traits": [
+    "比尔吉沃特",
+    "斗士"
+   ],
+   "hp": 700.0,
+   "mana": 100,
+   "initialMana": 40.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 50.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "触手猛击",
+    "desc": "回复—()生命值并让一条触手猛击，对一条直线中的敌人们造成0.0()物理伤害。"
+   },
+   "icon": "assets/icons/tft16_illaoi_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_illaoi/skins/base/images/tft16_illaoi_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_MissFortune",
+   "name": "厄运小姐",
+   "cost": 4,
+   "traits": [
+    "比尔吉沃特",
+    "枪手"
+   ],
+   "hp": 800.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 55.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "碎心弹幕",
+    "desc": "被动：攻击会弹射至当前生命值最高的那个敌人，造成50%%伤害。主动：发射多波子弹落在2.0个相距最近的敌人上。第一波造成—()物理伤害并且剩余波次造成—()物理伤害。每第3.0次施放，会使波数提升1。"
+   },
+   "icon": "assets/icons/tft16_missfortune_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_missfortune/skins/base/images/tft16_missfortune_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Sion",
+   "name": "赛恩",
+   "cost": 2,
+   "traits": [
+    "诺克萨斯",
+    "斗士"
+   ],
+   "hp": 650.0,
+   "mana": 70.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 50.0,
+   "as": 0.55,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "灵魂熔炉",
+    "desc": "被动：参与击杀后提供0.0永久最大生命值。(总计：@TFTUnitProperty.:TFT16_Sion_BonusHealth@)主动： 获得持续4.0秒的—()护盾值。当它被打破时，对邻格的敌人们造成—()魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_sion_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_sion/skins/base/images/tft16_sion_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Briar",
+   "name": "贝蕾亚",
+   "cost": 1,
+   "traits": [
+    "诺克萨斯",
+    "裁决战士",
+    "主宰"
+   ],
+   "hp": 650.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 35.0,
+   "mr": 35.0,
+   "ad": 42.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "ADReaper",
+   "ability": {
+    "name": "血莽",
+    "desc": "跳跃至2.0格内相距最远的敌人处。获得持续4.0秒的移动速度提升、25%%物理加成、和—()不断衰减的攻击速度。"
+   },
+   "icon": "assets/icons/tft16_briar_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_briar/skins/base/images/tft16_briar_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Draven",
+   "name": "德莱文",
+   "cost": 3,
+   "traits": [
+    "诺克萨斯",
+    "迅击战士"
+   ],
+   "hp": 650.0,
+   "mana": 100,
+   "initialMana": 60.0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 58.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "旋转飞斧",
+    "desc": "被动：如果【德莱文】手中持有一柄强化飞斧，则下一次攻击时会将它掷出。每次参与击杀后，获得一层【崇拜】，如果【德莱文】或【德莱厄斯】获得击杀则翻倍。每11.0层【崇拜】提供0.0金币。(剩余【崇拜】数：@TFTUnitProperty.:TFT16_DravenTakedownsRemaining@，已生成的金币：@TFTUnitProperty.:TFT16_DravenGoldGenerated@金)  主动： 投掷一柄旋转飞斧来替代他的普攻并造成—()物理伤害并在命中一个敌人后折返至【德莱文】。"
+   },
+   "icon": "assets/icons/tft16_draven_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_draven/skins/base/images/tft16_draven_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Ambessa",
+   "name": "安蓓萨",
+   "cost": 4,
+   "traits": [
+    "诺克萨斯",
+    "征服者"
+   ],
+   "hp": 1100.0,
+   "mana": 20.0,
+   "initialMana": 0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 50.0,
+   "as": 0.9,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "血戮",
+    "desc": "挥击并绕目标冲刺，对沿途的敌人造成—()物理伤害。然后用锁链猛击目标，对一条直线上的敌人造成—()物理伤害。如果任一敌人被击杀，则即刻再次施放这个技能，造成80%%伤害。这个猛击对坦克造成40%%额外伤害。"
+   },
+   "icon": "assets/icons/tft16_ambessa_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_ambessa/skins/base/images/tft16_ambessa_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Zoe",
+   "name": "佐伊",
+   "cost": 3,
+   "traits": [
+    "巨神峰"
+   ],
+   "hp": 800.0,
+   "mana": 60.0,
+   "initialMana": 30.0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 35.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "双重麻烦泡泡",
+    "desc": "被动：对一个敌人造成伤害时，会施加持续6.0秒的30%魔抗击碎。主动：朝附近敌人们踢出2.0个泡泡，造成0.0()魔法伤害和持续2.0秒的30%冰冷。{{TFT_Keyword_Shred}}{{TFT_Keyword_Chill}}"
+   },
+   "icon": "assets/icons/tft16_zoe_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_zoe/skins/base/images/tft16_zoe_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Leona",
+   "name": "蕾欧娜",
+   "cost": 3,
+   "traits": [
+    "巨神峰"
+   ],
+   "hp": 1000.0,
+   "mana": 120.0,
+   "initialMana": 70.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 50.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "日炎耀斑",
+    "desc": "被动：使即将到来的若干段伤害降低—()。你最强大的那个【蕾欧娜】在存活时，每秒为你最强大的那个【黛安娜】提供0.0法术加成。主动：向相距最近的3.0名敌人降下太阳光束，对其造成1.0秒晕眩和0.0()魔法伤害。对其施加持续4.0秒的重伤和1%灼烧。{{TFT_Keyword_Wound}}{{TFT_Keyword_Burn}}"
+   },
+   "icon": "assets/icons/tft16_leona_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_leona/skins/base/images/tft16_leona_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Aphelios",
+   "name": "厄斐琉斯",
+   "cost": 2,
+   "traits": [
+    "巨神峰"
+   ],
+   "hp": 650.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 20.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "覆磷对影",
+    "desc": "开局时装备荧焰。施放时，切换为断魄并进行8.0()次攻击。荧焰：攻击命中3.0名敌人并施加持续6.0秒的30%%护甲击碎。断魄：获得200%%攻击速度和10%%全能吸血。攻击变为挥击，造成—()物理伤害。{{TFT_Keyword_Sunder}}"
+   },
+   "icon": "assets/icons/tft16_aphelios_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_aphelios/skins/base/images/tft16_aphelios_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Taric",
+   "name": "塔里克",
+   "cost": 4,
+   "traits": [
+    "巨神峰"
+   ],
+   "hp": 1300.0,
+   "mana": 80.0,
+   "initialMana": 0,
+   "armor": 70.0,
+   "mr": 70.0,
+   "ad": 70.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "星光之触",
+    "desc": "被动：所有友军获得0.0魔抗。每场战斗一次，在生命值跌下35%%最大生命值时，在2.0秒里持续回复0.0生命值。主动：获得—()护盾值，并为生命值最低的2.0名友军提供0.0()护盾值，持续4.0秒。下0.0次攻击造成—()额外魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_taric_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_taric/skins/base/images/tft16_taric_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_JarvanIV",
+   "name": "嘉文四世",
+   "cost": 1,
+   "traits": [
+    "德玛西亚",
+    "护卫"
+   ],
+   "hp": 700.0,
+   "mana": 100,
+   "initialMana": 30.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 55.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "德邦军旗",
+    "desc": "获得持续4.0秒的0.0()护盾值。为所有友军提供持续4.0秒的0.0()攻击速度。"
+   },
+   "icon": "assets/icons/tft16_jarvaniv_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_jarvaniv/skins/base/images/tft16_jarvaniv_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Sona",
+   "name": "娑娜",
+   "cost": 1,
+   "traits": [
+    "德玛西亚",
+    "神谕者"
+   ],
+   "hp": 500.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 15.0,
+   "mr": 15.0,
+   "ad": 20.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "能量和弦",
+    "desc": "对2.0个附近的敌人造成0.0()魔法伤害并为生命值最低的那个友军回复—()生命值。"
+   },
+   "icon": "assets/icons/tft16_sona_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_sona/skins/base/images/tft16_sona_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Garen",
+   "name": "盖伦",
+   "cost": 4,
+   "traits": [
+    "德玛西亚",
+    "护卫"
+   ],
+   "hp": 1200.0,
+   "mana": 130.0,
+   "initialMana": 50.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 65.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "审判",
+    "desc": "旋转0.0秒，获得50%%伤害减免，在此期间持续回复—()生命值。每秒，对邻格的敌人们造成—()物理伤害并使其护甲与魔抗降低5.0。"
+   },
+   "icon": "assets/icons/tft16_garen_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_garen/skins/base/images/tft16_garen_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Lux",
+   "name": "拉克丝",
+   "cost": 4,
+   "traits": [
+    "德玛西亚",
+    "法师"
+   ],
+   "hp": 800.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 30.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "终极闪光",
+    "desc": "朝敌人最多的位置射出一个光球，对命中的前2.0个敌人造成—()魔法伤害和1.0秒禁锢。然后发射一道光束，对光球命中的敌人们造成—()魔法伤害并对命中的所有其他敌人造成0.0()魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_lux_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_lux/skins/base/images/tft16_lux_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Anivia",
+   "name": "艾尼维亚",
+   "cost": 1,
+   "traits": [
+    "弗雷尔卓德",
+    "神谕者"
+   ],
+   "hp": 500.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 30.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "霜寒刺骨",
+    "desc": "朝目标发射一枚寒冰碎片，造成0.0()魔法伤害。若目标身上有冰冷效果，该伤害将触发暴击。{{TFT_Keyword_Chill}}"
+   },
+   "icon": "assets/icons/tft16_anivia_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_anivia/skins/base/images/tft16_anivia_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Ashe",
+   "name": "艾希",
+   "cost": 2,
+   "traits": [
+    "弗雷尔卓德",
+    "迅击战士"
+   ],
+   "hp": 550.0,
+   "mana": 80.0,
+   "initialMana": 20.0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 60.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "臻冰之箭",
+    "desc": "对目标发射一支箭矢，对其造成—()物理伤害并对邻格的敌人们造成—()伤害。低于30%%最大生命值的目标们转而受到真实伤害。对命中的所有敌人们施加持续3.0秒的30%冰冷效果。血誓盟约：当你登场【艾希】和【泰达米尔】时，他俩最强大的己方弈子会在击杀时永久提升其强度。血誓盟约：每通过【血誓盟约】提供10%%物理加成给【泰达米尔】，攻击就会发射一支额外箭矢。这些箭矢造成—()物理伤害。(当前额外箭矢数：@TFTUnitProperty.:TFT16_Ashe_CurrentArrows@)。{{TFT_Keyword_Chill}}"
+   },
+   "icon": "assets/icons/tft16_ashe_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_ashe/skins/base/images/tft16_ashe_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Braum",
+   "name": "布隆",
+   "cost": 4,
+   "traits": [
+    "弗雷尔卓德",
+    "神盾使"
+   ],
+   "hp": 1200.0,
+   "mana": 105.0,
+   "initialMana": 60.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 50.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "不破坚冰",
+    "desc": "举盾4.0秒，获得—()伤害减免并将弹体转向至【布隆】。在被命中时，对附近敌人们造成—()魔法伤害和持续2.0秒的冰冷效果。{{TFT_Keyword_Chill}}"
+   },
+   "icon": "assets/icons/tft16_braum_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_braum/skins/base/images/tft16_braum_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Lissandra",
+   "name": "丽桑卓",
+   "cost": 4,
+   "traits": [
+    "弗雷尔卓德",
+    "神谕者"
+   ],
+   "hp": 800.0,
+   "mana": 65.0,
+   "initialMana": 20.0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 30.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "冰封陵墓",
+    "desc": "将目标封入冰中，对其造成1.0秒晕眩和—()魔法伤害。半径2格范围内的所有敌人分摊0.0()魔法伤害。如果目标阵亡，则会飞出多个碎片，将溢出的伤害分摊给2.0个相距最近的敌人。这个技能会对被冰冷的敌人们造成12%%额外伤害。{{TFT_Keyword_Chill}}"
+   },
+   "icon": "assets/icons/tft16_lissandra_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_lissandra/skins/base/images/tft16_lissandra_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Milio",
+   "name": "米利欧",
+   "cost": 3,
+   "traits": [
+    "以绪塔尔",
+    "神谕者"
+   ],
+   "hp": 650.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 30.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "火爆飞踢！！",
+    "desc": "朝目标发射一个弹跳3.0次的火宝，对命中的敌人们造成—()魔法伤害。最后一次弹跳对半径1.0格范围内的敌人造成—()魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_milio_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_milio/skins/base/images/tft16_milio_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Neeko",
+   "name": "妮蔻",
+   "cost": 2,
+   "traits": [
+    "以绪塔尔",
+    "法师",
+    "护卫"
+   ],
+   "hp": 850.0,
+   "mana": 65.0,
+   "initialMana": 15.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 50.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "怒放",
+    "desc": "跃向目标并获得持续4.0秒的0.0()护盾值。在短暂延迟后砸落，对2格内的敌人们造成0.0()魔法伤害和持续2.0秒的20%冰冷。{{TFT_Keyword_Chill}}"
+   },
+   "icon": "assets/icons/tft16_neeko_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_neeko/skins/base/images/tft16_neeko_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Jinx",
+   "name": "金克丝",
+   "cost": 3,
+   "traits": [
+    "祖安",
+    "枪手"
+   ],
+   "hp": 650.0,
+   "mana": 18.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 50.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADSpecialist",
+   "ability": {
+    "name": "枪炮交响曲！",
+    "desc": "被动：在攻击18.0次之后，切换至【鱼骨头】。在配备该武器状态下，攻击替换为3.0枚导弹，这些导弹会瞄准随机的敌人并造成—()物理伤害。"
+   },
+   "icon": "assets/icons/tft16_jinx_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_jinx/skins/base/images/tft16_jinx_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Caitlyn",
+   "name": "凯特琳",
+   "cost": 1,
+   "traits": [
+    "皮尔特沃夫",
+    "狙神"
+   ],
+   "hp": 500.0,
+   "mana": 80.0,
+   "initialMana": 0,
+   "armor": 15.0,
+   "mr": 15.0,
+   "ad": 45.0,
+   "as": 0.75,
+   "range": 6.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "让子弹飞",
+    "desc": "朝相距最远的那个敌人发射一颗子弹，对子弹命中的首个敌人造成 —()物理伤害。如果该敌人阵亡，那么子弹会弹射，对命中的下个敌人造成溢出的伤害值。"
+   },
+   "icon": "assets/icons/tft16_caitlyn_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_caitlyn/skins/base/images/tft16_caitlyn_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Vi",
+   "name": "蔚",
+   "cost": 2,
+   "traits": [
+    "皮尔特沃夫",
+    "祖安",
+    "护卫"
+   ],
+   "hp": 700.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 60.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "透体之劲",
+    "desc": "获得持续2.0秒的0.0()护盾值。猛砸目标，对一段1.0格距离的敌人造成—()物理伤害。每第三次施放，转而在一段2.0格距离内造成—()伤害，并击飞命中的敌人们1.0秒。"
+   },
+   "icon": "assets/icons/tft16_vi_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_vi/skins/base/images/tft16_vi_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Seraphine",
+   "name": "萨勒芬妮",
+   "cost": 4,
+   "traits": [
+    "皮尔特沃夫",
+    "耀光使"
+   ],
+   "hp": 800.0,
+   "mana": 20.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 30.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "盛大炫音返场",
+    "desc": "获得3.0个音符。每有一个已激活的音符，就会对一个附近的目标造成0.0()魔法伤害。在持有12.0个音符的状态下施放时，会消耗掉它们来投射一道能量音波。被命中的友方回复0.0()生命值。被命中的敌方受到0.0()魔法伤害，每途经一个敌人削减30%%该伤害值。"
+   },
+   "icon": "assets/icons/tft16_seraphine_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_seraphine/skins/base/images/tft16_seraphine_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Yasuo",
+   "name": "亚索",
+   "cost": 2,
+   "traits": [
+    "艾欧尼亚",
+    "裁决战士"
+   ],
+   "hp": 750.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 45.0,
+   "as": 0.8,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "踏前斩",
+    "desc": "冲刺，随后对邻格的敌人们造成—()物理伤害。如果仅有一个敌人被命中，则造成双倍伤害。剑刃兄弟：当你登场【亚索】和【永恩】时，【亚索】会协助【永恩】的技能施放。剑刃兄弟：当【永恩】施放技能时，你最强的那个【亚索】闪烁至【永恩】命中的每个目标并对每个目标造成100%% 物理伤害。"
+   },
+   "icon": "assets/icons/tft16_yasuo_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_yasuo/skins/base/images/tft16_yasuo_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Ahri",
+   "name": "阿狸",
+   "cost": 3,
+   "traits": [
+    "艾欧尼亚",
+    "法师"
+   ],
+   "hp": 650.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 30.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "妖异狐火",
+    "desc": "向目标投出3.0团狐火，每团狐火造成0.0()魔法伤害。每第3次施放，投出9.0团狐火，在目标和至多2.0名附近敌人之间分摊。如果附近有敌人，则冲刺远离。"
+   },
+   "icon": "assets/icons/tft16_ahri_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_ahri/skins/base/images/tft16_ahri_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Wukong",
+   "name": "孙悟空",
+   "cost": 4,
+   "traits": [
+    "艾欧尼亚",
+    "斗士"
+   ],
+   "hp": 1050.0,
+   "mana": 60.0,
+   "initialMana": 30.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 60.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "障眼法",
+    "desc": "被动：阵亡时，召唤一个石头复制体，拥有—()生命值和【孙悟空】的装备。主动：在4秒持续期间，获得—()护甲和魔抗。然后旋转，对2格内的所有敌人造成—()物理伤害。"
+   },
+   "icon": "assets/icons/tft16_wukong_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_wukong/skins/base/images/tft16_wukong_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Shen",
+   "name": "慎",
+   "cost": 1,
+   "traits": [
+    "艾欧尼亚",
+    "斗士"
+   ],
+   "hp": 717.0,
+   "mana": 90.0,
+   "initialMana": 30.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 65.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "秘奥义！慈悲度魂落",
+    "desc": "为这个单位和一个附近受到伤害的友军提供持续4.0秒的0.0()护盾值。"
+   },
+   "icon": "assets/icons/tft16_shen_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_shen/skins/base/images/tft16_shen_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Malzahar",
+   "name": "玛尔扎哈",
+   "cost": 3,
+   "traits": [
+    "虚空",
+    "耀光使"
+   ],
+   "hp": 649.0,
+   "mana": 35.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 30.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "虚空虫群",
+    "desc": "召唤2.0个虚灵，每个虚灵都会攻击一名附近的敌人8.0次。每次攻击造成0.0()魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_malzahar_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_malzahar/skins/base/images/tft16_malzahar_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_RekSai",
+   "name": "雷克塞",
+   "cost": 2,
+   "traits": [
+    "虚空",
+    "征服者"
+   ],
+   "hp": 750.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 50.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "ADReaper",
+   "ability": {
+    "name": "遁地",
+    "desc": "冲刺至3.0格内相距最远的那个敌人，并对其造成—()物理伤害。下3.0次攻击会命中邻格的敌人们并造成—()物理伤害。"
+   },
+   "icon": "assets/icons/tft16_reksai_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_reksai/skins/base/images/tft16_reksai_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_ChoGath",
+   "name": "科加斯",
+   "cost": 2,
+   "traits": [
+    "虚空",
+    "主宰"
+   ],
+   "hp": 850.0,
+   "mana": 100,
+   "initialMana": 40.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 50.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "碎裂",
+    "desc": "获得0.0永久最大生命值 (总和：@TFTUnitProperty.:TFT16_ChoGath_BonusHealth@)。回复150.0()生命值并碎裂目标脚下一个半径2格的圆形范围。短暂延迟后，范围内的敌人会被击飞1.5秒，并受到—()魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_chogath_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_chogath/skins/base/images/tft16_chogath_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_KogMaw",
+   "name": "克格莫",
+   "cost": 1,
+   "traits": [
+    "虚空",
+    "法师",
+    "狙神"
+   ],
+   "hp": 500.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 15.0,
+   "mr": 15.0,
+   "ad": 20.0,
+   "as": 0.7,
+   "range": 6.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "腐蚀唾液",
+    "desc": "对目标造成50.0()魔法伤害，并降低其8.0护甲和魔抗。邻格的敌人们受到50%%的该伤害和效果。"
+   },
+   "icon": "assets/icons/tft16_kogmaw_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_kogmaw/skins/base/images/tft16_kogmaw_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Annie",
+   "name": "安妮",
+   "cost": 5,
+   "traits": [
+    "黑暗之女",
+    "法师"
+   ],
+   "hp": 800.0,
+   "mana": 160.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 30.0,
+   "as": 0.85,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "怒火炼狱",
+    "desc": "让整个战场陷入火海，永久灼烧和重伤所有敌人，并在45.0秒里持续对每个敌人造成0.0()魔法伤害。【安妮】的最大法力值降低140.0，持续至战斗结束。后续施放会对目标发射一团火球，造成0.0()魔法伤害。{{TFT_Keyword_Burn}}{{TFT_Keyword_Wound}}"
+   },
+   "icon": "assets/icons/tft16_annie_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_annie/skins/base/images/tft16_annie_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Ornn",
+   "name": "奥恩",
+   "cost": 5,
+   "traits": [
+    "山隐之焰",
+    "神盾使",
+    "弗雷尔卓德"
+   ],
+   "hp": 900.0,
+   "mana": 150.0,
+   "initialMana": 50.0,
+   "armor": 55.0,
+   "mr": 55.0,
+   "ad": 70.0,
+   "as": 0.55,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "熔铸之神的召唤",
+    "desc": "从相距最远的那个敌人身后召唤一个元素灵体。它会对命中的敌人们造成持续5.0秒的20%冰冷效果和0.0()魔法伤害。在它抵达时，对它进行头槌，令其重新导向至另一名远处的敌人，转而造成0.0()魔法伤害。{{TFT_Keyword_Chill}}"
+   },
+   "icon": "assets/icons/tft16_ornn_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_ornn/skins/base/images/tft16_ornn_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Kindred",
+   "name": "千珏",
+   "cost": 5,
+   "traits": [
+    "永猎双子",
+    "迅击战士"
+   ],
+   "hp": 900.0,
+   "mana": 200.0,
+   "initialMana": 80.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 73.0,
+   "as": 0.9,
+   "range": 4.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "羊灵生息",
+    "desc": "冲刺，然后创造一个持续2.5秒且半径2.0格的地带，来为其中的友军们提供持续该地带时长的10.0()护盾值。在激活状态下，当前攻击速度翻倍，并且在攻击时，对一名附近的敌人发射第二支箭矢，造成—()物理伤害。地带结束时，为所有友军回复生命值，数额相当于它在开启期间的0.07999999821186066()造成伤害值，然后冲刺远离。"
+   },
+   "icon": "assets/icons/tft16_kindred_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_kindred/skins/base/images/tft16_kindred_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Azir",
+   "name": "阿兹尔",
+   "cost": 5,
+   "traits": [
+    "恕瑞玛",
+    "沙漠皇帝",
+    "耀光使"
+   ],
+   "hp": 800.0,
+   "mana": 40.0,
+   "initialMana": 20.0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 35.0,
+   "as": 0.85,
+   "range": 4.0,
+   "role": "APCarry",
+   "ability": {
+    "name": "沙兵现身",
+    "desc": "被动：在见证来自【阿兹尔】的3次攻击后，【沙漠士兵】们会对其目标造成—()魔法伤害。主动：在目标附近召唤一个【沙漠士兵】并命令其进行打击。如果已召出2.0个【沙漠士兵】，则转而使它们即刻造成— ()魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_azir_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_azir/skins/base/images/tft16_azir_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Zilean",
+   "name": "基兰",
+   "cost": 5,
+   "traits": [
+    "时光守护者",
+    "神谕者"
+   ],
+   "hp": 900.0,
+   "mana": 35.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 40.0,
+   "as": 0.9,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "终末视界",
+    "desc": "向相距最近且身上没有定时炸弹的那个敌人扔出一颗定时炸弹。定时炸弹每秒造成—()魔法伤害。当目标阵亡时，目标会爆炸，在半径1格范围内造成—()魔法伤害并为【基兰】提供15.0法力值。如果一颗定时炸弹在一个敌人身上持续了12.0秒并且【基兰】还活着，那么该敌人会即刻阵亡。"
+   },
+   "icon": "assets/icons/tft16_zilean_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_zilean/skins/base/images/tft16_zilean_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Fiddlesticks",
+   "name": "费德提克",
+   "cost": 5,
+   "traits": [
+    "远古恐惧",
+    "征服者"
+   ],
+   "hp": 1200.0,
+   "mana": 70.0,
+   "initialMana": 30.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 50.0,
+   "as": 0.9,
+   "range": 2.0,
+   "role": "APReaper",
+   "ability": {
+    "name": "群鸦风暴",
+    "desc": "传送至2.0格内最大的那个敌群，对其造成0.0秒晕眩。开始每秒失去22.0法力值。在施放状态下，每秒对半径2.0格内的所有敌人造成0.0()魔法伤害。相距最近的2.0个敌人受到33%%额外伤害。"
+   },
+   "icon": "assets/icons/tft16_fiddlesticks_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_fiddlesticks/skins/base/images/tft16_fiddlesticks_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Shyvana",
+   "name": "希瓦娜",
+   "cost": 5,
+   "traits": [
+    "龙血武姬",
+    "主宰"
+   ],
+   "hp": 1200.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 80.0,
+   "as": 0.95,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "魔龙降世/烈焰吐息",
+    "desc": "魔龙降世：变身为一条巨龙，获得0.0最大生命值。短暂获得20%%伤害减免并且俯冲轰炸进最大的敌群，在一个半径3格的圆形内造成—()物理伤害。烈焰吐息：向一个锥形范围吐出火焰3.0秒，每秒对命中的敌人们造成—()物理伤害。"
+   },
+   "icon": "assets/icons/tft16_shyvana_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_shyvana/skins/base/images/tft16_shyvana_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Galio",
+   "name": "加里奥",
+   "cost": 5,
+   "traits": [
+    "德玛西亚",
+    "正义巨像"
+   ],
+   "hp": 1100.0,
+   "mana": 140.0,
+   "initialMana": 90.0,
+   "armor": 55.0,
+   "mr": 55.0,
+   "ad": 50.0,
+   "as": 0.9,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "鼓舞之力",
+    "desc": "被动：每第3.0次攻击在环绕目标的一个圆形范围内造成—()魔法伤害。主动：冲刺进最大的弈子群中并鼓舞2格内的所有友军，为他们提供持续4.0秒的0.0()护盾值。然后砸落，对2格内的所有敌人造成—()额外魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_galio_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_galio/skins/base/images/tft16_galio_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_TahmKench",
+   "name": "塔姆",
+   "cost": 5,
+   "traits": [
+    "比尔吉沃特",
+    "河流之王",
+    "斗士"
+   ],
+   "hp": 1000.0,
+   "mana": 90.0,
+   "initialMana": 10.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 70.0,
+   "as": 0.55,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "大快朵颐",
+    "desc": "吞噬目标0.0秒，造成600.0()魔法伤害，并使其免疫其他来源的伤害。在此期间，获得30%%伤害减免。如果目标免疫控制效果，则转而造成600.0()魔法伤害。如果目标在被吞噬期间阵亡，吐出目标持有的一件随机基础装备或相当于该单位费用的金币。如果未在被吞噬期间阵亡，则将其喷吐向相距最远的那个敌人，在其产生碰撞时短暂晕眩目标。"
+   },
+   "icon": "assets/icons/tft16_tahmkench_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_tahmkench/skins/base/images/tft16_tahmkench_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Sejuani",
+   "name": "瑟庄妮",
+   "cost": 3,
+   "traits": [
+    "弗雷尔卓德",
+    "护卫"
+   ],
+   "hp": 900.0,
+   "mana": 80.0,
+   "initialMana": 40.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 60.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "凛冬之怒",
+    "desc": "获得持续4.0秒的0.0()护盾值。打击一个锥形和一条直线。被命中的敌人们受到0.0()魔法伤害和持续4.0秒的30%冰冷。如果他们已被冰冷，则将他们晕眩1.0秒。{{TFT_Keyword_Chill}}"
+   },
+   "icon": "assets/icons/tft16_sejuani_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_sejuani/skins/base/images/tft16_sejuani_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Sett",
+   "name": "瑟提",
+   "cost": 5,
+   "traits": [
+    "艾欧尼亚",
+    "腕豪"
+   ],
+   "hp": 1000.0,
+   "mana": 90.0,
+   "initialMana": 10.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 60.0,
+   "as": 0.9,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "叹为观止",
+    "desc": "抓住目标然后将其向前猛击，对其造成—() + 0.0()其最大生命值的魔法伤害。半径3.0格内的所有其他敌人受到50%%的总伤害。"
+   },
+   "icon": "assets/icons/tft16_sett_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_sett/skins/base/images/tft16_sett_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Brock",
+   "name": "岩宝",
+   "cost": 5,
+   "traits": [
+    "以绪塔尔"
+   ],
+   "hp": 1800.0,
+   "mana": 100,
+   "initialMana": 40.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 270.0,
+   "as": 0.5,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "震地猛击",
+    "desc": "被动：免疫控制效果。攻击暂时击飞目标并在其周围半径1格范围内造成50%%伤害。主动：猛击地面，对所有敌人造成—()物理伤害，每与中心相距一格，这个伤害就会降低15%%(最低至40%%)。如果这是他们在这场战斗中首次被【震地猛击】命中，还对他们造成至多1.75秒击飞。12.0块岩石在战场四处落下，每块对命中的敌人们造成—()物理伤害。"
+   },
+   "icon": "assets/icons/tft16_brock_splash_tile_0.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_brock/skins/base/images/tft16_brock_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_THex",
+   "name": "海克斯霸龙",
+   "cost": 5,
+   "traits": [
+    "海克斯机甲",
+    "皮尔特沃夫",
+    "枪手"
+   ],
+   "hp": 1100.0,
+   "mana": 80.0,
+   "initialMana": 10.0,
+   "armor": 80.0,
+   "mr": 80.0,
+   "ad": 110.0,
+   "as": 0.9,
+   "range": 2.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "海克斯军械库",
+    "desc": "被动：攻击会射出一阵4.0颗子弹的弹幕。主动：获得—()护盾值并开始每秒消耗30.0法力值。施放期间的每一秒，发射一道激光来造成—()物理伤害，每命中一名敌人减少70%%伤害值，至多至90%%。此外，发射4.0()颗导弹，由附近的4.0名敌人分摊，每颗造成—()物理伤害。"
+   },
+   "icon": "assets/icons/tft16_thex_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_thex/hud/tft16_thex_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_BelVeth",
+   "name": "卑尔维斯",
+   "cost": 4,
+   "traits": [
+    "虚空",
+    "裁决战士"
+   ],
+   "hp": 1000.0,
+   "mana": 100,
+   "initialMana": 0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 65.0,
+   "as": 0.85,
+   "range": 2.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "万载豪筵",
+    "desc": "被动：参与击杀后，获得100%%攻击速度，在3.0秒内持续衰减。主动：在半径2格范围内造成—()物理伤害，并进行变身，变身持续至战斗结束。在变身状态下，获得— ()攻击速度，33%%最大生命值，并提升移动速度。普攻造成0.0额外真实伤害，同个敌人每受击一次，伤害增加0.0。"
+   },
+   "icon": "assets/icons/tft16_belveth_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_belveth/skins/base/images/tft16_belveth_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Singed",
+   "name": "辛吉德",
+   "cost": 4,
+   "traits": [
+    "祖安",
+    "主宰"
+   ],
+   "hp": 1100.0,
+   "mana": 80.0,
+   "initialMana": 0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 15.0,
+   "as": 0.7,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "剧毒踪迹",
+    "desc": "被动：在战场四处跑动并留下一条存留4.0秒的剧毒踪迹。剧毒踪迹每秒对其中的敌人们造成0.0()魔法伤害。每秒获得— ()法力值。主动：在4.0秒持续期间，获得移动速度提升，每秒回复0.0()生命值，并获得20.0护甲和魔抗。"
+   },
+   "icon": "assets/icons/tft16_singed_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_singed/skins/base/images/tft16_singed_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_AurelionSol",
+   "name": "奥瑞利安·索尔",
+   "cost": 5,
+   "traits": [
+    "铸星龙王",
+    "巨神峰"
+   ],
+   "hp": 1100.0,
+   "mana": 85.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 50.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "天瀑",
+    "desc": "被动：在玩家对战中每对敌人们造成250.0技能伤害，就会获得【星尘】。【星尘】会让【天瀑】更加强力。(当前【星尘】：@TFTUnitProperty.:TFT16_AurelionSol_Stardust@) 主动：对目标砸下一颗星星，在一个半径2.0格的范围内造成0.0()魔法伤害。【星尘】升级项目：25.0：生成一个冲击波，在一个半径3.0格的范围内造成0.0()额外魔法伤害。25.0：生成一个冲击波，在一个半径3.0格的范围内造成0.0()额外魔法伤害。60.0：星星在砸落时造成15%%额外伤害。60.0：星星在砸落时造成15%%额外伤害。140.0：冲击波的范围提升至半径4.0格。140.0：冲击波的范围提升至半径4.0格。200.0：对星星砸落范围内的目标们造成1.5秒击飞。200.0：对星星砸落范围内的目标们造成1.5秒击飞。300.0：冲击波的范围提升至半径10.0格。300.0：冲击波的范围提升至半径10.0格。550.0：星星砸落时造成33%%额外真实伤害。550.0：星星砸落时造成33%%额外真实伤害。800.0：还会降下一团流星风暴，造成由还活着的敌人们分摊的0.0()魔法伤害。 800.0：还会降下一团流星风暴，造成由还活着的敌人们分摊的0.0()魔法伤害。1444.0：在中心召唤一个黑洞，即刻击杀其中的敌人们。1444.0：在中心召唤一个黑洞，即刻击杀其中的敌人们。"
+   },
+   "icon": "assets/icons/tft16_aurelionsol_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_aurelionsol/skins/base/images/tft16_aurelionsol_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Veigar",
+   "name": "维迦",
+   "cost": 4,
+   "traits": [
+    "约德尔人",
+    "法师"
+   ],
+   "hp": 800.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 33.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "黑暗风暴",
+    "desc": "被动：获得来自所有来源的50%%额外法术加成。主动：降下一场由0.0颗流星组成的风暴跨越整个战场，每颗流星造成0.0()魔法伤害。它们天生具有能够产生暴击的能力。每有一颗击杀了一个敌人时，就会永久获得1.0法术加成。(永久法术加成：@TFTUnitProperty.:TFT16_Unit_VeigarBonusAP@% )"
+   },
+   "icon": "assets/icons/tft16_veigar_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_veigar/skins/base/images/tft16_veigar_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_BaronNashor",
+   "name": "纳什男爵",
+   "cost": 5,
+   "traits": [
+    "虚空",
+    "纳什男爵"
+   ],
+   "hp": 3000.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 85.0,
+   "mr": 85.0,
+   "ad": 120.0,
+   "as": 0.5,
+   "range": 2.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "虚空之怒",
+    "desc": "被动：免疫控制效果。攻击对目标所处的一条直线造成伤害。如果距离内没有敌人，则会冲刺至下一个目标并在抵达时击飞邻格的敌人们。在【虚空裂隙】中时，每3.0秒就会在一个随机敌人下方喷出一条触手，来将该敌人击飞1.5秒。主动：猛击并在一个半径2格的圆形内竖起尖刺，对命中的敌人们造成—()物理伤害。然后在3秒里，持续喷射10.0团酸液，酸液造成—()物理伤害。"
+   },
+   "icon": "assets/icons/tft16_baronnashor_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_baronnashor/skins/base/images/tft16_baronnashor_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Darius",
+   "name": "德莱厄斯",
+   "cost": 3,
+   "traits": [
+    "诺克萨斯",
+    "护卫"
+   ],
+   "hp": 900.0,
+   "mana": 65.0,
+   "initialMana": 20.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 50.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "大杀四方",
+    "desc": "回复—()生命值并旋转，对邻格敌人们造成—()物理伤害并施加一层【出血】，【出血】在5.0秒的持续时间里每秒造成—()物理伤害。如果一个带有【出血】的敌人的生命值降到8%%以下，则对其猛击，立即将其击杀。(每层提升5%%处决阈值)"
+   },
+   "icon": "assets/icons/tft16_darius_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_darius/skins/base/images/tft16_darius_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Yone",
+   "name": "永恩",
+   "cost": 4,
+   "traits": [
+    "艾欧尼亚",
+    "裁决战士"
+   ],
+   "hp": 1100.0,
+   "mana": 100,
+   "initialMana": 30.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 20.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "HFighter",
+   "ability": {
+    "name": "染血之剑的亲族",
+    "desc": "被动：攻击交替造成200.0()额外物理伤害和200.0()额外魔法伤害。主动：打击穿过3.0格内尽可能最多的敌人，将他们击飞1.5秒并造成—()物理伤害和—()魔法伤害。【永恩】随后对命中的所有敌人造成由他们分摊的—()物理伤害和—()魔法伤害。剑刃兄弟：当你登场【亚索】和【永恩】时，【亚索】会协助【永恩】的技能施放。剑刃兄弟：当【永恩】施放技能时，你最强的那个【亚索】闪烁至【永恩】命中的每个目标，造成额外物理伤害。"
+   },
+   "icon": "assets/icons/tft16_yone_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_yone/skins/base/images/tft16_yone_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Warwick",
+   "name": "沃里克",
+   "cost": 4,
+   "traits": [
+    "祖安",
+    "迅击战士"
+   ],
+   "hp": 1200.0,
+   "mana": 70.0,
+   "initialMana": 0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 60.0,
+   "as": 0.9,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "血之饥渴",
+    "desc": "获得80%%攻击速度，15%%全能吸血，额外移动速度，并在攻击时造成—()额外物理伤害，持续到战斗结束。该效果激活期间，参与击杀后，会为【沃里克】、【金克丝】和【蔚】提供持续3.0秒的0.800000011920929 ()攻击速度。"
+   },
+   "icon": "assets/icons/tft16_warwick_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_warwick/skins/base/images/tft16_warwick_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Fizz",
+   "name": "菲兹",
+   "cost": 4,
+   "traits": [
+    "比尔吉沃特",
+    "约德尔人"
+   ],
+   "hp": 1000.0,
+   "mana": 10.0,
+   "initialMana": 0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 30.0,
+   "as": 0.9,
+   "range": 1.0,
+   "role": "APReaper",
+   "ability": {
+    "name": "古灵精怪",
+    "desc": "变为短暂的不可选取状态，随后跳向4.0格内相距最远的那个敌人，避开坦克和战士，并对邻格的敌人们造成0.0()魔法伤害。下4.0次攻击，获得100%%攻击速度并在命中时造成0.0()额外魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_fizz_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_fizz/skins/base/images/tft16_fizz_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Poppy",
+   "name": "波比",
+   "cost": 2,
+   "traits": [
+    "德玛西亚",
+    "约德尔人",
+    "主宰"
+   ],
+   "hp": 850.0,
+   "mana": 80.0,
+   "initialMana": 40.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 50.0,
+   "as": 0.7,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "圣锤猛击",
+    "desc": "获得持续4.0秒的—()护盾值并对目标造成—()物理伤害。在一段延迟后，短暂击飞目标并再次造成该伤害。圆盾会从目标处飞出，为2.0个附近友军提供30%%的该护盾值。"
+   },
+   "icon": "assets/icons/tft16_poppy_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_poppy/skins/base/images/tft16_poppy_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Kennen",
+   "name": "凯南",
+   "cost": 3,
+   "traits": [
+    "艾欧尼亚",
+    "约德尔人",
+    "护卫"
+   ],
+   "hp": 900.0,
+   "mana": 125.0,
+   "initialMana": 70.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 50.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "秘奥义！万雷天牢引",
+    "desc": "获得200.0()护盾值并召唤一场风暴，降下6.0道天雷打击其中的敌人，3.0秒内造成250.0()魔法伤害。最先被3.0道天雷命中的3.0名目标将受到晕眩，持续1.5秒。对同一目标多次施加的晕眩拥有50%%效能。"
+   },
+   "icon": "assets/icons/tft16_kennen_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_kennen/skins/base/images/tft16_kennen_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Ziggs",
+   "name": "吉格斯",
+   "cost": 5,
+   "traits": [
+    "祖安",
+    "约德尔人",
+    "狙神"
+   ],
+   "hp": 900.0,
+   "mana": 140.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": null,
+   "as": 0.9,
+   "range": 6.0,
+   "role": "APCarry",
+   "ability": {
+    "name": "科学的地狱火炮",
+    "desc": "被动：攻击被替换为可弹跳1.0次的炸弹，对命中的单位们造成—()魔法伤害。主动：向最大的4.0格半径敌群扔出一枚巨型炸弹，在碰撞时爆炸，对命中的敌人造成—()到—()魔法伤害，伤害取决于敌人与爆炸中心的距离。"
+   },
+   "icon": "assets/icons/tft16_ziggs_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_ziggs/skins/base/images/tft16_ziggs_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Aatrox",
+   "name": "亚托克斯",
+   "cost": 5,
+   "traits": [
+    "暗裔",
+    "暗裔剑魔",
+    "裁决战士"
+   ],
+   "hp": 1000.0,
+   "mana": 20.0,
+   "initialMana": 0,
+   "armor": 55.0,
+   "mr": 55.0,
+   "ad": 65.0,
+   "as": 0.9,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "暗裔之刃",
+    "desc": "施放时，在以下几个不断循环的技能中选择一个：斩击一条直线，对命中的敌人们造成—()物理伤害和持续4.0秒的20%护甲击碎。挥击一个锥形区域，对命中的敌人们造成—()物理伤害和1.0秒击飞。猛击目标，对半径1格内的圆形范围造成—()物理伤害。低于15%%最大生命值的目标们会被 处决。"
+   },
+   "icon": "assets/icons/tft16_aatrox_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_aatrox/skins/base/images/tft16_aatrox_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Volibear",
+   "name": "沃利贝尔",
+   "cost": 5,
+   "traits": [
+    "弗雷尔卓德",
+    "斗士"
+   ],
+   "hp": 1200.0,
+   "mana": 20.0,
+   "initialMana": 0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 55.0,
+   "as": 0.9,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "狂雷渐起",
+    "desc": "撕咬目标并将其标记，造成—()物理伤害，如果目标已被标记则此伤害提升60%%。在施放5.0次之后，跃至附近的一个格子，激活风暴使者并对半径2格内的敌人们造成—()物理伤害。风暴使者：获得600.0生命值和 50%%攻击速度。每2.0秒，在一个附近的敌人上方召唤一道闪电箭，造成—()魔法伤害。参与击杀后，会在倒下的敌人上方召唤一道闪电箭。"
+   },
+   "icon": "assets/icons/tft16_volibear_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_volibear/skins/base/images/tft16_volibear_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Jhin",
+   "name": "烬",
+   "cost": 1,
+   "traits": [
+    "艾欧尼亚",
+    "枪手",
+    "狙神"
+   ],
+   "hp": 444.0,
+   "mana": 70.0,
+   "initialMana": 0,
+   "armor": 24.0,
+   "mr": 24.0,
+   "ad": 44.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "完美谢幕",
+    "desc": "接下来的4次普攻，将攻击速度设为1.0，获得无限射程，并将普攻替换为加农炮击。加农炮击造成—()物理伤害。第四炮造成144%%额外伤害。"
+   },
+   "icon": "assets/icons/tft16_jhin_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_jhin/skins/base/images/tft16_jhin_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Sylas",
+   "name": "塞拉斯",
+   "cost": 5,
+   "traits": [
+    "解脱者",
+    "法师",
+    "护卫"
+   ],
+   "hp": 1450.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 80.0,
+   "mr": 80.0,
+   "ad": 65.0,
+   "as": 0.9,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "窃取来的力量",
+    "desc": "施放三种技能中的一种：天崩地裂：跃至附近一名敌人。对2格内的所有敌人造成0.0()魔法伤害和0.0秒晕眩。德玛西亚正义：对目标造成0.0()魔法伤害。若目标低于15%%最大生命值，则将其直接处决。终极闪光：获得持续1.25秒的—()护盾值。对一条直线上的所有敌人造成0.0()魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_sylas_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_sylas/skins/base/images/tft16_sylas_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Ryze",
+   "name": "瑞兹",
+   "cost": 5,
+   "traits": [
+    "符文法师"
+   ],
+   "hp": 1000.0,
+   "mana": 45.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 35.0,
+   "as": 0.9,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "符能过载",
+    "desc": "释放一个符能震波，造成300.0()魔法伤害。它会分裂成两个，对两个相距最近的敌人造成33%%该伤害。每个次级震波会额外分裂一次。比尔吉沃特：震波在碰撞时会爆炸，造成18%%该伤害的物理伤害至邻格的敌人们。德玛西亚：处决低于0.11999999731779099()生命值的目标们。弗雷尔卓德：对目标们施加2.0秒冰冷并造成300.0()额外真实伤害。艾欧尼亚：震波会额外分裂一次，造成50%%伤害。以绪塔尔：战斗开始时以及每10.0秒获得一个随机地区的效果。诺克萨斯：震波现在会穿过目标们，每命中一个敌人，造成的伤害就会削减60%%。皮尔特沃夫：每第三次施放会过载，造成40%%额外伤害。暗影岛：震波伤害提升300.0()。恕瑞玛：击飞目标们0.5秒，并有几率挖掘出金币或宝藏。巨神峰：治疗生命值最低的那个友军，数额相当于10%%该造成伤害值。虚空：无视敌人们的30%%护甲与魔抗。约德尔人：缩小命中的目标们，将其伤害降低8%%，持续4.0秒。祖安：使目标中毒，在4.0秒里持续造成—()次30.0魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_ryze_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_ryze/skins/base/images/tft16_ryze_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Nidalee",
+   "name": "奈德丽",
+   "cost": 4,
+   "traits": [
+    "以绪塔尔",
+    "狂野女猎手"
+   ],
+   "hp": 1200.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 70.0,
+   "mr": 70.0,
+   "ad": 45.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "无情扑击",
+    "desc": "跃向邻格的一名生命值最低的敌人，然后对其造成—()魔法伤害，并对邻格的敌人们造成0.0()魔法伤害。若其中任意一名敌人死亡，则再次施放，造成70%%伤害。坦克们从这个技能中受到60%%额外伤害并且战士们受到30%%额外伤害。"
+   },
+   "icon": "assets/icons/tft16_nidalee_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_nidalee/skins/base/images/tft16_nidalee_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Tryndamere",
+   "name": "泰达米尔",
+   "cost": 2,
+   "traits": [
+    "弗雷尔卓德",
+    "裁决战士"
+   ],
+   "hp": 750.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 60.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "不灭怒火",
+    "desc": "进入持续5.0秒的暴怒状态。在暴怒状态下，获得—()伤害减免并且攻击被替换为一次造成—()物理伤害的打击。在对抗被冰冷的敌人时，无视其30%%护甲。血誓盟约：当你登场【艾希】和【泰达米尔】时，他俩最强大的己方弈子会在击杀时永久提升其强度。血誓盟约：获得额外移动速度。获得10%%物理加成，每当【艾希】或【泰达米尔】完成一次击杀时，这个加成就会永久提升1%%。(当前加成：@TFTUnitProperty.:TFT16_Tryndamere_PassiveAS*100@%){{TFT_Keyword_Chill}}"
+   },
+   "icon": "assets/icons/tft16_tryndamere_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_tryndamere/skins/base/images/tft16_tryndamere_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_RiftHerald",
+   "name": "峡谷先锋",
+   "cost": 4,
+   "traits": [
+    "虚空",
+    "斗士"
+   ],
+   "hp": 1100.0,
+   "mana": 125.0,
+   "initialMana": 60.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 60.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "扭曲护甲",
+    "desc": "获得0.0最大生命值并且体型变大。对以目标为中心的一个半径2.0格的范围进行猛击，对命中的敌人们造成—()魔法伤害。4.0秒持续期间，这个单位获得—()伤害减免，并且每有一个敌人以这个单位为目标就会+1%%此加成。"
+   },
+   "icon": "assets/icons/tft16_riftherald_splash_tile_0.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_riftherald/skins/base/images/tft16_riftherald_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Mel",
+   "name": "梅尔",
+   "cost": 5,
+   "traits": [
+    "诺克萨斯",
+    "耀光使"
+   ],
+   "hp": 900.0,
+   "mana": 200.0,
+   "initialMana": 30.0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 50.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "耀光蚀日",
+    "desc": "被动：在获得法力值时，扔出2.0颗耀光法球环绕于目标。它们每秒在半径1格内造成— ()魔法伤害并且从命中的敌人处汲取1.0法力值。在汲取230.0法力值之后，获得一件随机的光明武器。 (@TFTUnitProperty.:TFT16_Mel_ManaSpent@/230.0)主动：引爆目标上的法球，引发一次半径3.0格的爆炸，对其造成0.0()魔法伤害并对命中的所有其它敌人造成—()伤害。"
+   },
+   "icon": "assets/icons/tft16_mel_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_mel/skins/base/images/tft16_mel_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Graves",
+   "name": "格雷福斯",
+   "cost": 2,
+   "traits": [
+    "比尔吉沃特",
+    "枪手"
+   ],
+   "hp": 700.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 50.0,
+   "as": 0.7,
+   "range": 2.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "终极爆弹",
+    "desc": "被动：攻击一个以目标为中心的锥形，对命中的其它敌人造成45%%伤害。主动：对目标发射一个爆炸性的弹壳，造成由半径1格的圆形范围内的敌人们分摊的—()物理伤害。搞事搭档：在你登场【格雷福斯】和【崔斯特】时，他俩都会获得加成。"
+   },
+   "icon": "assets/icons/tft16_graves_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_graves/skins/base/images/tft16_graves_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Skarner",
+   "name": "斯卡纳",
+   "cost": 4,
+   "traits": [
+    "以绪塔尔"
+   ],
+   "hp": 1400.0,
+   "mana": 120.0,
+   "initialMana": 60.0,
+   "armor": 70.0,
+   "mr": 70.0,
+   "ad": 65.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "毒刺贯体",
+    "desc": "被动：所有友军获得0.0护甲。主动：获得持续4.0秒的护盾值—()。沿直线刺穿至多三个附近的敌人，造成—()物理伤害和2.0秒晕眩。"
+   },
+   "icon": "assets/icons/tft16_skarner_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_skarner/skins/base/images/tft16_skarner_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Diana",
+   "name": "黛安娜",
+   "cost": 4,
+   "traits": [
+    "巨神峰"
+   ],
+   "hp": 1300.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 70.0,
+   "mr": 70.0,
+   "ad": 35.0,
+   "as": 0.8,
+   "range": 1.0,
+   "role": "APReaper",
+   "ability": {
+    "name": "月神冲刺",
+    "desc": "被动：来自你最强大的那个【蕾欧娜】和最强大的那个【黛安娜】的技能伤害会给目标施加月光照耀标记，从而将其伤害削减10%%。主动：获得0.0()护盾值。对4.0格内相距最远且未带有月光照耀的那个敌人释放一束月光能量，造成—()魔法伤害。随后，冲刺至所有月光照耀的敌人，从而对他们造成0.0()魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_diana_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_diana/skins/base/images/tft16_diana_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Kaisa",
+   "name": "卡莎",
+   "cost": 4,
+   "traits": [
+    "虚空之女",
+    "虚空",
+    "狙神"
+   ],
+   "hp": 850.0,
+   "mana": 10.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 50.0,
+   "as": 0.5,
+   "range": 6.0,
+   "role": "ADCasterFormSwapper",
+   "ability": {
+    "name": "艾卡西亚暴雨",
+    "desc": "冲刺远离所有敌人，然后发射12.0颗飞弹，分摊给4.0个相距最近的敌人。每颗飞弹造成—()物理伤害。"
+   },
+   "icon": "assets/icons/tft16_kaisa_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_kaisa/skins/base/images/tft16_kaisa_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Renekton",
+   "name": "雷克顿",
+   "cost": 4,
+   "traits": [
+    "恕瑞玛"
+   ],
+   "hp": 1400.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 70.0,
+   "mr": 70.0,
+   "ad": 75.0,
+   "as": 0.9,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "横冲直撞",
+    "desc": "冲刺至2.0格内生命值最低的那个敌人，对沿途的所有敌人造成—()物理伤害。然后斩击4.0次，每次造成—()物理伤害。后续施放会使斩击次数增加1.0。"
+   },
+   "icon": "assets/icons/tft16_renekton_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_renekton/skins/base/images/tft16_renekton_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Nasus",
+   "name": "内瑟斯",
+   "cost": 4,
+   "traits": [
+    "恕瑞玛"
+   ],
+   "hp": 1500.0,
+   "mana": 70.0,
+   "initialMana": 10.0,
+   "armor": 70.0,
+   "mr": 70.0,
+   "ad": 60.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "死神降临",
+    "desc": "窃取0.10000000149011612()生命值，由相距最近的4.0个敌人分摊。在8.0秒的持续期间，获得30.0护甲和魔抗并且每秒对邻格的敌人们造成—()魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_nasus_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_nasus/skins/base/images/tft16_nasus_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Xerath",
+   "name": "泽拉斯",
+   "cost": 5,
+   "traits": [
+    "恕瑞玛",
+    "远古巫灵"
+   ],
+   "hp": 900.0,
+   "mana": 135.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 40.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "飞升者之眼",
+    "desc": "发射0.0道奥术震波，随机分摊给相距最近的4.0个敌人，每道造成0.0()魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_xerath_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_xerath/skins/base/images/tft16_xerath_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Thresh",
+   "name": "锤石",
+   "cost": 5,
+   "traits": [
+    "暗影岛",
+    "神盾使"
+   ],
+   "hp": 1200.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 65.0,
+   "mr": 65.0,
+   "ad": 60.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "幽冥监牢",
+    "desc": "被动：每一秒，对2格内的所有敌人造成—()魔法伤害。获得治疗效果，数额相当于这个效果的75%%造成伤害。主动：生成一个半径2格的墙体监牢，持续5.0秒。在主动效果期间，被动部分的伤害翻倍。当一个敌人触碰到一个墙体时，其受到—()魔法伤害。不论何时，只要幽冥监牢中的敌人数量少于2.0个，就会将一个敌人拉拽进来。"
+   },
+   "icon": "assets/icons/tft16_thresh_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_thresh/skins/base/images/tft16_thresh_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Gwen",
+   "name": "格温",
+   "cost": 3,
+   "traits": [
+    "暗影岛",
+    "耀光使"
+   ],
+   "hp": 850.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 55.0,
+   "mr": 55.0,
+   "ad": 40.0,
+   "as": 0.8,
+   "range": 2.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "快刀剪乱",
+    "desc": "被动：获得15%%全能吸血。主动：绕目标冲刺并剪击—()次，每次剪击对其造成0.0()魔法伤害，并对一个锥形内的所有其他敌人造成0.0()伤害。"
+   },
+   "icon": "assets/icons/tft16_gwen_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_gwen/skins/base/images/tft16_gwen_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Kalista",
+   "name": "卡莉丝塔",
+   "cost": 4,
+   "traits": [
+    "暗影岛",
+    "征服者"
+   ],
+   "hp": 800.0,
+   "mana": 65.0,
+   "initialMana": 20.0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 50.0,
+   "as": 0.85,
+   "range": 4.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "无尽撕裂",
+    "desc": "召唤—()柄长矛，分摊给相距最近的4.0名敌人。在短暂延迟后，它们会刺穿其目标，每柄造成—()物理伤害并降低1.0护甲值。"
+   },
+   "icon": "assets/icons/tft16_kalista_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_kalista/skins/base/images/tft16_kalista_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Leblanc",
+   "name": "乐芙兰",
+   "cost": 3,
+   "traits": [
+    "诺克萨斯",
+    "神谕者"
+   ],
+   "hp": 650.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 35.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "魔影迷踪",
+    "desc": "召唤3.0个冲刺的镜像，以打击目标及至多3.0个附近的敌人。目标受到0.0()魔法伤害和1.0秒晕眩，而其他被命中的单位受到0.0()魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_leblanc_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_leblanc/skins/base/images/tft16_leblanc_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Viego",
+   "name": "佛耶戈",
+   "cost": 1,
+   "traits": [
+    "暗影岛",
+    "迅击战士"
+   ],
+   "hp": 650.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 35.0,
+   "mr": 35.0,
+   "ad": 40.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "HFighter",
+   "ability": {
+    "name": "破败王剑",
+    "desc": "被动：获得—% (%i:set14AmpIcon%)攻击速度。主动：对目标造成—()物理伤害。在战斗环节剩余期间，【佛耶戈】的攻击造成0.0()的可叠加额外魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_viego_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_viego/skins/base/images/tft16_viego_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Ekko",
+   "name": "艾克",
+   "cost": 2,
+   "traits": [
+    "祖安",
+    "耀光使"
+   ],
+   "hp": 750.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 35.0,
+   "as": 0.85,
+   "range": 1.0,
+   "role": "APFighter",
+   "ability": {
+    "name": "时光交错",
+    "desc": "在目标周围生成一个半径1.0格的地带，持续3.0秒。下3次攻击造成90.0()额外魔法伤害。当地带结束时，它对地带内的所有敌人造成伤害，伤害值相当于90.0 ()魔法伤害+目标在期间内受到的10%%伤害。"
+   },
+   "icon": "assets/icons/tft16_ekko_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_ekko/skins/base/images/tft16_ekko_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Bard",
+   "name": "巴德",
+   "cost": 2,
+   "traits": [
+    "星界游神"
+   ],
+   "hp": 750.0,
+   "mana": 55.0,
+   "initialMana": 0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 30.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "旅者的召唤",
+    "desc": "向附近的一名敌人发射6.0个木灵，造成0.0()魔法伤害。你的棋盘上每有1个3星单位，增加1个额外的木灵。(总木灵数：—)"
+   },
+   "icon": "assets/icons/tft16_bard_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_bard/skins/base/images/tft16_bard_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Vayne",
+   "name": "薇恩",
+   "cost": 3,
+   "traits": [
+    "德玛西亚",
+    "狙神"
+   ],
+   "hp": 650.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 70.0,
+   "as": 0.9,
+   "range": 6.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "闪避突袭",
+    "desc": "闪避突袭至附近一个格子，随后向目标发射一支弩箭，造成—()真实伤害。"
+   },
+   "icon": "assets/icons/tft16_vayne_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_vayne/skins/base/images/tft16_vayne_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Yunara",
+   "name": "芸阿娜",
+   "cost": 4,
+   "traits": [
+    "艾欧尼亚",
+    "迅击战士"
+   ],
+   "hp": 800.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 60.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "超凡状态",
+    "desc": "接下来4.0秒内，获得0.0攻击速度、无限距离，并将普攻替换为激光。激光可在直线上造成—()物理伤害，每穿过一个敌人伤害降低40%%。在激光暴击时，它造成33%%额外真实伤害。"
+   },
+   "icon": "assets/icons/tft16_yunara_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_yunara/skins/base/images/tft16_yunara_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Swain",
+   "name": "斯维因",
+   "cost": 4,
+   "traits": [
+    "诺克萨斯",
+    "法师",
+    "主宰"
+   ],
+   "hp": 1200.0,
+   "mana": 155.0,
+   "initialMana": 40.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 40.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "永不复行",
+    "desc": "被动：每一秒，回复—()生命值并对1格内的敌人们造成—()魔法伤害。主动：在附近最大的敌群上开启一个恶魔之眼，造成—()魔法伤害和1.5秒晕眩。"
+   },
+   "icon": "assets/icons/tft16_swain_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_swain/skins/base/images/tft16_swain_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_XinZhao",
+   "name": "赵信",
+   "cost": 2,
+   "traits": [
+    "德玛西亚",
+    "艾欧尼亚",
+    "神盾使"
+   ],
+   "hp": 850.0,
+   "mana": 70.0,
+   "initialMana": 15.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 50.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "三重爪击",
+    "desc": "打击目标3次。每次打击都会造成—()物理伤害并回复0.0()生命值。最后一击造成1.5秒晕眩。"
+   },
+   "icon": "assets/icons/tft16_xinzhao_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_xinzhao/skins/base/images/tft16_xinzhao_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Yorick",
+   "name": "约里克",
+   "cost": 2,
+   "traits": [
+    "暗影岛",
+    "神盾使"
+   ],
+   "hp": 850.0,
+   "mana": 75.0,
+   "initialMana": 15.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 60.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "哀伤之雾",
+    "desc": "回复—()生命值。朝这场战斗中造成伤害最高的敌人扔出一小团黑雾，优先选取独特的敌人们。它对其造成持续4.0秒的20%冰冷并且使其下一次技能的法力消耗上涨20.0。它随后在半径1格内造成—()魔法伤害。{{TFT_Keyword_Chill}}"
+   },
+   "icon": "assets/icons/tft16_yorick_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_yorick/skins/base/images/tft16_yorick_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Orianna",
+   "name": "奥莉安娜",
+   "cost": 2,
+   "traits": [
+    "皮尔特沃夫",
+    "神谕者"
+   ],
+   "hp": 550.0,
+   "mana": 50.0,
+   "initialMana": 20.0,
+   "armor": 20.0,
+   "mr": 20.0,
+   "ad": 30.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "指令：防卫",
+    "desc": "指挥魔灵冲向目标，造成—()魔法伤害以及由半径1格的圆形范围内的敌人们分摊的—()魔法伤害。然后为两个生命值最低的友军提供持续3.0秒的100.0()护盾值。"
+   },
+   "icon": "assets/icons/tft16_orianna_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_orianna/skins/base/images/tft16_orianna_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Qiyana",
+   "name": "奇亚娜",
+   "cost": 1,
+   "traits": [
+    "以绪塔尔",
+    "裁决战士"
+   ],
+   "hp": 650.0,
+   "mana": 30.0,
+   "initialMana": 0,
+   "armor": 35.0,
+   "mr": 35.0,
+   "ad": 42.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "清理草丛",
+    "desc": "冲刺到附近的一个格子然后向前挥击，对2.0格直线上的敌人造成—()物理伤害。"
+   },
+   "icon": "assets/icons/tft16_qiyana_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_qiyana/skins/base/images/tft16_qiyana_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Loris",
+   "name": "洛里斯",
+   "cost": 3,
+   "traits": [
+    "皮尔特沃夫",
+    "神盾使"
+   ],
+   "hp": 950.0,
+   "mana": 140.0,
+   "initialMana": 70.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 60.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "皮城争斗",
+    "desc": "获得持续4.0秒的0.0()护盾值。冲锋并击退目标，对其和命中的单位们造成1.25秒晕眩和0.0()魔法伤害。在冲锋后， 迫使附近的敌人们瞄准这个单位。"
+   },
+   "icon": "assets/icons/tft16_loris_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_loris/skins/base/images/tft16_loris_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Blitzcrank",
+   "name": "布里茨",
+   "cost": 1,
+   "traits": [
+    "祖安",
+    "主宰"
+   ],
+   "hp": 717.0,
+   "mana": 105.0,
+   "initialMana": 60.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 50.0,
+   "as": 0.55,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "静电力场",
+    "desc": "获得持续4.0秒的0.0()护盾值，并对1.0格内的所有敌人造成—()魔法伤害。"
+   },
+   "icon": "assets/icons/tft16_blitzcrank_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_blitzcrank/skins/base/images/tft16_blitzcrank_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_DrMundo",
+   "name": "蒙多医生",
+   "cost": 3,
+   "traits": [
+    "祖安",
+    "斗士"
+   ],
+   "hp": 900.0,
+   "mana": 60.0,
+   "initialMana": 0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 50.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "极限剂量",
+    "desc": "增肌5.0秒。在增肌状态下，每秒回复—()生命值，并且攻击造成—()物理伤害。"
+   },
+   "icon": "assets/icons/tft16_drmundo_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_drmundo/skins/base/images/tft16_drmundo_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Zaahen",
+   "name": "亚恒",
+   "cost": 5,
+   "traits": [
+    "暗裔",
+    "不落魔锋"
+   ],
+   "hp": 1100.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 70.0,
+   "mr": 70.0,
+   "ad": 60.0,
+   "as": 0.9,
+   "range": 2.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "神圣挑战",
+    "desc": "围绕目标冲刺并斩击一个圆形区域，对目标造成 —()物理伤害并对命中的所有其他邻格敌人造成—()物理伤害。如果该目标未阵亡，则即刻再次施放。如果这个技能连续施放了22.0次，则转而猛击目标，即刻将其击杀并对3格内的所有敌人造成—()物理伤害。"
+   },
+   "icon": "assets/icons/tft16_zaahen_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_zaahen/skins/base/images/tft16_zaahen_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Lucian",
+   "name": "卢锡安与赛娜",
+   "cost": 5,
+   "traits": [
+    "系魂圣枪",
+    "枪手"
+   ],
+   "hp": 900.0,
+   "mana": 70.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 65.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "圣枪洗礼",
+    "desc": "朝目标发射12.0()颗子弹。每颗子弹在命中首个敌人时爆炸，对附近所有敌人造成—()物理伤害。"
+   },
+   "icon": "assets/icons/tft16_lucian_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_lucian/skins/base/images/tft16_lucian_splash_tile_0.png"
+  },
+  {
+   "id": "TFT16_Kobuko",
+   "name": "可酷伯与悠米",
+   "cost": 3,
+   "traits": [
+    "约德尔人",
+    "斗士",
+    "神谕者"
+   ],
+   "hp": 950.0,
+   "mana": 90.0,
+   "initialMana": 30.0,
+   "armor": 50.0,
+   "mr": 50.0,
+   "ad": 20.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "悠米出动！",
+    "desc": "被动：【悠米】加入你最强大的那个【可酷伯】。每3.0秒，她会在二者间轮换：治疗生命值最低的那个友军—()生命值，或是为造成了最多伤害的那个友军提供持续4.0秒的25.0%攻击速度。主动：跳舞，从而在3.0秒里持续回复—()生命值。"
+   },
+   "icon": "assets/icons/tft16_kobuko_square.png",
+   "splash": "https://raw.communitydragon.org/latest/game/assets/characters/tft16_kobuko/skins/base/images/tft16_kobuko_splash_tile_0.png"
+  }
+ ],
+ "traits": [
+  {
+   "name": "绝命毒师",
+   "desc": "获得1个2星【提莫】。【辛吉德】的伤害会刷新【提莫】的中毒效果，并且【提莫】的伤害会为【辛吉德】提供不断增长的法术加成。每场玩家对战回合结束后，获得一个【提莫】。",
+   "icon": "assets/icons/teamup_trait_poisonpals.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "SingedAPGain": 2,
+      "TeemoDamageReq": 100
+     }
+    }
+   ]
+  },
+  {
+   "name": "远古巫灵",
+   "desc": "在每个对战回合结束后，一个【飞升法杖】会出现在你的商店。它们拥有强大的效果，并且能够用金币购买。@TFTUnitProperty.trait:TFT16_XerathUnique_PurchasedCharmDisplay@在【恭喜发财】中，【忠实追随者】随机法杖在你达到7级之前不会出现。",
+   "icon": "assets/icons/trait_icon_12_ascendant.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {}
+    }
+   ]
+  },
+  {
+   "name": "弗雷尔卓德",
+   "desc": "召唤一座冰封之塔。在塔前的友军获得生命值，在塔后的友军获得伤害增幅。【弗雷尔卓德】弈子额外获得150%%。(—) 8%% ，10%% (—) 两座冰封之塔。8%% ，10%% (—) 冰封之塔在被摧毁时会晕眩敌人None秒。8%% ，10%% 。",
+   "icon": "assets/icons/trait_icon_16_freljord.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 4,
+     "style": 1,
+     "vars": {
+      "DA": 0.10000000149011612,
+      "FreljordBonus": 1.5,
+      "HealthPercent": 0.07999999821186066,
+      "StunDuration": null,
+      "{03c21e23}": null,
+      "{7dced3cd}": 1.0
+     }
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 3,
+     "vars": {
+      "DA": 0.1599999964237213,
+      "FreljordBonus": 1.5,
+      "HealthPercent": 0.11999999731779099,
+      "StunDuration": null,
+      "{03c21e23}": 1.0,
+      "{7dced3cd}": 2.0
+     }
+    },
+    {
+     "min": 7,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "DA": 0.2199999988079071,
+      "FreljordBonus": 1.5,
+      "HealthPercent": 0.1599999964237213,
+      "StunDuration": 1.5,
+      "{03c21e23}": 1.0,
+      "{7dced3cd}": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "主宰",
+   "desc": "【主宰】获得伤害减免，这个加成在生命值高于50%%时还会提升。当一个【主宰】阵亡时，其他的【主宰】会治疗他们5%%最大生命值。(—) 18%%或25%%",
+   "icon": "assets/icons/trait_icon_16_juggernaut.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "BaseDR": 0.18000000715255737,
+      "HealRatio": 0.05000000074505806,
+      "HealthBreakpoint": 0.5,
+      "IncreasedDR": 0.25
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "BaseDR": 0.20000000298023224,
+      "HealRatio": 0.05000000074505806,
+      "HealthBreakpoint": 0.5,
+      "IncreasedDR": 0.30000001192092896
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BaseDR": 0.25999999046325684,
+      "HealRatio": 0.05000000074505806,
+      "HealthBreakpoint": 0.5,
+      "IncreasedDR": 0.36000001430511475
+     }
+    }
+   ]
+  },
+  {
+   "name": "迅击战士",
+   "desc": "你的队伍获得15%%攻击速度。【迅击战士】基于他们目标已损失生命值获得额外攻击速度。(—) 10%-30%%(—) 10%-30%%(—) 10%-30%%(—) 10%-30%%",
+   "icon": "assets/icons/trait_icon_16_quickstriker.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "MaxBonusAS": 0.30000001192092896,
+      "MinBonusAS": 0.10000000149011612,
+      "TeamwideAS": 0.15000000596046448
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "MaxBonusAS": 0.44999998807907104,
+      "MinBonusAS": 0.20000000298023224,
+      "TeamwideAS": 0.15000000596046448
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "MaxBonusAS": 0.6000000238418579,
+      "MinBonusAS": 0.30000001192092896,
+      "TeamwideAS": 0.15000000596046448
+     }
+    },
+    {
+     "min": 5,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "MaxBonusAS": 0.800000011920929,
+      "MinBonusAS": 0.4000000059604645,
+      "TeamwideAS": 0.15000000596046448
+     }
+    }
+   ]
+  },
+  {
+   "name": "狙神",
+   "desc": "【狙神】获得伤害增幅，并对相距更远的目标造成更高的伤害。(—) 18%% 每格+2%%",
+   "icon": "assets/icons/trait_icon_16_longshot.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "BaseDamageAmp": 0.18000000715255737,
+      "PercentDamageIncrease": 0.019999999552965164
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "BaseDamageAmp": 0.23999999463558197,
+      "PercentDamageIncrease": 0.029999999329447746
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 5,
+     "vars": {
+      "BaseDamageAmp": 0.2800000011920929,
+      "PercentDamageIncrease": 0.03999999910593033
+     }
+    },
+    {
+     "min": 5,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BaseDamageAmp": 0.3199999928474426,
+      "PercentDamageIncrease": 0.05000000074505806
+     }
+    }
+   ]
+  },
+  {
+   "name": "征服者",
+   "desc": "【征服者】技能可以造成暴击。【征服者】弈子获得额外暴击几率和暴击伤害。(—) 15.0% ，15.0%",
+   "icon": "assets/icons/trait_icon_16_vanquisher.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "BaseCritChance": 15.0,
+      "CritDmg": 15.0
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "BaseCritChance": 20.0,
+      "CritDmg": 20.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "BaseCritChance": 25.0,
+      "CritDmg": 25.0
+     }
+    },
+    {
+     "min": 5,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BaseCritChance": 30.0,
+      "CritDmg": 30.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "星界游神",
+   "desc": "在赢下玩家对战回合后，获得一个来自【符文之地】的随机单位。输掉对战回合后，获得免费刷新次数，该数额会随阶段提升。输掉时的刷新次数： @TFTUnitProperty.:TFT16_Caretaker_NumRerolls@",
+   "icon": "assets/icons/trait_icon_16_caretaker.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {}
+    }
+   ]
+  },
+  {
+   "name": "以绪塔尔",
+   "desc": "(—) 完成探险以赚取【太阳碎片】(%i:Set16Ixtal%)，每次选择探险时花掉它们来换取战利品！(—) 在每场玩家对战回合开始时，回复2点玩家生命值。(—) 在赢下对战回合后，找到— %i:Set16Ixtal%并挖掘出额外战利品。在战斗结束之前完成一次探险，会在下个回合开始时为你提供一个新的探险。",
+   "icon": "assets/icons/trait_icon_16_ixtal.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 4,
+     "style": 1,
+     "vars": {
+      "BonusHealth_Pairs": null,
+      "Heal": null
+     }
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 3,
+     "vars": {
+      "BonusHealth_Pairs": 250,
+      "Heal": 2.0
+     }
+    },
+    {
+     "min": 7,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BonusClues": 50.0,
+      "BonusHealth_Pairs": 250,
+      "Heal": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "裁决战士",
+   "desc": "【裁决战士】获得全能吸血和物理加成。基于他们已损失生命值，他们会获得额外物理加成，至多获得50%%(—) 20%% ，10%%",
+   "icon": "assets/icons/trait_icon_16_slayer.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "AmountIncrease": 0.5,
+      "BonusAD": 0.20000000298023224,
+      "BonusOmnivamp": 0.10000000149011612
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "AmountIncrease": 0.5,
+      "BonusAD": 0.30000001192092896,
+      "BonusOmnivamp": 0.1599999964237213
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AmountIncrease": 0.5,
+      "BonusAD": 0.4000000059604645,
+      "BonusOmnivamp": 0.20000000298023224
+     }
+    }
+   ]
+  },
+  {
+   "name": "法师",
+   "desc": "你的队伍获得法术加成，【法师】获得更多。(—) 15.0% ，【法师】获得25.0%",
+   "icon": "assets/icons/trait_icon_6_arcanist.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "AllyAP": 15.0,
+      "BonusAP": 25.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "AllyAP": 20.0,
+      "BonusAP": 50.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AllyAP": 35.0,
+      "BonusAP": 70.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "沙漠皇帝",
+   "desc": "【阿兹尔】会部署两个可被放置在战场上任意位置的沙漠卫兵。他们不会移动或攻击，并会在【阿兹尔】阵亡时一起阵亡。",
+   "icon": "assets/icons/trait_icon_16_emperor.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {}
+    }
+   ]
+  },
+  {
+   "name": "铸星龙王",
+   "desc": "每有一个其他的独特【巨神峰】弈子在战斗中登场，【奥瑞利安·索尔】就会获得25%/30%/100%%星尘层数加成。当前加成：@TFTUnitProperty.:TFT16_AurelionSol_StarMod@%",
+   "icon": "assets/icons/trait_icon_16_starforger.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "BonusStardustPerOneStar": 0.25,
+      "BonusStardustPerThreeStar": 1.0,
+      "BonusStardustPerTwoStar": 0.30000001192092896
+     }
+    }
+   ]
+  },
+  {
+   "name": "龙血武姬",
+   "desc": "施放技能时，【希瓦娜】会用【烈焰吐息】替换她的技能。在变身状态下，所有友军受到来自敌人的技能伤害减少8%%。",
+   "icon": "assets/icons/trait_icon_16_dragonborn.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "AbilityDamageReduction": 0.07999999821186066
+     }
+    }
+   ]
+  },
+  {
+   "name": "枪手",
+   "desc": "【枪手】获得物理加成。来自【枪手】的每第4次攻击会造成额外物理伤害。(—) 22%%，100额外伤害",
+   "icon": "assets/icons/trait_icon_16_gunslinger.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "AD": 0.2199999988079071,
+      "BonusDamage": 100,
+      "NumAttacks": 4
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AD": 0.4399999976158142,
+      "BonusDamage": 200,
+      "NumAttacks": 4
+     }
+    }
+   ]
+  },
+  {
+   "name": "海克斯机甲",
+   "desc": "获得一个【驾驶员格】。战斗开始时：该格内的弈子会跃入【海克斯霸龙】，基于其角色定位和星级，为【海克斯霸龙】提供其80%%生命值和额外属性。坦克： +20.0/30.0/40.0% 全能吸血战士： +20.0/30.0/40.0%物理加成射手： +12.0/20.0/30.0%伤害增幅术师： +2.0/4.0/5.0法力回复刺客： +40.0/70.0/100.0%暴击几率阵亡时，【驾驶员】会被弹出，【海克斯霸龙】将附近的敌人击退并晕眩1.5秒。",
+   "icon": "assets/icons/trait_icon_16_hexmech.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "AD1": 20.0,
+      "AD2": 30.0,
+      "AD3": 40.0,
+      "Amp1": 12.0,
+      "Amp2": 20.0,
+      "Amp3": 30.0,
+      "Crit1": 40.0,
+      "Crit2": 70.0,
+      "Crit3": 100.0,
+      "Mana1": 2.0,
+      "Mana2": 4.0,
+      "Mana3": 5.0,
+      "PercentHealth": 0.800000011920929,
+      "StunDuration": 1.5,
+      "Vamp1": 20.0,
+      "Vamp2": 30.0,
+      "Vamp3": 40.0,
+      "{99dbd967}": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "与狼共舞",
+   "desc": "当【千珏】施放技能时，【安蓓萨】总会获得他们的庇护，免于死亡，并且在被庇护时获得40%%物理加成。当【安蓓萨】施放技能时，狼灵会撕咬所有被命中的敌人，造成30%%伤害。",
+   "icon": "assets/icons/teamup_trait_chosenwolves.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "AmbessaBonusAD": 0.4000000059604645,
+      "WolfDamage": 0.30000001192092896
+     }
+    }
+   ]
+  },
+  {
+   "name": "解脱者",
+   "desc": "【塞拉斯】可在3种不同技能之间轮换，取决于当时哪种技能效果最佳。他无法连续两次施放同一种技能。",
+   "icon": "assets/icons/trait_icon_16_chainbreaker.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {}
+    }
+   ]
+  },
+  {
+   "name": "系魂圣枪",
+   "desc": "【卢锡安和赛娜】并肩作战，每一方施放技能后都会置换为另一方。他们每人都有一个独立的技能。你最强大的那对【系魂圣枪】会在存活时为你的队伍提供额外加成。当【赛娜】出场时，所有友军获得7%%伤害减免。当【卢锡安】出场时，所有友军获得7%%伤害增幅。",
+   "icon": "assets/icons/trait_icon_16_soulbound.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "LucianDA": 0.07000000029802322,
+      "SennaDR": 0.07000000029802322
+     }
+    }
+   ]
+  },
+  {
+   "name": "皮尔特沃夫",
+   "desc": "在棋盘右侧建造一个发明。在8.0秒后，发明会激活，从而启动其每个模块。(—) 选择一个模块(—) 选择第二个模块(—) 选择第三个模块",
+   "icon": "assets/icons/trait_icon_16_piltover.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "InventionFireTime": 8.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "InventionFireTime": 8.0
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "InventionFireTime": 8.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "时间旅者",
+   "desc": "在有【艾克】参与的每场战斗之后，获得2经验值。在将【艾克】升到3星之后，获得1个【基兰】。【艾克】的强化攻击会将10%%原伤害回响至所有受到你最强大的那个【基兰】的技能伤害的敌人。",
+   "icon": "assets/icons/teamup_trait_timewinders.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 4,
+     "vars": {
+      "DamageShare": 0.10000000149011612,
+      "TOOLTIPONLYXP": 2
+     }
+    },
+    {
+     "min": 2,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "DamageShare": 0.10000000149011612,
+      "TOOLTIPONLYXP": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "暗裔",
+   "desc": "(—) 【暗裔】获得15%%全能吸血。(—) 并且你会回复相当于你25%%造成玩家伤害的生命值。(—) 并且每当【暗裔】回复了525生命值，就会对2名最近的敌人造成400魔法伤害。",
+   "icon": "assets/icons/trait_icon_16_darkin.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": 1,
+     "style": 1,
+     "vars": {
+      "Damage": 400,
+      "EnemyNum": 2,
+      "HealThreshold": 525,
+      "TacticianPercent": 0.25,
+      "Vamp": 0.15000000596046448
+     }
+    },
+    {
+     "min": 2,
+     "max": 2,
+     "style": 3,
+     "vars": {
+      "Damage": 400,
+      "EnemyNum": 2,
+      "HealThreshold": 525,
+      "TacticianPercent": 0.25,
+      "Vamp": 0.15000000596046448
+     }
+    },
+    {
+     "min": 3,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "Damage": 400,
+      "EnemyNum": 2,
+      "HealThreshold": 525,
+      "TacticianPercent": 0.25,
+      "Vamp": 0.15000000596046448
+     }
+    }
+   ]
+  },
+  {
+   "name": "永猎双子",
+   "desc": "【千珏】对同一名敌人的每第3次攻击会造成325%%伤害，狼灵会撕咬该目标。",
+   "icon": "assets/icons/trait_icon_5_eternal.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "PercentDamageMult": 3.25
+     }
+    }
+   ]
+  },
+  {
+   "name": "黑暗之女",
+   "desc": "【安妮】在你的备战区召唤出【提伯斯】。他可以登场，占用一个队伍栏位，并且能被单独配备装备。【提伯斯】的星级与【安妮】相同。",
+   "icon": "assets/icons/trait_icon_16_darkchild.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {}
+    }
+   ]
+  },
+  {
+   "name": "暗裔剑魔",
+   "desc": "【亚托克斯】获得相当于其200%%全能吸血的物理加成。当第一次阵亡时，他将短暂变为不可被选取状态，并在2.0秒内回复至满额生命值。随后，他减少10.0最大法力值，并获得20%%伤害减免。",
+   "icon": "assets/icons/trait_icon_9_darkin.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "Durability": 0.20000000298023224,
+      "HealDuration": 2.0,
+      "ManaReduction": 10.0,
+      "OmnivampToADRatio": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "虚空之女",
+   "desc": "【卡莎】可在两种不同的技能之间切换，取决于她的物理加成与法术加成哪一方更高。",
+   "icon": "assets/icons/trait_icon_16_assimilator.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {}
+    }
+   ]
+  },
+  {
+   "name": "巨龙卫士",
+   "desc": "当【嘉文四世】施放技能时，【希瓦娜】获得他75%%护盾值。当【希瓦娜】施放技能时，【嘉文四世】会跳向敌人，在半径2格的范围内造成相当于他100%/100%/125%/150%%护甲和魔抗的魔法伤害。",
+   "icon": "assets/icons/teamup_trait_uncompromisingwill.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "JarvanResistDamage1": 1.0,
+      "JarvanResistDamage2": 1.0,
+      "JarvanResistDamage3": 1.25,
+      "JarvanResistDamage4": 1.5,
+      "JarvanShieldShare": 0.75
+     }
+    }
+   ]
+  },
+  {
+   "name": "耀光使",
+   "desc": "【耀光使】的技能会对命中的敌人们施加目眩。【耀光使】对被目眩的敌人造成额外伤害。(—) 18%%额外伤害目眩：减少10%%造成伤害",
+   "icon": "assets/icons/trait_icon_16_disruptor.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "DamageAmp": 0.18000000715255737,
+      "DamageReduction": 0.10000000149011612
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "DamageAmp": 0.4000000059604645,
+      "DamageReduction": 0.10000000149011612
+     }
+    }
+   ]
+  },
+  {
+   "name": "虚空",
+   "desc": "获得【突变】，仅限【虚空】弈子使用。【虚空】弈子获得攻击速度。(—) 1个突变，8%%(—) 1个【突变】， 8%%(—) 1个【突变】，8%%(—) 【突变】得到了过载充能，其效果增加?%。8%%弈子同一时间只能拥有一个【突变】。将弈子放置在备战区可以移除其【突变】。",
+   "icon": "assets/icons/trait_icon_16_void.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "BonusAS": 0.07999999821186066,
+      "NumMutations": 1,
+      "SuperchargedMult": null
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "BonusAS": 0.18000000715255737,
+      "NumMutations": 2,
+      "{12afd090}": null
+     }
+    },
+    {
+     "min": 6,
+     "max": 8,
+     "style": 5,
+     "vars": {
+      "BonusAS": 0.33000001311302185,
+      "NumMutations": 3,
+      "SuperchargedMult": null
+     }
+    },
+    {
+     "min": 9,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BonusAS": 0.4000000059604645,
+      "NumMutations": 3,
+      "SuperchargedMult": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "符文法师",
+   "desc": "【符文法师】可从所有已激活的地区羁绊中获益，但不对任何羁绊做出贡献。他可借助已激活的地区羁绊获得符文能量来修改他的技能，并以独特的方式来将其强化。",
+   "icon": "assets/icons/trait_icon_16_runemage.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {}
+    }
+   ]
+  },
+  {
+   "name": "腕豪",
+   "desc": "当最大生命值首次降至45%%后，【瑟提】会离开战斗并开始做仰卧起坐。每次仰卧起坐回复15.0%最大生命值，并为其提供60.0%攻击和移动速度。如果他回满了生命值，则会带着【斗志满满】效果重返战斗，将所有来自他的攻击和技能的伤害转换为真实伤害。如果他的所有友军均已阵亡，他会立刻重返战斗。",
+   "icon": "assets/icons/trait_icon_4_theboss.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "AttackSpeedPercent": 60.0,
+      "HealPercent": 15.0,
+      "MaxHealthThreshold": 0.44999998807907104
+     }
+    }
+   ]
+  },
+  {
+   "name": "河流之王",
+   "desc": "在每个备战阶段，你可以用一个弈子喂养【塔姆·肯奇】，基于被喂养弈子的角色定位和星级，为他永久提供生命值、攻击速度或法术加成中的一项。要喂养塔姆，只需要将备战区的一名友军悬停在塔姆上方，在他的嘴巴张开时松开即可。当前属性：@TFTUnitProperty.:TFT16_GluttonStat_HP@，@TFTUnitProperty.:TFT16_GluttonStat_AS@%，@TFTUnitProperty.:TFT16_GluttonStat_AP@%",
+   "icon": "assets/icons/trait_icon_16_glutton.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "{6502b165}": 20.0,
+      "{72c78315}": 1.25
+     }
+    }
+   ]
+  },
+  {
+   "name": "神谕者",
+   "desc": "你的队伍获得1法力回复。【神谕者】从所有来源中获得更多法力值。(—) 25%%额外法力值",
+   "icon": "assets/icons/trait_icon_16_invoker.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "PercentManaIncrease": 0.25,
+      "TeamBonusMana": 1
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "PercentManaIncrease": 0.4000000059604645,
+      "TeamBonusMana": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "德玛西亚",
+   "desc": "每当你的队伍损失了25%%最大生命值，【德玛西亚】弈子会【重振旗鼓】，减少10%%法力消耗。【德玛西亚】弈子获得护甲和魔法抗性。(—) 12.0(—) 12.0(—) 12.0。重振旗鼓时，会重击敌人，造成相当于其5%%最大生命值的伤害。(—) 12.0。奋起而战吧，为 了 德 玛 西 亚！",
+   "icon": "assets/icons/trait_icon_16_demacia.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 4,
+     "style": 1,
+     "vars": {
+      "ArmorMR": 12.0,
+      "EnemyTrueDamage": 0.05000000074505806,
+      "ManaReductionPct": 0.10000000149011612,
+      "MaxHealthLost": 0.25,
+      "{050353fe}": 0.25,
+      "{54b32412}": 1500.0,
+      "{556d8bdf}": 3,
+      "{95d6e9fc}": 0.5
+     }
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 3,
+     "vars": {
+      "ArmorMR": 35.0,
+      "EnemyTrueDamage": 0.05000000074505806,
+      "ManaReductionPct": 0.10000000149011612,
+      "MaxHealthLost": 0.25,
+      "{050353fe}": 0.25,
+      "{54b32412}": 1500.0,
+      "{556d8bdf}": 3,
+      "{95d6e9fc}": 0.5
+     }
+    },
+    {
+     "min": 7,
+     "max": 10,
+     "style": 5,
+     "vars": {
+      "ArmorMR": 35.0,
+      "EnemyTrueDamage": 0.05000000074505806,
+      "ManaReductionPct": 0.10000000149011612,
+      "MaxHealthLost": 0.25,
+      "{050353fe}": 0.25,
+      "{54b32412}": 1500.0,
+      "{556d8bdf}": 3,
+      "{95d6e9fc}": 0.5
+     }
+    },
+    {
+     "min": 11,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "ArmorMR": 150.0,
+      "EnemyTrueDamage": 0.05000000074505806,
+      "ManaReductionPct": 0.10000000149011612,
+      "MaxHealthLost": 0.25,
+      "{050353fe}": 0.25,
+      "{54b32412}": 1500.0,
+      "{556d8bdf}": 3,
+      "{95d6e9fc}": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "比尔吉沃特",
+   "desc": "每场玩家对战，获得【银蛇币】()，且在【比尔吉沃特】弈子每参与一次击杀时额外获得1。【银蛇币】可用于在【黑市】中获取【比尔吉沃特】弈子的额外属性和特殊的战利品。随着羁绊层级提升，【黑市】还会解锁更稀有的战利品。(—) 15.0 (—) 15.0 ，进阶战利品(—) 15.0 ，高级战利品(—) 15.0 , 1.0x 属性，加 农 炮 齐 射！当前属性加成：@TFTUnitProperty.:TFT16_Bilgewater_BonusAD*100@% ，@TFTUnitProperty.:TFT16_Bilgewater_BonusAS*100@% ，@TFTUnitProperty.:TFT16_Bilgewater_BonusHealth*100@% 当前【银蛇币】：@TFTUnitProperty.:TFT16_Bilgewater_SilverSerpents@",
+   "icon": "assets/icons/trait_icon_9_bilgewater.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 4,
+     "style": 1,
+     "vars": {
+      "MaxItems": 8.0,
+      "SerpentsPerRound": 15.0,
+      "SerpentsPerTakedown": 1,
+      "StatMult": 1.0,
+      "{79b25b0f}": 300.0,
+      "{853eaa6d}": 1.5,
+      "{fb25c87b}": 2.0
+     }
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 3,
+     "vars": {
+      "MaxItems": 8.0,
+      "SerpentsPerRound": 35.0,
+      "SerpentsPerTakedown": 1,
+      "StatMult": 1.0,
+      "{79b25b0f}": 300.0,
+      "{853eaa6d}": 1.5,
+      "{fb25c87b}": 2.0
+     }
+    },
+    {
+     "min": 7,
+     "max": 9,
+     "style": 5,
+     "vars": {
+      "MaxItems": 8.0,
+      "SerpentsPerRound": 65.0,
+      "SerpentsPerTakedown": 1,
+      "StatMult": 1.0,
+      "{79b25b0f}": 300.0,
+      "{853eaa6d}": 1.5,
+      "{fb25c87b}": 2.0
+     }
+    },
+    {
+     "min": 10,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "MaxItems": 8.0,
+      "SerpentsPerRound": 150.0,
+      "SerpentsPerTakedown": 1,
+      "StatMult": 2.0,
+      "{79b25b0f}": 300.0,
+      "{853eaa6d}": 1.5,
+      "{fb25c87b}": 2.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "纳什男爵",
+   "desc": "【纳什男爵】占用2个队伍栏位并提供+2至【虚空】羁绊。在8.0秒后，棋盘上会出现一道虚空裂隙。裂隙为【虚空】弈子提供30%%伤害增幅，并持续用电浆弹攻击敌人，造成 5%%最大生命值的魔法伤害。",
+   "icon": "assets/icons/trait_icon_16_riftscourge.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "DamageAmp": 0.30000001192092896,
+      "LightningPercentHealth": 0.05000000074505806,
+      "VoidTime": 8.0,
+      "{79ea70c9}": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "name": "巨神峰",
+   "desc": "【巨神峰】弈子由星辰铸就。他们没有羁绊，但比一般单位更强大。",
+   "icon": "assets/icons/trait_icon_16_targon.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 5,
+     "vars": {}
+    }
+   ]
+  },
+  {
+   "name": "恕瑞玛",
+   "desc": "每一秒，【恕瑞玛】弈子们获得2%%攻击速度并回复20生命值。在战斗开始时，他们获得额外效果。棱彩阶：解锁【内瑟斯】、【雷克顿】、以及【泽拉斯】，然后登场【(4) 恕瑞玛】(—) 20%%最大生命值(—) None护甲和魔抗(—) 每None秒，一个【恕瑞玛】弈子会飞升成神。仅在【内瑟斯】、【雷克顿】和【泽拉斯】都已被解锁时可用。",
+   "icon": "assets/icons/trait_icon_16_shurima.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "ASPerSecond": 0.019999999552965164,
+      "ArmorMR": null,
+      "BonusHealth": 0.20000000298023224,
+      "GodhoodCadence": null,
+      "HealthRestorePerSecond": 20,
+      "SkinScale": 0.07999999821186066,
+      "{2b696a57}": null
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 5,
+     "vars": {
+      "ASPerSecond": 0.019999999552965164,
+      "ArmorMR": 50.0,
+      "BonusHealth": 0.20000000298023224,
+      "GodhoodCadence": null,
+      "HealthRestorePerSecond": 20,
+      "SkinScale": 0.07999999821186066,
+      "{2b696a57}": null
+     }
+    },
+    {
+     "min": 4,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "ASPerSecond": 0.019999999552965164,
+      "ArmorMR": 50.0,
+      "BonusHealth": 0.20000000298023224,
+      "GodhoodCadence": 3,
+      "HealthRestorePerSecond": 20,
+      "SkinScale": 0.07999999821186066,
+      "{2b696a57}": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "山隐之焰",
+   "desc": "你最强大的那个【奥恩】在每次参与玩家对战回合之后，都将提升一件神器的打造进度。每件【奥恩】携带的装备会为他提供350/600/2000.0最大生命值。神器额外提供300%%。打造进度：@TFTUnitProperty.:TFT16_OrnnProgress@/4",
+   "icon": "assets/icons/trait_icon_16_blacksmith.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "ArtifactMult": 3.0,
+      "FlatHealthPerItem1Star": 350,
+      "FlatHealthPerItem2Star": 600,
+      "FlatHealthPerItem3Star": 2000.0,
+      "RoundsToCraft": 4,
+      "{85699349}": null
+     }
+    }
+   ]
+  },
+  {
+   "name": "暗影岛",
+   "desc": "一场玩家对战中的*任何*弈子阵亡时，均可获得灵魂()。基于你拥有的灵魂数量，【暗影岛】弈子的技能将获得独特强化。 【暗影岛】弈子获得物理加成和法术加成。(—) 1.0x，18%%(—) 1.0x， 18%%(—) 1.0x，18%%(—) 1.0x，18%%已收集的灵魂：@TFTUnitProperty.trait:TFT16_ShadowIsles_SoulsPlayerFacing@",
+   "icon": "assets/icons/trait_icon_16_shadowisles.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "ADAP": 0.18000000715255737,
+      "SoulMult": 1.0,
+      "{1e24d16e}": 135.0,
+      "{263593f9}": 65.0,
+      "{2c785ea4}": null,
+      "{30214014}": 25.0,
+      "{570dee69}": 1.0,
+      "{689e69ab}": 160.0,
+      "{b3900e2d}": 215.0,
+      "{cd71fc1d}": 255.0,
+      "{e99a6f18}": 185.0
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "ADAP": 0.20000000298023224,
+      "SoulMult": 1.2999999523162842,
+      "{1e24d16e}": 135.0,
+      "{263593f9}": 65.0,
+      "{2c785ea4}": null,
+      "{30214014}": 25.0,
+      "{570dee69}": 1.0,
+      "{689e69ab}": 160.0,
+      "{b3900e2d}": 215.0,
+      "{cd71fc1d}": 255.0,
+      "{e99a6f18}": 185.0
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "ADAP": 0.25,
+      "SoulMult": 1.600000023841858,
+      "{1e24d16e}": 135.0,
+      "{263593f9}": 65.0,
+      "{2c785ea4}": null,
+      "{30214014}": 25.0,
+      "{570dee69}": 1.0,
+      "{689e69ab}": 160.0,
+      "{b3900e2d}": 215.0,
+      "{cd71fc1d}": 255.0,
+      "{e99a6f18}": 185.0
+     }
+    },
+    {
+     "min": 5,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "ADAP": 0.33000001311302185,
+      "SoulMult": 1.899999976158142,
+      "{1e24d16e}": 135.0,
+      "{263593f9}": 65.0,
+      "{2c785ea4}": null,
+      "{30214014}": 25.0,
+      "{570dee69}": 1.0,
+      "{689e69ab}": 160.0,
+      "{b3900e2d}": 215.0,
+      "{cd71fc1d}": 255.0,
+      "{e99a6f18}": 185.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "远古恐惧",
+   "desc": "每当一个敌方弈子阵亡时，获得10.0法力值。施放技能不会消耗法力值。所有敌人失去10护甲和魔抗。",
+   "icon": "assets/icons/trait_icon_16_harvester.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "EnemyArmorMRReduction": 10,
+      "ManaPerEnemyDeath": 10.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "不落魔锋",
+   "desc": "如果【赵信】没有被放置在棋盘上，【亚恒】获得【艾欧尼亚】、【德玛西亚】和【神盾使】羁绊。取得击杀时，【亚恒】获得1层持续到战斗结束的【果决】。如果他拥有3及以上的【果决】层数，他会将其消耗用以复活，并回复60%%最大生命值。",
+   "icon": "assets/icons/trait_icon_16_immortal.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "FocusNeededToRevive": 3,
+      "PercentMaxHealthHeal": 0.6000000238418579,
+      "ReviveDuration": 0.5,
+      "{54747e02}": null
+     }
+    }
+   ]
+  },
+  {
+   "name": "正义巨像",
+   "desc": "【加里奥】无法被放置在战场上。取而代之的是，他可以在备战区提供他的羁绊计数，并且当【德玛西亚】弈子重振旗鼓时，他会加入战斗。在着陆时，他会产生3.0格的冲击波，造成相当于他10%%最大生命值的魔法伤害。命中敌人时会将其击飞1.0秒，距离着陆中心越远的敌人被击飞的时长越短。",
+   "icon": "assets/icons/trait_icon_16_heroic.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "HexRadius": 3.0,
+      "KnockupDuration": 1.0,
+      "PercentMaxHP": 0.10000000149011612
+     }
+    }
+   ]
+  },
+  {
+   "name": "诺克萨斯",
+   "desc": "在敌方队伍损失15%%生命值后，召唤破灭使者【厄塔汗】。他的强度基于【诺克萨斯】弈子的星级成长。(—) 他劈砍敌人，造成魔法伤害。 (—) 他存活得越久，【诺克萨斯】弈子会越强。 (—) 施放技能时，他会抽离敌人的灵魂。(—) 在10秒后，带 来 破 灭。",
+   "icon": "assets/icons/trait_icon_16_noxus.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 4,
+     "style": 1,
+     "vars": {
+      "HPLostTrigger": 0.15000000596046448,
+      "RuinTimer": 10
+     }
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 3,
+     "vars": {
+      "HPLostTrigger": 0.15000000596046448,
+      "RuinTimer": 10
+     }
+    },
+    {
+     "min": 7,
+     "max": 9,
+     "style": 5,
+     "vars": {
+      "HPLostTrigger": 0.15000000596046448,
+      "RuinTimer": 10
+     }
+    },
+    {
+     "min": 10,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "HPLostTrigger": 0.15000000596046448,
+      "RuinTimer": 10
+     }
+    }
+   ]
+  },
+  {
+   "name": "约德尔人",
+   "desc": "(—) 每登场一个独特的【约德尔人】弈子，【约德尔人】弈子获得40.0生命值和5%%攻击速度。3星【约德尔人】弈子额外提供120%%！(—) 并且每回合的第一个商店都会刷新一个【约德尔人】弈子！(—) 并且每回合获得None次免费刷新！(—) 并且每回合获得一个【约德尔人】福袋！",
+   "icon": "assets/icons/trait_icon_16_yordle.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "AS": 0.05000000074505806,
+      "BonusHealth": 40.0,
+      "BonusMultiplier": 1.2000000476837158,
+      "BonusStatMultiplier": 1.0,
+      "FreeRerolls": null,
+      "{12cd8d20}": null,
+      "{94706038}": null,
+      "{9f843340}": 700.0,
+      "{a90bd1e4}": 1.5,
+      "{ada76fc3}": 800.0,
+      "{b46678c7}": 200.0,
+      "{fe25b795}": null
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "AS": 0.05000000074505806,
+      "BonusHealth": 40.0,
+      "BonusMultiplier": 1.2000000476837158,
+      "BonusStatMultiplier": 1.0,
+      "FreeRerolls": null,
+      "{12cd8d20}": 1.0,
+      "{94706038}": null,
+      "{9f843340}": 700.0,
+      "{a90bd1e4}": 1.5,
+      "{ada76fc3}": 800.0,
+      "{b46678c7}": 200.0,
+      "{fe25b795}": null
+     }
+    },
+    {
+     "min": 6,
+     "max": 7,
+     "style": 3,
+     "vars": {
+      "AS": 0.05000000074505806,
+      "BonusHealth": 40.0,
+      "BonusMultiplier": 1.2000000476837158,
+      "BonusStatMultiplier": 1.0,
+      "FreeRerolls": 1.0,
+      "{12cd8d20}": 1.0,
+      "{94706038}": null,
+      "{9f843340}": 700.0,
+      "{a90bd1e4}": 1.5,
+      "{ada76fc3}": 800.0,
+      "{b46678c7}": 200.0,
+      "{fe25b795}": null
+     }
+    },
+    {
+     "min": 8,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "AS": 0.05000000074505806,
+      "BonusHealth": 40.0,
+      "BonusMultiplier": 1.2000000476837158,
+      "BonusStatMultiplier": 1.0,
+      "FreeRerolls": 1.0,
+      "{12cd8d20}": 1.0,
+      "{94706038}": 1.0,
+      "{9f843340}": 700.0,
+      "{a90bd1e4}": 1.5,
+      "{ada76fc3}": 800.0,
+      "{b46678c7}": 200.0,
+      "{fe25b795}": null
+     }
+    },
+    {
+     "min": 10,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "AS": 0.05000000074505806,
+      "BonusHealth": 40.0,
+      "BonusMultiplier": 1.2000000476837158,
+      "BonusStatMultiplier": 1.0,
+      "FreeRerolls": 1.0,
+      "{12cd8d20}": 1.0,
+      "{94706038}": 1.0,
+      "{9f843340}": 700.0,
+      "{a90bd1e4}": 1.5,
+      "{ada76fc3}": 800.0,
+      "{b46678c7}": 200.0,
+      "{fe25b795}": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "祖安",
+   "desc": "4.0秒后，【祖安】弈子受到【微光融合】效果，获得15%%伤害减免和90%%随时间衰减的攻击速度，持续4.0秒。在短暂的冷却时间后，其再次获得【微光融合】效果。(—) 效果在4.0秒后刷新。(—) 在60%%生命值时，【祖安】弈子在3.0秒内持续回复?%生命值，并立刻获得【微光融合】效果。(—) 【微光融合】效果的加成提高?%。效果变为在4.0秒后刷新。",
+   "icon": "assets/icons/trait_icon_16_zaun.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 4,
+     "style": 1,
+     "vars": {
+      "HealDuration": 3.0,
+      "HealThreshold": 0.6000000238418579,
+      "InitialDelay": 4.0,
+      "MaxHealthHeal": null,
+      "RefreshSeconds": 4.0,
+      "ReviveDuration": 3.0,
+      "ShimmerFuseAttackSpeed": 0.8999999761581421,
+      "ShimmerFuseDurability": 0.15000000596046448,
+      "ShimmerFuseDuration": 4.0,
+      "ShimmerFustMult": null,
+      "{19b47e58}": 0.3499999940395355
+     }
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 3,
+     "vars": {
+      "HealDuration": 3.0,
+      "HealThreshold": 0.6000000238418579,
+      "InitialDelay": 4.0,
+      "MaxHealthHeal": 0.30000001192092896,
+      "RefreshSeconds": 4.0,
+      "ReviveDuration": 3.0,
+      "ShimmerFuseAttackSpeed": 0.8999999761581421,
+      "ShimmerFuseDurability": 0.15000000596046448,
+      "ShimmerFuseDuration": 4.0,
+      "ShimmerFustMult": null,
+      "{19b47e58}": 0.3499999940395355
+     }
+    },
+    {
+     "min": 7,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "HealDuration": 3.0,
+      "HealThreshold": 0.6000000238418579,
+      "InitialDelay": 4.0,
+      "MaxHealthHeal": 0.30000001192092896,
+      "RefreshSeconds": 3.0,
+      "ReviveDuration": 3.0,
+      "ShimmerFuseAttackSpeed": 0.8999999761581421,
+      "ShimmerFuseDurability": 0.15000000596046448,
+      "ShimmerFuseDuration": 4.0,
+      "ShimmerFustMult": 0.5,
+      "{19b47e58}": 0.3499999940395355
+     }
+    }
+   ]
+  },
+  {
+   "name": "斗士",
+   "desc": "你的队伍获得150最大生命值。【斗士】获得更多。(—) 25%%",
+   "icon": "assets/icons/trait_icon_16_bruiser.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "BonusPercentHealth": 0.25,
+      "TeamFlatHealth": 150
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "BonusPercentHealth": 0.4000000059604645,
+      "TeamFlatHealth": 150
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BonusPercentHealth": 0.6000000238418579,
+      "TeamFlatHealth": 150
+     }
+    }
+   ]
+  },
+  {
+   "name": "时光守护者",
+   "desc": "每2次施放技能，【时光守护者】会储存2经验值。若储存的经验值足够你升级，他会传输给你所需的经验值。若你已是10级，他转而获得15%伤害增幅。已储存的经验值：@TFTUnitProperty.trait:TFT16_ChronoKeeperStoredXP@在【恭喜发财】中，获取经验值所需的施放技能次数提升至3，直到阶段3-5为止。",
+   "icon": "assets/icons/trait_icon_16_chronokeeper.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "CastsToGainXP": 2,
+      "CastsToGainXPCT": 3,
+      "CastsToGainXPPAIRS": 2,
+      "DAGainAtMaxLevel": 15,
+      "XPPerCast": 2,
+      "{bffe0f35}": null
+     }
+    }
+   ]
+  },
+  {
+   "name": "神盾使",
+   "desc": "当【神盾使】的生命值首次降至75%%和25%%时，其获得一个基于最大生命值的护盾。(—) 16%%",
+   "icon": "assets/icons/trait_icon_16_warden.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 2,
+     "style": 1,
+     "vars": {
+      "FirstShieldPercentHealth": 0.75,
+      "PercentHealthShield": 0.1599999964237213,
+      "SecondShieldPercentHealth": 0.25
+     }
+    },
+    {
+     "min": 3,
+     "max": 3,
+     "style": 3,
+     "vars": {
+      "FirstShieldPercentHealth": 0.75,
+      "PercentHealthShield": 0.20000000298023224,
+      "SecondShieldPercentHealth": 0.25
+     }
+    },
+    {
+     "min": 4,
+     "max": 4,
+     "style": 3,
+     "vars": {
+      "FirstShieldPercentHealth": 0.75,
+      "PercentHealthShield": 0.25999999046325684,
+      "SecondShieldPercentHealth": 0.25
+     }
+    },
+    {
+     "min": 5,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "FirstShieldPercentHealth": 0.75,
+      "PercentHealthShield": 0.33000001311302185,
+      "SecondShieldPercentHealth": 0.25
+     }
+    }
+   ]
+  },
+  {
+   "name": "艾欧尼亚",
+   "desc": "【艾欧尼亚】弈子获得护盾值、物理加成和法术加成。每局游戏，他们都会选择不同的道路。@TFTUnitProperty.trait:TFT16_Ionia_PathTooltip@(—) 获得一个每局游戏都会变化的助益(—) 获得一个每局游戏都会变化的助益(—) 获得一个每局游戏都会变化的助益",
+   "icon": "assets/icons/trait_icon_16_ionia.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 4,
+     "style": 1,
+     "vars": {
+      "BladesAP": 15.0,
+      "BladesFlatDamage": null,
+      "BladesPercentChance": 30.0,
+      "DeterminationFlatDamage": 20,
+      "DeterminationResists": 15,
+      "EnlightenmentADAP": 10.0,
+      "EnlightenmentADAPPerLevel": 2.0,
+      "EnlightenmentXP": 1,
+      "GenerosityADAP": 10,
+      "GenerosityIncreasePerGold": 0.019999999552965164,
+      "SpiritADAP": 3.0,
+      "SpiritHealth": 0.25,
+      "Transcendence3StarBuff": 1.2999999523162842,
+      "TranscendenceHealth": 0.10000000149011612,
+      "TranscendenceMagicDamage": 0.20000000298023224,
+      "{11fa863c}": 5.0
+     }
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 3,
+     "vars": {
+      "BladesAP": 25.0,
+      "BladesFlatDamage": null,
+      "BladesPercentChance": 38.0,
+      "DeterminationFlatDamage": 40,
+      "DeterminationResists": 25,
+      "EnlightenmentADAP": 15.0,
+      "EnlightenmentADAPPerLevel": 3.0,
+      "EnlightenmentXP": 2,
+      "GenerosityADAP": 25,
+      "GenerosityIncreasePerGold": 0.019999999552965164,
+      "SpiritADAP": 4.0,
+      "SpiritHealth": 0.30000001192092896,
+      "Transcendence3StarBuff": 1.2999999523162842,
+      "TranscendenceHealth": 0.15000000596046448,
+      "TranscendenceMagicDamage": 0.25,
+      "{11fa863c}": 4.0
+     }
+    },
+    {
+     "min": 7,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BladesAP": 50.0,
+      "BladesFlatDamage": null,
+      "BladesPercentChance": 45.0,
+      "DeterminationFlatDamage": 60,
+      "DeterminationResists": 40,
+      "EnlightenmentADAP": 20.0,
+      "EnlightenmentADAPPerLevel": 4.0,
+      "EnlightenmentXP": 4,
+      "GenerosityADAP": 40,
+      "GenerosityIncreasePerGold": 0.019999999552965164,
+      "SpiritADAP": 5.0,
+      "SpiritHealth": 0.3499999940395355,
+      "Transcendence3StarBuff": 1.2999999523162842,
+      "TranscendenceHealth": 0.20000000298023224,
+      "TranscendenceMagicDamage": 0.30000001192092896,
+      "{11fa863c}": 3.0
+     }
+    },
+    {
+     "min": 10,
+     "max": null,
+     "style": 6,
+     "vars": {
+      "BladesAP": 100.0,
+      "BladesFlatDamage": 25.0,
+      "BladesPercentChance": 70.0,
+      "DeterminationFlatDamage": 100,
+      "DeterminationResists": 75,
+      "EnlightenmentADAP": 100.0,
+      "EnlightenmentADAPPerLevel": null,
+      "EnlightenmentXP": 4,
+      "GenerosityADAP": 50,
+      "GenerosityIncreasePerGold": 0.019999999552965164,
+      "SpiritADAP": 7.0,
+      "SpiritHealth": 0.75,
+      "Transcendence3StarBuff": 1.2999999523162842,
+      "TranscendenceHealth": 0.30000001192092896,
+      "TranscendenceMagicDamage": 0.699999988079071,
+      "{0c4f63cb}": 0.029999999329447746,
+      "{11fa863c}": 1.0,
+      "{ab6ec39e}": 0.75,
+      "{cf068040}": 0.30000001192092896,
+      "{ec4adf8d}": 3.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "护卫",
+   "desc": "你的队伍获得12护甲和魔法抗性。【护卫】获得更多。(—) 30.0",
+   "icon": "assets/icons/trait_icon_16_defender.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": 3,
+     "style": 1,
+     "vars": {
+      "BonusArmorMR": 30.0,
+      "TeamwideArmorMR": 12
+     }
+    },
+    {
+     "min": 4,
+     "max": 5,
+     "style": 3,
+     "vars": {
+      "BonusArmorMR": 55.0,
+      "TeamwideArmorMR": 12
+     }
+    },
+    {
+     "min": 6,
+     "max": null,
+     "style": 5,
+     "vars": {
+      "BonusArmorMR": 80.0,
+      "TeamwideArmorMR": 12
+     }
+    }
+   ]
+  },
+  {
+   "name": "光明哨兵",
+   "desc": "当【薇恩】向被施加了黑雾的敌人施放技能时，她会额外发射效能为25%%的2支弩箭。当【薇恩】参与一次击杀时，【卢锡安和赛娜】获得50%%攻击速度。",
+   "icon": "assets/icons/teamup_trait_sentinelsoflight.png",
+   "levels": [
+    {
+     "min": 2,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "BoltEffectiveness": 0.25,
+      "LucianSennaAS": 0.5,
+      "NumBonusBolts": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "狂野女猎手",
+   "desc": "当你最强大的那个【妮蔻】存活时，你最强大的那个【奈德丽】不会成为普通攻击的目标并且获得50%%伤害减免。",
+   "icon": "assets/icons/trait_icon_16_huntress.png",
+   "levels": [
+    {
+     "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {
+      "Durability": 0.5
+     }
+    }
+   ]
+  }
+ ]
+}
