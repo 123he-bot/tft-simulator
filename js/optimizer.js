@@ -80,10 +80,11 @@ window.TFT = window.TFT || {};
   /* 辅助：算 owned 和 meta comp 的匹配度（重叠棋子占 meta comp 的比例） */
   function matchRatio(ownedIds, metaUnits) {
     if (!metaUnits || !metaUnits.length) return 0;
+    const ownedSet = new Set(ownedIds);
     let hit = 0;
     metaUnits.forEach(function (mu) {
       const c = D.champByName(mu.name);
-      if (c && ownedIds[c.id]) hit += 1;
+      if (c && ownedSet.has(c.id)) hit += 1;
     });
     return hit / metaUnits.length;
   }

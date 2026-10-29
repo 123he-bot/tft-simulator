@@ -1428,6 +1428,8 @@ window.TFT = window.TFT || {};
     $('#btnRollSim').onclick = Main.openRollSim;
     $('#btnCardQuiz').onclick = Main.openCardQuiz;
     $('#btnOptimizer').onclick = Main.openOptimizer;
+    const btnSolver = $('#btnSolver');
+    if (btnSolver) btnSolver.onclick = Main.openSolver;
     $('#btnPoster').onclick = function () { Main.exportPoster(); };
     $('#btnLLM').onclick = function () { TFT.AI.openSettings(); };
     $('#btnLLMSettings').onclick = function () { TFT.AI.openSettings(); };
@@ -2254,6 +2256,145 @@ window.TFT = window.TFT || {};
 
     render();
   };
+
+  /* ==================== 局面求解器（规则 + 牌池概率，不含官方胜率） ==================== */
+  Main.openSolver = function () {
+    if (!TFT.Solver) { TFT.UI.toast('求解器未加载，请刷新页面', 'err'); return; }
+    const st = TFT.state;
+    let input = { level: st.level || 8, gold: st.gold || 0, hp: st.hp == null ? 100 : st.hp, threat: '' };
+    let sel = 0, first = true;
+
+    function fmtPct(x) { return (Math.round((x || 0) * 1000) / 10).toFixed(1) + '%'; }
+
+    function threats() {
+      const out = [];
+      TFT.Solver.allComps().forEach(function (cp) {
+        if (cp.mainC && out.indexOf(cp.mainC) < 0) out.push(cp.mainC);
+      });
+      return out.slice(0, 40);
+    }
+
+    function routeCard(r, i) {
+      const color = { S: '#f43f5e', A: '#f59e0b', B: '#22d3ee', C: '#a78bfa' }[r.tier] || '#94a3b8';
+      const riskColor = { '低': '#34d399', '中': '#f59e0b', '高': '#f43f5e' }[r.risk.level] || '#94a3b8';
+      const traitHTML = (r.traits || []).slice(0, 3).map(traitStyleBadge).join(' ');
+      return '<div class="op-card' + (i === sel ? ' on' : '') + '" data-sv-idx="' + i + '">' +
+        '<div class="op-card-head">' +
+          '<span class="op-card-tier" style="background:' + color + '22;color:' + color + ';border-color:' + color + '">' + U.esc(r.intent) + '</span>' +
+          '<span class="op-card-match">' + r.tier + ' 档 · 风险 <b style="color:' + riskColor + '">' + r.risk.level + '</b></span>' +
+        '</div>' +
+        '<div class="op-card-name">' + U.esc(r.name) + '</div>' +
+        '<div class="op-card-sub">主C ' + U.esc(r.mainC || '—') + ' · 匹配 ' + r.matchRatio + '%</div>' +
+        '<div class="op-card-traits">' + (traitHTML || '<span class="dim">未激活羁绊</span>') + '</div>' +
+        '<div class="sv-metric">单刷命中 <b>' + fmtPct(r.hit) + '</b> · 缺口 <b>' + r.gap + ' 金</b></div>' +
+      '</div>';
+    }
+
+    function detailHTML(r) {
+      const steps = r.steps.map(function (s) {
+        return '<div class="sv-step"><span class="sv-when">' + U.esc(s.when) + '</span>' +
+          '<div class="sv-step-body"><b>' + U.esc(s.action) + '</b><div class="dim">' + U.esc(s.detail) + '</div></div></div>';
+      }).join('');
+      const why = r.why.map(function (w) { return '<li>' + U.esc(w) + '</li>'; }).join('');
+      return '<div class="op-detail">' +
+        '<div class="op-target"><b>' + U.esc(r.name) + '</b>' +
+          '<span class="tier-badge" style="background:rgba(244,63,94,.18);color:#f43f5e;border-color:#f43f5e">' + r.tier + ' 档</span>' +
+          '<span class="dim">匹配度 ' + r.matchRatio + '% · ' + U.esc(r.intent) + '</span></div>' +
+        '<div class="op-plan">' +
+          '<div class="op-plan-row"><span class="dim">成型概率</span><b>' + fmtPct(r.completeProb) +
+            '（现有金币可刷 ' + r.affordableRolls + ' 次）</b></div>' +
+          '<div class="op-plan-row"><span class="dim">期望投入</span><b>' + r.netGold + ' 金（刷新 ' + r.rollGold +
+            ' + 买牌 ' + r.buyCost + '，卖牌可回补）</b></div>' +
+          '<div class="op-plan-row"><span class="dim">风险</span><b>' + r.risk.level +
+            (r.risk.notes.length ? '：' + U.esc(r.risk.notes[0]) : '') + '</b></div>' +
+        '</div>' +
+        '<div class="sv-steps">' + steps + '</div>' +
+        '<details class="sv-why"><summary>为什么是这套（' + r.why.length + ' 条依据）</summary><ul>' + why + '</ul></details>' +
+        '<div class="op-actions">' +
+          '<button class="btn" id="svLoad">📋 加载到棋盘</button>' +
+          '<button class="btn" id="svRefresh">🔄 重新求解</button>' +
+        '</div>' +
+      '</div>';
+    }
+
+    function controlsHTML() {
+      let lv = '';
+      for (let i = 4; i <= 11; i++) lv += '<option value="' + i + '"' + (i === input.level ? ' selected' : '') + '>' + i + ' 级</option>';
+      const ts = threats();
+      let th = '<option value="">无 / 不指定</option>';
+      ts.forEach(function (n) { th += '<option value="' + U.esc(n) + '"' + (n === input.threat ? ' selected' : '') + '>' + U.esc(n) + '</option>'; });
+      return '<div class="op-state sv-controls">' +
+        '<div class="op-state-row"><span class="dim">等级</span><select class="sel sel-sm" id="svLevel">' + lv + '</select></div>' +
+        '<div class="op-state-row"><span class="dim">金币</span><input class="txt sm" id="svGold" type="number" min="0" max="500" value="' + input.gold + '"></div>' +
+        '<div class="op-state-row"><span class="dim">血量</span><input class="txt sm" id="svHp" type="number" min="1" max="100" value="' + input.hp + '"></div>' +
+        '<div class="op-state-row"><span class="dim">主要威胁</span><select class="sel sel-sm" id="svThreat">' + th + '</select></div>' +
+      '</div>';
+    }
+
+    function render() {
+      const res = TFT.Solver.solve(input);
+      if (!res.routes.length) {
+        TFT.UI.modal({ title: '求解这一局', size: 'md', body: '<div class="dim">' + U.esc(res.note || '暂无可用阵容') + '</div>' });
+        return;
+      }
+      if (sel >= res.routes.length) sel = 0;
+      const owned = res.ctx.units.length;
+      const body = '<div id="svWrap">' +
+        controlsHTML() +
+        '<div class="sv-note">' + U.esc(res.note) + ' · 当前 ' + input.level + ' 级 / ' + input.gold +
+          ' 金 / ' + input.hp + ' 血' + (owned ? ' / 已拥有 ' + owned + ' 张' : ' / 棋盘为空，按通用起点推算') + '</div>' +
+        '<div class="op-candidates sv-routes">' + res.routes.map(routeCard).join('') + '</div>' +
+        detailHTML(res.routes[sel]) +
+      '</div>';
+
+      if (first) {
+        first = false;
+        TFT.UI.modal({
+          title: '求解这一局 · 规则引擎',
+          size: 'wide',
+          body: body,
+          onClose: function () { first = true; }
+        });
+      } else {
+        const mb = $('#modalBody'); if (mb) mb.innerHTML = body;
+      }
+      bind(res.routes);
+    }
+
+    function bind(routes) {
+      $$('#svWrap .op-card').forEach(function (el) {
+        el.onclick = function () { sel = parseInt(el.dataset.svIdx, 10) || 0; render(); };
+      });
+      const lvSel = $('#svLevel'); if (lvSel) lvSel.onchange = function () { input.level = parseInt(lvSel.value, 10); render(); };
+      const gdIn = $('#svGold'); if (gdIn) gdIn.onchange = function () { input.gold = parseInt(gdIn.value, 10) || 0; render(); };
+      const hpIn = $('#svHp'); if (hpIn) hpIn.onchange = function () { input.hp = parseInt(hpIn.value, 10) || 100; render(); };
+      const thSel = $('#svThreat'); if (thSel) thSel.onchange = function () { input.threat = thSel.value; render(); };
+
+      const btnRefresh = $('#svRefresh'); if (btnRefresh) btnRefresh.onclick = function () {
+        input.gold = TFT.state.gold || 0;
+        input.hp = TFT.state.hp == null ? 100 : TFT.state.hp;
+        input.level = TFT.state.level || input.level;
+        render();
+      };
+      const btnLoad = $('#svLoad'); if (btnLoad) btnLoad.onclick = function () {
+        const route = routes[sel];
+        if (!route) return;
+        const tiers = (D.meta && D.meta.tiers) || {};
+        let comp = null;
+        Object.keys(tiers).forEach(function (t) {
+          (tiers[t] || []).forEach(function (cp) { if (cp.id === route.id) comp = cp; });
+        });
+        if (!comp) { TFT.UI.toast('该阵容不在当前赛季数据中', 'err'); return; }
+        TFT.state.level = input.level;
+        Main.loadComp(comp);
+        TFT.UI.closeModal();
+        TFT.UI.toast('已加载「' + route.name + '」到棋盘', 'ok');
+      };
+    }
+
+    render();
+  };
+
 
   /* ==================== 认卡竞速（20 题） ==================== */
   let quiz = null;

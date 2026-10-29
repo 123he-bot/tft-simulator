@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>金铲铲 AI 多智能体阵容模拟器</title>
 <link rel="stylesheet" href="css/tailwind.css?v=1.4.3">
-<link rel="stylesheet" href="css/style.css?v=1.8.1">
+<link rel="stylesheet" href="css/style.css?v=1.8.2">
 </head>
 <body>
 
@@ -36,9 +36,10 @@
   <nav class="top-actions" id="topActions">
     <button class="btn" id="btnSave" title="Ctrl+S">保存阵容</button>
     <button class="btn" id="btnLoad">加载存档</button>
+    <button class="btn btn-primary" id="btnSolver" title="按当前棋盘 / 经济 / 血量求解这一局">求解这一局</button>
     <button class="btn" id="btnMeta">Meta 梯度榜</button>
     <button class="btn" id="btnBattle">战斗模拟器</button>
-    <button class="btn btn-primary" id="btnLLM" title="接入 / 配置大模型">大模型</button>
+    <button class="btn" id="btnLLM" title="接入 / 配置大模型">大模型</button>
     <div class="more-wrap" id="moreWrap">
       <button class="btn" id="btnMore" title="更多工具" aria-haspopup="true" aria-expanded="false" aria-controls="moreMenu">更多<span class="more-caret">▾</span></button>
       <div class="more-menu hidden" id="moreMenu" role="menu" aria-label="更多工具">
@@ -409,11 +410,12 @@
 <script src="js/storage.js?v=1.6.4"></script>
 <script src="js/recommend.js?v=1.0.1"></script>
 <script src="js/board.js?v=1.4.4"></script>
-<script src="js/optimizer.js?v=1.0.0"></script>
+<script src="js/optimizer.js?v=1.0.1"></script>
 <script src="js/meta_local.js?v=1.0.1"></script>
+<script src="js/solver.js?v=1.0.0"></script>
 <script src="js/drag.js?v=1.4.3"></script>
 <script src="js/battle_sim.js?v=1.4.4"></script>
 <script src="js/ai_api.js?v=1.5.0"></script>
-<script src="js/main.js?v=1.9.5"></script>
+<script src="js/main.js?v=1.10.0"></script>
 </body>
 </html>

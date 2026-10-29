@@ -902,3 +902,18 @@ body::after{
   .qz-opts{grid-template-columns:1fr}
   .rs-shop{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
+
+/* ---------- 局面求解器 ---------- */
+.sv-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
+.sv-note{font-size:11px;color:var(--dim);margin-bottom:10px;line-height:1.6}
+.sv-routes{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sv-metric{margin-top:6px;font-size:11px;color:var(--dim)}
+.sv-metric b{color:var(--text)}
+.sv-steps{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.sv-step{display:flex;gap:10px;align-items:flex-start}
+.sv-when{flex:0 0 auto;font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;border:1px solid var(--border);color:var(--cyan);background:rgba(34,211,238,.08)}
+.sv-step-body{font-size:12px;line-height:1.65}
+.sv-why{border:1px solid var(--border);border-radius:8px;padding:8px 10px;margin-bottom:12px;background:rgba(255,255,255,.02)}
+.sv-why summary{cursor:pointer;font-size:12px;font-weight:700;color:var(--text)}
+.sv-why ul{margin:8px 0 0 18px;padding:0;color:var(--dim);font-size:12px;line-height:1.7}
+@media (max-width:720px){.sv-routes{grid-template-columns:1fr}.sv-step{flex-direction:column;gap:4px}}

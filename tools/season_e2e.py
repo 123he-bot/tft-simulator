@@ -110,7 +110,22 @@ f.onload = function () {
                 select: d().getElementById('seasonSelect').value,
                 metaSet: W.TFT.D.meta.set,
                 badge: (d().querySelector('.hero-badge') || {}).textContent || '' };
-              finish();
+              var sol = W.TFT.Solver.solve({ level: 8, gold: 50, hp: 60, threat: '' });
+              R.solver = { routes: sol.routes.length, names: sol.routes.map(function (r) { return r.name; }),
+                intents: sol.routes.map(function (r) { return r.intent; }),
+                steps: (sol.routes[0] || {}).steps ? sol.routes[0].steps.length : 0,
+                why: (sol.routes[0] || {}).why ? sol.routes[0].why.length : 0,
+                hit: (sol.routes[0] || {}).hit, gap: (sol.routes[0] || {}).gap };
+              W.TFT.Main.openSolver();
+              setTimeout(function () {
+                var box = d().querySelector('#modalBody');
+                var ttl = d().querySelector('#modalTitle');
+                var txt = ((ttl ? ttl.textContent : '') + ' ' + (box ? box.textContent : '')).replace(/\s+/g, ' ');
+                R.solverUI = { hasTitle: /求解这一局/.test(txt), hasWhy: /为什么是这套/.test(txt),
+                  hasSteps: /(现在|本回合|随后)/.test(txt), cards: d().querySelectorAll('#svWrap .op-card').length };
+                W.TFT.UI.closeModal();
+                finish();
+              }, 600);
             }, 400);
           }, 700);
         }, 700);
@@ -228,6 +243,15 @@ def run(keep=False):
           '%s/%s' % (load.get('slug'), load.get('metaSet')))
     check('载入 S3 存档后首页同步', 'S3' in load.get('badge', '') and '本地推断' in load.get('badge', ''),
           load.get('badge'))
+
+    sol, ui = result.get('solver', {}), result.get('solverUI', {})
+    check('求解器给出 3 条路线', sol.get('routes') == 3, '%s %s' % (sol.get('routes'), sol.get('intents')))
+    check('每条路线含回合动作', sol.get('steps', 0) >= 2, sol.get('steps'))
+    check('每条路线含可解释依据', sol.get('why', 0) >= 4, sol.get('why'))
+    check('命中概率为合理值', isinstance(sol.get('hit'), (int, float)) and 0 <= sol.get('hit') <= 1, sol.get('hit'))
+    check('求解弹窗渲染正常', ui.get('hasTitle') and ui.get('hasSteps') and ui.get('cards') == 3,
+          '%s / cards=%s' % (ui.get('hasTitle'), ui.get('cards')))
+    check('弹窗含“为什么是这套”', ui.get('hasWhy') is True)
 
     width = max(len(n) for n, _, _ in checks)
     failed = 0
