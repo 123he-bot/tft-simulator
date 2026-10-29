@@ -123,6 +123,23 @@ f.onload = function () {
                 var txt = ((ttl ? ttl.textContent : '') + ' ' + (box ? box.textContent : '')).replace(/\s+/g, ' ');
                 R.solverUI = { hasTitle: /求解这一局/.test(txt), hasWhy: /为什么是这套/.test(txt),
                   hasSteps: /(现在|本回合|随后)/.test(txt), cards: d().querySelectorAll('#svWrap .op-card').length };
+                var lg = W.TFT.Solver.addLog(sol.routes[0], sol.ctx);
+                var sc = W.TFT.Solver.scoreLog(lg);
+                var cpX = (W.TFT.D.meta.tiers.S || [])[0];
+                if (cpX) W.TFT.Main.loadComp(cpX);
+                var ob = {};
+                W.TFT.state.boardList().forEach(function (u, i) {
+                  ob[u._pos] = { uid: 'ou' + i, champId: u.champId, star: u.star, items: [] };
+                });
+                W.TFT.state.opponents = [{ id: 'op_test', name: '测试对手', hp: 100, level: 8, board: ob }];
+                var pos = W.TFT.Solver.positioning();
+                if (pos.ok) W.TFT.Solver.applyPositions(pos);
+                var cv = W.TFT.Solver.cardCanvas(sol.routes[0], { seasonLabel: 'TEST', time: 'T' });
+                R.adv = { logs: W.TFT.Solver.logs().length, score: sc.score, cov: sc.coverage,
+                  posOk: pos.ok, posReason: pos.reason || '', tried: pos.tried || 0,
+                  rate: pos.ok ? pos.best.rate : null, opps: pos.opponents || 0,
+                  cw: cv.width, ch: cv.height,
+                  png: cv.toDataURL('image/png').indexOf('data:image/png') === 0 };
                 W.TFT.UI.closeModal();
                 finish();
               }, 600);
@@ -252,6 +269,16 @@ def run(keep=False):
     check('求解弹窗渲染正常', ui.get('hasTitle') and ui.get('hasSteps') and ui.get('cards') == 3,
           '%s / cards=%s' % (ui.get('hasTitle'), ui.get('cards')))
     check('弹窗含“为什么是这套”', ui.get('hasWhy') is True)
+
+    adv = result.get('adv', {})
+    check('决策记录写入并评分', adv.get('logs', 0) >= 1 and 0 <= adv.get('score', -1) <= 100,
+          'logs=%s score=%s cov=%s' % (adv.get('logs'), adv.get('score'), adv.get('cov')))
+    check('路线卡可导出 PNG', adv.get('cw') == 1200 and adv.get('ch') == 760 and adv.get('png') is True,
+          '%sx%s png=%s' % (adv.get('cw'), adv.get('ch'), adv.get('png')))
+    check('站位求解可对比对手并给出胜率',
+          (adv.get('posOk') is True and adv.get('tried', 0) >= 2 and 0 <= (adv.get('rate') or -1) <= 1)
+          or (adv.get('posOk') is False and bool(adv.get('posReason'))),
+          'ok=%s tried=%s rate=%s %s' % (adv.get('posOk'), adv.get('tried'), adv.get('rate'), adv.get('posReason')))
 
     width = max(len(n) for n, _, _ in checks)
     failed = 0

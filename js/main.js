@@ -2312,6 +2312,9 @@ window.TFT = window.TFT || {};
         '<details class="sv-why"><summary>为什么是这套（' + r.why.length + ' 条依据）</summary><ul>' + why + '</ul></details>' +
         '<div class="op-actions">' +
           '<button class="btn" id="svLoad">📋 加载到棋盘</button>' +
+          '<button class="btn" id="svLog">📌 记录决策</button>' +
+          '<button class="btn" id="svCard">🖼 路线卡</button>' +
+          '<button class="btn" id="svPos">🧭 优化站位</button>' +
           '<button class="btn" id="svRefresh">🔄 重新求解</button>' +
         '</div>' +
       '</div>';
@@ -2358,10 +2361,11 @@ window.TFT = window.TFT || {};
       } else {
         const mb = $('#modalBody'); if (mb) mb.innerHTML = body;
       }
-      bind(res.routes);
+      bind(res);
     }
 
-    function bind(routes) {
+    function bind(res) {
+      const routes = res.routes;
       $$('#svWrap .op-card').forEach(function (el) {
         el.onclick = function () { sel = parseInt(el.dataset.svIdx, 10) || 0; render(); };
       });
@@ -2389,6 +2393,55 @@ window.TFT = window.TFT || {};
         Main.loadComp(comp);
         TFT.UI.closeModal();
         TFT.UI.toast('已加载「' + route.name + '」到棋盘', 'ok');
+      };
+
+      const btnLog = $('#svLog'); if (btnLog) btnLog.onclick = function () {
+        const route = routes[sel];
+        if (!route) return;
+        TFT.Solver.addLog(route, res.ctx);
+        btnLog.textContent = '✅ 已记录';
+        btnLog.disabled = true;
+        TFT.UI.toast('已记录到复盘，可在「对局复盘」查看决策评分', 'ok');
+      };
+
+      const btnCard = $('#svCard'); if (btnCard) btnCard.onclick = function () {
+        const route = routes[sel];
+        if (!route) return;
+        const cv = TFT.Solver.cardCanvas(route, {
+          seasonLabel: (D.meta && D.meta.set) || (D.currentSlug || '').toUpperCase(),
+          time: new Date().toLocaleDateString('zh-CN')
+        });
+        const a = document.createElement('a');
+        a.href = cv.toDataURL('image/png');
+        a.download = 'tft-route-' + (route.id || 'route') + '.png';
+        a.click();
+        TFT.UI.toast('路线卡已生成，已开始下载', 'ok');
+      };
+
+      const btnPos = $('#svPos'); if (btnPos) btnPos.onclick = function () {
+        const p = TFT.Solver.positioning();
+        if (!p.ok) { TFT.UI.toast(p.reason, 'warn'); return; }
+        const rate = function (x) { return (Math.round(x * 1000) / 10) + '%'; };
+        const rows = p.changes.length ? p.changes.map(function (c) {
+          return '<div class="sv-step"><span class="sv-when">' + U.esc(c.name) + '</span>' +
+            '<div class="sv-step-body"><b>' + U.esc(c.from) + ' → ' + U.esc(c.to) + '</b></div></div>';
+        }).join('') : '<div class="dim">当前站位已经是候选里最优的一档，不需要调整</div>';
+        const html = '<div class="sv-note">对比 ' + p.opponents + ' 套对手阵容、试了 ' + p.tried +
+          ' 种站位；胜负由站内战斗模拟给出，不含官方数据</div>' +
+          '<div class="op-plan">' +
+            '<div class="op-plan-row"><span class="dim">当前胜率</span><b>' + rate(p.before.rate) +
+              '（平均残兵差 ' + p.before.margin.toFixed(1) + '）</b></div>' +
+            '<div class="op-plan-row"><span class="dim">最优胜率</span><b>' + rate(p.best.rate) +
+              '（平均残兵差 ' + p.best.margin.toFixed(1) + '）</b></div>' +
+          '</div>' +
+          '<div class="sv-steps">' + rows + '</div>' +
+          '<div class="op-actions"><button class="btn btn-primary" id="svApplyPos">应用到棋盘</button></div>';
+        TFT.UI.modal({ title: '站位求解 · 战斗模拟', size: 'md', body: html });
+        const ap = $('#svApplyPos'); if (ap) ap.onclick = function () {
+          TFT.Solver.applyPositions(p);
+          TFT.UI.closeModal();
+          TFT.UI.toast('已应用最优站位', 'ok');
+        };
       };
     }
 

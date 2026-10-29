@@ -273,7 +273,8 @@ window.TFT = window.TFT || {};
       '<div class="m-row" style="margin-top:6px"><button class="btn btn-xs btn-primary" id="rvAdd">记录</button>' +
       '<button class="btn btn-xs" id="rvAskAI">AI 全局复盘点评</button>' +
       '<button class="btn btn-xs" id="rvExport">导出复盘文本</button></div></div>' +
-      '<div class="card"><h4>本局记录 <span class="dim" id="rvCount"></span></h4><div class="log-list" id="rvList"></div></div></div>';
+      '<div class="card"><h4>本局记录 <span class="dim" id="rvCount"></span></h4><div class="log-list" id="rvList"></div></div>' +
+      '<div class="card" style="grid-column:1/-1"><h4>求解决策评分 <span class="dim">（计划阵容 vs 当前棋盘）</span></h4><div class="log-list" id="rvSolverList"></div></div></div>';
     TFT.UI.modal({ title: '对局复盘笔记面板', size: 'wide', body: body });
     function render() {
       const list = TFT.Store.notes();
@@ -283,6 +284,22 @@ window.TFT = window.TFT || {};
         '<span>' + U.esc(n.text) + '</span><span class="dim">' + U.esc(n.time) + ' <span style="cursor:pointer;color:var(--magenta)" data-del="' + n.id + '">删除</span></span></div>'
       ).join('') : '<div class="dim">暂无记录，先从 1-1 开始记录你的关键决策吧</div>';
       U.$$('#rvList [data-del]').forEach(b => b.onclick = function () { TFT.Store.deleteNote(b.dataset.del); render(); });
+
+      const sl = U.$('#rvSolverList');
+      if (sl) {
+        const logs = TFT.Solver ? TFT.Solver.logs() : [];
+        sl.innerHTML = logs.length ? logs.map(function (l) {
+          const sc = TFT.Solver.scoreLog(l);
+          const color = sc.score >= 75 ? '#34d399' : sc.score >= 50 ? '#f59e0b' : '#f43f5e';
+          return '<div class="log-item"><span style="color:var(--gold)">' + U.esc(l.season) + ' · ' + U.esc(l.intent) + '</span>' +
+            '<span>' + U.esc(l.name) + ' <b style="color:' + color + '">' + sc.score + ' 分</b>' +
+            ' <span class="dim">覆盖 ' + sc.coverage + '%（' + sc.hit + '/' + sc.planned + '）· ' + U.esc(sc.note) + '</span></span>' +
+            '<span class="dim">' + U.esc(l.time) + ' <span style="cursor:pointer;color:var(--magenta)" data-slog="' + l.id + '">删除</span></span></div>';
+        }).join('') : '<div class="dim">还没有记录：打开「求解这一局」→ 选中路线 → 记录决策</div>';
+        U.$$('#rvSolverList [data-slog]').forEach(function (b) {
+          b.onclick = function () { TFT.Solver.deleteLog(b.dataset.slog); render(); };
+        });
+      }
     }
     render();
     U.$('#rvAdd').onclick = function () {

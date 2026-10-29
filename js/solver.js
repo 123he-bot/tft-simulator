@@ -305,4 +305,228 @@ window.TFT = window.TFT || {};
   S.hitChance = hitChance;
   S.allComps = allComps;
 
+  /* ==================== 决策记录 / 复盘评分 ==================== */
+  const LOG_KEY = 'tft.solverlog.v1';
+
+  S.logs = function () {
+    try { return JSON.parse(localStorage.getItem(LOG_KEY) || '[]'); } catch (e) { return []; }
+  };
+
+  S.addLog = function (route, ctx) {
+    const list = S.logs();
+    const entry = {
+      id: 'lg_' + Date.now(),
+      time: new Date().toLocaleString('zh-CN'),
+      season: (D.currentSlug || '').toUpperCase(),
+      compId: route.id, name: route.name, tier: route.tier, intent: route.intent,
+      level: ctx.level, gold: ctx.gold, hp: ctx.hp,
+      hit: route.hit, gap: route.gap,
+      units: (route.units || []).map(function (u) { return u.name; })
+    };
+    list.unshift(entry);
+    localStorage.setItem(LOG_KEY, JSON.stringify(list.slice(0, 20)));
+    return entry;
+  };
+
+  S.deleteLog = function (id) {
+    localStorage.setItem(LOG_KEY, JSON.stringify(S.logs().filter(function (l) { return l.id !== id; })));
+  };
+
+  /*
+   * 复盘评分：只用“计划阵容 vs 当前棋盘”的真实重合度 + 体系档位，
+   * 不引入任何虚构的胜率或对手数据。
+   */
+  S.scoreLog = function (log) {
+    const planned = log.units || [];
+    const owned = {};
+    TFT.state.boardList().forEach(function (u) {
+      const c = D.champ(u.champId);
+      if (c) owned[c.name] = (owned[c.name] || 0) + 1;
+    });
+    let hit = 0;
+    planned.forEach(function (n) { if (owned[n]) { hit++; owned[n]--; } });
+    const coverage = planned.length ? hit / planned.length : 0;
+    const tierW = { S: 100, A: 85, B: 70, C: 55 }[log.tier] || 60;
+    const sameSeason = String(log.season || '') === String(D.currentSlug || '').toUpperCase();
+    return {
+      score: sameSeason ? Math.round(coverage * 70 + tierW * 0.3) : 0,
+      coverage: Math.round(coverage * 100),
+      hit: hit, planned: planned.length, tierW: tierW, sameSeason: sameSeason,
+      note: !sameSeason ? '赛季已切换，评分不适用'
+        : coverage >= 0.8 ? '基本按计划成型'
+        : coverage >= 0.5 ? '成型一半，回看是否中途变阵'
+        : '严重偏离计划，回看当时的 D 牌与经济决策'
+    };
+  };
+
+  /* ==================== 路线卡（Canvas 导出） ==================== */
+  function fitText(g, text, maxW) {
+    if (g.measureText(text).width <= maxW) return text;
+    let t = text;
+    while (t.length > 1 && g.measureText(t + '…').width > maxW) t = t.slice(0, -1);
+    return t + '…';
+  }
+
+  S.cardCanvas = function (route, meta) {
+    meta = meta || {};
+    const W = 1200, H = 760;
+    const cv = document.createElement('canvas');
+    cv.width = W; cv.height = H;
+    const g = cv.getContext('2d');
+    const FONT = '"Microsoft YaHei","PingFang SC",sans-serif';
+    const bg = g.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0, '#0b1220'); bg.addColorStop(1, '#181026');
+    g.fillStyle = bg; g.fillRect(0, 0, W, H);
+    g.fillStyle = '#f43f5e'; g.fillRect(0, 0, W, 6);
+    g.textBaseline = 'top';
+
+    g.fillStyle = '#94a3b8'; g.font = '600 22px ' + FONT;
+    g.fillText('求解这一局 · ' + (meta.seasonLabel || '') + ' · ' + (meta.time || ''), 60, 44);
+    g.fillStyle = '#f1f5f9'; g.font = '800 58px ' + FONT;
+    g.fillText(fitText(g, route.name, 1080), 60, 84);
+
+    g.fillStyle = '#22d3ee'; g.font = '600 26px ' + FONT;
+    g.fillText(route.intent + ' · ' + route.tier + ' 档 · 匹配 ' + route.matchRatio + '%', 60, 162);
+
+    const metrics = [
+      ['单刷命中', pct(route.hit)],
+      ['成型概率', pct(route.completeProb)],
+      ['期望缺口', route.gap + ' 金'],
+      ['风险', route.risk.level]
+    ];
+    metrics.forEach(function (m, i) {
+      const x = 60 + i * 270;
+      g.fillStyle = '#0f172a'; g.fillRect(x, 210, 240, 96);
+      g.strokeStyle = '#1e293b'; g.strokeRect(x, 210, 240, 96);
+      g.fillStyle = '#94a3b8'; g.font = '500 20px ' + FONT;
+      g.fillText(m[0], x + 20, 226);
+      g.fillStyle = '#f1f5f9'; g.font = '800 34px ' + FONT;
+      g.fillText(m[1], x + 20, 256);
+    });
+
+    g.fillStyle = '#f1f5f9'; g.font = '700 26px ' + FONT;
+    g.fillText('行动顺序', 60, 344);
+    let y = 390;
+    route.steps.forEach(function (s, i) {
+      g.fillStyle = '#f59e0b'; g.font = '700 21px ' + FONT;
+      g.fillText((i + 1) + '. [' + s.when + ']', 60, y);
+      g.fillStyle = '#cbd5e1'; g.font = '400 21px ' + FONT;
+      g.fillText(fitText(g, s.action, 930), 240, y);
+      y += 44;
+    });
+
+    g.fillStyle = '#f1f5f9'; g.font = '700 26px ' + FONT;
+    g.fillText('依据', 60, y + 8);
+    y += 54;
+    route.why.slice(0, 4).forEach(function (w) {
+      g.fillStyle = '#0ea5e9'; g.fillText('·', 60, y);
+      g.fillStyle = '#94a3b8'; g.font = '400 20px ' + FONT;
+      g.fillText(fitText(g, w, 1000), 86, y);
+      y += 38;
+    });
+
+    g.fillStyle = '#475569'; g.font = '400 18px ' + FONT;
+    g.fillText('全部结论由站内规则引擎 + 牌池概率推算，不含官方胜率 · 金铲铲 AI 多智能体阵容模拟器', 60, H - 52);
+
+    return cv;
+  };
+
+  /* ==================== 站位求解（复用战斗模拟） ==================== */
+  function withPos(list, map) {
+    return list.map(function (u, i) { return Object.assign({}, u, { _pos: map[i] }); });
+  }
+
+  S.positioning = function () {
+    const units = TFT.state.boardList();
+    if (!units.length) return { ok: false, reason: '棋盘为空，先摆好棋子再优化站位' };
+    if (!TFT.Battle) return { ok: false, reason: '战斗模拟模块未加载' };
+    const opps = (TFT.state.opponents || []).filter(function (o) {
+      return o.board && Object.keys(o.board).length;
+    });
+    if (!opps.length) return { ok: false, reason: '还没有对手阵容：先在「对局设置 / 对手」里摆一套，才能算对位胜负' };
+
+    const baseMap = units.map(function (u) { return u._pos; });
+
+    function evaluate(map) {
+      let wins = 0, margin = 0;
+      opps.forEach(function (o) {
+        const res = TFT.Battle.simulate(withPos(units, map), TFT.state.opponentBoardList(o.id));
+        if (res.winner === 'A') wins++;
+        margin += res.A.survivors - res.B.survivors;
+      });
+      return { rate: wins / opps.length, margin: margin / opps.length };
+    }
+
+    /* 候选 1：当前站位 */
+    const candidates = [{ tag: '当前', map: baseMap.slice() }];
+
+    /* 候选 2：前排 / 后排模板（近战前置，远程后置，中间列优先） */
+    const frontCols = [3, 2, 4, 1, 5, 0, 6];
+    const backCols = [3, 2, 4, 1, 5, 0, 6];
+    const frontSlots = [], backSlots = [];
+    [4, 5].forEach(function (r) { frontCols.forEach(function (c) { frontSlots.push(r + '-' + c); }); });
+    [7, 6].forEach(function (r) { backCols.forEach(function (c) { backSlots.push(r + '-' + c); }); });
+    const order = units.map(function (u, i) { return { i: i, range: (D.champ(u.champId) || {}).range || 1 }; })
+      .sort(function (a, b) { return a.range - b.range; });
+    const tpl = new Array(units.length);
+    let fi = 0, bi = 0;
+    order.forEach(function (o) {
+      tpl[o.i] = o.range <= 1 ? frontSlots[fi++] : backSlots[bi++];
+    });
+    if (tpl.every(Boolean)) candidates.push({ tag: '前后排模板', map: tpl });
+
+    /* 候选 3：当前站位两两交换（最多 40 组） */
+    let swaps = 0;
+    for (let i = 0; i < baseMap.length && swaps < 40; i++) {
+      for (let j = i + 1; j < baseMap.length && swaps < 40; j++) {
+        const m = baseMap.slice();
+        const t = m[i]; m[i] = m[j]; m[j] = t;
+        candidates.push({ tag: '交换 ' + i + '-' + j, map: m });
+        swaps++;
+      }
+    }
+
+    let best = null;
+    candidates.forEach(function (c) {
+      const r = evaluate(c.map);
+      c.rate = r.rate; c.margin = r.margin;
+      if (!best || r.rate > best.rate || (r.rate === best.rate && r.margin > best.margin)) best = c;
+    });
+    const before = candidates[0];
+
+    const changes = [];
+    units.forEach(function (u, i) {
+      if (best.map[i] !== baseMap[i]) {
+        changes.push({
+          name: (D.champ(u.champId) || {}).name || u.champId,
+          from: baseMap[i], to: best.map[i]
+        });
+      }
+    });
+
+    return {
+      ok: true,
+      before: { rate: before.rate, margin: before.margin },
+      best: { rate: best.rate, margin: best.margin, map: best.map, tag: best.tag },
+      changes: changes,
+      tried: candidates.length,
+      opponents: opps.length,
+      units: units
+    };
+  };
+
+  S.applyPositions = function (p) {
+    if (!p || !p.ok) return false;
+    const next = {};
+    p.units.forEach(function (u, i) {
+      const copy = Object.assign({}, u);
+      delete copy._pos;
+      next[p.best.map[i]] = copy;
+    });
+    TFT.state.board = next;
+    if (TFT.Board && TFT.Board.renderBoard) TFT.Board.renderBoard();
+    if (TFT.Board && TFT.Board.commit) TFT.Board.commit('positioning');
+    return true;
+  };
+
 })(window.TFT);
