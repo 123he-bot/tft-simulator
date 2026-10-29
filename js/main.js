@@ -197,7 +197,7 @@ window.TFT = window.TFT || {};
     const cats = [['components', '基础小件'], ['completed', '成品装备'], ['artifacts', '奥恩神器']];
     $('#itemCatTabs').innerHTML = cats.map(c => '<button class="fbtn' + (tabState.itemCat === c[0] ? ' on' : '') +
       '" data-cat="' + c[0] + '">' + c[1] + '</button>').join('');
-    const list = D.items[tabState.itemCat] || [];
+    const list = D.itemsForSeason()[tabState.itemCat] || [];
     $('#itemList').innerHTML = list.map(itemCard).join('');
     $$('#itemList .item-card').forEach(function (c) { bindItemTip(c); });
   }
@@ -223,7 +223,8 @@ window.TFT = window.TFT || {};
     const a = tabState.forgeSlots[0], b = tabState.forgeSlots[1];
     if (!a || !b) return { completed: null };
     const ca = D.item(a), cb = D.item(b);
-    const isComp = it => (D.items.components || []).some(x => x.id === (it && it.id));
+    const comps = D.itemsForSeason().components || [];
+    const isComp = it => comps.some(x => x.id === (it && it.id));
     if (ca && ca.id === 'spatula') return { completed: null, emblem: cb ? cb.name : '' };
     if (cb && cb.id === 'spatula') return { completed: null, emblem: ca ? ca.name : '' };
     if (isComp(ca) && isComp(cb)) return { completed: D.completedByRecipe(ca.id, cb.id) };
@@ -266,10 +267,11 @@ window.TFT = window.TFT || {};
   }
 
   function renderForge() {
-    const comps = D.items.components || [];
+    const setItems = D.itemsForSeason();
+    const comps = setItems.components || [];
     $('#forgeComponents').innerHTML = comps.map(itemCard).join('');
     $$('#forgeComponents .item-card').forEach(c => bindItemTip(c));
-    $('#ornnList').innerHTML = (D.items.artifacts || []).map(itemCard).join('');
+    $('#ornnList').innerHTML = (setItems.artifacts || []).map(itemCard).join('');
     $$('#ornnList .item-card').forEach(c => bindItemTip(c));
     renderForgeCore();
     renderForgeHistory();
@@ -1282,6 +1284,9 @@ window.TFT = window.TFT || {};
       renderChampFilters(); fillTraitSelects();
       Main.refreshTab();
       B.commit('switch-season');
+      /* 首页内容依赖当前赛季，处于首页视图时必须重渲染，否则界面上看不到任何变化 */
+      const homeView = $('#viewHome');
+      if (homeView && !homeView.classList.contains('hidden')) Main.renderHome();
       TFT.UI.toast('已切换到 ' + slug.toUpperCase() + '，棋盘已清空', 'ok');
     };
     if (hasContent) TFT.UI.confirm('切换赛季', '切换赛季会清空当前棋盘与备战区（海克斯同步清空），是否继续？', doIt, '切换并清空', true);
@@ -1501,12 +1506,16 @@ window.TFT = window.TFT || {};
     if (!hero) return;
     const An = TFT.Analytics, ov = An.overview(), M = D.meta || {};
     const list = rankedComps();
+    const metaSet = String(M.set || '').toUpperCase();
+    const curSet = String(D.currentSlug || '').toUpperCase();
+    const metaIsCurrent = !metaSet || metaSet === curSet;
     TFT.UI.destroyCharts();
 
     /* —— Hero —— */
     hero.innerHTML =
       '<div class="hero-glow"></div>' +
-      '<div class="hero-badge">' + U.esc(String(D.currentSlug || '').toUpperCase()) + ' · 补丁 ' + U.esc(M.updatedAt || '—') + ' · 数据可溯源</div>' +
+      '<div class="hero-badge">' + U.esc(curSet || '—') + ' · 补丁 ' + U.esc(M.updatedAt || '—') +
+      (metaIsCurrent ? ' · 数据可溯源' : ' · 梯度榜为 ' + U.esc(metaSet) + ' 数据') + '</div>' +
       '<h1 class="hero-title">金铲铲 <b>AI 多智能体</b> 阵容数据站</h1>' +
       '<p class="hero-sub">真实棋库 · 真实概率 · 真实强度分层。既保留本地规则推理的独特机制，也可一键接入大模型多智能体协作。</p>' +
       '<div class="hero-cta">' +
@@ -1523,7 +1532,7 @@ window.TFT = window.TFT || {};
       { k: '羁绊', v: ov.traits, s: '含激活阈值' },
       { k: '海克斯', v: ov.augments, s: '全量官方强化' },
       { k: '装备', v: ov.items, s: '小件 / 成装 / 神器' },
-      { k: '评级阵容', v: list.length, s: 'S/A/B/C 四档' },
+      { k: '评级阵容', v: list.length, s: metaIsCurrent ? 'S/A/B/C 四档' : '仅 ' + metaSet + ' 有梯度' },
       { k: '赛季', v: ov.seasons, s: '可切换历史赛季' }
     ];
     if (kpi) kpi.innerHTML = kpis.map(function (x) {
@@ -1538,7 +1547,10 @@ window.TFT = window.TFT || {};
       ['S', 'A'].forEach(function (t) {
         ((M.tiers && M.tiers[t]) || []).slice(0, 6).forEach(function (cp) { cards += compCardHTML(cp, t); });
       });
-      grid.innerHTML = cards ? '<div class="comp-grid">' + cards + '</div>' : '<div class="dim">当前数据源暂无评级阵容</div>';
+      grid.innerHTML = cards
+        ? (!metaIsCurrent ? '<div class="dim" style="margin-bottom:6px">以下评级来自 ' + U.esc(metaSet) + '，当前赛季 ' + U.esc(curSet) + ' 暂无 MetaTFT 梯度数据</div>' : '') +
+          '<div class="comp-grid">' + cards + '</div>'
+        : '<div class="dim">当前数据源暂无评级阵容</div>';
       $$('#homeTierGrid [data-comp]').forEach(c => c.onclick = function () { Main.openCompDetail(c.dataset.comp); });
     }
 
@@ -1602,7 +1614,7 @@ window.TFT = window.TFT || {};
     /* —— 奥恩神器 —— */
     const arts = $('#homeArtifacts');
     if (arts) {
-      const list2 = (D.items.artifacts || []).slice(0, 21);
+      const list2 = (D.itemsForSeason().artifacts || []).slice(0, 21);
       arts.innerHTML = list2.length ? list2.map(itemCard).join('') : '<div class="dim">暂无神器数据</div>';
       $$('#homeArtifacts .item-card').forEach(bindItemTip);
     }

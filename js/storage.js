@@ -70,10 +70,17 @@ window.TFT = window.TFT || {};
   D.allItems = function () {
     return [].concat(D.items.components || [], D.items.completed || [], D.items.artifacts || []);
   };
-  D.item = function (id) { return D.allItems().find(i => i.id === id) || null; };
-  D.itemByName = function (name) { return D.allItems().find(i => i.name === name) || null; };
+  D.item = function (id) {
+    return D.allItems().find(i => i.id === id) ||
+      D.officialItems(D.currentSlug).find(i => i.id === id) || null;
+  };
+  D.itemByName = function (name) {
+    return D.allItems().find(i => i.name === name) ||
+      D.officialItems(D.currentSlug).find(i => i.name === name) || null;
+  };
   D.completedByRecipe = function (a, b) {
-    return (D.items.completed || []).find(function (it) {
+    const pool = (D.itemsForSeason(D.currentSlug).completed || []).concat(D.items.completed || []);
+    return pool.find(function (it) {
       const r = it.recipe || [];
       return (r[0] === a && r[1] === b) || (r[0] === b && r[1] === a);
     }) || null;
@@ -169,6 +176,28 @@ window.TFT = window.TFT || {};
     return list;
   };
 
+  /* 按赛季分组的装备目录（装备面板 / 合成图谱跟随赛季切换） */
+  D._setItemCache = {};
+  D.itemsForSeason = function (slug) {
+    slug = slug || D.currentSlug;
+    if (D._setItemCache[slug]) return D._setItemCache[slug];
+    const out = { components: [], completed: [], artifacts: [] };
+    const full = D.officialItems(slug);
+    if (!full.length) {
+      out.components = (D.items.components || []).slice();
+      out.completed = (D.items.completed || []).slice();
+      out.artifacts = (D.items.artifacts || []).slice();
+    } else {
+      full.forEach(function (i) {
+        if (i.category === 'component') out.components.push(i);
+        else if (i.category === 'artifact') out.artifacts.push(i);
+        else if (i.category === 'completed') out.completed.push(i);
+      });
+    }
+    D._setItemCache[slug] = out;
+    return out;
+  };
+
   /* 抓取溯源信息（数据来源 / 时间 / 条目数） */
   D.sourceInfo = function () { return D.source || null; };
 
@@ -217,8 +246,8 @@ window.TFT = window.TFT || {};
   An.overview = function () {
     const src = D.source || {};
     return {
-      augments: (src.counts && src.counts.augments) || (D.augmentsFull || []).length,
-      items: (src.counts && src.counts.items) || (D.itemsFull || []).length,
+      augments: D.augmentList(D.currentSlug).length || D.augmentsFull.length,
+      items: D.officialItems(D.currentSlug).length || D.itemsFull.length,
       champions: D.champions().length,
       traits: D.traits().length,
       seasons: (src.sets || []).length,
