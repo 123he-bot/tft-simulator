@@ -1,0 +1,55 @@
+name: update-data
+
+# 定时从 Riot 官方 CommunityDragon 刷新数据（含新赛季自动接入），有变化才提交。
+on:
+  schedule:
+    - cron: '30 1 * * 1,4'   # 每周一 / 周四 01:30 UTC（北京时间 09:30）
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Crawl official data
+        run: python tools/crawl_cdragon.py --refresh --no-archive
+
+      - name: Validate bundle
+        run: |
+          python - <<'PY'
+          import json, os, re
+          p = 'js/data.bundle.js'
+          s = open(p, encoding='utf-8').read()
+          assert s.startswith('/* AUTO-GENERATED'), 'bundle header missing'
+          i = s.find('window.TFT_DATA = ')
+          data = json.loads(s[i + len('window.TFT_DATA = '):].rstrip().rstrip(';'))
+          seasons = [k for k in data if re.match(r'^s\d+$', k)]
+          assert len(seasons) >= 7, seasons
+          for k in seasons:
+              assert data[k].get('champions'), k
+          print('bundle ok:', round(os.path.getsize(p) / 1024), 'KB; seasons', sorted(seasons))
+          PY
+
+      - name: Commit changes
+        run: |
+          if [ -n "$(git status --porcelain data js/data.bundle.js assets/icons)" ]; then
+            git config user.name 'github-actions[bot]'
+            git config user.email 'github-actions[bot]@users.noreply.github.com'
+            git add data js/data.bundle.js assets/icons
+            git commit -m "chore(data): refresh official TFT data (CommunityDragon)"
+            git push
+          else
+            echo 'no data change'
+          fi

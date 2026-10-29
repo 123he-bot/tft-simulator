@@ -17,7 +17,11 @@ window.TFT = window.TFT || {};
     source: RAW.source || null,
     meta: RAW.meta || { tiers: {} }
   };
-  D.SEASON_ORDER = ['s17', 's16', 's15', 's14', 's13', 's7', 's3'];
+  /* 赛季下拉顺序：按 bundle 里真实存在的 sN 逆序排列（新赛季随数据自动出现，无需改代码） */
+  D.SEASON_ORDER = Object.keys(RAW)
+    .filter(k => /^s\d+$/.test(k) && RAW[k] && (RAW[k].champions || []).length)
+    .sort((a, b) => Number(b.slice(1)) - Number(a.slice(1)));
+  if (!D.SEASON_ORDER.length) D.SEASON_ORDER = ['s17', 's16', 's15', 's14', 's13', 's7', 's3'];
   D.SEASON_LABEL = { s17: 'S17 当前赛季', s16: 'S16', s15: 'S15', s14: 'S14', s13: 'S13', s7: 'S7', s3: 'S3' };
   D.PATCHES = ['14.18', '14.17', '14.16', '14.15', '14.14', '14.13'];
   /* 补丁号只对数据源覆盖的赛季有意义（目前仅 S17 有 MetaTFT 补丁口径） */

@@ -14,8 +14,13 @@ crawl_cdragon.py —— 从 Riot 官方 CommunityDragon CDN 抓取金铲铲之�
   js/data.bundle.js         # 由 data/*.json 重新打包的运行时数据（window.TFT_DATA）
 
 用法：
-  python3 tools/crawl_cdragon.py            # 使用本地缓存（/tmp/cd）或自动下载后重建
-  python3 tools/crawl_cdragon.py --refresh  # 强制重新下载
+  python3 tools/crawl_cdragon.py              # 使用本地缓存（%TEMP%/cd）或自动下载后重建
+  python3 tools/crawl_cdragon.py --refresh    # 强制重新下载官方数据
+  python3 tools/crawl_cdragon.py --rebuild-sets   # 按官方数据强制重写全部 data/sN.json
+  python3 tools/crawl_cdragon.py --no-archive     # 跳过补丁快照归档（CI 用）
+
+新赛季：官方 setData 里出现编号更大的 SetN 时，脚本会自动生成 data/sN.json 并打进 bundle，
+前端赛季下拉按 bundle 里实际存在的赛季自动生成，无需再改代码。
 """
 import hashlib, json, os, re, sys, time, urllib.request
 from concurrent.futures import ThreadPoolExecutor
@@ -27,13 +32,13 @@ CACHE = os.environ.get('CD_CACHE') or os.path.join(os.environ.get('TEMP', os.pat
 CDN = 'https://raw.communitydragon.org/latest/cdragon/tft'
 ICON_BASE = 'https://raw.communitydragon.org/latest/game/'
 
-# 应用支持的赛季 slug 按官方 setData.name 归并（同一赛季的官方主模式 + PAIRS /
-# TURBO / PVEMODE / 活动变体共享同一 name，一并抓取以获得最全的真实数据）。
+# 历史上已收录的官方集合名 -> 应用赛季 slug；除此之外，官方新增的 SetN（N 大于已知最大编号）
+# 会在每次运行时自动发现并生成 data/sN.json，新赛季无需再改代码。
 NAME_TO_SLUG = {
     'Galaxies': 's3', 'Set7': 's7', 'Set13': 's13', 'Set14': 's14',
     'Set15': 's15', 'Set16': 's16', 'Set17': 's17',
 }
-SETS = {slug: name for name, slug in NAME_TO_SLUG.items()}  # slug -> 官方集合名
+SETS = {}  # slug -> 官方集合名，运行时由 discover_sets() 填充
 TIER_LABEL = {'silver': '银', 'gold': '金', 'prismatic': '棱彩', None: '特殊'}
 
 
@@ -171,9 +176,10 @@ def build(zh, en, refresh=False):
 
     # 按官方集合名归并该赛季的全部官方变体（主模式 + PAIRS/TURBO/PVEMODE/活动）
     set_by_name = {}
+    supported = set(SETS.values())
     for d in zh.get('setData', []):
         nm = d.get('name')
-        if nm in NAME_TO_SLUG:
+        if nm in supported:
             set_by_name.setdefault(nm, []).append(d)
 
     augment_sets, item_sets = {}, {}
@@ -254,6 +260,115 @@ def build(zh, en, refresh=False):
         a['traits'] = names
 
     return augments, items, set_by_name
+
+
+def discover_sets(zh):
+    """从官方 setData 里发现可用集合：历史白名单 + 编号大于已知最大 Set 的新赛季。"""
+    mapping = dict(NAME_TO_SLUG)
+    known = set(NAME_TO_SLUG.values())
+    max_known = max(int(re.match(r'^Set(\d+)$', nm).group(1)) for nm in NAME_TO_SLUG
+                    if re.match(r'^Set(\d+)$', nm))
+    names = sorted({d.get('name') for d in zh.get('setData', []) if d.get('name')})
+    for nm in names:
+        m = re.match(r'^Set(\d+)$', nm)
+        if not m:
+            continue
+        slug = 's' + m.group(1)
+        if int(m.group(1)) > max_known and slug not in known:
+            mapping[nm] = slug
+            print('  发现新赛季', nm, '->', slug)
+    return mapping
+
+
+def is_playable(c):
+    """只保留可上场的棋子：费用 1~5 且至少一个羁绊（排除召唤物/野怪/锻造器/PVE/周年活动单位）。"""
+    api = c.get('apiName') or ''
+    if 'Event' in api or 'PVE' in api:
+        return False
+    try:
+        cost = float(c.get('cost') or 0)
+    except (TypeError, ValueError):
+        cost = 0
+    return bool(api) and 1 <= cost <= 5 and bool(c.get('traits'))
+
+
+def season_payload(zh, set_name, slug):
+    """把官方 setData 的棋子 / 羁绊转换成应用使用的 data/<slug>.json 结构。"""
+    variants = [d for d in zh.get('setData', []) if d.get('name') == set_name]
+    if not variants:
+        return None
+    trait_meta, champs = {}, {}
+    for v in variants:
+        for t in v.get('traits', []):
+            api = t.get('apiName')
+            if api:
+                trait_meta.setdefault(api, t)
+        for c in v.get('champions', []):
+            api = c.get('apiName')
+            if api and api not in champs:
+                champs[api] = c
+    trait_names = {api: (t.get('name') or api) for api, t in trait_meta.items()}
+
+    out_champs = []
+    for api, c in champs.items():
+        if not is_playable(c):
+            continue
+        st, ab = c.get('stats') or {}, c.get('ability') or {}
+        variables = {}
+        for v in (ab.get('variables') or []):
+            nm, val = v.get('name'), v.get('value')
+            if nm and isinstance(val, list) and val:
+                variables[nm] = val[1] if len(val) > 1 else val[0]
+        out_champs.append({
+            'id': api,
+            'name': c.get('name') or api,
+            'cost': int(float(c.get('cost') or 0)),
+            'traits': [trait_names.get(t, t) for t in (c.get('traits') or [])],
+            'hp': st.get('hp'), 'mana': st.get('mana'), 'initialMana': st.get('initialMana'),
+            'armor': st.get('armor'), 'mr': st.get('magicResist'), 'ad': st.get('damage'),
+            'as': st.get('attackSpeed'), 'range': st.get('range'),
+            'role': c.get('role') or '',
+            'ability': {'name': ab.get('name') or '', 'desc': resolve_desc(ab.get('desc'), variables)},
+            'icon': icon_url(c.get('squareIcon') or c.get('icon')),
+            'splash': icon_url(c.get('icon')),
+        })
+    out_champs.sort(key=lambda x: (-x['cost'], x['name']))
+
+    out_traits = []
+    seen_names = set()
+    for api, t in trait_meta.items():
+        nm = t.get('name') or api
+        if nm in seen_names:
+            continue  # 同一羁绊在不同官方变体里 api 不同，按中文名去重
+        seen_names.add(nm)
+        levels = []
+        for e in (t.get('effects') or []):
+            levels.append({'min': e.get('minUnits'), 'max': e.get('maxUnits'),
+                           'style': e.get('style') or 1, 'vars': e.get('variables') or {}})
+        out_traits.append({'name': t.get('name') or api, 'desc': resolve_desc(t.get('desc'), {}),
+                           'icon': icon_url(t.get('icon')), 'levels': levels})
+    out_traits.sort(key=lambda x: x['name'])
+
+    return {'set': slug.upper(), 'name': set_name, 'champions': out_champs, 'traits': out_traits}
+
+
+def write_season_files(zh, force=False):
+    """为「本地还没有」的赛季生成 data/<slug>.json；已有文件默认不动，避免无意改动线上数据。
+    --rebuild-sets 可强制按官方数据重写全部赛季文件。"""
+    added = []
+    for slug, nm in SETS.items():
+        p = os.path.join(DATA, slug + '.json')
+        if os.path.exists(p) and not force:
+            continue
+        payload = season_payload(zh, nm, slug)
+        if not payload or not payload['champions']:
+            print('  跳过（官方数据不足）:', slug, nm)
+            continue
+        with open(p, 'w', encoding='utf-8') as f:
+            json.dump(payload, f, ensure_ascii=False, indent=1)
+        print('  已生成', slug, ':', len(payload['champions']), '棋子 /', len(payload['traits']), '羁绊')
+        added.append(slug)
+    return added
 
 
 def localize_assets(augments=None, items=None):
@@ -429,9 +544,20 @@ def archive_snapshot():
 
 def main():
     refresh = '--refresh' in sys.argv
+    force_sets = '--rebuild-sets' in sys.argv
+    no_archive = '--no-archive' in sys.argv
     zh = fetch('zh_cn', refresh)
     en = fetch('en_us', refresh)
     print('官方数据版本 zh_cn / en_us 已就绪')
+
+    global SETS
+    mapping = discover_sets(zh)
+    SETS = {slug: nm for nm, slug in mapping.items()}
+
+    # 新赛季（官方新增、本地还没有 data/sN.json）自动生成，历史赛季默认不动
+    write_season_files(zh, force=force_sets)
+    # 新生成文件里的图标需要重新走一遍本地化，因此 SETS 需在 localize_assets 之前就绪
+
     augments, items, _ = build(zh, en, refresh)
 
     per_set_aug, per_set_item = {}, {}
@@ -460,7 +586,8 @@ def main():
         print('已写入', p, '(', round(os.path.getsize(p) / 1024), 'KB )')
 
     rebuild_bundle(augments, items)
-    archive_snapshot()
+    if not no_archive:
+        archive_snapshot()
 
 
 if __name__ == '__main__':
