@@ -715,6 +715,7 @@ window.TFT = window.TFT || {};
   Main.openMeta = function () {
     const M = D.meta;
     const tiers = ['S', 'A', 'B', 'C'];
+    const isLocal = M.source === '本地推断';
     let html = '<div class="m-grid c2" style="align-items:start">' +
       '<div>' + tiers.map(function (t) {
         const list = (M.tiers && M.tiers[t]) || [];
@@ -725,10 +726,17 @@ window.TFT = window.TFT || {};
       }).join('') + '</div>' +
       '<div style="display:flex;flex-direction:column;gap:8px">' +
       '<div class="card"><h4>羁绊热度排行</h4><div class="chart-wrap" style="height:220px"><canvas id="metaTraitChart"></canvas></div></div>' +
-      '<div class="card"><h4>各费用主C阵容数</h4><div class="chart-wrap" style="height:200px"><canvas id="metaHeatChart"></canvas></div></div>' +
-      '<div class="card"><h4>克制关系图</h4><div id="metaCounter" class="log-list" style="max-height:160px"></div></div>' +
+      (isLocal ? '' :
+        '<div class="card"><h4>各费用主C阵容数</h4><div class="chart-wrap" style="height:200px"><canvas id="metaHeatChart"></canvas></div></div>' +
+        '<div class="card"><h4>克制关系图</h4><div id="metaCounter" class="log-list" style="max-height:160px"></div></div>') +
       '</div></div>';
-    TFT.UI.modal({ title: 'Meta 梯度榜 · ' + (M.set || '') + '（补丁 ' + (M.updatedAt || '') + '）', size: 'wide', body: html });
+    const hasAny = tiers.some(t => ((M.tiers[t] || []).length));
+    const title = (isLocal ? '本地推断阵容榜' : 'Meta 梯度榜') + ' · ' + (M.set || '') + (M.updatedAt ? '（补丁 ' + M.updatedAt + '）' : '');
+    if (!hasAny) {
+      TFT.UI.modal({ title: title, size: 'md', body: '<div class="dim">该赛季暂无阵容数据。</div>' });
+      return;
+    }
+    TFT.UI.modal({ title: title, size: 'wide', body: (isLocal ? '<div class="dim" style="margin-bottom:8px">按该赛季真实棋子 / 羁绊 / 费用由本地规则引擎推断，非 MetaTFT 胜率数据；羁绊热度曲线与克制关系无官方口径，故不展示。</div>' : '') + html });
     $$('#modalBody [data-comp]').forEach(c => c.onclick = function () { Main.openCompDetail(c.dataset.comp); });
 
     /* 图表 */
@@ -751,7 +759,7 @@ window.TFT = window.TFT || {};
       });
       const hc = M.heatCurve || { labels: [], series: [] };
       const colors = ['#22d3ee', '#f5c542', '#f43f5e', '#8b5cf6', '#34d399', '#fb923c', '#3b82f6'];
-      TFT.UI.chart($('#metaHeatChart'), {
+      if ($('#metaHeatChart')) TFT.UI.chart($('#metaHeatChart'), {
         type: 'line',
         data: {
           labels: hc.labels,
@@ -768,7 +776,8 @@ window.TFT = window.TFT || {};
       });
     }
     const cg = M.counterGraph || { edges: [] };
-    $('#metaCounter').innerHTML = (cg.edges || []).map(e => '<div class="log-item">' +
+    const counterEl = $('#metaCounter');
+    if (counterEl) counterEl.innerHTML = (cg.edges || []).map(e => '<div class="log-item">' +
       '<span style="color:#86efac">' + U.esc(e.source) + '</span>' +
       '<span class="dim">克制</span><span style="color:#fda4af">' + U.esc(e.target) + '</span></div>').join('') || '<div class="dim">暂无数据</div>';
   };
@@ -1281,6 +1290,7 @@ window.TFT = window.TFT || {};
       S.clearBoard(); S.bench = [null, null, null, null, null]; S.augments = [];
       tabState.champTrait = ''; tabState.champRole = ''; tabState.te = { trait: '', must: '', emblem: '', results: [] };
       tabState.forgeSlots = [null, null];
+      _ranked = null;
       renderChampFilters(); fillTraitSelects();
       Main.refreshTab();
       B.commit('switch-season');
@@ -1508,14 +1518,16 @@ window.TFT = window.TFT || {};
     const list = rankedComps();
     const metaSet = String(M.set || '').toUpperCase();
     const curSet = String(D.currentSlug || '').toUpperCase();
-    const metaIsCurrent = !metaSet || metaSet === curSet;
+    const metaLocal = M.source === '本地推断';
+    const metaIsCurrent = metaLocal || !metaSet || metaSet === curSet;
     TFT.UI.destroyCharts();
 
     /* —— Hero —— */
     hero.innerHTML =
       '<div class="hero-glow"></div>' +
-      '<div class="hero-badge">' + U.esc(curSet || '—') + ' · 补丁 ' + U.esc(M.updatedAt || '—') +
-      (metaIsCurrent ? ' · 数据可溯源' : ' · 梯度榜为 ' + U.esc(metaSet) + ' 数据') + '</div>' +
+      '<div class="hero-badge">' + U.esc(curSet || '—') +
+      (M.updatedAt ? ' · 补丁 ' + U.esc(M.updatedAt) : '') +
+      (metaLocal ? ' · 本地推断阵容' : metaIsCurrent ? ' · 数据可溯源' : ' · 梯度榜为 ' + U.esc(metaSet) + ' 数据') + '</div>' +
       '<h1 class="hero-title">金铲铲 <b>AI 多智能体</b> 阵容数据站</h1>' +
       '<p class="hero-sub">真实棋库 · 真实概率 · 真实强度分层。既保留本地规则推理的独特机制，也可一键接入大模型多智能体协作。</p>' +
       '<div class="hero-cta">' +
@@ -1532,7 +1544,7 @@ window.TFT = window.TFT || {};
       { k: '羁绊', v: ov.traits, s: '含激活阈值' },
       { k: '海克斯', v: ov.augments, s: '全量官方强化' },
       { k: '装备', v: ov.items, s: '小件 / 成装 / 神器' },
-      { k: '评级阵容', v: list.length, s: metaIsCurrent ? 'S/A/B/C 四档' : '仅 ' + metaSet + ' 有梯度' },
+      { k: '评级阵容', v: list.length, s: metaLocal ? '本地推断 · 非官方胜率' : metaIsCurrent ? 'S/A/B/C 四档' : '仅 ' + metaSet + ' 有梯度' },
       { k: '赛季', v: ov.seasons, s: '可切换历史赛季' }
     ];
     if (kpi) kpi.innerHTML = kpis.map(function (x) {
@@ -1547,16 +1559,17 @@ window.TFT = window.TFT || {};
       ['S', 'A'].forEach(function (t) {
         ((M.tiers && M.tiers[t]) || []).slice(0, 6).forEach(function (cp) { cards += compCardHTML(cp, t); });
       });
-      grid.innerHTML = cards
-        ? (!metaIsCurrent ? '<div class="dim" style="margin-bottom:6px">以下评级来自 ' + U.esc(metaSet) + '，当前赛季 ' + U.esc(curSet) + ' 暂无 MetaTFT 梯度数据</div>' : '') +
-          '<div class="comp-grid">' + cards + '</div>'
+      const gridNote = metaLocal
+        ? '<div class="dim" style="margin-bottom:6px">以下榜单由本地规则引擎按该赛季真实棋子 / 羁绊 / 费用推断，非 MetaTFT 胜率数据</div>'
+        : (!metaIsCurrent ? '<div class="dim" style="margin-bottom:6px">以下评级来自 ' + U.esc(metaSet) + '，当前赛季 ' + U.esc(curSet) + ' 暂无 MetaTFT 梯度数据</div>' : '');
+      grid.innerHTML = cards ? gridNote + '<div class="comp-grid">' + cards + '</div>'
         : '<div class="dim">当前数据源暂无评级阵容</div>';
       $$('#homeTierGrid [data-comp]').forEach(c => c.onclick = function () { Main.openCompDetail(c.dataset.comp); });
     }
 
     /* —— 图表：费用分布 + 强度曲线 —— */
     const note = $('#homeChartNote');
-    if (note) note.textContent = '1~5 费棋子数 · 各费用主C阵容数（真实统计）';
+    if (note) note.textContent = metaLocal ? '1~5 费棋子数 · 各费用主C阵容数（本地推断）' : '1~5 费棋子数 · 各费用主C阵容数（真实统计）';
     const heat = (M.heatCurve || { labels: [], series: [] });
     if (window.Chart) {
       const ax = { ticks: { color: '#93a4c4', font: { size: 9 } }, grid: { color: 'rgba(255,255,255,.06)' } };
@@ -1573,7 +1586,24 @@ window.TFT = window.TFT || {};
       });
       const colors = ['#22d3ee', '#f5c542', '#f43f5e', '#8b5cf6', '#34d399', '#fb923c', '#3b82f6'];
       const cHeat = $('#homeHeatChart');
-      if (cHeat) TFT.UI.chart(cHeat, {
+      const hasCurve = !!(heat.labels && heat.labels.length);
+      if (cHeat && metaLocal && !hasCurve) {
+        /* 本地推断赛季无官方热度曲线，改为展示当前榜单主C费用分布（真实计数） */
+        TFT.UI.chart(cHeat, {
+          type: 'bar',
+          data: {
+            labels: COST_LIST.map(c => c + ' 费'),
+            datasets: [{
+              label: '主C 阵容数（本地推断）',
+              data: COST_LIST.map(c => list.filter(x => {
+                const ch = D.champByName(x.cp.mainC); return ch && ch.cost === c;
+              }).length),
+              backgroundColor: COST_LIST.map(c => U.COST_COLOR[c]), borderRadius: 5
+            }]
+          },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: noGrid, y: ax } }
+        });
+      } else if (cHeat) TFT.UI.chart(cHeat,{
         type: 'line',
         data: {
           labels: heat.labels,

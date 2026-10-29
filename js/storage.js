@@ -57,9 +57,26 @@ window.TFT = window.TFT || {};
   D.seasons = function () {
     return D.SEASON_ORDER.filter(s => RAW[s]).map(s => ({ slug: s, name: (RAW[s].name ? s.toUpperCase() + ' ' + RAW[s].name : s.toUpperCase()) }));
   };
+  /* 真实 MetaTFT 梯度数据（仅存在梯度数据的赛季可用） */
+  D.metaRaw = RAW.meta || { tiers: {} };
+  D.meta = D.metaRaw;
+  /* 按赛季取梯度榜：有真实数据用真实数据，其余赛季走本地推断 */
+  D.metaForSeason = function (slug) {
+    slug = slug || D.currentSlug;
+    if (!slug) return D.metaRaw;
+    const rawSet = String(D.metaRaw.set || '').toUpperCase();
+    if (rawSet === String(slug).toUpperCase()) return D.metaRaw;
+    if (TFT.LocalMeta && TFT.LocalMeta.build) return TFT.LocalMeta.build(slug);
+    return {
+      set: String(slug).toUpperCase(), updatedAt: '', source: '暂无数据',
+      tiers: { S: [], A: [], B: [], C: [] }, traitRanking: [],
+      heatCurve: { labels: [], series: [] }, counterGraph: { edges: [] }, note: ''
+    };
+  };
   D.setSeason = function (slug) {
     D.currentSlug = slug;
     D.seasonObj = RAW[slug] || null;
+    D.meta = D.metaForSeason(slug);
   };
   D.champions = () => (D.seasonObj && D.seasonObj.champions) || [];
   D.champ = function (id) { return D.champions().find(c => c.id === id) || null; };
