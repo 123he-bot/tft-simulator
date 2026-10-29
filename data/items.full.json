@@ -1924,7 +1924,7 @@
   "composition": [],
   "compositionNames": [],
   "desc": "3个【光盾徽章】",
-  "icon": "assets/icons/63ceff20_tft_item_artifact_lightshieldcrest.png",
+  "icon": "assets/icons/tft_item_artifact_lightshieldcrest.png",
   "sets": [
    "s14"
   ]
@@ -11976,7 +11976,7 @@
   "composition": [],
   "compositionNames": [],
   "desc": "战斗环节开始时：携带者会将相距最远的敌人拉到近战距离，并将其晕眩秒。距离内的友军将优先攻击该敌人。\n\n[唯一 - 每位英雄仅限1件]\n晕眩：不能移动、攻击或施放技能",
-  "icon": "assets/icons/c7be8f6c_tft4_ornnitem_rocketpropelledfist.png",
+  "icon": "assets/icons/tft4_ornnitem_rocketpropelledfist.png",
   "sets": [
    "s15",
    "s16"
@@ -13518,7 +13518,7 @@
   "composition": [],
   "compositionNames": [],
   "desc": "获得 x你的金币存款的法术加成(在 金币时达到最大值)，并在击杀一名敌人后有%几率掉落 金币。\n\n这局游戏已生成的金币：",
-  "icon": "assets/icons/f7404fc9_goldmancersstaff.png",
+  "icon": "assets/icons/goldmancersstaff.png",
   "sets": [
    "s7"
   ]
@@ -13951,7 +13951,7 @@
   "composition": [],
   "compositionNames": [],
   "desc": "战斗开始时：跃至敌方后排。\n\n来自技能的伤害可以造成暴击。\n\n[唯一 - 每个英雄仅限1件]",
-  "icon": "assets/icons/e807a0d1_tft9_ornnitem_prowlersclaw.png",
+  "icon": "assets/icons/tft9_ornnitem_prowlersclaw.png",
   "sets": [
    "s15",
    "s16"
@@ -13984,7 +13984,7 @@
   "composition": [],
   "compositionNames": [],
   "desc": "战斗开始时：如果邻格内没有己方弈子，获得生命值、%物理加成和%法术加成。",
-  "icon": "assets/icons/2064dc3b_tft9_ornnitem_hullbreaker.png",
+  "icon": "assets/icons/tft9_ornnitem_hullbreaker.png",
   "sets": [
    "s13",
    "s14",
@@ -16024,7 +16024,7 @@
   "composition": [],
   "compositionNames": [],
   "desc": "2个【死亡之刃】",
-  "icon": "assets/icons/b79e50ce_death_blade.png",
+  "icon": "assets/icons/death_blade.png",
   "sets": [
    "s13",
    "s14",
@@ -17233,7 +17233,7 @@
   "composition": [],
   "compositionNames": [],
   "desc": "金铲铲",
-  "icon": "assets/icons/586dc691_spatula.png",
+  "icon": "assets/icons/spatula.png",
   "sets": [
    "s13",
    "s14",
@@ -17251,7 +17251,7 @@
   "composition": [],
   "compositionNames": [],
   "desc": "3个【金铲铲】",
-  "icon": "assets/icons/586dc691_spatula.png",
+  "icon": "assets/icons/spatula.png",
   "sets": [
    "s13",
    "s14",
@@ -17270,7 +17270,7 @@
   "composition": [],
   "compositionNames": [],
   "desc": "金铲铲",
-  "icon": "assets/icons/586dc691_spatula.png",
+  "icon": "assets/icons/spatula.png",
   "sets": [
    "s13",
    "s14",
@@ -17379,7 +17379,7 @@
   "composition": [],
   "compositionNames": [],
   "desc": "窃贼手套",
-  "icon": "assets/icons/b4c73f47_thieves_gloves.png",
+  "icon": "assets/icons/thieves_gloves.png",
   "sets": [
    "s13",
    "s14",
@@ -18614,7 +18614,7 @@
   "composition": [],
   "compositionNames": [],
   "desc": "携带者在每次技能施放后的第一次攻击造成额外魔法伤害。\n\n这个伤害基于阶段而提升。",
-  "icon": "assets/icons/2349b23c_tft_item_artifact_lichbane.png",
+  "icon": "assets/icons/tft_item_artifact_lichbane.png",
   "sets": [
    "s13",
    "s14",
@@ -18633,7 +18633,7 @@
   "composition": [],
   "compositionNames": [],
   "desc": "每秒，为生命值百分比最低的那个友军提供护盾，护盾值相当于携带者%的护甲与魔抗总和，持续秒。\n\n在阵亡时，将这个护盾效果提供给所有友军。",
-  "icon": "assets/icons/63ceff20_tft_item_artifact_lightshieldcrest.png",
+  "icon": "assets/icons/tft_item_artifact_lightshieldcrest.png",
   "sets": [
    "s13",
    "s14",
