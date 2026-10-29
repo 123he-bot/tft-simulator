@@ -315,7 +315,19 @@ window.TFT = window.TFT || {};
         '<input id="' + id + '" class="txt" type="' + (type || 'text') + '" value="' + U.esc(val == null ? '' : val) +
         '" placeholder="' + U.esc(ph || '') + '"></label>';
     };
+    const presets = [
+      { k: 'zhipu46', name: '智谱 GLM-4.6', base: 'https://open.bigmodel.cn/api/paas/v4', model: 'glm-4.6' },
+      { k: 'zhipuflash', name: '智谱 Flash（免费）', base: 'https://open.bigmodel.cn/api/paas/v4', model: 'glm-4-flash' },
+      { k: 'deepseek', name: 'DeepSeek', base: 'https://api.deepseek.com', model: 'deepseek-chat' },
+      { k: 'ollama', name: '本地 Ollama', base: 'http://localhost:11434/v1', model: 'qwen2.5:7b' }
+    ];
+    const presetHtml = '<div class="set-presets">' +
+      presets.map(function (x) {
+        return '<button class="btn btn-xs set-preset" data-k="' + x.k + '" data-base="' + U.esc(x.base) +
+          '" data-model="' + U.esc(x.model) + '">' + U.esc(x.name) + '</button>';
+      }).join('') + '</div>';
     const body = '<div class="set-form">' +
+      '<div class="set-lb" style="margin-bottom:6px">快速预设</div>' + presetHtml +
       row('Base URL（OpenAI 兼容）', 'setBaseUrl', p.llmBaseUrl, 'text', 'https://api.deepseek.com') +
       row('API Key', 'setKey', p.llmKey, 'password', 'sk-...') +
       row('模型名', 'setModel', p.llmModel, 'text', 'deepseek-chat / gpt-4o-mini') +
@@ -360,6 +372,16 @@ window.TFT = window.TFT || {};
           });
         };
         const key = U.$('#setKey', b); if (key) key.focus();
+        U.$$('.set-preset', b).forEach(function (btn) {
+          btn.onclick = function () {
+            const baseEl = U.$('#setBaseUrl', b), modelEl = U.$('#setModel', b);
+            if (baseEl) baseEl.value = btn.getAttribute('data-base');
+            if (modelEl) modelEl.value = btn.getAttribute('data-model');
+            U.$$('.set-preset', b).forEach(function (x) { x.classList.toggle('on', x === btn); });
+            if (key) key.focus();
+            TFT.UI.toast('已填入 ' + btn.textContent + '，请补 API Key 后测试连接', 'ok', 2600);
+          };
+        });
       }
     });
   };

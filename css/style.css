@@ -412,6 +412,8 @@ h1,h2,h3{margin:0;font-weight:700;letter-spacing:.02em}
 .set-form .txt{width:100%}
 .set-form .set-row.check{display:flex;align-items:center;gap:6px;color:var(--dim);font-size:11px}
 .set-form .set-row.check input{width:auto}
+.set-form .set-presets{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.set-form .set-preset.on{border-color:var(--accent);color:var(--accent)}
 /* 流式输出气泡：生成过程中承载增量 Markdown */
 .msg.ai .stream-body{min-height:1em}
 .msg.ai .stream-body>*:first-child{margin-top:0}

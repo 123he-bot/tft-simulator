@@ -141,6 +141,13 @@ f.onload = function () {
                   cw: cv.width, ch: cv.height,
                   png: cv.toDataURL('image/png').indexOf('data:image/png') === 0 };
                 W.TFT.UI.closeModal();
+                W.TFT.AI.openSettings();
+                var pbtn = d().querySelector('.set-preset[data-k="deepseek"]');
+                if (pbtn) pbtn.click();
+                R.preset = { count: d().querySelectorAll('.set-preset').length,
+                  base: (d().getElementById('setBaseUrl') || {}).value,
+                  model: (d().getElementById('setModel') || {}).value };
+                W.TFT.UI.closeModal();
                 finish();
               }, 600);
             }, 400);
@@ -279,6 +286,12 @@ def run(keep=False):
           (adv.get('posOk') is True and adv.get('tried', 0) >= 2 and 0 <= (adv.get('rate') or -1) <= 1)
           or (adv.get('posOk') is False and bool(adv.get('posReason'))),
           'ok=%s tried=%s rate=%s %s' % (adv.get('posOk'), adv.get('tried'), adv.get('rate'), adv.get('posReason')))
+
+    pre = result.get('preset', {})
+    check('大模型设置含 4 个预设', pre.get('count') == 4, pre.get('count'))
+    check('点击预设自动填入 Base URL / 模型名',
+          pre.get('base') == 'https://api.deepseek.com' and pre.get('model') == 'deepseek-chat',
+          '%s / %s' % (pre.get('base'), pre.get('model')))
 
     width = max(len(n) for n, _, _ in checks)
     failed = 0
