@@ -13,7 +13,7 @@ window.TFT = window.TFT || {};
     (items || []).forEach(function (id) {
       const it = D.item(id); if (!it) return;
       if (it.recipe) { dps += 10; hp += 250; def += 10; }              // 成品
-      else if ((D.items.artifacts || []).some(a => a.id === id)) { dps += 22; hp += 200; def += 20; } // 神器
+      else if ((D.itemsForSeason().artifacts || []).some(a => a.id === id)) { dps += 22; hp += 200; def += 20; } // 神器
       else { dps += 6; hp += 100; def += 5; }                          // 小件
     });
     return { dpsPct: dps, hp: hp, def: def };

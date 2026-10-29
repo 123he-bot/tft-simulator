@@ -74,7 +74,7 @@ window.TFT = window.TFT || {};
       return '<div class="tt-head">' +
         (U.itemIcon(it) ? '<img src="' + U.itemIcon(it) + '">' : '') +
         '<div><div class="tt-name">' + U.esc(it.name) + '</div><div class="tt-cost">' +
-        (recipe.length ? '配方：' + U.esc(recipe.join(' + ')) : (D.items.artifacts || []).some(a => a.id === it.id) ? '奥恩神器' : '基础小件') +
+        (recipe.length ? '配方：' + U.esc(recipe.join(' + ')) : (D.itemsForSeason().artifacts || []).some(a => a.id === it.id) ? '奥恩神器' : '基础小件') +
         '</div></div></div>' +
         '<div style="color:#cfe3ff">' + U.esc(it.stat || it.desc || '') + '</div>';
     });

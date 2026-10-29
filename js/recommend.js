@@ -91,15 +91,39 @@ window.TFT = window.TFT || {};
     return v;
   }
 
-  /* 可推荐的成品装备（含配方、非随机、非纹章） */
-  let _pool = null;
-  function candidateItems() {
-    if (_pool) return _pool;
-    _pool = (D.items.completed || []).filter(function (it) {
-      return it && it.id && !BANNED[it.id] && (it.recipe || []).length === 2 &&
-        it.recipe.every(c => !!COMP_AXIS[c]);
+  /* 可推荐的成品装备（含配方、非随机、非纹章），按当前赛季目录构建
+     官方装备用小件英文 id（TFT_Item_*），需先按小件中文名映射回属性轴 id */
+  const _poolBySeason = {};
+  function seasonCandidateItems(slug) {
+    const comps = (D.itemsForSeason(slug).components || []);
+    const legacyComps = (D.items.components || []);
+    const translate = {};
+    comps.forEach(function (c) {
+      if (COMP_AXIS[c.id]) { translate[c.id] = c.id; return; }
+      const lg = legacyComps.find(l => l.name === c.name);
+      if (lg) translate[c.id] = lg.id;
     });
-    return _pool;
+    const pool = [];
+    const seen = {};
+    (D.items.completed || []).forEach(function (it) {
+      if (!it || !it.id || BANNED[it.id]) return;
+      if ((it.recipe || []).length !== 2 || !it.recipe.every(c => !!COMP_AXIS[c])) return;
+      pool.push(it); seen[it.name] = true;
+    });
+    (D.itemsForSeason(slug).completed || []).forEach(function (it) {
+      if (!it || !it.id || BANNED[it.id] || seen[it.name]) return;
+      const r = (it.recipe || []).map(cid => translate[cid] || cid);
+      if (r.length !== 2 || !r.every(c => !!COMP_AXIS[c])) return;
+      /* 克隆一份并写入属性轴小件 id，避免改动共享的赛季装备对象 */
+      pool.push({ id: it.id, name: it.name, icon: it.icon, stat: it.stat, desc: it.desc, recipe: r });
+    });
+    return pool;
+  }
+  function candidateItems() {
+    const slug = D.currentSlug || 's17';
+    if (_poolBySeason[slug]) return _poolBySeason[slug];
+    _poolBySeason[slug] = seasonCandidateItems(slug);
+    return _poolBySeason[slug];
   }
   R.candidateItems = candidateItems;
 
