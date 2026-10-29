@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>金铲铲 AI 多智能体阵容模拟器</title>
 <link rel="stylesheet" href="css/tailwind.css?v=1.4.3">
-<link rel="stylesheet" href="css/style.css?v=1.8.3">
+<link rel="stylesheet" href="css/style.css?v=1.8.5">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
 
   <div class="search-wrap" id="searchWrap">
     <span class="search-ico">⌕</span>
-    <input id="searchInput" type="text" autocomplete="off" placeholder="搜索阵容 / 主C / 羁绊 / 装备 / 海克斯，空格可组合，如：暗星 卡尔玛、无尽之刃、8级D干的传说">
+    <input id="searchInput" type="text" autocomplete="off" placeholder="搜索阵容 / 主C / 羁绊 / 装备 / 海克斯">
     <div id="searchSuggest" class="suggest-box hidden"></div>
     <button id="btnSearch" class="btn btn-primary">搜索</button>
   </div>
@@ -34,15 +34,24 @@
   </div>
 
   <nav class="top-actions" id="topActions">
-    <button class="btn" id="btnSave" title="Ctrl+S">保存阵容</button>
-    <button class="btn" id="btnLoad">加载存档</button>
+    <button class="btn" id="btnSave" title="保存 / 加载阵容（Ctrl+S）">存档</button>
     <button class="btn btn-primary" id="btnSolver" title="按当前棋盘 / 经济 / 血量求解这一局">求解这一局</button>
     <button class="btn" id="btnMeta">Meta 梯度榜</button>
-    <button class="btn" id="btnBattle">战斗模拟器</button>
     <button class="btn" id="btnLLM" title="接入 / 配置大模型">大模型</button>
     <div class="more-wrap" id="moreWrap">
       <button class="btn" id="btnMore" title="更多工具" aria-haspopup="true" aria-expanded="false" aria-controls="moreMenu">更多<span class="more-caret">▾</span></button>
       <div class="more-menu hidden" id="moreMenu" role="menu" aria-label="更多工具">
+        <div class="mm-group">
+          <div class="mm-title">对局与模拟</div>
+          <button class="mm-item" id="btnBattle" role="menuitem">
+            <span class="mm-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.4 4.2 8 2l5.6 2.2v4.2c0 3-2.4 5.1-5.6 6-3.2-.9-5.6-3-5.6-6z"/><path d="M6.2 7.6 7.6 9l3-3"/></svg></span>
+            <span class="mm-txt"><b>战斗模拟器</b><i>两套阵容对打 · 逐回合结果与胜率</i></span>
+          </button>
+          <button class="mm-item mm-danger" id="btnReset" role="menuitem">
+            <span class="mm-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13.2 8a5.2 5.2 0 1 1-1.6-3.7"/><path d="M13.3 2.6v2.6h-2.6"/></svg></span>
+            <span class="mm-txt"><b>重置全部</b><i>清空棋盘、备战席与已选海克斯</i></span>
+          </button>
+        </div>
         <div class="mm-group">
           <div class="mm-title">分析工具</div>
           <button class="mm-item" id="btnTraitExplorer" role="menuitem">
@@ -114,12 +123,6 @@
         </div>
       </div>
     </div>
-    <button class="btn btn-danger" id="btnReset">重置全部</button>
-    <label class="switch" title="自动升星开关">
-      <input type="checkbox" id="autoMergeToggle" checked>
-      <span class="switch-track"><span class="switch-dot"></span></span>
-      <span class="switch-label">自动升星</span>
-    </label>
   </nav>
 </header>
 
@@ -132,6 +135,11 @@
       <div class="block-head">
         <h2>对战棋盘 <small>8 行 × 7 列六边形 · 上 4 行为敌方半场</small></h2>
         <div class="head-tools">
+          <label class="switch switch-sm" title="自动升星开关">
+            <input type="checkbox" id="autoMergeToggle" checked>
+            <span class="switch-track"><span class="switch-dot"></span></span>
+            <span class="switch-label">自动升星</span>
+          </label>
           <label class="switch switch-sm" title="攻击范围可视化">
             <input type="checkbox" id="rangeToggle">
             <span class="switch-track"><span class="switch-dot"></span></span>
@@ -354,6 +362,10 @@
           <div class="card chart-card"><div class="chart-wrap"><canvas id="homeHeatChart"></canvas></div></div>
         </div>
       </section>
+      <section class="home-sec">
+        <div class="home-sec-head"><h3>主流主C热度</h3><span class="dim" id="homeMainCNote"></span></div>
+        <div id="homeMainC" class="stat-table"></div>
+      </section>
     </div>
     <aside class="home-side">
       <section class="card">
@@ -365,7 +377,7 @@
         <div id="homeCounter" class="log-list"></div>
       </section>
       <section class="card">
-        <div class="home-sec-head"><h3>奥恩神器 / 纹章合成</h3></div>
+        <div class="home-sec-head"><h3>奥恩神器 / 纹章合成</h3><button class="btn btn-xs" data-home-act="forge">全部神器 →</button></div>
         <div id="homeArtifacts" class="item-grid sm"></div>
       </section>
     </aside>
@@ -415,7 +427,7 @@
 <script src="js/solver.js?v=1.1.0"></script>
 <script src="js/drag.js?v=1.4.3"></script>
 <script src="js/battle_sim.js?v=1.4.5"></script>
-<script src="js/ai_api.js?v=1.5.1"></script>
-<script src="js/main.js?v=1.10.1"></script>
+<script src="js/ai_api.js?v=1.5.2"></script>
+<script src="js/main.js?v=1.10.4"></script>
 </body>
 </html>

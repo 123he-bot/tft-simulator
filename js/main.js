@@ -1396,7 +1396,6 @@ window.TFT = window.TFT || {};
 
     /* 顶栏动作 */
     $('#btnSave').onclick = Main.openSaves;
-    $('#btnLoad').onclick = Main.openSaves;
     $('#btnExportImg').onclick = function () { TFT.Store.exportImage(); };
     $('#btnExportJson').onclick = function () {
       TFT.UI.prompt('导出 JSON', [{ label: '阵容名称', value: '未命名阵容' }], function (v) { TFT.Store.exportJSON(v[0]); });
@@ -1547,18 +1546,34 @@ window.TFT = window.TFT || {};
     TFT.UI.destroyCharts();
 
     /* —— Hero —— */
+    const hsRow = function (k, v) {
+      return '<div class="hs"><span class="hs-k">' + U.esc(k) + '</span><span class="hs-v">' + U.esc(v) + '</span></div>';
+    };
     hero.innerHTML =
       '<div class="hero-glow"></div>' +
-      '<div class="hero-badge">' + U.esc(curSet || '—') +
-      (M.updatedAt ? ' · 补丁 ' + U.esc(M.updatedAt) : '') +
-      (metaLocal ? ' · 本地推断阵容' : metaIsCurrent ? ' · 数据可溯源' : ' · 梯度榜为 ' + U.esc(metaSet) + ' 数据') + '</div>' +
-      '<h1 class="hero-title">金铲铲 <b>AI 多智能体</b> 阵容数据站</h1>' +
-      '<p class="hero-sub">真实棋库 · 真实概率 · 真实强度分层。既保留本地规则推理的独特机制，也可一键接入大模型多智能体协作。</p>' +
-      '<div class="hero-cta">' +
-      '<button class="btn btn-primary" data-home-act="app">进入阵容工作台</button>' +
-      '<button class="btn" data-home-act="meta">Meta 梯度榜</button>' +
-      '<button class="btn" data-home-act="roll">抽卡模拟器</button>' +
-      '<button class="btn" data-home-act="quiz">认卡竞速</button>' +
+      '<div class="hero-inner">' +
+        '<div class="hero-main-col">' +
+          '<div class="hero-badge">' + U.esc(curSet || '—') +
+          (M.updatedAt ? ' · 补丁 ' + U.esc(M.updatedAt) : '') +
+          (metaLocal ? ' · 本地推断阵容' : metaIsCurrent ? ' · 数据可溯源' : ' · 梯度榜为 ' + U.esc(metaSet) + ' 数据') + '</div>' +
+          '<h1 class="hero-title">金铲铲 <b>AI 多智能体</b> 阵容数据站</h1>' +
+          '<p class="hero-sub">真实棋库 · 真实概率 · 真实强度分层。既保留本地规则推理的独特机制，也可一键接入大模型多智能体协作。</p>' +
+          '<div class="hero-cta">' +
+          '<button class="btn btn-primary" data-home-act="solve">求解这一局</button>' +
+          '<button class="btn" data-home-act="app">进入阵容工作台</button>' +
+          '<button class="btn" data-home-act="meta">Meta 梯度榜</button>' +
+          '<button class="btn" data-home-act="roll">抽卡模拟器</button>' +
+          '<button class="btn" data-home-act="quiz">认卡竞速</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="hero-side">' +
+          hsRow('赛季', curSet + (M.updatedAt ? ' · ' + M.updatedAt : '')) +
+          hsRow('评级阵容', list.length + ' 套') +
+          hsRow('棋库', ov.champions + ' 棋子 / ' + ov.traits + ' 羁绊') +
+          hsRow('强化与装备', ov.augments + ' 海克斯 / ' + ov.items + ' 装备') +
+          hsRow('数据源', metaLocal ? '本地规则推断' : (metaIsCurrent ? 'MetaTFT · 可溯源' : 'MetaTFT · ' + metaSet)) +
+          '<button class="btn btn-block hs-btn" data-home-act="solve">按当前棋盘求解</button>' +
+        '</div>' +
       '</div>';
 
     /* —— KPI —— */
@@ -1641,6 +1656,34 @@ window.TFT = window.TFT || {};
       });
     }
 
+    /* —— 主流主C热度 —— */
+    const mcEl = $('#homeMainC');
+    if (mcEl) {
+      const map = {};
+      list.forEach(function (it) {
+        const cp = it.cp || it;
+        const n = cp.mainC || '—';
+        const rec = map[n] || (map[n] = { name: n, count: 0, cost: 0 });
+        rec.count++;
+        if (!rec.cost) {
+          const u = (cp.units || []).find(x => x.name === n);
+          if (u) rec.cost = u.cost || 0;
+        }
+      });
+      const rows = Object.keys(map).map(k => map[k]).sort((a, b) => b.count - a.count).slice(0, 8);
+      const mx = rows.length ? rows[0].count : 1;
+      mcEl.innerHTML = rows.length ? rows.map(function (x, i) {
+        const w = U.clamp(Math.round((x.count / mx) * 100), 6, 100);
+        return '<div class="stat-row"><span class="sr-rank">' + (i + 1) + '</span>' +
+          '<span class="sr-name">' + U.esc(x.name) +
+          (x.cost ? ' <span class="dim">' + x.cost + ' 费</span>' : '') + '</span>' +
+          '<span class="sr-bar"><i style="width:' + w + '%"></i></span>' +
+          '<span class="sr-val">' + x.count + '</span></div>';
+      }).join('') : '<div class="dim">暂无数据</div>';
+      const mcNote = $('#homeMainCNote');
+      if (mcNote) mcNote.textContent = (metaLocal ? '本地推断' : '真实统计') + ' · 主C出现阵容数 · 共 ' + list.length + ' 套';
+    }
+
     /* —— 羁绊热度天梯 —— */
     const ladder = $('#homeTraitLadder');
     const tr = (M.traitRanking || []).slice(0, 12);
@@ -1668,7 +1711,7 @@ window.TFT = window.TFT || {};
     /* —— 奥恩神器 —— */
     const arts = $('#homeArtifacts');
     if (arts) {
-      const list2 = (D.itemsForSeason().artifacts || []).slice(0, 21);
+      const list2 = (D.itemsForSeason().artifacts || []).slice(0, 12);
       arts.innerHTML = list2.length ? list2.map(itemCard).join('') : '<div class="dim">暂无神器数据</div>';
       $$('#homeArtifacts .item-card').forEach(bindItemTip);
     }
@@ -1716,9 +1759,11 @@ window.TFT = window.TFT || {};
   Main.homeAction = function (act) {
     switch (act) {
       case 'app': Main.go('app'); break;
+      case 'solve': Main.openSolver(); break;
       case 'optimizer': Main.go('app'); Main.openOptimizer(); break;
       case 'share': Main.copyShareLink(); break;
       case 'meta': Main.openMeta(); break;
+      case 'forge': Main.go('app'); Main.setTab('forge'); break;
       case 'charts': Main.openCharts(); break;
       case 'roll': Main.openRollSim(); break;
       case 'quiz': Main.openCardQuiz(); break;

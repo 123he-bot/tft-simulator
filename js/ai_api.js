@@ -335,11 +335,14 @@ window.TFT = window.TFT || {};
       '<label class="set-row check"><input type="checkbox" id="setPersona"' + (p.llmPersona !== false ? ' checked' : '') +
       '><span>保持「多智能体」人设（5 位专家协作口吻）</span></label>' +
       '<div class="dim" style="margin-top:8px">API Key 仅保存在本机浏览器 localStorage，不会上传到任何服务器。未配置 Key 时自动回退本地真实数据推理。</div>' +
+      '<div class="set-state" id="setState" style="margin-top:6px;font-size:12px;opacity:.75">当前状态：' + (p.llmKey ? '已接入 ' + U.esc(p.llmModel || '大模型') : '未接入（本地真实数据推理）') + '</div>' +
       '</div>' +
-      '<div class="m-row" style="justify-content:flex-end;margin-top:12px;gap:8px">' +
+      '<div class="m-row" style="justify-content:space-between;margin-top:12px;gap:8px">' +
+      '<button class="btn btn-xs" id="setDisable">停用大模型</button>' +
+      '<span style="display:flex;gap:8px">' +
       '<button class="btn btn-xs" id="setTest">测试连接</button>' +
       '<button class="btn" data-close="1">取消</button>' +
-      '<button class="btn btn-primary" id="setSave">保存</button></div>';
+      '<button class="btn btn-primary" id="setSave">保存</button></span></div>';
 
     TFT.UI.modal({
       title: '大模型设置', size: 'narrow', body: body,
@@ -360,6 +363,16 @@ window.TFT = window.TFT || {};
           TFT.UI.closeModal();
           AI.updateCtxBadge();
           TFT.UI.toast(patch.llmKey ? '大模型配置已保存' : '未填写 API Key，将使用本地真实数据推理', patch.llmKey ? 'ok' : 'warn');
+        };
+        U.$('#setDisable', b).onclick = function () {
+          const had = !!TFT.Store.prefs().llmKey || !!val('setKey');
+          if (!had) { TFT.UI.toast('当前已是本地推理模式', 'warn'); return; }
+          TFT.Store.setPrefs({ llmKey: '' });
+          const k = U.$('#setKey', b); if (k) k.value = '';
+          const st = U.$('#setState', b);
+          if (st) st.textContent = '当前状态：未接入（本地真实数据推理）';
+          AI.updateCtxBadge();
+          TFT.UI.toast('已停用大模型，改回本地真实数据推理', 'ok');
         };
         U.$('#setTest', b).onclick = function () {
           const prefs = Object.assign({}, TFT.Store.prefs(), collect());
