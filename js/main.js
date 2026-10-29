@@ -626,7 +626,8 @@ window.TFT = window.TFT || {};
     return '<div class="comp-card" data-comp="' + U.esc(cp.id) + '">' +
       '<div class="cc-head"><span class="tier-dot td-' + U.esc(tier) + '">' + U.esc(tier) + '</span>' +
       '<span class="cc-name">' + (nameHTML || U.esc(displayName(cp))) + '</span><span class="cc-rank">#' + rk.rank + '/' + rk.total + '</span></div>' +
-      '<div class="cc-line">主C <b>' + U.esc(cp.mainC || '-') + '</b> · ' + ((cp.units || []).length) + ' 人口 · ' + U.esc(cp.source || '') + '</div>' +
+      '<div class="cc-line">主C <b>' + U.esc(cp.mainC || '-') + '</b> · ' + ((cp.units || []).length) + ' 人口 · ' + U.esc(cp.source || '') +
+      (cp.confidence ? ' · 推断置信度 ' + U.esc(cp.confidence) : '') + '</div>' +
       '<div class="cc-tags">' + (cp.traits || []).slice(0, 4).map(t => '<span class="mini-tag">' + U.esc(t.name) + ' ' + t.active + '</span>').join('') + '</div>' +
       '<div class="cc-str"><span class="dim">强度</span>' + strengthBar(cp.strength) + '<span class="dim">' + strengthLabel(cp.strength) + '</span></div>' +
       '</div>';
@@ -907,9 +908,10 @@ window.TFT = window.TFT || {};
         '<div class="card">' +
           '<div class="cd-head"><span class="tier-dot td-' + U.esc(tier) + '">' + U.esc(tier) + '</span>' +
           '<span class="cd-title">' + U.esc(displayName(cp)) + '</span>' +
-          '<span class="cd-rank">全服 #' + rk.rank + ' / ' + rk.total + '</span></div>' +
+          '<span class="cd-rank">' + (cp.source === '本地推断' ? '站内排名' : '全服') + ' #' + rk.rank + ' / ' + rk.total + '</span></div>' +
           '<div class="cd-str"><span class="dim">综合强度</span>' + strengthBar(cp.strength) + '<b>' + strengthLabel(cp.strength) + '</b></div>' +
           '<div class="kv"><span class="k">数据来源</span><span class="v">' + U.esc(cp.source || 'MetaTFT') + (cp.cluster ? ' · 集群 #' + cp.cluster : '') + '</span></div>' +
+          (cp.confidence ? '<div class="kv"><span class="k">推断置信度</span><span class="v">' + U.esc(cp.confidence) + '（规则推断，非实测胜率）</span></div>' : '') +
           '<div class="kv"><span class="k">主C</span><span class="v">' + U.esc(cp.mainC || '-') + '</span></div>' +
           '<div class="kv"><span class="k">上阵人口 / 总费用</span><span class="v">' + units.length + ' 人 / ' + totalCost + ' 金</span></div>' +
           '<div class="kv"><span class="k">平均费用</span><span class="v">' + avgCost + ' · 2★ 及以上 ' + starCount + ' 个</span></div>' +
@@ -1279,9 +1281,29 @@ window.TFT = window.TFT || {};
     ss.innerHTML = D.seasons().map(s => '<option value="' + s.slug + '">' + U.esc(s.name) + '</option>').join('');
     ss.value = S.season;
     const ps = $('#patchSelect');
-    ps.innerHTML = D.PATCHES.map(p => '<option value="' + p + '">补丁 ' + p + '</option>').join('');
-    ps.value = S.patch;
+    const patches = D.patchesForSeason ? D.patchesForSeason(S.season) : D.PATCHES;
+    ps.innerHTML = patches.map(p => '<option value="' + p + '">补丁 ' + p + '</option>').join('');
+    ps.style.display = patches.length ? '' : 'none';
+    if (patches.length) {
+      if (patches.indexOf(S.patch) < 0) S.patch = patches[0];
+      ps.value = S.patch;
+    } else {
+      S.patch = '';
+    }
   }
+
+  /* 外部载入（存档 / 分享码 / 导入 / 阵容一键上阵）后同步赛季相关 UI */
+  Main.syncSeason = function (slug) {
+    if (!slug || !D.raw[slug]) return;
+    S.season = slug;
+    _ranked = null;
+    fillSeasonPatch();
+    renderChampFilters(); fillTraitSelects();
+    syncTopbar();
+    Main.refreshTab();
+    const homeView = $('#viewHome');
+    if (homeView && !homeView.classList.contains('hidden')) Main.renderHome();
+  };
 
   function applySeason(slug) {
     const hasContent = S.boardList().length || S.benchList().length;
@@ -1291,7 +1313,7 @@ window.TFT = window.TFT || {};
       tabState.champTrait = ''; tabState.champRole = ''; tabState.te = { trait: '', must: '', emblem: '', results: [] };
       tabState.forgeSlots = [null, null];
       _ranked = null;
-      renderChampFilters(); fillTraitSelects();
+      renderChampFilters(); fillTraitSelects(); fillSeasonPatch();
       Main.refreshTab();
       B.commit('switch-season');
       /* 首页内容依赖当前赛季，处于首页视图时必须重渲染，否则界面上看不到任何变化 */

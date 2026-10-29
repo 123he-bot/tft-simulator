@@ -155,7 +155,11 @@ window.TFT = window.TFT || {};
   /* 从序列化数据恢复 */
   state.loadFrom = function (snap) {
     if (!snap) return;
-    if (snap.season && TFT.D.raw[snap.season]) { state.season = snap.season; TFT.D.setSeason(snap.season); }
+    if (snap.season && TFT.D.raw[snap.season]) {
+      state.season = snap.season; TFT.D.setSeason(snap.season);
+      /* 让顶部赛季下拉 / 首页 / 当前标签页随载入的存档同步（函数内部有可见性判断） */
+      if (TFT.Main && TFT.Main.syncSeason) TFT.Main.syncSeason(snap.season);
+    }
     state.patch = snap.patch || state.patch;
     state.board = {}; state.bench = [null, null, null, null, null];
     const p = snap.player || {};

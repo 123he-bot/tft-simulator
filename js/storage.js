@@ -20,6 +20,11 @@ window.TFT = window.TFT || {};
   D.SEASON_ORDER = ['s17', 's16', 's15', 's14', 's13', 's7', 's3'];
   D.SEASON_LABEL = { s17: 'S17 当前赛季', s16: 'S16', s15: 'S15', s14: 'S14', s13: 'S13', s7: 'S7', s3: 'S3' };
   D.PATCHES = ['14.18', '14.17', '14.16', '14.15', '14.14', '14.13'];
+  /* 补丁号只对数据源覆盖的赛季有意义（目前仅 S17 有 MetaTFT 补丁口径） */
+  D.patchesForSeason = function (slug) {
+    const s = String(slug || D.currentSlug || '').toUpperCase();
+    return s === 'S17' ? D.PATCHES.slice() : [];
+  };
 
   /* ---------- 描述文本规范化：清理官方数据的转义/占位符残留，保证界面与 AI 输出可读 ---------- */
   function normDesc(s) {

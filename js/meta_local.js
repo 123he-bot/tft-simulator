@@ -160,9 +160,23 @@ window.TFT = window.TFT || {};
       const pct = n <= 1 ? 0 : i / (n - 1);
       cp.tier = pct < 0.15 ? 'S' : pct < 0.4 ? 'A' : pct < 0.75 ? 'B' : 'C';
       cp.strength = Number((-1.2 + 2.4 * pct).toFixed(2));
+      /* 推断置信度：仅由评分所处档位决定，用于提示「这是规则推断而非实测」 */
+      cp.confidence = pct < 0.4 ? '高' : pct < 0.75 ? '中' : '低';
       cp.id = 'lm_' + slug + '_' + i;
       delete cp._score;
     });
+
+    /* 用站内装备推荐引擎预填出装（只使用真实装备字段，标注为引擎推荐） */
+    if (TFT.Recommend && TFT.Recommend.plan) {
+      list.forEach(function (cp) {
+        try {
+          const p = TFT.Recommend.plan(cp);
+          (p.units || []).forEach(function (u, i) {
+            if (cp.units[i] && u.items && u.items.length) cp.units[i].items = u.items.map(x => x.id);
+          });
+        } catch (e) { /* 单套推断失败不影响整体榜单 */ }
+      });
+    }
 
     const tiers = { S: [], A: [], B: [], C: [] };
     list.forEach(cp => tiers[cp.tier].push(cp));
