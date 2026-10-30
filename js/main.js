@@ -2354,6 +2354,19 @@ window.TFT = window.TFT || {};
             (r.risk.notes.length ? '：' + U.esc(r.risk.notes[0]) : '') + '</b></div>' +
         '</div>' +
         '<div class="sv-steps">' + steps + '</div>' +
+        (r.equip && r.equip.length ?
+          '<div class="sv-equip"><div class="sv-equip-head">装备分配 <span class="dim">还差 ' + r.equipNeed + ' 件 · 绿框为棋盘上已拥有</span></div>' +
+          r.equip.map(function (x) {
+            return '<div class="sv-equip-row"><span class="sv-equip-name' + (x.main ? ' main' : '') + '">' + U.esc(x.name) + '</span>' +
+              '<div class="sv-equip-items">' + x.items.map(function (it) {
+                const url = U.itemIcon(it);
+                return '<span class="sv-item' + (it.owned ? ' on' : '') + '" title="' + U.esc(it.name) + (it.owned ? '（已拥有）' : '（待合成）') + '">' +
+                  (url ? '<img src="' + U.esc(url) + '" alt="' + U.esc(it.name) + '">' : '') +
+                  '<i>' + U.esc(it.name) + '</i></span>';
+              }).join('') + '</div>' +
+              '<span class="sv-equip-need dim">' + (x.need > 0 ? '缺 ' + x.need : '已齐') + '</span>' +
+              (x.src === '规则推荐' ? '<span class="sv-equip-src" title="该阵容方案未给出装，按站内装备引擎推荐">规则</span>' : '') + '</div>';
+          }).join('') + '</div>' : '') +
         '<details class="sv-why"><summary>为什么是这套（' + r.why.length + ' 条依据）</summary><ul>' + why + '</ul></details>' +
         '<div class="op-actions">' +
           '<button class="btn" id="svLoad">📋 加载到棋盘</button>' +
@@ -2456,11 +2469,15 @@ window.TFT = window.TFT || {};
           seasonLabel: (D.meta && D.meta.set) || (D.currentSlug || '').toUpperCase(),
           time: new Date().toLocaleDateString('zh-CN')
         });
-        const a = document.createElement('a');
-        a.href = cv.toDataURL('image/png');
-        a.download = 'tft-route-' + (route.id || 'route') + '.png';
-        a.click();
-        TFT.UI.toast('路线卡已生成，已开始下载', 'ok');
+        btnCard.disabled = true;
+        (cv._ready || Promise.resolve(cv)).then(function () {
+          const a = document.createElement('a');
+          a.href = cv.toDataURL('image/png');
+          a.download = 'tft-route-' + (route.id || 'route') + '.png';
+          a.click();
+          btnCard.disabled = false;
+          TFT.UI.toast('路线卡已生成，已开始下载', 'ok');
+        });
       };
 
       const btnPos = $('#svPos'); if (btnPos) btnPos.onclick = function () {

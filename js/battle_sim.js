@@ -287,18 +287,36 @@ window.TFT = window.TFT || {};
 
       const sl = U.$('#rvSolverList');
       if (sl) {
-        const logs = TFT.Solver ? TFT.Solver.logs() : [];
-        sl.innerHTML = logs.length ? logs.map(function (l) {
-          const sc = TFT.Solver.scoreLog(l);
-          const color = sc.score >= 75 ? '#34d399' : sc.score >= 50 ? '#f59e0b' : '#f43f5e';
-          return '<div class="log-item"><span style="color:var(--gold)">' + U.esc(l.season) + ' · ' + U.esc(l.intent) + '</span>' +
-            '<span>' + U.esc(l.name) + ' <b style="color:' + color + '">' + sc.score + ' 分</b>' +
-            ' <span class="dim">覆盖 ' + sc.coverage + '%（' + sc.hit + '/' + sc.planned + '）· ' + U.esc(sc.note) + '</span></span>' +
-            '<span class="dim">' + U.esc(l.time) + ' <span style="cursor:pointer;color:var(--magenta)" data-slog="' + l.id + '">删除</span></span></div>';
-        }).join('') : '<div class="dim">还没有记录：打开「求解这一局」→ 选中路线 → 记录决策</div>';
-        U.$$('#rvSolverList [data-slog]').forEach(function (b) {
-          b.onclick = function () { TFT.Solver.deleteLog(b.dataset.slog); render(); };
-        });
+        const sum = TFT.Solver ? TFT.Solver.logSummary() : null;
+        if (!sum || !sum.count) {
+          sl.innerHTML = '<div class="dim">还没有记录：打开「求解这一局」→ 选中路线 → 记录决策</div>';
+        } else {
+          const colorOf = function (s) { return s >= 75 ? '#34d399' : s >= 50 ? '#f59e0b' : '#f43f5e'; };
+          const head = '<div class="log-item rv-sum">' +
+            '<span style="color:var(--gold)">共 ' + sum.count + ' 次求解 · 平均 <b style="color:' + colorOf(sum.avg) + '">' + sum.avg + ' 分</b>' +
+            ' · 最近 5 次 <b style="color:' + colorOf(sum.recent) + '">' + sum.recent + ' 分</b>' +
+            ' · 最高 ' + sum.best + ' 分 · 达标率（≥75）' + sum.goodRate + '%' +
+            (sum.invalid ? ' · ' + sum.invalid + ' 条跨赛季不计分' : '') + '</span>' +
+            '<span class="dim"><span style="cursor:pointer;color:var(--magenta)" id="rvSolverClear">清空全部</span></span></div>';
+          const rows = sum.scored.map(function (x, i) {
+            const l = x.log, sc = x.sc;
+            const prev = sum.scored[i + 1];
+            const delta = prev && prev.sc.sameSeason && sc.sameSeason ? sc.score - prev.sc.score : null;
+            const dTxt = delta == null ? '' :
+              ' <span style="color:' + (delta > 0 ? '#34d399' : delta < 0 ? '#f43f5e' : '#64748b') + '">' +
+              (delta > 0 ? '+' + delta : delta === 0 ? '持平' : delta) + '</span>';
+            return '<div class="log-item"><span style="color:var(--gold)">' + U.esc(l.season) + ' · ' + U.esc(l.intent) + '</span>' +
+              '<span>' + U.esc(l.name) + ' <b style="color:' + colorOf(sc.score) + '">' + sc.score + ' 分</b>' + dTxt +
+              ' <span class="dim">覆盖 ' + sc.coverage + '%（' + sc.hit + '/' + sc.planned + '）· ' + U.esc(sc.note) + '</span></span>' +
+              '<span class="dim">' + U.esc(l.time) + ' <span style="cursor:pointer;color:var(--magenta)" data-slog="' + l.id + '">删除</span></span></div>';
+          }).join('');
+          sl.innerHTML = head + rows;
+          U.$$('#rvSolverList [data-slog]').forEach(function (b) {
+            b.onclick = function () { TFT.Solver.deleteLog(b.dataset.slog); render(); };
+          });
+          const clr = U.$('#rvSolverClear');
+          if (clr) clr.onclick = function () { TFT.Solver.clearLogs(); render(); };
+        }
       }
     }
     render();

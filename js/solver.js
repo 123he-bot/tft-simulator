@@ -96,6 +96,60 @@ window.TFT = window.TFT || {};
     return { level: level, notes: notes };
   }
 
+  /*
+   * 装备分配：优先用阵容方案里的出装；方案没给出装时（真实赛季常见），
+   * 用站内装备引擎按该棋子推荐，并明确标注「规则推荐」。
+   * 同时对比当前棋盘上每张棋子已有装备，标注「已拥有 / 待合成」。
+   */
+  function normalizeItems(list) {
+    return (list || []).map(function (it) {
+      /* 阵容数据里的装备可能是 id 字符串，也可能是 {id,name} 对象 */
+      if (typeof it === 'string') {
+        const def = D.item(it) || D.itemByName(it) || {};
+        return { id: def.id || it, name: def.name || it, icon: def.icon || null };
+      }
+      const def = D.item((it && it.id) || '') || D.itemByName((it && it.name) || '') || {};
+      return {
+        id: def.id || (it && it.id) || '', name: def.name || (it && it.name) || '',
+        icon: def.icon || null
+      };
+    }).filter(function (x) { return x.name; });
+  }
+
+  function equipPlan(route) {
+    const board = (TFT.state && TFT.state.boardList) ? TFT.state.boardList() : [];
+    const ownedBy = {};
+    board.forEach(function (u) {
+      if (!u || !u.champId) return;
+      ownedBy[u.champId] = (u.items || []).slice();
+    });
+    const rows = [];
+    (route.units || []).forEach(function (mu) {
+      const ch = D.champByName(mu.name);
+      let rec = normalizeItems(mu.items);
+      let src = '方案';
+      if (!rec.length && ch && TFT.Recommend && TFT.Recommend.forChampion) {
+        const r = TFT.Recommend.forChampion(ch, 3);
+        rec = normalizeItems((r && r.items) || []);
+        src = '规则推荐';
+      }
+      if (!rec.length) return;
+      const owned = (ch && ownedBy[ch.id]) || [];
+      const items = rec.slice(0, 3).map(function (x) {
+        return { id: x.id, name: x.name, icon: x.icon, owned: owned.indexOf(x.id) >= 0 };
+      });
+      const got = items.filter(function (x) { return x.owned; }).length;
+      rows.push({
+        name: mu.name, cost: ch ? ch.cost : 1, main: mu.name === route.mainC,
+        items: items, got: got, need: items.length - got, src: src
+      });
+    });
+    rows.sort(function (a, b) {
+      return (b.main ? 1 : 0) - (a.main ? 1 : 0) || b.cost - a.cost;
+    });
+    return rows;
+  }
+
   /* 三条回合动作 */
   function stepsOf(route, ctx) {
     const p = route.plan;
@@ -182,16 +236,17 @@ window.TFT = window.TFT || {};
       }
     }
 
-    /* 成型后的装备收尾（阵容方案里已有的出装，不额外编造） */
-    const mainUnit = (route.units || []).find(function (u) { return u.name === route.mainC; }) ||
-      (route.units || [])[0];
-    const itemNames = mainUnit && mainUnit.items ?
-      mainUnit.items.map(function (it) { return it.name; }).filter(Boolean) : [];
-    if (itemNames.length) {
+    /* 成型后的装备分配（阵容方案里已有的出装，不额外编造） */
+    const eq = route.equip || [];
+    if (eq.length) {
+      const top = eq.slice(0, 2);
+      const rest = eq.slice(2);
       steps.push({
         when: '成型后',
-        action: '给 ' + mainUnit.name + ' 做装备：' + itemNames.join(' / '),
-        detail: '出装来自该阵容方案；装备到位通常比多追一个二星更影响战力'
+        action: '分装备：' + top.map(function (x) {
+          return x.name + ' ' + x.items.map(function (it) { return it.name; }).join('/');
+        }).join('；') + (rest.length ? '；其余 ' + rest.length + ' 个功能位按同序分装' : ''),
+        detail: '出装来自该阵容方案；装备到位通常比多追一个二星更影响战力，主C优先'
       });
     }
 
@@ -257,6 +312,8 @@ window.TFT = window.TFT || {};
         neededChamps: m.neededChamps
       };
       route.risk = riskOf(m, ctx);
+      route.equip = equipPlan(route);
+      route.equipNeed = route.equip.reduce(function (s, r) { return s + r.need; }, 0);
       return route;
     });
 
@@ -332,6 +389,27 @@ window.TFT = window.TFT || {};
     localStorage.setItem(LOG_KEY, JSON.stringify(S.logs().filter(function (l) { return l.id !== id; })));
   };
 
+  S.clearLogs = function () { localStorage.removeItem(LOG_KEY); };
+
+  /* 多局汇总：按同一评分口径统计，用于对比不同路线的执行质量 */
+  S.logSummary = function () {
+    const logs = S.logs();
+    const scored = logs.map(function (l) { return { log: l, sc: S.scoreLog(l) }; });
+    const valid = scored.filter(function (x) { return x.sc.sameSeason; });
+    const avg = function (list) {
+      return list.length ? Math.round(list.reduce(function (s, x) { return s + x.sc.score; }, 0) / list.length) : 0;
+    };
+    return {
+      count: logs.length,
+      scored: scored,
+      avg: avg(valid),
+      recent: avg(valid.slice(0, 5)),
+      best: valid.length ? Math.max.apply(null, valid.map(function (x) { return x.sc.score; })) : 0,
+      goodRate: valid.length ? Math.round(valid.filter(function (x) { return x.sc.score >= 75; }).length / valid.length * 100) : 0,
+      invalid: logs.length - valid.length
+    };
+  };
+
   /*
    * 复盘评分：只用“计划阵容 vs 当前棋盘”的真实重合度 + 体系档位，
    * 不引入任何虚构的胜率或对手数据。
@@ -382,11 +460,11 @@ window.TFT = window.TFT || {};
 
     g.fillStyle = '#94a3b8'; g.font = '600 22px ' + FONT;
     g.fillText('求解这一局 · ' + (meta.seasonLabel || '') + ' · ' + (meta.time || ''), 60, 44);
-    g.fillStyle = '#f1f5f9'; g.font = '800 58px ' + FONT;
-    g.fillText(fitText(g, route.name, 1080), 60, 84);
+    g.fillStyle = '#f1f5f9'; g.font = '800 54px ' + FONT;
+    g.fillText(fitText(g, route.name, 1080), 60, 82);
 
-    g.fillStyle = '#22d3ee'; g.font = '600 26px ' + FONT;
-    g.fillText(route.intent + ' · ' + route.tier + ' 档 · 匹配 ' + route.matchRatio + '%', 60, 162);
+    g.fillStyle = '#22d3ee'; g.font = '600 25px ' + FONT;
+    g.fillText(route.intent + ' · ' + route.tier + ' 档 · 匹配 ' + route.matchRatio + '%', 60, 154);
 
     const metrics = [
       ['单刷命中', pct(route.hit)],
@@ -396,37 +474,96 @@ window.TFT = window.TFT || {};
     ];
     metrics.forEach(function (m, i) {
       const x = 60 + i * 270;
-      g.fillStyle = '#0f172a'; g.fillRect(x, 210, 240, 96);
-      g.strokeStyle = '#1e293b'; g.strokeRect(x, 210, 240, 96);
-      g.fillStyle = '#94a3b8'; g.font = '500 20px ' + FONT;
-      g.fillText(m[0], x + 20, 226);
-      g.fillStyle = '#f1f5f9'; g.font = '800 34px ' + FONT;
-      g.fillText(m[1], x + 20, 256);
+      g.fillStyle = '#0f172a'; g.fillRect(x, 200, 240, 92);
+      g.strokeStyle = '#1e293b'; g.strokeRect(x, 200, 240, 92);
+      g.fillStyle = '#94a3b8'; g.font = '500 19px ' + FONT;
+      g.fillText(m[0], x + 18, 214);
+      g.fillStyle = '#f1f5f9'; g.font = '800 32px ' + FONT;
+      g.fillText(m[1], x + 18, 242);
     });
 
-    g.fillStyle = '#f1f5f9'; g.font = '700 26px ' + FONT;
-    g.fillText('行动顺序', 60, 344);
-    let y = 390;
+    /* 左栏：行动顺序 */
+    g.fillStyle = '#f1f5f9'; g.font = '700 24px ' + FONT;
+    g.fillText('行动顺序', 60, 324);
+    let y = 366;
     route.steps.forEach(function (s, i) {
-      g.fillStyle = '#f59e0b'; g.font = '700 21px ' + FONT;
-      g.fillText((i + 1) + '. [' + s.when + ']', 60, y);
-      g.fillStyle = '#cbd5e1'; g.font = '400 21px ' + FONT;
-      g.fillText(fitText(g, s.action, 930), 240, y);
+      g.fillStyle = '#f59e0b'; g.font = '700 19px ' + FONT;
+      g.fillText((i + 1) + '. [' + s.when + ']', 60, y + 2);
+      g.fillStyle = '#cbd5e1'; g.font = '400 19px ' + FONT;
+      g.fillText(fitText(g, s.action, 430), 200, y + 2);
       y += 44;
     });
 
-    g.fillStyle = '#f1f5f9'; g.font = '700 26px ' + FONT;
-    g.fillText('依据', 60, y + 8);
-    y += 54;
-    route.why.slice(0, 4).forEach(function (w) {
-      g.fillStyle = '#0ea5e9'; g.fillText('·', 60, y);
-      g.fillStyle = '#94a3b8'; g.font = '400 20px ' + FONT;
-      g.fillText(fitText(g, w, 1000), 86, y);
-      y += 38;
+    /* 左栏：依据 */
+    g.fillStyle = '#f1f5f9'; g.font = '700 24px ' + FONT;
+    g.fillText('依据', 60, 566);
+    let wy = 600;
+    route.why.slice(0, 3).forEach(function (w) {
+      g.fillStyle = '#0ea5e9'; g.font = '400 19px ' + FONT;
+      g.fillText('·', 60, wy);
+      g.fillStyle = '#94a3b8'; g.font = '400 19px ' + FONT;
+      g.fillText(fitText(g, w, 500), 78, wy);
+      wy += 32;
     });
 
+    /* 右栏：装备分配（带图标，异步载入后就地绘制） */
+    const pending = [];
+    const eq = (route.equip || []).slice(0, 4);
+    g.fillStyle = '#f1f5f9'; g.font = '700 24px ' + FONT;
+    g.fillText('装备分配', 660, 324);
+    if (route.equipNeed != null) {
+      g.fillStyle = '#94a3b8'; g.font = '400 18px ' + FONT;
+      g.fillText('还差 ' + route.equipNeed + ' 件', 900, 330);
+    }
+    if (eq.length) {
+      let ey = 366;
+      eq.forEach(function (row) {
+        g.fillStyle = row.main ? '#f59e0b' : '#cbd5e1';
+        g.font = (row.main ? '700 ' : '400 ') + '19px ' + FONT;
+        g.fillText(fitText(g, row.name, 165), 660, ey + 6);
+        row.items.forEach(function (it, k) {
+          const x = 838 + k * 36, iy = ey;
+          const url = U.itemIcon(it);
+          g.fillStyle = '#0f172a'; g.fillRect(x, iy, 28, 28);
+          g.strokeStyle = it.owned ? '#34d399' : '#1e293b';
+          g.strokeRect(x, iy, 28, 28);
+          if (url) {
+            const img = new Image();
+            const p = new Promise(function (res) {
+              img.onload = res; img.onerror = res;
+              setTimeout(res, 1200);
+            });
+            pending.push({ img: img, x: x, y: iy, owned: it.owned, p: p });
+            img.src = url;
+          }
+        });
+        g.fillStyle = '#64748b'; g.font = '400 17px ' + FONT;
+        g.fillText(row.need > 0 ? '缺 ' + row.need : '已齐', 950, ey + 7);
+        ey += 46;
+      });
+    } else {
+      g.fillStyle = '#64748b'; g.font = '400 18px ' + FONT;
+      g.fillText('该阵容方案未给出出装', 660, 370);
+    }
+    g.fillStyle = '#475569'; g.font = '400 16px ' + FONT;
+    g.fillText('绿框 = 棋盘上已拥有 · 出装取自阵容方案，方案缺出装时按站内装备引擎推荐', 660, 552);
+
     g.fillStyle = '#475569'; g.font = '400 18px ' + FONT;
-    g.fillText('全部结论由站内规则引擎 + 牌池概率推算，不含官方胜率 · 金铲铲 AI 多智能体阵容模拟器', 60, H - 52);
+    g.fillText('全部结论由站内规则引擎 + 牌池概率推算，不含官方胜率 · 金铲铲 AI 多智能体阵容模拟器', 60, H - 48);
+
+    /* 图标载入完成后 resolve，调用方 await 后再导出 PNG */
+    cv._ready = Promise.all(pending.map(function (p) { return p.p; })).then(function () {
+      pending.forEach(function (p) {
+        try {
+          g.drawImage(p.img, p.x, p.y, 28, 28);
+          if (p.owned) {
+            g.fillStyle = '#34d399'; g.font = '700 14px ' + FONT;
+            g.fillText('✓', p.x + 20, p.y + 22);
+          }
+        } catch (e) { /* 图标缺失时保留占位框 */ }
+      });
+      return cv;
+    });
 
     return cv;
   };

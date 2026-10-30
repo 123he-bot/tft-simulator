@@ -115,6 +115,9 @@ f.onload = function () {
                 intents: sol.routes.map(function (r) { return r.intent; }),
                 steps: (sol.routes[0] || {}).steps ? sol.routes[0].steps.length : 0,
                 why: (sol.routes[0] || {}).why ? sol.routes[0].why.length : 0,
+                equip: ((sol.routes[0] || {}).equip || []).length,
+                equipNeed: (sol.routes[0] || {}).equipNeed,
+                equipItems: ((sol.routes[0] || {}).equip || []).reduce(function (s, r) { return s + r.items.length; }, 0),
                 hit: (sol.routes[0] || {}).hit, gap: (sol.routes[0] || {}).gap };
               W.TFT.Main.openSolver();
               setTimeout(function () {
@@ -122,7 +125,9 @@ f.onload = function () {
                 var ttl = d().querySelector('#modalTitle');
                 var txt = ((ttl ? ttl.textContent : '') + ' ' + (box ? box.textContent : '')).replace(/\s+/g, ' ');
                 R.solverUI = { hasTitle: /求解这一局/.test(txt), hasWhy: /为什么是这套/.test(txt),
-                  hasSteps: /(现在|本回合|随后)/.test(txt), cards: d().querySelectorAll('#svWrap .op-card').length };
+                  hasSteps: /(现在|本回合|随后)/.test(txt), cards: d().querySelectorAll('#svWrap .op-card').length,
+                  equipNodes: box ? box.querySelectorAll('.sv-equip').length : -1,
+                  bodyLen: box ? box.innerHTML.length : -1 };
                 var lg = W.TFT.Solver.addLog(sol.routes[0], sol.ctx);
                 var sc = W.TFT.Solver.scoreLog(lg);
                 var cpX = (W.TFT.D.meta.tiers.S || [])[0];
@@ -135,10 +140,12 @@ f.onload = function () {
                 var pos = W.TFT.Solver.positioning();
                 if (pos.ok) W.TFT.Solver.applyPositions(pos);
                 var cv = W.TFT.Solver.cardCanvas(sol.routes[0], { seasonLabel: 'TEST', time: 'T' });
+                var sumX = W.TFT.Solver.logSummary();
                 R.adv = { logs: W.TFT.Solver.logs().length, score: sc.score, cov: sc.coverage,
                   posOk: pos.ok, posReason: pos.reason || '', tried: pos.tried || 0,
                   rate: pos.ok ? pos.best.rate : null, opps: pos.opponents || 0,
-                  cw: cv.width, ch: cv.height,
+                  cw: cv.width, ch: cv.height, cardReady: !!cv._ready,
+                  sumCount: sumX.count, sumAvg: sumX.avg,
                   png: cv.toDataURL('image/png').indexOf('data:image/png') === 0 };
                 W.TFT.UI.closeModal();
                 W.TFT.AI.openSettings();
@@ -274,14 +281,20 @@ def run(keep=False):
     check('每条路线含可解释依据', sol.get('why', 0) >= 4, sol.get('why'))
     check('命中概率为合理值', isinstance(sol.get('hit'), (int, float)) and 0 <= sol.get('hit') <= 1, sol.get('hit'))
     check('求解弹窗渲染正常', ui.get('hasTitle') and ui.get('hasSteps') and ui.get('cards') == 3,
-          '%s / cards=%s' % (ui.get('hasTitle'), ui.get('cards')))
+          '%s / cards=%s / equipNodes=%s / len=%s' % (ui.get('hasTitle'), ui.get('cards'), ui.get('equipNodes'), ui.get('bodyLen')))
     check('弹窗含“为什么是这套”', ui.get('hasWhy') is True)
+    check('路线含装备分配（按阵容方案）', sol.get('equip', 0) >= 2 and sol.get('equipItems', 0) >= 3,
+          '%s 人 / %s 件 / 缺 %s 件' % (sol.get('equip'), sol.get('equipItems'), sol.get('equipNeed')))
 
     adv = result.get('adv', {})
     check('决策记录写入并评分', adv.get('logs', 0) >= 1 and 0 <= adv.get('score', -1) <= 100,
           'logs=%s score=%s cov=%s' % (adv.get('logs'), adv.get('score'), adv.get('cov')))
     check('路线卡可导出 PNG', adv.get('cw') == 1200 and adv.get('ch') == 760 and adv.get('png') is True,
           '%sx%s png=%s' % (adv.get('cw'), adv.get('ch'), adv.get('png')))
+    check('路线卡带图标就绪回调', adv.get('cardReady') is True)
+    check('求解弹窗含装备分配区', ui.get('equipNodes', 0) >= 1, 'nodes=%s' % ui.get('equipNodes'))
+    check('多局评分可汇总对比', adv.get('sumCount', 0) >= 1 and 0 <= adv.get('sumAvg', -1) <= 100,
+          'count=%s avg=%s' % (adv.get('sumCount'), adv.get('sumAvg')))
     check('站位求解可对比对手并给出胜率',
           (adv.get('posOk') is True and adv.get('tried', 0) >= 2 and 0 <= (adv.get('rate') or -1) <= 1)
           or (adv.get('posOk') is False and bool(adv.get('posReason'))),
