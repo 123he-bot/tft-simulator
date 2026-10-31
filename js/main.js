@@ -1381,11 +1381,14 @@ window.TFT = window.TFT || {};
   Main.openTraitExplorerModal = function () {
     TFT.UI.modal({
       title: '羁绊探索器（AI 穷举可行阵容）', size: 'wide',
-      body: '<div class="filter-row wrap" style="margin-bottom:8px">' +
+      body: '<div class="te-panel">' +
+        '<div class="te-panel-head"><b>筛选条件</b><span class="dim">目标羁绊 + 可选约束，穷举当前赛季可行阵容</span></div>' +
+        '<div class="filter-row wrap" style="margin-bottom:8px">' +
         '<select class="sel sel-sm" id="te2Target"><option value="">选择目标羁绊</option></select>' +
         '<select class="sel sel-sm" id="te2Must"><option value="">必须包含棋子</option></select>' +
         '<select class="sel sel-sm" id="te2Emblem"><option value="">转职装备（+1）</option></select>' +
         '<button class="btn btn-xs btn-primary" id="te2Run">穷举可行阵容</button></div>' +
+        '</div>' +
         '<div id="te2Results" class="te-results" style="max-height:62vh"><div class="dim">选择羁绊后点击穷举</div></div>'
     });
     const names = D.traits().map(t => t.name).sort((a, b) => a.localeCompare(b, 'zh'));
@@ -2661,10 +2664,24 @@ window.TFT = window.TFT || {};
       }
       if (sel >= res.routes.length) sel = 0;
       const owned = res.ctx.units.length;
+      const best = res.routes[sel];
+      const heroStat = function (k, v) {
+        return '<div class="sv-hero-stat"><span class="dim">' + U.esc(k) + '</span><b>' + U.esc(v) + '</b></div>';
+      };
       const body = '<div id="svWrap">' +
         controlsHTML() +
         '<div class="sv-note">' + U.esc(res.note) + ' · 当前 ' + input.level + ' 级 / ' + input.gold +
           ' 金 / ' + input.hp + ' 血' + (owned ? ' / 已拥有 ' + owned + ' 张' : ' / 棋盘为空，按通用起点推算') + '</div>' +
+        '<div class="sv-hero">' +
+          '<div class="sv-hero-main"><span class="sv-hero-kicker">当前首选</span>' +
+          '<b>' + U.esc(best.name) + '</b>' +
+          '<span class="sv-hero-sub">' + U.esc(best.intent) + ' · ' + best.tier + ' 档 · 主C ' + U.esc(best.mainC || '—') + '</span></div>' +
+          '<div class="sv-hero-stats">' +
+            heroStat('成型概率', fmtPct(best.completeProb)) +
+            heroStat('单刷命中', fmtPct(best.hit)) +
+            heroStat('资金缺口', best.gap + ' 金') +
+          '</div>' +
+        '</div>' +
         '<div class="op-candidates sv-routes">' + res.routes.map(routeCard).join('') + '</div>' +
         detailHTML(res.routes[sel]) +
       '</div>';

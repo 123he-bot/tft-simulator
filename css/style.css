@@ -1548,3 +1548,99 @@ body::after{
   .hero-side::before{display:none}
   .hero-side .hs-title{grid-column:1/-1;margin-bottom:2px}
 }
+
+/* ================= 模块界面深化 · 第五批：大模型设置 / 求解器 / 梯度榜 / 羁绊探索器 ================= */
+/* --- 大模型设置：连接状态卡 / 预设卡 / 分组标题 --- */
+.set-form{display:block}
+.set-hero{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:11px;margin-bottom:12px;position:relative;overflow:hidden;
+  border:1px solid var(--border);background:linear-gradient(120deg,rgba(20,31,53,.95),rgba(9,15,28,.95))}
+.set-hero::after{content:"";position:absolute;right:-30px;top:-46px;width:140px;height:140px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(148,163,184,.14),transparent 68%)}
+.set-hero.on{border-color:rgba(52,211,153,.45);background:linear-gradient(120deg,rgba(52,211,153,.14),rgba(9,15,28,.95))}
+.set-hero.on::after{background:radial-gradient(circle,rgba(52,211,153,.22),transparent 68%)}
+.set-hero-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;background:#64748b;box-shadow:0 0 8px rgba(148,163,184,.5)}
+.set-hero.on .set-hero-dot{background:var(--green);box-shadow:0 0 10px rgba(52,211,153,.8);animation:badgePulse 2.1s ease-in-out infinite}
+.set-hero-txt{flex:1;min-width:0}
+.set-hero-txt b{display:block;font-size:13px;color:#eaf6ff}
+.set-hero-txt i{display:block;font-style:normal;font-size:10px;color:var(--mute);margin-top:2px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.set-hero-tag{flex-shrink:0;font-size:10px;border:1px solid var(--border);border-radius:999px;padding:2px 9px;color:var(--mute)}
+.set-hero.on .set-hero-tag{color:#86efac;border-color:rgba(52,211,153,.45);background:rgba(52,211,153,.1)}
+.set-group-title{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9fb3d9;margin:12px 0 6px;padding-left:8px;position:relative}
+.set-group-title::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:2px;height:10px;border-radius:2px;
+  background:linear-gradient(180deg,var(--cyan),var(--violet))}
+.set-form .set-group-title:first-of-type{margin-top:0}
+.set-presets{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.set-preset{display:flex;flex-direction:column;align-items:flex-start;gap:1px;height:auto;padding:7px 9px;border-radius:9px;text-align:left;
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));transition:.15s}
+.set-preset:hover{transform:translateY(-1px);border-color:rgba(34,211,238,.45);box-shadow:0 6px 16px rgba(0,0,0,.35)}
+.set-preset.on{border-color:var(--cyan);background:linear-gradient(180deg,rgba(34,211,238,.16),rgba(34,211,238,.05));
+  box-shadow:0 0 14px rgba(34,211,238,.18)}
+.set-preset .sp-name{font-size:11px;font-weight:700;color:#eaf6ff}
+.set-preset .sp-model{font-size:9px;color:var(--mute);font-family:ui-monospace,Consolas,monospace}
+.set-preset.on .sp-model{color:#a5f3fc}
+.set-form .txt{border-radius:9px;padding:7px 10px;transition:.15s}
+.set-form .txt:focus{border-color:var(--cyan);box-shadow:0 0 0 2px rgba(34,211,238,.15)}
+.set-form .set-row{margin-bottom:9px}
+.set-form .set-row.check{padding:5px 0}
+.set-note{margin-top:9px;padding:7px 9px;border-radius:8px;border:1px dashed var(--border-2);
+  background:rgba(255,255,255,.02);font-size:10px;color:var(--mute);line-height:1.65}
+.set-state{margin-top:8px;font-size:11px;color:var(--dim);padding:6px 9px;border-radius:8px;
+  background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.18)}
+.set-foot{justify-content:space-between;margin-top:12px;gap:8px;padding-top:10px;border-top:1px solid var(--border)}
+
+/* --- 求解器：控制条 / 首选摘要 / 路线卡 / 时间线 --- */
+.sv-controls{padding:8px 10px;border:1px solid var(--border);border-radius:10px;margin-bottom:8px;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.012))}
+.sv-controls .op-state-row{padding:2px 6px;border-radius:7px;background:rgba(255,255,255,.022)}
+.sv-controls .op-state-row:hover{background:rgba(34,211,238,.06)}
+.sv-note{padding:6px 9px;border-radius:8px;border-left:2px solid rgba(34,211,238,.55);background:rgba(34,211,238,.06);color:var(--dim)}
+.sv-hero{display:flex;align-items:center;gap:14px;padding:11px 14px;border-radius:12px;margin-bottom:10px;position:relative;overflow:hidden;
+  border:1px solid rgba(245,197,66,.38);
+  background:linear-gradient(120deg,rgba(245,197,66,.13),rgba(139,92,246,.08),rgba(9,15,28,.95))}
+.sv-hero::after{content:"";position:absolute;right:-34px;top:-54px;width:160px;height:160px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(245,197,66,.22),transparent 68%)}
+.sv-hero-main{min-width:0;flex:1}
+.sv-hero-kicker{display:inline-block;font-size:9px;letter-spacing:.1em;color:var(--gold);
+  border:1px solid rgba(245,197,66,.4);border-radius:999px;padding:1px 8px;margin-bottom:4px}
+.sv-hero-main b{display:block;font-size:17px;color:#fff7db;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sv-hero-sub{display:block;font-size:10px;color:var(--mute);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sv-hero-stats{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0}
+.sv-hero-stat{padding:6px 10px;border-radius:9px;border:1px solid var(--border);background:rgba(3,7,15,.45);text-align:center;min-width:74px}
+.sv-hero-stat span{display:block;font-size:9px;color:var(--mute)}
+.sv-hero-stat b{display:block;font-size:13px;color:#eaf6ff;margin-top:1px;font-variant-numeric:tabular-nums}
+.sv-routes .op-card{position:relative;overflow:hidden}
+.sv-routes .op-card::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;opacity:.55;
+  background:linear-gradient(90deg,rgba(34,211,238,.7),rgba(245,197,66,.4),transparent 78%)}
+.sv-routes .op-card.on::before{opacity:1}
+.sv-routes .op-card.on{box-shadow:0 0 0 1px rgba(34,211,238,.45),0 10px 24px rgba(0,0,0,.4),0 0 20px rgba(34,211,238,.16)}
+.sv-step{padding:2px 6px;border-radius:7px;transition:.12s}
+.sv-step:hover{background:rgba(255,255,255,.025)}
+.sv-when{min-width:64px;text-align:center}
+.sv-why summary:hover{color:var(--cyan)}
+.sv-why[open]{border-color:rgba(34,211,238,.3);background:rgba(34,211,238,.04)}
+.sv-equip{transition:.13s}
+.sv-equip:hover{border-color:var(--border-2)}
+.sv-item{transition:.12s}
+.sv-item:hover{border-color:var(--border-2)}
+
+/* --- Meta 梯度榜：分层卡 --- */
+.tier-row{padding:8px;border:1px solid var(--border);border-radius:12px;align-items:stretch;
+  background:linear-gradient(180deg,rgba(20,31,53,.9),rgba(9,15,28,.92));transition:.15s}
+.tier-row:hover{border-color:var(--border-2);box-shadow:0 12px 26px rgba(0,0,0,.4)}
+.tier-label{border-radius:9px;font-size:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 0 14px rgba(0,0,0,.3)}
+.tier-label.tier-S{box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 16px rgba(244,63,94,.22)}
+.tier-label.tier-A{box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 16px rgba(245,197,66,.2)}
+
+/* --- 羁绊探索器：筛选面板 / 结果卡 --- */
+.te-panel{padding:8px 10px;border:1px solid var(--border);border-radius:10px;margin-bottom:10px;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.012))}
+.te-panel-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:7px}
+.te-panel-head b{font-size:12px;color:#eaf6ff}
+.te-panel-head .dim{font-size:10px;color:var(--mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.te-card{position:relative;overflow:hidden}
+.te-card::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;opacity:.5;
+  background:linear-gradient(90deg,rgba(139,92,246,.6),rgba(34,211,238,.4),transparent 80%)}
+.te-card:hover::before{opacity:1}
+.te-rank-badge{box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.te-score .te-bar i{box-shadow:0 0 8px rgba(139,92,246,.3)}

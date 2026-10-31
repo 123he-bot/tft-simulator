@@ -190,6 +190,7 @@ f.onload = function () {
                 var txt = ((ttl ? ttl.textContent : '') + ' ' + (box ? box.textContent : '')).replace(/\s+/g, ' ');
                 R.solverUI = { hasTitle: /求解这一局/.test(txt), hasWhy: /为什么是这套/.test(txt),
                   hasSteps: /(现在|本回合|随后)/.test(txt), cards: d().querySelectorAll('#svWrap .op-card').length,
+                  hero: d().querySelectorAll('#svWrap .sv-hero').length,
                   equipNodes: box ? box.querySelectorAll('.sv-equip').length : -1,
                   bodyLen: box ? box.innerHTML.length : -1 };
                 var lg = W.TFT.Solver.addLog(sol.routes[0], sol.ctx);
@@ -232,6 +233,7 @@ f.onload = function () {
                 var pbtn = d().querySelector('.set-preset[data-k="deepseek"]');
                 if (pbtn) pbtn.click();
                 R.preset = { count: d().querySelectorAll('.set-preset').length,
+                  hero: d().querySelectorAll('.set-hero').length,
                   base: (d().getElementById('setBaseUrl') || {}).value,
                   model: (d().getElementById('setModel') || {}).value };
                 W.TFT.UI.closeModal();
@@ -405,6 +407,7 @@ def run(keep=False):
           '%sx%s png=%s' % (adv.get('cw'), adv.get('ch'), adv.get('png')))
     check('路线卡带图标就绪回调', adv.get('cardReady') is True)
     check('求解弹窗含装备分配区', ui.get('equipNodes', 0) >= 1, 'nodes=%s' % ui.get('equipNodes'))
+    check('求解弹窗含首选摘要卡', ui.get('hero') == 1, 'hero=%s' % ui.get('hero'))
     check('多局评分可汇总对比', adv.get('sumCount', 0) >= 1 and 0 <= adv.get('sumAvg', -1) <= 100,
           'count=%s avg=%s' % (adv.get('sumCount'), adv.get('sumAvg')))
     check('站位求解可对比对手并给出胜率',
@@ -417,6 +420,7 @@ def run(keep=False):
     check('点击预设自动填入 Base URL / 模型名',
           pre.get('base') == 'https://api.deepseek.com' and pre.get('model') == 'deepseek-chat',
           '%s / %s' % (pre.get('base'), pre.get('model')))
+    check('大模型设置含连接状态卡', pre.get('hero') == 1, 'hero=%s' % pre.get('hero'))
 
     simui, pwr, shr = result.get('simUI', {}), result.get('powerUI', {}), result.get('shareUI', {})
     check('战斗沙盒含胜负横幅与单位血条',

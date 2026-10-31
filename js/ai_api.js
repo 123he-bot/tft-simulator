@@ -323,21 +323,31 @@ window.TFT = window.TFT || {};
     ];
     const presetHtml = '<div class="set-presets">' +
       presets.map(function (x) {
-        return '<button class="btn btn-xs set-preset" data-k="' + x.k + '" data-base="' + U.esc(x.base) +
-          '" data-model="' + U.esc(x.model) + '">' + U.esc(x.name) + '</button>';
+        return '<button class="btn btn-xs set-preset" data-k="' + x.k + '" data-name="' + U.esc(x.name) +
+          '" data-base="' + U.esc(x.base) + '" data-model="' + U.esc(x.model) + '">' +
+          '<span class="sp-name">' + U.esc(x.name) + '</span>' +
+          '<span class="sp-model">' + U.esc(x.model) + '</span></button>';
       }).join('') + '</div>';
     const body = '<div class="set-form">' +
-      '<div class="set-lb" style="margin-bottom:6px">快速预设</div>' + presetHtml +
+      '<div class="set-hero' + (p.llmKey ? ' on' : '') + '">' +
+        '<span class="set-hero-dot"></span>' +
+        '<div class="set-hero-txt"><b>' + (p.llmKey ? '大模型已接入' : '当前使用本地推理') + '</b>' +
+        '<i>' + (p.llmKey ? U.esc(p.llmModel || '大模型') + ' · ' + U.esc(String(p.llmBaseUrl || '').replace(/^https?:\/\//, '')) : '未配置 Key · 真实数据 + 本地规则引擎') + '</i></div>' +
+        '<span class="set-hero-tag">' + (p.llmKey ? '在线' : '离线') + '</span>' +
+      '</div>' +
+      '<div class="set-group-title">快速预设</div>' + presetHtml +
+      '<div class="set-group-title">接口配置</div>' +
       row('Base URL（OpenAI 兼容）', 'setBaseUrl', p.llmBaseUrl, 'text', 'https://api.deepseek.com') +
       row('API Key', 'setKey', p.llmKey, 'password', 'sk-...') +
       row('模型名', 'setModel', p.llmModel, 'text', 'deepseek-chat / gpt-4o-mini') +
+      '<div class="set-group-title">生成参数</div>' +
       row('温度 temperature', 'setTemp', p.llmTemp, 'number', '0.7') +
       '<label class="set-row check"><input type="checkbox" id="setPersona"' + (p.llmPersona !== false ? ' checked' : '') +
       '><span>保持「多智能体」人设（5 位专家协作口吻）</span></label>' +
-      '<div class="dim" style="margin-top:8px">API Key 仅保存在本机浏览器 localStorage，不会上传到任何服务器。未配置 Key 时自动回退本地真实数据推理。</div>' +
-      '<div class="set-state" id="setState" style="margin-top:6px;font-size:12px;opacity:.75">当前状态：' + (p.llmKey ? '已接入 ' + U.esc(p.llmModel || '大模型') : '未接入（本地真实数据推理）') + '</div>' +
+      '<div class="set-note">API Key 仅保存在本机浏览器 localStorage，不会上传到任何服务器。未配置 Key 时自动回退本地真实数据推理。</div>' +
+      '<div class="set-state" id="setState">当前状态：' + (p.llmKey ? '已接入 ' + U.esc(p.llmModel || '大模型') : '未接入（本地真实数据推理）') + '</div>' +
       '</div>' +
-      '<div class="m-row" style="justify-content:space-between;margin-top:12px;gap:8px">' +
+      '<div class="m-row set-foot">' +
       '<button class="btn btn-xs" id="setDisable">停用大模型</button>' +
       '<span style="display:flex;gap:8px">' +
       '<button class="btn btn-xs" id="setTest">测试连接</button>' +
@@ -371,6 +381,13 @@ window.TFT = window.TFT || {};
           const k = U.$('#setKey', b); if (k) k.value = '';
           const st = U.$('#setState', b);
           if (st) st.textContent = '当前状态：未接入（本地真实数据推理）';
+          const heroEl = U.$('.set-hero', b);
+          if (heroEl) {
+            heroEl.classList.remove('on');
+            const ht = U.$('.set-hero-txt b', heroEl), htag = U.$('.set-hero-tag', heroEl);
+            if (ht) ht.textContent = '当前使用本地推理';
+            if (htag) htag.textContent = '离线';
+          }
           AI.updateCtxBadge();
           TFT.UI.toast('已停用大模型，改回本地真实数据推理', 'ok');
         };
@@ -392,7 +409,7 @@ window.TFT = window.TFT || {};
             if (modelEl) modelEl.value = btn.getAttribute('data-model');
             U.$$('.set-preset', b).forEach(function (x) { x.classList.toggle('on', x === btn); });
             if (key) key.focus();
-            TFT.UI.toast('已填入 ' + btn.textContent + '，请补 API Key 后测试连接', 'ok', 2600);
+            TFT.UI.toast('已填入 ' + (btn.getAttribute('data-name') || btn.textContent) + '，请补 API Key 后测试连接', 'ok', 2600);
           };
         });
       }
