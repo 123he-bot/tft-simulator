@@ -791,10 +791,11 @@ window.TFT = window.TFT || {};
     return null;
   };
 
-  /* 站位网格 HTML（mr：3 前排 / 2 中排 / 1、0 后排；列取实际使用范围）— 阵容详情与一图流共用 */
-  function posGridHTML(cp) {
+  /* 站位网格 HTML（mr：3 前排 / 2 中排 / 1、0 后排；列取实际使用范围）— 阵容详情与一图流共用
+     cellsArg 可选：传入自定义站位（如「对面前排厚」变体），缺省读 cp.positionMap */
+  function posGridHTML(cp, cellsArg) {
     const units = cp.units || [];
-    const cells = (cp.positionMap || []).map(p => ({ mr: p[0], c: p[1], name: p[2] }));
+    const cells = cellsArg || (cp.positionMap || []).map(p => ({ mr: p[0], c: p[1], name: p[2] }));
     const costOf = name => { const u = units.find(x => x.name === name); return u ? (u.cost || 0) : 0; };
     const colAll = cells.map(x => x.c);
     const colMin = colAll.length ? Math.min.apply(null, colAll) : 1;
@@ -826,6 +827,115 @@ window.TFT = window.TFT || {};
     };
   }
 
+  /* ---------- 阵容攻略内容：运营节奏 / 关键节点 / 站位变体（全部为规则推算，非官方） ---------- */
+  /* 按真实费用分布推导运营流派：主C≥4费=攀人口，主C≤3费且低费占比高=赌狗，其余=均衡 */
+  function pacingPlan(cp, plan) {
+    const units = cp.units || [];
+    const main = (plan.units || []).filter(u => u.tag === 'main')[0];
+    const mainName = (main && main.name) || cp.mainC || '';
+    const mainCost = (main && main.cost) || (units.filter(u => u.name === mainName)[0] || {}).cost || 0;
+    const lowN = units.filter(u => (u.cost || 1) <= 3).length;
+    const highN = units.filter(u => (u.cost || 1) >= 4).length;
+    const reroll = mainCost > 0 && mainCost <= 3 && lowN >= Math.ceil(units.length * 0.7);
+    const fast = mainCost >= 4;
+    const cap = Math.max(7, Math.min(9, units.length));
+    let kind, badge, rows, econ;
+    if (fast) {
+      kind = '攀人口流';
+      badge = '主C ' + mainCost + ' 费 · 人口优先';
+      econ = '3-2 前不要刷新，先吃到 50 利息；4-1 上 7 再 D，4-5 冲 ' + cap + ' 人口找 2 星「' + mainName + '」';
+      rows = [
+        ['2-1 ~ 2-5', '4-5', '低费过渡，优先拿「' + mainName + '」组件', '保血量 · 攒经济'],
+        ['3-2 ~ 3-5', '6', '卡 50 利息，不刷新', '吃利息冲 7'],
+        ['4-1 ~ 4-2', '7', '小 D 找 4 费主C，先保 1 星', '稳住中期'],
+        ['4-5 以后', String(cap), '大 D 找主C 2 星 + 补满羁绊', '成型锁血']
+      ];
+    } else if (reroll) {
+      kind = '赌狗流';
+      badge = '主C ' + mainCost + ' 费 · 低费占比 ' + lowN + '/' + units.length;
+      econ = '3-1 前完成「' + mainName + '」3 星；若 3-3 仍未成型，及时转均衡流保血，别硬赌';
+      rows = [
+        ['2-1', '3-4', '只刷新找低费关键牌，拿到就停', '找 3 星素材'],
+        ['3-1 ~ 3-3', '5', '卡 5 级反复 D，直到低费 3 星', '滚雪球'],
+        ['3-5 ~ 4-1', '6-7', '补 2-3 费拼羁绊，别硬升 8', '稳血转中后期'],
+        ['4-5 以后', String(Math.min(cap, 8)), '补高费副C与坦，D 到 2 星', '补上限']
+      ];
+    } else {
+      kind = '均衡流';
+      badge = '主C ' + mainCost + ' 费 · 费用分布均衡';
+      econ = '3-2 前不刷新，先攒利息到 50；4-1 上 7 再 D「' + mainName + '」到 2 星，血量健康再图 ' + cap + ' 人口';
+      rows = [
+        ['2-1 ~ 2-5', '4-5', '低费过渡，留 3 费组件', '保血量'],
+        ['3-2 ~ 3-5', '6', '利息运营，不刷新', '攒钱冲 7'],
+        ['4-1 ~ 4-3', '7', '适度 D 找主C 2 星', '稳住中期'],
+        ['5-1 以后', String(cap), '补 5 费与羁绊，D 到成型', '拉满上限']
+      ];
+    }
+    /* 避坑：主C 组件 / 前排厚度 / 同名重复与高费数量 */
+    const items = ((plan.units || []).filter(u => u.tag === 'main')[0] || {}).items || [];
+    const itemNode = items.length
+      ? '主C「' + mainName + '」优先 ' + items.slice(0, 3).map(it => it.name).join(' / ') + '；缺组件先用共享组件过渡，别提前合错'
+      : '主C「' + mainName + '」暂无引擎出装：按职业属性先抢主C 组件，再考虑主坦';
+    const dup = {};
+    units.forEach(u => { dup[u.name] = (dup[u.name] || 0) + 1; });
+    const dupName = Object.keys(dup).filter(n => dup[n] > 1)[0];
+    const frontN = (cp.positionMap || []).filter(p => p[0] >= 3).length;
+    let fieldNode;
+    if (frontN <= 1) fieldNode = '前排仅 ' + frontN + ' 人：7 级前务必补主坦，否则主C 直接被切';
+    else if (dupName) fieldNode = '「' + dupName + '」需重复上阵 ×' + dup[dupName] + '：D 牌时优先拿第二张，别先追其它 2 星';
+    else if (highN >= 3) fieldNode = '阵容含 ' + highN + ' 张 4/5 费：7 级前别空 D，人口优先于质量';
+    else fieldNode = '前排 ' + frontN + ' 人够用：主C 后置，优先补 2 星而非盲目刷新';
+    return { kind: kind, badge: badge, rows: rows, nodes: [econ, itemNode, fieldNode], mainName: mainName, mainCost: mainCost };
+  }
+
+  /* 被克制应对建议：按对方前排厚度 / 主C 定位 / 主C 费用推导（规则推算） */
+  function counterAdvice(cp, nameToId) {
+    const list = ((cp.counters || {})['被克制'] || []).slice(0, 3);
+    const tips = [];
+    list.forEach(function (n) {
+      let ecp = null;
+      if (nameToId[n]) { const f = Main.findComp(nameToId[n]); if (f) ecp = f.cp; }
+      if (!ecp) return;
+      const frontN = (ecp.positionMap || []).filter(p => p[0] >= 3).length;
+      const emain = D.champByName(ecp.mainC || '') || {};
+      const role = emain.role || '';
+      if (frontN >= 3) tips.push('对方「' + n + '」前排 ' + frontN + ' 人：主C 放后排并换到另一侧，避免被正面集火');
+      else if (/Reaper/.test(role)) tips.push('对方「' + n + '」主C 为收割位：优先给主C 防御件（夜之锋刃 / 水银），保住不死');
+      else if ((emain.cost || 0) >= 4) tips.push('对方「' + n + '」4 费主C 后期更强：4-1 前保血量，别拖到 5 阶段');
+    });
+    return tips.slice(0, 3);
+  }
+
+  /* 站位变体：主C 后置 + 镜像到对称列（对面前排厚 / 有切后排时使用） */
+  function variantCells(cp, plan) {
+    const cells = (cp.positionMap || []).map(p => ({ mr: p[0], c: p[1], name: p[2] }));
+    if (!cells.length) return null;
+    const main = (plan.units || []).filter(u => u.tag === 'main')[0];
+    const mainName = (main && main.name) || cp.mainC || '';
+    const mc = cells.filter(x => x.name === mainName)[0];
+    if (!mc) return null;
+    const backMr = Math.min.apply(null, cells.map(x => x.mr));
+    let moved = false;
+    if (mc.mr !== backMr) {
+      const cand = cells.filter(x => x.mr === backMr)
+        .sort((a, b) => Math.abs(a.c - mc.c) - Math.abs(b.c - mc.c))[0];
+      if (cand && cand.name) { const t = cand.name; cand.name = mc.name; mc.name = t; moved = true; }
+    }
+    const cur = cells.filter(x => x.name === mainName)[0];
+    /* 棋盘 7 列，按中线（第 4 列）镜像；主C 已在正中时向右/左挪一格 */
+    let targetC = 8 - cur.c;
+    if (targetC === cur.c) targetC = cur.c < 4 ? cur.c + 1 : cur.c - 1;
+    if (targetC !== cur.c) {
+      const other = cells.filter(x => x.mr === cur.mr && x.c === targetC)[0];
+      if (other && other.name) {
+        const t = other.name; other.name = cur.name; cur.name = t; moved = true;
+      } else if (!other) {
+        cur.c = targetC; moved = true;
+      }
+    }
+    return moved ? cells : null;
+  }
+
   /* 阵容详情当前上下文（供行内出装选择器使用） */
   let detailCtx = null;
 
@@ -849,6 +959,17 @@ window.TFT = window.TFT || {};
     const posInfo = posGridHTML(cp);
     const posHTML = posInfo.html;
     const frontN = posInfo.frontN, midN = posInfo.midN, backN = posInfo.backN;
+
+    /* —— 运营节奏 / 关键节点 / 站位变体（规则推算，标注在卡片内） —— */
+    const pace = pacingPlan(cp, plan);
+    const paceRows = pace.rows.map(r => '<div class="pace-row">' +
+      '<span class="pace-stage">' + U.esc(r[0]) + '</span>' +
+      '<span class="pace-pop">' + U.esc(r[1]) + '</span>' +
+      '<span class="pace-act">' + U.esc(r[2]) + '</span>' +
+      '<span class="pace-goal">' + U.esc(r[3]) + '</span></div>').join('');
+    const nodeRows = pace.nodes.map((n, i) => '<div class="node-line"><span class="node-idx">' + (i + 1) + '</span><span>' + U.esc(n) + '</span></div>').join('');
+    const varCells = variantCells(cp, plan);
+    const varPos = varCells ? posGridHTML(cp, varCells) : null;
 
     /* —— 上阵单位表（含出装推荐 / 手动覆盖） —— */
     const TAG_BADGE = { main: '主C', tank: '主坦', sub: '副C' };
@@ -894,6 +1015,7 @@ window.TFT = window.TFT || {};
         ? '<span class="mini-tag ' + cls + ' clickable" data-comp="' + U.esc(cid) + '">' + U.esc(n) + '</span>'
         : '<span class="mini-tag ' + cls + '">' + U.esc(n) + '</span>';
     }).join('') || '<span class="dim">暂无</span>';
+    const advice = counterAdvice(cp, nameToId);
 
     /* —— 同主C 变阵 —— */
     const related = Main.reverseSearch(cp.mainC).filter(r => r.cp.id !== cp.id).slice(0, 12);
@@ -924,6 +1046,21 @@ window.TFT = window.TFT || {};
         '<div class="card"><h4>推荐站位 <span class="dim">前排 ' + frontN + ' · 中排 ' + midN + ' · 后排 ' + backN + '</span></h4>' + posHTML +
           '<div class="dim" style="font-size:10px;margin-top:8px">' + U.esc(String(cp.positioning || '').replace(/（[^）]*\d[^）]*）/g, '').trim()) + ' 上阵 ' + units.length + ' 人 · 前排 ' + frontN + ' · 中排 ' + midN + ' · 后排 ' + backN + '</div>' +
           '<div class="pos-legend">' + [1, 2, 3, 4, 5].map(c => '<span class="lg c' + c + '">' + c + '费</span>').join('') + '</div>' +
+          (varPos ? '<div style="border-top:1px dashed rgba(255,255,255,.08);margin-top:10px;padding-top:10px">' +
+            '<div class="panel-title" style="font-size:10px;color:#c4b5fd">变体 · 对面前排厚 / 有切后排时 <span class="dim">（引擎建议）</span></div>' +
+            varPos.html +
+            '<div class="dim" style="font-size:10px;margin-top:8px">主C 已后置并镜像到对称列，避开敌方前排正面集火</div>' +
+          '</div>' : '') +
+        '</div>' +
+        '<div class="card"><h4>运营节奏 <span class="dim">' + U.esc(pace.kind) + ' · ' + U.esc(pace.badge) + '</span></h4>' +
+          '<div class="pace-table">' +
+            '<div class="pace-row head"><span class="pace-stage">阶段</span><span class="pace-pop">人口</span><span class="pace-act">动作</span><span class="pace-goal">目的</span></div>' +
+            paceRows +
+          '</div>' +
+          '<div class="eng-note">按<b>真实费用分布</b>（主C ' + pace.mainCost + ' 费 · 上阵 ' + units.length + ' 人）推导流派与节奏，属<b>规则推算</b>，非官方运营表；实际以对局血量与组件为准。</div>' +
+        '</div>' +
+        '<div class="card"><h4>关键节点 / 避坑</h4><div class="node-list">' + nodeRows + '</div>' +
+          '<div class="dim" style="font-size:10px;margin-top:8px">由主C 组件、前排厚度与同名重复位推导（规则推算）</div>' +
         '</div>' +
       '</div>' +
       /* 右列 */
@@ -937,6 +1074,8 @@ window.TFT = window.TFT || {};
         '<div class="card"><h4>克制关系 <span class="dim">点击可跳转该阵容</span></h4>' +
           '<div class="panel-title" style="font-size:10px;color:#86efac">本阵容克制</div><div class="tag-row">' + chipList((cp.counters || {})['克制'], 'crt', cp.id) + '</div>' +
           '<div class="panel-title mt8" style="font-size:10px;color:#fda4af">被这些克制</div><div class="tag-row">' + chipList((cp.counters || {})['被克制'], 'bad', cp.id) + '</div>' +
+          (advice.length ? '<div class="eng-note" style="border-color:rgba(244,63,94,.24);background:rgba(244,63,94,.06)">' +
+            '<b>应对建议</b>（规则推算）：' + advice.map(U.esc).join('；') + '</div>' : '') +
         '</div>' +
         '<div class="card"><h4>同主C变阵（' + related.length + '）</h4>' + varHTML + '</div>' +
       '</div>' +

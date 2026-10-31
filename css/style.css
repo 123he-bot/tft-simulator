@@ -511,6 +511,17 @@ h1,h2,h3{margin:0;font-weight:700;letter-spacing:.02em}
 .pos-legend .lg.c3::before{background:#3b82f6}
 .pos-legend .lg.c4::before{background:#a855f7}
 .pos-legend .lg.c5::before{background:#f5c542}
+/* 阵容攻略：运营节奏表 / 关键节点 */
+.pace-table{display:flex;flex-direction:column;gap:3px;margin-top:2px}
+.pace-row{display:grid;grid-template-columns:58px 40px minmax(0,1.5fr) minmax(0,1fr);gap:6px;align-items:start;font-size:10px;line-height:1.5;padding:4px 6px;border-radius:5px;border:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.02)}
+.pace-row.head{padding:0 6px;border:0;background:none;color:var(--mute);font-size:9px}
+.pace-stage{color:var(--mute);white-space:nowrap}
+.pace-pop{color:var(--cyan);font-weight:700;white-space:nowrap}
+.pace-act{color:var(--text)}
+.pace-goal{color:var(--dim)}
+.node-list{display:flex;flex-direction:column;gap:5px}
+.node-line{display:flex;gap:7px;font-size:10px;line-height:1.55;color:var(--dim)}
+.node-idx{flex-shrink:0;width:16px;height:16px;border-radius:5px;display:grid;place-items:center;font-size:9px;font-weight:700;color:var(--cyan);background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.3)}
 .unit-table{display:flex;flex-direction:column;gap:2px}
 .unit-row{display:flex;align-items:center;gap:6px;font-size:11px;padding:2px 0;border-bottom:1px dashed rgba(255,255,255,.06)}
 .ur-cost{width:16px;height:16px;border-radius:4px;display:grid;place-items:center;font-size:10px;font-weight:800;flex-shrink:0}

@@ -88,6 +88,26 @@ function localComp() {
     unitsWithItems: hasItems, detailHasNoCounter: /暂无/.test(txt),
     detailHasConfidence: /推断置信度/.test(txt) };
 }
+function compDetail() {
+  var list = W.TFT.D.meta.tiers.S || [];
+  var cp = list[0];
+  for (var i = 0; i < list.length; i++) {
+    var cc = list[i].counters || {};
+    if ((cc['被克制'] || []).length) { cp = list[i]; break; }
+  }
+  if (!cp) return { found: false };
+  W.TFT.Main.openCompDetail(cp.id);
+  var body = d().querySelector('#modalBody');
+  var txt = body ? body.textContent.replace(/\s+/g, ' ') : '';
+  var out = { found: true,
+    hasPace: /运营节奏/.test(txt) && /关键节点/.test(txt),
+    paceRows: body ? body.querySelectorAll('.pace-row:not(.head)').length : 0,
+    nodes: body ? body.querySelectorAll('.node-line').length : 0,
+    posGrids: body ? body.querySelectorAll('.pos-grid').length : 0,
+    hasAdvice: /应对建议/.test(txt) };
+  W.TFT.UI.closeModal();
+  return out;
+}
 function finish() { out.textContent = JSON.stringify(R); }
 f.onload = function () {
   W = f.contentWindow;
@@ -95,7 +115,7 @@ f.onload = function () {
     try {
       setSeason('s17');
       setTimeout(function () {
-        R.s17 = snap(); R.s17Tabs = tabs();
+        R.s17 = snap(); R.s17Tabs = tabs(); R.detail = compDetail();
         setSeason('s3');
         setTimeout(function () {
           R.s3 = snap(); R.s3Tabs = tabs(); R.s3Comp = localComp();
@@ -268,6 +288,14 @@ def run(keep=False):
           '%s 件 / %s 人' % (cp.get('items'), cp.get('unitsWithItems')))
     check('S3 详情页克制显示暂无', cp.get('detailHasNoCounter') is True)
     check('S3 详情页显示置信度', cp.get('detailHasConfidence') is True)
+
+    detail = result.get('detail', {})
+    check('攻略页含运营节奏与关键节点', detail.get('found') is True and detail.get('hasPace') is True,
+          'found=%s pace=%s' % (detail.get('found'), detail.get('hasPace')))
+    check('运营节奏表至少 4 行', detail.get('paceRows', 0) >= 4, detail.get('paceRows'))
+    check('关键节点 / 避坑 3 条', detail.get('nodes', 0) >= 3, detail.get('nodes'))
+    check('站位卡含第二种变体', detail.get('posGrids', 0) >= 2, detail.get('posGrids'))
+    check('克制卡含应对建议', detail.get('hasAdvice') is True, detail.get('hasAdvice'))
 
     check('载入 S3 存档后下拉同步', load.get('select') == 's3', load.get('select'))
     check('载入 S3 存档后数据同步', load.get('slug') == 's3' and load.get('metaSet') == 'S3',
