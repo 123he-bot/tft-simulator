@@ -1585,7 +1585,7 @@ window.TFT = window.TFT || {};
     });
     window.addEventListener('hashchange', function () { Main.go(location.hash.slice(1)); });
 
-    /* 顶栏「更多」下拉菜单 */
+    /* 顶栏「更多」→ 工具中心：分组巨幕菜单 + 搜索筛选 */
     const moreMenu = $('#moreMenu'), moreWrap = $('#moreWrap'), btnMore = $('#btnMore');
     const closeMore = function () {
       if (moreMenu.classList.contains('hidden')) return;
@@ -1593,18 +1593,112 @@ window.TFT = window.TFT || {};
     };
     const openMore = function () {
       moreMenu.classList.remove('hidden'); btnMore.classList.add('open'); btnMore.setAttribute('aria-expanded', 'true');
+      const inp = $('#moreSearch');
+      if (inp) { inp.value = ''; filterMore(''); }
     };
+    const filterMore = function (q) {
+      q = (q || '').trim().toLowerCase();
+      let any = false;
+      $$('.mm-group', moreMenu).forEach(function (g) {
+        let vis = 0;
+        $$('.mm-item', g).forEach(function (b) {
+          const hit = !q || (b.dataset.k || '').toLowerCase().indexOf(q) >= 0;
+          b.style.display = hit ? '' : 'none';
+          if (hit) vis++;
+        });
+        g.style.display = vis ? '' : 'none';
+        if (vis) any = true;
+      });
+      const em = $('#mmEmpty'); if (em) em.classList.toggle('hidden', any);
+    };
+    let moreReady = false;
+    const initMore = function () {
+      if (!moreMenu || moreReady) return;
+      moreReady = true;
+      const MORE_ACT = {
+        btnBattle: 'battle', btnReset: 'reset', btnTraitExplorer: 'trait', btnPower: 'power',
+        btnOpponents: 'opponents', btnReview: 'review', btnCharts: 'charts', btnRollSim: 'roll',
+        btnCardQuiz: 'quiz', btnOptimizer: 'optimizer', btnCommunity: 'community', btnShareLink: 'share',
+        btnExportImg: 'exportImg', btnExportJson: 'exportJson', btnImportJson: 'importJson',
+        btnPoster: 'poster', btnLLMSettings: 'llm'
+      };
+      const MORE_GRP = ['sim', 'ana', 'share', 'ai'];
+      const MORE_BADGE = { btnOptimizer: 'NEW', btnCardQuiz: '挑战', btnLLMSettings: 'AI' };
+      const groups = $$('.mm-group', moreMenu);
+      /* 补齐 data-act / 搜索关键词 / 悬浮箭头 / 角标 */
+      $$('.mm-item', moreMenu).forEach(function (b) {
+        const act = MORE_ACT[b.id]; if (act) b.dataset.act = act;
+        const tb = b.querySelector('.mm-txt b'), ti = b.querySelector('.mm-txt i');
+        b.dataset.k = (tb ? tb.textContent : '') + ' ' + (ti ? ti.textContent : '') + ' ' + (act || '') + ' ' + b.id;
+        if (!b.querySelector('.mm-go')) {
+          const go = U.el('span', 'mm-go'); go.textContent = '→'; b.appendChild(go);
+        }
+        if (MORE_BADGE[b.id] && !b.querySelector('.mm-badge')) {
+          const bg = U.el('span', 'mm-badge'); bg.textContent = MORE_BADGE[b.id]; b.appendChild(bg);
+        }
+      });
+      /* 分组归入三列：对局+AI / 分析 / 分享 */
+      const cols = [U.el('div', 'mm-col'), U.el('div', 'mm-col'), U.el('div', 'mm-col')];
+      const map = [0, 1, 2, 0];
+      groups.forEach(function (g, i) {
+        g.classList.add('mm-g-' + (MORE_GRP[i] || 'ana'));
+        cols[map[i] || 0].appendChild(g);
+        const ti = g.querySelector('.mm-title');
+        const dot = U.el('span', 'mm-dot');
+        if (ti && !ti.querySelector('.mm-dot')) ti.insertBefore(dot, ti.firstChild);
+        if (ti && !ti.querySelector('.mm-count')) {
+          const c = U.el('span', 'mm-count'); c.textContent = $$('.mm-item', g).length; ti.appendChild(c);
+        }
+      });
+      const colsWrap = U.el('div', 'mm-cols');
+      cols.forEach(function (c) { colsWrap.appendChild(c); });
+      const head = U.el('div', 'mm-head');
+      head.innerHTML = '<span class="mm-head-ico">⌘</span>' +
+        '<span class="mm-head-txt"><b>工具中心</b><i><em id="moreCount">0</em> 个本地工具 · 数据不出本机</i></span>' +
+        '<input id="moreSearch" class="mm-search" type="search" autocomplete="off" placeholder="筛选工具 / 关键词…" aria-label="筛选工具">';
+      const foot = U.el('div', 'mm-foot');
+      foot.innerHTML = '<span class="mm-kbd"><kbd>↑</kbd><kbd>↓</kbd> 选择 · <kbd>Enter</kbd> 打开 · <kbd>Esc</kbd> 关闭</span>' +
+        '<button class="mm-all" id="mmAll">全部工具 →</button>';
+      const empty = U.el('div', 'mm-empty hidden'); empty.id = 'mmEmpty'; empty.textContent = '没有匹配的工具，换个关键词试试';
+      moreMenu.insertBefore(head, moreMenu.firstChild);
+      moreMenu.appendChild(colsWrap);
+      moreMenu.appendChild(foot);
+      moreMenu.appendChild(empty);
+      $('#moreCount').textContent = $$('.mm-item', moreMenu).length;
+      const inp = $('#moreSearch');
+      inp.addEventListener('click', function (e) { e.stopPropagation(); });
+      inp.addEventListener('input', function () { filterMore(this.value); });
+      inp.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          const first = $$('.mm-item', moreMenu).filter(function (b) { return b.style.display !== 'none'; })[0];
+          if (first) first.click();
+        } else if (e.key === 'Escape') {
+          e.preventDefault(); this.value = ''; filterMore(''); closeMore(); inp.blur();
+        }
+      });
+      $('#mmAll').addEventListener('click', function (e) {
+        e.stopPropagation(); closeMore(); Main.go('home');
+        setTimeout(function () {
+          const g = $('#homeGridNav');
+          if (g && g.scrollIntoView) g.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 80);
+      });
+    };
+    initMore();
     btnMore.onclick = function (e) {
       e.stopPropagation();
       if (moreMenu.classList.contains('hidden')) openMore(); else closeMore();
     };
-    moreMenu.onclick = function () { closeMore(); };
-    /* 键盘：Esc 关闭，上下键在菜单项间移动焦点 */
+    moreMenu.onclick = function (e) { if (e.target.closest('.mm-item')) closeMore(); };
+    /* 键盘：Esc 关闭，上下键在菜单项间移动焦点（输入框内不拦截） */
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') { closeMore(); return; }
       if (moreMenu.classList.contains('hidden')) return;
+      if (/INPUT|TEXTAREA|SELECT/.test((e.target.tagName || ''))) return;
       if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
-      const items = $$('.mm-item', moreMenu); if (!items.length) return;
+      const items = $$('.mm-item', moreMenu).filter(function (b) { return b.style.display !== 'none'; });
+      if (!items.length) return;
       e.preventDefault();
       const i = items.indexOf(document.activeElement);
       const n = e.key === 'ArrowDown' ? (i + 1) % items.length : (i <= 0 ? items.length - 1 : i - 1);
@@ -1858,25 +1952,47 @@ window.TFT = window.TFT || {};
     /* —— 全部工具宫格 —— */
     const gn = $('#homeGridNav');
     if (gn) {
-      const tools = [
-        { act: 'app', t: '阵容工作台', d: '棋盘 / 羁绊 / 概率 / AI 多智能体' },
-        { act: 'optimizer', t: '阵容优化器', d: '按现有棋子搜最优过渡路径' },
-        { act: 'share', t: '复制分享链接', d: '把当前棋盘编码进 URL' },
-        { act: 'meta', t: 'Meta 梯度榜', d: 'S/A/B/C 评级与羁绊热度' },
-        { act: 'charts', t: '数据图表', d: '费用 / 类别 / 层级分布' },
-        { act: 'roll', t: '抽卡模拟器', d: '真实概率 + 牌池搜卡' },
-        { act: 'quiz', t: '认卡竞速', d: '20 题认卡挑战 · 本地最佳' },
-        { act: 'poster', t: '阵容一图流', d: '按当前棋盘导出长图' },
-        { act: 'trait', t: '羁绊探索器', d: '按目标羁绊反查阵容' },
-        { act: 'battle', t: '战斗模拟器', d: '红蓝对抗胜负博弈' },
-        { act: 'power', t: '战力计算器', d: '单卡 DPS / 坦度测算' },
-        { act: 'opponents', t: '对手棋盘', d: '记录 8 家对局' },
-        { act: 'review', t: '对局复盘', d: '关键决策 + AI 点评' },
-        { act: 'llm', t: '大模型设置', d: 'DeepSeek / OpenAI 兼容' }
+      /* 与「工具中心」同源：名称/描述/图标直接取自菜单项，避免两处维护 */
+      const HOME_TOOLS = [
+        { act: 'app', grp: 'start' }, { act: 'meta', grp: 'ana' },
+        { act: 'optimizer', grp: 'ana' }, { act: 'charts', grp: 'ana' }, { act: 'roll', grp: 'ana' },
+        { act: 'quiz', grp: 'ana' }, { act: 'trait', grp: 'ana' }, { act: 'battle', grp: 'sim' },
+        { act: 'power', grp: 'ana' }, { act: 'opponents', grp: 'ana' }, { act: 'review', grp: 'ana' },
+        { act: 'community', grp: 'share' }, { act: 'share', grp: 'share' }, { act: 'exportImg', grp: 'share' },
+        { act: 'exportJson', grp: 'share' }, { act: 'importJson', grp: 'share' }, { act: 'poster', grp: 'share' },
+        { act: 'llm', grp: 'ai' }
       ];
-      gn.innerHTML = tools.map(function (x) {
-        return '<button class="grid-nav-item" data-home-act="' + U.esc(x.act) + '"><b>' + U.esc(x.t) + '</b><i>' + U.esc(x.d) + '</i></button>';
+      const GRP_CN = { start: '快速开始', sim: '对局模拟', ana: '分析工具', share: '分享与数据', ai: 'AI 设置' };
+      const FALLBACK_ICO = {
+        app: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2.4" width="12" height="11.2" rx="1.6"/><path d="M2.4 6.4h11.2M6 6.6v6.6"/></svg>',
+        meta: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 2.6h6.8v3.2a3.4 3.4 0 0 1-6.8 0z"/><path d="M4.6 3.6H2.8v1.2a2.2 2.2 0 0 0 2.2 2.2M11.4 3.6h1.8v1.2a2.2 2.2 0 0 1-2.2 2.2"/><path d="M8 9.2v2.4M5.6 13.4h4.8"/></svg>'
+      };
+      /* 菜单里没有、只出现在首页的入口（工作台 / 梯度榜）补充文案 */
+      const FALLBACK_META = {
+        app: { t: '阵容工作台', d: '棋盘 / 羁绊 / 概率 / AI 多智能体' },
+        meta: { t: 'Meta 梯度榜', d: 'S/A/B/C 评级与羁绊热度' }
+      };
+      const metaOf = function (act) {
+        const b = $('#moreMenu [data-act="' + act + '"]');
+        if (!b) {
+          const f = FALLBACK_META[act] || {};
+          return { t: f.t || act, d: f.d || '', ico: FALLBACK_ICO[act] || '' };
+        }
+        const tb = b.querySelector('.mm-txt b'), ti = b.querySelector('.mm-txt i'), ic = b.querySelector('.mm-ico');
+        return { t: tb ? tb.textContent.trim() : act, d: ti ? ti.textContent.trim() : '', ico: ic ? ic.innerHTML : '' };
+      };
+      gn.innerHTML = HOME_TOOLS.map(function (x) {
+        const m = metaOf(x.act) || {};
+        const ico = m.ico || FALLBACK_ICO[x.act] || '';
+        return '<button class="grid-nav-item gn-' + x.grp + '" data-home-act="' + U.esc(x.act) + '">' +
+          '<span class="gn-ico">' + ico + '</span>' +
+          '<span class="gn-body"><b>' + U.esc(m.t || '') + '</b><i>' + U.esc(m.d || '') + '</i></span>' +
+          '<span class="gn-go">→</span>' +
+          '<span class="gn-grp">' + U.esc(GRP_CN[x.grp] || '') + '</span>' +
+          '</button>';
       }).join('');
+      const cnt = $('#homeToolsCount');
+      if (cnt) cnt.textContent = HOME_TOOLS.length + ' 个工具';
     }
 
     /* —— 数据来源与口径 —— */

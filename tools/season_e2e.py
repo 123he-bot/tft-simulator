@@ -108,6 +108,46 @@ function compDetail() {
   W.TFT.UI.closeModal();
   return out;
 }
+function moreCenter() {
+  var mm = d().getElementById('moreMenu'), btn = d().getElementById('btnMore');
+  if (!mm || !btn) return { found: false };
+  btn.click();
+  var items = mm.querySelectorAll('.mm-item'), acts = 0;
+  for (var i = 0; i < items.length; i++) if (items[i].dataset.act) acts++;
+  var search = mm.querySelector('#moreSearch'), empty = mm.querySelector('#mmEmpty');
+  var res = { found: true, items: items.length, acts: acts, cols: mm.querySelectorAll('.mm-col').length, groups: mm.querySelectorAll('.mm-group').length,
+    hasHead: !!mm.querySelector('.mm-head'), hasSearch: !!search, hasAll: !!mm.querySelector('#mmAll'),
+    count: (mm.querySelector('#moreCount') || {}).textContent || '' };
+  if (search) {
+    var q1 = ((items[0].querySelector('.mm-txt b') || {}).textContent || '').trim().slice(0, 2);
+    search.value = q1;
+    search.dispatchEvent(new W.Event('input', { bubbles: true }));
+    var vis1 = 0; for (var j = 0; j < items.length; j++) if (items[j].style.display !== 'none') vis1++;
+    search.value = 'zzzz-no-match';
+    search.dispatchEvent(new W.Event('input', { bubbles: true }));
+    var vis0 = 0; for (var k = 0; k < items.length; k++) if (items[k].style.display !== 'none') vis0++;
+    res.filterHit = vis1; res.filterNone = vis0;
+    res.emptyShown = empty ? !empty.classList.contains('hidden') : false;
+    search.value = '';
+    search.dispatchEvent(new W.Event('input', { bubbles: true }));
+  }
+  btn.click();
+  res.closed = mm.classList.contains('hidden');
+  return res;
+}
+function homeGrid() {
+  var g = d().getElementById('homeGridNav'), cnt = d().getElementById('homeToolsCount');
+  if (!g) return { found: false };
+  var items = g.querySelectorAll('.grid-nav-item'), svgs = 0, titles = 0, grp = 0;
+  for (var i = 0; i < items.length; i++) {
+    if (items[i].querySelector('.gn-ico svg')) svgs++;
+    var b = items[i].querySelector('.gn-body b');
+    if (b && b.textContent.trim()) titles++;
+    if (items[i].querySelector('.gn-grp')) grp++;
+  }
+  return { found: true, items: items.length, svgs: svgs, titles: titles, grp: grp,
+    count: cnt ? cnt.textContent : '', firstAct: items[0] ? items[0].dataset.homeAct : '' };
+}
 function finish() { out.textContent = JSON.stringify(R); }
 f.onload = function () {
   W = f.contentWindow;
@@ -119,6 +159,7 @@ f.onload = function () {
         setSeason('s3');
         setTimeout(function () {
           R.s3 = snap(); R.s3Tabs = tabs(); R.s3Comp = localComp();
+          R.grid = homeGrid(); R.more = moreCenter();
           /* 回到 S17 后载入一份 S3 存档，验证赛季 UI 同步 */
           setSeason('s17');
           setTimeout(function () {
@@ -296,6 +337,26 @@ def run(keep=False):
     check('关键节点 / 避坑 3 条', detail.get('nodes', 0) >= 3, detail.get('nodes'))
     check('站位卡含第二种变体', detail.get('posGrids', 0) >= 2, detail.get('posGrids'))
     check('克制卡含应对建议', detail.get('hasAdvice') is True, detail.get('hasAdvice'))
+
+    more = result.get('more', {})
+    check('工具中心渲染正常',
+          more.get('found') is True and more.get('hasHead') is True and more.get('hasSearch') is True
+          and more.get('hasAll') is True and more.get('cols', 0) == 3 and more.get('groups', 0) == 4,
+          'cols=%s groups=%s head=%s' % (more.get('cols'), more.get('groups'), more.get('hasHead')))
+    check('工具中心工具数 17', more.get('items') == 17 and more.get('acts') == 17
+          and more.get('count') == '17', '%s / %s / %s' % (more.get('items'), more.get('acts'), more.get('count')))
+    check('工具中心搜索可用', more.get('filterHit', 0) >= 1 and more.get('filterNone') == 0
+          and more.get('emptyShown') is True,
+          'hit=%s none=%s empty=%s' % (more.get('filterHit'), more.get('filterNone'), more.get('emptyShown')))
+    check('工具中心可正常收起', more.get('closed') is True)
+
+    grid = result.get('grid', {})
+    check('首页全部工具宫格 18 项', grid.get('found') is True and grid.get('items') == 18,
+          '%s / %s' % (grid.get('found'), grid.get('items')))
+    check('首页宫格每条含图标/标题/分组', grid.get('svgs') == 18 and grid.get('titles') == 18
+          and grid.get('grp') == 18,
+          'svg=%s title=%s grp=%s' % (grid.get('svgs'), grid.get('titles'), grid.get('grp')))
+    check('首页宫格与工具中心同源计数', '18' in grid.get('count', ''), grid.get('count'))
 
     check('载入 S3 存档后下拉同步', load.get('select') == 's3', load.get('select'))
     check('载入 S3 存档后数据同步', load.get('slug') == 's3' and load.get('metaSet') == 'S3',
