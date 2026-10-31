@@ -1030,3 +1030,123 @@ body::after{
 .sv-equip-need{flex:0 0 auto;font-size:11px}
 .sv-equip-src{flex:0 0 auto;font-size:10px;color:var(--cyan);border:1px solid rgba(34,211,238,.35);background:rgba(34,211,238,.08);border-radius:8px;padding:1px 6px}
 @media (max-width:720px){.sv-routes{grid-template-columns:1fr}.sv-step{flex-direction:column;gap:4px}.sv-equip-name{flex-basis:70px}}
+
+/* ================= 模块界面深化 · 素材库 / 对话 / 工具弹窗 ================= */
+/* --- 素材标签栏：带图标胶囊 + 激活霓虹 --- */
+.tabs-head{display:flex;align-items:baseline;gap:8px;padding:9px 10px 5px}
+.tabs-head-t{position:relative;font-size:13px;font-weight:800;color:#eaf6ff;padding-left:9px}
+.tabs-head-t::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:13px;border-radius:3px;background:linear-gradient(180deg,#22d3ee,#8b5cf6);box-shadow:0 0 9px rgba(34,211,238,.7)}
+.tabs-head-s{margin-left:auto;font-size:10px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tab{position:relative;display:inline-flex;align-items:center;gap:6px}
+.tab svg{width:13px;height:13px;flex-shrink:0;opacity:.85}
+.tab-bar{gap:5px;padding:4px 9px 0;border-bottom:1px solid var(--border-2)}
+.tab{padding:7px 10px;font-weight:600;border-radius:10px 10px 0 0;transition:.16s}
+.tab:hover{color:#eaf6ff;background:rgba(255,255,255,.06);transform:translateY(-1px)}
+.tab:hover svg{opacity:1}
+.tab.active{color:#04121a;background:linear-gradient(180deg,#7defff,#22d3ee 46%,#0e7490);border-color:#67e8f9;box-shadow:0 -2px 16px rgba(34,211,238,.4),inset 0 1px 0 rgba(255,255,255,.5);font-weight:800}
+.tab.active svg{opacity:1}
+.tab.active::after{content:"";position:absolute;left:8px;right:8px;bottom:-1px;height:2px;border-radius:2px;background:#a5f3fc;box-shadow:0 0 8px rgba(34,211,238,.9)}
+.tab:focus-visible{outline:none;box-shadow:0 0 0 2px rgba(34,211,238,.45)}
+.tab-body{padding:9px}
+
+/* --- 筛选工具条 --- */
+.filter-row{gap:7px;padding:5px 7px;border:1px solid var(--border);border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.filter-row .lbl{font-weight:600;letter-spacing:.03em}
+.fbtn{transition:.14s;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.fbtn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.35)}
+.fbtn.on{box-shadow:0 0 0 1px rgba(255,255,255,.16),0 4px 14px rgba(34,211,238,.2)}
+.txt.sm{background:linear-gradient(180deg,var(--surface-3),rgba(9,15,28,.6))}
+
+/* --- 棋子库卡片 --- */
+.card-grid{gap:8px}
+.grid-card{transition:transform .15s ease,filter .15s ease}
+.grid-card .champ-card{transition:transform .15s ease,box-shadow .15s ease,filter .15s ease}
+.grid-card:hover .champ-card{transform:translateY(-3px);filter:brightness(1.12);box-shadow:0 10px 22px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.14)}
+.grid-card .pool-badge{background:linear-gradient(180deg,rgba(9,15,28,.96),rgba(3,7,15,.96));border-color:rgba(34,211,238,.5);color:#a5f3fc;box-shadow:0 0 8px rgba(34,211,238,.22)}
+
+/* --- 海克斯卡片：稀有度氛围光 --- */
+.aug-grid{gap:7px}
+.aug-card{overflow:hidden;border-radius:9px;--aug:#cbd5e1;--aug-glow:rgba(203,213,225,.14)}
+.aug-card.silver{--aug:#cbd5e1;--aug-glow:rgba(203,213,225,.14)}
+.aug-card.gold{--aug:#f5c542;--aug-glow:rgba(245,197,66,.2)}
+.aug-card.prismatic{--aug:#c084fc;--aug-glow:rgba(192,132,252,.26)}
+.aug-card::after{content:"";position:absolute;right:-26px;top:-34px;width:88px;height:88px;border-radius:50%;background:radial-gradient(circle,var(--aug-glow),transparent 68%);opacity:0;transition:.18s;pointer-events:none}
+.aug-card:hover::after{opacity:1}
+.aug-card .at{font-weight:700;background:rgba(255,255,255,.05)}
+.aug-card.silver .at{color:#e2e8f0}
+.aug-card.gold .at{color:#fde68a}
+.aug-card.prismatic .at{color:#e9d5ff}
+.aug-card:hover{transform:translateY(-2px);border-color:var(--aug);box-shadow:0 10px 22px rgba(0,0,0,.45),0 0 16px var(--aug-glow)}
+.aug-card.on:hover{border-color:var(--cyan)}
+
+/* --- 装备卡片 --- */
+.item-grid{gap:7px}
+.item-card{border-radius:9px;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+.item-card img{transition:transform .16s ease}
+.item-card:hover{transform:translateY(-2px);border-color:rgba(245,197,66,.72);box-shadow:0 10px 22px rgba(0,0,0,.5),0 0 16px rgba(245,197,66,.26)}
+.item-card:hover img{transform:scale(1.06)}
+.item-card .it-fb{background:radial-gradient(circle at 50% 34%,#22304f,#0a1120);box-shadow:inset 0 0 0 1px rgba(245,197,66,.18)}
+.item-card .inm{color:#a9bada}
+
+/* --- 合成图谱 --- */
+.forge-legend{border-left:2px solid var(--cyan);background:linear-gradient(90deg,rgba(34,211,238,.09),transparent 72%);padding:4px 8px;border-radius:0 6px 6px 0}
+.forge-slots{background:linear-gradient(180deg,rgba(255,255,255,.035),transparent);border:1px solid var(--border);border-radius:12px;padding:10px 8px}
+.forge-slot,.forge-result{transition:.16s}
+.forge-slot:hover{border-color:var(--cyan);box-shadow:0 0 16px rgba(34,211,238,.22)}
+.forge-result{border-color:rgba(245,197,66,.72);box-shadow:inset 0 0 20px rgba(245,197,66,.12)}
+.forge-result:hover{border-color:var(--gold);box-shadow:0 0 18px rgba(245,197,66,.32),inset 0 0 20px rgba(245,197,66,.16)}
+.forge-result.match{box-shadow:0 0 26px rgba(245,197,66,.75),inset 0 0 20px rgba(245,197,66,.3)}
+.forge-components .item-card{padding:3px}
+.history-list .hrow{transition:.14s}
+.history-list .hrow:hover{background:rgba(255,255,255,.04);border-radius:4px}
+
+/* --- D牌概率 --- */
+.odds-table{gap:6px}
+.odds-row{padding:4px 7px;border-radius:8px;border:1px solid transparent;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01))}
+.odds-row:hover{border-color:var(--border-2);background:linear-gradient(180deg,rgba(34,211,238,.07),rgba(255,255,255,.02))}
+.odds-bar{height:14px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.odds-bar span{box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.owned-row{transition:.14s}
+.owned-row:hover{border-color:var(--border-2)}
+.owned-row:focus-within{border-color:var(--cyan);box-shadow:0 0 0 2px rgba(34,211,238,.12)}
+
+/* --- 羁绊探索器 --- */
+.te-card{position:relative;overflow:hidden;border-radius:10px}
+.te-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--cyan),transparent 82%);opacity:.55}
+.te-card:first-child::before{background:linear-gradient(180deg,var(--gold),rgba(245,197,66,.08))}
+.te-card:first-child{border-color:rgba(245,197,66,.38)}
+.te-rank-badge{box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
+.te-units .u{transition:.12s}
+.te-units .u:hover{transform:translateY(-1px);border-color:var(--cyan);color:#c9f9ff}
+
+/* --- AI 对话气泡与快捷问 --- */
+.msg{border-radius:13px}
+.msg.user{border-radius:13px 13px 4px 13px}
+.msg.ai{border-radius:13px 13px 13px 4px}
+.msg.sys{border-radius:999px;padding:4px 13px;font-size:10px;letter-spacing:.02em}
+.msg .agent-tag{background:linear-gradient(180deg,var(--surface-3),var(--surface-2))}
+.chip:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(34,211,238,.18)}
+
+/* --- 状态面板步进器 / 战力小面板 --- */
+.step-btn{transition:.12s}
+.step-btn:hover{background:var(--surface-4);box-shadow:0 0 10px rgba(34,211,238,.18)}
+.step-btn:active{transform:scale(.94)}
+
+/* --- 工具弹窗统一层次 --- */
+.modal-body .card{border-radius:10px;padding:10px 12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.modal-body .card h4{margin-bottom:8px}
+.modal-body .kv .v{font-weight:600;color:#eaf6ff}
+.modal-body .m-grid{gap:10px}
+.log-item{transition:.13s}
+.log-item:hover{background:var(--surface-3)}
+.opp-tab{transition:.13s}
+.opp-tab:hover{border-color:var(--border-2);color:var(--text)}
+.opp-tab.on{box-shadow:0 0 12px rgba(34,211,238,.25)}
+.tag-row .u:hover{transform:translateY(-1px)}
+.mini-board .hex:hover{background:linear-gradient(180deg,#1b2946,#0e1729)}
+
+/* 移动端：标签栏更紧凑 */
+@media (max-width:1024px){
+  .tab{padding:6px 9px;gap:4px}
+  .tab svg{width:12px;height:12px}
+}

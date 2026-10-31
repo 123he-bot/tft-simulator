@@ -71,7 +71,8 @@ function tabs() {
   M.setTab('forge');
   var ornn = d().querySelectorAll('#ornnList .item-card').length;
   M.go('home');
-  return { champ: champ, aug: aug, items: items, ornn: ornn };
+  return { champ: champ, aug: aug, items: items, ornn: ornn,
+    tabIcons: d().querySelectorAll('#tabBar .tab svg').length };
 }
 function localComp() {
   var cp = (W.TFT.D.meta.tiers.S || [])[0];
@@ -316,6 +317,7 @@ def run(keep=False):
           '%s/%s' % (s17.get('patchDisplay'), s17.get('patchOpts')))
     check('S17 海克斯 276 条', s17t.get('aug') == 276, s17t.get('aug'))
     check('S17 神器 21 件', s17t.get('ornn') == 21, s17t.get('ornn'))
+    check('素材标签含 6 个图标', s17t.get('tabIcons') == 6, s17t.get('tabIcons'))
 
     check('S3 徽章为本地推断', '本地推断' in s3.get('badge', ''), s3.get('badge'))
     check('S3 榜单 24 套', s3.get('comps') == 24, s3.get('comps'))
