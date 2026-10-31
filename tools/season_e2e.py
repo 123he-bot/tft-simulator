@@ -171,7 +171,9 @@ f.onload = function () {
               R.load = { season: W.TFT.state.season, slug: W.TFT.D.currentSlug,
                 select: d().getElementById('seasonSelect').value,
                 metaSet: W.TFT.D.meta.set,
-                badge: (d().querySelector('.hero-badge') || {}).textContent || '' };
+                badge: (d().querySelector('.hero-badge') || {}).textContent || '',
+                heroTags: d().querySelectorAll('.hero-tag').length,
+                hsTitle: (d().querySelector('.hs-title') || {}).textContent || '' };
               var sol = W.TFT.Solver.solve({ level: 8, gold: 50, hp: 60, threat: '' });
               R.solver = { routes: sol.routes.length, names: sol.routes.map(function (r) { return r.name; }),
                 intents: sol.routes.map(function (r) { return r.intent; }),
@@ -381,6 +383,9 @@ def run(keep=False):
           '%s/%s' % (load.get('slug'), load.get('metaSet')))
     check('载入 S3 存档后首页同步', 'S3' in load.get('badge', '') and '本地推断' in load.get('badge', ''),
           load.get('badge'))
+    check('首页首屏含特性标签与数据侧栏',
+          load.get('heroTags') == 3 and '站内数据' in load.get('hsTitle', ''),
+          'tags=%s title=%s' % (load.get('heroTags'), load.get('hsTitle')))
 
     sol, ui = result.get('solver', {}), result.get('solverUI', {})
     check('求解器给出 3 条路线', sol.get('routes') == 3, '%s %s' % (sol.get('routes'), sol.get('intents')))

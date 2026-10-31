@@ -1798,8 +1798,14 @@ window.TFT = window.TFT || {};
           '<button class="btn" data-home-act="roll">抽卡模拟器</button>' +
           '<button class="btn" data-home-act="quiz">认卡竞速</button>' +
           '</div>' +
+          '<div class="hero-tags">' +
+          '<span class="hero-tag"><b>真实棋库</b> · 当前赛季全量棋子</span>' +
+          '<span class="hero-tag"><b>概率可复现</b> · 牌池与抽卡同源</span>' +
+          '<span class="hero-tag"><b>多智能体</b> · 规则引擎 + 大模型</span>' +
+          '</div>' +
         '</div>' +
         '<div class="hero-side">' +
+          '<div class="hs-title">当前站内数据</div>' +
           hsRow('赛季', curSet + (M.updatedAt ? ' · ' + M.updatedAt : '')) +
           hsRow('评级阵容', list.length + ' 套') +
           hsRow('棋库', ov.champions + ' 棋子 / ' + ov.traits + ' 羁绊') +
