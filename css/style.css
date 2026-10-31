@@ -1330,3 +1330,119 @@ body::after{
 /* --- 弹窗内通用卡片层次 --- */
 .modal-body .card{border-radius:11px;background:linear-gradient(180deg,rgba(22,34,58,.92),rgba(12,19,34,.95))}
 .modal-body .card h4{letter-spacing:.02em}
+
+/* ================= 模块界面深化 · 第三批：工作台对局区 / AI 对话 / 素材标签 / 阵容详情 / 浮层 ================= */
+/* --- 工作台统一面板质感 --- */
+.board-block,.bench-block,.pool-block,.state-panel,.chat-panel,.tabs-panel{position:relative;overflow:hidden}
+.board-block::before,.bench-block::before,.pool-block::before,.state-panel::before,.chat-panel::before,.tabs-panel::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:2px;pointer-events:none;opacity:.45;
+  background:linear-gradient(90deg,rgba(34,211,238,.7),rgba(139,92,246,.35),transparent 72%)}
+.block-head{padding-bottom:5px;border-bottom:1px solid rgba(255,255,255,.055);margin-bottom:8px}
+.block-head.sm{padding-bottom:3px;border-bottom:0;margin-bottom:4px}
+.block-head h2{font-weight:700;letter-spacing:.01em}
+.chat-panel .block-head,.tabs-panel .block-head{border-bottom-color:rgba(34,211,238,.14)}
+
+/* --- 棋盘 / 备战区 / 出售区 --- */
+.hex{transition:transform .14s,filter .14s}
+.hex:not(.drop-ok):not(.drop-bad):hover{filter:brightness(1.16);transform:translateY(-1px)}
+.hex:hover::before{background:linear-gradient(180deg,rgba(34,211,238,.13),rgba(139,92,246,.07))}
+.bench-slot{transition:.15s}
+.bench-slot:hover{border-color:rgba(34,211,238,.45);background:rgba(34,211,238,.06)}
+.sell-ico{transition:.18s}
+.sell-block:hover{border-color:#f43f5e;color:#fecdd3;box-shadow:inset 0 0 26px rgba(244,63,94,.16)}
+.sell-block:hover .sell-ico{transform:scale(1.16) rotate(-6deg)}
+.pool-block .sel,.pool-block select{width:100%}
+
+/* --- 对局状态：四张控制卡配色区分 --- */
+.ctl{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.012));transition:.15s}
+.ctl::after{content:"";position:absolute;left:0;right:0;top:0;height:2px;opacity:.75;
+  background:linear-gradient(90deg,var(--cyan),transparent 82%)}
+.ctl:nth-child(2)::after{background:linear-gradient(90deg,var(--gold),transparent 82%)}
+.ctl:nth-child(3)::after{background:linear-gradient(90deg,#fb7185,transparent 82%)}
+.ctl:nth-child(4)::after{background:linear-gradient(90deg,var(--violet),transparent 82%)}
+.ctl:hover{border-color:var(--border-2);box-shadow:0 6px 16px rgba(0,0,0,.3)}
+.ctl:nth-child(2) .step-val{background:linear-gradient(90deg,#fff1c2,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ctl:nth-child(3) .step-val{background:linear-gradient(90deg,#ffd7dd,#fb7185);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ctl:nth-child(4) .step-val{background:linear-gradient(90deg,#ddd6fe,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.step-val{font-variant-numeric:tabular-nums}
+.step-btn{transition:.13s}
+.step-btn:active{transform:scale(.94)}
+.step-btn:hover{box-shadow:0 0 0 2px rgba(34,211,238,.16)}
+
+/* --- 羁绊 / 经济 / 牌池面板 --- */
+.traits-panel,.mini-panel{background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01));padding-top:8px}
+.panel-title{position:relative;padding-left:9px;color:#9fb3d9}
+.panel-title::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:10px;border-radius:2px;
+  background:linear-gradient(180deg,var(--cyan),var(--violet))}
+.trait-chip{transition:.13s}
+.trait-chip:hover{transform:translateY(-1px);border-color:var(--border-2)}
+.trait-chip.on{box-shadow:0 0 12px rgba(245,197,66,.18)}
+.tip{padding:2px 4px;border-radius:5px;transition:.12s}
+.tip:hover{background:rgba(255,255,255,.035)}
+.pool-row{padding:2px 6px;border-bottom:0;border-radius:5px;background:rgba(255,255,255,.02);margin-bottom:2px;transition:.12s}
+.pool-row:hover{background:rgba(34,211,238,.07)}
+.pool-row .right{min-width:38px;text-align:right;background:rgba(34,211,238,.1);border-radius:5px;padding:0 5px}
+.pool-row.low .right{background:rgba(244,63,94,.12)}
+.pool-row.high .right{background:rgba(52,211,153,.12)}
+
+/* --- AI 对话：消息入场 / 气泡层次 / 快捷问法 --- */
+.chat-log{border-radius:8px;padding:6px;background:
+  radial-gradient(600px 200px at 50% 0%,rgba(34,211,238,.05),transparent 65%),
+  repeating-linear-gradient(0deg,transparent 0 23px,rgba(255,255,255,.014) 23px 24px)}
+.msg{animation:msgIn .18s ease-out}
+@keyframes msgIn{from{transform:translateY(6px);opacity:.4}to{transform:none;opacity:1}}
+.msg.ai{border-left:2px solid rgba(34,211,238,.45);box-shadow:0 6px 16px rgba(0,0,0,.22)}
+.msg.user{border-color:#38e0f5;box-shadow:0 6px 18px rgba(6,182,212,.22)}
+.quick-asks .chip{border-radius:7px}
+.quick-asks .chip:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.3)}
+#chatInput{background:linear-gradient(180deg,var(--surface-3),rgba(9,15,28,.65))}
+
+/* --- 素材标签：页签与筛选按钮 --- */
+.tab-bar{background:linear-gradient(180deg,rgba(255,255,255,.03),transparent)}
+.tab{transition:.14s}
+.tab:hover{transform:translateY(-1px)}
+.tab.active{box-shadow:0 0 14px rgba(34,211,238,.28)}
+.fbtn{transition:.13s}
+.fbtn:hover{transform:translateY(-1px)}
+
+/* --- 阵容详情：标题头图 / 强度条 / 节奏表 / 单位行 --- */
+.cd-head{position:relative;padding:10px 12px;border-radius:10px;overflow:hidden;
+  border:1px solid rgba(34,211,238,.28);
+  background:
+    radial-gradient(420px 160px at 0% 0%,rgba(34,211,238,.16),transparent 65%),
+    linear-gradient(120deg,rgba(20,31,53,.96),rgba(9,15,28,.96))}
+.cd-head::after{content:"";position:absolute;right:-30px;top:-50px;width:140px;height:140px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(245,197,66,.16),transparent 68%)}
+.cd-head .tier-dot{width:26px;height:26px;font-size:13px;border-radius:8px;flex-shrink:0}
+.cd-title{font-size:16px}
+.cd-rank{font-size:10px;border:1px solid rgba(245,197,66,.45);background:rgba(245,197,66,.1);border-radius:999px;padding:2px 8px}
+.cd-str{padding:6px 9px;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,.03);margin:8px 0}
+.cd-str .str-bar{height:7px}
+.cd-str .str-bar i{box-shadow:0 0 10px rgba(34,211,238,.4)}
+.cd-str b{font-size:11px}
+.cd-dist .dd{transition:.14s}
+.cd-dist .dd:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.3)}
+.pace-row{transition:.13s}
+.pace-row:not(.head):hover{background:rgba(34,211,238,.07);border-color:rgba(34,211,238,.28);transform:translateX(2px)}
+.pace-row.head{letter-spacing:.04em}
+.node-line{padding:2px 4px;border-radius:5px;transition:.12s}
+.node-line:hover{background:rgba(255,255,255,.035)}
+.node-idx{box-shadow:0 0 8px rgba(34,211,238,.25)}
+.unit-row{padding:3px 4px;border-radius:5px;transition:.12s}
+.unit-row:hover{background:rgba(34,211,238,.06)}
+.ur-carry{background:rgba(245,197,66,.1);border-radius:5px;padding:0 4px}
+.ur-it{transition:.12s}
+.ur-it:hover{border-color:var(--gold);transform:translateY(-1px)}
+.trait-line{padding:3px 4px;border-radius:5px;transition:.12s}
+.trait-line:hover{background:rgba(255,255,255,.035)}
+.ipick-item{transition:.13s}
+
+/* --- 浮层：提示框 / 通知 / 拖拽影 --- */
+.tooltip{border-color:rgba(34,211,238,.35);box-shadow:0 18px 40px rgba(0,0,0,.6),0 0 18px rgba(34,211,238,.12)}
+.tooltip .tt-name{background:linear-gradient(180deg,#dffbff,#7dd3fc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.toast{position:relative;padding-left:14px;overflow:hidden}
+.toast::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--cyan)}
+.toast.ok::before{background:var(--green)}
+.toast.warn::before{background:var(--orange)}
+.toast.err::before{background:var(--magenta)}
+.drag-ghost{filter:drop-shadow(0 12px 22px rgba(0,0,0,.65)) brightness(1.06)}
