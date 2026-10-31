@@ -210,6 +210,22 @@ f.onload = function () {
                   sumCount: sumX.count, sumAvg: sumX.avg,
                   png: cv.toDataURL('image/png').indexOf('data:image/png') === 0 };
                 W.TFT.UI.closeModal();
+                /* 第二批界面深化：战斗沙盒 / 战力计算器 / 社区分享结构断言 */
+                W.TFT.Battle.openSim();
+                var simRunBtn = d().getElementById('simRun');
+                if (simRunBtn) simRunBtn.click();
+                R.simUI = { verdict: d().querySelectorAll('.sim-verdict').length,
+                  rosters: d().querySelectorAll('.sim-unit').length,
+                  chips: d().querySelectorAll('.sim-verdict .sv-chip').length };
+                W.TFT.UI.closeModal();
+                W.TFT.Power.openCalc();
+                R.powerUI = { score: d().querySelectorAll('.pc-score').length,
+                  hero: d().querySelectorAll('.pc-hero').length };
+                W.TFT.UI.closeModal();
+                W.TFT.Main.openCommunity();
+                R.shareUI = { code: d().querySelectorAll('.sh-code').length,
+                  preview: d().querySelectorAll('.sh-preview').length };
+                W.TFT.UI.closeModal();
                 W.TFT.AI.openSettings();
                 var pbtn = d().querySelector('.set-preset[data-k="deepseek"]');
                 if (pbtn) pbtn.click();
@@ -396,6 +412,15 @@ def run(keep=False):
     check('点击预设自动填入 Base URL / 模型名',
           pre.get('base') == 'https://api.deepseek.com' and pre.get('model') == 'deepseek-chat',
           '%s / %s' % (pre.get('base'), pre.get('model')))
+
+    simui, pwr, shr = result.get('simUI', {}), result.get('powerUI', {}), result.get('shareUI', {})
+    check('战斗沙盒含胜负横幅与单位血条',
+          simui.get('verdict') == 1 and simui.get('rosters', 0) >= 2 and simui.get('chips') == 3,
+          'verdict=%s rosters=%s chips=%s' % (simui.get('verdict'), simui.get('rosters'), simui.get('chips')))
+    check('战力计算器含圆形评分卡', pwr.get('score') == 1 and pwr.get('hero') == 1,
+          'score=%s hero=%s' % (pwr.get('score'), pwr.get('hero')))
+    check('社区分享弹窗含代码框与预览卡', shr.get('code') == 1 and shr.get('preview') == 1,
+          'code=%s preview=%s' % (shr.get('code'), shr.get('preview')))
 
     width = max(len(n) for n, _, _ in checks)
     failed = 0

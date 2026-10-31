@@ -1301,7 +1301,7 @@ window.TFT = window.TFT || {};
     TFT.UI.modal({ title: '阵容存档', size: 'wide', body: body });
     function render() {
       const l = TFT.Store.saves();
-      $('#svList').innerHTML = l.length ? l.map(s => '<div class="save-row"><div class="save-thumb">' + (s.snap.board || []).length + '</div>' +
+      $('#svList').innerHTML = l.length ? l.map(s => '<div class="save-row"><div class="save-thumb"><b>' + (s.snap.board || []).length + '</b><i>人口</i></div>' +
         '<div style="flex:1"><div><b>' + U.esc(s.name) + '</b> <span class="dim">' + U.esc(s.time) + '</span></div>' +
         '<div class="dim" style="font-size:10px">' + (s.snap.board || []).length + ' 人口 · ' + (s.snap.activeTraits || []).length + ' 羁绊 · ' + (s.snap.season || '').toUpperCase() + '</div></div>' +
         '<button class="btn btn-xs btn-primary" data-load="' + s.id + '">加载</button>' +
@@ -1341,15 +1341,15 @@ window.TFT = window.TFT || {};
     const body =
       '<div class="m-grid c2" style="align-items:start">' +
       '<div class="card"><h4>生成分享码</h4>' +
-      '<textarea id="shCode" rows="5" style="width:100%;background:var(--surface-3);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:6px;font-size:10px">' + U.esc(code) + '</textarea>' +
+      '<textarea id="shCode" class="sh-code" rows="5">' + U.esc(code) + '</textarea>' +
       '<div class="m-row" style="margin-top:6px"><button class="btn btn-xs btn-primary" id="shCopy">复制分享码</button>' +
       '<button class="btn btn-xs" id="shCopyText">复制阵容文本</button></div>' +
       '<div class="dim" style="margin-top:6px">分享码包含完整对局 JSON，可发给好友在右侧导入。</div></div>' +
       '<div class="card"><h4>导入分享码</h4>' +
-      '<textarea id="shIn" rows="4" placeholder="粘贴好友分享的分享码" style="width:100%;background:var(--surface-3);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:6px;font-size:10px"></textarea>' +
+      '<textarea id="shIn" class="sh-in" rows="4" placeholder="粘贴好友分享的分享码"></textarea>' +
       '<div class="m-row" style="margin-top:6px"><button class="btn btn-xs btn-primary" id="shLoad">解析并加载</button></div>' +
       '<div class="panel-title mt8">阵容文本预览</div>' +
-      '<div id="shText" style="font-size:11px;color:#cfe3ff;line-height:1.6">' + U.esc(shareText) + '</div></div>' +
+      '<div id="shText" class="sh-preview">' + U.esc(shareText) + '</div></div>' +
       '</div>';
     TFT.UI.modal({ title: '社区分享 / 分享码导入', size: 'wide', body: body });
     $('#shCopy').onclick = function () { copy(code); };

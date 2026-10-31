@@ -165,28 +165,47 @@ window.TFT = window.TFT || {};
   };
 
   function renderSim(res, opp) {
-    const tag = (u) => '<div class="battle-unit"><div class="avatar-fb" style="width:24px;height:24px">' + U.esc(u.name.slice(0, 1)) + '</div>' +
-      '<span style="flex:1">' + U.esc(u.name) + ' <b style="color:var(--gold)">' + '★'.repeat(u.star) + '</b></span>' +
-      '<span class="dim">' + (u.hpNow > 0 ? '存活' : '阵亡') + '</span>' +
-      '<span style="color:#fda4af">' + Math.round(u.dps) + ' dps</span></div>';
-    const w = res.winner === 'A' ? '<span style="color:var(--green)">我方胜利</span>' : res.winner === 'B' ? '<span style="color:var(--magenta)">我方失败</span>' : '<span class="dim">平局</span>';
+    const win = res.winner === 'A', lose = res.winner === 'B';
+    const total = res.A.dmg + res.B.dmg;
+    const share = Math.round(res.A.dmg / Math.max(1, total) * 100);
+    const roster = function (units, side) {
+      return '<div class="sim-roster">' + units.map(function (u) {
+        const pct = U.clamp(Math.round((u.hpNow / Math.max(1, u.ehp)) * 100), 0, 100);
+        return '<div class="sim-unit' + (u.hpNow > 0 ? '' : ' dead') + '">' +
+          '<span class="su-name">' + U.esc(u.name) + '</span>' +
+          '<span class="su-star">' + '★'.repeat(u.star) + '</span>' +
+          '<span class="su-hp ' + side + '"><i style="width:' + pct + '%"></i></span>' +
+          '<span class="su-dps">' + Math.round(u.dps) + ' dps</span>' +
+          '<span class="su-state">' + (u.hpNow > 0 ? '存活' : '阵亡') + '</span></div>';
+      }).join('') + '</div>';
+    };
     const html =
+      '<div class="sim-verdict ' + (win ? 'win' : lose ? 'lose' : 'draw') + '">' +
+        '<div class="sv-big">' + (win ? '我方胜利' : lose ? '我方失败' : '平局') + '</div>' +
+        '<div class="sv-sub">耗时 ' + res.ticks + ' 秒 · 我方存活 ' + res.A.survivors + ' 人 / 对手存活 ' + res.B.survivors + ' 人</div>' +
+        '<div class="sv-chips">' +
+          '<span class="sv-chip">我方输出 <b>' + U.num(res.A.dmg) + '</b></span>' +
+          '<span class="sv-chip">对手输出 <b>' + U.num(res.B.dmg) + '</b></span>' +
+          '<span class="sv-chip">输出占比 <b>' + share + '%</b></span>' +
+        '</div>' +
+      '</div>' +
       '<div class="m-grid c3" style="margin-bottom:8px">' +
-      '<div class="card"><h4>战斗结果</h4><div style="font-size:18px;font-weight:800">' + w + '</div>' +
-      '<div class="kv"><span class="k">耗时</span><span class="v">' + res.ticks + ' 秒</span></div>' +
-      '<div class="kv"><span class="k">我方存活</span><span class="v">' + res.A.survivors + ' 人</span></div>' +
-      '<div class="kv"><span class="k">对手存活</span><span class="v">' + res.B.survivors + ' 人</span></div></div>' +
-      '<div class="card"><h4>我方输出 / 承伤</h4>' +
-      '<div class="kv"><span class="k">总输出</span><span class="v">' + U.num(res.A.dmg) + '</span></div>' +
+      '<div class="card"><h4>双方战力</h4>' +
+      '<div class="kv"><span class="k">我方血当量</span><span class="v">' + U.num(res.A.ehp) + '</span></div>' +
+      '<div class="kv"><span class="k">我方 DPS</span><span class="v">' + U.num(res.A.dps) + '</span></div>' +
+      '<div class="kv"><span class="k">对手血当量</span><span class="v">' + U.num(res.B.ehp) + '</span></div>' +
+      '<div class="kv"><span class="k">对手 DPS</span><span class="v">' + U.num(res.B.dps) + '</span></div></div>' +
+      '<div class="card"><h4>输出对比</h4>' +
+      '<div class="kv"><span class="k">我方总输出</span><span class="v">' + U.num(res.A.dmg) + '</span></div>' +
       '<div class="kv"><span class="k">对手总输出</span><span class="v">' + U.num(res.B.dmg) + '</span></div>' +
-      '<div class="bar dmg" style="margin-top:6px"><span style="width:' + Math.min(100, res.A.dmg / Math.max(1, res.A.dmg + res.B.dmg) * 100) + '%"></span></div>' +
-      '<div class="dim" style="font-size:10px;margin-top:3px">我方输出占比 ' + Math.round(res.A.dmg / Math.max(1, res.A.dmg + res.B.dmg) * 100) + '%</div></div>' +
-      '<div class="card"><h4>击杀统计</h4><div class="log-list" style="max-height:100px">' +
+      '<div class="bar dmg" style="margin-top:8px"><span style="width:' + U.clamp(share, 0, 100) + '%"></span></div>' +
+      '<div class="dim" style="font-size:10px;margin-top:4px">我方输出占比 ' + share + '%</div></div>' +
+      '<div class="card"><h4>击杀统计</h4><div class="log-list" style="max-height:104px">' +
       (res.kills.length ? res.kills.map(k => '<div class="battle-unit"><span style="color:var(--cyan)">' + U.esc(k.killer) + '</span><span class="dim">击杀</span><span style="color:#fda4af">' + U.esc(k.target) + '</span><span class="dim">t' + k.tick + '</span></div>').join('') : '<div class="dim">无击杀</div>') +
       '</div></div></div>' +
       '<div class="battle-grid">' +
-      '<div class="card"><h4>我方棋盘（总战力值 ' + res.A.ehp + ' 血当量 / ' + res.A.dps + ' dps）</h4>' + miniBoard(S.boardList(), false, 'simMine') + '</div>' +
-      '<div class="card"><h4>对手 ' + U.esc(opp.name) + '（' + res.B.ehp + ' 血当量 / ' + res.B.dps + ' dps）</h4>' + miniBoard(S.opponentBoardList(opp.id), true, 'simOpp') + '</div>' +
+      '<div class="card"><h4>我方棋盘 <span class="dim">' + res.A.ehp + ' 血当量 / ' + res.A.dps + ' dps</span></h4>' + miniBoard(S.boardList(), false, 'simMine') + roster(res.A.units, 'a') + '</div>' +
+      '<div class="card"><h4>对手 ' + U.esc(opp.name) + ' <span class="dim">' + res.B.ehp + ' 血当量 / ' + res.B.dps + ' dps</span></h4>' + miniBoard(S.opponentBoardList(opp.id), true, 'simOpp') + roster(res.B.units, 'b') + '</div>' +
       '</div>' +
       '<div class="card" style="margin-top:8px"><h4>战斗时间轴 <span class="dim" style="font-size:10px">共 ' + res.timeline.length + ' 条事件</span></h4>' +
       '<div class="log-list">' + res.timeline.slice(0, 60).map(e =>
@@ -255,7 +274,11 @@ window.TFT = window.TFT || {};
         return '<div class="kv"><span class="k">' + n + '评分</span><span class="v">' + v + ' / 100</span></div>' +
           '<div class="bar tank" style="margin-bottom:4px"><span style="width:' + v + '%"></span></div>';
       }).join('') +
-      '<div style="text-align:center;margin-top:8px"><span style="font-size:22px;font-weight:900;background:linear-gradient(90deg,#22d3ee,#f5c542);-webkit-background-clip:text;background-clip:text;color:transparent">' + total + '</span><span class="dim"> 综合战力分</span></div>';
+      '</div>' +
+      '<div class="pc-hero">' +
+        '<div class="pc-score" style="--v:' + total + '"><span>' + total + '</span></div>' +
+        '<div class="pc-hero-txt"><b>综合战力分</b><i>坦度 × 34% · 输出 × 44% · 控制 × 22%，按当前棋盘实时估算，非官方评分</i></div>' +
+      '</div>';
   };
 
   /* ==================== 对局复盘笔记 ==================== */
@@ -268,8 +291,7 @@ window.TFT = window.TFT || {};
       '<div class="card"><h4>记录本次对局关键决策</h4>' +
       '<div class="m-row" style="margin-bottom:6px"><select class="sel sel-sm" id="rvStage">' + stages.map(s => '<option value="' + s + '">' + s + '</option>').join('') + '</select>' +
       '<select class="sel sel-sm" id="rvType"><option>D牌</option><option>拉人口</option><option>选秀装备</option><option>海克斯选择</option><option>站位调整</option><option>变阵</option></select></div>' +
-      '<textarea id="rvText" rows="3" placeholder="例如：4-1 升 8 人口，D 30 金币找卡莎二星，血量 62，经济保留 20"' +
-      ' style="width:100%;background:var(--surface-2);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:6px 8px;font-size:12px;font-family:inherit"></textarea>' +
+      '<textarea id="rvText" class="rv-text" rows="3" placeholder="例如：4-1 升 8 人口，D 30 金币找卡莎二星，血量 62，经济保留 20"></textarea>' +
       '<div class="m-row" style="margin-top:6px"><button class="btn btn-xs btn-primary" id="rvAdd">记录</button>' +
       '<button class="btn btn-xs" id="rvAskAI">AI 全局复盘点评</button>' +
       '<button class="btn btn-xs" id="rvExport">导出复盘文本</button></div></div>' +
