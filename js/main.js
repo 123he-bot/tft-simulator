@@ -2180,12 +2180,19 @@ window.TFT = window.TFT || {};
 
   /* ==================== 数据图表页 ==================== */
   Main.openCharts = function () {
-    const An = TFT.Analytics, M = D.meta || {};
+    const An = TFT.Analytics, M = D.meta || {}, ov = An.overview();
     const TIER_CN = { silver: '银', gold: '金', prismatic: '棱彩', unknown: '特殊' };
     const CAT_CN = { component: '基础小件', completed: '成装', artifact: '奥恩神器', ornn: '奥恩神器' };
 
     const body =
       '<div class="chart-note">以下图表均由站内数据源的真实字段统计生成，不含任何对局遥测或伪造口径。</div>' +
+      '<div class="ch-stats">' +
+        '<div class="ch-stat"><span class="dim">棋子</span><b>' + ov.champions + '</b></div>' +
+        '<div class="ch-stat"><span class="dim">羁绊</span><b>' + ov.traits + '</b></div>' +
+        '<div class="ch-stat"><span class="dim">装备</span><b>' + ov.items + '</b></div>' +
+        '<div class="ch-stat"><span class="dim">海克斯</span><b>' + ov.augments + '</b></div>' +
+        '<div class="ch-stat"><span class="dim">赛季</span><b>' + ov.seasons + '</b></div>' +
+      '</div>' +
       '<div class="chart-sec"><h4>棋子费用分布</h4><div class="chart-wrap tall"><canvas id="chCost"></canvas></div></div>' +
       '<div class="chart-sec"><h4>装备类别分布</h4><div class="chart-wrap tall"><canvas id="chItem"></canvas></div></div>' +
       '<div class="chart-sec"><h4>海克斯层级分布</h4><div class="chart-wrap tall"><canvas id="chAug"></canvas></div></div>' +
@@ -2481,6 +2488,12 @@ window.TFT = window.TFT || {};
 
       const body =
         '<div id="optWrap">' +
+          '<div class="opm-sum">' +
+            '<div class="oms-item"><span class="dim">候选路线</span><b>' + optimizer.transitions.length + ' 套</b></div>' +
+            '<div class="oms-item"><span class="dim">当前等级</span><b>' + optimizer.level + ' 级</b></div>' +
+            '<div class="oms-item"><span class="dim">现有金币</span><b>' + optimizer.gold + ' 金</b></div>' +
+            '<div class="oms-item"><span class="dim">棋盘人口</span><b>' + optimizer.currentUnits.length + ' / ' + optimizer.level + '</b></div>' +
+          '</div>' +
           '<div class="op-state">' +
             '<div class="op-state-row">' +
               '<span class="dim">当前等级</span>' +
@@ -2872,6 +2885,7 @@ window.TFT = window.TFT || {};
     w.innerHTML =
       '<div class="qz-head"><span>第 <b>' + (qz.idx + 1) + '</b> / ' + qz.total + ' 题</span>' +
       '<span>答对 <b style="color:#34d399">' + qz.correct + '</b> · 答错 <b style="color:#fda4af">' + qz.wrong + '</b></span></div>' +
+      '<div class="qz-prog"><i style="width:' + Math.round((qz.idx / qz.total) * 100) + '%"></i></div>' +
       '<div class="qz-stage">' +
         '<div class="qz-card c' + ans.cost + '">' +
           '<span class="qz-mark">?</span>' +

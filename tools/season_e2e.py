@@ -264,6 +264,17 @@ f.onload = function () {
                 W.TFT.Main.openRollSim();
                 R.rollUI = { stats: d().querySelectorAll('.rs-stat').length };
                 W.TFT.UI.closeModal();
+                W.TFT.Main.openCharts();
+                R.chartUI = { stats: d().querySelectorAll('.ch-stat').length };
+                W.TFT.UI.closeModal();
+                W.TFT.Main.openCardQuiz();
+                R.quizUI = { prog: d().querySelectorAll('.qz-prog').length,
+                  opts: d().querySelectorAll('.qz-opt').length };
+                W.TFT.UI.closeModal();
+                W.TFT.Main.openOptimizer();
+                R.optUI = { sum: d().querySelectorAll('.opm-sum').length,
+                  cards: d().querySelectorAll('#optWrap .op-card').length };
+                W.TFT.UI.closeModal();
                 finish();
               }, 600);
             }, 400);
@@ -474,6 +485,12 @@ def run(keep=False):
     check('复盘笔记含汇总卡', rvi.get('hero') == 1 and rvi.get('stats') == 4,
           'hero=%s stats=%s' % (rvi.get('hero'), rvi.get('stats')))
     check('抽卡模拟器含统计条', rli.get('stats') == 4, 'stats=%s' % rli.get('stats'))
+    cui, qzi, omi = result.get('chartUI', {}), result.get('quizUI', {}), result.get('optUI', {})
+    check('数据图表含总览统计条', cui.get('stats') == 5, 'stats=%s' % cui.get('stats'))
+    check('认卡竞速含进度条与选项', qzi.get('prog') == 1 and qzi.get('opts') == 4,
+          'prog=%s opts=%s' % (qzi.get('prog'), qzi.get('opts')))
+    check('阵容优化器含状态总览条', omi.get('sum') == 1 and omi.get('cards', 0) >= 1,
+          'sum=%s cards=%s' % (omi.get('sum'), omi.get('cards')))
 
     width = max(len(n) for n, _, _ in checks)
     failed = 0
