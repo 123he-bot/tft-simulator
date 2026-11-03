@@ -188,7 +188,12 @@ f.onload = function () {
               icons: mb ? mb.querySelectorAll('.ur-it img').length : 0,
               stats: mb ? mb.textContent.indexOf('真实对局统计') >= 0 : false,
               src: mb ? mb.textContent.indexOf('OP.GG 实时数据') >= 0 : false,
-              noEngine: mb ? mb.textContent.indexOf('出装为引擎推荐') < 0 : false
+              noEngine: mb ? mb.textContent.indexOf('出装为引擎推荐') < 0 : false,
+              desc: mb ? mb.querySelectorAll('.cd-desc').length : 0,
+              descText: mb ? (mb.querySelector('.cd-desc') || {}).textContent || '' : '',
+              core: mb ? mb.querySelectorAll('.core-card').length : 0,
+              coreImgs: mb ? mb.querySelectorAll('.core-card .core-icon').length : 0,
+              coreItems: mb ? mb.querySelectorAll('.core-card .ur-it').length : 0
             };
             W.TFT.UI.closeModal();
           }
@@ -447,6 +452,12 @@ def run(keep=False):
     check('S18 详情标注真实对局统计', s18d.get('stats') is True)
     check('S18 详情标注 OP.GG 来源', s18d.get('src') is True)
     check('S18 详情不再标注引擎推荐', s18d.get('noEngine') is True)
+    check('S18 详情展示阵容说明', s18d.get('desc', 0) >= 1)
+    check('阵容说明含主C与真实统计', '主C' in (s18d.get('descText') or '') and '胜率' in (s18d.get('descText') or ''),
+          (s18d.get('descText') or '')[:40])
+    check('S18 详情展示核心棋子', s18d.get('core', 0) >= 1, s18d.get('core'))
+    check('核心棋子含图标与出装', s18d.get('coreImgs', 0) >= 1 and s18d.get('coreItems', 0) >= 1,
+          '%s 图标 / %s 件' % (s18d.get('coreImgs'), s18d.get('coreItems')))
     check('攻略页含运营节奏与关键节点', detail.get('found') is True and detail.get('hasPace') is True,
           'found=%s pace=%s' % (detail.get('found'), detail.get('hasPace')))
     check('运营节奏表至少 4 行', detail.get('paceRows', 0) >= 4, detail.get('paceRows'))

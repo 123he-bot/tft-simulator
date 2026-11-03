@@ -1,7 +1,7 @@
 {
  "source": "OP.GG 实时阵容榜（中文站）",
  "sourceUrl": "https://op.gg/zh-cn/tft/meta-trends/comps?version=18.5",
- "fetchedAt": "2026-11-03 23:19:54",
+ "fetchedAt": "2026-11-03 23:54:34",
  "patch": "18.5",
  "note": "阵容、出装、站位与胜率类统计均来自 OP.GG 实时对局采样；本站未做任何推断或补全。",
  "itemCatalog": [
@@ -188,13 +188,6 @@
    "stat": ""
   },
   {
-   "id": "op_DA_Artifact_NavoriFlickerblade",
-   "apiName": "DA_Artifact_NavoriFlickerblade",
-   "name": "烁刃",
-   "icon": "assets/icons/opgg_DA_Artifact_NavoriFlickerblade.png",
-   "stat": ""
-  },
-  {
    "id": "op_DA_WarmogsArmor",
    "apiName": "DA_WarmogsArmor",
    "name": "狂徒铠甲",
@@ -334,7 +327,7 @@
   "source": "OP.GG 实时阵容榜（中文站）",
   "sourceUrl": "https://op.gg/zh-cn/tft/meta-trends/comps?version=18.5",
   "updatedAt": "18.5",
-  "fetchedAt": "2026-11-03 23:19:54",
+  "fetchedAt": "2026-11-03 23:54:34",
   "note": "51 套 representative 阵容，统计口径为 OP.GG 对局样本；补丁 18.5。",
   "comps": [
    {
@@ -344,10 +337,10 @@
     "tier": "B",
     "strength": 1.89,
     "avgPlace": 1.89,
-    "winRate": 0.5184,
-    "top4Rate": 0.9457,
+    "winRate": 0.5198,
+    "top4Rate": 0.9466,
     "pickRate": 0.000202,
-    "games": 571,
+    "games": 581,
     "opScore": 0.05,
     "units": [
      {
@@ -484,6 +477,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "崔丝塔娜",
+      "id": "DA_18_Tristana",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_GiantSlayer",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_HextechGunblade"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "希维尔",
+      "id": "DA_18_Sivir",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_18_EmblemFae",
+       "op_DA_LastWhisper",
+       "op_DA_RedBuff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 6,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "拉莫斯",
+      "id": "DA_18_Rammus",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 花仙子、猎人、约德尔人和朋友 展开，主C 崔丝塔娜（3 费 / 3 星，出装 巨人杀手、鬼索的狂暴之刃、海克斯科技枪刃）。核心棋子：崔丝塔娜、希维尔、拉莫斯。9 人口成型，OP.GG 采样 581 场：平均名次 1.89、胜率 52.0%、前四率 94.7%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "宝石骑士",
@@ -613,12 +661,12 @@
     "name": "月蚀骑士 奥恩",
     "mainC": "奥恩",
     "tier": "C",
-    "strength": 2.11,
-    "avgPlace": 2.11,
-    "winRate": 0.4792,
-    "top4Rate": 0.919,
-    "pickRate": 0.000162,
-    "games": 457,
+    "strength": 2.09,
+    "avgPlace": 2.09,
+    "winRate": 0.4817,
+    "top4Rate": 0.9204,
+    "pickRate": 0.000161,
+    "games": 465,
     "opScore": 0.04,
     "units": [
      {
@@ -727,6 +775,51 @@
       "tag": "sub"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "奥恩",
+      "id": "DA_18_Ornn",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": null,
+      "tag": "main"
+     },
+     {
+      "name": "拉露恩",
+      "id": "DA_18_Alune",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_BlueBuff",
+       "op_DA_JeweledGauntlet"
+      ],
+      "core": true,
+      "cell": null,
+      "tag": "sub"
+     },
+     {
+      "name": "凯尔",
+      "id": "DA_18_Kayle",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_GuinsoosRageblade",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_JeweledGauntlet"
+      ],
+      "core": true,
+      "cell": null,
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 日月双蚀、日蚀骑士、月蚀骑士 展开，主C 奥恩（1 费 / 3 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：奥恩、拉露恩、凯尔。9 人口成型，OP.GG 采样 465 场：平均名次 2.09、胜率 48.2%、前四率 92.0%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "月华神女",
@@ -858,275 +951,17 @@
     "teamCode": "0241141f43940a4104273fa3ef3ec000TFTSet18"
    },
    {
-    "id": "og_8924d52e5c4fa24523fd238a5e2aca30",
-    "name": "地狱火 拉克丝 (地狱火)",
-    "mainC": "凯尔",
-    "tier": "C",
-    "strength": 2.39,
-    "avgPlace": 2.39,
-    "winRate": 0.3659,
-    "top4Rate": 0.8966,
-    "pickRate": 0.000127,
-    "games": 358,
-    "opScore": 0.03,
-    "units": [
-     {
-      "name": "阿卡丽",
-      "id": "DA_18_Akali_AD",
-      "cost": 1,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 2,
-       "y": 4
-      },
-      "tag": "other"
-     },
-     {
-      "name": "蕾欧娜",
-      "id": "DA_18_Leona",
-      "cost": 1,
-      "star": 3,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 4,
-       "y": 4
-      },
-      "tag": "other"
-     },
-     {
-      "name": "韦鲁斯",
-      "id": "DA_18_Varus",
-      "cost": 1,
-      "star": 3,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 6,
-       "y": 1
-      },
-      "tag": "other"
-     },
-     {
-      "name": "凯尔",
-      "id": "DA_18_Kayle",
-      "cost": 2,
-      "star": 3,
-      "items": [
-       "op_DA_GuinsoosRageblade",
-       "op_DA_JeweledGauntlet",
-       "op_DA_RedBuff"
-      ],
-      "core": true,
-      "cell": {
-       "x": 1,
-       "y": 1
-      },
-      "tag": "main"
-     },
-     {
-      "name": "瑟庄妮",
-      "id": "DA_18_Sejuani",
-      "cost": 2,
-      "star": 3,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 5,
-       "y": 4
-      },
-      "tag": "other"
-     },
-     {
-      "name": "慎",
-      "id": "DA_18_Shen",
-      "cost": 2,
-      "star": 3,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 6,
-       "y": 4
-      },
-      "tag": "other"
-     },
-     {
-      "name": "阿木木",
-      "id": "DA_Amumu18",
-      "cost": 4,
-      "star": 2,
-      "items": [
-       "op_DA_GargoyleStoneplate",
-       "op_DA_SpiritVisage",
-       "op_DA_WarmogsArmor"
-      ],
-      "core": true,
-      "cell": {
-       "x": 7,
-       "y": 4
-      },
-      "tag": "sub"
-     },
-     {
-      "name": "凯南",
-      "id": "DA_18_Kennen",
-      "cost": 5,
-      "star": 2,
-      "items": [
-       "op_DA_HandOfJustice",
-       "op_DA_IonicSpark",
-       "op_DA_JeweledGauntlet"
-      ],
-      "core": false,
-      "cell": {
-       "x": 3,
-       "y": 4
-      },
-      "tag": "tank"
-     },
-     {
-      "name": "拉克丝",
-      "id": "DA_Lux18_Base",
-      "cost": 5,
-      "star": 2,
-      "items": [
-       "op_DA_BlueBuff",
-       "op_DA_JeweledGauntlet"
-      ],
-      "core": true,
-      "cell": {
-       "x": 7,
-       "y": 1
-      },
-      "tag": "sub"
-     }
-    ],
-    "traits": [
-     {
-      "name": "自然之力！大元素使",
-      "active": 1,
-      "need": 1,
-      "style": 4
-     },
-     {
-      "name": "日蚀骑士",
-      "active": 3,
-      "need": 3,
-      "style": 4
-     },
-     {
-      "name": "地狱火",
-      "active": 7,
-      "need": 7,
-      "style": 4
-     },
-     {
-      "name": "迅捷射手",
-      "active": 2,
-      "need": 3,
-      "style": 1
-     },
-     {
-      "name": "护卫",
-      "active": 2,
-      "need": 4,
-      "style": 1
-     },
-     {
-      "name": "主宰",
-      "active": 2,
-      "need": 4,
-      "style": 1
-     },
-     {
-      "name": "魔战士",
-      "active": 1,
-      "need": 2,
-      "style": 0
-     },
-     {
-      "name": "狂战士",
-      "active": 1,
-      "need": 2,
-      "style": 0
-     },
-     {
-      "name": "裁决使",
-      "active": 1,
-      "need": 2,
-      "style": 0
-     }
-    ],
-    "positionMap": [
-     [
-      2,
-      3,
-      "阿卡丽"
-     ],
-     [
-      3,
-      4,
-      "蕾欧娜"
-     ],
-     [
-      1,
-      2,
-      "韦鲁斯"
-     ],
-     [
-      1,
-      5,
-      "凯尔"
-     ],
-     [
-      3,
-      1,
-      "瑟庄妮"
-     ],
-     [
-      3,
-      6,
-      "慎"
-     ],
-     [
-      3,
-      0,
-      "阿木木"
-     ],
-     [
-      2,
-      4,
-      "凯南"
-     ],
-     [
-      1,
-      4,
-      "拉克丝"
-     ]
-    ],
-    "positioning": "OP.GG 实战站位（按真实对局采样）",
-    "counters": {
-     "克制": [],
-     "被克制": []
-    },
-    "source": "OP.GG 实时数据",
-    "sourceReal": true,
-    "teamCode": "023ea41143540a42742b3ed40b405000TFTSet18"
-   },
-   {
     "id": "og_25e6c08cee3fb517b00a8c3cb27179a7",
     "name": "峡谷野怪 Brambleback",
     "mainC": "Brambleback",
     "tier": "OP",
-    "strength": 2.48,
-    "avgPlace": 2.48,
-    "winRate": 0.3586,
-    "top4Rate": 0.8811,
-    "pickRate": 0.017537,
-    "games": 49497,
-    "opScore": 3.54,
+    "strength": 2.47,
+    "avgPlace": 2.47,
+    "winRate": 0.3594,
+    "top4Rate": 0.8814,
+    "pickRate": 0.01754,
+    "games": 50569,
+    "opScore": 3.56,
     "units": [
      {
       "name": "Pebbles",
@@ -1249,6 +1084,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "Brambleback",
+      "id": "DA_Brambleback18",
+      "cost": 4,
+      "star": 3,
+      "items": [
+       "op_DA_EdgeOfNight",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_HandOfJustice"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 2
+      },
+      "tag": "main"
+     },
+     {
+      "name": "Elder Dragon",
+      "id": "DA_18_ElderDragon",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_InfinityEdge",
+       "op_DA_LastWhisper",
+       "op_DA_StrikersFlail"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 3
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "Krug",
+      "id": "DA_Krug18",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 峡谷野怪、斗士、神谕 展开，主C Brambleback（4 费 / 3 星，出装 夜之锋刃、鬼索的狂暴之刃、正义之手）。核心棋子：Brambleback、Elder Dragon、Krug。8 人口成型，OP.GG 采样 50569 场：平均名次 2.47、胜率 35.9%、前四率 88.1%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "顶级掠食者",
@@ -1361,12 +1251,12 @@
     "name": "地狱火 艾希",
     "mainC": "艾希",
     "tier": "C",
-    "strength": 2.71,
-    "avgPlace": 2.71,
-    "winRate": 0.3057,
-    "top4Rate": 0.8603,
-    "pickRate": 0.000175,
-    "games": 494,
+    "strength": 2.68,
+    "avgPlace": 2.68,
+    "winRate": 0.3074,
+    "top4Rate": 0.8658,
+    "pickRate": 0.000178,
+    "games": 514,
     "opScore": 0.03,
     "units": [
      {
@@ -1503,6 +1393,61 @@
       "tag": "other"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "艾希",
+      "id": "DA_18_Ashe",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_18_EmblemInferno",
+       "op_DA_RedBuff",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "希维尔",
+      "id": "DA_18_Sivir",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_InfinityEdge",
+       "op_DA_LastWhisper",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 6,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "阿木木",
+      "id": "DA_Amumu18",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 5,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 地狱火、猎人、护卫 展开，主C 艾希（5 费 / 2 星，出装 地狱火纹章、红霸符、朔极之矛）。核心棋子：艾希、希维尔、阿木木。9 人口成型，OP.GG 采样 514 场：平均名次 2.68、胜率 30.7%、前四率 86.6%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "自然之力！大元素使",
@@ -1634,10 +1579,10 @@
     "tier": "S",
     "strength": 2.78,
     "avgPlace": 2.78,
-    "winRate": 0.2748,
-    "top4Rate": 0.8366,
-    "pickRate": 0.003297,
-    "games": 9307,
+    "winRate": 0.2733,
+    "top4Rate": 0.8365,
+    "pickRate": 0.003307,
+    "games": 9533,
     "opScore": 0.57,
     "units": [
      {
@@ -1761,6 +1706,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "阿兹尔",
+      "id": "DA_18_Azir",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_GuinsoosRageblade",
+       "op_DA_HextechGunblade",
+       "op_DA_RabadonsDeathcap"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "婕拉",
+      "id": "DA_18_Zyra",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Morellonomicon",
+       "op_DA_SpearOfShojin",
+       "op_DA_VoidStaff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "拉莫斯",
+      "id": "DA_18_Rammus",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_Crownguard",
+       "op_DA_GargoyleStoneplate",
+       "op_DA_GargoyleStoneplate"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 裁决使、约德尔人和朋友、绝命花妖 展开，主C 阿兹尔（3 费 / 3 星，出装 鬼索的狂暴之刃、海克斯科技枪刃、灭世者的死亡之帽）。核心棋子：阿兹尔、婕拉、拉莫斯。8 人口成型，OP.GG 采样 9533 场：平均名次 2.78、胜率 27.3%、前四率 83.7%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "荆棘之兴",
@@ -1875,6 +1875,344 @@
     "teamCode": "024364313f142140042e43c40b000000TFTSet18"
    },
    {
+    "id": "og_5c4d5353808d66bf3f2015a33d83650b",
+    "name": "月蚀骑士 茂凯",
+    "mainC": "茂凯",
+    "tier": "C",
+    "strength": 2.83,
+    "avgPlace": 2.83,
+    "winRate": 0.2995,
+    "top4Rate": 0.8255,
+    "pickRate": 0.000133,
+    "games": 384,
+    "opScore": 0.02,
+    "units": [
+     {
+      "name": "蕾欧娜",
+      "id": "DA_18_Leona",
+      "cost": 1,
+      "star": 3,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 2,
+       "y": 3
+      },
+      "tag": "other"
+     },
+     {
+      "name": "凯尔",
+      "id": "DA_18_Kayle",
+      "cost": 2,
+      "star": 3,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 3,
+       "y": 1
+      },
+      "tag": "other"
+     },
+     {
+      "name": "瑟庄妮",
+      "id": "DA_18_Sejuani",
+      "cost": 2,
+      "star": 3,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "other"
+     },
+     {
+      "name": "黛安娜",
+      "id": "DA_18_Diana",
+      "cost": 3,
+      "star": 2,
+      "items": [
+       "op_DA_Deathblade",
+       "op_DA_ThiefsGloves",
+       "op_DA_VoidStaff"
+      ],
+      "core": false,
+      "cell": {
+       "x": 3,
+       "y": 3
+      },
+      "tag": "other"
+     },
+     {
+      "name": "费德提克",
+      "id": "DA_Fiddlesticks18",
+      "cost": 3,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 3,
+       "y": 2
+      },
+      "tag": "other"
+     },
+     {
+      "name": "厄斐琉斯",
+      "id": "DA_18_Aphelios",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GuinsoosRageblade",
+       "op_DA_InfinityEdge",
+       "op_DA_KrakensFury"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "拉露恩",
+      "id": "DA_18_Alune",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_BlueBuff",
+       "op_DA_HextechGunblade",
+       "op_DA_JeweledGauntlet"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "茂凯",
+      "id": "DA_18_Maokai",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 4
+      },
+      "tag": "main"
+     },
+     {
+      "name": "塔里克",
+      "id": "DA_Taric18",
+      "cost": 5,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 4,
+       "y": 3
+      },
+      "tag": "tank"
+     }
+    ],
+    "coreUnits": [
+     {
+      "name": "茂凯",
+      "id": "DA_18_Maokai",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 4
+      },
+      "tag": "main"
+     },
+     {
+      "name": "拉露恩",
+      "id": "DA_18_Alune",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_BlueBuff",
+       "op_DA_HextechGunblade",
+       "op_DA_JeweledGauntlet"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "厄斐琉斯",
+      "id": "DA_18_Aphelios",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GuinsoosRageblade",
+       "op_DA_InfinityEdge",
+       "op_DA_KrakensFury"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 日月双蚀、日蚀骑士、月蚀骑士 展开，主C 茂凯（5 费 / 2 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：茂凯、拉露恩、厄斐琉斯。9 人口成型，OP.GG 采样 384 场：平均名次 2.83、胜率 29.9%、前四率 82.5%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
+    "traits": [
+     {
+      "name": "月华神女",
+      "active": 1,
+      "need": 1,
+      "style": 4
+     },
+     {
+      "name": "远古树精",
+      "active": 1,
+      "need": 1,
+      "style": 4
+     },
+     {
+      "name": "宝石骑士",
+      "active": 1,
+      "need": 1,
+      "style": 4
+     },
+     {
+      "name": "日蚀骑士",
+      "active": 3,
+      "need": 3,
+      "style": 4
+     },
+     {
+      "name": "月蚀骑士",
+      "active": 3,
+      "need": 4,
+      "style": 3
+     },
+     {
+      "name": "绝命花妖",
+      "active": 1,
+      "need": 2,
+      "style": 1
+     },
+     {
+      "name": "法师",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "迅捷射手",
+      "active": 2,
+      "need": 3,
+      "style": 1
+     },
+     {
+      "name": "重装战士",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "护卫",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "主宰",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "狂战士",
+      "active": 1,
+      "need": 2,
+      "style": 0
+     },
+     {
+      "name": "日月双蚀",
+      "active": 6,
+      "need": 6,
+      "style": 5
+     }
+    ],
+    "positionMap": [
+     [
+      3,
+      3,
+      "蕾欧娜"
+     ],
+     [
+      1,
+      4,
+      "凯尔"
+     ],
+     [
+      3,
+      2,
+      "瑟庄妮"
+     ],
+     [
+      2,
+      5,
+      "黛安娜"
+     ],
+     [
+      3,
+      1,
+      "费德提克"
+     ],
+     [
+      1,
+      6,
+      "厄斐琉斯"
+     ],
+     [
+      1,
+      0,
+      "拉露恩"
+     ],
+     [
+      3,
+      4,
+      "茂凯"
+     ],
+     [
+      3,
+      5,
+      "塔里克"
+     ]
+    ],
+    "positioning": "OP.GG 实战站位（按真实对局采样）",
+    "counters": {
+     "克制": [],
+     "被克制": []
+    },
+    "source": "OP.GG 实时数据",
+    "sourceReal": true,
+    "teamCode": "0241140a4273fa4003ef3ec415430000TFTSet18"
+   },
+   {
     "id": "og_799c30887376dd4c3b8a1683ff842c27",
     "name": "灵魂莲华 阿狸",
     "mainC": "阿狸",
@@ -1882,9 +2220,9 @@
     "strength": 2.84,
     "avgPlace": 2.84,
     "winRate": 0.2478,
-    "top4Rate": 0.8358,
-    "pickRate": 0.002255,
-    "games": 6365,
+    "top4Rate": 0.8367,
+    "pickRate": 0.002242,
+    "games": 6465,
     "opScore": 0.37,
     "units": [
      {
@@ -2021,6 +2359,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "阿狸",
+      "id": "DA_18_Ahri",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_JeweledGauntlet",
+       "op_DA_SpearOfShojin",
+       "op_DA_StrikersFlail"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "瑟提",
+      "id": "DA_18_Sett",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_BrambleVest",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "婕拉",
+      "id": "DA_18_Zyra",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Morellonomicon",
+       "op_DA_SpearOfShojin",
+       "op_DA_VoidStaff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 灵魂莲华、法师、斗士 展开，主C 阿狸（4 费 / 2 星，出装 珠光护手、朔极之矛、强袭者的链枷）。核心棋子：阿狸、瑟提、婕拉。9 人口成型，OP.GG 采样 6465 场：平均名次 2.84、胜率 24.8%、前四率 83.7%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "荆棘之兴",
@@ -2162,12 +2555,12 @@
     "name": "灵魂莲华 阿狸",
     "mainC": "阿狸",
     "tier": "C",
-    "strength": 2.85,
-    "avgPlace": 2.85,
-    "winRate": 0.2086,
-    "top4Rate": 0.851,
-    "pickRate": 0.000107,
-    "games": 302,
+    "strength": 2.86,
+    "avgPlace": 2.86,
+    "winRate": 0.2098,
+    "top4Rate": 0.8492,
+    "pickRate": 0.000106,
+    "games": 305,
     "opScore": 0.02,
     "units": [
      {
@@ -2304,6 +2697,61 @@
       "tag": "other"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "阿狸",
+      "id": "DA_18_Ahri",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_JeweledGauntlet",
+       "op_DA_SpearOfShojin",
+       "op_DA_StrikersFlail"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "莫甘娜",
+      "id": "DA_18_Morgana",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_AdaptiveHelm",
+       "op_DA_Morellonomicon",
+       "op_DA_VoidStaff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 3
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "瑟提",
+      "id": "DA_18_Sett",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 3
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 神谕、灵魂莲华、峡谷野怪 展开，主C 阿狸（4 费 / 2 星，出装 珠光护手、朔极之矛、强袭者的链枷）。核心棋子：阿狸、莫甘娜、瑟提。9 人口成型，OP.GG 采样 305 场：平均名次 2.86、胜率 21.0%、前四率 84.9%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "月华神女",
@@ -2433,12 +2881,12 @@
     "name": "花仙子 希维尔",
     "mainC": "希维尔",
     "tier": "C",
-    "strength": 2.93,
-    "avgPlace": 2.93,
-    "winRate": 0.2727,
-    "top4Rate": 0.789,
+    "strength": 2.95,
+    "avgPlace": 2.95,
+    "winRate": 0.2675,
+    "top4Rate": 0.7834,
     "pickRate": 0.000109,
-    "games": 308,
+    "games": 314,
     "opScore": 0.02,
     "units": [
      {
@@ -2575,6 +3023,61 @@
       "tag": "other"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "希维尔",
+      "id": "DA_18_Sivir",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_18_EmblemFae",
+       "op_DA_InfinityEdge",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "艾希",
+      "id": "DA_18_Ashe",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_LastWhisper",
+       "op_DA_RedBuff",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "阿木木",
+      "id": "DA_Amumu18",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 花仙子、主宰、猎人 展开，主C 希维尔（4 费 / 2 星，出装 花仙子纹章、无尽之刃、朔极之矛）。核心棋子：希维尔、艾希、阿木木。9 人口成型，OP.GG 采样 314 场：平均名次 2.95、胜率 26.8%、前四率 78.3%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "远古树精",
@@ -2698,12 +3201,12 @@
     "name": "主宰 艾希",
     "mainC": "艾希",
     "tier": "A",
-    "strength": 3.01,
-    "avgPlace": 3.01,
-    "winRate": 0.3133,
-    "top4Rate": 0.7679,
-    "pickRate": 0.001384,
-    "games": 3907,
+    "strength": 3.02,
+    "avgPlace": 3.02,
+    "winRate": 0.3123,
+    "top4Rate": 0.7661,
+    "pickRate": 0.001398,
+    "games": 4031,
     "opScore": 0.21,
     "units": [
      {
@@ -2840,6 +3343,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "艾希",
+      "id": "DA_18_Ashe",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_LastWhisper",
+       "op_DA_RedBuff",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "茂凯",
+      "id": "DA_18_Maokai",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "希维尔",
+      "id": "DA_18_Sivir",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_InfinityEdge",
+       "op_DA_SpearOfShojin",
+       "op_DA_StrikersFlail"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 主宰、猎人、地狱火 展开，主C 艾希（5 费 / 2 星，出装 最后的轻语、红霸符、朔极之矛）。核心棋子：艾希、茂凯、希维尔。9 人口成型，OP.GG 采样 4031 场：平均名次 3.02、胜率 31.2%、前四率 76.6%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "翠神",
@@ -2969,13 +3527,13 @@
     "name": "重装战士 拉露恩",
     "mainC": "拉露恩",
     "tier": "S",
-    "strength": 3.09,
-    "avgPlace": 3.09,
-    "winRate": 0.3097,
-    "top4Rate": 0.7555,
-    "pickRate": 0.006901,
-    "games": 19479,
-    "opScore": 0.97,
+    "strength": 3.08,
+    "avgPlace": 3.08,
+    "winRate": 0.3103,
+    "top4Rate": 0.7559,
+    "pickRate": 0.006885,
+    "games": 19849,
+    "opScore": 0.98,
     "units": [
      {
       "name": "伊莉丝",
@@ -3098,6 +3656,61 @@
       "tag": "other"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "拉露恩",
+      "id": "DA_18_Alune",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_JeweledGauntlet",
+       "op_DA_NashorsTooth",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "莫甘娜",
+      "id": "DA_18_Morgana",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Morellonomicon",
+       "op_DA_RabadonsDeathcap",
+       "op_DA_VoidStaff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 3
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "Sentinel",
+      "id": "DA_Sentinel18",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_ProtectorsVow",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 重装战士、魔女、峡谷野怪 展开，主C 拉露恩（5 费 / 2 星，出装 珠光护手、纳什之牙、朔极之矛）。核心棋子：拉露恩、莫甘娜、Sentinel。8 人口成型，OP.GG 采样 19849 场：平均名次 3.08、胜率 31.0%、前四率 75.6%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "月华神女",
@@ -3218,10 +3831,10 @@
     "tier": "B",
     "strength": 3.11,
     "avgPlace": 3.11,
-    "winRate": 0.2112,
-    "top4Rate": 0.773,
-    "pickRate": 0.00047,
-    "games": 1326,
+    "winRate": 0.2096,
+    "top4Rate": 0.7733,
+    "pickRate": 0.000468,
+    "games": 1350,
     "opScore": 0.07,
     "units": [
      {
@@ -3358,6 +3971,61 @@
       "tag": "other"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "艾希",
+      "id": "DA_18_Ashe",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_LastWhisper",
+       "op_DA_RedBuff",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "阿狸",
+      "id": "DA_18_Ahri",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_JeweledGauntlet",
+       "op_DA_SpearOfShojin",
+       "op_DA_StrikersFlail"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "瑟提",
+      "id": "DA_18_Sett",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_GargoyleStoneplate",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 灵魂莲华、法师、猎人 展开，主C 艾希（5 费 / 2 星，出装 最后的轻语、红霸符、朔极之矛）。核心棋子：艾希、阿狸、瑟提。9 人口成型，OP.GG 采样 1350 场：平均名次 3.11、胜率 21.0%、前四率 77.3%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "荆棘之兴",
@@ -3477,282 +4145,17 @@
     "teamCode": "0243a4074373e942a42c43c3f0401000TFTSet18"
    },
    {
-    "id": "og_a9020dd8fc336a92040f251d00d8840f",
-    "name": "主宰 婕拉",
-    "mainC": "婕拉",
-    "tier": "A",
-    "strength": 3.12,
-    "avgPlace": 3.12,
-    "winRate": 0.2242,
-    "top4Rate": 0.7763,
-    "pickRate": 0.001408,
-    "games": 3974,
-    "opScore": 0.19,
-    "units": [
-     {
-      "name": "约里克",
-      "id": "DA_18_Yorick",
-      "cost": 1,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 1,
-       "y": 4
-      },
-      "tag": "other"
-     },
-     {
-      "name": "瑟庄妮",
-      "id": "DA_18_Sejuani",
-      "cost": 2,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 2,
-       "y": 4
-      },
-      "tag": "other"
-     },
-     {
-      "name": "Scuttlecrab",
-      "id": "DA_Scuttlecrab18",
-      "cost": 2,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 3,
-       "y": 4
-      },
-      "tag": "other"
-     },
-     {
-      "name": "蔚",
-      "id": "DA_Vi18",
-      "cost": 3,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 4,
-       "y": 4
-      },
-      "tag": "other"
-     },
-     {
-      "name": "希维尔",
-      "id": "DA_18_Sivir",
-      "cost": 4,
-      "star": 2,
-      "items": [
-       "op_DA_GiantSlayer",
-       "op_DA_InfinityEdge",
-       "op_DA_StrikersFlail"
-      ],
-      "core": false,
-      "cell": {
-       "x": 5,
-       "y": 1
-      },
-      "tag": "other"
-     },
-     {
-      "name": "婕拉",
-      "id": "DA_18_Zyra",
-      "cost": 4,
-      "star": 2,
-      "items": [
-       "op_DA_ArchangelsStaff",
-       "op_DA_ArchangelsStaff",
-       "op_DA_HextechGunblade"
-      ],
-      "core": true,
-      "cell": {
-       "x": 1,
-       "y": 1
-      },
-      "tag": "main"
-     },
-     {
-      "name": "阿木木",
-      "id": "DA_Amumu18",
-      "cost": 4,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 6,
-       "y": 4
-      },
-      "tag": "tank"
-     },
-     {
-      "name": "艾希",
-      "id": "DA_18_Ashe",
-      "cost": 5,
-      "star": 2,
-      "items": [
-       "op_DA_LastWhisper",
-       "op_DA_RedBuff",
-       "op_DA_SpearOfShojin"
-      ],
-      "core": true,
-      "cell": {
-       "x": 7,
-       "y": 1
-      },
-      "tag": "sub"
-     },
-     {
-      "name": "茂凯",
-      "id": "DA_18_Maokai",
-      "cost": 5,
-      "star": 2,
-      "items": [
-       "op_DA_GargoyleStoneplate",
-       "op_DA_SpiritVisage",
-       "op_DA_WarmogsArmor"
-      ],
-      "core": true,
-      "cell": {
-       "x": 5,
-       "y": 4
-      },
-      "tag": "sub"
-     }
-    ],
-    "traits": [
-     {
-      "name": "远古树精",
-      "active": 1,
-      "need": 1,
-      "style": 4
-     },
-     {
-      "name": "荆棘之兴",
-      "active": 1,
-      "need": 1,
-      "style": 4
-     },
-     {
-      "name": "主宰",
-      "active": 6,
-      "need": 6,
-      "style": 4
-     },
-     {
-      "name": "猎人",
-      "active": 2,
-      "need": 3,
-      "style": 1
-     },
-     {
-      "name": "野兽之灵",
-      "active": 2,
-      "need": 4,
-      "style": 1
-     },
-     {
-      "name": "召唤师",
-      "active": 2,
-      "need": 3,
-      "style": 1
-     },
-     {
-      "name": "日蚀骑士",
-      "active": 1,
-      "need": 3,
-      "style": 0
-     },
-     {
-      "name": "地狱火",
-      "active": 1,
-      "need": 2,
-      "style": 0
-     },
-     {
-      "name": "峡谷野怪",
-      "active": 1,
-      "need": 3,
-      "style": 0
-     },
-     {
-      "name": "灵魂莲华",
-      "active": 2,
-      "need": 3,
-      "style": 0
-     }
-    ],
-    "positionMap": [
-     [
-      3,
-      3,
-      "约里克"
-     ],
-     [
-      3,
-      4,
-      "瑟庄妮"
-     ],
-     [
-      3,
-      2,
-      "Scuttlecrab"
-     ],
-     [
-      3,
-      5,
-      "蔚"
-     ],
-     [
-      1,
-      1,
-      "希维尔"
-     ],
-     [
-      1,
-      6,
-      "婕拉"
-     ],
-     [
-      3,
-      0,
-      "阿木木"
-     ],
-     [
-      1,
-      3,
-      "艾希"
-     ],
-     [
-      3,
-      6,
-      "茂凯"
-     ]
-    ],
-    "positioning": "OP.GG 实战站位（按真实对局采样）",
-    "counters": {
-     "克制": [],
-     "被克制": []
-    },
-    "source": "OP.GG 实时数据",
-    "sourceReal": true,
-    "teamCode": "0243a42742643742c43c3ed3f0415000TFTSet18"
-   },
-   {
     "id": "og_91fa8a5b041869b676179aa7841c6780",
     "name": "迅捷射手 凯尔",
     "mainC": "凯尔",
     "tier": "S",
     "strength": 3.12,
     "avgPlace": 3.12,
-    "winRate": 0.2178,
-    "top4Rate": 0.7812,
-    "pickRate": 0.004016,
-    "games": 11336,
-    "opScore": 0.55,
+    "winRate": 0.2176,
+    "top4Rate": 0.7821,
+    "pickRate": 0.00404,
+    "games": 11648,
+    "opScore": 0.56,
     "units": [
      {
       "name": "蕾欧娜",
@@ -3874,6 +4277,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "凯尔",
+      "id": "DA_18_Kayle",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_GuinsoosRageblade",
+       "op_DA_JeweledGauntlet",
+       "op_DA_RabadonsDeathcap"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "厄斐琉斯",
+      "id": "DA_18_Aphelios",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Deathblade",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_KrakensFury"
+      ],
+      "core": true,
+      "cell": {
+       "x": 6,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "瑟庄妮",
+      "id": "DA_18_Sejuani",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 5,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 日蚀骑士、迅捷射手、地狱火 展开，主C 凯尔（2 费 / 3 星，出装 鬼索的狂暴之刃、珠光护手、灭世者的死亡之帽）。核心棋子：凯尔、厄斐琉斯、瑟庄妮。8 人口成型，OP.GG 采样 11648 场：平均名次 3.12、胜率 21.8%、前四率 78.2%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "日蚀骑士",
@@ -3976,16 +4434,336 @@
     "teamCode": "0241143540a42742b3fa3ef3ed000000TFTSet18"
    },
    {
+    "id": "og_a9020dd8fc336a92040f251d00d8840f",
+    "name": "主宰 婕拉",
+    "mainC": "婕拉",
+    "tier": "A",
+    "strength": 3.13,
+    "avgPlace": 3.13,
+    "winRate": 0.2227,
+    "top4Rate": 0.7763,
+    "pickRate": 0.001416,
+    "games": 4082,
+    "opScore": 0.19,
+    "units": [
+     {
+      "name": "约里克",
+      "id": "DA_18_Yorick",
+      "cost": 1,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 1,
+       "y": 4
+      },
+      "tag": "other"
+     },
+     {
+      "name": "瑟庄妮",
+      "id": "DA_18_Sejuani",
+      "cost": 2,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 2,
+       "y": 4
+      },
+      "tag": "other"
+     },
+     {
+      "name": "Scuttlecrab",
+      "id": "DA_Scuttlecrab18",
+      "cost": 2,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 3,
+       "y": 4
+      },
+      "tag": "other"
+     },
+     {
+      "name": "蔚",
+      "id": "DA_Vi18",
+      "cost": 3,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "other"
+     },
+     {
+      "name": "希维尔",
+      "id": "DA_18_Sivir",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GiantSlayer",
+       "op_DA_InfinityEdge",
+       "op_DA_StrikersFlail"
+      ],
+      "core": true,
+      "cell": {
+       "x": 5,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "婕拉",
+      "id": "DA_18_Zyra",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_ArchangelsStaff",
+       "op_DA_ArchangelsStaff",
+       "op_DA_HextechGunblade"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "阿木木",
+      "id": "DA_Amumu18",
+      "cost": 4,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 6,
+       "y": 4
+      },
+      "tag": "tank"
+     },
+     {
+      "name": "艾希",
+      "id": "DA_18_Ashe",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_LastWhisper",
+       "op_DA_RedBuff",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "茂凯",
+      "id": "DA_18_Maokai",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": false,
+      "cell": {
+       "x": 5,
+       "y": 4
+      },
+      "tag": "other"
+     }
+    ],
+    "coreUnits": [
+     {
+      "name": "婕拉",
+      "id": "DA_18_Zyra",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_ArchangelsStaff",
+       "op_DA_ArchangelsStaff",
+       "op_DA_HextechGunblade"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "艾希",
+      "id": "DA_18_Ashe",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_LastWhisper",
+       "op_DA_RedBuff",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "希维尔",
+      "id": "DA_18_Sivir",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GiantSlayer",
+       "op_DA_InfinityEdge",
+       "op_DA_StrikersFlail"
+      ],
+      "core": true,
+      "cell": {
+       "x": 5,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 主宰、猎人、野兽之灵 展开，主C 婕拉（4 费 / 2 星，出装 大天使之杖、大天使之杖、海克斯科技枪刃）。核心棋子：婕拉、艾希、希维尔。9 人口成型，OP.GG 采样 4082 场：平均名次 3.13、胜率 22.3%、前四率 77.6%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
+    "traits": [
+     {
+      "name": "远古树精",
+      "active": 1,
+      "need": 1,
+      "style": 4
+     },
+     {
+      "name": "荆棘之兴",
+      "active": 1,
+      "need": 1,
+      "style": 4
+     },
+     {
+      "name": "主宰",
+      "active": 6,
+      "need": 6,
+      "style": 4
+     },
+     {
+      "name": "猎人",
+      "active": 2,
+      "need": 3,
+      "style": 1
+     },
+     {
+      "name": "野兽之灵",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "召唤师",
+      "active": 2,
+      "need": 3,
+      "style": 1
+     },
+     {
+      "name": "日蚀骑士",
+      "active": 1,
+      "need": 3,
+      "style": 0
+     },
+     {
+      "name": "地狱火",
+      "active": 1,
+      "need": 2,
+      "style": 0
+     },
+     {
+      "name": "峡谷野怪",
+      "active": 1,
+      "need": 3,
+      "style": 0
+     },
+     {
+      "name": "灵魂莲华",
+      "active": 2,
+      "need": 3,
+      "style": 0
+     }
+    ],
+    "positionMap": [
+     [
+      3,
+      3,
+      "约里克"
+     ],
+     [
+      3,
+      4,
+      "瑟庄妮"
+     ],
+     [
+      3,
+      2,
+      "Scuttlecrab"
+     ],
+     [
+      3,
+      5,
+      "蔚"
+     ],
+     [
+      1,
+      1,
+      "希维尔"
+     ],
+     [
+      1,
+      6,
+      "婕拉"
+     ],
+     [
+      3,
+      0,
+      "阿木木"
+     ],
+     [
+      1,
+      3,
+      "艾希"
+     ],
+     [
+      3,
+      6,
+      "茂凯"
+     ]
+    ],
+    "positioning": "OP.GG 实战站位（按真实对局采样）",
+    "counters": {
+     "克制": [],
+     "被克制": []
+    },
+    "source": "OP.GG 实时数据",
+    "sourceReal": true,
+    "teamCode": "0243a42742643742c43c3ed3f0415000TFTSet18"
+   },
+   {
     "id": "og_e79e0b44fb8b780e395642c6c706fc35",
     "name": "日蚀骑士 芸阿娜",
     "mainC": "芸阿娜",
     "tier": "OP",
     "strength": 3.14,
     "avgPlace": 3.14,
-    "winRate": 0.2269,
-    "top4Rate": 0.7734,
-    "pickRate": 0.012991,
-    "games": 36668,
+    "winRate": 0.2263,
+    "top4Rate": 0.7735,
+    "pickRate": 0.013015,
+    "games": 37522,
     "opScore": 1.77,
     "units": [
      {
@@ -4108,6 +4886,61 @@
       "tag": "other"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "芸阿娜",
+      "id": "DA_18_Yunara",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_Deathblade",
+       "op_DA_LastWhisper",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "瑟庄妮",
+      "id": "DA_18_Sejuani",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "卡尔玛",
+      "id": "DA_Karma18",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_BlueBuff",
+       "op_DA_JeweledGauntlet",
+       "op_DA_RabadonsDeathcap"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 日蚀骑士、灵魂莲华、裁决使 展开，主C 芸阿娜（2 费 / 3 星，出装 死亡之刃、最后的轻语、朔极之矛）。核心棋子：芸阿娜、瑟庄妮、卡尔玛。8 人口成型，OP.GG 采样 37522 场：平均名次 3.14、胜率 22.6%、前四率 77.3%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "日蚀骑士",
@@ -4228,10 +5061,10 @@
     "tier": "C",
     "strength": 3.14,
     "avgPlace": 3.14,
-    "winRate": 0.2071,
-    "top4Rate": 0.7875,
-    "pickRate": 0.00026,
-    "games": 734,
+    "winRate": 0.2081,
+    "top4Rate": 0.7879,
+    "pickRate": 0.000258,
+    "games": 745,
     "opScore": 0.04,
     "units": [
      {
@@ -4341,6 +5174,52 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "伊泽瑞尔",
+      "id": "DA_18_Ezreal",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Deathblade",
+       "op_DA_LastWhisper",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": null,
+      "tag": "main"
+     },
+     {
+      "name": "索拉卡",
+      "id": "DA_18_Soraka",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_18_EmblemElderwood",
+       "op_DA_RabadonsDeathcap",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": null,
+      "tag": "sub"
+     },
+     {
+      "name": "赫卡里姆",
+      "id": "DA_18_Hecarim",
+      "cost": 3,
+      "star": 2,
+      "items": [
+       "op_DA_BrambleVest",
+       "op_DA_DragonsClaw",
+       "op_DA_SunfireCape"
+      ],
+      "core": true,
+      "cell": null,
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 永恒之森、裁决使、绝命花妖 展开，主C 伊泽瑞尔（4 费 / 2 星，出装 死亡之刃、最后的轻语、朔极之矛）。核心棋子：伊泽瑞尔、索拉卡、赫卡里姆。9 人口成型，OP.GG 采样 745 场：平均名次 3.14、胜率 20.8%、前四率 78.8%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "宝石骑士",
@@ -4466,10 +5345,10 @@
     "tier": "A",
     "strength": 3.15,
     "avgPlace": 3.15,
-    "winRate": 0.2205,
-    "top4Rate": 0.7692,
+    "winRate": 0.2203,
+    "top4Rate": 0.77,
     "pickRate": 0.001798,
-    "games": 5074,
+    "games": 5183,
     "opScore": 0.24,
     "units": [
      {
@@ -4566,7 +5445,7 @@
       ],
       "core": true,
       "cell": {
-       "x": 3,
+       "x": 2,
        "y": 1
       },
       "tag": "sub"
@@ -4606,6 +5485,61 @@
       "tag": "other"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "厄斐琉斯",
+      "id": "DA_18_Aphelios",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_18_EmblemElderwood",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_KrakensFury"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "伊泽瑞尔",
+      "id": "DA_18_Ezreal",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Deathblade",
+       "op_DA_LastWhisper",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "莉莉娅",
+      "id": "DA_18_Lillia",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Crownguard",
+       "op_DA_ProtectorsVow",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 2
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 永恒之森、斗士、迅捷射手 展开，主C 厄斐琉斯（4 费 / 2 星，出装 永恒之森纹章、鬼索的狂暴之刃、海妖之怒）。核心棋子：厄斐琉斯、伊泽瑞尔、莉莉娅。9 人口成型，OP.GG 采样 5183 场：平均名次 3.15、胜率 22.0%、前四率 77.0%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "永恒之森",
@@ -4731,10 +5665,10 @@
     "tier": "S",
     "strength": 3.19,
     "avgPlace": 3.19,
-    "winRate": 0.1962,
+    "winRate": 0.196,
     "top4Rate": 0.7748,
-    "pickRate": 0.00438,
-    "games": 12363,
+    "pickRate": 0.004376,
+    "games": 12615,
     "opScore": 0.57,
     "units": [
      {
@@ -4858,6 +5792,61 @@
       "tag": "sub"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "雷恩加尔",
+      "id": "DA_18_Rengar",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_EdgeOfNight",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_TitansResolve"
+      ],
+      "core": true,
+      "cell": {
+       "x": 6,
+       "y": 2
+      },
+      "tag": "main"
+     },
+     {
+      "name": "奈德丽",
+      "id": "DA_Nidalee18_AP",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_InfinityEdge",
+       "op_DA_SpearOfShojin",
+       "op_DA_SteraksGage"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "易",
+      "id": "DA_18_MasterYi_AD",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_EdgeOfNight",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_TitansResolve"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 2
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 魔战士、灵魂莲华、斗士 展开，主C 雷恩加尔（3 费 / 3 星，出装 夜之锋刃、鬼索的狂暴之刃、泰坦的坚决）。核心棋子：雷恩加尔、奈德丽、易。8 人口成型，OP.GG 采样 12615 场：平均名次 3.19、胜率 19.6%、前四率 77.5%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "宿敌",
@@ -4978,10 +5967,10 @@
     "tier": "OP",
     "strength": 3.2,
     "avgPlace": 3.2,
-    "winRate": 0.3041,
-    "top4Rate": 0.7246,
-    "pickRate": 0.018236,
-    "games": 51470,
+    "winRate": 0.3044,
+    "top4Rate": 0.7251,
+    "pickRate": 0.018216,
+    "games": 52517,
     "opScore": 2.37,
     "units": [
      {
@@ -5118,6 +6107,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "德莱文",
+      "id": "DA_Draven18",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_Deathblade",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_KrakensFury"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 2
+      },
+      "tag": "main"
+     },
+     {
+      "name": "茂凯",
+      "id": "DA_18_Maokai",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 6,
+       "y": 4
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "伊泽瑞尔",
+      "id": "DA_18_Ezreal",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Deathblade",
+       "op_DA_LastWhisper",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 永恒之森、斗士、裁决使 展开，主C 德莱文（5 费 / 2 星，出装 死亡之刃、鬼索的狂暴之刃、海妖之怒）。核心棋子：德莱文、茂凯、伊泽瑞尔。9 人口成型，OP.GG 采样 52517 场：平均名次 3.2、胜率 30.4%、前四率 72.5%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "翠神",
@@ -5247,12 +6291,12 @@
     "name": "迅捷射手 凯尔",
     "mainC": "凯尔",
     "tier": "B",
-    "strength": 3.2,
-    "avgPlace": 3.2,
-    "winRate": 0.1776,
-    "top4Rate": 0.7828,
-    "pickRate": 0.000904,
-    "games": 2551,
+    "strength": 3.21,
+    "avgPlace": 3.21,
+    "winRate": 0.1785,
+    "top4Rate": 0.7806,
+    "pickRate": 0.000917,
+    "games": 2644,
     "opScore": 0.12,
     "units": [
      {
@@ -5376,6 +6420,61 @@
       "tag": "other"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "凯尔",
+      "id": "DA_18_Kayle",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_GuinsoosRageblade",
+       "op_DA_JeweledGauntlet",
+       "op_DA_RabadonsDeathcap"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "奥恩",
+      "id": "DA_18_Ornn",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 6,
+       "y": 4
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "霞",
+      "id": "DA_18_Xayah",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_Deathblade",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_RedBuff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 6,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 日蚀骑士、迅捷射手、永恒之森 展开，主C 凯尔（2 费 / 3 星，出装 鬼索的狂暴之刃、珠光护手、灭世者的死亡之帽）。核心棋子：凯尔、奥恩、霞。8 人口成型，OP.GG 采样 2644 场：平均名次 3.21、胜率 17.8%、前四率 78.1%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "日蚀骑士",
@@ -5482,12 +6581,12 @@
     "name": "神谕 拉露恩",
     "mainC": "拉露恩",
     "tier": "B",
-    "strength": 3.26,
-    "avgPlace": 3.26,
-    "winRate": 0.2079,
-    "top4Rate": 0.7526,
-    "pickRate": 0.000484,
-    "games": 1366,
+    "strength": 3.25,
+    "avgPlace": 3.25,
+    "winRate": 0.2106,
+    "top4Rate": 0.7559,
+    "pickRate": 0.000486,
+    "games": 1401,
     "opScore": 0.06,
     "units": [
      {
@@ -5624,6 +6723,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "拉露恩",
+      "id": "DA_18_Alune",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_18_EmblemInvoker",
+       "op_DA_JeweledGauntlet",
+       "op_DA_StrikersFlail"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "莫甘娜",
+      "id": "DA_18_Morgana",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Morellonomicon",
+       "op_DA_RabadonsDeathcap",
+       "op_DA_VoidStaff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 2
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "Brambleback",
+      "id": "DA_Brambleback18",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Bloodthirster",
+       "op_DA_EdgeOfNight",
+       "op_DA_GuinsoosRageblade"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 2
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 神谕、重装战士、峡谷野怪 展开，主C 拉露恩（5 费 / 2 星，出装 神谕纹章、珠光护手、强袭者的链枷）。核心棋子：拉露恩、莫甘娜、Brambleback。9 人口成型，OP.GG 采样 1401 场：平均名次 3.25、胜率 21.1%、前四率 75.6%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "月华神女",
@@ -5759,12 +6913,12 @@
     "name": "地狱火 阿卡丽",
     "mainC": "阿卡丽",
     "tier": "A",
-    "strength": 3.34,
-    "avgPlace": 3.34,
-    "winRate": 0.1272,
-    "top4Rate": 0.7678,
-    "pickRate": 0.001326,
-    "games": 3742,
+    "strength": 3.35,
+    "avgPlace": 3.35,
+    "winRate": 0.1267,
+    "top4Rate": 0.7675,
+    "pickRate": 0.001331,
+    "games": 3837,
     "opScore": 0.15,
     "units": [
      {
@@ -5888,6 +7042,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "阿卡丽",
+      "id": "DA_18_Akali_AD",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_EdgeOfNight",
+       "op_DA_HandOfJustice",
+       "op_DA_JeweledGauntlet"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "奥恩",
+      "id": "DA_18_Ornn",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_Crownguard",
+       "op_DA_GargoyleStoneplate",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "韦鲁斯",
+      "id": "DA_18_Varus",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_InfinityEdge",
+       "op_DA_LastWhisper",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 日蚀骑士、地狱火、狂战士 展开，主C 阿卡丽（1 费 / 3 星，出装 夜之锋刃、正义之手、珠光护手）。核心棋子：阿卡丽、奥恩、韦鲁斯。8 人口成型，OP.GG 采样 3837 场：平均名次 3.35、胜率 12.7%、前四率 76.8%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "日蚀骑士",
@@ -6002,10 +7211,10 @@
     "tier": "OP",
     "strength": 3.38,
     "avgPlace": 3.38,
-    "winRate": 0.2957,
-    "top4Rate": 0.6859,
-    "pickRate": 0.01388,
-    "games": 39177,
+    "winRate": 0.2965,
+    "top4Rate": 0.6866,
+    "pickRate": 0.013859,
+    "games": 39956,
     "opScore": 1.55,
     "units": [
      {
@@ -6129,6 +7338,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "茂凯",
+      "id": "DA_18_Maokai",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 5,
+       "y": 4
+      },
+      "tag": "main"
+     },
+     {
+      "name": "Elder Dragon",
+      "id": "DA_18_ElderDragon",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_InfinityEdge",
+       "op_DA_LastWhisper",
+       "op_DA_StrikersFlail"
+      ],
+      "core": true,
+      "cell": {
+       "x": 5,
+       "y": 3
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "德莱文",
+      "id": "DA_Draven18",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_Deathblade",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_KrakensFury"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 峡谷野怪、地狱火、主宰 展开，主C 茂凯（5 费 / 2 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：茂凯、Elder Dragon、德莱文。8 人口成型，OP.GG 采样 39956 场：平均名次 3.38、胜率 29.6%、前四率 68.7%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "顶级掠食者",
@@ -6253,12 +7517,12 @@
     "name": "永恒之森 Mama Beak",
     "mainC": "赫卡里姆",
     "tier": "B",
-    "strength": 3.39,
-    "avgPlace": 3.39,
-    "winRate": 0.1211,
-    "top4Rate": 0.7549,
+    "strength": 3.38,
+    "avgPlace": 3.38,
+    "winRate": 0.1214,
+    "top4Rate": 0.7563,
     "pickRate": 0.001217,
-    "games": 3436,
+    "games": 3508,
     "opScore": 0.14,
     "units": [
      {
@@ -6382,6 +7646,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "赫卡里姆",
+      "id": "DA_18_Hecarim",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "main"
+     },
+     {
+      "name": "Mama Beak",
+      "id": "DA_CrimsonRaptor18",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_GuinsoosRageblade",
+       "op_DA_HextechGunblade",
+       "op_DA_TitansResolve"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "Krug",
+      "id": "DA_Krug18",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 2
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 召唤师、永恒之森、峡谷野怪 展开，主C 赫卡里姆（3 费 / 3 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：赫卡里姆、Mama Beak、Krug。8 人口成型，OP.GG 采样 3508 场：平均名次 3.38、胜率 12.1%、前四率 75.6%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "荆棘之兴",
@@ -6506,12 +7825,12 @@
     "name": "花仙子 霞",
     "mainC": "霞",
     "tier": "C",
-    "strength": 3.4,
-    "avgPlace": 3.4,
-    "winRate": 0.1582,
-    "top4Rate": 0.7461,
-    "pickRate": 0.00034,
-    "games": 961,
+    "strength": 3.38,
+    "avgPlace": 3.38,
+    "winRate": 0.1601,
+    "top4Rate": 0.7497,
+    "pickRate": 0.000342,
+    "games": 987,
     "opScore": 0.04,
     "units": [
      {
@@ -6635,6 +7954,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "霞",
+      "id": "DA_18_Xayah",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_Deathblade",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_KrakensFury"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "凯尔",
+      "id": "DA_18_Kayle",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_GuinsoosRageblade",
+       "op_DA_RabadonsDeathcap",
+       "op_DA_RedBuff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "洛",
+      "id": "DA_18_Rakan",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_ProtectorsVow",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 花仙子、日蚀骑士、重装战士 展开，主C 霞（1 费 / 3 星，出装 死亡之刃、鬼索的狂暴之刃、海妖之怒）。核心棋子：霞、凯尔、洛。8 人口成型，OP.GG 采样 987 场：平均名次 3.38、胜率 16.0%、前四率 75.0%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "日蚀骑士",
@@ -6759,13 +8133,13 @@
     "name": "重装战士 拉露恩",
     "mainC": "拉露恩",
     "tier": "S",
-    "strength": 3.44,
-    "avgPlace": 3.44,
-    "winRate": 0.2468,
-    "top4Rate": 0.692,
-    "pickRate": 0.006927,
-    "games": 19552,
-    "opScore": 0.73,
+    "strength": 3.43,
+    "avgPlace": 3.43,
+    "winRate": 0.2471,
+    "top4Rate": 0.6927,
+    "pickRate": 0.006937,
+    "games": 20001,
+    "opScore": 0.74,
     "units": [
      {
       "name": "洛",
@@ -6900,6 +8274,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "拉露恩",
+      "id": "DA_18_Alune",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_ArchangelsStaff",
+       "op_DA_BlueBuff",
+       "op_DA_JeweledGauntlet"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "莫甘娜",
+      "id": "DA_18_Morgana",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_HextechGunblade",
+       "op_DA_Morellonomicon",
+       "op_DA_VoidStaff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 2
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "Sentinel",
+      "id": "DA_Sentinel18",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Crownguard",
+       "op_DA_ProtectorsVow",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 重装战士、月蚀骑士、法师 展开，主C 拉露恩（5 费 / 2 星，出装 大天使之杖、蓝霸符、珠光护手）。核心棋子：拉露恩、莫甘娜、Sentinel。9 人口成型，OP.GG 采样 20001 场：平均名次 3.43、胜率 24.7%、前四率 69.3%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "月华神女",
@@ -7049,11 +8478,11 @@
     "tier": "S",
     "strength": 3.45,
     "avgPlace": 3.45,
-    "winRate": 0.1061,
-    "top4Rate": 0.7486,
-    "pickRate": 0.01249,
-    "games": 35254,
-    "opScore": 1.31,
+    "winRate": 0.1064,
+    "top4Rate": 0.749,
+    "pickRate": 0.012528,
+    "games": 36119,
+    "opScore": 1.32,
     "units": [
      {
       "name": "可酷伯",
@@ -7176,6 +8605,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "提莫",
+      "id": "DA_18_Teemo",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_JeweledGauntlet",
+       "op_DA_SpearOfShojin",
+       "op_DA_StrikersFlail"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "莫甘娜",
+      "id": "DA_18_Morgana",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_AdaptiveHelm",
+       "op_DA_Morellonomicon",
+       "op_DA_VoidStaff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 2
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "乐芙兰",
+      "id": "DA_18_LeBlanc",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_JeweledGauntlet",
+       "op_DA_RabadonsDeathcap",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 神谕、永恒之森、约德尔人和朋友 展开，主C 提莫（2 费 / 3 星，出装 珠光护手、朔极之矛、强袭者的链枷）。核心棋子：提莫、莫甘娜、乐芙兰。8 人口成型，OP.GG 采样 36119 场：平均名次 3.45、胜率 10.6%、前四率 74.9%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "神谕",
@@ -7284,16 +8768,626 @@
     "teamCode": "0243d4363eb410431403418428000000TFTSet18"
    },
    {
+    "id": "og_199fc60ef48d77b2b6e59fe673f58509",
+    "name": "猎人 凯特琳",
+    "mainC": "凯特琳",
+    "tier": "B",
+    "strength": 3.45,
+    "avgPlace": 3.45,
+    "winRate": 0.0984,
+    "top4Rate": 0.748,
+    "pickRate": 0.000515,
+    "games": 1484,
+    "opScore": 0.05,
+    "units": [
+     {
+      "name": "洛",
+      "id": "DA_18_Rakan",
+      "cost": 1,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 3,
+       "y": 2
+      },
+      "tag": "other"
+     },
+     {
+      "name": "凯特琳",
+      "id": "DA_18_Caitlyn",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_GuinsoosRageblade",
+       "op_DA_HextechGunblade",
+       "op_DA_KrakensFury"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "瑟庄妮",
+      "id": "DA_18_Sejuani",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": false,
+      "cell": {
+       "x": 2,
+       "y": 2
+      },
+      "tag": "other"
+     },
+     {
+      "name": "Scuttlecrab",
+      "id": "DA_Scuttlecrab18",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "崔丝塔娜",
+      "id": "DA_18_Tristana",
+      "cost": 3,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 3,
+       "y": 1
+      },
+      "tag": "other"
+     },
+     {
+      "name": "蔚",
+      "id": "DA_Vi18",
+      "cost": 3,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 4,
+       "y": 2
+      },
+      "tag": "tank"
+     },
+     {
+      "name": "希维尔",
+      "id": "DA_18_Sivir",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_InfinityEdge",
+       "op_DA_LastWhisper",
+       "op_DA_RedBuff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "艾希",
+      "id": "DA_18_Ashe",
+      "cost": 5,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "other"
+     }
+    ],
+    "coreUnits": [
+     {
+      "name": "凯特琳",
+      "id": "DA_18_Caitlyn",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_GuinsoosRageblade",
+       "op_DA_HextechGunblade",
+       "op_DA_KrakensFury"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "希维尔",
+      "id": "DA_18_Sivir",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_InfinityEdge",
+       "op_DA_LastWhisper",
+       "op_DA_RedBuff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "Scuttlecrab",
+      "id": "DA_Scuttlecrab18",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 猎人、主宰、花仙子 展开，主C 凯特琳（2 费 / 3 星，出装 鬼索的狂暴之刃、海克斯科技枪刃、海妖之怒）。核心棋子：凯特琳、希维尔、Scuttlecrab。8 人口成型，OP.GG 采样 1484 场：平均名次 3.45、胜率 9.8%、前四率 74.8%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
+    "traits": [
+     {
+      "name": "猎人",
+      "active": 4,
+      "need": 5,
+      "style": 3
+     },
+     {
+      "name": "主宰",
+      "active": 4,
+      "need": 6,
+      "style": 3
+     },
+     {
+      "name": "花仙子",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "野兽之灵",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "灵魂莲华",
+      "active": 1,
+      "need": 3,
+      "style": 0
+     },
+     {
+      "name": "魔女",
+      "active": 1,
+      "need": 3,
+      "style": 0
+     },
+     {
+      "name": "重装战士",
+      "active": 1,
+      "need": 2,
+      "style": 0
+     },
+     {
+      "name": "日蚀骑士",
+      "active": 1,
+      "need": 3,
+      "style": 0
+     },
+     {
+      "name": "约德尔人和朋友",
+      "active": 1,
+      "need": 3,
+      "style": 0
+     },
+     {
+      "name": "峡谷野怪",
+      "active": 1,
+      "need": 3,
+      "style": 0
+     }
+    ],
+    "positionMap": [
+     [
+      3,
+      3,
+      "洛"
+     ],
+     [
+      1,
+      4,
+      "凯特琳"
+     ],
+     [
+      3,
+      2,
+      "瑟庄妮"
+     ],
+     [
+      3,
+      5,
+      "Scuttlecrab"
+     ],
+     [
+      1,
+      1,
+      "崔丝塔娜"
+     ],
+     [
+      3,
+      6,
+      "蔚"
+     ],
+     [
+      1,
+      0,
+      "希维尔"
+     ],
+     [
+      1,
+      3,
+      "艾希"
+     ]
+    ],
+    "positioning": "OP.GG 实战站位（按真实对局采样）",
+    "counters": {
+     "克制": [],
+     "被克制": []
+    },
+    "source": "OP.GG 实时数据",
+    "sourceReal": true,
+    "teamCode": "024203f442742643343742c3f0000000TFTSet18"
+   },
+   {
+    "id": "og_03f63f873eb21bd5f139023b6385791f",
+    "name": "峡谷野怪 艾希",
+    "mainC": "艾希",
+    "tier": "C",
+    "strength": 3.46,
+    "avgPlace": 3.46,
+    "winRate": 0.2455,
+    "top4Rate": 0.7026,
+    "pickRate": 0.000174,
+    "games": 501,
+    "opScore": 0.02,
+    "units": [
+     {
+      "name": "蔚",
+      "id": "DA_Vi18",
+      "cost": 3,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 3,
+       "y": 3
+      },
+      "tag": "other"
+     },
+     {
+      "name": "希维尔",
+      "id": "DA_18_Sivir",
+      "cost": 4,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 2,
+       "y": 1
+      },
+      "tag": "other"
+     },
+     {
+      "name": "Sentinel",
+      "id": "DA_Sentinel18",
+      "cost": 4,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 2,
+       "y": 2
+      },
+      "tag": "other"
+     },
+     {
+      "name": "艾希",
+      "id": "DA_18_Ashe",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_LastWhisper",
+       "op_DA_RedBuff",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "Elder Dragon",
+      "id": "DA_18_ElderDragon",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_Deathblade",
+       "op_DA_InfinityEdge",
+       "op_DA_StrikersFlail"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 2
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "艾翁",
+      "id": "DA_18_Ivern",
+      "cost": 5,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 3,
+       "y": 1
+      },
+      "tag": "other"
+     },
+     {
+      "name": "茂凯",
+      "id": "DA_18_Maokai",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 3
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "塔里克",
+      "id": "DA_Taric18",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": false,
+      "cell": {
+       "x": 1,
+       "y": 2
+      },
+      "tag": "tank"
+     }
+    ],
+    "coreUnits": [
+     {
+      "name": "艾希",
+      "id": "DA_18_Ashe",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_LastWhisper",
+       "op_DA_RedBuff",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "Elder Dragon",
+      "id": "DA_18_ElderDragon",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_Deathblade",
+       "op_DA_InfinityEdge",
+       "op_DA_StrikersFlail"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 2
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "茂凯",
+      "id": "DA_18_Maokai",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 3
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 峡谷野怪、猎人、主宰 展开，主C 艾希（5 费 / 2 星，出装 最后的轻语、红霸符、朔极之矛）。核心棋子：艾希、Elder Dragon、茂凯。8 人口成型，OP.GG 采样 501 场：平均名次 3.46、胜率 24.6%、前四率 70.3%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
+    "traits": [
+     {
+      "name": "顶级掠食者",
+      "active": 1,
+      "need": 1,
+      "style": 4
+     },
+     {
+      "name": "翠神",
+      "active": 1,
+      "need": 1,
+      "style": 4
+     },
+     {
+      "name": "远古树精",
+      "active": 1,
+      "need": 1,
+      "style": 4
+     },
+     {
+      "name": "宝石骑士",
+      "active": 1,
+      "need": 1,
+      "style": 4
+     },
+     {
+      "name": "猎人",
+      "active": 2,
+      "need": 3,
+      "style": 1
+     },
+     {
+      "name": "主宰",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "野兽之灵",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "重装战士",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "峡谷野怪",
+      "active": 3,
+      "need": 5,
+      "style": 1
+     },
+     {
+      "name": "灵魂莲华",
+      "active": 1,
+      "need": 3,
+      "style": 0
+     },
+     {
+      "name": "神谕",
+      "active": 1,
+      "need": 2,
+      "style": 0
+     }
+    ],
+    "positionMap": [
+     [
+      3,
+      3,
+      "蔚"
+     ],
+     [
+      1,
+      4,
+      "希维尔"
+     ],
+     [
+      3,
+      2,
+      "Sentinel"
+     ],
+     [
+      1,
+      5,
+      "艾希"
+     ],
+     [
+      2,
+      1,
+      "Elder Dragon"
+     ],
+     [
+      1,
+      6,
+      "艾翁"
+     ],
+     [
+      3,
+      0,
+      "茂凯"
+     ],
+     [
+      3,
+      4,
+      "塔里克"
+     ]
+    ],
+    "positioning": "OP.GG 实战站位（按真实对局采样）",
+    "counters": {
+     "克制": [],
+     "被克制": []
+    },
+    "source": "OP.GG 实时数据",
+    "sourceReal": true,
+    "teamCode": "0243742c4283f03fc404415430000000TFTSet18"
+   },
+   {
     "id": "og_14f0de785f42bf4411e7463efd524d59",
     "name": "约德尔人和朋友 崔丝塔娜",
     "mainC": "崔丝塔娜",
     "tier": "C",
-    "strength": 3.45,
-    "avgPlace": 3.45,
-    "winRate": 0.1331,
-    "top4Rate": 0.7262,
+    "strength": 3.47,
+    "avgPlace": 3.47,
+    "winRate": 0.1311,
+    "top4Rate": 0.7228,
     "pickRate": 9.3e-05,
-    "games": 263,
+    "games": 267,
     "opScore": 0.01,
     "units": [
      {
@@ -7353,40 +9447,42 @@
       "id": "DA_18_Teemo",
       "cost": 2,
       "star": 2,
-      "items": [],
-      "core": false,
+      "items": [
+       "op_DA_AdaptiveHelm",
+       "op_DA_BlueBuff",
+       "op_DA_JeweledGauntlet"
+      ],
+      "core": true,
       "cell": {
        "x": 4,
        "y": 1
       },
-      "tag": "other"
+      "tag": "sub"
      },
      {
       "name": "拉莫斯",
       "id": "DA_18_Rammus",
       "cost": 3,
-      "star": 2,
+      "star": 3,
       "items": [
-       "op_DA_GargoyleStoneplate",
-       "op_DA_SpiritVisage",
-       "op_DA_WarmogsArmor"
+       "op_DA_BrambleVest",
+       "op_DA_DragonsClaw"
       ],
-      "core": true,
+      "core": false,
       "cell": {
        "x": 4,
        "y": 4
       },
-      "tag": "sub"
+      "tag": "tank"
      },
      {
       "name": "崔丝塔娜",
       "id": "DA_18_Tristana",
       "cost": 3,
-      "star": 2,
+      "star": 3,
       "items": [
        "op_DA_GuinsoosRageblade",
-       "op_DA_InfinityEdge",
-       "op_DA_KrakensFury"
+       "op_DA_InfinityEdge"
       ],
       "core": true,
       "cell": {
@@ -7417,19 +9513,69 @@
       "id": "DA_18_GnarSmall",
       "cost": 5,
       "star": 2,
-      "items": [
-       "op_DA_Bloodthirster",
-       "op_DA_HandOfJustice",
-       "op_DA_TitansResolve"
-      ],
+      "items": [],
       "core": false,
       "cell": {
        "x": 2,
        "y": 3
       },
-      "tag": "tank"
+      "tag": "other"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "崔丝塔娜",
+      "id": "DA_18_Tristana",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_GuinsoosRageblade",
+       "op_DA_InfinityEdge"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "莉莉娅",
+      "id": "DA_18_Lillia",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_18_EmblemSprykin",
+       "op_DA_GargoyleStoneplate",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 4
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "提莫",
+      "id": "DA_18_Teemo",
+      "cost": 2,
+      "star": 2,
+      "items": [
+       "op_DA_AdaptiveHelm",
+       "op_DA_BlueBuff",
+       "op_DA_JeweledGauntlet"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 约德尔人和朋友、花仙子、斗士 展开，主C 崔丝塔娜（3 费 / 3 星，出装 鬼索的狂暴之刃、无尽之刃）。核心棋子：崔丝塔娜、莉莉娅、提莫。9 人口成型，OP.GG 采样 267 场：平均名次 3.47、胜率 13.1%、前四率 72.3%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "花仙子",
@@ -7561,516 +9707,16 @@
     "teamCode": "0243d420436439431421433412401000TFTSet18"
    },
    {
-    "id": "og_03f63f873eb21bd5f139023b6385791f",
-    "name": "峡谷野怪 艾希",
-    "mainC": "艾希",
-    "tier": "C",
-    "strength": 3.46,
-    "avgPlace": 3.46,
-    "winRate": 0.2414,
-    "top4Rate": 0.7018,
-    "pickRate": 0.000175,
-    "games": 493,
-    "opScore": 0.02,
-    "units": [
-     {
-      "name": "蔚",
-      "id": "DA_Vi18",
-      "cost": 3,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 6,
-       "y": 4
-      },
-      "tag": "other"
-     },
-     {
-      "name": "希维尔",
-      "id": "DA_18_Sivir",
-      "cost": 4,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 7,
-       "y": 1
-      },
-      "tag": "other"
-     },
-     {
-      "name": "Sentinel",
-      "id": "DA_Sentinel18",
-      "cost": 4,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 4,
-       "y": 4
-      },
-      "tag": "other"
-     },
-     {
-      "name": "艾希",
-      "id": "DA_18_Ashe",
-      "cost": 5,
-      "star": 2,
-      "items": [
-       "op_DA_LastWhisper",
-       "op_DA_RedBuff",
-       "op_DA_SpearOfShojin"
-      ],
-      "core": true,
-      "cell": {
-       "x": 1,
-       "y": 1
-      },
-      "tag": "main"
-     },
-     {
-      "name": "Elder Dragon",
-      "id": "DA_18_ElderDragon",
-      "cost": 5,
-      "star": 2,
-      "items": [
-       "op_DA_Deathblade",
-       "op_DA_InfinityEdge",
-       "op_DA_StrikersFlail"
-      ],
-      "core": true,
-      "cell": {
-       "x": 4,
-       "y": 2
-      },
-      "tag": "sub"
-     },
-     {
-      "name": "艾翁",
-      "id": "DA_18_Ivern",
-      "cost": 5,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 3,
-       "y": 1
-      },
-      "tag": "other"
-     },
-     {
-      "name": "茂凯",
-      "id": "DA_18_Maokai",
-      "cost": 5,
-      "star": 2,
-      "items": [
-       "op_DA_GargoyleStoneplate",
-       "op_DA_SpiritVisage",
-       "op_DA_WarmogsArmor"
-      ],
-      "core": true,
-      "cell": {
-       "x": 5,
-       "y": 4
-      },
-      "tag": "sub"
-     },
-     {
-      "name": "塔里克",
-      "id": "DA_Taric18",
-      "cost": 5,
-      "star": 2,
-      "items": [
-       "op_DA_GargoyleStoneplate",
-       "op_DA_SpiritVisage",
-       "op_DA_WarmogsArmor"
-      ],
-      "core": false,
-      "cell": {
-       "x": 3,
-       "y": 4
-      },
-      "tag": "tank"
-     }
-    ],
-    "traits": [
-     {
-      "name": "顶级掠食者",
-      "active": 1,
-      "need": 1,
-      "style": 4
-     },
-     {
-      "name": "翠神",
-      "active": 1,
-      "need": 1,
-      "style": 4
-     },
-     {
-      "name": "远古树精",
-      "active": 1,
-      "need": 1,
-      "style": 4
-     },
-     {
-      "name": "宝石骑士",
-      "active": 1,
-      "need": 1,
-      "style": 4
-     },
-     {
-      "name": "猎人",
-      "active": 2,
-      "need": 3,
-      "style": 1
-     },
-     {
-      "name": "主宰",
-      "active": 2,
-      "need": 4,
-      "style": 1
-     },
-     {
-      "name": "野兽之灵",
-      "active": 2,
-      "need": 4,
-      "style": 1
-     },
-     {
-      "name": "重装战士",
-      "active": 2,
-      "need": 4,
-      "style": 1
-     },
-     {
-      "name": "峡谷野怪",
-      "active": 3,
-      "need": 5,
-      "style": 1
-     },
-     {
-      "name": "灵魂莲华",
-      "active": 1,
-      "need": 3,
-      "style": 0
-     },
-     {
-      "name": "神谕",
-      "active": 1,
-      "need": 2,
-      "style": 0
-     }
-    ],
-    "positionMap": [
-     [
-      3,
-      3,
-      "蔚"
-     ],
-     [
-      1,
-      4,
-      "希维尔"
-     ],
-     [
-      3,
-      2,
-      "Sentinel"
-     ],
-     [
-      1,
-      5,
-      "艾希"
-     ],
-     [
-      2,
-      1,
-      "Elder Dragon"
-     ],
-     [
-      1,
-      6,
-      "艾翁"
-     ],
-     [
-      3,
-      0,
-      "茂凯"
-     ],
-     [
-      3,
-      4,
-      "塔里克"
-     ]
-    ],
-    "positioning": "OP.GG 实战站位（按真实对局采样）",
-    "counters": {
-     "克制": [],
-     "被克制": []
-    },
-    "source": "OP.GG 实时数据",
-    "sourceReal": true,
-    "teamCode": "0243742c4283f03fc404415430000000TFTSet18"
-   },
-   {
-    "id": "og_199fc60ef48d77b2b6e59fe673f58509",
-    "name": "猎人 凯特琳",
-    "mainC": "凯特琳",
-    "tier": "B",
-    "strength": 3.46,
-    "avgPlace": 3.46,
-    "winRate": 0.0982,
-    "top4Rate": 0.7465,
-    "pickRate": 0.000509,
-    "games": 1436,
-    "opScore": 0.05,
-    "units": [
-     {
-      "name": "洛",
-      "id": "DA_18_Rakan",
-      "cost": 1,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 3,
-       "y": 2
-      },
-      "tag": "other"
-     },
-     {
-      "name": "凯特琳",
-      "id": "DA_18_Caitlyn",
-      "cost": 2,
-      "star": 3,
-      "items": [
-       "op_DA_GuinsoosRageblade",
-       "op_DA_HextechGunblade",
-       "op_DA_KrakensFury"
-      ],
-      "core": true,
-      "cell": {
-       "x": 1,
-       "y": 1
-      },
-      "tag": "main"
-     },
-     {
-      "name": "瑟庄妮",
-      "id": "DA_18_Sejuani",
-      "cost": 2,
-      "star": 3,
-      "items": [
-       "op_DA_GargoyleStoneplate",
-       "op_DA_SpiritVisage",
-       "op_DA_WarmogsArmor"
-      ],
-      "core": false,
-      "cell": {
-       "x": 2,
-       "y": 2
-      },
-      "tag": "other"
-     },
-     {
-      "name": "Scuttlecrab",
-      "id": "DA_Scuttlecrab18",
-      "cost": 2,
-      "star": 3,
-      "items": [
-       "op_DA_GargoyleStoneplate",
-       "op_DA_SpiritVisage",
-       "op_DA_WarmogsArmor"
-      ],
-      "core": true,
-      "cell": {
-       "x": 4,
-       "y": 4
-      },
-      "tag": "sub"
-     },
-     {
-      "name": "崔丝塔娜",
-      "id": "DA_18_Tristana",
-      "cost": 3,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 3,
-       "y": 1
-      },
-      "tag": "other"
-     },
-     {
-      "name": "蔚",
-      "id": "DA_Vi18",
-      "cost": 3,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 4,
-       "y": 2
-      },
-      "tag": "tank"
-     },
-     {
-      "name": "希维尔",
-      "id": "DA_18_Sivir",
-      "cost": 4,
-      "star": 2,
-      "items": [
-       "op_DA_InfinityEdge",
-       "op_DA_LastWhisper",
-       "op_DA_RedBuff"
-      ],
-      "core": true,
-      "cell": {
-       "x": 2,
-       "y": 1
-      },
-      "tag": "sub"
-     },
-     {
-      "name": "艾希",
-      "id": "DA_18_Ashe",
-      "cost": 5,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 7,
-       "y": 1
-      },
-      "tag": "other"
-     }
-    ],
-    "traits": [
-     {
-      "name": "猎人",
-      "active": 4,
-      "need": 5,
-      "style": 3
-     },
-     {
-      "name": "主宰",
-      "active": 4,
-      "need": 6,
-      "style": 3
-     },
-     {
-      "name": "花仙子",
-      "active": 2,
-      "need": 4,
-      "style": 1
-     },
-     {
-      "name": "野兽之灵",
-      "active": 2,
-      "need": 4,
-      "style": 1
-     },
-     {
-      "name": "灵魂莲华",
-      "active": 1,
-      "need": 3,
-      "style": 0
-     },
-     {
-      "name": "魔女",
-      "active": 1,
-      "need": 3,
-      "style": 0
-     },
-     {
-      "name": "重装战士",
-      "active": 1,
-      "need": 2,
-      "style": 0
-     },
-     {
-      "name": "日蚀骑士",
-      "active": 1,
-      "need": 3,
-      "style": 0
-     },
-     {
-      "name": "约德尔人和朋友",
-      "active": 1,
-      "need": 3,
-      "style": 0
-     },
-     {
-      "name": "峡谷野怪",
-      "active": 1,
-      "need": 3,
-      "style": 0
-     }
-    ],
-    "positionMap": [
-     [
-      3,
-      3,
-      "洛"
-     ],
-     [
-      1,
-      4,
-      "凯特琳"
-     ],
-     [
-      3,
-      2,
-      "瑟庄妮"
-     ],
-     [
-      3,
-      5,
-      "Scuttlecrab"
-     ],
-     [
-      1,
-      1,
-      "崔丝塔娜"
-     ],
-     [
-      3,
-      6,
-      "蔚"
-     ],
-     [
-      1,
-      0,
-      "希维尔"
-     ],
-     [
-      1,
-      3,
-      "艾希"
-     ]
-    ],
-    "positioning": "OP.GG 实战站位（按真实对局采样）",
-    "counters": {
-     "克制": [],
-     "被克制": []
-    },
-    "source": "OP.GG 实时数据",
-    "sourceReal": true,
-    "teamCode": "024203f442742643343742c3f0000000TFTSet18"
-   },
-   {
     "id": "og_abb223f530a66becdf9d550f893958d0",
     "name": "灵魂莲华 瑟提",
     "mainC": "瑟提",
     "tier": "C",
     "strength": 3.51,
     "avgPlace": 3.51,
-    "winRate": 0.1688,
-    "top4Rate": 0.7066,
-    "pickRate": 0.000304,
-    "games": 859,
+    "winRate": 0.1659,
+    "top4Rate": 0.7102,
+    "pickRate": 0.000305,
+    "games": 880,
     "opScore": 0.03,
     "units": [
      {
@@ -8207,6 +9853,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "瑟提",
+      "id": "DA_18_Sett",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 5,
+       "y": 4
+      },
+      "tag": "main"
+     },
+     {
+      "name": "艾希",
+      "id": "DA_18_Ashe",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_LastWhisper",
+       "op_DA_RedBuff",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "阿狸",
+      "id": "DA_18_Ahri",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_JeweledGauntlet",
+       "op_DA_SpearOfShojin",
+       "op_DA_StrikersFlail"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 灵魂莲华、法师、斗士 展开，主C 瑟提（4 费 / 2 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：瑟提、艾希、阿狸。9 人口成型，OP.GG 采样 880 场：平均名次 3.51、胜率 16.6%、前四率 71.0%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "远古树精",
@@ -8332,17 +10033,576 @@
     "teamCode": "0243a40743b4163e942a3f0401415000TFTSet18"
    },
    {
+    "id": "og_209fd5b4ce16c8829e08e3235400e281",
+    "name": "永恒之森 维迦",
+    "mainC": "维迦",
+    "tier": "C",
+    "strength": 3.53,
+    "avgPlace": 3.53,
+    "winRate": 0.2051,
+    "top4Rate": 0.7179,
+    "pickRate": 5.4e-05,
+    "games": 156,
+    "opScore": 0.01,
+    "units": [
+     {
+      "name": "蕾欧娜",
+      "id": "DA_18_Leona",
+      "cost": 1,
+      "star": 3,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 1,
+       "y": 3
+      },
+      "tag": "other"
+     },
+     {
+      "name": "奥恩",
+      "id": "DA_18_Ornn",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 5,
+       "y": 4
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "雷克塞",
+      "id": "DA_18_RekSai",
+      "cost": 1,
+      "star": 3,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 3,
+       "y": 3
+      },
+      "tag": "other"
+     },
+     {
+      "name": "维迦",
+      "id": "DA_18_Veigar",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_BlueBuff",
+       "op_DA_HextechGunblade",
+       "op_DA_JeweledGauntlet"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "阿利斯塔",
+      "id": "DA_18_Alistar",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_DragonsClaw",
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage"
+      ],
+      "core": false,
+      "cell": {
+       "x": 6,
+       "y": 3
+      },
+      "tag": "tank"
+     },
+     {
+      "name": "凯尔",
+      "id": "DA_18_Kayle",
+      "cost": 2,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "other"
+     },
+     {
+      "name": "乐芙兰",
+      "id": "DA_18_LeBlanc",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_Morellonomicon",
+       "op_DA_SpearOfShojin",
+       "op_DA_VoidStaff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 6,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "瑟庄妮",
+      "id": "DA_18_Sejuani",
+      "cost": 2,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 3,
+       "y": 2
+      },
+      "tag": "other"
+     }
+    ],
+    "coreUnits": [
+     {
+      "name": "维迦",
+      "id": "DA_18_Veigar",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_BlueBuff",
+       "op_DA_HextechGunblade",
+       "op_DA_JeweledGauntlet"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "乐芙兰",
+      "id": "DA_18_LeBlanc",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_Morellonomicon",
+       "op_DA_SpearOfShojin",
+       "op_DA_VoidStaff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 6,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "奥恩",
+      "id": "DA_18_Ornn",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 5,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 日蚀骑士、永恒之森、斗士 展开，主C 维迦（1 费 / 3 星，出装 蓝霸符、海克斯科技枪刃、珠光护手）。核心棋子：维迦、乐芙兰、奥恩。8 人口成型，OP.GG 采样 156 场：平均名次 3.53、胜率 20.5%、前四率 71.8%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
+    "traits": [
+     {
+      "name": "日蚀骑士",
+      "active": 3,
+      "need": 3,
+      "style": 4
+     },
+     {
+      "name": "斗士",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "法师",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "护卫",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "黑荆棘",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "永恒之森",
+      "active": 3,
+      "need": 5,
+      "style": 1
+     },
+     {
+      "name": "迅捷射手",
+      "active": 1,
+      "need": 2,
+      "style": 0
+     },
+     {
+      "name": "主宰",
+      "active": 1,
+      "need": 2,
+      "style": 0
+     },
+     {
+      "name": "约德尔人和朋友",
+      "active": 1,
+      "need": 3,
+      "style": 0
+     }
+    ],
+    "positionMap": [
+     [
+      3,
+      3,
+      "蕾欧娜"
+     ],
+     [
+      3,
+      4,
+      "奥恩"
+     ],
+     [
+      3,
+      2,
+      "雷克塞"
+     ],
+     [
+      1,
+      5,
+      "维迦"
+     ],
+     [
+      3,
+      1,
+      "阿利斯塔"
+     ],
+     [
+      1,
+      6,
+      "凯尔"
+     ],
+     [
+      1,
+      0,
+      "乐芙兰"
+     ],
+     [
+      3,
+      5,
+      "瑟庄妮"
+     ]
+    ],
+    "positioning": "OP.GG 实战站位（按真实对局采样）",
+    "counters": {
+     "克制": [],
+     "被克制": []
+    },
+    "source": "OP.GG 实时数据",
+    "sourceReal": true,
+    "teamCode": "0241141f4234363eb40a410427000000TFTSet18"
+   },
+   {
+    "id": "og_da_18_vanguard-da_18_alune-da_18_cassiopeia-da_18_diana-da_18_elderdra-82a07d4a06",
+    "name": "重装战士 莫甘娜",
+    "mainC": "莫甘娜",
+    "tier": "OP",
+    "strength": 3.56,
+    "avgPlace": 3.56,
+    "winRate": 0.2932,
+    "top4Rate": 0.6534,
+    "pickRate": 0.012921,
+    "games": 70100,
+    "opScore": 4.44,
+    "units": [
+     {
+      "name": "莫甘娜",
+      "id": "DA_18_Morgana",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_VoidStaff",
+       "op_DA_Morellonomicon",
+       "op_DA_RabadonsDeathcap"
+      ],
+      "core": true,
+      "cell": null,
+      "tag": "main"
+     },
+     {
+      "name": "Sentinel",
+      "id": "DA_Sentinel18",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_ProtectorsVow",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": null,
+      "tag": "sub"
+     },
+     {
+      "name": "拉露恩",
+      "id": "DA_18_Alune",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_JeweledGauntlet",
+       "op_DA_SpearOfShojin",
+       "op_DA_NashorsTooth"
+      ],
+      "core": true,
+      "cell": null,
+      "tag": "sub"
+     },
+     {
+      "name": "Elder Dragon",
+      "id": "DA_18_ElderDragon",
+      "cost": 5,
+      "star": 2,
+      "items": [],
+      "core": true,
+      "cell": null,
+      "tag": "sub"
+     },
+     {
+      "name": "塔里克",
+      "id": "DA_Taric18",
+      "cost": 5,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": null,
+      "tag": "tank"
+     },
+     {
+      "name": "黛安娜",
+      "id": "DA_18_Diana",
+      "cost": 3,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": null,
+      "tag": "other"
+     },
+     {
+      "name": "卡西奥佩娅",
+      "id": "DA_18_Cassiopeia",
+      "cost": 3,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": null,
+      "tag": "other"
+     },
+     {
+      "name": "伊莉丝",
+      "id": "DA_18_Elise",
+      "cost": 2,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": null,
+      "tag": "other"
+     }
+    ],
+    "coreUnits": [
+     {
+      "name": "莫甘娜",
+      "id": "DA_18_Morgana",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_VoidStaff",
+       "op_DA_Morellonomicon",
+       "op_DA_RabadonsDeathcap"
+      ],
+      "core": true,
+      "cell": null,
+      "tag": "main"
+     },
+     {
+      "name": "拉露恩",
+      "id": "DA_18_Alune",
+      "cost": 5,
+      "star": 2,
+      "items": [
+       "op_DA_JeweledGauntlet",
+       "op_DA_SpearOfShojin",
+       "op_DA_NashorsTooth"
+      ],
+      "core": true,
+      "cell": null,
+      "tag": "sub"
+     },
+     {
+      "name": "Elder Dragon",
+      "id": "DA_18_ElderDragon",
+      "cost": 5,
+      "star": 2,
+      "items": [],
+      "core": true,
+      "cell": null,
+      "tag": "sub"
+     },
+     {
+      "name": "Sentinel",
+      "id": "DA_Sentinel18",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_ProtectorsVow",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": null,
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 重装战士、魔女、神谕 展开，主C 莫甘娜（4 费 / 2 星，出装 虚空之杖、莫雷洛秘典、灭世者的死亡之帽）。核心棋子：莫甘娜、拉露恩、Elder Dragon、Sentinel。8 人口成型，OP.GG 采样 70100 场：平均名次 3.56、胜率 29.3%、前四率 65.3%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
+    "traits": [
+     {
+      "name": "顶级掠食者",
+      "active": 1,
+      "need": 1,
+      "style": 4
+     },
+     {
+      "name": "魔女",
+      "active": 3,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "神谕",
+      "active": 2,
+      "need": 3,
+      "style": 1
+     },
+     {
+      "name": "月蚀骑士",
+      "active": 2,
+      "need": 3,
+      "style": 1
+     },
+     {
+      "name": "法师",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "重装战士",
+      "active": 4,
+      "need": 6,
+      "style": 3
+     },
+     {
+      "name": "月华神女",
+      "active": 1,
+      "need": 1,
+      "style": 4
+     },
+     {
+      "name": "宝石骑士",
+      "active": 1,
+      "need": 1,
+      "style": 4
+     }
+    ],
+    "positionMap": [
+     [
+      2,
+      3,
+      "莫甘娜"
+     ],
+     [
+      3,
+      4,
+      "Sentinel"
+     ],
+     [
+      1,
+      2,
+      "拉露恩"
+     ],
+     [
+      2,
+      5,
+      "Elder Dragon"
+     ],
+     [
+      3,
+      1,
+      "塔里克"
+     ],
+     [
+      2,
+      6,
+      "黛安娜"
+     ],
+     [
+      1,
+      0,
+      "卡西奥佩娅"
+     ],
+     [
+      3,
+      3,
+      "伊莉丝"
+     ]
+    ],
+    "positioning": "OP.GG 实战站位（按真实对局采样）",
+    "counters": {
+     "克制": [],
+     "被克制": []
+    },
+    "source": "OP.GG 实时数据",
+    "sourceReal": true,
+    "teamCode": "023fd3fa3f64184283ec3fc430000000TFTSet18"
+   },
+   {
     "id": "og_ec4c737b5836635daa916e4510e45196",
     "name": "峡谷野怪 Brambleback",
     "mainC": "Brambleback",
     "tier": "A",
-    "strength": 3.58,
-    "avgPlace": 3.58,
-    "winRate": 0.1124,
-    "top4Rate": 0.7166,
-    "pickRate": 0.003553,
-    "games": 10027,
-    "opScore": 0.33,
+    "strength": 3.59,
+    "avgPlace": 3.59,
+    "winRate": 0.1126,
+    "top4Rate": 0.7157,
+    "pickRate": 0.003558,
+    "games": 10259,
+    "opScore": 0.32,
     "units": [
      {
       "name": "Pebbles",
@@ -8478,6 +10738,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "Brambleback",
+      "id": "DA_Brambleback18",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Bloodthirster",
+       "op_DA_SteraksGage",
+       "op_DA_TitansResolve"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 2
+      },
+      "tag": "main"
+     },
+     {
+      "name": "Krug",
+      "id": "DA_Krug18",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "Pebbles",
+      "id": "DA_18_Sentry",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_BlueBuff",
+       "op_DA_JeweledGauntlet",
+       "op_DA_RabadonsDeathcap"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 峡谷野怪、神谕、狂战士 展开，主C Brambleback（4 费 / 2 星，出装 饮血剑、斯特拉克的挑战护手、泰坦的坚决）。核心棋子：Brambleback、Krug、Pebbles。9 人口成型，OP.GG 采样 10259 场：平均名次 3.59、胜率 11.3%、前四率 71.6%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "峡谷野怪",
@@ -8603,10 +10918,10 @@
     "tier": "A",
     "strength": 3.59,
     "avgPlace": 3.59,
-    "winRate": 0.1271,
-    "top4Rate": 0.6978,
-    "pickRate": 0.003583,
-    "games": 10113,
+    "winRate": 0.1269,
+    "top4Rate": 0.6985,
+    "pickRate": 0.003597,
+    "games": 10369,
     "opScore": 0.33,
     "units": [
      {
@@ -8730,6 +11045,61 @@
       "tag": "other"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "卡西奥佩娅",
+      "id": "DA_18_Cassiopeia",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_ArchangelsStaff",
+       "op_DA_BlueBuff",
+       "op_DA_HextechGunblade"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "拉莫斯",
+      "id": "DA_18_Rammus",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SteadfastHeart",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 6,
+       "y": 4
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "费德提克",
+      "id": "DA_Fiddlesticks18",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_IonicSpark",
+       "op_DA_SpiritVisage",
+       "op_DA_SunfireCape"
+      ],
+      "core": true,
+      "cell": {
+       "x": 5,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 护卫、绝命花妖、法师 展开，主C 卡西奥佩娅（3 费 / 3 星，出装 大天使之杖、蓝霸符、海克斯科技枪刃）。核心棋子：卡西奥佩娅、拉莫斯、费德提克。8 人口成型，OP.GG 采样 10369 场：平均名次 3.59、胜率 12.7%、前四率 69.8%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "绝命花妖",
@@ -8844,223 +11214,16 @@
     "teamCode": "0241141f42b3f642140041242e000000TFTSet18"
    },
    {
-    "id": "og_da_18_vanguard-da_18_alune-da_18_cassiopeia-da_18_diana-da_18_elderdra-82a07d4a06",
-    "name": "重装战士 莫甘娜",
-    "mainC": "莫甘娜",
-    "tier": "OP",
-    "strength": 3.61,
-    "avgPlace": 3.61,
-    "winRate": 0.2874,
-    "top4Rate": 0.6435,
-    "pickRate": 0.013211,
-    "games": 70770,
-    "opScore": 4.39,
-    "units": [
-     {
-      "name": "莫甘娜",
-      "id": "DA_18_Morgana",
-      "cost": 4,
-      "star": 2,
-      "items": [
-       "op_DA_VoidStaff",
-       "op_DA_Morellonomicon",
-       "op_DA_RabadonsDeathcap"
-      ],
-      "core": true,
-      "cell": null,
-      "tag": "main"
-     },
-     {
-      "name": "Sentinel",
-      "id": "DA_Sentinel18",
-      "cost": 4,
-      "star": 2,
-      "items": [
-       "op_DA_GargoyleStoneplate",
-       "op_DA_ProtectorsVow",
-       "op_DA_WarmogsArmor"
-      ],
-      "core": true,
-      "cell": null,
-      "tag": "sub"
-     },
-     {
-      "name": "拉露恩",
-      "id": "DA_18_Alune",
-      "cost": 5,
-      "star": 2,
-      "items": [
-       "op_DA_JeweledGauntlet",
-       "op_DA_SpearOfShojin",
-       "op_DA_NashorsTooth"
-      ],
-      "core": true,
-      "cell": null,
-      "tag": "sub"
-     },
-     {
-      "name": "Elder Dragon",
-      "id": "DA_18_ElderDragon",
-      "cost": 5,
-      "star": 2,
-      "items": [],
-      "core": true,
-      "cell": null,
-      "tag": "sub"
-     },
-     {
-      "name": "塔里克",
-      "id": "DA_Taric18",
-      "cost": 5,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": null,
-      "tag": "tank"
-     },
-     {
-      "name": "黛安娜",
-      "id": "DA_18_Diana",
-      "cost": 3,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": null,
-      "tag": "other"
-     },
-     {
-      "name": "卡西奥佩娅",
-      "id": "DA_18_Cassiopeia",
-      "cost": 3,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": null,
-      "tag": "other"
-     },
-     {
-      "name": "伊莉丝",
-      "id": "DA_18_Elise",
-      "cost": 2,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": null,
-      "tag": "other"
-     }
-    ],
-    "traits": [
-     {
-      "name": "顶级掠食者",
-      "active": 1,
-      "need": 1,
-      "style": 4
-     },
-     {
-      "name": "魔女",
-      "active": 3,
-      "need": 4,
-      "style": 1
-     },
-     {
-      "name": "神谕",
-      "active": 2,
-      "need": 3,
-      "style": 1
-     },
-     {
-      "name": "月蚀骑士",
-      "active": 2,
-      "need": 3,
-      "style": 1
-     },
-     {
-      "name": "法师",
-      "active": 2,
-      "need": 4,
-      "style": 1
-     },
-     {
-      "name": "重装战士",
-      "active": 4,
-      "need": 6,
-      "style": 3
-     },
-     {
-      "name": "月华神女",
-      "active": 1,
-      "need": 1,
-      "style": 4
-     },
-     {
-      "name": "宝石骑士",
-      "active": 1,
-      "need": 1,
-      "style": 4
-     }
-    ],
-    "positionMap": [
-     [
-      2,
-      3,
-      "莫甘娜"
-     ],
-     [
-      3,
-      4,
-      "Sentinel"
-     ],
-     [
-      1,
-      2,
-      "拉露恩"
-     ],
-     [
-      2,
-      5,
-      "Elder Dragon"
-     ],
-     [
-      3,
-      1,
-      "塔里克"
-     ],
-     [
-      2,
-      6,
-      "黛安娜"
-     ],
-     [
-      1,
-      0,
-      "卡西奥佩娅"
-     ],
-     [
-      3,
-      3,
-      "伊莉丝"
-     ]
-    ],
-    "positioning": "OP.GG 实战站位（按真实对局采样）",
-    "counters": {
-     "克制": [],
-     "被克制": []
-    },
-    "source": "OP.GG 实时数据",
-    "sourceReal": true,
-    "teamCode": "023fd3fa3f64184283ec3fc430000000TFTSet18"
-   },
-   {
     "id": "og_e63491d43d40f5cefe3a5f004342845a",
     "name": "约德尔人和朋友 维迦",
     "mainC": "维迦",
     "tier": "C",
     "strength": 3.65,
     "avgPlace": 3.65,
-    "winRate": 0.0803,
-    "top4Rate": 0.7081,
-    "pickRate": 0.000499,
-    "games": 1408,
+    "winRate": 0.0829,
+    "top4Rate": 0.7086,
+    "pickRate": 0.000502,
+    "games": 1448,
     "opScore": 0.04,
     "units": [
      {
@@ -9184,6 +11347,61 @@
       "tag": "other"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "维迦",
+      "id": "DA_18_Veigar",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_18_EmblemFloraFatalisAugment",
+       "op_DA_BlueBuff",
+       "op_DA_JeweledGauntlet"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "提莫",
+      "id": "DA_18_Teemo",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_Morellonomicon",
+       "op_DA_SpearOfShojin",
+       "op_DA_VoidStaff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "雷克塞",
+      "id": "DA_18_RekSai",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_GargoyleStoneplate",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 约德尔人和朋友、斗士、绝命花妖 展开，主C 维迦（1 费 / 3 星，出装 绝命花妖纹章、蓝霸符、珠光护手）。核心棋子：维迦、提莫、雷克塞。8 人口成型，OP.GG 采样 1448 场：平均名次 3.65、胜率 8.3%、前四率 70.9%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "绝命花妖",
@@ -9298,10 +11516,10 @@
     "tier": "C",
     "strength": 3.7,
     "avgPlace": 3.7,
-    "winRate": 0.1381,
-    "top4Rate": 0.6768,
-    "pickRate": 0.000362,
-    "games": 1021,
+    "winRate": 0.1367,
+    "top4Rate": 0.6766,
+    "pickRate": 0.00036,
+    "games": 1039,
     "opScore": 0.03,
     "units": [
      {
@@ -9425,6 +11643,61 @@
       "tag": "sub"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "蔚",
+      "id": "DA_Vi18",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_GargoyleStoneplate",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "main"
+     },
+     {
+      "name": "婕拉",
+      "id": "DA_18_Zyra",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Morellonomicon",
+       "op_DA_SpearOfShojin",
+       "op_DA_VoidStaff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "阿兹尔",
+      "id": "DA_18_Azir",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_GuinsoosRageblade",
+       "op_DA_HextechGunblade",
+       "op_DA_RabadonsDeathcap"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 召唤师、灵魂莲华、黑荆棘 展开，主C 蔚（3 费 / 3 星，出装 石像鬼石板甲、石像鬼石板甲、狂徒铠甲）。核心棋子：蔚、婕拉、阿兹尔。8 人口成型，OP.GG 采样 1039 场：平均名次 3.7、胜率 13.7%、前四率 67.7%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "宿敌",
@@ -9539,10 +11812,10 @@
     "tier": "A",
     "strength": 3.75,
     "avgPlace": 3.75,
-    "winRate": 0.1329,
-    "top4Rate": 0.6619,
-    "pickRate": 0.00291,
-    "games": 8214,
+    "winRate": 0.1324,
+    "top4Rate": 0.6628,
+    "pickRate": 0.002906,
+    "games": 8378,
     "opScore": 0.22,
     "units": [
      {
@@ -9629,7 +11902,7 @@
       "name": "卡西奥佩娅",
       "id": "DA_18_Cassiopeia",
       "cost": 3,
-      "star": 3,
+      "star": 2,
       "items": [],
       "core": false,
       "cell": {
@@ -9665,6 +11938,61 @@
       "tag": "other"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "维迦",
+      "id": "DA_18_Veigar",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_BlueBuff",
+       "op_DA_HextechGunblade",
+       "op_DA_JeweledGauntlet"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "阿利斯塔",
+      "id": "DA_18_Alistar",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_ProtectorsVow",
+       "op_DA_SunfireCape"
+      ],
+      "core": true,
+      "cell": {
+       "x": 5,
+       "y": 2
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "奥恩",
+      "id": "DA_18_Ornn",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SunfireCape",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 法师、永恒之森、绝命花妖 展开，主C 维迦（1 费 / 3 星，出装 蓝霸符、海克斯科技枪刃、珠光护手）。核心棋子：维迦、阿利斯塔、奥恩。8 人口成型，OP.GG 采样 8378 场：平均名次 3.75、胜率 13.2%、前四率 66.3%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "绝命花妖",
@@ -9777,12 +12105,12 @@
     "name": "黑荆棘 沃里克",
     "mainC": "沃里克",
     "tier": "A",
-    "strength": 3.78,
-    "avgPlace": 3.78,
-    "winRate": 0.0866,
+    "strength": 3.77,
+    "avgPlace": 3.77,
+    "winRate": 0.0865,
     "top4Rate": 0.6672,
-    "pickRate": 0.002435,
-    "games": 6874,
+    "pickRate": 0.002446,
+    "games": 7053,
     "opScore": 0.18,
     "units": [
      {
@@ -9835,7 +12163,8 @@
       "star": 3,
       "items": [
        "op_DA_GuinsoosRageblade",
-       "op_DA_RabadonsDeathcap"
+       "op_DA_Morellonomicon",
+       "op_DA_VoidStaff"
       ],
       "core": false,
       "cell": {
@@ -9905,6 +12234,61 @@
       "tag": "sub"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "沃里克",
+      "id": "DA_18_Warwick",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_SpearOfShojin",
+       "op_DA_SteraksGage",
+       "op_DA_TitansResolve"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 2
+      },
+      "tag": "main"
+     },
+     {
+      "name": "墨菲特",
+      "id": "DA_18_Malphite",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Crownguard",
+       "op_DA_GargoyleStoneplate",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "Brambleback",
+      "id": "DA_Brambleback18",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_EdgeOfNight",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_HandOfJustice"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 2
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 黑荆棘、狂战士、峡谷野怪 展开，主C 沃里克（2 费 / 3 星，出装 朔极之矛、斯特拉克的挑战护手、泰坦的坚决）。核心棋子：沃里克、墨菲特、Brambleback。8 人口成型，OP.GG 采样 7053 场：平均名次 3.77、胜率 8.6%、前四率 66.7%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "魔岩巨兽",
@@ -10013,263 +12397,16 @@
     "teamCode": "024234384193f13fa40f4143f3000000TFTSet18"
    },
    {
-    "id": "og_b302057f01bf44756c14ff9aac045385",
-    "name": "神谕 拉莫斯",
-    "mainC": "拉莫斯",
-    "tier": "C",
-    "strength": 3.82,
-    "avgPlace": 3.82,
-    "winRate": 0.081,
-    "top4Rate": 0.67,
-    "pickRate": 0.000359,
-    "games": 1012,
-    "opScore": 0.02,
-    "units": [
-     {
-      "name": "Pebbles",
-      "id": "DA_18_Sentry",
-      "cost": 1,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 2,
-       "y": 1
-      },
-      "tag": "other"
-     },
-     {
-      "name": "维迦",
-      "id": "DA_18_Veigar",
-      "cost": 1,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 3,
-       "y": 1
-      },
-      "tag": "other"
-     },
-     {
-      "name": "提莫",
-      "id": "DA_18_Teemo",
-      "cost": 2,
-      "star": 3,
-      "items": [
-       "op_DA_18_EmblemFloraFatalisAugment",
-       "op_DA_JeweledGauntlet",
-       "op_DA_RabadonsDeathcap"
-      ],
-      "core": true,
-      "cell": {
-       "x": 1,
-       "y": 1
-      },
-      "tag": "sub"
-     },
-     {
-      "name": "拉莫斯",
-      "id": "DA_18_Rammus",
-      "cost": 3,
-      "star": 3,
-      "items": [
-       "op_DA_DragonsClaw",
-       "op_DA_GargoyleStoneplate",
-       "op_DA_SpiritVisage"
-      ],
-      "core": true,
-      "cell": {
-       "x": 4,
-       "y": 4
-      },
-      "tag": "main"
-     },
-     {
-      "name": "费德提克",
-      "id": "DA_Fiddlesticks18",
-      "cost": 3,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 4,
-       "y": 2
-      },
-      "tag": "other"
-     },
-     {
-      "name": "Krug",
-      "id": "DA_Krug18",
-      "cost": 3,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 5,
-       "y": 4
-      },
-      "tag": "other"
-     },
-     {
-      "name": "莫甘娜",
-      "id": "DA_18_Morgana",
-      "cost": 4,
-      "star": 2,
-      "items": [
-       "op_DA_AdaptiveHelm",
-       "op_DA_Morellonomicon",
-       "op_DA_VoidStaff"
-      ],
-      "core": true,
-      "cell": {
-       "x": 3,
-       "y": 3
-      },
-      "tag": "sub"
-     },
-     {
-      "name": "Sentinel",
-      "id": "DA_Sentinel18",
-      "cost": 4,
-      "star": 2,
-      "items": [
-       "op_DA_GargoyleStoneplate",
-       "op_DA_SpiritVisage",
-       "op_DA_WarmogsArmor"
-      ],
-      "core": false,
-      "cell": {
-       "x": 3,
-       "y": 4
-      },
-      "tag": "tank"
-     }
-    ],
-    "traits": [
-     {
-      "name": "绝命花妖",
-      "active": 2,
-      "need": 2,
-      "style": 4
-     },
-     {
-      "name": "神谕",
-      "active": 4,
-      "need": 5,
-      "style": 3
-     },
-     {
-      "name": "护卫",
-      "active": 2,
-      "need": 4,
-      "style": 1
-     },
-     {
-      "name": "法师",
-      "active": 2,
-      "need": 4,
-      "style": 1
-     },
-     {
-      "name": "约德尔人和朋友",
-      "active": 3,
-      "need": 5,
-      "style": 1
-     },
-     {
-      "name": "峡谷野怪",
-      "active": 3,
-      "need": 5,
-      "style": 1
-     },
-     {
-      "name": "魔女",
-      "active": 1,
-      "need": 3,
-      "style": 0
-     },
-     {
-      "name": "黑荆棘",
-      "active": 1,
-      "need": 2,
-      "style": 0
-     },
-     {
-      "name": "斗士",
-      "active": 1,
-      "need": 2,
-      "style": 0
-     },
-     {
-      "name": "重装战士",
-      "active": 1,
-      "need": 2,
-      "style": 0
-     }
-    ],
-    "positionMap": [
-     [
-      1,
-      3,
-      "Pebbles"
-     ],
-     [
-      1,
-      4,
-      "维迦"
-     ],
-     [
-      1,
-      2,
-      "提莫"
-     ],
-     [
-      3,
-      5,
-      "拉莫斯"
-     ],
-     [
-      3,
-      1,
-      "费德提克"
-     ],
-     [
-      3,
-      6,
-      "Krug"
-     ],
-     [
-      2,
-      0,
-      "莫甘娜"
-     ],
-     [
-      3,
-      3,
-      "Sentinel"
-     ]
-    ],
-    "positioning": "OP.GG 实战站位（按真实对局采样）",
-    "counters": {
-     "克制": [],
-     "被克制": []
-    },
-    "source": "OP.GG 实时数据",
-    "sourceReal": true,
-    "teamCode": "0242943643142140040f418428000000TFTSet18"
-   },
-   {
     "id": "og_19734bb881caa1d10c1f589bf2a7dd74",
     "name": "黑荆棘 维迦",
     "mainC": "维迦",
     "tier": "C",
     "strength": 4.15,
     "avgPlace": 4.15,
-    "winRate": 0.0763,
-    "top4Rate": 0.5776,
-    "pickRate": 0.000269,
-    "games": 760,
+    "winRate": 0.0777,
+    "top4Rate": 0.5751,
+    "pickRate": 0.000268,
+    "games": 772,
     "opScore": 0.01,
     "units": [
      {
@@ -10393,6 +12530,61 @@
       "tag": "other"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "维迦",
+      "id": "DA_18_Veigar",
+      "cost": 1,
+      "star": 3,
+      "items": [
+       "op_DA_BlueBuff",
+       "op_DA_HextechGunblade",
+       "op_DA_JeweledGauntlet"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "墨菲特",
+      "id": "DA_18_Malphite",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SunfireCape",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 4
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "阿兹尔",
+      "id": "DA_18_Azir",
+      "cost": 3,
+      "star": 2,
+      "items": [
+       "op_DA_GuinsoosRageblade",
+       "op_DA_HextechGunblade",
+       "op_DA_RabadonsDeathcap"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 黑荆棘、约德尔人和朋友、绝命花妖 展开，主C 维迦（1 费 / 3 星，出装 蓝霸符、海克斯科技枪刃、珠光护手）。核心棋子：维迦、墨菲特、阿兹尔。8 人口成型，OP.GG 采样 772 场：平均名次 4.15、胜率 7.8%、前四率 57.5%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "魔岩巨兽",
@@ -10507,10 +12699,10 @@
     "tier": "C",
     "strength": 4.3,
     "avgPlace": 4.3,
-    "winRate": 0.0942,
-    "top4Rate": 0.5449,
-    "pickRate": 0.001343,
-    "games": 3790,
+    "winRate": 0.0946,
+    "top4Rate": 0.5438,
+    "pickRate": 0.001335,
+    "games": 3849,
     "opScore": 0.03,
     "units": [
      {
@@ -10634,6 +12826,61 @@
       "tag": "other"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "崔丝塔娜",
+      "id": "DA_18_Tristana",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_GiantSlayer",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_HextechGunblade"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "莉莉娅",
+      "id": "DA_18_Lillia",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_AdaptiveHelm",
+       "op_DA_AdaptiveHelm",
+       "op_DA_ProtectorsVow"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "拉莫斯",
+      "id": "DA_18_Rammus",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 5,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 花仙子、约德尔人和朋友、护卫 展开，主C 崔丝塔娜（3 费 / 3 星，出装 巨人杀手、鬼索的狂暴之刃、海克斯科技枪刃）。核心棋子：崔丝塔娜、莉莉娅、拉莫斯。8 人口成型，OP.GG 采样 3849 场：平均名次 4.3、胜率 9.5%、前四率 54.4%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "花仙子",
@@ -10752,12 +12999,12 @@
     "name": "约德尔人和朋友 拉莫斯",
     "mainC": "拉莫斯",
     "tier": "C",
-    "strength": 4.42,
-    "avgPlace": 4.42,
-    "winRate": 0.0399,
-    "top4Rate": 0.5242,
-    "pickRate": 0.000124,
-    "games": 351,
+    "strength": 4.41,
+    "avgPlace": 4.41,
+    "winRate": 0.0385,
+    "top4Rate": 0.5247,
+    "pickRate": 0.000126,
+    "games": 364,
     "opScore": 0.0,
     "units": [
      {
@@ -10880,6 +13127,60 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "拉莫斯",
+      "id": "DA_18_Rammus",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "main"
+     },
+     {
+      "name": "崔丝塔娜",
+      "id": "DA_18_Tristana",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_GiantSlayer",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_InfinityEdge"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "提莫",
+      "id": "DA_18_Teemo",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_BlueBuff",
+       "op_DA_JeweledGauntlet"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 约德尔人和朋友、护卫、花仙子 展开，主C 拉莫斯（3 费 / 3 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：拉莫斯、崔丝塔娜、提莫。8 人口成型，OP.GG 采样 364 场：平均名次 4.41、胜率 3.9%、前四率 52.5%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "护卫",
@@ -11000,10 +13301,10 @@
     "tier": "D",
     "strength": 4.52,
     "avgPlace": 4.52,
-    "winRate": 0.0781,
-    "top4Rate": 0.4955,
+    "winRate": 0.0787,
+    "top4Rate": 0.4945,
     "pickRate": 0.000313,
-    "games": 884,
+    "games": 902,
     "opScore": -0.0,
     "units": [
      {
@@ -11127,6 +13428,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "厄斐琉斯",
+      "id": "DA_18_Aphelios",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GiantSlayer",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_KrakensFury"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "Brambleback",
+      "id": "DA_Brambleback18",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_EdgeOfNight",
+       "op_DA_Quicksilver",
+       "op_DA_SteraksGage"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 2
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "Sentinel",
+      "id": "DA_Sentinel18",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_ProtectorsVow",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 重装战士、峡谷野怪、月蚀骑士 展开，主C 厄斐琉斯（4 费 / 2 星，出装 巨人杀手、鬼索的狂暴之刃、海妖之怒）。核心棋子：厄斐琉斯、Brambleback、Sentinel。8 人口成型，OP.GG 采样 902 场：平均名次 4.52、胜率 7.9%、前四率 49.5%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "荆棘之兴",
@@ -11247,10 +13603,10 @@
     "tier": "D",
     "strength": 4.58,
     "avgPlace": 4.58,
-    "winRate": 0.0881,
-    "top4Rate": 0.4744,
-    "pickRate": 0.003455,
-    "games": 9752,
+    "winRate": 0.0878,
+    "top4Rate": 0.4742,
+    "pickRate": 0.003465,
+    "games": 9989,
     "opScore": -0.03,
     "units": [
      {
@@ -11373,6 +13729,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "阿狸",
+      "id": "DA_18_Ahri",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_JeweledGauntlet",
+       "op_DA_SpearOfShojin",
+       "op_DA_StrikersFlail"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "莫甘娜",
+      "id": "DA_18_Morgana",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Morellonomicon",
+       "op_DA_RabadonsDeathcap",
+       "op_DA_VoidStaff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 2
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "瑟提",
+      "id": "DA_18_Sett",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SteraksGage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 神谕、灵魂莲华、峡谷野怪 展开，主C 阿狸（4 费 / 2 星，出装 珠光护手、朔极之矛、强袭者的链枷）。核心棋子：阿狸、莫甘娜、瑟提。8 人口成型，OP.GG 采样 9989 场：平均名次 4.58、胜率 8.8%、前四率 47.4%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "宝石骑士",
@@ -11475,245 +13886,16 @@
     "teamCode": "0242940740f3e941842a428430000000TFTSet18"
    },
    {
-    "id": "og_84be693eaee8dad61f5b176bec2e021d",
-    "name": "裁决使 瑟提",
-    "mainC": "瑟提",
-    "tier": "D",
-    "strength": 4.64,
-    "avgPlace": 4.64,
-    "winRate": 0.0796,
-    "top4Rate": 0.4694,
-    "pickRate": 0.001838,
-    "games": 5188,
-    "opScore": -0.03,
-    "units": [
-     {
-      "name": "奥恩",
-      "id": "DA_18_Ornn",
-      "cost": 1,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 4,
-       "y": 2
-      },
-      "tag": "other"
-     },
-     {
-      "name": "阿利斯塔",
-      "id": "DA_18_Alistar",
-      "cost": 2,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 3,
-       "y": 3
-      },
-      "tag": "other"
-     },
-     {
-      "name": "芸阿娜",
-      "id": "DA_18_Yunara",
-      "cost": 2,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 7,
-       "y": 1
-      },
-      "tag": "other"
-     },
-     {
-      "name": "费德提克",
-      "id": "DA_Fiddlesticks18",
-      "cost": 3,
-      "star": 2,
-      "items": [],
-      "core": false,
-      "cell": {
-       "x": 3,
-       "y": 2
-      },
-      "tag": "tank"
-     },
-     {
-      "name": "阿狸",
-      "id": "DA_18_Ahri",
-      "cost": 4,
-      "star": 2,
-      "items": [
-       "op_DA_18_EmblemExecutioner",
-       "op_DA_BlueBuff",
-       "op_DA_RabadonsDeathcap"
-      ],
-      "core": true,
-      "cell": {
-       "x": 3,
-       "y": 1
-      },
-      "tag": "sub"
-     },
-     {
-      "name": "伊泽瑞尔",
-      "id": "DA_18_Ezreal",
-      "cost": 4,
-      "star": 2,
-      "items": [
-       "op_DA_Deathblade",
-       "op_DA_LastWhisper",
-       "op_DA_SpearOfShojin"
-      ],
-      "core": true,
-      "cell": {
-       "x": 1,
-       "y": 1
-      },
-      "tag": "sub"
-     },
-     {
-      "name": "瑟提",
-      "id": "DA_18_Sett",
-      "cost": 4,
-      "star": 2,
-      "items": [
-       "op_DA_GargoyleStoneplate",
-       "op_DA_SpiritVisage",
-       "op_DA_WarmogsArmor"
-      ],
-      "core": true,
-      "cell": {
-       "x": 4,
-       "y": 4
-      },
-      "tag": "main"
-     },
-     {
-      "name": "索拉卡",
-      "id": "DA_18_Soraka",
-      "cost": 4,
-      "star": 2,
-      "items": [
-       "op_DA_HextechGunblade",
-       "op_DA_RabadonsDeathcap",
-       "op_DA_SpearOfShojin"
-      ],
-      "core": false,
-      "cell": {
-       "x": 5,
-       "y": 1
-      },
-      "tag": "other"
-     }
-    ],
-    "traits": [
-     {
-      "name": "绝命花妖",
-      "active": 2,
-      "need": 2,
-      "style": 4
-     },
-     {
-      "name": "裁决使",
-      "active": 4,
-      "need": 4,
-      "style": 4
-     },
-     {
-      "name": "法师",
-      "active": 2,
-      "need": 4,
-      "style": 1
-     },
-     {
-      "name": "斗士",
-      "active": 2,
-      "need": 4,
-      "style": 1
-     },
-     {
-      "name": "护卫",
-      "active": 2,
-      "need": 4,
-      "style": 1
-     },
-     {
-      "name": "灵魂莲华",
-      "active": 3,
-      "need": 5,
-      "style": 1
-     },
-     {
-      "name": "永恒之森",
-      "active": 3,
-      "need": 5,
-      "style": 1
-     }
-    ],
-    "positionMap": [
-     [
-      3,
-      3,
-      "奥恩"
-     ],
-     [
-      3,
-      4,
-      "阿利斯塔"
-     ],
-     [
-      1,
-      2,
-      "芸阿娜"
-     ],
-     [
-      3,
-      5,
-      "费德提克"
-     ],
-     [
-      1,
-      1,
-      "阿狸"
-     ],
-     [
-      1,
-      6,
-      "伊泽瑞尔"
-     ],
-     [
-      3,
-      0,
-      "瑟提"
-     ],
-     [
-      1,
-      3,
-      "索拉卡"
-     ]
-    ],
-    "positioning": "OP.GG 实战站位（按真实对局采样）",
-    "counters": {
-     "克制": [],
-     "被克制": []
-    },
-    "source": "OP.GG 实时数据",
-    "sourceReal": true,
-    "teamCode": "0241f3eb43b4003e93ff42a42e000000TFTSet18"
-   },
-   {
     "id": "og_0319050d9ce0327adee0368a595d4c17",
     "name": "裁决使 墨菲特",
     "mainC": "墨菲特",
     "tier": "D",
-    "strength": 4.66,
-    "avgPlace": 4.66,
-    "winRate": 0.0657,
-    "top4Rate": 0.466,
-    "pickRate": 0.001132,
-    "games": 3195,
+    "strength": 4.65,
+    "avgPlace": 4.65,
+    "winRate": 0.0663,
+    "top4Rate": 0.4669,
+    "pickRate": 0.001131,
+    "games": 3260,
     "opScore": -0.02,
     "units": [
      {
@@ -11837,6 +14019,61 @@
       "tag": "other"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "墨菲特",
+      "id": "DA_18_Malphite",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Crownguard",
+       "op_DA_GargoyleStoneplate",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "main"
+     },
+     {
+      "name": "索拉卡",
+      "id": "DA_18_Soraka",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_ArchangelsStaff",
+       "op_DA_RabadonsDeathcap",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "婕拉",
+      "id": "DA_18_Zyra",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_ArchangelsStaff",
+       "op_DA_SpearOfShojin",
+       "op_DA_VoidStaff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 召唤师、裁决使、绝命花妖 展开，主C 墨菲特（4 费 / 2 星，出装 冕卫、石像鬼石板甲、狂徒铠甲）。核心棋子：墨菲特、索拉卡、婕拉。8 人口成型，OP.GG 采样 3260 场：平均名次 4.65、胜率 6.6%、前四率 46.7%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "魔岩巨兽",
@@ -11957,16 +14194,300 @@
     "teamCode": "0243a3f140041442e43c3ed40b000000TFTSet18"
    },
    {
+    "id": "og_84be693eaee8dad61f5b176bec2e021d",
+    "name": "裁决使 瑟提",
+    "mainC": "瑟提",
+    "tier": "D",
+    "strength": 4.65,
+    "avgPlace": 4.65,
+    "winRate": 0.079,
+    "top4Rate": 0.47,
+    "pickRate": 0.00184,
+    "games": 5304,
+    "opScore": -0.03,
+    "units": [
+     {
+      "name": "奥恩",
+      "id": "DA_18_Ornn",
+      "cost": 1,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 4,
+       "y": 2
+      },
+      "tag": "other"
+     },
+     {
+      "name": "阿利斯塔",
+      "id": "DA_18_Alistar",
+      "cost": 2,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 3,
+       "y": 3
+      },
+      "tag": "other"
+     },
+     {
+      "name": "芸阿娜",
+      "id": "DA_18_Yunara",
+      "cost": 2,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "other"
+     },
+     {
+      "name": "费德提克",
+      "id": "DA_Fiddlesticks18",
+      "cost": 3,
+      "star": 2,
+      "items": [],
+      "core": false,
+      "cell": {
+       "x": 3,
+       "y": 2
+      },
+      "tag": "tank"
+     },
+     {
+      "name": "阿狸",
+      "id": "DA_18_Ahri",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_18_EmblemExecutioner",
+       "op_DA_BlueBuff",
+       "op_DA_RabadonsDeathcap"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "伊泽瑞尔",
+      "id": "DA_18_Ezreal",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Deathblade",
+       "op_DA_LastWhisper",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "瑟提",
+      "id": "DA_18_Sett",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "main"
+     },
+     {
+      "name": "索拉卡",
+      "id": "DA_18_Soraka",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_HextechGunblade",
+       "op_DA_RabadonsDeathcap",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": false,
+      "cell": {
+       "x": 5,
+       "y": 1
+      },
+      "tag": "other"
+     }
+    ],
+    "coreUnits": [
+     {
+      "name": "瑟提",
+      "id": "DA_18_Sett",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "main"
+     },
+     {
+      "name": "阿狸",
+      "id": "DA_18_Ahri",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_18_EmblemExecutioner",
+       "op_DA_BlueBuff",
+       "op_DA_RabadonsDeathcap"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "伊泽瑞尔",
+      "id": "DA_18_Ezreal",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Deathblade",
+       "op_DA_LastWhisper",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 裁决使、灵魂莲华、永恒之森 展开，主C 瑟提（4 费 / 2 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：瑟提、阿狸、伊泽瑞尔。8 人口成型，OP.GG 采样 5304 场：平均名次 4.65、胜率 7.9%、前四率 47.0%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
+    "traits": [
+     {
+      "name": "绝命花妖",
+      "active": 2,
+      "need": 2,
+      "style": 4
+     },
+     {
+      "name": "裁决使",
+      "active": 4,
+      "need": 4,
+      "style": 4
+     },
+     {
+      "name": "法师",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "斗士",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "护卫",
+      "active": 2,
+      "need": 4,
+      "style": 1
+     },
+     {
+      "name": "灵魂莲华",
+      "active": 3,
+      "need": 5,
+      "style": 1
+     },
+     {
+      "name": "永恒之森",
+      "active": 3,
+      "need": 5,
+      "style": 1
+     }
+    ],
+    "positionMap": [
+     [
+      3,
+      3,
+      "奥恩"
+     ],
+     [
+      3,
+      4,
+      "阿利斯塔"
+     ],
+     [
+      1,
+      2,
+      "芸阿娜"
+     ],
+     [
+      3,
+      5,
+      "费德提克"
+     ],
+     [
+      1,
+      1,
+      "阿狸"
+     ],
+     [
+      1,
+      6,
+      "伊泽瑞尔"
+     ],
+     [
+      3,
+      0,
+      "瑟提"
+     ],
+     [
+      1,
+      3,
+      "索拉卡"
+     ]
+    ],
+    "positioning": "OP.GG 实战站位（按真实对局采样）",
+    "counters": {
+     "克制": [],
+     "被克制": []
+    },
+    "source": "OP.GG 实时数据",
+    "sourceReal": true,
+    "teamCode": "0241f3eb43b4003e93ff42a42e000000TFTSet18"
+   },
+   {
     "id": "og_36cdb1a1be00e17a46ace3ae83bb45f3",
     "name": "迅捷射手 Brambleback",
     "mainC": "Brambleback",
     "tier": "D",
     "strength": 5.18,
     "avgPlace": 5.18,
-    "winRate": 0.0284,
-    "top4Rate": 0.354,
-    "pickRate": 0.000548,
-    "games": 1548,
+    "winRate": 0.0278,
+    "top4Rate": 0.3538,
+    "pickRate": 0.000549,
+    "games": 1583,
     "opScore": -0.04,
     "units": [
      {
@@ -12090,6 +14611,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "Brambleback",
+      "id": "DA_Brambleback18",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_18_EmblemRapidfire",
+       "op_DA_EdgeOfNight",
+       "op_DA_Quicksilver"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 2
+      },
+      "tag": "main"
+     },
+     {
+      "name": "厄斐琉斯",
+      "id": "DA_18_Aphelios",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_InfinityEdge",
+       "op_DA_KrakensFury",
+       "op_DA_StrikersFlail"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "阿木木",
+      "id": "DA_Amumu18",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 5,
+       "y": 4
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 迅捷射手、峡谷野怪、花仙子 展开，主C Brambleback（4 费 / 2 星，出装 迅捷射手纹章、夜之锋刃、水银）。核心棋子：Brambleback、厄斐琉斯、阿木木。8 人口成型，OP.GG 采样 1583 场：平均名次 5.18、胜率 2.8%、前四率 35.4%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "迅捷射手",
@@ -12216,10 +14792,10 @@
     "tier": "D",
     "strength": 5.47,
     "avgPlace": 5.47,
-    "winRate": 0.042,
-    "top4Rate": 0.2996,
-    "pickRate": 0.001172,
-    "games": 3308,
+    "winRate": 0.0418,
+    "top4Rate": 0.3,
+    "pickRate": 0.001171,
+    "games": 3377,
     "opScore": -0.11,
     "units": [
      {
@@ -12241,7 +14817,7 @@
       "cost": 2,
       "star": 3,
       "items": [
-       "op_DA_Artifact_NavoriFlickerblade",
+       "op_DA_Deathblade",
        "op_DA_GuinsoosRageblade"
       ],
       "core": false,
@@ -12342,6 +14918,61 @@
       "tag": "tank"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "伊莉丝",
+      "id": "DA_18_Elise",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_TitansResolve"
+      ],
+      "core": true,
+      "cell": {
+       "x": 4,
+       "y": 4
+      },
+      "tag": "main"
+     },
+     {
+      "name": "莫甘娜",
+      "id": "DA_18_Morgana",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_AdaptiveHelm",
+       "op_DA_Morellonomicon",
+       "op_DA_VoidStaff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 3
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "卡西奥佩娅",
+      "id": "DA_18_Cassiopeia",
+      "cost": 3,
+      "star": 3,
+      "items": [
+       "op_DA_ArchangelsStaff",
+       "op_DA_HextechGunblade",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 魔女、重装战士、狂战士 展开，主C 伊莉丝（2 费 / 3 星，出装 石像鬼石板甲、鬼索的狂暴之刃、泰坦的坚决）。核心棋子：伊莉丝、莫甘娜、卡西奥佩娅。8 人口成型，OP.GG 采样 3377 场：平均名次 5.47、胜率 4.2%、前四率 30.0%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "重装战士",
@@ -12454,12 +15085,12 @@
     "name": "主宰 婕拉",
     "mainC": "婕拉",
     "tier": "D",
-    "strength": 5.52,
-    "avgPlace": 5.52,
-    "winRate": 0.0201,
-    "top4Rate": 0.2943,
-    "pickRate": 0.000406,
-    "games": 1145,
+    "strength": 5.53,
+    "avgPlace": 5.53,
+    "winRate": 0.0198,
+    "top4Rate": 0.2931,
+    "pickRate": 0.000402,
+    "games": 1160,
     "opScore": -0.04,
     "units": [
      {
@@ -12583,6 +15214,61 @@
       "tag": "sub"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "婕拉",
+      "id": "DA_18_Zyra",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_ArchangelsStaff",
+       "op_DA_ArchangelsStaff",
+       "op_DA_HextechGunblade"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "阿木木",
+      "id": "DA_Amumu18",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_SpiritVisage",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 6,
+       "y": 4
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "奈德丽",
+      "id": "DA_Nidalee18_AP",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_ArchangelsStaff",
+       "op_DA_GuinsoosRageblade",
+       "op_DA_VoidStaff"
+      ],
+      "core": true,
+      "cell": {
+       "x": 6,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 主宰、召唤师、野兽之灵 展开，主C 婕拉（4 费 / 2 星，出装 大天使之杖、大天使之杖、海克斯科技枪刃）。核心棋子：婕拉、阿木木、奈德丽。8 人口成型，OP.GG 采样 1160 场：平均名次 5.53、胜率 2.0%、前四率 29.3%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "荆棘之兴",
@@ -12710,9 +15396,9 @@
     "strength": 5.58,
     "avgPlace": 5.58,
     "winRate": 0.0255,
-    "top4Rate": 0.273,
+    "top4Rate": 0.2738,
     "pickRate": 0.001416,
-    "games": 3997,
+    "games": 4083,
     "opScore": -0.15,
     "units": [
      {
@@ -12835,6 +15521,61 @@
       "tag": "other"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "伊泽瑞尔",
+      "id": "DA_18_Ezreal",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_Deathblade",
+       "op_DA_LastWhisper",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 7,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "赫卡里姆",
+      "id": "DA_18_Hecarim",
+      "cost": 3,
+      "star": 2,
+      "items": [
+       "op_DA_BrambleVest",
+       "op_DA_SunfireCape",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 5,
+       "y": 4
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "乐芙兰",
+      "id": "DA_18_LeBlanc",
+      "cost": 2,
+      "star": 3,
+      "items": [
+       "op_DA_ArchangelsStaff",
+       "op_DA_JeweledGauntlet",
+       "op_DA_NashorsTooth"
+      ],
+      "core": true,
+      "cell": {
+       "x": 2,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 永恒之森、绝命花妖、裁决使 展开，主C 伊泽瑞尔（4 费 / 2 星，出装 死亡之刃、最后的轻语、朔极之矛）。核心棋子：伊泽瑞尔、赫卡里姆、乐芙兰。8 人口成型，OP.GG 采样 4083 场：平均名次 5.58、胜率 2.5%、前四率 27.4%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "绝命花妖",
@@ -12947,12 +15688,12 @@
     "name": "灵魂莲华 阿狸",
     "mainC": "阿狸",
     "tier": "D",
-    "strength": 5.87,
-    "avgPlace": 5.87,
-    "winRate": 0.021,
-    "top4Rate": 0.2161,
-    "pickRate": 0.000185,
-    "games": 523,
+    "strength": 5.86,
+    "avgPlace": 5.86,
+    "winRate": 0.0204,
+    "top4Rate": 0.2156,
+    "pickRate": 0.000187,
+    "games": 538,
     "opScore": -0.03,
     "units": [
      {
@@ -13075,6 +15816,61 @@
       "tag": "sub"
      }
     ],
+    "coreUnits": [
+     {
+      "name": "阿狸",
+      "id": "DA_18_Ahri",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_JeweledGauntlet",
+       "op_DA_SpearOfShojin",
+       "op_DA_StrikersFlail"
+      ],
+      "core": true,
+      "cell": {
+       "x": 3,
+       "y": 1
+      },
+      "tag": "main"
+     },
+     {
+      "name": "瑟提",
+      "id": "DA_18_Sett",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_GargoyleStoneplate",
+       "op_DA_GargoyleStoneplate",
+       "op_DA_WarmogsArmor"
+      ],
+      "core": true,
+      "cell": {
+       "x": 1,
+       "y": 1
+      },
+      "tag": "sub"
+     },
+     {
+      "name": "希维尔",
+      "id": "DA_18_Sivir",
+      "cost": 4,
+      "star": 2,
+      "items": [
+       "op_DA_18_EmblemBlossom",
+       "op_DA_RedBuff",
+       "op_DA_SpearOfShojin"
+      ],
+      "core": true,
+      "cell": {
+       "x": 6,
+       "y": 1
+      },
+      "tag": "sub"
+     }
+    ],
+    "description": "围绕 灵魂莲华、法师、野兽之灵 展开，主C 阿狸（4 费 / 2 星，出装 珠光护手、朔极之矛、强袭者的链枷）。核心棋子：阿狸、瑟提、希维尔。8 人口成型，OP.GG 采样 538 场：平均名次 5.86、胜率 2.0%、前四率 21.6%。",
+    "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
       "name": "灵魂莲华",

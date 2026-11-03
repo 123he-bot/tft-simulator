@@ -266,6 +266,23 @@ def main():
             tagged.append((u, tag))
 
         position = build_position(pos_units, champ_by_name)
+        tagged = [dict(u, **{'tag': tag}) for u, tag in tagged]
+        core_units = [u for u in tagged if u['core']]
+        if not core_units:
+            core_units = [u for u in tagged if u['tag'] in ('main', 'sub', 'tank')][:3]
+        core_units.sort(key=lambda u: ({'main': 0, 'sub': 1, 'tank': 2}.get(u['tag'], 3), -(u['cost'] or 1)))
+        item_name = {v['id']: v['name'] for v in item_catalog.values()}
+        active_names = [t['name'] for t in sorted(
+            [x for x in traits if x['style'] >= 1], key=lambda x: -x['active'])][:3]
+        main_items = '、'.join(item_name.get(i, i) for i in main_unit.get('items') or [])
+        pop = len(tagged)
+        desc = (f'围绕 {"、".join(active_names) if active_names else "当前羁绊组合"} 展开，主C {mainC}'
+                f'（{main_unit.get("cost") or 1} 费 / {main_unit.get("star") or 1} 星'
+                f'{("，出装 " + main_items) if main_items else ""}）。核心棋子：'
+                f'{"、".join(u["name"] for u in core_units)}。{pop} 人口成型，OP.GG 采样 '
+                f'{int(num(deck.get("compsCount"), 0))} 场：平均名次 {round(num(deck.get("avgPlacement")), 2)}'
+                f'、胜率 {round(num(deck.get("winRate")) * 100, 1)}%、前四率 '
+                f'{round(num(deck.get("top4Rate")) * 100, 1)}%。')
         out_comps.append({
             'id': 'og_' + stat['originHash'],
             'name': (comp.get('name') or {}).get('zh_CN') or (comp.get('name') or {}).get('en_US') or '未命名阵容',
@@ -278,7 +295,10 @@ def main():
             'pickRate': round(num(deck.get('pickRate')), 6),
             'games': int(num(deck.get('compsCount'), 0)),
             'opScore': round(num(stat.get('opScore')), 2),
-            'units': [dict(u, **{'tag': tag}) for u, tag in tagged],
+            'units': tagged,
+            'coreUnits': core_units,
+            'description': desc,
+            'descriptionSource': '基于 OP.GG 真实阵容字段自动生成',
             'traits': traits,
             'positionMap': position,
             'positioning': 'OP.GG 实战站位（按真实对局采样）',

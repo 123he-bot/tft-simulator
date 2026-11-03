@@ -1078,6 +1078,29 @@ window.TFT = window.TFT || {};
       ? '<div class="comp-grid compact">' + related.map(r => compCardHTML(r.cp, r.tier)).join('') + '</div>'
       : '<div class="dim">暂未找到同主C的其他阵容</div>';
 
+    /* —— 阵容说明 / 核心棋子（仅 OP.GG 实时阵容具备真实字段） —— */
+    const coreRank = { main: 0, sub: 1, tank: 2 };
+    const coreList = (cp.coreUnits && cp.coreUnits.length ? cp.coreUnits.slice() : units.filter(u => u.core).slice())
+      .sort((a, b) => (a.tag in coreRank ? coreRank[a.tag] : 3) - (b.tag in coreRank ? coreRank[b.tag] : 3));
+    const coreHTML = coreList.map(function (cu) {
+      const ch = D.champByName(cu.name);
+      const icon = ch ? U.champIcon(ch) : null;
+      const p = planMap[cu.name] || { items: [] };
+      const badge = TAG_BADGE[{ main: 'main', sub: 'sub', tank: 'tank' }[cu.tag]] || '';
+      return '<div class="core-card">' +
+        (icon ? '<img class="core-icon" src="' + icon + '" alt="">' : '<span class="core-icon core-fb">' + U.esc((cu.name || '?').slice(0, 1)) + '</span>') +
+        '<div class="core-meta"><b>' + U.esc(cu.name) + '</b>' +
+        '<span class="core-sub"><i class="ur-cost c' + (cu.cost || 1) + '">' + (cu.cost || 1) + '</i> ' +
+        '★'.repeat(U.clamp(cu.star || 1, 1, 3)) + (badge ? ' · ' + badge : '') + '</span>' +
+        itemChips(p) + '</div></div>';
+    }).join('');
+    const aboutHTML = (isRealComp && cp.description)
+      ? '<div class="card cd-about"><h4>阵容说明 <span class="dim">' + U.esc(cp.descriptionSource || '基于真实数据自动生成') + '</span></h4>' +
+        '<p class="cd-desc">' + U.esc(cp.description) + '</p>' +
+        '<div class="panel-title cd-core-title">核心棋子 <span class="dim">共 ' + coreList.length + ' 个 · 星级与出装均为 OP.GG 实测</span></div>' +
+        '<div class="core-grid">' + coreHTML + '</div></div>'
+      : '';
+
     const body =
       '<div class="m-grid c2" style="align-items:start">' +
       /* 左列 */
@@ -1103,6 +1126,7 @@ window.TFT = window.TFT || {};
           '<button class="btn btn-xs" id="cpAsk">让 AI 讲运营</button>' +
           '<button class="btn btn-xs" id="cpPoster">阵容一图流</button></div>' +
         '</div>' +
+        aboutHTML +
         '<div class="card"><h4>羁绊达成（' + actives.length + ' 激活 / ' + (cp.traits || []).length + '）</h4><div class="trait-list">' + traitRows + '</div></div>' +
         '<div class="card"><h4>推荐站位 <span class="dim">前排 ' + frontN + ' · 中排 ' + midN + ' · 后排 ' + backN + '</span></h4>' + posHTML +
           '<div class="dim" style="font-size:10px;margin-top:8px">' + U.esc(String(cp.positioning || '').replace(/（[^）]*\d[^）]*）/g, '').trim()) + ' 上阵 ' + units.length + ' 人 · 前排 ' + frontN + ' · 中排 ' + midN + ' · 后排 ' + backN + '</div>' +
