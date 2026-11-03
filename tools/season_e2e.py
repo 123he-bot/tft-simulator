@@ -275,6 +275,11 @@ f.onload = function () {
                 R.optUI = { sum: d().querySelectorAll('.opm-sum').length,
                   cards: d().querySelectorAll('#optWrap .op-card').length };
                 W.TFT.UI.closeModal();
+                W.TFT.UI.toast('e2e-test', 'ok');
+                var toasts = d().querySelectorAll('#toastRoot .toast');
+                var lastT = toasts[toasts.length - 1];
+                R.toastUI = { ico: lastT ? lastT.querySelectorAll('.toast-ico.ti-ok').length : 0,
+                  msg: lastT ? (lastT.querySelector('.toast-msg') || {}).textContent || '' : '' };
                 finish();
               }, 600);
             }, 400);
@@ -491,6 +496,9 @@ def run(keep=False):
           'prog=%s opts=%s' % (qzi.get('prog'), qzi.get('opts')))
     check('阵容优化器含状态总览条', omi.get('sum') == 1 and omi.get('cards', 0) >= 1,
           'sum=%s cards=%s' % (omi.get('sum'), omi.get('cards')))
+    tst = result.get('toastUI', {})
+    check('Toast 含类型图标与文本', tst.get('ico') == 1 and tst.get('msg') == 'e2e-test',
+          'ico=%s msg=%s' % (tst.get('ico'), tst.get('msg')))
 
     width = max(len(n) for n, _, _ in checks)
     failed = 0

@@ -1756,3 +1756,31 @@ body::after{
   background:linear-gradient(180deg,var(--gold),transparent)}
 .oms-item span{display:block;font-size:9px;color:var(--mute)}
 .oms-item b{display:block;font-size:13px;color:#eaf6ff;margin-top:2px;font-variant-numeric:tabular-nums}
+
+/* ================= 模块界面深化 · 第九批：装备选择器 / 一图流 / Toast ================= */
+/* --- Toast：类型图标 + 玻璃拟态 --- */
+.toast{display:flex;align-items:center;gap:8px;padding:8px 14px 8px 12px;border-radius:10px;
+  backdrop-filter:blur(8px);background:linear-gradient(180deg,rgba(16,26,46,.92),rgba(10,17,32,.92))}
+.toast-ico{width:18px;height:18px;flex-shrink:0;display:grid;place-items:center;border-radius:50%;
+  font-size:10px;font-weight:800;line-height:1}
+.toast-msg{flex:1;min-width:0}
+.toast-ico.ti-ok{color:#052e16;background:#34d399;box-shadow:0 0 10px rgba(52,211,153,.5)}
+.toast-ico.ti-warn{color:#431407;background:#fb923c;box-shadow:0 0 10px rgba(251,146,60,.5)}
+.toast-ico.ti-err{color:#500724;background:#fb7185;box-shadow:0 0 10px rgba(251,113,133,.5)}
+
+/* --- 装备选择器 ipick --- */
+.ipick{border-color:rgba(34,211,238,.3);
+  background:linear-gradient(180deg,rgba(34,211,238,.06),rgba(20,31,53,.94));box-shadow:0 10px 26px rgba(0,0,0,.4)}
+.ipick-head b{color:#bff1ff}
+.ipick-close{margin-left:auto}
+.ipick-item:hover{border-color:rgba(34,211,238,.45);transform:translateY(-1px)}
+.ipick-item.on{border-color:rgba(245,197,66,.55);background:rgba(245,197,66,.1);color:#ffe08a;
+  box-shadow:0 0 10px rgba(245,197,66,.15)}
+.ipick-foot{border-top:1px dashed var(--border);padding-top:6px}
+.ipick-count{color:var(--gold);font-weight:700}
+
+/* --- 一图流：头部装饰带 --- */
+.poster-wrap .ps-head{position:relative;border-bottom:none;padding-bottom:12px}
+.poster-wrap .ps-head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,#22d3ee,#f5c542,transparent 85%)}
+.poster-wrap .ps-block{border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 12px;background:rgba(255,255,255,.02)}

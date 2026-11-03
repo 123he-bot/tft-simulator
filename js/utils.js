@@ -198,7 +198,10 @@ window.TFT = window.TFT || {};
   /* Toast */
   UI.toast = function (msg, kind, ms) {
     const root = U.$('#toastRoot'); if (!root) return;
-    const t = U.el('div', 'toast ' + (kind || ''), msg);
+    const ICONS = { ok: '✓', warn: '!', err: '✕' };
+    const t = U.el('div', 'toast ' + (kind || ''));
+    t.innerHTML = (kind && ICONS[kind] ? '<span class="toast-ico ti-' + kind + '">' + ICONS[kind] + '</span>' : '') +
+      '<span class="toast-msg">' + U.esc(msg) + '</span>';
     root.appendChild(t);
     setTimeout(function () {
       t.style.transition = 'opacity .25s, transform .25s';
