@@ -1971,7 +1971,7 @@ window.TFT = window.TFT || {};
         '<div class="ht-side">' + (top.cp.sourceReal
           ? '<span class="dim">平均名次</span>' + strengthBar(top.cp.strength) + '<b>' + top.cp.avgPlace + '</b><span class="dim" style="font-size:10px">胜率 ' + pct(top.cp.winRate) + '</span>'
           : '<span class="dim">强度</span>' + strengthBar(top.cp.strength) + '<b>' + strengthLabel(top.cp.strength) + '</b>') +
-        '</div>' : '';
+        '</div></div>' : '';
       grid.innerHTML = cards ? gridNote + topHtml + cards
         : '<div class="dim">当前数据源暂无评级阵容</div>';
       $$('#homeTierGrid [data-comp]').forEach(c => c.onclick = function () { Main.openCompDetail(c.dataset.comp); });
