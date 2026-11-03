@@ -161,6 +161,18 @@ f.onload = function () {
         setTimeout(function () {
           R.s3 = snap(); R.s3Tabs = tabs(); R.s3Comp = localComp();
           R.grid = homeGrid(); R.more = moreCenter();
+          /* S18（第三方源接入）——赛季下拉可见、棋子/羁绊数量、来源标注 */
+          setSeason('s18');
+          var hs18 = d().getElementById('homeSource');
+          R.s18 = {
+            selectValue: d().getElementById('seasonSelect').value,
+            champs: W.TFT.D.champions().length,
+            traits: W.TFT.D.traits().length,
+            srcNote: hs18 ? hs18.textContent.indexOf('S18 来源') >= 0 : false,
+            enTag: W.TFT.D.champions().every(function (c) { return c.ability && c.ability.lang === 'en'; }),
+            comps: (function () { var t = W.TFT.D.meta.tiers || {}, n = 0;
+              Object.keys(t).forEach(function (k) { n += (t[k] || []).length; }); return n; })()
+          };
           /* 回到 S17 后载入一份 S3 存档，验证赛季 UI 同步 */
           setSeason('s17');
           var si = d().getElementById('searchInput');
@@ -396,6 +408,14 @@ def run(keep=False):
     check('S3 详情页显示置信度', cp.get('detailHasConfidence') is True)
 
     detail = result.get('detail', {})
+
+    s18 = result.get('s18', {})
+    check('S18 出现在赛季下拉', s18.get('selectValue') == 's18', s18.get('selectValue'))
+    check('S18 棋子 55 个', s18.get('champs') == 55, s18.get('champs'))
+    check('S18 羁绊 33 条', s18.get('traits') == 33, s18.get('traits'))
+    check('S18 首页标注来源为第三方', s18.get('srcNote') is True)
+    check('S18 技能文本标记为英文原文', s18.get('enTag') is True)
+    check('S18 推断榜单有阵容', s18.get('comps', 0) > 0, s18.get('comps'))
     check('攻略页含运营节奏与关键节点', detail.get('found') is True and detail.get('hasPace') is True,
           'found=%s pace=%s' % (detail.get('found'), detail.get('hasPace')))
     check('运营节奏表至少 4 行', detail.get('paceRows', 0) >= 4, detail.get('paceRows'))

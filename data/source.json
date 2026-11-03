@@ -84,6 +84,20 @@
    "name": "Set17",
    "champions": 64,
    "traits": 35
+  },
+  "s18": {
+   "name": "自然之力",
+   "champions": 55,
+   "traits": 33
+  }
+ },
+ "extraSource": {
+  "S18": {
+   "label": "S18 自然之力",
+   "source": "op.gg 中文站内嵌数据（原始来源为 Riot 游戏文件）",
+   "url": "https://op.gg/zh-cn/tft/meta-trends/champion?version=18.5",
+   "note": "官方 CommunityDragon JSON 尚未收录 Set18；技能文本为英文原文，未作翻译",
+   "detail": "data/source_set18.json"
   }
  }
 }

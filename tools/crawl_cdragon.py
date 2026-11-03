@@ -461,6 +461,16 @@ def localize_assets(augments=None, items=None):
     print('图标本地化：', stats, '去重图标', len(uniq))
 
 
+def local_season_slugs():
+    """本地已存在的赛季文件（data/sN.json）。含非官方 CDragon 来源的手工赛季（如 s18）。"""
+    slugs = []
+    for fn in os.listdir(DATA):
+        m = re.match(r'^s(\d+)\.json$', fn)
+        if m:
+            slugs.append((int(m.group(1)), 's' + m.group(1)))
+    return [s for _, s in sorted(slugs)]
+
+
 def rebuild_bundle(augments, items):
     def load(name):
         p = os.path.join(DATA, name)
@@ -471,7 +481,7 @@ def rebuild_bundle(augments, items):
         'items': load('items.json'),
         'meta': load('meta.json'),
     }
-    for slug in SETS:
+    for slug in local_season_slugs():
         p = os.path.join(DATA, slug + '.json')
         if os.path.exists(p):
             bundle[slug] = load(slug + '.json')
@@ -491,7 +501,7 @@ def rebuild_bundle(augments, items):
 def season_stats():
     """读取本地各赛季文件，统计棋子/羁绊数量，作为「已爬取数据」的一部分记录。"""
     stats = {}
-    for slug in SETS:
+    for slug in local_season_slugs():
         p = os.path.join(DATA, slug + '.json')
         if not os.path.exists(p):
             continue

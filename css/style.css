@@ -1784,3 +1784,7 @@ body::after{
 .poster-wrap .ps-head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;
   background:linear-gradient(90deg,#22d3ee,#f5c542,transparent 85%)}
 .poster-wrap .ps-block{border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 12px;background:rgba(255,255,255,.02)}
+
+/* --- 非中文技能文本标记（S18 数据源为英文原文） --- */
+.tag-en{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:6px;font-size:10px;font-weight:600;
+  letter-spacing:.4px;color:#fbbf24;background:rgba(245,197,66,.12);border:1px solid rgba(245,197,66,.35);vertical-align:1px}

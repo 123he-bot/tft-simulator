@@ -495,7 +495,8 @@ window.TFT = window.TFT || {};
       ['牌池剩余', (remain == null ? '-' : remain) + ' / ' + U.POOL_PER_CHAMP[c.cost]]].map(r =>
         '<div class="kv"><span class="k">' + r[0] + '</span><span class="v">' + r[1] + '</span></div>').join('') +
       '</div>' +
-      '<div class="card"><h4>技能 · ' + U.esc(c.ability ? c.ability.name : '') + '</h4>' +
+      '<div class="card"><h4>技能 · ' + U.esc(c.ability ? c.ability.name : '') +
+      (c.ability && c.ability.lang === 'en' ? ' <span class="tag-en">EN 原文</span>' : '') + '</h4>' +
       '<div style="color:#a5b8da;font-size:11px;line-height:1.7">' + U.esc((c.ability ? c.ability.desc : '') || '—') + '</div>' +
       '<div class="m-row" style="margin-top:10px">' +
       '<button class="btn btn-primary btn-xs" id="cdAddBoard">上阵到棋盘</button>' +
@@ -2055,6 +2056,9 @@ window.TFT = window.TFT || {};
       '<div class="kv"><span class="k">抓取时间</span><span class="v">' + U.esc(src.fetchedAt || ov.fetchedAt || '—') + '</span></div>' +
       '<div class="kv"><span class="k">条目统计</span><span class="v">海克斯 ' + U.esc(String(ov.augments)) + ' · 装备 ' + U.esc(String(ov.items)) + ' · 赛季 ' + U.esc(String(ov.seasons)) + '</span></div>' +
       (srcUrls ? '<div class="kv"><span class="k">原始链接</span><span class="v">' + srcUrls + '</span></div>' : '') +
+      (src.extraSource && src.extraSource.S18 ?
+        '<div class="kv"><span class="k">S18 来源</span><span class="v">' + U.esc(src.extraSource.S18.source) +
+        ' · 技能文本为英文原文</span></div>' : '') +
       '<p class="home-source-note">说明：' + U.esc((D.meta && D.meta.note) || '本站仅统计与展示数据源中真实存在的字段。') +
       ' 所有「强度」为基于真实对线数据推导的相对分层，非官方胜率；概率由本地规则引擎按公开概率表计算，未使用任何真实对局遥测。</p>';
   };

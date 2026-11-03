@@ -31,13 +31,14 @@ window.TFT = window.TFT || {};
     APFighter: { ap: 0.58, hp: 0.62, armor: 0.44, mr: 0.34, mana: 0.38, crit: 0.18, ad: 0, as: 0.10 },
     APTank: { hp: 0.90, mr: 0.85, armor: 0.78, ap: 0.18, mana: 0.10, crit: 0.05, ad: 0, as: 0 },
     APReaper: { ap: 0.95, crit: 0.62, mana: 0.48, hp: 0.14, armor: 0.05, mr: 0.05, ad: 0, as: 0.10 },
+    APSpecialist: { ap: 0.72, mana: 0.58, crit: 0.42, hp: 0.20, armor: 0.10, mr: 0.08, ad: 0, as: 0.12 },
     HFighter: { ad: 0.48, ap: 0.48, hp: 0.58, as: 0.38, armor: 0.34, mr: 0.24, crit: 0.20, mana: 0.14 }
   };
 
   const ROLE_CN = {
     ADFighter: 'AD 战士', ADCarry: 'AD 主C', ADCaster: 'AD 法系', ADTank: 'AD 坦克',
     ADSpecialist: 'AD 特工', ADReaper: 'AD 收割', APFighter: 'AP 战士', APCarry: 'AP 主C',
-    APCaster: 'AP 法师', APTank: 'AP 坦克', APReaper: 'AP 收割', HFighter: '混合战士'
+    APCaster: 'AP 法师', APTank: 'AP 坦克', APReaper: 'AP 收割', APSpecialist: 'AP 特工', HFighter: '混合战士'
   };
   R.roleLabel = r => ROLE_CN[r] || '通用';
 
