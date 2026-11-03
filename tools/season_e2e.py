@@ -163,7 +163,15 @@ f.onload = function () {
           R.grid = homeGrid(); R.more = moreCenter();
           /* 回到 S17 后载入一份 S3 存档，验证赛季 UI 同步 */
           setSeason('s17');
+          var si = d().getElementById('searchInput');
+          if (si) { si.value = '战'; si.dispatchEvent(new Event('input', { bubbles: true })); }
           setTimeout(function () {
+            var sg = d().getElementById('searchSuggest');
+            R.suggest = { hidden: sg.classList.contains('hidden'),
+              head: sg.querySelectorAll('.sug-head').length,
+              items: sg.querySelectorAll('.suggest-item').length,
+              icons: sg.querySelectorAll('.sug-ico').length };
+            sg.classList.add('hidden');
             var snapData = W.TFT.state.serialize('e2e', 'test');
             snapData.season = 's3';
             W.TFT.state.loadFrom(snapData);
@@ -174,6 +182,8 @@ f.onload = function () {
                 badge: (d().querySelector('.hero-badge') || {}).textContent || '',
                 heroTags: d().querySelectorAll('.hero-tag').length,
                 hsTitle: (d().querySelector('.hs-title') || {}).textContent || '' };
+              R.homeTier = { top1: d().querySelectorAll('#homeTierGrid .home-top1').length,
+                titles: d().querySelectorAll('#homeTierGrid .home-tier-title').length };
               var sol = W.TFT.Solver.solve({ level: 8, gold: 50, hp: 60, threat: '' });
               R.solver = { routes: sol.routes.length, names: sol.routes.map(function (r) { return r.name; }),
                 intents: sol.routes.map(function (r) { return r.intent; }),
@@ -228,6 +238,11 @@ f.onload = function () {
                 W.TFT.Main.openCommunity();
                 R.shareUI = { code: d().querySelectorAll('.sh-code').length,
                   preview: d().querySelectorAll('.sh-preview').length };
+                W.TFT.UI.closeModal();
+                W.TFT.Main.openSaves();
+                R.savesUI = { hero: d().querySelectorAll('.svl-hero').length,
+                  importBtn: !!d().getElementById('svImport'),
+                  stats: d().querySelectorAll('.svl-stat').length };
                 W.TFT.UI.closeModal();
                 W.TFT.AI.openSettings();
                 var pbtn = d().querySelector('.set-preset[data-k="deepseek"]');
@@ -388,6 +403,14 @@ def run(keep=False):
     check('首页首屏含特性标签与数据侧栏',
           load.get('heroTags') == 3 and '站内数据' in load.get('hsTitle', ''),
           'tags=%s title=%s' % (load.get('heroTags'), load.get('hsTitle')))
+    ht = result.get('homeTier', {})
+    check('首页榜单含榜首卡与分档标题', ht.get('top1') == 1 and ht.get('titles') == 2,
+          'top1=%s titles=%s' % (ht.get('top1'), ht.get('titles')))
+    sug = result.get('suggest', {})
+    check('搜索联想含头部与类型图标',
+          sug.get('hidden') is False and sug.get('head') == 1
+          and sug.get('items', 0) >= 1 and sug.get('icons') == sug.get('items'),
+          'hidden=%s head=%s items=%s icons=%s' % (sug.get('hidden'), sug.get('head'), sug.get('items'), sug.get('icons')))
 
     sol, ui = result.get('solver', {}), result.get('solverUI', {})
     check('求解器给出 3 条路线', sol.get('routes') == 3, '%s %s' % (sol.get('routes'), sol.get('intents')))
@@ -423,6 +446,9 @@ def run(keep=False):
     check('大模型设置含连接状态卡', pre.get('hero') == 1, 'hero=%s' % pre.get('hero'))
 
     simui, pwr, shr = result.get('simUI', {}), result.get('powerUI', {}), result.get('shareUI', {})
+    sv = result.get('savesUI', {})
+    check('存档弹窗含统计卡与导入按钮', sv.get('hero') == 1 and sv.get('importBtn') is True and sv.get('stats') == 3,
+          'hero=%s import=%s stats=%s' % (sv.get('hero'), sv.get('importBtn'), sv.get('stats')))
     check('战斗沙盒含胜负横幅与单位血条',
           simui.get('verdict') == 1 and simui.get('rosters', 0) >= 2 and simui.get('chips') == 3,
           'verdict=%s rosters=%s chips=%s' % (simui.get('verdict'), simui.get('rosters'), simui.get('chips')))

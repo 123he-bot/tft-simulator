@@ -1644,3 +1644,61 @@ body::after{
 .te-card:hover::before{opacity:1}
 .te-rank-badge{box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
 .te-score .te-bar i{box-shadow:0 0 8px rgba(139,92,246,.3)}
+
+/* ================= 模块界面深化 · 第六批：搜索联想 / 首页榜单 / 存档导入导出 ================= */
+/* --- 搜索联想面板 --- */
+.suggest-box{border-radius:12px;overflow:hidden;max-height:340px}
+.sug-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:8px 12px;
+  border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1;
+  background:linear-gradient(90deg,rgba(34,211,238,.12),rgba(20,31,53,.96) 65%);backdrop-filter:blur(6px)}
+.sug-head b{font-size:12px;color:#bff1ff;max-width:46%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sug-head .dim{font-size:10px}
+.sug-foot{padding:5px 12px;border-top:1px solid var(--border);font-size:9.5px;color:var(--mute);
+  background:rgba(255,255,255,.02);text-align:center;letter-spacing:.04em}
+.suggest-item{align-items:center;border-left:2px solid transparent}
+.suggest-item:hover,.suggest-item.on{border-left-color:var(--cyan);
+  background:linear-gradient(90deg,rgba(34,211,238,.14),rgba(34,211,238,.03))}
+.sug-ico{width:20px;height:20px;flex-shrink:0;display:grid;place-items:center;border-radius:6px;font-size:10px;font-weight:800}
+.st-comp{color:#ffe08a;background:rgba(245,197,66,.14);border:1px solid rgba(245,197,66,.4)}
+.st-champ{color:#a5f3fc;background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.4)}
+.st-trait{color:#c4b5fd;background:rgba(139,92,246,.14);border:1px solid rgba(139,92,246,.4)}
+.st-item{color:#86efac;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.4)}
+.st-augment{color:#f9a8d4;background:rgba(236,72,153,.12);border:1px solid rgba(236,72,153,.4)}
+.sug-main{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.suggest-item .tag{border:1px solid var(--border);border-radius:999px;padding:1px 7px;background:rgba(255,255,255,.03);flex-shrink:0}
+.suggest-item.on .tag,.suggest-item:hover .tag{border-color:rgba(34,211,238,.4);color:#a5f3fc}
+
+/* --- 首页榜单：榜首卡 / 分档标题 --- */
+.home-top1{display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;margin-bottom:12px;cursor:pointer;
+  position:relative;overflow:hidden;border:1px solid rgba(245,197,66,.42);transition:.16s;
+  background:linear-gradient(120deg,rgba(245,197,66,.14),rgba(139,92,246,.07),rgba(9,15,28,.95))}
+.home-top1:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.45),0 0 24px rgba(245,197,66,.15)}
+.home-top1::after{content:"";position:absolute;right:-40px;top:-60px;width:170px;height:170px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(245,197,66,.2),transparent 68%)}
+.ht-rank{flex-shrink:0;font-size:26px;font-weight:900;font-style:italic;color:transparent;
+  background:linear-gradient(180deg,#fde68a,#b45309);-webkit-background-clip:text;background-clip:text;
+  filter:drop-shadow(0 0 10px rgba(245,197,66,.4))}
+.ht-main{flex:1;min-width:0}
+.ht-kicker{display:inline-block;font-size:9px;letter-spacing:.1em;color:var(--gold);
+  border:1px solid rgba(245,197,66,.4);border-radius:999px;padding:1px 8px;margin-bottom:4px}
+.ht-main b{display:block;font-size:16px;color:#fff7db;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ht-sub{display:block;font-size:10px;color:var(--mute);margin:2px 0 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ht-side{flex-shrink:0;display:flex;flex-direction:column;gap:4px;align-items:flex-end;text-align:right}
+.ht-side b{color:#ffe08a;font-size:12px}
+.home-tier-title{display:flex;align-items:baseline;gap:8px;margin:12px 0 7px;padding-left:9px;position:relative}
+.home-tier-title::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:13px;border-radius:2px}
+.home-tier-title b{font-size:13px;color:#eaf6ff}
+.home-tier-title span{font-size:10px;color:var(--mute)}
+.home-tier-title.ht-S::before{background:linear-gradient(180deg,#f43f5e,#f5c542);box-shadow:0 0 10px rgba(244,63,94,.5)}
+.home-tier-title.ht-A::before{background:linear-gradient(180deg,#f5c542,#fb923c);box-shadow:0 0 10px rgba(245,197,66,.5)}
+
+/* --- 阵容存档：统计卡 + 导入导出 --- */
+.svl-hero{padding:10px 12px;border:1px solid var(--border);border-radius:12px;margin-bottom:10px;
+  position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(20,31,53,.94),rgba(9,15,28,.95))}
+.svl-hero::after{content:"";position:absolute;right:-30px;top:-50px;width:150px;height:150px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(34,211,238,.14),transparent 68%)}
+.svl-stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:9px;position:relative;z-index:1}
+.svl-stat{flex:1;min-width:130px;padding:6px 10px;border-radius:9px;border:1px solid var(--border);background:rgba(3,7,15,.45)}
+.svl-stat span{display:block;font-size:9px;color:var(--mute)}
+.svl-stat b{display:block;font-size:13px;color:#eaf6ff;margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.svl-stat b i{font-style:normal;font-size:10px;color:var(--mute)}

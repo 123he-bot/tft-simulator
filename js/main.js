@@ -633,16 +633,23 @@ window.TFT = window.TFT || {};
       '</div>';
   }
 
+  const TYPE_ICON = { comp: '阵', champ: '棋', trait: '羁', item: '装', augment: '海' };
   function showSuggest(q) {
     const box = $('#searchSuggest');
-    const res = searchAll(q).slice(0, 8);
+    q = (q || '').trim();
+    const all = q ? searchAll(q) : [];
+    const res = all.slice(0, 8);
     if (!res.length) { box.classList.add('hidden'); box.innerHTML = ''; return; }
     box.classList.remove('hidden');
-    box.innerHTML = res.map((r, i) => '<div class="suggest-item' + (i === 0 ? ' on' : '') + '" data-i="' + i + '">' +
-      '<span>' + U.mark(r.key, q) + (r.sub ? ' <span class="dim">' + U.esc(r.sub) + '</span>' : '') + '</span>' +
-      '<span class="tag">' + TYPE_LABEL[r.type] + '</span></div>').join('');
+    box.innerHTML =
+      '<div class="sug-head"><b>' + U.esc(q) + '</b><span class="dim">匹配 ' + all.length + ' 条 · Enter 查看全部</span></div>' +
+      res.map((r, i) => '<div class="suggest-item' + (i === 0 ? ' on' : '') + '" data-i="' + i + '" data-k="' + U.esc(r.key) + '">' +
+        '<span class="sug-ico st-' + r.type + '">' + (TYPE_ICON[r.type] || '·') + '</span>' +
+        '<span class="sug-main">' + U.mark(r.key, q) + (r.sub ? ' <span class="dim">' + U.esc(r.sub) + '</span>' : '') + '</span>' +
+        '<span class="tag">' + TYPE_LABEL[r.type] + '</span></div>').join('') +
+      '<div class="sug-foot">Enter 搜索全部结果 · Esc 关闭</div>';
     $$('#searchSuggest .suggest-item').forEach(function (it) {
-      it.addEventListener('click', function () { $('#searchInput').value = it.querySelector('span').textContent.trim(); box.classList.add('hidden'); doSearch(); });
+      it.addEventListener('click', function () { $('#searchInput').value = it.getAttribute('data-k') || ''; box.classList.add('hidden'); doSearch(); });
     });
   }
 
@@ -1293,11 +1300,20 @@ window.TFT = window.TFT || {};
   /* ==================== 阵容存档 ==================== */
   Main.openSaves = function () {
     const list = TFT.Store.saves();
+    const latest = list[0];
     const body =
-      '<div class="m-row" style="margin-bottom:8px"><button class="btn btn-xs btn-primary" id="svNow">保存当前阵容</button>' +
+      '<div class="svl-hero">' +
+      '<div class="svl-stats">' +
+      '<div class="svl-stat"><span class="dim">存档数</span><b>' + list.length + '<i> / 100</i></b></div>' +
+      '<div class="svl-stat"><span class="dim">最近保存</span><b>' + (latest ? U.esc(latest.time) : '—') + '</b></div>' +
+      '<div class="svl-stat"><span class="dim">存储位置</span><b>本机浏览器 · localStorage</b></div>' +
+      '</div>' +
+      '<div class="m-row" style="margin:0"><button class="btn btn-xs btn-primary" id="svNow">保存当前阵容</button>' +
+      '<button class="btn btn-xs" id="svImport">导入 JSON</button>' +
       '<button class="btn btn-xs" id="svExpAll">导出全部存档</button>' +
-      '<span class="dim">存档保存在浏览器 localStorage，最多 100 条</span></div>' +
-      '<div class="log-list" id="svList" style="max-height:60vh"></div>';
+      '<span class="dim">支持导入本站导出的阵容 JSON 文件</span></div>' +
+      '</div>' +
+      '<div class="log-list" id="svList" style="max-height:56vh"></div>';
     TFT.UI.modal({ title: '阵容存档', size: 'wide', body: body });
     function render() {
       const l = TFT.Store.saves();
@@ -1328,6 +1344,7 @@ window.TFT = window.TFT || {};
     $('#svExpAll').onclick = function () {
       TFT.Store.download('tft-saves-all.json', JSON.stringify(TFT.Store.saves(), null, 2));
     };
+    $('#svImport').onclick = function () { TFT.UI.closeModal(); $('#fileImport').click(); };
   };
 
   /* ==================== 社区分享 ==================== */
@@ -1838,12 +1855,27 @@ window.TFT = window.TFT || {};
     if (grid) {
       let cards = '';
       ['S', 'A'].forEach(function (t) {
-        ((M.tiers && M.tiers[t]) || []).slice(0, 6).forEach(function (cp) { cards += compCardHTML(cp, t); });
+        const allT = (M.tiers && M.tiers[t]) || [];
+        const arr = allT.slice(0, 6);
+        if (!arr.length) return;
+        cards += '<div class="home-tier-title ht-' + t + '"><b>' + t + ' 档</b>' +
+          '<span>' + (t === 'S' ? '版本答案' : '强力上分') + ' · 本档共 ' + allT.length + ' 套 · 展示前 ' + arr.length + '</span></div>' +
+          '<div class="comp-grid">' + arr.map(function (cp) { return compCardHTML(cp, t); }).join('') + '</div>';
       });
       const gridNote = metaLocal
         ? '<div class="dim" style="margin-bottom:6px">以下榜单由本地规则引擎按该赛季真实棋子 / 羁绊 / 费用推断，非 MetaTFT 胜率数据</div>'
         : (!metaIsCurrent ? '<div class="dim" style="margin-bottom:6px">以下评级来自 ' + U.esc(metaSet) + '，当前赛季 ' + U.esc(curSet) + ' 暂无 MetaTFT 梯度数据</div>' : '');
-      grid.innerHTML = cards ? gridNote + '<div class="comp-grid">' + cards + '</div>'
+      const top = rankedComps()[0];
+      const topHtml = (top && cards) ? '<div class="home-top1" data-comp="' + U.esc(top.cp.id) + '" title="查看榜首详情">' +
+        '<span class="ht-rank">#1</span>' +
+        '<div class="ht-main"><span class="ht-kicker">当前榜首</span>' +
+        '<b>' + U.esc(displayName(top.cp)) + '</b>' +
+        '<span class="ht-sub">主C ' + U.esc(top.cp.mainC || '—') + ' · ' + U.esc(top.tier) + ' 档 · ' +
+          (top.cp.units || []).length + ' 人口' + (top.cp.source ? ' · ' + U.esc(top.cp.source) : '') + '</span>' +
+        '<div class="cc-tags">' + (top.cp.traits || []).slice(0, 5).map(function (t) { return '<span class="mini-tag">' + U.esc(t.name) + ' ' + t.active + '</span>'; }).join('') + '</div></div>' +
+        '<div class="ht-side"><span class="dim">强度</span>' + strengthBar(top.cp.strength) + '<b>' + strengthLabel(top.cp.strength) + '</b></div>' +
+        '</div>' : '';
+      grid.innerHTML = cards ? gridNote + topHtml + cards
         : '<div class="dim">当前数据源暂无评级阵容</div>';
       $$('#homeTierGrid [data-comp]').forEach(c => c.onclick = function () { Main.openCompDetail(c.dataset.comp); });
     }
