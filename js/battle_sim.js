@@ -286,7 +286,16 @@ window.TFT = window.TFT || {};
   Review.open = function () {
     const notes = TFT.Store.notes();
     const stages = TFT.STAGES;
+    const sum0 = TFT.Solver ? TFT.Solver.logSummary() : null;
+    const stageSet = {};
+    notes.forEach(function (n) { stageSet[n.stage] = 1; });
     const body =
+      '<div class="rv-hero">' +
+      '<div class="rv-stat"><span class="dim">复盘笔记</span><b>' + notes.length + ' 条</b></div>' +
+      '<div class="rv-stat"><span class="dim">覆盖阶段</span><b>' + Object.keys(stageSet).length + ' 个</b></div>' +
+      '<div class="rv-stat"><span class="dim">求解决策</span><b>' + (sum0 && sum0.count ? sum0.count + ' 次' : '暂无') + '</b></div>' +
+      '<div class="rv-stat"><span class="dim">平均评分</span><b>' + (sum0 && sum0.count ? sum0.avg + ' 分' : '—') + '</b></div>' +
+      '</div>' +
       '<div class="m-grid c2">' +
       '<div class="card"><h4>记录本次对局关键决策</h4>' +
       '<div class="m-row" style="margin-bottom:6px"><select class="sel sel-sm" id="rvStage">' + stages.map(s => '<option value="' + s + '">' + s + '</option>').join('') + '</select>' +

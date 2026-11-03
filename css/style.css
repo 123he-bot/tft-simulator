@@ -1702,3 +1702,33 @@ body::after{
 .svl-stat span{display:block;font-size:9px;color:var(--mute)}
 .svl-stat b{display:block;font-size:13px;color:#eaf6ff;margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .svl-stat b i{font-style:normal;font-size:10px;color:var(--mute)}
+
+/* ================= 模块界面深化 · 第七批：抽卡模拟器 / 对手多棋盘 / 复盘笔记 ================= */
+/* --- 抽卡模拟器：统计条 --- */
+.rs-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-top:10px}
+.rs-stat{padding:7px 10px;border-radius:9px;border:1px solid var(--border);background:rgba(3,7,15,.45);position:relative;overflow:hidden}
+.rs-stat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--cyan),transparent)}
+.rs-stat span{display:block;font-size:9px;color:var(--mute)}
+.rs-stat b{display:block;font-size:14px;color:#eaf6ff;margin-top:2px;font-variant-numeric:tabular-nums}
+.rs-stat b i{display:block;font-style:normal;font-size:9px;color:var(--gold);margin-top:1px}
+.rs-ctrl{padding:7px 10px;border:1px solid var(--border);border-radius:10px;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.012))}
+
+/* --- 对手多棋盘：总览条 --- */
+.opp-sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:10px}
+.os-item{padding:7px 11px;border-radius:9px;border:1px solid var(--border);position:relative;overflow:hidden;
+  background:linear-gradient(180deg,rgba(20,31,53,.94),rgba(9,15,28,.95))}
+.os-item::after{content:"";position:absolute;right:-22px;top:-30px;width:80px;height:80px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(34,211,238,.12),transparent 70%)}
+.os-item span{display:block;font-size:9px;color:var(--mute)}
+.os-item b{display:block;font-size:12.5px;color:#eaf6ff;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* --- 复盘笔记：汇总卡 --- */
+.rv-hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:10px;
+  padding:10px 12px;border:1px solid var(--border);border-radius:12px;position:relative;overflow:hidden;
+  background:linear-gradient(120deg,rgba(139,92,246,.1),rgba(9,15,28,.95))}
+.rv-hero::after{content:"";position:absolute;right:-30px;top:-50px;width:150px;height:150px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(139,92,246,.18),transparent 68%)}
+.rv-stat{position:relative;z-index:1;padding:2px 8px;border-left:2px solid rgba(139,92,246,.5)}
+.rv-stat span{display:block;font-size:9px;color:var(--mute)}
+.rv-stat b{display:block;font-size:14px;color:#ede9fe;margin-top:2px;font-variant-numeric:tabular-nums}

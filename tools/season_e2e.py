@@ -252,6 +252,18 @@ f.onload = function () {
                   base: (d().getElementById('setBaseUrl') || {}).value,
                   model: (d().getElementById('setModel') || {}).value };
                 W.TFT.UI.closeModal();
+                W.TFT.Main.openOpponents();
+                R.oppUI = { sum: d().querySelectorAll('.opp-sum').length,
+                  items: d().querySelectorAll('.opp-sum .os-item').length,
+                  tabs: d().querySelectorAll('.opp-tab[data-opp]').length };
+                W.TFT.UI.closeModal();
+                W.TFT.Review.open();
+                R.reviewUI = { hero: d().querySelectorAll('.rv-hero').length,
+                  stats: d().querySelectorAll('.rv-stat').length };
+                W.TFT.UI.closeModal();
+                W.TFT.Main.openRollSim();
+                R.rollUI = { stats: d().querySelectorAll('.rs-stat').length };
+                W.TFT.UI.closeModal();
                 finish();
               }, 600);
             }, 400);
@@ -456,6 +468,12 @@ def run(keep=False):
           'score=%s hero=%s' % (pwr.get('score'), pwr.get('hero')))
     check('社区分享弹窗含代码框与预览卡', shr.get('code') == 1 and shr.get('preview') == 1,
           'code=%s preview=%s' % (shr.get('code'), shr.get('preview')))
+    oui, rvi, rli = result.get('oppUI', {}), result.get('reviewUI', {}), result.get('rollUI', {})
+    check('对手多棋盘含总览条', oui.get('sum') == 1 and oui.get('items') == 4 and oui.get('tabs', 0) >= 1,
+          'sum=%s items=%s tabs=%s' % (oui.get('sum'), oui.get('items'), oui.get('tabs')))
+    check('复盘笔记含汇总卡', rvi.get('hero') == 1 and rvi.get('stats') == 4,
+          'hero=%s stats=%s' % (rvi.get('hero'), rvi.get('stats')))
+    check('抽卡模拟器含统计条', rli.get('stats') == 4, 'stats=%s' % rli.get('stats'))
 
     width = max(len(n) for n, _, _ in checks)
     failed = 0

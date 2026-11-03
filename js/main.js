@@ -1248,7 +1248,15 @@ window.TFT = window.TFT || {};
     const palette = champs.map(c => '<span class="u cc' + c.cost + (oppState.selChamp === c.id ? ' c' : '') + '" data-pick="' + U.esc(c.id) + '" style="cursor:pointer" title="' + U.esc(c.name + ' · ' + c.cost + ' 费') + '">' +
       (c.icon ? '<img src="' + U.esc(c.icon) + '" alt="">' : '') + '<span>' + U.esc(c.name) + '</span>' + '<span class="u-cost">' + c.cost + '</span></span>').join('');
 
+    const avgHp = Math.round(S.opponents.reduce(function (s, o) { return s + (o.hp || 0); }, 0) / (S.opponents.length || 1));
+    const weakest = S.opponents.slice().sort(function (a, b) { return (a.hp || 0) - (b.hp || 0); })[0];
     wrap.innerHTML =
+      '<div class="opp-sum">' +
+      '<div class="os-item"><span class="dim">对手数</span><b>' + S.opponents.length + ' / 7</b></div>' +
+      '<div class="os-item"><span class="dim">平均血量</span><b>' + avgHp + '</b></div>' +
+      '<div class="os-item"><span class="dim">最残血</span><b>' + (weakest ? U.esc(weakest.name) + ' · ' + weakest.hp + 'HP' : '—') + '</b></div>' +
+      '<div class="os-item"><span class="dim">当前编辑</span><b>' + U.esc(op.name) + ' · ' + Object.keys(op.board).length + ' 人口</b></div>' +
+      '</div>' +
       '<div class="opp-tabs">' + tabs + '<button class="opp-tab" id="oppAdd">+ 添加对手</button>' +
       (S.opponents.length > 1 ? '<button class="opp-tab" id="oppDel" style="border-color:#be123c;color:#fda4af">删除当前</button>' : '') + '</div>' +
       '<div class="m-row" style="margin-bottom:6px">' +
@@ -2302,9 +2310,13 @@ window.TFT = window.TFT || {};
           '<button class="btn btn-xs" id="rsReset">重置</button>' +
         '</div>' +
         '<div class="rs-shop">' + shop + '</div>' +
-        '<div class="kv"><span class="k">刷新次数</span><span class="v">' + rs.rolls + ' 次（' + (rs.rolls * 2) + ' 金）</span></div>' +
-        '<div class="kv"><span class="k">剩余金币</span><span class="v">' + rs.gold + '</span></div>' +
-        '<div class="kv"><span class="k">目标命中</span><span class="v">' + (rs.target ? (rs.hits + ' 张 · 平均 ' + avg + ' 刷/张') : '未选择目标') + '</span></div>' +
+        '<div class="rs-stats">' +
+          '<div class="rs-stat"><span class="dim">刷新次数</span><b>' + rs.rolls + ' 次</b></div>' +
+          '<div class="rs-stat"><span class="dim">已耗金币</span><b>' + (rs.rolls * 2) + ' 金</b></div>' +
+          '<div class="rs-stat"><span class="dim">剩余金币</span><b>' + rs.gold + '</b></div>' +
+          '<div class="rs-stat"><span class="dim">目标命中</span><b>' + (rs.target ? rs.hits + ' 张' : '未选目标') +
+            (rs.target && rs.hits ? '<i>平均 ' + avg + ' 刷/张</i>' : '') + '</b></div>' +
+        '</div>' +
       '</div>' +
       '<div class="card" style="margin-top:8px"><h4>当前等级理论概率 <span class="dim">真实概率表 + 牌池占用修正</span></h4>' +
         '<div class="odds-table">' + oddsTableHTML(adj) + '</div>' +
