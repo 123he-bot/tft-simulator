@@ -617,9 +617,9 @@ h1,h2,h3{margin:0;font-weight:700;letter-spacing:.02em}
 .ipick-head{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:11px}
 .ipick-head .dim{flex:1;min-width:0;font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ipick-close{flex-shrink:0}
-.ipick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:4px;max-height:212px;overflow:auto}
-.ipick-item{display:flex;align-items:center;gap:5px;padding:3px 5px;border-radius:6px;border:1px solid var(--border);background:var(--surface-3);color:var(--dim);font-size:10px;font-family:inherit;cursor:pointer;text-align:left;transition:.12s}
-.ipick-item .ur-it{width:18px;height:18px}
+.ipick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(126px,1fr));gap:4px;max-height:220px;overflow:auto}
+.ipick-item{display:flex;align-items:center;gap:5px;padding:3px 7px;border-radius:6px;border:1px solid var(--border);background:var(--surface-3);color:var(--dim);font-size:10.5px;font-family:inherit;cursor:pointer;text-align:left;transition:.12s;min-width:0}
+.ipick-item .ur-it{width:16px;height:16px;flex-shrink:0}
 .ipick-item i{font-style:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ipick-item:hover{border-color:var(--border-2);color:var(--text)}
 .ipick-item.on{border-color:var(--cyan);color:#a5f3fc;background:rgba(34,211,238,.14);box-shadow:var(--glow-cyan)}
