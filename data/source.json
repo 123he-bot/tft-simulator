@@ -13,7 +13,8 @@
   "s14",
   "s15",
   "s16",
-  "s17"
+  "s17",
+  "s18"
  ],
  "counts": {
   "augments": 973,
@@ -87,8 +88,8 @@
   },
   "s18": {
    "name": "自然之力",
-   "champions": 55,
-   "traits": 33
+   "champions": 65,
+   "traits": 35
   }
  },
  "extraSource": {

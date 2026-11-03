@@ -169,10 +169,29 @@ f.onload = function () {
             champs: W.TFT.D.champions().length,
             traits: W.TFT.D.traits().length,
             srcNote: hs18 ? hs18.textContent.indexOf('S18 来源') >= 0 : false,
+            compSrc: hs18 ? hs18.textContent.indexOf('S18 阵容') >= 0 : false,
+            realSource: W.TFT.D.meta.source || '',
+            tierOP: ((W.TFT.D.meta.tiers || {}).OP || []).length,
+            stats: d().querySelectorAll('#homeTierGrid .cc-real').length,
             enTag: W.TFT.D.champions().every(function (c) { return c.ability && c.ability.lang === 'en'; }),
             comps: (function () { var t = W.TFT.D.meta.tiers || {}, n = 0;
               Object.keys(t).forEach(function (k) { n += (t[k] || []).length; }); return n; })()
           };
+          var cpO = (W.TFT.D.meta.tiers.OP || [])[0];
+          if (cpO) {
+            W.TFT.Main.openCompDetail(cpO.id);
+            var mb = d().getElementById('modalBody');
+            R.s18.detail = {
+              found: !!mb,
+              units: mb ? mb.querySelectorAll('.unit-line').length : 0,
+              items: mb ? mb.querySelectorAll('.ur-it').length : 0,
+              icons: mb ? mb.querySelectorAll('.ur-it img').length : 0,
+              stats: mb ? mb.textContent.indexOf('真实对局统计') >= 0 : false,
+              src: mb ? mb.textContent.indexOf('OP.GG 实时数据') >= 0 : false,
+              noEngine: mb ? mb.textContent.indexOf('出装为引擎推荐') < 0 : false
+            };
+            W.TFT.UI.closeModal();
+          }
           /* 回到 S17 后载入一份 S3 存档，验证赛季 UI 同步 */
           setSeason('s17');
           var si = d().getElementById('searchInput');
@@ -411,11 +430,23 @@ def run(keep=False):
 
     s18 = result.get('s18', {})
     check('S18 出现在赛季下拉', s18.get('selectValue') == 's18', s18.get('selectValue'))
-    check('S18 棋子 55 个', s18.get('champs') == 55, s18.get('champs'))
-    check('S18 羁绊 33 条', s18.get('traits') == 33, s18.get('traits'))
+    check('S18 棋子 65 个', s18.get('champs') == 65, s18.get('champs'))
+    check('S18 羁绊 35 条', s18.get('traits') == 35, s18.get('traits'))
     check('S18 首页标注来源为第三方', s18.get('srcNote') is True)
     check('S18 技能文本标记为英文原文', s18.get('enTag') is True)
-    check('S18 推断榜单有阵容', s18.get('comps', 0) > 0, s18.get('comps'))
+    check('S18 阵容榜单为 OP.GG 实时数据', 'OP.GG' in (s18.get('realSource') or ''), s18.get('realSource'))
+    check('S18 实时阵容共 51 套', s18.get('comps') == 51, s18.get('comps'))
+    check('S18 含 OP 档阵容', s18.get('tierOP', 0) > 0, s18.get('tierOP'))
+    check('S18 首页卡片展示真实统计', s18.get('stats', 0) > 0, s18.get('stats'))
+    check('S18 首页标注阵容数据来源', s18.get('compSrc') is True)
+    s18d = s18.get('detail') or {}
+    check('S18 阵容详情可打开', s18d.get('found') is True)
+    check('S18 详情展示全部上阵单位', s18d.get('units', 0) >= 8, s18d.get('units'))
+    check('S18 详情展示真实出装', s18d.get('items', 0) >= 10 and s18d.get('icons', 0) >= 10,
+          '%s 件 / %s 图标' % (s18d.get('items'), s18d.get('icons')))
+    check('S18 详情标注真实对局统计', s18d.get('stats') is True)
+    check('S18 详情标注 OP.GG 来源', s18d.get('src') is True)
+    check('S18 详情不再标注引擎推荐', s18d.get('noEngine') is True)
     check('攻略页含运营节奏与关键节点', detail.get('found') is True and detail.get('hasPace') is True,
           'found=%s pace=%s' % (detail.get('found'), detail.get('hasPace')))
     check('运营节奏表至少 4 行', detail.get('paceRows', 0) >= 4, detail.get('paceRows'))

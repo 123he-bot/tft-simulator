@@ -488,6 +488,8 @@ def rebuild_bundle(augments, items):
     bundle['augmentsFull'] = augments
     bundle['itemsFull'] = items
     bundle['source'] = load('source.json')
+    if os.path.exists(os.path.join(DATA, 'comps.json')):
+        bundle['comps'] = load('comps.json')
 
     out = os.path.join(ROOT, 'js', 'data.bundle.js')
     with open(out, 'w', encoding='utf-8') as f:

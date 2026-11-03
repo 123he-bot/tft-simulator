@@ -1,13 +1,13 @@
 {
- "generatedAt": "2026-11-03 19:33:42",
+ "generatedAt": "2026-11-03 23:06:26",
  "sources": [
   {
    "url": "https://op.gg/zh-cn/tft/meta-trends/champion?version=18.5",
    "note": "op.gg 中文站内嵌 RSC 数据（原始来源为 Riot 游戏文件）"
   }
  ],
- "champions": 55,
- "traits": 33,
+ "champions": 65,
+ "traits": 35,
  "caveats": [
   "官方 CommunityDragon cdragon/tft JSON 目前仍止于 Set17，Set18 由第三方站点取得",
   "技能文本为英文原文，未作机器翻译，界面标注「技能文本为英文原文」",

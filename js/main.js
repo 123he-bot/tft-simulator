@@ -17,6 +17,8 @@ window.TFT = window.TFT || {};
 
   /* MetaTFT 真实集群数据：逐阵容胜率/场均名次已被官方归档，改用真实对线数据推导的相对强度展示 */
   function strengthLabel(s) { return (s == null) ? '—' : ((s > 0 ? '+' : '') + Number(s).toFixed(2)); }
+  function pct(v) { return v == null ? '—' : (Number(v) * 100).toFixed(1) + '%'; }
+  function fmtNum(v) { return v == null ? '—' : Number(v).toLocaleString('zh-CN'); }
 
   const tabState = {
     active: 'champions',
@@ -590,7 +592,7 @@ window.TFT = window.TFT || {};
   }
 
   const TYPE_LABEL = { comp: '阵容', champ: '棋子', trait: '羁绊', item: '装备', augment: '海克斯' };
-  const TIER_ORDER = { S: 0, A: 1, B: 2, C: 3 };
+  const TIER_ORDER = { OP: -1, S: 0, A: 1, B: 2, C: 3, D: 4 };
 
   /* ---------- 全局阵容排名 / 强度可视化（基于 MetaTFT 真实对线强度，越低越强） ---------- */
   let _ranked = null;
@@ -624,13 +626,19 @@ window.TFT = window.TFT || {};
   function compCardHTML(cp, tier, nameHTML) {
     tier = tier || cp.tier || '';
     const rk = compRankInfo(cp);
+    const real = !!cp.sourceReal;
+    const realLine = real
+      ? '<div class="cc-real">平均名次 <b>' + cp.avgPlace + '</b> · 胜率 ' + pct(cp.winRate) +
+        ' · 前四率 ' + pct(cp.top4Rate) + ' · 场次 ' + fmtNum(cp.games) + '</div>'
+      : '';
     return '<div class="comp-card" data-comp="' + U.esc(cp.id) + '">' +
       '<div class="cc-head"><span class="tier-dot td-' + U.esc(tier) + '">' + U.esc(tier) + '</span>' +
       '<span class="cc-name">' + (nameHTML || U.esc(displayName(cp))) + '</span><span class="cc-rank">#' + rk.rank + '/' + rk.total + '</span></div>' +
       '<div class="cc-line">主C <b>' + U.esc(cp.mainC || '-') + '</b> · ' + ((cp.units || []).length) + ' 人口 · ' + U.esc(cp.source || '') +
       (cp.confidence ? ' · 推断置信度 ' + U.esc(cp.confidence) : '') + '</div>' +
+      realLine +
       '<div class="cc-tags">' + (cp.traits || []).slice(0, 4).map(t => '<span class="mini-tag">' + U.esc(t.name) + ' ' + t.active + '</span>').join('') + '</div>' +
-      '<div class="cc-str"><span class="dim">强度</span>' + strengthBar(cp.strength) + '<span class="dim">' + strengthLabel(cp.strength) + '</span></div>' +
+      '<div class="cc-str"><span class="dim">' + (real ? '平均名次' : '强度') + '</span>' + strengthBar(cp.strength) + '<span class="dim">' + (real ? String(cp.avgPlace) : strengthLabel(cp.strength)) + '</span></div>' +
       '</div>';
   }
 
@@ -723,8 +731,19 @@ window.TFT = window.TFT || {};
   /* ==================== Meta 梯度榜 ==================== */
   Main.openMeta = function () {
     const M = D.meta;
-    const tiers = ['S', 'A', 'B', 'C'];
     const isLocal = M.source === '本地推断';
+    const isReal = !!M.source && /OP\.GG/.test(M.source);
+    const tiers = isReal ? ['OP', 'S', 'A', 'B', 'C', 'D'] : ['S', 'A', 'B', 'C'];
+    const allComps = [];
+    tiers.forEach(t => (M.tiers && M.tiers[t] || []).forEach(cp => allComps.push(cp)));
+    const statsRows = allComps.slice().sort((a, b) => (a.avgPlace || 99) - (b.avgPlace || 99)).slice(0, 12).map(function (cp) {
+      return '<div class="stat-row real-row"><span class="sr-tier td-' + U.esc(cp.tier) + '">' + U.esc(cp.tier) + '</span>' +
+        '<span class="sr-name">' + U.esc(displayName(cp)) + '</span>' +
+        '<span class="sr-n">名次 <b>' + cp.avgPlace + '</b></span>' +
+        '<span class="sr-n">胜率 <b>' + pct(cp.winRate) + '</b></span>' +
+        '<span class="sr-n">前四 <b>' + pct(cp.top4Rate) + '</b></span>' +
+        '<span class="sr-n dim">' + fmtNum(cp.games) + ' 场</span></div>';
+    }).join('');
     let html = '<div class="m-grid c2" style="align-items:start">' +
       '<div>' + tiers.map(function (t) {
         const list = (M.tiers && M.tiers[t]) || [];
@@ -735,17 +754,24 @@ window.TFT = window.TFT || {};
       }).join('') + '</div>' +
       '<div style="display:flex;flex-direction:column;gap:8px">' +
       '<div class="card"><h4>羁绊热度排行</h4><div class="chart-wrap" style="height:220px"><canvas id="metaTraitChart"></canvas></div></div>' +
-      (isLocal ? '' :
-        '<div class="card"><h4>各费用主C阵容数</h4><div class="chart-wrap" style="height:200px"><canvas id="metaHeatChart"></canvas></div></div>' +
-        '<div class="card"><h4>克制关系图</h4><div id="metaCounter" class="log-list" style="max-height:160px"></div></div>') +
+      (isReal
+        ? '<div class="card"><h4>实时统计（按平均名次）<span class="dim">OP.GG 对局采样</span></h4><div class="stat-list">' + statsRows + '</div></div>'
+        : (isLocal ? '' :
+          '<div class="card"><h4>各费用主C阵容数</h4><div class="chart-wrap" style="height:200px"><canvas id="metaHeatChart"></canvas></div></div>' +
+          '<div class="card"><h4>克制关系图</h4><div id="metaCounter" class="log-list" style="max-height:160px"></div></div>')) +
       '</div></div>';
     const hasAny = tiers.some(t => ((M.tiers[t] || []).length));
-    const title = (isLocal ? '本地推断阵容榜' : 'Meta 梯度榜') + ' · ' + (M.set || '') + (M.updatedAt ? '（补丁 ' + M.updatedAt + '）' : '');
+    const title = (isLocal ? '本地推断阵容榜' : isReal ? 'OP.GG 实时阵容榜' : 'Meta 梯度榜') + ' · ' + (M.set || '') + (M.updatedAt ? '（补丁 ' + M.updatedAt + '）' : '');
     if (!hasAny) {
       TFT.UI.modal({ title: title, size: 'md', body: '<div class="dim">该赛季暂无阵容数据。</div>' });
       return;
     }
-    TFT.UI.modal({ title: title, size: 'wide', body: (isLocal ? '<div class="dim" style="margin-bottom:8px">按该赛季真实棋子 / 羁绊 / 费用由本地规则引擎推断，非 MetaTFT 胜率数据；羁绊热度曲线与克制关系无官方口径，故不展示。</div>' : '') + html });
+    const intro = isReal
+      ? '<div class="meta-src">来源：' + (M.sourceUrl ? '<a href="' + U.esc(M.sourceUrl) + '" target="_blank" rel="noopener">' + U.esc(M.source) + '</a>' : U.esc(M.source)) +
+        ' · 补丁 ' + U.esc(M.updatedAt || '') + (M.fetchedAt ? ' · 抓取 ' + U.esc(M.fetchedAt) : '') +
+        ' · 共 ' + allComps.length + ' 套，平均名次 / 胜率 / 前四率 / 场次均为实时对局统计，非本站推断。</div>'
+      : (isLocal ? '<div class="dim" style="margin-bottom:8px">按该赛季真实棋子 / 羁绊 / 费用由本地规则引擎推断，非 MetaTFT 胜率数据；羁绊热度曲线与克制关系无官方口径，故不展示。</div>' : '');
+    TFT.UI.modal({ title: title, size: 'wide', body: intro + html });
     $$('#modalBody [data-comp]').forEach(c => c.onclick = function () { Main.openCompDetail(c.dataset.comp); });
 
     /* 图表 */
@@ -957,8 +983,29 @@ window.TFT = window.TFT || {};
     const starCount = units.filter(u => (u.star || 1) >= 2).length;
     const costDist = [1, 2, 3, 4, 5].map(c => units.filter(u => u.cost === c).length);
 
-    /* —— 出装方案：本地规则引擎推荐 + 手动覆盖（非官方数据） —— */
-    const plan = TFT.Recommend.plan(cp);
+    /* —— 出装方案：真实阵容用 OP.GG 实战出装；历史赛季用本地规则引擎推荐 —— */
+    let plan;
+    const isRealComp = !!cp.sourceReal;
+    if (isRealComp) {
+      const overrides = (TFT.Store && TFT.Store.itemPlan) ? (TFT.Store.itemPlan(cp.id) || {}) : {};
+      let manualCount = 0;
+      const outUnits = units.map(function (u) {
+        const ch = D.champByName(u.name) || {};
+        const manual = !!overrides[u.name];
+        if (manual) manualCount++;
+        const ids = manual ? overrides[u.name] : (u.items || []);
+        const its = ids.map(i => D.item(i)).filter(Boolean).map(it => ({ id: it.id, name: it.name, stat: it.stat || '', icon: it.icon || null }));
+        return {
+          name: u.name, cost: u.cost, star: u.star || 1, champ: ch, role: ch.role, roleLabel: roleLabel(ch.role || ''),
+          items: its, reason: manual ? '手动方案 · 已覆盖 OP.GG 实测出装' : 'OP.GG 实战出装（对局采样）',
+          tag: u.tag || 'other', manual: manual
+        };
+      });
+      const itemCount = outUnits.reduce((s, p) => s + p.items.length, 0);
+      plan = { compId: cp.id, units: outUnits, summary: { total: outUnits.length, manual: manualCount, engine: outUnits.length - manualCount, itemCount: itemCount } };
+    } else {
+      plan = TFT.Recommend.plan(cp);
+    }
     const planMap = {};
     plan.units.forEach(function (p) { planMap[p.name] = p; });
     detailCtx = { cp: cp, plan: plan };
@@ -1002,7 +1049,7 @@ window.TFT = window.TFT || {};
           itemChips(p) +
           '<button class="btn btn-xs ur-edit" data-edit-unit="' + U.esc(u.name) + '">改</button>' +
         '</div>' +
-        (p.reason ? '<div class="ur-why">' + U.esc(p.reason) + (p.manual ? '' : ' · 引擎推荐') + '</div>' : '') +
+        (p.reason ? '<div class="ur-why">' + U.esc(p.reason) + (p.manual || isRealComp ? '' : ' · 引擎推荐') + '</div>' : '') +
         '</div>';
     }).join('');
 
@@ -1038,9 +1085,15 @@ window.TFT = window.TFT || {};
         '<div class="card">' +
           '<div class="cd-head"><span class="tier-dot td-' + U.esc(tier) + '">' + U.esc(tier) + '</span>' +
           '<span class="cd-title">' + U.esc(displayName(cp)) + '</span>' +
-          '<span class="cd-rank">' + (cp.source === '本地推断' ? '站内排名' : '全服') + ' #' + rk.rank + ' / ' + rk.total + '</span></div>' +
-          '<div class="cd-str"><span class="dim">综合强度</span>' + strengthBar(cp.strength) + '<b>' + strengthLabel(cp.strength) + '</b></div>' +
-          '<div class="kv"><span class="k">数据来源</span><span class="v">' + U.esc(cp.source || 'MetaTFT') + (cp.cluster ? ' · 集群 #' + cp.cluster : '') + '</span></div>' +
+          '<span class="cd-rank">' + (isRealComp ? 'OP.GG 实时榜' : cp.source === '本地推断' ? '站内排名' : '全服') + ' #' + rk.rank + ' / ' + rk.total + '</span></div>' +
+          '<div class="cd-str"><span class="dim">' + (isRealComp ? '平均名次' : '综合强度') + '</span>' + strengthBar(cp.strength) + '<b>' + (isRealComp ? cp.avgPlace : strengthLabel(cp.strength)) + '</b></div>' +
+          '<div class="kv"><span class="k">数据来源</span><span class="v">' + (isRealComp
+            ? '<a href="' + U.esc(cp.sourceUrl || (D.compData && D.compData.sourceUrl) || '') + '" target="_blank" rel="noopener">OP.GG 实时数据</a>'
+            : U.esc(cp.source || 'MetaTFT') + (cp.cluster ? ' · 集群 #' + cp.cluster : '')) + '</span></div>' +
+          (isRealComp
+            ? '<div class="kv"><span class="k">真实对局统计</span><span class="v">胜率 <b>' + pct(cp.winRate) + '</b> · 前四率 <b>' + pct(cp.top4Rate) + '</b> · 选取率 ' + pct(cp.pickRate) + '</span></div>' +
+              '<div class="kv"><span class="k">样本</span><span class="v">' + fmtNum(cp.games) + ' 场 · OP 评分 ' + cp.opScore + '</span></div>'
+            : '') +
           (cp.confidence ? '<div class="kv"><span class="k">推断置信度</span><span class="v">' + U.esc(cp.confidence) + '（规则推断，非实测胜率）</span></div>' : '') +
           '<div class="kv"><span class="k">主C</span><span class="v">' + U.esc(cp.mainC || '-') + '</span></div>' +
           '<div class="kv"><span class="k">上阵人口 / 总费用</span><span class="v">' + units.length + ' 人 / ' + totalCost + ' 金</span></div>' +
@@ -1073,18 +1126,20 @@ window.TFT = window.TFT || {};
       '</div>' +
       /* 右列 */
       '<div style="display:flex;flex-direction:column;gap:8px">' +
-        '<div class="card"><h4>上阵单位（' + units.length + '）<span class="dim">按费用排序 · 出装为引擎推荐</span></h4>' +
+        '<div class="card"><h4>上阵单位（' + units.length + '）<span class="dim">按费用排序 · ' + (isRealComp ? '出装为 OP.GG 实战采样' : '出装为引擎推荐') + '</span></h4>' +
           '<div class="unit-table">' + unitRows + '</div>' +
-          '<div class="eng-note">装备由本地规则引擎按 <b>职业 / 射程 / 法力 / 费用</b> 推算（主C 3 件 → 主坦 2 件 → 副C 2 件，合计 ' +
-          plan.summary.itemCount + ' 件）。此为<b>引擎推荐</b>，非官方方案；点击「改」可手动覆盖，覆盖结果仅保存在本机。' +
+          '<div class="eng-note">' + (isRealComp
+            ? '装备、星级与站位均来自 <b>OP.GG 实时对局采样</b>；点击「改」可手动覆盖，覆盖结果仅保存在本机。'
+            : '装备由本地规则引擎按 <b>职业 / 射程 / 法力 / 费用</b> 推算（主C 3 件 → 主坦 2 件 → 副C 2 件，合计 ' +
+              plan.summary.itemCount + ' 件）。此为<b>引擎推荐</b>，非官方方案；点击「改」可手动覆盖，覆盖结果仅保存在本机。') +
           (plan.summary.manual ? ' 当前有 ' + plan.summary.manual + ' 个棋子使用手动方案。' : '') + '</div>' +
         '</div>' +
-        '<div class="card"><h4>克制关系 <span class="dim">点击可跳转该阵容</span></h4>' +
+        (isRealComp ? '' : '<div class="card"><h4>克制关系 <span class="dim">点击可跳转该阵容</span></h4>' +
           '<div class="panel-title" style="font-size:10px;color:#86efac">本阵容克制</div><div class="tag-row">' + chipList((cp.counters || {})['克制'], 'crt', cp.id) + '</div>' +
           '<div class="panel-title mt8" style="font-size:10px;color:#fda4af">被这些克制</div><div class="tag-row">' + chipList((cp.counters || {})['被克制'], 'bad', cp.id) + '</div>' +
           (advice.length ? '<div class="eng-note" style="border-color:rgba(244,63,94,.24);background:rgba(244,63,94,.06)">' +
             '<b>应对建议</b>（规则推算）：' + advice.map(U.esc).join('；') + '</div>' : '') +
-        '</div>' +
+        '</div>') +
         '<div class="card"><h4>同主C变阵（' + related.length + '）</h4>' + varHTML + '</div>' +
       '</div>' +
       '</div>';
@@ -1188,16 +1243,18 @@ window.TFT = window.TFT || {};
   }
 
   Main.loadComp = function (cp) {
-    /* 出装沿用详情页方案（引擎推荐 + 手动覆盖） */
+    /* 出装沿用详情页方案（真实出装 → 手动覆盖 → 引擎推荐兜底） */
     const plan = TFT.Recommend.plan(cp);
     const itemByName = {};
     plan.units.forEach(function (p) { itemByName[p.name] = p.items.map(it => it.id); });
+    const manual = (cp.sourceReal && TFT.Store && TFT.Store.itemPlan) ? (TFT.Store.itemPlan(cp.id) || {}) : {};
     const snap = {
       season: S.season, patch: S.patch,
       player: { level: 8, gold: 50, hp: 100, stage: S.stage, streak: S.streak },
       board: (cp.positionMap || []).map(function (p) {
         const u = (cp.units || []).find(x => x.name === p[2]);
-        const ids = (u && (u.items || []).length) ? u.items : (itemByName[p[2]] || []);
+        const real = (u && (u.items || []).length) ? u.items : null;
+        const ids = manual[p[2]] || real || itemByName[p[2]] || [];
         return { row: 7 - p[0], col: p[1], name: p[2], star: (u ? u.star : 1), items: ids.map(id => ({ id: id })) };
       }),
       bench: [], augments: [], opponents: []
@@ -1804,7 +1861,8 @@ window.TFT = window.TFT || {};
     const metaSet = String(M.set || '').toUpperCase();
     const curSet = String(D.currentSlug || '').toUpperCase();
     const metaLocal = M.source === '本地推断';
-    const metaIsCurrent = metaLocal || !metaSet || metaSet === curSet;
+    const metaReal = !!M.source && /OP\.GG/.test(M.source);
+    const metaIsCurrent = metaLocal || metaReal || !metaSet || metaSet === curSet;
     TFT.UI.destroyCharts();
 
     /* —— Hero —— */
@@ -1817,7 +1875,7 @@ window.TFT = window.TFT || {};
         '<div class="hero-main-col">' +
           '<div class="hero-badge">' + U.esc(curSet || '—') +
           (M.updatedAt ? ' · 补丁 ' + U.esc(M.updatedAt) : '') +
-          (metaLocal ? ' · 本地推断阵容' : metaIsCurrent ? ' · 数据可溯源' : ' · 梯度榜为 ' + U.esc(metaSet) + ' 数据') + '</div>' +
+          (metaReal ? ' · OP.GG 实时阵容榜' : metaLocal ? ' · 本地推断阵容' : metaIsCurrent ? ' · 数据可溯源' : ' · 梯度榜为 ' + U.esc(metaSet) + ' 数据') + '</div>' +
           '<h1 class="hero-title">金铲铲 <b>AI 多智能体</b> 阵容数据站</h1>' +
           '<p class="hero-sub">真实棋库 · 真实概率 · 真实强度分层。既保留本地规则推理的独特机制，也可一键接入大模型多智能体协作。</p>' +
           '<div class="hero-cta">' +
@@ -1839,7 +1897,7 @@ window.TFT = window.TFT || {};
           hsRow('评级阵容', list.length + ' 套') +
           hsRow('棋库', ov.champions + ' 棋子 / ' + ov.traits + ' 羁绊') +
           hsRow('强化与装备', ov.augments + ' 海克斯 / ' + ov.items + ' 装备') +
-          hsRow('数据源', metaLocal ? '本地规则推断' : (metaIsCurrent ? 'MetaTFT · 可溯源' : 'MetaTFT · ' + metaSet)) +
+          hsRow('数据源', metaReal ? 'OP.GG · 实时阵容榜' : metaLocal ? '本地规则推断' : (metaIsCurrent ? 'MetaTFT · 可溯源' : 'MetaTFT · ' + metaSet)) +
           '<button class="btn btn-block hs-btn" data-home-act="solve">按当前棋盘求解</button>' +
         '</div>' +
       '</div>';
@@ -1851,7 +1909,7 @@ window.TFT = window.TFT || {};
       { k: '羁绊', v: ov.traits, s: '含激活阈值' },
       { k: '海克斯', v: ov.augments, s: '全量官方强化' },
       { k: '装备', v: ov.items, s: '小件 / 成装 / 神器' },
-      { k: '评级阵容', v: list.length, s: metaLocal ? '本地推断 · 非官方胜率' : metaIsCurrent ? 'S/A/B/C 四档' : '仅 ' + metaSet + ' 有梯度' },
+      { k: '评级阵容', v: list.length, s: metaReal ? 'OP.GG 实时统计 · ' + list.length + ' 套' : metaLocal ? '本地推断 · 非官方胜率' : metaIsCurrent ? 'S/A/B/C 四档' : '仅 ' + metaSet + ' 有梯度' },
       { k: '赛季', v: ov.seasons, s: '可切换历史赛季' }
     ];
     if (kpi) kpi.innerHTML = kpis.map(function (x) {
@@ -1859,21 +1917,25 @@ window.TFT = window.TFT || {};
         '<div class="kpi-k">' + U.esc(x.k) + '</div><div class="kpi-s dim">' + U.esc(x.s) + '</div></div>';
     }).join('');
 
-    /* —— 热门阵容评级（S / A 前 6 各档） —— */
+    /* —— 热门阵容评级（真实榜单展示 OP/S/A，其它展示 S/A，各档前 6） —— */
     const grid = $('#homeTierGrid');
     if (grid) {
       let cards = '';
-      ['S', 'A'].forEach(function (t) {
+      const homeTiers = metaReal ? ['OP', 'S', 'A'] : ['S', 'A'];
+      const TIER_TXT = { OP: '版本答案', S: '版本最强', A: '强力上分' };
+      homeTiers.forEach(function (t) {
         const allT = (M.tiers && M.tiers[t]) || [];
         const arr = allT.slice(0, 6);
         if (!arr.length) return;
         cards += '<div class="home-tier-title ht-' + t + '"><b>' + t + ' 档</b>' +
-          '<span>' + (t === 'S' ? '版本答案' : '强力上分') + ' · 本档共 ' + allT.length + ' 套 · 展示前 ' + arr.length + '</span></div>' +
+          '<span>' + (TIER_TXT[t] || '可用') + ' · 本档共 ' + allT.length + ' 套 · 展示前 ' + arr.length + '</span></div>' +
           '<div class="comp-grid">' + arr.map(function (cp) { return compCardHTML(cp, t); }).join('') + '</div>';
       });
-      const gridNote = metaLocal
-        ? '<div class="dim" style="margin-bottom:6px">以下榜单由本地规则引擎按该赛季真实棋子 / 羁绊 / 费用推断，非 MetaTFT 胜率数据</div>'
-        : (!metaIsCurrent ? '<div class="dim" style="margin-bottom:6px">以下评级来自 ' + U.esc(metaSet) + '，当前赛季 ' + U.esc(curSet) + ' 暂无 MetaTFT 梯度数据</div>' : '');
+      const gridNote = metaReal
+        ? '<div class="dim" style="margin-bottom:6px">以下为 <b>OP.GG 实时阵容榜</b>（补丁 ' + U.esc(M.updatedAt || '') + '），带真实平均名次 / 胜率 / 前四率 / 场次，非本站推断</div>'
+        : metaLocal
+          ? '<div class="dim" style="margin-bottom:6px">以下榜单由本地规则引擎按该赛季真实棋子 / 羁绊 / 费用推断，非 MetaTFT 胜率数据</div>'
+          : (!metaIsCurrent ? '<div class="dim" style="margin-bottom:6px">以下评级来自 ' + U.esc(metaSet) + '，当前赛季 ' + U.esc(curSet) + ' 暂无 MetaTFT 梯度数据</div>' : '');
       const top = rankedComps()[0];
       const topHtml = (top && cards) ? '<div class="home-top1" data-comp="' + U.esc(top.cp.id) + '" title="查看榜首详情">' +
         '<span class="ht-rank">#1</span>' +
@@ -1882,7 +1944,9 @@ window.TFT = window.TFT || {};
         '<span class="ht-sub">主C ' + U.esc(top.cp.mainC || '—') + ' · ' + U.esc(top.tier) + ' 档 · ' +
           (top.cp.units || []).length + ' 人口' + (top.cp.source ? ' · ' + U.esc(top.cp.source) : '') + '</span>' +
         '<div class="cc-tags">' + (top.cp.traits || []).slice(0, 5).map(function (t) { return '<span class="mini-tag">' + U.esc(t.name) + ' ' + t.active + '</span>'; }).join('') + '</div></div>' +
-        '<div class="ht-side"><span class="dim">强度</span>' + strengthBar(top.cp.strength) + '<b>' + strengthLabel(top.cp.strength) + '</b></div>' +
+        '<div class="ht-side">' + (top.cp.sourceReal
+          ? '<span class="dim">平均名次</span>' + strengthBar(top.cp.strength) + '<b>' + top.cp.avgPlace + '</b><span class="dim" style="font-size:10px">胜率 ' + pct(top.cp.winRate) + '</span>'
+          : '<span class="dim">强度</span>' + strengthBar(top.cp.strength) + '<b>' + strengthLabel(top.cp.strength) + '</b>') +
         '</div>' : '';
       grid.innerHTML = cards ? gridNote + topHtml + cards
         : '<div class="dim">当前数据源暂无评级阵容</div>';
@@ -1891,7 +1955,7 @@ window.TFT = window.TFT || {};
 
     /* —— 图表：费用分布 + 强度曲线 —— */
     const note = $('#homeChartNote');
-    if (note) note.textContent = metaLocal ? '1~5 费棋子数 · 各费用主C阵容数（本地推断）' : '1~5 费棋子数 · 各费用主C阵容数（真实统计）';
+    if (note) note.textContent = metaReal ? '1~5 费棋子数 · 主C 费用分布（OP.GG 真实阵容）' : metaLocal ? '1~5 费棋子数 · 各费用主C阵容数（本地推断）' : '1~5 费棋子数 · 各费用主C阵容数（真实统计）';
     const heat = (M.heatCurve || { labels: [], series: [] });
     if (window.Chart) {
       const ax = { ticks: { color: '#93a4c4', font: { size: 9 } }, grid: { color: 'rgba(255,255,255,.06)' } };
@@ -1909,14 +1973,14 @@ window.TFT = window.TFT || {};
       const colors = ['#22d3ee', '#f5c542', '#f43f5e', '#8b5cf6', '#34d399', '#fb923c', '#3b82f6'];
       const cHeat = $('#homeHeatChart');
       const hasCurve = !!(heat.labels && heat.labels.length);
-      if (cHeat && metaLocal && !hasCurve) {
-        /* 本地推断赛季无官方热度曲线，改为展示当前榜单主C费用分布（真实计数） */
+      if (cHeat && (metaLocal || metaReal) && !hasCurve) {
+        /* 无官方热度曲线时，展示当前榜单主C费用分布（真实计数） */
         TFT.UI.chart(cHeat, {
           type: 'bar',
           data: {
             labels: COST_LIST.map(c => c + ' 费'),
             datasets: [{
-              label: '主C 阵容数（本地推断）',
+              label: '主C 阵容数（' + (metaReal ? 'OP.GG 真实榜单' : '本地推断') + '）',
               data: COST_LIST.map(c => list.filter(x => {
                 const ch = D.champByName(x.cp.mainC); return ch && ch.cost === c;
               }).length),
@@ -1964,7 +2028,7 @@ window.TFT = window.TFT || {};
           '<span class="sr-val">' + x.count + '</span></div>';
       }).join('') : '<div class="dim">暂无数据</div>';
       const mcNote = $('#homeMainCNote');
-      if (mcNote) mcNote.textContent = (metaLocal ? '本地推断' : '真实统计') + ' · 主C出现阵容数 · 共 ' + list.length + ' 套';
+      if (mcNote) mcNote.textContent = (metaReal ? 'OP.GG 真实统计' : metaLocal ? '本地推断' : '真实统计') + ' · 主C出现阵容数 · 共 ' + list.length + ' 套';
     }
 
     /* —— 羁绊热度天梯 —— */
@@ -1985,7 +2049,7 @@ window.TFT = window.TFT || {};
     const counter = $('#homeCounter');
     if (counter) {
       const edges = (M.counterGraph && M.counterGraph.edges) || [];
-      counter.innerHTML = edges.length ? edges.map(e => '<div class="log-item">' +
+      counter.innerHTML = metaReal ? '<div class="dim">OP.GG 实时榜单未提供克制关系数据，故不展示（本站未做推断）</div>' : edges.length ? edges.map(e => '<div class="log-item">' +
         '<span style="color:#86efac">' + U.esc(e.source) + '</span>' +
         '<span class="dim">克制</span><span style="color:#fda4af">' + U.esc(e.target) + '</span></div>').join('')
         : '<div class="dim">暂无数据</div>';
@@ -2059,8 +2123,17 @@ window.TFT = window.TFT || {};
       (src.extraSource && src.extraSource.S18 ?
         '<div class="kv"><span class="k">S18 来源</span><span class="v">' + U.esc(src.extraSource.S18.source) +
         ' · 技能文本为英文原文</span></div>' : '') +
+      (D.compData && D.compData.s18 ?
+        '<div class="kv"><span class="k">S18 阵容</span><span class="v">' +
+        '<a href="' + U.esc(D.compData.s18.sourceUrl || D.compData.sourceUrl || '') + '" target="_blank" rel="noopener">' +
+        U.esc(D.compData.s18.source || D.compData.source || 'OP.GG 实时阵容榜') + '</a> · ' +
+        (D.compData.s18.comps || []).length + ' 套 · 补丁 ' + U.esc(D.compData.s18.patch || '') +
+        (D.compData.s18.fetchedAt ? ' · 抓取 ' + U.esc(D.compData.s18.fetchedAt) : '') +
+        ' · 真实对局采样（出装 / 站位 / 胜率均为原始数据）</span></div>' : '') +
       '<p class="home-source-note">说明：' + U.esc((D.meta && D.meta.note) || '本站仅统计与展示数据源中真实存在的字段。') +
-      ' 所有「强度」为基于真实对线数据推导的相对分层，非官方胜率；概率由本地规则引擎按公开概率表计算，未使用任何真实对局遥测。</p>';
+      (metaReal
+        ? ' 当前赛季阵容的平均名次 / 胜率 / 前四率 / 选取率均来自 OP.GG 实时对局采样，本站未做推断或补全；历史赛季无在线阵容数据源，仍标注为本地规则推断。'
+        : ' 所有「强度」为基于真实对线数据推导的相对分层，非官方胜率；概率由本地规则引擎按公开概率表计算，未使用任何真实对局遥测。') + '</p>';
   };
 
   /* 首页按钮统一分发 */
@@ -2092,13 +2165,15 @@ window.TFT = window.TFT || {};
     const fromComp = !!cp;
     let units, traits, posInfo, title, tier = '', mainC = '', strength = null, rank = null, total = null, source = '';
     if (fromComp) {
-      const plan = TFT.Recommend.plan(cp);
+      const plan = cp.sourceReal ? null : TFT.Recommend.plan(cp);
       const itemByName = {};
-      plan.units.forEach(function (p) { itemByName[p.name] = p.items.map(it => it.name); });
+      if (plan) plan.units.forEach(function (p) { itemByName[p.name] = p.items.map(it => it.name); });
       units = (cp.units || []).map(function (u) {
         return {
           name: u.name, cost: u.cost, star: u.star || 1,
-          items: (u.items || []).length ? u.items : (itemByName[u.name] || [])
+          items: (u.items || []).length
+            ? (cp.sourceReal ? u.items.map(id => (D.item(id) || {}).name).filter(Boolean) : u.items)
+            : (itemByName[u.name] || [])
         };
       });
       traits = cp.traits || [];
@@ -2138,10 +2213,10 @@ window.TFT = window.TFT || {};
       '<div class="ps-name-row">' +
       (tier ? '<span class="ps-tier td-' + U.esc(tier) + '">' + U.esc(tier) + '</span>' : '') +
       '<span class="ps-name">' + U.esc(title) + '</span>' +
-      (rank ? '<span class="ps-rank">全服 #' + rank + ' / ' + total + '</span>' : '') +
+      (rank ? '<span class="ps-rank">' + (cp.sourceReal ? 'OP.GG 实时榜' : '全服') + ' #' + rank + ' / ' + total + '</span>' : '') +
       '</div>' +
       '<div class="ps-meta">主C ' + U.esc(mainC || '-') + ' · ' + units.length + ' 人口' +
-      (strength != null ? ' · 相对强度 ' + strengthLabel(strength) : '') +
+      (strength != null ? (cp.sourceReal ? ' · 平均名次 ' + cp.avgPlace + ' · 胜率 ' + pct(cp.winRate) + ' · 前四率 ' + pct(cp.top4Rate) : ' · 相对强度 ' + strengthLabel(strength)) : '') +
       (source ? ' · 数据 ' + U.esc(source) : '') + '</div>';
 
     if (traits.length) html += '<div class="ps-traits">' + traits.map(function (t) {
@@ -2162,7 +2237,7 @@ window.TFT = window.TFT || {};
         '</div>';
     }).join('');
     html += '<div class="ps-block"><div class="ps-h">上阵单位（' + units.length + '）</div><div class="unit-table">' + rows + '</div></div>' +
-      '<div class="ps-foot">由「金铲铲 AI 多智能体阵容模拟器」生成 · 强度为真实对线数据推导的相对分层，非官方胜率；出装为本地规则引擎推荐，非官方方案。如需分享请保留本站标识</div>';
+      '<div class="ps-foot">由「金铲铲 AI 多智能体阵容模拟器」生成 · ' + (cp && cp.sourceReal ? '阵容 / 出装 / 站位与胜率统计均来自 OP.GG 实时对局采样' : '强度为真实对线数据推导的相对分层，非官方胜率；出装为本地规则引擎推荐，非官方方案') + '。如需分享请保留本站标识</div>';
     wrap.innerHTML = html;
     document.body.appendChild(wrap);
 

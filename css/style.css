@@ -536,6 +536,12 @@ h1,h2,h3{margin:0;font-weight:700;letter-spacing:.02em}
 .td-A{background:rgba(245,197,66,.22);border-color:#f5c542;color:#fde68a}
 .td-B{background:rgba(34,211,238,.2);border-color:#22d3ee;color:#7dd3fc}
 .td-C{background:rgba(148,163,184,.2);border-color:#94a3b8;color:#cbd5e1}
+.td-D{background:rgba(71,85,105,.28);border-color:#475569;color:#94a3b8}
+.td-OP{background:linear-gradient(135deg,#f43f5e,#f5c542 34%,#22d3ee 68%,#8b5cf6);border-color:#fff;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.75)}
+.tier-OP{background:linear-gradient(180deg,rgba(139,92,246,.38),rgba(244,63,94,.12));color:#f0abfc;border-color:#a855f7}
+.tier-D{background:linear-gradient(180deg,rgba(71,85,105,.28),rgba(71,85,105,.05));color:#94a3b8;border-color:#475569}
+.comp-card .cc-real{margin-top:4px;font-size:10px;color:#9fb3d9;line-height:1.5}
+.comp-card .cc-real b{color:#7dd3fc}
 .str-bar{flex:1;min-width:40px;height:6px;border-radius:4px;background:var(--surface-3);overflow:hidden;display:block}
 .str-bar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#22d3ee,#f5c542)}
 
@@ -1691,6 +1697,14 @@ body::after{
 .home-tier-title span{font-size:10px;color:var(--mute)}
 .home-tier-title.ht-S::before{background:linear-gradient(180deg,#f43f5e,#f5c542);box-shadow:0 0 10px rgba(244,63,94,.5)}
 .home-tier-title.ht-A::before{background:linear-gradient(180deg,#f5c542,#fb923c);box-shadow:0 0 10px rgba(245,197,66,.5)}
+.home-tier-title.ht-OP::before{background:linear-gradient(180deg,#f43f5e,#22d3ee 50%,#8b5cf6);box-shadow:0 0 14px rgba(168,85,247,.6)}
+.meta-src{font-size:11px;color:#9fb3d9;line-height:1.55;margin-bottom:8px;padding:6px 9px;border:1px dashed rgba(34,211,238,.32);border-radius:7px;background:rgba(34,211,238,.06)}
+.meta-src a{color:#7dd3fc;text-decoration:underline}
+.stat-list{display:flex;flex-direction:column;gap:2px;max-height:300px;overflow:auto}
+.stat-row.real-row{grid-template-columns:20px minmax(90px,1.5fr) repeat(4,auto);gap:9px;padding:4px 6px;font-size:10px}
+.sr-tier{width:18px;height:18px;border-radius:5px;display:grid;place-items:center;font-size:9px;font-weight:900;border:1px solid var(--border);flex-shrink:0}
+.real-row .sr-n{color:var(--mute);white-space:nowrap}
+.real-row .sr-n b{color:#e8f0ff;font-weight:700}
 
 /* --- 阵容存档：统计卡 + 导入导出 --- */
 .svl-hero{padding:10px 12px;border:1px solid var(--border);border-radius:12px;margin-bottom:10px;

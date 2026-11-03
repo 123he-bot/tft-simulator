@@ -3,6 +3,31 @@
  "name": "自然之力",
  "champions": [
   {
+   "id": "DA_18_ElderDragon",
+   "name": "Elder Dragon",
+   "cost": 5,
+   "traits": [
+    "顶级掠食者",
+    "峡谷野怪"
+   ],
+   "hp": 1800.0,
+   "mana": 60.0,
+   "initialMana": 20.0,
+   "armor": 75.0,
+   "mr": 75.0,
+   "ad": 125.0,
+   "as": 0.5,
+   "range": 2.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "Heat Without Equal",
+    "desc": "Passive: Attacks deal 75%/75%/100% damage to enemies adjacent to the target.\n\nActive: Become invulnerable and fly into the air. On return, stun all enemies for 1.25/1.25/99 seconds, gain 15%/15%/100% Omnivamp, and Ignite them for 3/3/99 seconds. Ignited enemies take 2%/2%/20% max Health physical damage per second. Replace this ability with Flame Breath and immediately cast it.\n\nFlame Breath: Spew fire at the most enemies in a line through the target, dealing 305/465/7200 physical damage, reduced by 20% for each enemy it passes through (minimum 20%.) Ignite those enemies for 3/3/99 seconds.\n\nElder Dragon Buff: Damaging an enemy below 12% Health executes them.\n\nDamage:  [20 / 30 / 200]\n\nDamage: 305 = 285 + 20 [285 / 435 / 7000]",
+    "lang": "en"
+   },
+   "icon": "assets/icons/TheElderDragon.jpg",
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/TheElderDragon.jpg"
+  },
+  {
    "id": "DA_18_Kennen",
    "name": "凯南",
    "cost": 5,
@@ -225,6 +250,57 @@
    },
    "icon": "assets/icons/tft18_maokai.tft_set18.jpg",
    "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/TFT18_Maokai_splash_centered_0.TFT_Set18.png"
+  },
+  {
+   "id": "DA_Brambleback18",
+   "name": "Brambleback",
+   "cost": 4,
+   "traits": [
+    "狂战士",
+    "峡谷野怪"
+   ],
+   "hp": 1100.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 65.0,
+   "mr": 65.0,
+   "ad": 120.0,
+   "as": 0.55,
+   "range": 1.0,
+   "role": "ADFighter",
+   "ability": {
+    "name": "Crimson Fury",
+    "desc": "Passive: When the target dies, leap at the next target, dealing 135/205/1000 physical damage.\n\nActive: Gain 100%/100%/300% Attack Damage for 8 seconds. During this time ignore 50%/50%/85% Armor.\n\nRed Buff: Attacks 1% Burn enemies and heal Brambleback for 5% max Health.\n\nLeap Damage: 135 [135 / 205 / 1000]\n\nBonus Attack Damage: 100% [100% / 100% / 300%]",
+    "lang": "en"
+   },
+   "icon": "assets/icons/Brambleback.jpg",
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Brambleback.jpg"
+  },
+  {
+   "id": "DA_Sentinel18",
+   "name": "Sentinel",
+   "cost": 4,
+   "traits": [
+    "神谕",
+    "峡谷野怪",
+    "重装战士"
+   ],
+   "hp": 1300.0,
+   "mana": 150.0,
+   "initialMana": 60.0,
+   "armor": 60.0,
+   "mr": 60.0,
+   "ad": 75.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "APTank",
+   "ability": {
+    "name": "Azure Shockwave",
+    "desc": "Gain 505/709/2421 Shield for 4 seconds. Slam the ground, sending a fissure in the direction of the most enemies. Enemies hit are briefly knocked up, take 100/150/3500 magic damage, and are Mana Reaved for 10.\n\nBlue Buff: Each time Sentinel casts, allies gain 2 Mana Regen.\n\nMana Reave: Increase the Mana cost of the next Ability cast.\n\nShield: 505 = 130 + 375 [375 / 475 / 2000]\n\nDamage: 100 [100 / 150 / 3500]",
+    "lang": "en"
+   },
+   "icon": "assets/icons/AncientSentinel.jpg",
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/AncientSentinel.jpg"
   },
   {
    "id": "DA_18_Ezreal",
@@ -525,6 +601,57 @@
    },
    "icon": "assets/icons/tft18_ahri.tft_set18.jpg",
    "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/TFT18_Ahri_splash_centered_27.TFT_Set18.png"
+  },
+  {
+   "id": "DA_Krug18",
+   "name": "Krug",
+   "cost": 3,
+   "traits": [
+    "斗士",
+    "峡谷野怪"
+   ],
+   "hp": 1100.0,
+   "mana": 135.0,
+   "initialMana": 80.0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 55.0,
+   "as": 0.6,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "Rock and Roll",
+    "desc": "Passive: On death, split into two Kruglettes with 182/338/608 Health which immediately taunt, forcing enemies to attack them.\n\nActive: Gain 175/225/325 max Health, then roll into the target, dealing 223/358/620 damage.\n\nSlate Buff: On death, Krug and Kruglettes Shield allies for 8% max Health.\n\nKruglette Health: 182 = 132 + 50 [50 / 100 / 180]\n\nBonus Health: 175 [175 / 225 / 325]\n\nDamage: 223 = 88 + 135 [135 / 200 / 335]",
+    "lang": "en"
+   },
+   "icon": "assets/icons/Krug.jpg",
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Krug.jpg"
+  },
+  {
+   "id": "DA_CrimsonRaptor18",
+   "name": "Mama Beak",
+   "cost": 3,
+   "traits": [
+    "迅捷射手",
+    "峡谷野怪",
+    "召唤师"
+   ],
+   "hp": 650.0,
+   "mana": 60.0,
+   "initialMana": 20.0,
+   "armor": 35.0,
+   "mr": 35.0,
+   "ad": 55.0,
+   "as": 0.75,
+   "range": 4.0,
+   "role": "ADCarry",
+   "ability": {
+    "name": "Flock Family",
+    "desc": "Summon 4 untargetable Tiny Beaks nearby for 5 seconds. Whenever Mama Beak attacks, Tiny Beaks attack the same enemy, dealing 20/30/50 physical damage.\n\nOrange Buff: Dealing physical damage reduces enemy Armor by 2.\n\nDuration: 5 [5 / 5 / 5]\n\nDamage: 20 [20 / 30 / 50]",
+    "lang": "en"
+   },
+   "icon": "assets/icons/Raptor.jpg",
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Raptor.jpg"
   },
   {
    "id": "DA_KogMaw18_AD",
@@ -830,6 +957,81 @@
    "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/TFT18_Diana_splash_centered_0.TFT_Set18.png"
   },
   {
+   "id": "DA_Gromp18_AP",
+   "name": "Gromp",
+   "cost": 2,
+   "traits": [
+    "魔战士",
+    "峡谷野怪"
+   ],
+   "hp": 550.0,
+   "mana": 45.0,
+   "initialMana": 0,
+   "armor": 30.0,
+   "mr": 30.0,
+   "ad": 30.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "Belchy Bubble",
+    "desc": "Adaptor : Belch a noxious bubble at the current target that explodes on the first enemy hit, dealing 225/340/535 magic damage. Enemies within a 1 hex radius of the explosion take 160/240/375 magic damage over 3 seconds.\n\nAdaptor : Heavily slows the target.\n\nPurple Buff: Every 5 seconds, Gromp gains 30% Ability Power.\n\nDamage: 225 [225 / 340 / 535]\n\nArea Damage: 160 [160 / 240 / 375]",
+    "lang": "en"
+   },
+   "icon": "assets/icons/Gromp.jpg",
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Gromp.jpg"
+  },
+  {
+   "id": "DA_Murkwolf18",
+   "name": "Murkwolf",
+   "cost": 2,
+   "traits": [
+    "狂战士",
+    "峡谷野怪"
+   ],
+   "hp": 700.0,
+   "mana": 40.0,
+   "initialMana": 0,
+   "armor": 40.0,
+   "mr": 40.0,
+   "ad": 50.0,
+   "as": 0.75,
+   "range": 1.0,
+   "role": "ADReaper",
+   "ability": {
+    "name": "Rending Claws",
+    "desc": "Leap to the lowest Health enemy within 3 Hexes and deal 500/1050/2250 physical damage. The next 2 attacks gain 175% Attack Speed and deal 65/100/160 bonus physical damage.\n\nGrey Buff: Gain Precision and 25% Critical Strike Chance, increased up to 75% based on missing Health.\n\nDamage:  [20 / 30 / 45]\n\nDamage: 500 = 100 + 20 [100 / 150 / 225]\n\nEmpowered Damage: 65 [65 / 100 / 160]",
+    "lang": "en"
+   },
+   "icon": "assets/icons/Murkwolf.jpg",
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Murkwolf.jpg"
+  },
+  {
+   "id": "DA_Scuttlecrab18",
+   "name": "Scuttlecrab",
+   "cost": 2,
+   "traits": [
+    "主宰",
+    "峡谷野怪"
+   ],
+   "hp": 950.0,
+   "mana": 100.0,
+   "initialMana": 40.0,
+   "armor": 45.0,
+   "mr": 45.0,
+   "ad": 50.0,
+   "as": 0.65,
+   "range": 1.0,
+   "role": "ADTank",
+   "ability": {
+    "name": "Can You Dig It?",
+    "desc": "Passive: Attacks are replaced by a dance that deals 50/75/113 physical damage to all adjacent enemies.\n\nActive: Burrow underground, gaining 15% Durability for 3 seconds and healing 325/400/675 over the duration.\n\nGreen Buff: When allies fall below 50% Health, they restore 15% max Health.\n\nDamage: 50 [50 / 75 / 112.5]\n\nHeal: 325 [325 / 400 / 675]",
+    "lang": "en"
+   },
+   "icon": "assets/icons/Scuttlecrab.jpg",
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Scuttlecrab.jpg"
+  },
+  {
    "id": "DA_18_LeBlanc",
    "name": "乐芙兰",
    "cost": 2,
@@ -1078,6 +1280,56 @@
    },
    "icon": "assets/icons/tft18_alistar.tft_set18.jpg",
    "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/TFT18_Alistar_splash_centered_40.TFT_Set18.png"
+  },
+  {
+   "id": "DA_Cinderling18",
+   "name": "Cinderling",
+   "cost": 1,
+   "traits": [
+    "猎人",
+    "峡谷野怪"
+   ],
+   "hp": 500.0,
+   "mana": 50.0,
+   "initialMana": 0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 40.0,
+   "as": 0.7,
+   "range": 4.0,
+   "role": "ADCaster",
+   "ability": {
+    "name": "Razor Leaves",
+    "desc": "Summon five razor-sharp leaves that converge on the current target, dealing a total of 340/510/770 physical damage and applying 20% Wound and 1% Burn for 4 seconds.\n\nScarlet Buff: Cinderling gains 22% Attack Damage each cast.\n\nWound: Reduces healing received.\nBurn: Deals a percent of the target’s max Health as true damage every second.\n\nDamage:  [30 / 45 / 70]\n\nDamage: 340 = 310 + 30 [310 / 465 / 700]",
+    "lang": "en"
+   },
+   "icon": "assets/icons/Cinderling.jpg",
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Cinderling.jpg"
+  },
+  {
+   "id": "DA_18_Sentry",
+   "name": "Pebbles",
+   "cost": 1,
+   "traits": [
+    "神谕",
+    "峡谷野怪"
+   ],
+   "hp": 500.0,
+   "mana": 70.0,
+   "initialMana": 30.0,
+   "armor": 25.0,
+   "mr": 25.0,
+   "ad": 35.0,
+   "as": 0.8,
+   "range": 4.0,
+   "role": "APCaster",
+   "ability": {
+    "name": "Azure Laser",
+    "desc": "Begin consuming 35% max Mana per second and channeling a laser on the target. Each second while casting, deal 160/240/360 magic damage to them and reduce their Magic Resist by 3.\n\nTeal Buff: Gain 2 Mana Regen for every 4 seconds channeled.\n\nDamage: 160 [160 / 240 / 360]",
+    "lang": "en"
+   },
+   "icon": "assets/icons/Pebbles.jpg",
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Pebbles.jpg"
   },
   {
    "id": "DA_Karma18",
@@ -1481,6 +1733,37 @@
    "levels": [
     {
      "min": 1,
+     "max": null,
+     "style": 4,
+     "vars": {}
+    }
+   ]
+  },
+  {
+   "name": "峡谷野怪",
+   "desc": "(3) 使用【阿尔法印记】为1个【峡谷野怪】提供独特的增益\n(5) 每3场对战后，你的下一次商店会被【峡谷野怪】们占领。\n(7) 战斗开始时及之后每5秒，【峡谷野怪】们成长并获得\n5%  5%  6% \n+6  +6   +50  +1 \n(10) 自然之力！！！+2最大队伍规模",
+   "icon": "assets/icons/Trait_Icon_18_Riftbeast.TFT_Set18.png",
+   "levels": [
+    {
+     "min": 3,
+     "max": 4,
+     "style": 1,
+     "vars": {}
+    },
+    {
+     "min": 5,
+     "max": 6,
+     "style": 3,
+     "vars": {}
+    },
+    {
+     "min": 7,
+     "max": 9,
+     "style": 4,
+     "vars": {}
+    },
+    {
+     "min": 10,
      "max": null,
      "style": 4,
      "vars": {}
@@ -2015,6 +2298,19 @@
     },
     {
      "min": 4,
+     "max": null,
+     "style": 4,
+     "vars": {}
+    }
+   ]
+  },
+  {
+   "name": "顶级掠食者",
+   "desc": "【远古巨龙】占用2个弈子栏位，并提供+2【峡谷野怪】羁绊。",
+   "icon": "assets/icons/Trait_Icon_18_ApexPredator.TFT_Set18.png",
+   "levels": [
+    {
+     "min": 1,
      "max": null,
      "style": 4,
      "vars": {}

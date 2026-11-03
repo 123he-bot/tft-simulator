@@ -15,14 +15,16 @@ window.TFT = window.TFT || {};
     augments: RAW.augments || { silver: [], gold: [], prismatic: [] },
     augmentsFull: RAW.augmentsFull || [],
     source: RAW.source || null,
-    meta: RAW.meta || { tiers: {} }
+    meta: RAW.meta || { tiers: {} },
+    compData: RAW.comps || null,
+    compItems: (RAW.comps && RAW.comps.itemCatalog) || []
   };
   /* 赛季下拉顺序：按 bundle 里真实存在的 sN 逆序排列（新赛季随数据自动出现，无需改代码） */
   D.SEASON_ORDER = Object.keys(RAW)
     .filter(k => /^s\d+$/.test(k) && RAW[k] && (RAW[k].champions || []).length)
     .sort((a, b) => Number(b.slice(1)) - Number(a.slice(1)));
   if (!D.SEASON_ORDER.length) D.SEASON_ORDER = ['s17', 's16', 's15', 's14', 's13', 's7', 's3'];
-  D.SEASON_LABEL = { s17: 'S17 当前赛季', s16: 'S16', s15: 'S15', s14: 'S14', s13: 'S13', s7: 'S7', s3: 'S3' };
+  D.SEASON_LABEL = { s18: 'S18 当前赛季', s17: 'S17', s16: 'S16', s15: 'S15', s14: 'S14', s13: 'S13', s7: 'S7', s3: 'S3' };
   D.PATCHES = ['14.18', '14.17', '14.16', '14.15', '14.14', '14.13'];
   /* 补丁号只对数据源覆盖的赛季有意义（目前仅 S17 有 MetaTFT 补丁口径） */
   D.patchesForSeason = function (slug) {
@@ -69,10 +71,38 @@ window.TFT = window.TFT || {};
   /* 真实 MetaTFT 梯度数据（仅存在梯度数据的赛季可用） */
   D.metaRaw = RAW.meta || { tiers: {} };
   D.meta = D.metaRaw;
-  /* 按赛季取梯度榜：有真实数据用真实数据，其余赛季走本地推断 */
+  /* 按赛季取梯度榜：有真实阵容数据先用真实数据，其次 MetaTFT，其余赛季走本地推断 */
   D.metaForSeason = function (slug) {
     slug = slug || D.currentSlug;
     if (!slug) return D.metaRaw;
+    const cd = D.compData && D.compData[slug];
+    if (cd && (cd.comps || []).length) {
+      const tiers = {};
+      cd.comps.forEach(function (cp) {
+        const t = cp.tier || 'C';
+        (tiers[t] = tiers[t] || []).push(cp);
+      });
+      const hit = {};
+      cd.comps.forEach(function (cp) {
+        (cp.traits || []).forEach(function (t) {
+          if (t.active >= (t.need || 1)) hit[t.name] = (hit[t.name] || 0) + 1;
+        });
+      });
+      const traitRanking = Object.keys(hit).map(k => ({ name: k, count: hit[k] }))
+        .sort((a, b) => b.count - a.count).slice(0, 20);
+      return {
+        set: cd.set || String(slug).toUpperCase(),
+        updatedAt: cd.updatedAt || cd.patch || '',
+        source: cd.source || 'OP.GG 实时榜单',
+        sourceUrl: cd.sourceUrl || '',
+        fetchedAt: cd.fetchedAt || '',
+        tiers: tiers,
+        traitRanking: traitRanking,
+        heatCurve: { labels: [], series: [] },
+        counterGraph: { edges: [] },
+        note: cd.note || '阵容与胜率统计来自 OP.GG 实时对局采样。'
+      };
+    }
     const rawSet = String(D.metaRaw.set || '').toUpperCase();
     if (rawSet === String(slug).toUpperCase()) return D.metaRaw;
     if (TFT.LocalMeta && TFT.LocalMeta.build) return TFT.LocalMeta.build(slug);
@@ -98,10 +128,12 @@ window.TFT = window.TFT || {};
   };
   D.item = function (id) {
     return D.allItems().find(i => i.id === id) ||
+      (D.compItems || []).find(i => i.id === id) ||
       D.officialItems(D.currentSlug).find(i => i.id === id) || null;
   };
   D.itemByName = function (name) {
     return D.allItems().find(i => i.name === name) ||
+      (D.compItems || []).find(i => i.name === name) ||
       D.officialItems(D.currentSlug).find(i => i.name === name) || null;
   };
   D.completedByRecipe = function (a, b) {

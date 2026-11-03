@@ -119,13 +119,8 @@ def build():
     trait_order = {api: i for i, api in enumerate(traits)}
 
     def playable(c):
-        """排除 PvE 野怪（英文名 / 峡谷野怪羁绊）与同角色形态变体。"""
-        nm = c.get('name') or ''
-        if not re.search(r'[\u4e00-\u9fff]', nm):
-            return False
-        if any((t.get('apiName') == 'DA_18_Riftbeast') for t in (c.get('traits') or [])):
-            return False
-        return True
+        """S18 的峡谷野怪同样是可上场单位（有费用/羁绊），因此全部保留。"""
+        return bool(c.get('name') and c.get('traits'))
 
     def base_name(nm):
         return re.sub(r'\s*[\(（][^\)）]*[\)）]\s*$', '', nm)
