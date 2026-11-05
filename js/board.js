@@ -358,7 +358,18 @@ window.TFT = window.TFT || {};
       }
       html += '</div>';
     }
-    el.board.innerHTML = html;
+    const emptyHint = (!state.boardList().length)
+      ? (function () {
+        const ch = TFT.D.champions().filter(function (c) { return c.cost === 5; })[0] ||
+          TFT.D.champions()[0];
+        return '<div class="board-empty">' +
+          (ch && ch.icon ? '<img src="' + U.esc(ch.icon) + '" alt="" onerror="this.style.display=\'none\'">' : '') +
+          '<b>把棋子拖到棋盘</b>' +
+          '<span>从右侧棋子库拖入，或点「一键求解」自动摆位</span>' +
+          '</div>';
+      })()
+      : '';
+    el.board.innerHTML = html + emptyHint;
     Board.bindCellEvents();
     Board.renderRangeHighlights();
   };

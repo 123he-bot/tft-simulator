@@ -665,15 +665,64 @@ window.TFT = window.TFT || {};
         '<i>' + U.esc(String(u.name || '?').slice(0, 1)) + '</i></span>';
     }).join('');
     const uMore = (cp.units || []).length > 5 ? '<span class="cc-u more">+' + ((cp.units || []).length - 5) + '</span>' : '';
+
+    /* 站位缩略图：4×7 棋盘，按费用着色 */
+    let posHTML = '';
+    if (cp.positionMap && cp.positionMap.length) {
+      const cells = {};
+      cp.positionMap.forEach(function (p) {
+        cells[String(p[0]) + '-' + String(p[1])] = p[2];
+      });
+      let s = '';
+      for (let r = 0; r < 4; r++) {
+        for (let c = 0; c < 7; c++) {
+          const nm = cells[r + '-' + c];
+          const cu = nm ? (cp.units || []).filter(function (x) { return x.name === nm; })[0] : null;
+          s += '<i' + (nm ? ' class="c' + U.clamp((cu && cu.cost) || 1, 1, 5) + (cu && cu.core ? ' core' : '') + '"' : '') + '></i>';
+        }
+      }
+      posHTML = '<div class="cc-pos" title="实战站位（上排为敌方半场）">' + s + '</div>';
+    }
+
+    /* 核心装备三件套（当前集群未提供时，借用同主C 的 OP.GG 阵容出装） */
+    let itemU = (cp.units || []).filter(function (u) { return u.core && (u.items || []).length; })[0] ||
+      (cp.units || []).filter(function (u) { return (u.items || []).length; })[0];
+    if (!itemU || !(itemU.items || []).length) {
+      const cd = D.compData && D.compData[D.currentSlug];
+      const donor = cd && (cd.comps || []).filter(function (x) {
+        return x.mainC === cp.mainC && (x.units || []).some(function (u) { return (u.items || []).length; });
+      })[0];
+      if (donor) {
+        itemU = (donor.units || []).filter(function (u) { return u.core && (u.items || []).length; })[0] ||
+          (donor.units || []).filter(function (u) { return (u.items || []).length; })[0];
+      }
+    }
+    let itemHTML = '';
+    if (itemU && (itemU.items || []).length) {
+      itemHTML = '<div class="cc-items"><span class="cc-it-lead">' + U.esc(itemU.name) + '</span>' +
+        (itemU.items || []).slice(0, 3).map(function (id) {
+          const it = D.item(id);
+          const ic = U.itemIcon(it) || '';
+          const kn = (it && it.name) || id;
+          return '<span class="cc-it" title="' + U.esc(kn) + '">' +
+            (ic ? '<img src="' + U.esc(ic) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '') + '</span>';
+        }).join('') + '</div>';
+    }
+
     return '<div class="comp-card ct-' + U.esc(tier || 'NA') + '" data-comp="' + U.esc(cp.id) + '">' +
-      '<div class="cc-art">' + ua + uMore + '</div>' +
+      '<div class="cc-art"><div class="cc-avs">' + ua + uMore + '</div>' + posHTML + '</div>' +
       '<div class="cc-head"><span class="tier-dot td-' + U.esc(tier) + '">' + U.esc(tier) + '</span>' +
       '<span class="cc-name">' + (nameHTML || U.esc(displayName(cp))) + '</span><span class="cc-rank">' + rankTxt + '</span></div>' +
       '<div class="cc-line">主C <b>' + U.esc(cp.mainC || '-') + '</b> · ' + ((cp.units || []).length) + ' 人口 · ' + U.esc(cp.source || '') +
       (cp.confidence ? ' · 推断置信度 ' + U.esc(cp.confidence) : '') + '</div>' +
+      itemHTML +
       realLine +
       (real ? compPlayHTML(cp) : '') +
-      '<div class="cc-tags">' + (cp.traits || []).slice(0, 4).map(t => '<span class="mini-tag">' + U.esc(t.name) + ' ' + t.active + '</span>').join('') + '</div>' +
+      '<div class="cc-tags">' + (cp.traits || []).slice(0, 4).map(function (t) {
+        const tt = D.trait(t.name);
+        return '<span class="mini-tag">' + (tt && tt.icon ? '<img class="trait-ic" src="' + U.esc(tt.icon) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
+          U.esc(t.name) + ' ' + t.active + '</span>';
+      }).join('') + '</div>' +
       '<div class="cc-str"><span class="dim">' + (real ? '平均名次' : '强度') + '</span>' + strengthBar(cp.strength) + '<span class="dim">' + (real ? String(cp.avgPlace) : strengthLabel(cp.strength)) + '</span></div>' +
       '</div>';
   }
@@ -2146,18 +2195,22 @@ window.TFT = window.TFT || {};
         '<span class="hr-foot">' + roster.length + ' 位高频核心 · 数据来自真实对局采样</span></div>'
       : '';
     /* 榜首主C 原画：作为 Hero 右侧角色卡，让首页有真实游戏画面 */
-    let heroArtUrl = '', heroArtName = '';
+    let heroArtUrl = '', heroArtName = '', heroArtFallback = '';
     if (list.length && list[0].cp) {
       const cus = (list[0].cp.units || []).slice().sort(function (a, b) {
         return (b.core ? 1 : 0) - (a.core ? 1 : 0);
       });
       const cu = cus[0];
       const ach = cu ? (D.champ(cu.id) || D.champByName(cu.name)) : null;
-      if (ach) { heroArtUrl = ach.splash || ach.icon || ''; heroArtName = ach.name || (cu && cu.name) || ''; }
+      if (ach) {
+        heroArtUrl = ach.splash || ach.icon || '';
+        heroArtFallback = ach.icon || '';
+        heroArtName = ach.name || (cu && cu.name) || '';
+      }
     }
     hero.innerHTML =
       '<div class="hero-glow"></div>' +
-      (heroArtUrl ? '<div class="hero-art"><img src="' + U.esc(heroArtUrl) + '" alt="" onerror="this.parentNode.style.display=\'none\'">' +
+      (heroArtUrl ? '<div class="hero-art"><img src="' + U.esc(heroArtUrl) + '" alt="" onerror="if(!this.dataset.f&&this.dataset.fb){this.dataset.f=1;this.src=this.dataset.fb}else{this.parentNode.style.display=\'none\'}" data-fb="' + U.esc(heroArtFallback) + '">' +
         '<div class="ha-cap"><em>榜首主C</em><b>' + U.esc(heroArtName) + '</b></div></div>' : '') +
       '<div class="hero-inner">' +
         '<div class="hero-main-col">' +
@@ -2205,18 +2258,45 @@ window.TFT = window.TFT || {};
         '<div class="kpi-k">' + U.esc(x.k) + '</div><div class="kpi-s dim">' + U.esc(x.s) + '</div></div>';
     }).join('');
 
-    /* —— 热门阵容评级（真实榜单展示 OP/S/A，其它展示 S/A，各档前 6） —— */
+    /* —— 热门阵容评级（支持档位 / 主C费用筛选） —— */
     const grid = $('#homeTierGrid');
+    if (!Main.homeFilter) Main.homeFilter = { tier: 'ALL', cost: 0 };
+    const hf = Main.homeFilter;
+    const mainCostOf = function (cp) {
+      const ch = D.champByName(cp.mainC);
+      if (ch && ch.cost) return ch.cost;
+      const u = (cp.units || []).filter(function (x) { return x.name === cp.mainC; })[0];
+      return (u && u.cost) || 0;
+    };
+    const filt = $('#homeTierFilter');
+    if (filt) {
+      const tierOpts = (metaReal ? ['OP', 'S', 'A'] : ['S', 'A']);
+      filt.innerHTML = '<span class="hf-label">档位</span>' +
+        ['ALL'].concat(tierOpts).map(function (t) {
+          return '<button class="hf-chip' + (hf.tier === t ? ' on' : '') + '" data-hf-tier="' + t + '">' + (t === 'ALL' ? '全部' : t) + '</button>';
+        }).join('') +
+        '<span class="hf-label">主C费用</span>' +
+        [0, 1, 2, 3, 4, 5].map(function (c) {
+          return '<button class="hf-chip' + (hf.cost === c ? ' on' : '') + '" data-hf-cost="' + c + '">' + (c === 0 ? '全部' : c + ' 费') + '</button>';
+        }).join('');
+      $$('#homeTierFilter .hf-chip').forEach(function (b) {
+        b.onclick = function () {
+          if (b.dataset.hfTier != null) Main.homeFilter.tier = b.dataset.hfTier;
+          if (b.dataset.hfCost != null) Main.homeFilter.cost = Number(b.dataset.hfCost);
+          Main.renderHome();
+        };
+      });
+    }
     if (grid) {
       let cards = '';
-      const homeTiers = metaReal ? ['OP', 'S', 'A'] : ['S', 'A'];
+      const homeTiers = hf.tier === 'ALL' ? (metaReal ? ['OP', 'S', 'A'] : ['S', 'A']) : [hf.tier];
       const TIER_TXT = { OP: '版本答案', S: '版本最强', A: '强力上分' };
       homeTiers.forEach(function (t) {
         const allT = (M.tiers && M.tiers[t]) || [];
-        const arr = allT.slice(0, 6);
+        const arr = allT.filter(function (cp) { return hf.cost ? mainCostOf(cp) === hf.cost : true; }).slice(0, 6);
         if (!arr.length) return;
         cards += '<div class="home-tier-title ht-' + t + '"><b>' + t + ' 档</b>' +
-          '<span>' + (TIER_TXT[t] || '可用') + ' · 本档共 ' + allT.length + ' 套 · 展示前 ' + arr.length + '</span></div>' +
+          '<span>' + (TIER_TXT[t] || '可用') + ' · 本档共 ' + allT.length + ' 套' + (hf.cost ? ' · ' + hf.cost + ' 费主C ' + arr.length + ' 套' : '') + '</span></div>' +
           '<div class="comp-grid">' + arr.map(function (cp) { return compCardHTML(cp, t); }).join('') + '</div>';
       });
       const gridNote = metaReal
@@ -2237,7 +2317,7 @@ window.TFT = window.TFT || {};
           : '<span class="dim">强度</span>' + strengthBar(top.cp.strength) + '<b>' + strengthLabel(top.cp.strength) + '</b>') +
         '</div></div>' : '';
       grid.innerHTML = cards ? gridNote + topHtml + cards
-        : '<div class="dim">当前数据源暂无评级阵容</div>';
+        : '<div class="dim">' + (hf.cost ? '该费用暂无主C阵容，换个费用试试' : '当前数据源暂无评级阵容') + '</div>';
       $$('#homeTierGrid [data-comp]').forEach(c => c.onclick = function () { Main.openCompDetail(c.dataset.comp); });
     }
 
