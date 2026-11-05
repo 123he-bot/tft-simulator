@@ -3,10 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>金铲铲 AI 多智能体阵容模拟器</title>
+<title>金铲铲 AI 多智能体阵容模拟器 · S18 实时阵容榜</title>
+<meta name="description" content="金铲铲之战 S18 阵容数据站：OP.GG 实时阵容榜（各段位快照）、真实胜率与前四率、出装/站位/运营节奏、羁绊天梯与装备适配榜，支持棋盘模拟、抽卡概率与 AI 多智能体复盘。">
+<meta name="keywords" content="金铲铲,S18,阵容,OP.GG,阵容榜,站位,出装,羁绊,金铲铲之战,自走棋">
+<meta name="theme-color" content="#070c16">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="金铲铲 AI 多智能体阵容模拟器">
+<meta property="og:title" content="金铲铲 AI 多智能体阵容模拟器 · S18 实时阵容榜">
+<meta property="og:description" content="OP.GG 实时阵容榜与段位快照 · 真实胜率/前四率/出装/站位 · 棋盘模拟与 AI 运营复盘">
+<meta property="og:image" content="https://123he-bot.github.io/tft-simulator/assets/og-cover.jpg">
+<meta property="og:url" content="https://123he-bot.github.io/tft-simulator/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="金铲铲 AI 多智能体阵容模拟器 · S18 实时阵容榜">
+<meta name="twitter:description" content="OP.GG 实时阵容榜与段位快照 · 真实胜率/前四率/出装/站位 · 棋盘模拟与 AI 运营复盘">
+<meta name="twitter:image" content="https://123he-bot.github.io/tft-simulator/assets/og-cover.jpg">
+<link rel="canonical" href="https://123he-bot.github.io/tft-simulator/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a1222'/%3E%3Cpath d='M16 5l9 5.2v9.6L16 25l-9-5.2v-9.6z' fill='none' stroke='%2322d3ee' stroke-width='1.8'/%3E%3Ccircle cx='16' cy='15.5' r='3.2' fill='%23f5c542'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"金铲铲 AI 多智能体阵容模拟器","url":"https://123he-bot.github.io/tft-simulator/","description":"金铲铲之战 S18 阵容数据站，提供 OP.GG 实时阵容榜、段位快照、出装站位与棋盘模拟。","inLanguage":"zh-CN"}
+</script>
 <link rel="stylesheet" href="css/tailwind.css?v=1.4.3">
-<link rel="stylesheet" href="css/style.css?v=2.3.0">
+<link rel="stylesheet" href="css/style.css?v=2.4.0">
 </head>
 <body>
 
@@ -369,8 +386,12 @@
 
 <!-- ============ 数据站首页门户 ============ -->
 <div id="viewHome" class="home-view hidden">
-  <section id="homeHero" class="hero"></section>
-  <div id="homeKpiRow" class="kpi-row"></div>
+  <section id="homeHero" class="hero"><div class="sk-hero" aria-hidden="true">
+    <div class="sk-row"><span class="sk sk-pill"></span><span class="sk sk-line w40"></span></div>
+    <div class="sk sk-title"></div><div class="sk sk-line w60"></div><div class="sk sk-line w50"></div>
+    <div class="sk-row"><span class="sk sk-btn"></span><span class="sk sk-btn"></span><span class="sk sk-btn"></span></div>
+  </div></section>
+  <div id="homeKpiRow" class="kpi-row"><div class="sk sk-kpi"></div><div class="sk sk-kpi"></div><div class="sk sk-kpi"></div><div class="sk sk-kpi"></div></div>
 
   <div class="home-collage">
     <div class="home-main">
@@ -392,6 +413,10 @@
       </section>
     </div>
     <aside class="home-side">
+      <section class="card" id="homeMine">
+        <div class="home-sec-head"><h3>我的阵容</h3><span class="dim" id="homeMineNote"></span></div>
+        <div id="homeMineBody"></div>
+      </section>
       <section class="card">
         <div class="home-sec-head"><h3>羁绊天梯</h3><span class="dim" id="homeTraitNote"></span><button class="btn btn-xs" data-home-act="ladder">完整天梯 →</button></div>
         <div id="homeTraitLadder" class="stat-table"></div>
@@ -443,7 +468,7 @@
 <script src="js/vendor/chart.umd.min.js"></script>
 <script src="js/data.bundle.js?v=1.6.4"></script>
 <script src="js/utils.js?v=1.4.6"></script>
-<script src="js/storage.js?v=1.6.5"></script>
+<script src="js/storage.js?v=1.6.6"></script>
 <script src="js/recommend.js?v=1.0.2"></script>
 <script src="js/board.js?v=1.4.5"></script>
 <script src="js/optimizer.js?v=1.0.1"></script>
@@ -452,6 +477,6 @@
 <script src="js/drag.js?v=1.4.3"></script>
 <script src="js/battle_sim.js?v=1.4.8"></script>
 <script src="js/ai_api.js?v=1.5.3"></script>
-<script src="js/main.js?v=1.15.0"></script>
+<script src="js/main.js?v=1.16.0"></script>
 </body>
 </html>

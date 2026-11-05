@@ -316,7 +316,10 @@ window.TFT = window.TFT || {};
 
   /* ==================== localStorage 持久化 ==================== */
   const K = TFT.Store = {};
-  K.KEYS = { saves: 'tft.saves.v1', notes: 'tft.notes.v1', prefs: 'tft.prefs.v1', current: 'tft.current.v1', itemPlans: 'tft.itemplans.v1' };
+  K.KEYS = {
+    saves: 'tft.saves.v1', notes: 'tft.notes.v1', prefs: 'tft.prefs.v1', current: 'tft.current.v1',
+    itemPlans: 'tft.itemplans.v1', favs: 'tft.favs.v1', recent: 'tft.recent.v1', compare: 'tft.compare.v1'
+  };
 
   function read(k, dft) {
     try { const s = localStorage.getItem(k); return s ? JSON.parse(s) : dft; } catch (e) { return dft; }
@@ -382,6 +385,47 @@ window.TFT = window.TFT || {};
     delete all[compId];
     write(K.KEYS.itemPlans, all);
     return all;
+  };
+
+  /* ---- 收藏阵容 / 最近浏览 / 对比栏（跨赛季按 slug 隔离） ---- */
+  K.favs = () => read(K.KEYS.favs, []);
+  K.isFav = function (slug, id) {
+    return K.favs().some(f => f.slug === slug && f.id === id);
+  };
+  K.toggleFav = function (slug, id) {
+    if (!slug || !id) return false;
+    const list = K.favs();
+    const i = list.findIndex(f => f.slug === slug && f.id === id);
+    if (i >= 0) list.splice(i, 1); else list.unshift({ slug: slug, id: id, at: Date.now() });
+    write(K.KEYS.favs, list.slice(0, 80));
+    return i < 0;
+  };
+  K.favsFor = function (slug) { return K.favs().filter(f => f.slug === slug); };
+
+  K.recent = () => read(K.KEYS.recent, []);
+  K.pushRecent = function (slug, id) {
+    if (!slug || !id) return;
+    const list = K.recent().filter(r => !(r.slug === slug && r.id === id));
+    list.unshift({ slug: slug, id: id, at: Date.now() });
+    write(K.KEYS.recent, list.slice(0, 20));
+  };
+  K.recentFor = function (slug) { return K.recent().filter(r => r.slug === slug).slice(0, 12); };
+
+  K.compare = () => read(K.KEYS.compare, []);
+  K.compareFor = function (slug) { return K.compare().filter(c => c.slug === slug).slice(0, 2); };
+  K.toggleCompare = function (slug, id) {
+    if (!slug || !id) return { added: false, list: [] };
+    let list = K.compare().filter(c => !(c.slug === slug && c.id === id));
+    const had = list.length < K.compare().length;
+    if (had) { write(K.KEYS.compare, list); return { added: false, list: K.compareFor(slug) }; }
+    list = K.compareFor(slug);
+    list.unshift({ slug: slug, id: id, at: Date.now() });
+    const keep = K.compare().filter(c => c.slug !== slug).concat(list.slice(0, 2));
+    write(K.KEYS.compare, keep);
+    return { added: true, list: list.slice(0, 2) };
+  };
+  K.clearCompare = function (slug) {
+    write(K.KEYS.compare, K.compare().filter(c => c.slug !== slug));
   };
 
   /* ==================== 导入 / 导出 ==================== */

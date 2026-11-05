@@ -1615,3 +1615,105 @@ b,strong{font-weight:700}
   .rs-shop{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 
+/* 骨架屏：脚本就绪前先给出首屏结构，避免白屏 */
+@keyframes skSweep{0%{background-position:0 0}100%{background-position:-200% 0}}
+.sk{display:block;border-radius:var(--r-xs);background:linear-gradient(110deg,rgba(255,255,255,.035) 30%,rgba(255,255,255,.09) 50%,rgba(255,255,255,.035) 70%);background-size:200% 100%;animation:skSweep 1.5s linear infinite}
+.sk-hero{padding:26px 30px;display:flex;flex-direction:column;gap:10px;min-height:210px}
+.sk-row{display:flex;gap:8px;align-items:center}
+.sk-pill{width:96px;height:16px;border-radius:999px}
+.sk-line{height:11px}.sk-line.w40{width:40%}.sk-line.w50{width:50%}.sk-line.w60{width:60%}
+.sk-title{width:68%;height:34px;margin:4px 0}
+.sk-btn{width:104px;height:30px;border-radius:var(--r-sm)}
+.sk-kpi{height:78px;border-radius:var(--r)}
+
+/* 外链原画加载占位：加载完成前用流光底色，防盗链失败时回退本地棋子图标 */
+@keyframes artShimmer{0%{background-position:0 0}100%{background-position:-200% 0}}
+.hero-art{background-image:linear-gradient(110deg,#0a1222 30%,#16233d 50%,#0a1222 70%);background-size:200% 100%;animation:artShimmer 1.7s linear infinite}
+.hero-art.loaded{animation:none;background-image:none}
+.hero-art img{min-height:100%}
+
+/* 收藏 / 对比 / 大棋盘（v2.4） */
+/* 卡片星标 */
+.cc-fav{margin-left:auto;flex-shrink:0;width:20px;height:19px;border:1px solid var(--line);border-radius:var(--r-xs);background:var(--panel-3);color:var(--mute);font-size:11px;line-height:1;display:grid;place-items:center;cursor:pointer;font-family:inherit;transition:.14s;padding:0}
+.cc-fav:hover{border-color:rgba(240,194,90,.55);color:var(--gold);transform:translateY(-1px)}
+.cc-fav.on{color:var(--gold);border-color:rgba(240,194,90,.55);background:var(--gold-soft);text-shadow:0 0 8px rgba(240,194,90,.5)}
+.cc-fav.sm{width:18px;height:17px;font-size:10px;margin-left:0}
+.cc-fav-btn.on{color:var(--gold);border-color:rgba(240,194,90,.55);background:var(--gold-soft)}
+.cd-actions{margin-top:4px;gap:5px}
+.hf-sel{height:24px;padding:0 22px 0 8px;font-size:10px;border-radius:999px;background-color:var(--panel-3);border:1px solid var(--line);color:var(--text);max-width:190px}
+
+/* 首页「我的阵容」 */
+.mine-sub{display:flex;align-items:center;gap:6px;font-size:9.5px;color:var(--accent);letter-spacing:.04em;margin-bottom:5px}
+.mine-row{display:grid;grid-template-columns:19px minmax(0,1fr) auto auto;gap:7px;align-items:center;padding:5px 6px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--panel-2);margin-bottom:4px;cursor:pointer;transition:.13s}
+.mine-row:hover{border-color:var(--accent-line);background:var(--panel-3);transform:translateX(1px)}
+.mine-name{min-width:0;font-size:11px;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mine-name i{display:block;font-style:normal;font-size:8.5px;color:var(--mute);margin-top:1px}
+.mine-meta{font-size:10px;color:#9feff7;font-variant-numeric:tabular-nums}
+.mine-ago{font-size:8.5px;color:var(--mute);white-space:nowrap}
+.mine-empty{font-size:9.5px;line-height:1.7;color:var(--mute);padding:8px 9px;border:1px dashed var(--line-2);border-radius:var(--r-sm);background:rgba(255,255,255,.015)}
+.mine-cmp{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:7px}
+.mine-cmp-chip{display:inline-flex;align-items:center;gap:4px;padding:2px 4px 2px 8px;border-radius:999px;border:1px solid var(--accent-line);background:var(--accent-soft);font-size:9.5px;color:#bff1ff;cursor:pointer}
+.mine-cmp-chip em{font-style:normal;width:14px;height:14px;display:grid;place-items:center;border-radius:50%;background:rgba(0,0,0,.28);color:var(--mute)}
+.mine-hint{font-size:9px}
+
+/* 大图站位棋盘 */
+.pos-grid.big{max-width:none;width:100%;gap:4px;margin-top:8px}
+.pos-grid.big .pos-grid-row{gap:4px}
+.pos-enemy{display:flex;align-items:center;justify-content:space-between;padding:2px 8px 2px 44px;margin-bottom:2px;border-radius:var(--r-xs);background:linear-gradient(90deg,rgba(255,92,114,.12),rgba(255,92,114,.02));border:1px dashed rgba(255,92,114,.28);font-size:8.5px;color:#fda4af;letter-spacing:.08em}
+.pos-enemy i{font-style:normal;color:var(--mute);letter-spacing:0}
+.pos-grid.big .pos-cell{aspect-ratio:1/1.04;padding:0;position:relative;border-radius:var(--r-sm)}
+.pos-grid.big .pos-cell img{border-radius:calc(var(--r-sm) - 1px)}
+.pos-grid.big .pos-cell.empty,.pos-grid.big .pos-cell:not(.filled){background:linear-gradient(135deg,rgba(255,255,255,.025),rgba(255,255,255,.005))}
+.pc-star{position:absolute;top:1px;right:2px;font-size:7px;color:var(--gold);text-shadow:0 1px 3px #000;letter-spacing:-1px;line-height:1.2}
+.pc-name{position:absolute;left:0;right:0;bottom:0;padding:6px 2px 1px;font-size:7.5px;font-style:normal;line-height:1.15;text-align:center;color:#f1f5f9;background:linear-gradient(transparent,rgba(3,8,16,.86));overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* 装备优先级 */
+.ip-row{padding:6px 7px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--panel-2);margin-bottom:6px}
+.ip-row:last-child{margin-bottom:0}
+.ip-who{display:flex;align-items:baseline;gap:6px;margin-bottom:4px}
+.ip-who b{font-size:10.5px;color:var(--text)}
+.ip-who i{font-style:normal;font-size:8.5px;color:var(--accent)}
+.ip-it{display:grid;grid-template-columns:15px 23px minmax(0,1fr) auto;align-items:center;gap:6px;padding:3px 0;border-top:1px solid rgba(255,255,255,.05)}
+.ip-it:first-of-type{border-top:0}
+.ip-rank{width:14px;height:14px;border-radius:50%;display:grid;place-items:center;font-size:8px;font-weight:800;background:var(--gold-soft);color:var(--gold);border:1px solid rgba(240,194,90,.35)}
+.ip-ico{width:23px;height:23px;border-radius:var(--r-xs);background:var(--panel-3);border:1px solid var(--line);display:grid;place-items:center;overflow:hidden;font-size:9px;color:var(--dim)}
+.ip-ico img{width:100%;height:100%;object-fit:cover;display:block}
+.ip-main{min-width:0;line-height:1.3}
+.ip-main b{display:block;font-size:10px;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ip-main i{font-style:normal;font-size:8.5px;color:var(--mute)}
+.ip-tag{font-size:8px;padding:1px 4px;border-radius:3px;border:1px solid var(--line);color:var(--mute);white-space:nowrap}
+.ip-it:nth-of-type(2) .ip-tag{color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)}
+
+/* 对位建议 */
+.mu-tips{display:flex;flex-direction:column;gap:5px}
+.mu-tip{display:flex;gap:6px;align-items:flex-start;font-size:9.5px;line-height:1.6;color:var(--dim)}
+.mu-idx{flex-shrink:0;width:15px;height:15px;margin-top:1px;border-radius:3px;display:grid;place-items:center;font-size:8.5px;font-weight:700;color:#ffa8b4;background:rgba(255,92,114,.1);border:1px solid rgba(255,92,114,.3)}
+
+/* 阵容对比 */
+.cmp-wrap{display:grid;grid-template-columns:minmax(0,1fr) 42px minmax(0,1fr);gap:8px;align-items:start}
+.cmp-col{padding:9px 10px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel-2);min-width:0}
+.cmp-a{border-top:2px solid var(--accent)}
+.cmp-b{border-top:2px solid var(--gold)}
+.cmp-head{display:flex;align-items:center;gap:7px;margin-bottom:7px;min-width:0}
+.cmp-head b{font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cmp-unit-line{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:8px}
+.cmp-av{width:26px;height:26px;border-radius:var(--r-xs);overflow:hidden;border:1px solid var(--line-2);background:var(--panel-3);display:grid;place-items:center;font-size:9px;color:var(--dim)}
+.cmp-av img{width:100%;height:100%;object-fit:cover;display:block}
+.cmp-av.c1{border-color:#8b9bb4}.cmp-av.c2{border-color:#3fd99a}.cmp-av.c3{border-color:#4f8cff}.cmp-av.c4{border-color:#b07cf7}.cmp-av.c5{border-color:#f0c25a}
+.cmp-table{width:100%;border-collapse:collapse;font-size:9.5px}
+.cmp-table tr{border-bottom:1px solid rgba(255,255,255,.05)}
+.cmp-table th{text-align:left;font-weight:400;color:var(--mute);padding:3px 4px;width:82px;white-space:nowrap}
+.cmp-table td{color:var(--text);padding:3px 4px;line-height:1.5;word-break:break-word}
+.cmp-vs{display:grid;place-items:center;align-self:center;font-size:11px;font-weight:800;color:var(--mute);letter-spacing:.1em;padding-top:40px}
+
+@media (max-width:640px){
+  .cmp-wrap{grid-template-columns:1fr;gap:6px}
+  .cmp-vs{padding:0;font-size:10px}
+  .pos-grid.big .pos-row-label{font-size:7.5px}
+  .pos-grid.big .pos-cell{aspect-ratio:1/1.1}
+  .pos-enemy{padding-left:38px;font-size:7.5px}
+  .mine-row{grid-template-columns:19px minmax(0,1fr) auto}
+  .mine-meta{display:none}
+}
+
+

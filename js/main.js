@@ -622,6 +622,49 @@ window.TFT = window.TFT || {};
   /* 展示用名称：去掉尾部集群编号后缀（如「重装战士·乐芙兰·409040」→「重装战士·乐芙兰」） */
   function displayName(cp) { return String((cp && cp.name) || '').replace(/·\d{4,}$/, ''); }
 
+  /* ---------- 通用小工具：复制文本 / 收藏按钮 ---------- */
+  function copyText(text, okMsg) {
+    const fallback = function () {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.cssText = 'position:fixed;left:-9999px;opacity:0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); TFT.UI.toast(okMsg || '已复制到剪贴板', 'ok'); }
+      catch (e) { TFT.UI.toast('复制失败，请手动复制：' + text, 'warn', 5000); }
+      document.body.removeChild(ta);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { TFT.UI.toast(okMsg || '已复制到剪贴板', 'ok'); }, fallback);
+    } else fallback();
+  }
+  function isFavNow(id) { return TFT.Store && TFT.Store.isFav ? TFT.Store.isFav(D.currentSlug, id) : false; }
+  function agoText(ts) {
+    const d = Math.max(0, (Date.now() - (ts || 0)) / 1000);
+    if (d < 60) return '刚刚';
+    if (d < 3600) return Math.floor(d / 60) + ' 分钟前';
+    if (d < 86400) return Math.floor(d / 3600) + ' 小时前';
+    return Math.floor(d / 86400) + ' 天前';
+  }
+  function agoFromDate(str) {
+    if (!str) return '';
+    const t = new Date(String(str).replace(' ', 'T'));
+    if (isNaN(t.getTime())) return '';
+    return '（' + agoText(t.getTime()) + '）';
+  }
+  function favBtnHTML(cp, extra) {
+    const on = isFavNow(cp.id);
+    return '<button class="cc-fav' + (on ? ' on' : '') + (extra ? ' ' + extra : '') + '" data-fav="' + U.esc(cp.id) + '"' +
+      ' title="' + (on ? '取消收藏' : '收藏阵容') + '" aria-pressed="' + (on ? 'true' : 'false') + '">' + (on ? '★' : '☆') + '</button>';
+  }
+  /* 收藏状态变化后，同步页面上所有同 ID 星标（避免整页重渲染） */
+  function syncFavButtons(id, on) {
+    $$('.cc-fav[data-fav="' + id.replace(/"/g, '\\"') + '"]').forEach(function (b) {
+      b.classList.toggle('on', on);
+      if (b.classList.contains('cc-fav-btn')) b.textContent = on ? '★ 已收藏' : '☆ 收藏';
+      else b.textContent = on ? '★' : '☆';
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+
   /* 玩法标签：OP.GG badge 真实字段（reroll=刷新等级 / difficulty=难度 / 费用分布来自真实棋子） */
   function compPlayHTML(cp) {
     const b = cp.badge || {}, lv = cp.leveling || {};
@@ -723,7 +766,7 @@ window.TFT = window.TFT || {};
         return '<span class="mini-tag">' + (tt && tt.icon ? '<img class="trait-ic" src="' + U.esc(tt.icon) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
           U.esc(t.name) + ' ' + t.active + '</span>';
       }).join('') + '</div>' +
-      '<div class="cc-str"><span class="dim">' + (real ? '平均名次' : '强度') + '</span>' + strengthBar(cp.strength) + '<span class="dim">' + (real ? String(cp.avgPlace) : strengthLabel(cp.strength)) + '</span></div>' +
+      '<div class="cc-str"><span class="dim">' + (real ? '平均名次' : '强度') + '</span>' + strengthBar(cp.strength) + '<span class="dim">' + (real ? String(cp.avgPlace) : strengthLabel(cp.strength)) + '</span>' + favBtnHTML(cp) + '</div>' +
       '</div>';
   }
 
@@ -1098,24 +1141,30 @@ window.TFT = window.TFT || {};
       const f = D.meta.tiers[t].find(c => c.id === id);
       if (f) return { cp: f, tier: t };
     }
+    const cd = D.compData && D.compData[D.currentSlug];
+    const f = cd && (cd.comps || []).find(c => c.id === id);
+    if (f) return { cp: f, tier: f.tier || 'A' };
     return null;
   };
 
   /* 站位网格 HTML（mr：3 前排 / 2 中排 / 1、0 后排；列取实际使用范围）— 阵容详情与一图流共用
      cellsArg 可选：传入自定义站位（如「对面前排厚」变体），缺省读 cp.positionMap */
-  function posGridHTML(cp, cellsArg) {
+  function posGridHTML(cp, cellsArg, opts) {
+    const big = !!(opts && opts.big);
     const units = cp.units || [];
     const cells = cellsArg || (cp.positionMap || []).map(p => ({ mr: p[0], c: p[1], name: p[2] }));
     const costOf = name => { const u = units.find(x => x.name === name); return u ? (u.cost || 0) : 0; };
+    const starOf = name => { const u = units.find(x => x.name === name); return (u && u.star) || 1; };
     const colAll = cells.map(x => x.c);
-    const colMin = colAll.length ? Math.min.apply(null, colAll) : 1;
-    const colMax = colAll.length ? Math.max.apply(null, colAll) : 5;
+    const colMin = big ? 1 : (colAll.length ? Math.min.apply(null, colAll) : 1);
+    const colMax = big ? 7 : (colAll.length ? Math.max.apply(null, colAll) : 5);
     const nCols = colMax - colMin + 1;
-    const mrUsed = Array.from(new Set(cells.map(x => x.mr))).sort((a, b) => b - a);
+    const mrUsed = big ? [3, 2, 1, 0] : Array.from(new Set(cells.map(x => x.mr))).sort((a, b) => b - a);
     const roleOf = { 3: '前排', 2: '中排', 1: '后排', 0: '后排' };
-    const rowStyle = 'grid-template-columns:34px repeat(' + nCols + ',minmax(0,1fr))';
-    let html = '<div class="pos-grid">' +
-      '<div class="pos-grid-row pos-head" style="' + rowStyle + '"><span class="pos-row-label">列</span>' +
+    const rowStyle = 'grid-template-columns:' + (big ? 40 : 34) + 'px repeat(' + nCols + ',minmax(0,1fr))';
+    let html = '<div class="pos-grid' + (big ? ' big' : '') + '">';
+    if (big) html += '<div class="pos-enemy"><span>敌方半场</span><i>交战中线</i></div>';
+    html += '<div class="pos-grid-row pos-head" style="' + rowStyle + '"><span class="pos-row-label">列</span>' +
       Array.from({ length: nCols }, (_, i) => '<span class="pos-col-num">' + (colMin + i) + '</span>').join('') + '</div>';
     mrUsed.forEach(function (mr) {
       html += '<div class="pos-grid-row" style="' + rowStyle + '"><span class="pos-row-label">' + (roleOf[mr] || '') + '</span>';
@@ -1123,7 +1172,10 @@ window.TFT = window.TFT || {};
         const f = cells.find(x => x.mr === mr && x.c === c);
         const ch = f ? D.champByName(f.name) : null;
         const ico = ch ? U.champIcon(ch) : null;
-        const inner = !f ? '' : (ico ? '<img src="' + ico + '" alt="' + U.esc(f.name) + '">' : U.esc(f.name));
+        const inner = !f ? '' : (ico
+          ? '<img src="' + ico + '" alt="' + U.esc(f.name) + '" loading="lazy">' +
+            (big ? '<b class="pc-star">' + '★'.repeat(U.clamp(starOf(f.name), 1, 3)) + '</b><em class="pc-name">' + U.esc(f.name) + '</em>' : '')
+          : U.esc(f.name));
         html += '<div class="pos-cell' + (f ? ' filled c' + costOf(f.name) : '') + '"' + (f ? ' title="' + U.esc(f.name) + '"' : '') + '>' + inner + '</div>';
       }
       html += '</div>';
@@ -1246,12 +1298,98 @@ window.TFT = window.TFT || {};
     return moved ? cells : null;
   }
 
+  /* 装备优先级与理由：按装备属性文本推导（非官方，仅作阅读辅助） */
+  function itemWhyText(it) {
+    const s = String((it && (it.stat || it.desc)) || '');
+    if (/攻击力|AD|物理|暴击/.test(s)) return '提升物理输出';
+    if (/法术|AP|法力|技能/.test(s)) return '强化技能伤害 / 起手';
+    if (/攻击速度|攻速|AS/.test(s)) return '提升持续输出频率';
+    if (/护甲|魔抗|生命|双抗|护盾|治疗/.test(s)) return '增强前排生存';
+    if (/全能吸血|吸血/.test(s)) return '提供续航';
+    return '功能补强';
+  }
+  function itemPriorityHTML(cp, plan) {
+    const pick = function (tag) {
+      return (plan.units || []).filter(function (u) { return u.tag === tag && (u.items || []).length; })[0];
+    };
+    const main = pick('main') || (plan.units || []).filter(function (u) { return (u.items || []).length; })
+      .sort(function (a, b) { return (b.cost || 0) - (a.cost || 0); })[0];
+    const tank = pick('tank');
+    const role = main ? roleLabel((main.champ && main.champ.role) || '') : '';
+    const mk = function (p, kind) {
+      if (!p || !(p.items || []).length) return '';
+      return '<div class="ip-row"><div class="ip-who"><b>' + U.esc(p.name) + '</b><i>' + U.esc(kind) +
+        (role && p === main ? ' · ' + U.esc(role) : '') + '</i></div>' +
+        p.items.slice(0, 3).map(function (it, i) {
+          const icon = U.itemIcon({ icon: it.icon });
+          return '<div class="ip-it"><span class="ip-rank">' + (i + 1) + '</span>' +
+            '<span class="ip-ico">' + (icon ? '<img src="' + icon + '" alt="" onerror="this.remove()">' : '<b>' + U.esc(String(it.name || '装').slice(0, 1)) + '</b>') + '</span>' +
+            '<span class="ip-main"><b>' + U.esc(it.name) + '</b><i>' + U.esc(itemWhyText(it)) + '</i></span>' +
+            '<span class="ip-tag">' + (i === 0 ? '核心' : i === 1 ? '次选' : '补强') + '</span></div>';
+        }).join('') + '</div>';
+    };
+    const html = mk(main, '主C') + mk(tank, '主坦');
+    return html || '<div class="dim" style="font-size:10.5px">当前阵容暂无可聚合的出装数据</div>';
+  }
+
+  /* 对位 / 克制建议：按本阵容前后排厚度 + 同羁绊热门对手推导（规则推算） */
+  function matchupHTML(cp, isReal, frontN) {
+    const traits = (cp.traits || []).filter(function (t) { return t.active >= (t.need || 1); }).map(function (t) { return t.name; });
+    const pool = (D.compData && D.compData[D.currentSlug] && D.compData[D.currentSlug].comps) || [];
+    const threats = pool.filter(function (x) { return x.id !== cp.id; }).map(function (x) {
+      const share = (x.traits || []).filter(function (t) { return traits.indexOf(t.name) >= 0; }).length;
+      return { cp: x, share: share };
+    }).filter(function (x) { return x.share >= 2; })
+      .sort(function (a, b) { return (b.share - a.share) || ((b.cp.pickRate || 0) - (a.cp.pickRate || 0)); })
+      .slice(0, 3).map(function (x) { return x.cp; });
+    const main = D.champByName(cp.mainC || '') || {};
+    const tips = [];
+    if (frontN >= 3) tips.push('前排 ' + frontN + ' 人：主C 放底角或第三列，避免与敌方主坦正面互换');
+    else if (frontN <= 1) tips.push('前排仅 ' + frontN + ' 人：优先补主坦或给主C 防御件，防止被先手切入');
+    if (/Reaper|Assassin/.test(main.role || '')) tips.push('主C 为收割位：从侧翼进场，优先越过敌方前排切后排');
+    else if ((main.range || 0) >= 3) tips.push('主C 射程 ' + main.range + '：贴另一侧底角，拉长与敌方刺客的距离');
+    if ((main.cost || 0) >= 4) tips.push('4/5 费主C：4-1 前保血，成型后靠质量压制，别用低费阵容硬拖决赛');
+    else tips.push('低费主C：优先在 5~6 级追 3 星，人口不必强拉，靠星级滚雪球');
+    const chips = threats.map(function (t) {
+      return '<span class="mini-tag bad clickable" data-comp="' + U.esc(t.id) + '">' + U.esc(displayName(t)) +
+        (t.pickRate ? ' · ' + pct(t.pickRate) : '') + '</span>';
+    }).join('');
+    return '<div class="mu-tips">' + tips.slice(0, 3).map(function (t, i) {
+      return '<div class="mu-tip"><span class="mu-idx">' + (i + 1) + '</span><span>' + U.esc(t) + '</span></div>';
+    }).join('') + '</div>' +
+      (chips ? '<div class="panel-title" style="font-size:10px;color:#fda4af;margin-top:8px">同羁绊热门对手 · 需要提防</div><div class="tag-row">' + chips + '</div>' : '') +
+      '<div class="eng-note" style="margin-top:8px">按<b>真实站位 / 射程 / 费用</b>推导的对位建议，属规则推算，非官方结论。</div>';
+  }
+
   /* 阵容详情当前上下文（供行内出装选择器使用） */
   let detailCtx = null;
+
+  /* 出装方案：真实阵容用 OP.GG 实战出装（可手动覆盖）；历史赛季用本地规则引擎推荐 */
+  function compPlan(cp) {
+    if (!cp.sourceReal) return TFT.Recommend.plan(cp);
+    const units = cp.units || [];
+    const overrides = (TFT.Store && TFT.Store.itemPlan) ? (TFT.Store.itemPlan(cp.id) || {}) : {};
+    let manualCount = 0;
+    const outUnits = units.map(function (u) {
+      const ch = D.champByName(u.name) || {};
+      const manual = !!overrides[u.name];
+      if (manual) manualCount++;
+      const ids = manual ? overrides[u.name] : (u.items || []);
+      const its = ids.map(i => D.item(i)).filter(Boolean).map(it => ({ id: it.id, name: it.name, stat: it.stat || '', icon: it.icon || null }));
+      return {
+        name: u.name, cost: u.cost, star: u.star || 1, champ: ch, role: ch.role, roleLabel: roleLabel(ch.role || ''),
+        items: its, reason: manual ? '手动方案 · 已覆盖 OP.GG 实测出装' : 'OP.GG 实战出装（对局采样）',
+        tag: u.tag || 'other', manual: manual
+      };
+    });
+    const itemCount = outUnits.reduce((s, p) => s + p.items.length, 0);
+    return { compId: cp.id, units: outUnits, summary: { total: outUnits.length, manual: manualCount, engine: outUnits.length - manualCount, itemCount: itemCount } };
+  }
 
   Main.openCompDetail = function (id) {
     const found = Main.findComp(id); if (!found) return;
     const cp = found.cp, tier = found.tier;
+    if (TFT.Store && TFT.Store.pushRecent) TFT.Store.pushRecent(D.currentSlug, cp.id);
     const units = cp.units || [];
     const rk = compRankInfo(cp);
     const totalCost = units.reduce((a, u) => a + (u.cost || 0), 0);
@@ -1260,36 +1398,18 @@ window.TFT = window.TFT || {};
     const costDist = [1, 2, 3, 4, 5].map(c => units.filter(u => u.cost === c).length);
 
     /* —— 出装方案：真实阵容用 OP.GG 实战出装；历史赛季用本地规则引擎推荐 —— */
-    let plan;
     const isRealComp = !!cp.sourceReal;
-    if (isRealComp) {
-      const overrides = (TFT.Store && TFT.Store.itemPlan) ? (TFT.Store.itemPlan(cp.id) || {}) : {};
-      let manualCount = 0;
-      const outUnits = units.map(function (u) {
-        const ch = D.champByName(u.name) || {};
-        const manual = !!overrides[u.name];
-        if (manual) manualCount++;
-        const ids = manual ? overrides[u.name] : (u.items || []);
-        const its = ids.map(i => D.item(i)).filter(Boolean).map(it => ({ id: it.id, name: it.name, stat: it.stat || '', icon: it.icon || null }));
-        return {
-          name: u.name, cost: u.cost, star: u.star || 1, champ: ch, role: ch.role, roleLabel: roleLabel(ch.role || ''),
-          items: its, reason: manual ? '手动方案 · 已覆盖 OP.GG 实测出装' : 'OP.GG 实战出装（对局采样）',
-          tag: u.tag || 'other', manual: manual
-        };
-      });
-      const itemCount = outUnits.reduce((s, p) => s + p.items.length, 0);
-      plan = { compId: cp.id, units: outUnits, summary: { total: outUnits.length, manual: manualCount, engine: outUnits.length - manualCount, itemCount: itemCount } };
-    } else {
-      plan = TFT.Recommend.plan(cp);
-    }
+    const plan = compPlan(cp);
     const planMap = {};
     plan.units.forEach(function (p) { planMap[p.name] = p; });
     detailCtx = { cp: cp, plan: plan };
 
     /* —— 站位图（由 posGridHTML 统一生成，与一图流共用） —— */
-    const posInfo = posGridHTML(cp);
+    const posInfo = posGridHTML(cp, null, { big: true });
     const posHTML = posInfo.html;
     const frontN = posInfo.frontN, midN = posInfo.midN, backN = posInfo.backN;
+    const ipHTML = itemPriorityHTML(cp, plan);
+    const muHTML = matchupHTML(cp, isRealComp, frontN);
 
     /* —— 运营节奏 / 关键节点 / 站位变体（规则推算，标注在卡片内） —— */
     const pace = pacingPlan(cp, plan);
@@ -1405,6 +1525,11 @@ window.TFT = window.TFT || {};
           '<div class="m-row" style="margin-top:8px"><button class="btn btn-xs btn-primary" id="cpLoad">一键加载到棋盘</button>' +
           '<button class="btn btn-xs" id="cpAsk">让 AI 讲运营</button>' +
           '<button class="btn btn-xs" id="cpPoster">阵容一图流</button></div>' +
+          '<div class="m-row cd-actions">' +
+          '<button class="btn btn-xs cc-fav-btn' + (isFavNow(cp.id) ? ' on' : '') + '" data-fav="' + U.esc(cp.id) + '">' +
+            (isFavNow(cp.id) ? '★ 已收藏' : '☆ 收藏') + '</button>' +
+          '<button class="btn btn-xs' + (TFT.Store.compareFor(D.currentSlug).some(function (c) { return c.id === cp.id; }) ? ' btn-primary' : '') + '" id="cpCmp">⇄ 加入对比</button>' +
+          '<button class="btn btn-xs" id="cpShare">复制阵容码</button></div>' +
         '</div>' +
         aboutHTML +
         '<div class="card"><h4>羁绊达成（' + actives.length + ' 激活 / ' + (cp.traits || []).length + '）</h4><div class="trait-list">' + traitRows + '</div></div>' +
@@ -1430,6 +1555,7 @@ window.TFT = window.TFT || {};
       '</div>' +
       /* 右列 */
       '<div style="display:flex;flex-direction:column;gap:8px">' +
+        '<div class="card"><h4>装备优先级 <span class="dim">核心 → 次选 → 补强 · 按真实出装顺序</span></h4>' + ipHTML + '</div>' +
         '<div class="card"><h4>上阵单位（' + units.length + '）<span class="dim">按费用排序 · ' + (isRealComp ? '出装为 OP.GG 实战采样' : '出装为引擎推荐') + '</span></h4>' +
           '<div class="unit-table">' + unitRows + '</div>' +
           '<div class="eng-note">' + (isRealComp
@@ -1438,6 +1564,7 @@ window.TFT = window.TFT || {};
               plan.summary.itemCount + ' 件）。此为<b>引擎推荐</b>，非官方方案；点击「改」可手动覆盖，覆盖结果仅保存在本机。') +
           (plan.summary.manual ? ' 当前有 ' + plan.summary.manual + ' 个棋子使用手动方案。' : '') + '</div>' +
         '</div>' +
+        (isRealComp ? '<div class="card"><h4>对位 / 克制建议 <span class="dim">规则推算 · 可跳转对手</span></h4>' + muHTML + '</div>' : '') +
         (isRealComp ? '' : '<div class="card"><h4>克制关系 <span class="dim">点击可跳转该阵容</span></h4>' +
           '<div class="panel-title" style="font-size:10px;color:#86efac">本阵容克制</div><div class="tag-row">' + chipList((cp.counters || {})['克制'], 'crt', cp.id) + '</div>' +
           '<div class="panel-title mt8" style="font-size:10px;color:#fda4af">被这些克制</div><div class="tag-row">' + chipList((cp.counters || {})['被克制'], 'bad', cp.id) + '</div>' +
@@ -1457,6 +1584,81 @@ window.TFT = window.TFT || {};
     };
     $$('#modalBody [data-comp]').forEach(c => c.onclick = function () { Main.openCompDetail(c.dataset.comp); });
     $$('#modalBody [data-edit-unit]').forEach(b => b.onclick = function () { openItemPicker(b.dataset.editUnit); });
+    const cmpBtn = $('#cpCmp');
+    if (cmpBtn) cmpBtn.onclick = function () {
+      const res = TFT.Store.toggleCompare(D.currentSlug, cp.id);
+      if (!res.added) {
+        cmpBtn.classList.remove('btn-primary');
+        cmpBtn.textContent = '⇄ 加入对比';
+        TFT.UI.toast('已移出对比栏', 'ok');
+        return;
+      }
+      cmpBtn.classList.add('btn-primary');
+      cmpBtn.textContent = '⇄ 已在对比';
+      if (res.list.length >= 2) { TFT.UI.toast('已加入对比，正在打开对比视图', 'ok'); setTimeout(function () { Main.openCompare(); }, 120); }
+      else TFT.UI.toast('已加入对比栏，再选 1 套即可对比', 'ok');
+    };
+    const shareBtn = $('#cpShare');
+    if (shareBtn) shareBtn.onclick = function () { Main.copyCompCode(cp); };
+  };
+
+  /* 复制可分享阵容码：带赛季与阵容 ID 的链接，打开后自动定位该阵容 */
+  Main.copyCompCode = function (cp) {
+    const base = location.origin + location.pathname;
+    const code = base + '?season=' + encodeURIComponent(D.currentSlug) + '&comp=' + encodeURIComponent(cp.id);
+    copyText(code, '阵容码已复制，发链接给好友即可打开');
+  };
+
+  /* ==================== 两套阵容对比 ==================== */
+  Main.openCompare = function (idsArg) {
+    const slug = D.currentSlug;
+    let refs = (idsArg || TFT.Store.compareFor(slug).map(function (c) { return c.id; })).map(function (id) {
+      const hit = Main.findComp(id); return hit ? hit : null;
+    }).filter(Boolean);
+    if (refs.length < 2) { TFT.UI.toast('至少选择 2 套阵容才能对比', 'warn'); return; }
+    refs = refs.slice(0, 2);
+    const col = function (hit, idx) {
+      const cp = hit.cp, tier = hit.tier, plan = compPlan(cp);
+      const un = cp.units || [];
+      const acts = (cp.traits || []).filter(function (t) { return t.active >= (t.need || 1); });
+      const rows = [
+        ['档位 / 排名', tier + ' 档' + (compRankInfo(cp).rank ? ' · #' + compRankInfo(cp).rank : '')],
+        ['平均名次', cp.sourceReal && cp.avgPlace ? cp.avgPlace : '—'],
+        ['登顶率', cp.sourceReal && cp.winRate != null ? pct(cp.winRate) : '—'],
+        ['前四率', cp.sourceReal && cp.top4Rate != null ? pct(cp.top4Rate) : '—'],
+        ['出场率', cp.sourceReal && cp.pickRate ? pct(cp.pickRate) : '—'],
+        ['样本', cp.sourceReal && cp.games ? cp.games + ' 场' : '—'],
+        ['主C', (cp.mainC || '—') + (cp.mainC && D.champByName(cp.mainC) ? '（' + (D.champByName(cp.mainC).cost || '?') + ' 费）' : '')],
+        ['人口 / 总费用', un.length + ' 人 / ' + un.reduce(function (a, u) { return a + (u.cost || 0); }, 0) + ' 金'],
+        ['核心装备', ((plan.units || []).filter(function (p) { return p.tag === 'main'; })[0] || {}).items ?
+          plan.units.filter(function (p) { return p.tag === 'main'; })[0].items.map(function (it) { return it.name; }).join(' / ') : '—'],
+        ['激活羁绊', acts.map(function (t) { return t.name + ' ' + t.active; }).join('、') || '—'],
+        ['站位厚度', '前 ' + posGridHTML(cp).frontN + ' / 中 ' + posGridHTML(cp).midN + ' / 后 ' + posGridHTML(cp).backN]
+      ];
+      return '<div class="cmp-col cmp-' + (idx ? 'b' : 'a') + '">' +
+        '<div class="cmp-head"><span class="tier-dot td-' + U.esc(tier) + '">' + U.esc(tier) + '</span>' +
+        '<b>' + U.esc(displayName(cp)) + '</b></div>' +
+        '<div class="cmp-unit-line">' + un.slice(0, 10).map(function (u) {
+          const ch = D.champByName(u.name);
+          return '<span class="cmp-av c' + (u.cost || 0) + '" title="' + U.esc(u.name) + '">' +
+            (ch ? '<img src="' + U.champIcon(ch) + '" alt="" loading="lazy">' : U.esc(u.name.slice(0, 1))) + '</span>';
+        }).join('') + '</div>' +
+        '<table class="cmp-table">' + rows.map(function (r) {
+          return '<tr><th>' + U.esc(r[0]) + '</th><td>' + U.esc(String(r[1])) + '</td></tr>';
+        }).join('') + '</table>' +
+        '<button class="btn btn-xs" data-comp="' + U.esc(cp.id) + '">查看详情</button>' +
+        '</div>';
+    };
+    TFT.UI.modal({
+      title: '阵容对比 · ' + displayName(refs[0].cp) + ' vs ' + displayName(refs[1].cp),
+      size: 'wide',
+      body: '<div class="cmp-wrap">' + col(refs[0], 0) + '<div class="cmp-vs">VS</div>' + col(refs[1], 1) + '</div>' +
+        '<div class="m-row" style="margin-top:10px"><button class="btn btn-xs" id="cmpClear">清空对比栏</button></div>'
+    });
+    $$('#modalBody [data-comp]').forEach(function (b) {
+      b.onclick = function () { TFT.UI.closeModal(); setTimeout(function () { Main.openCompDetail(b.dataset.comp); }, 60); };
+    });
+    const clr = $('#cmpClear'); if (clr) clr.onclick = function () { TFT.Store.clearCompare(D.currentSlug); TFT.UI.closeModal(); Main.renderHome(); };
   };
 
   /* ==================== 行内出装选择器 ==================== */
@@ -2161,12 +2363,31 @@ window.TFT = window.TFT || {};
     const hero = $('#homeHero');
     if (!hero) return;
     const An = TFT.Analytics, ov = An.overview(), M = D.meta || {};
-    const list = rankedComps();
+    const snap = compSnapshots();
     const metaSet = String(M.set || '').toUpperCase();
     const curSet = String(D.currentSlug || '').toUpperCase();
     const metaLocal = M.source === '本地推断';
     const metaReal = !!M.source && /OP\.GG/.test(M.source);
     const metaIsCurrent = metaLocal || metaReal || !metaSet || metaSet === curSet;
+
+    /* —— 首页常驻段位切换：OP.GG 快照按段位独立采样，默认钻石 —— */
+    const prefs = TFT.Store.prefs();
+    const tierKeys = (snap && snap.tiers) ? (snap.order || Object.keys(snap.tiers)) : [];
+    if (metaReal && snap) {
+      if (!Main.homeTier || !snap.tiers[Main.homeTier]) Main.homeTier = (snap.tiers[prefs.homeTier] ? prefs.homeTier : 'diamond');
+      if (!snap.tiers[Main.homeTier]) Main.homeTier = tierKeys[0] || 'all';
+    }
+    let list = rankedComps();
+    let homeTierLabel = '';
+    if (metaReal && snap && Main.homeTier) {
+      const t = snap.tiers[Main.homeTier] || {};
+      homeTierLabel = t.label || Main.homeTier;
+      if (Main.homeTier !== 'all') {
+        const merged = metaCompsForTier(Main.homeTier) || [];
+        merged.sort(function (a, b) { return (a.avgPlace || 99) - (b.avgPlace || 99); });
+        list = merged.map(function (cp, i) { return { cp: cp, tier: cp.tier, rank: i + 1 }; });
+      }
+    }
     TFT.UI.destroyCharts();
 
     /* —— Hero —— */
@@ -2210,13 +2431,13 @@ window.TFT = window.TFT || {};
     }
     hero.innerHTML =
       '<div class="hero-glow"></div>' +
-      (heroArtUrl ? '<div class="hero-art"><img src="' + U.esc(heroArtUrl) + '" alt="" onerror="if(!this.dataset.f&&this.dataset.fb){this.dataset.f=1;this.src=this.dataset.fb}else{this.parentNode.style.display=\'none\'}" data-fb="' + U.esc(heroArtFallback) + '">' +
+      (heroArtUrl ? '<div class="hero-art"><img src="' + U.esc(heroArtUrl) + '" alt="" onload="this.parentNode.classList.add(\'loaded\')" onerror="if(!this.dataset.f&&this.dataset.fb){this.dataset.f=1;this.src=this.dataset.fb}else{this.parentNode.style.display=\'none\'}" data-fb="' + U.esc(heroArtFallback) + '">' +
         '<div class="ha-cap"><em>榜首主C</em><b>' + U.esc(heroArtName) + '</b></div></div>' : '') +
       '<div class="hero-inner">' +
         '<div class="hero-main-col">' +
           '<div class="hero-badge">' + U.esc(curSet || '—') +
           (M.updatedAt ? ' · 补丁 ' + U.esc(M.updatedAt) : '') +
-          (metaReal ? ' · OP.GG 实时阵容榜' : metaLocal ? ' · 本地推断阵容' : metaIsCurrent ? ' · 数据可溯源' : ' · 梯度榜为 ' + U.esc(metaSet) + ' 数据') + '</div>' +
+          (metaReal ? ' · OP.GG 实时阵容榜' + (homeTierLabel ? ' · ' + homeTierLabel : '') : metaLocal ? ' · 本地推断阵容' : metaIsCurrent ? ' · 数据可溯源' : ' · 梯度榜为 ' + U.esc(metaSet) + ' 数据') + '</div>' +
           '<h1 class="hero-title">金铲铲 <b>AI 多智能体</b> 阵容数据站</h1>' +
           '<p class="hero-sub">真实棋库 · 真实概率 · 真实强度分层。既保留本地规则推理的独特机制，也可一键接入大模型多智能体协作。</p>' +
           '<div class="hero-cta">' +
@@ -2271,7 +2492,16 @@ window.TFT = window.TFT || {};
     const filt = $('#homeTierFilter');
     if (filt) {
       const tierOpts = (metaReal ? ['OP', 'S', 'A'] : ['S', 'A']);
-      filt.innerHTML = '<span class="hf-label">档位</span>' +
+      const tierSel = (metaReal && snap)
+        ? '<span class="hf-label">段位</span><select class="sel sel-sm hf-sel" id="homeTierSel" title="切换 OP.GG 段位样本">' +
+          tierKeys.map(function (k) {
+            const t = snap.tiers[k] || {};
+            return '<option value="' + U.esc(k) + '"' + (k === Main.homeTier ? ' selected' : '') + '>' +
+              U.esc(t.label || k) + '（' + (t.count || 0) + ' 套）</option>';
+          }).join('') + '</select>'
+        : '';
+      filt.innerHTML = tierSel +
+        '<span class="hf-label">档位</span>' +
         ['ALL'].concat(tierOpts).map(function (t) {
           return '<button class="hf-chip' + (hf.tier === t ? ' on' : '') + '" data-hf-tier="' + t + '">' + (t === 'ALL' ? '全部' : t) + '</button>';
         }).join('') +
@@ -2286,13 +2516,19 @@ window.TFT = window.TFT || {};
           Main.renderHome();
         };
       });
+      const sel = $('#homeTierSel');
+      if (sel) sel.onchange = function () {
+        Main.homeTier = this.value;
+        TFT.Store.setPrefs({ homeTier: Main.homeTier });
+        Main.renderHome();
+      };
     }
     if (grid) {
       let cards = '';
       const homeTiers = hf.tier === 'ALL' ? (metaReal ? ['OP', 'S', 'A'] : ['S', 'A']) : [hf.tier];
       const TIER_TXT = { OP: '版本答案', S: '版本最强', A: '强力上分' };
       homeTiers.forEach(function (t) {
-        const allT = (M.tiers && M.tiers[t]) || [];
+        const allT = list.filter(function (x) { return x.tier === t; }).map(function (x) { return x.cp; });
         const arr = allT.filter(function (cp) { return hf.cost ? mainCostOf(cp) === hf.cost : true; }).slice(0, 6);
         if (!arr.length) return;
         cards += '<div class="home-tier-title ht-' + t + '"><b>' + t + ' 档</b>' +
@@ -2300,11 +2536,12 @@ window.TFT = window.TFT || {};
           '<div class="comp-grid">' + arr.map(function (cp) { return compCardHTML(cp, t); }).join('') + '</div>';
       });
       const gridNote = metaReal
-        ? '<div class="dim" style="margin-bottom:6px">以下为 <b>OP.GG 实时阵容榜</b>（补丁 ' + U.esc(M.updatedAt || '') + ' · 近 24 小时），带真实平均名次 / 登顶率 / 前四率 / 出场率，非本站推断</div>'
+        ? '<div class="dim" style="margin-bottom:6px">以下为 <b>OP.GG 实时阵容榜</b>（补丁 ' + U.esc(M.updatedAt || '') + ' · 近 24 小时 · ' +
+          U.esc(homeTierLabel || '全段位') + '样本），带真实平均名次 / 登顶率 / 前四率 / 出场率，非本站推断</div>'
         : metaLocal
           ? '<div class="dim" style="margin-bottom:6px">以下榜单由本地规则引擎按该赛季真实棋子 / 羁绊 / 费用推断，非 MetaTFT 胜率数据</div>'
           : (!metaIsCurrent ? '<div class="dim" style="margin-bottom:6px">以下评级来自 ' + U.esc(metaSet) + '，当前赛季 ' + U.esc(curSet) + ' 暂无 MetaTFT 梯度数据</div>' : '');
-      const top = rankedComps()[0];
+      const top = list[0];
       const topHtml = (top && cards) ? '<div class="home-top1" data-comp="' + U.esc(top.cp.id) + '" title="查看榜首详情">' +
         '<span class="ht-rank">#1</span>' +
         '<div class="ht-main"><span class="ht-kicker">当前榜首</span>' +
@@ -2319,6 +2556,62 @@ window.TFT = window.TFT || {};
       grid.innerHTML = cards ? gridNote + topHtml + cards
         : '<div class="dim">' + (hf.cost ? '该费用暂无主C阵容，换个费用试试' : '当前数据源暂无评级阵容') + '</div>';
       $$('#homeTierGrid [data-comp]').forEach(c => c.onclick = function () { Main.openCompDetail(c.dataset.comp); });
+    }
+
+    /* —— 我的阵容：收藏 / 对比 / 最近浏览 —— */
+    const mine = $('#homeMineBody'), mineNote = $('#homeMineNote');
+    if (mine) {
+      const favRefs = TFT.Store.favsFor(D.currentSlug).map(function (f) {
+        const hit = Main.findComp(f.id); return hit ? { cp: hit.cp, tier: hit.tier, at: f.at } : null;
+      }).filter(Boolean).slice(0, 8);
+      const recentRefs = TFT.Store.recentFor(D.currentSlug).map(function (r) {
+        const hit = Main.findComp(r.id); return hit ? { cp: hit.cp, tier: hit.tier, at: r.at } : null;
+      }).filter(Boolean).slice(0, 5);
+      const cmpRefs = TFT.Store.compareFor(D.currentSlug).map(function (c) {
+        const hit = Main.findComp(c.id); return hit ? { cp: hit.cp, tier: hit.tier } : null;
+      }).filter(Boolean);
+      const row = function (x, isRecent) {
+        return '<div class="mine-row" data-home-comp="' + U.esc(x.cp.id) + '" title="查看阵容详情">' +
+          '<span class="tier-dot td-' + U.esc(x.tier) + '">' + U.esc(x.tier) + '</span>' +
+          '<span class="mine-name">' + U.esc(displayName(x.cp)) +
+          '<i>' + U.esc(x.cp.mainC || '—') + ' · ' + (x.cp.units || []).length + ' 人</i></span>' +
+          '<span class="mine-meta">' + (x.cp.sourceReal && x.cp.avgPlace ? x.cp.avgPlace : '') + '</span>' +
+          (isRecent ? '<span class="mine-ago">' + agoText(x.at) + '</span>' : favBtnHTML(x.cp, 'sm')) +
+          '</div>';
+      };
+      let html = '';
+      if (favRefs.length) {
+        html += '<div class="mine-sub">收藏 <span class="dim">' + favRefs.length + '</span></div>' +
+          favRefs.map(function (x) { return row(x, false); }).join('');
+      }
+      if (cmpRefs.length) {
+        html += '<div class="mine-sub">对比栏 <span class="dim">' + cmpRefs.length + '/2</span></div>' +
+          '<div class="mine-cmp">' + cmpRefs.map(function (x) {
+            return '<span class="mine-cmp-chip" data-cmp-del="' + U.esc(x.cp.id) + '">' + U.esc(displayName(x.cp)) + '<em>×</em></span>';
+          }).join('') +
+          (cmpRefs.length === 2 ? '<button class="btn btn-xs btn-primary" id="homeCmpGo">开始对比</button>' : '<span class="dim mine-hint">再选 1 套即可对比</span>') +
+          '</div>';
+      }
+      if (!favRefs.length && !cmpRefs.length) {
+        html += '<div class="mine-empty">点阵容卡右下角的 ☆ 收藏，或从详情页加入对比</div>';
+      }
+      if (recentRefs.length) {
+        html += '<div class="mine-sub" style="margin-top:8px">最近浏览 <span class="dim">' + recentRefs.length + '</span></div>' +
+          recentRefs.map(function (x) { return row(x, true); }).join('');
+      }
+      mine.innerHTML = html;
+      if (mineNote) mineNote.textContent = favRefs.length ? '收藏 ' + favRefs.length + ' 套' : '本机保存';
+      $$('#homeMineBody [data-home-comp]').forEach(function (el) {
+        el.onclick = function (e) {
+          if (e.target.closest('[data-fav]') || e.target.closest('[data-cmp-del]')) return;
+          Main.openCompDetail(el.dataset.homeComp);
+        };
+      });
+      $$('#homeMineBody [data-cmp-del]').forEach(function (el) {
+        el.onclick = function () { TFT.Store.toggleCompare(D.currentSlug, el.dataset.cmpDel); Main.renderHome(); };
+      });
+      const go = $('#homeCmpGo');
+      if (go) go.onclick = function () { Main.openCompare(); };
     }
 
     /* —— 图表：费用分布 + 强度曲线 —— */
@@ -2521,7 +2814,7 @@ window.TFT = window.TFT || {};
     const hs = $('#homeSource');
     if (hs) hs.innerHTML =
       '<div class="kv"><span class="k">数据来源</span><span class="v">' + U.esc(src.source || 'Riot CommunityDragon') + '</span></div>' +
-      '<div class="kv"><span class="k">抓取时间</span><span class="v">' + U.esc(src.fetchedAt || ov.fetchedAt || '—') + '</span></div>' +
+      '<div class="kv"><span class="k">抓取时间</span><span class="v">' + U.esc(src.fetchedAt || ov.fetchedAt || '—') + ' <span class="dim">' + U.esc(agoFromDate(src.fetchedAt || ov.fetchedAt)) + '</span></span></div>' +
       '<div class="kv"><span class="k">条目统计</span><span class="v">海克斯 ' + U.esc(String(ov.augments)) + ' · 装备 ' + U.esc(String(ov.items)) + ' · 赛季 ' + U.esc(String(ov.seasons)) + '</span></div>' +
       (srcUrls ? '<div class="kv"><span class="k">原始链接</span><span class="v">' + srcUrls + '</span></div>' : '') +
       (src.extraSource && src.extraSource.S18 ?
@@ -2532,8 +2825,9 @@ window.TFT = window.TFT || {};
         '<a href="' + U.esc(D.compData.s18.sourceUrl || D.compData.sourceUrl || '') + '" target="_blank" rel="noopener">' +
         U.esc(D.compData.s18.source || D.compData.source || 'OP.GG 实时阵容榜') + '</a> · ' +
         (D.compData.s18.comps || []).length + ' 套 · 补丁 ' + U.esc(D.compData.s18.patch || '') +
-        (D.compData.s18.fetchedAt ? ' · 抓取 ' + U.esc(D.compData.s18.fetchedAt) : '') +
+        (D.compData.s18.fetchedAt ? ' · 抓取 ' + U.esc(D.compData.s18.fetchedAt) + ' ' + U.esc(agoFromDate(D.compData.s18.fetchedAt)) : '') +
         ' · 真实对局采样（出装 / 站位 / 胜率均为原始数据）</span></div>' : '') +
+      '<div class="kv"><span class="k">自动更新</span><span class="v">GitHub Actions · 每日 09:30（北京时间）· 有变化才提交</span></div>' +
       '<p class="home-source-note">说明：' + U.esc((D.meta && D.meta.note) || '本站仅统计与展示数据源中真实存在的字段。') +
       (metaReal
         ? ' 当前赛季阵容的平均名次 / 胜率 / 前四率 / 选取率均来自 OP.GG 实时对局采样，本站未做推断或补全；历史赛季无在线阵容数据源，仍标注为本地规则推断。'
@@ -3515,6 +3809,12 @@ window.TFT = window.TFT || {};
   /* ==================== 初始化 ==================== */
   function init() {
     const prefs = TFT.Store.prefs();
+    let urlSeason = null;
+    try {
+      const q = new URLSearchParams(location.search).get('season');
+      if (q && D.seasons().some(function (s) { return s.slug === q; })) urlSeason = q;
+    } catch (e) { }
+    if (urlSeason) S.season = urlSeason;
     S.autoMerge = prefs.autoMerge !== false;
     S.rangeOn = !!prefs.rangeToggle;
 
@@ -3530,6 +3830,7 @@ window.TFT = window.TFT || {};
       } catch (e) { }
     }
     if (cur && cur.state && cur.state.season) S.season = cur.state.season;
+    if (urlSeason) S.season = urlSeason;
     D.setSeason(S.season);
 
     fillTraitSelects();
@@ -3543,6 +3844,7 @@ window.TFT = window.TFT || {};
 
     /* 检测分享链接：#app&s=BASE64，有则优先加载 */
     let overrideView = null;
+    let compTarget = null;
     try {
       const hashRaw = location.hash.slice(1);
       const shareMatch = hashRaw.match(/(?:^|&)s=([A-Za-z0-9_-]+)/);
@@ -3555,8 +3857,32 @@ window.TFT = window.TFT || {};
         TFT.UI.toast('已加载分享阵容「' + (snap.name || '未命名') + '」', 'ok', 2500);
       }
     } catch (e) { console.warn('share link decode failed:', e); }
+    try {
+      const cq = new URLSearchParams(location.search).get('comp');
+      if (cq) compTarget = cq;
+      else {
+        const cm = location.hash.slice(1).match(/(?:^|&)comp=([^&]+)/);
+        if (cm) compTarget = decodeURIComponent(cm[1]);
+      }
+    } catch (e) { }
+
+    /* 收藏星标：捕获阶段拦截，避免触发卡片详情点击 */
+    document.addEventListener('click', function (e) {
+      const b = e.target.closest ? e.target.closest('[data-fav]') : null;
+      if (!b) return;
+      e.preventDefault(); e.stopPropagation();
+      const on = TFT.Store.toggleFav(D.currentSlug, b.dataset.fav);
+      syncFavButtons(b.dataset.fav, on);
+      TFT.UI.toast(on ? '已收藏，首页「我的阵容」可快速找回' : '已取消收藏', 'ok');
+      const modalOpen = TFT.UI.modalOpen && TFT.UI.modalOpen();
+      if (!modalOpen) setTimeout(function () { Main.renderHome(); }, 0);
+    }, true);
 
     Main.go(overrideView || (location.hash.slice(1).split('&')[0]) || prefs.lastView || 'home');
+    if (compTarget) setTimeout(function () {
+      if (Main.findComp(compTarget)) Main.openCompDetail(compTarget);
+      else TFT.UI.toast('分享的阵容不在当前赛季数据中', 'warn');
+    }, 220);
     TFT.UI.toast('模拟器已就绪 · 赛季 ' + S.season.toUpperCase(), 'ok', 2000);
   }
 
