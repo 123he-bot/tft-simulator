@@ -622,21 +622,48 @@ window.TFT = window.TFT || {};
   /* 展示用名称：去掉尾部集群编号后缀（如「重装战士·乐芙兰·409040」→「重装战士·乐芙兰」） */
   function displayName(cp) { return String((cp && cp.name) || '').replace(/·\d{4,}$/, ''); }
 
+  /* 玩法标签：OP.GG badge 真实字段（reroll=刷新等级 / difficulty=难度 / 费用分布来自真实棋子） */
+  function compPlayHTML(cp) {
+    const b = cp.badge || {}, lv = cp.leveling || {};
+    let lvlTxt = '';
+    if (Number(b.reroll) > 0) lvlTxt = 'Lvl ' + Number(b.reroll) + ' Roll';
+    else if (Number(lv.mid) > 0) lvlTxt = 'Lvl ' + Number(lv.mid) + ' 成型';
+    const diff = U.clamp(Math.round(Number(b.difficulty) || 0), 0, 3);
+    const cc = cp.costCurve || {};
+    const totalC = Object.keys(cc).reduce((s, k) => s + cc[k], 0);
+    const bars = totalC ? COST_LIST.map(function (c) {
+      const n = cc[c] || 0;
+      return n ? '<i class="cb c' + c + '" style="flex:' + n + '" title="' + n + ' 个 ' + c + ' 费"></i>' : '';
+    }).join('') : '';
+    return '<div class="cc-play">' +
+      (lvlTxt ? '<span class="cc-pill">' + U.esc(lvlTxt) + '</span>' : '') +
+      (diff ? '<span class="cc-pill diff d' + diff + '" title="OP.GG 难度标注">难度 ' +
+        '●'.repeat(diff) + '○'.repeat(3 - diff) + '</span>' : '') +
+      (bars ? '<span class="cc-costbar" title="上阵棋子费用分布">' + bars + '</span>' : '') +
+      '</div>';
+  }
+
   /* 富阵容卡片（搜索结果 / 梯度榜 / 反查共用） */
-  function compCardHTML(cp, tier, nameHTML) {
+  function compCardHTML(cp, tier, nameHTML, rankOverride) {
     tier = tier || cp.tier || '';
     const rk = compRankInfo(cp);
+    const rankTxt = rankOverride ? '#' + rankOverride : '#' + rk.rank + '/' + rk.total;
     const real = !!cp.sourceReal;
     const realLine = real
-      ? '<div class="cc-real">平均名次 <b>' + cp.avgPlace + '</b> · 胜率 ' + pct(cp.winRate) +
-        ' · 前四率 ' + pct(cp.top4Rate) + ' · 场次 ' + fmtNum(cp.games) + '</div>'
+      ? '<div class="cc-metrics">' +
+        '<span><em>出场</em><b>' + pct(cp.pickRate) + '</b></span>' +
+        '<span><em>前四</em><b>' + pct(cp.top4Rate) + '</b></span>' +
+        '<span><em>登顶</em><b>' + pct(cp.winRate) + '</b></span>' +
+        '<span><em>均名</em><b>' + cp.avgPlace + '</b></span>' +
+        '</div>'
       : '';
     return '<div class="comp-card" data-comp="' + U.esc(cp.id) + '">' +
       '<div class="cc-head"><span class="tier-dot td-' + U.esc(tier) + '">' + U.esc(tier) + '</span>' +
-      '<span class="cc-name">' + (nameHTML || U.esc(displayName(cp))) + '</span><span class="cc-rank">#' + rk.rank + '/' + rk.total + '</span></div>' +
+      '<span class="cc-name">' + (nameHTML || U.esc(displayName(cp))) + '</span><span class="cc-rank">' + rankTxt + '</span></div>' +
       '<div class="cc-line">主C <b>' + U.esc(cp.mainC || '-') + '</b> · ' + ((cp.units || []).length) + ' 人口 · ' + U.esc(cp.source || '') +
       (cp.confidence ? ' · 推断置信度 ' + U.esc(cp.confidence) : '') + '</div>' +
       realLine +
+      (real ? compPlayHTML(cp) : '') +
       '<div class="cc-tags">' + (cp.traits || []).slice(0, 4).map(t => '<span class="mini-tag">' + U.esc(t.name) + ' ' + t.active + '</span>').join('') + '</div>' +
       '<div class="cc-str"><span class="dim">' + (real ? '平均名次' : '强度') + '</span>' + strengthBar(cp.strength) + '<span class="dim">' + (real ? String(cp.avgPlace) : strengthLabel(cp.strength)) + '</span></div>' +
       '</div>';
@@ -728,93 +755,284 @@ window.TFT = window.TFT || {};
     return comps;
   };
 
-  /* ==================== Meta 梯度榜 ==================== */
+  /* ==================== Meta 梯度榜（段位快照 / 筛选 / 榜内搜索） ==================== */
+  let metaUI = { tier: 'all', sort: 'avgPlace', rare: false, block: 'ALL', q: '' };
+
+  function compSnapshots() {
+    const cd = D.compData && D.compData[D.currentSlug];
+    return (cd && cd.snapshots && cd.snapshots.tiers) ? cd.snapshots : null;
+  }
+
+  /* 把某段位快照的对局统计合并回基础阵容（基础字段来自全段位） */
+  function metaCompsForTier(tier) {
+    const cd = D.compData && D.compData[D.currentSlug];
+    const snap = compSnapshots();
+    if (!cd || !snap || !snap.tiers[tier]) return null;
+    const entries = snap.tiers[tier].entries || {};
+    const out = [];
+    (cd.comps || []).forEach(function (cp) {
+      const e = entries[cp.id];
+      if (!e) return;
+      out.push(Object.assign({}, cp, {
+        avgPlace: e.avgPlace, winRate: e.winRate, top4Rate: e.top4Rate,
+        pickRate: e.pickRate, games: e.games, opScore: e.opScore,
+        tier: e.tier || cp.tier, badge: e.badge || cp.badge
+      }));
+    });
+    return out;
+  }
+
+  function metaMatches(cp, tokens) {
+    if (!tokens.length) return true;
+    const hay = [];
+    hay.push(cp.name, cp.mainC, (cp.units || []).map(u => u.name).join(' '));
+    hay.push((cp.traits || []).map(t => t.name).join(' '));
+    (cp.units || []).forEach(function (u) {
+      (u.items || []).forEach(function (id) { const it = D.item(id); if (it) hay.push(it.name); });
+    });
+    const text = hay.join(' ').toLowerCase();
+    return tokens.every(t => text.indexOf(t) >= 0);
+  }
+
+  function openMetaLegacy(M) {
+    const isLocal = M.source === '本地推断';
+    const tiers = ['S', 'A', 'B', 'C'];
+    let html = '<div class="tier-flow">' + tiers.map(function (t) {
+      const list = (M.tiers && M.tiers[t]) || [];
+      if (!list.length) return '';
+      return '<div class="tier-row"><div class="tier-label tier-' + t + '">' + t + '</div><div class="tier-items">' +
+        list.map(cp => compCardHTML(cp, t)).join('') + '</div></div>';
+    }).join('') + '</div>';
+    const title = (isLocal ? '本地推断阵容榜' : 'Meta 梯度榜') + ' · ' + (M.set || '') + (M.updatedAt ? '（补丁 ' + M.updatedAt + '）' : '');
+    TFT.UI.modal({ title: title, size: 'wide', body: (isLocal ? '<div class="dim" style="margin-bottom:8px">按该赛季真实棋子 / 羁绊 / 费用由本地规则引擎推断，非官方胜率数据。</div>' : '') + html });
+    $$('#modalBody [data-comp]').forEach(c => c.onclick = function () { Main.openCompDetail(c.dataset.comp); });
+  }
+
   Main.openMeta = function () {
     const M = D.meta;
-    const isLocal = M.source === '本地推断';
     const isReal = !!M.source && /OP\.GG/.test(M.source);
-    const tiers = isReal ? ['OP', 'S', 'A', 'B', 'C', 'D'] : ['S', 'A', 'B', 'C'];
-    const allComps = [];
-    tiers.forEach(t => (M.tiers && M.tiers[t] || []).forEach(cp => allComps.push(cp)));
-    const statsRows = allComps.slice().sort((a, b) => (a.avgPlace || 99) - (b.avgPlace || 99)).slice(0, 12).map(function (cp) {
-      return '<div class="stat-row real-row"><span class="sr-tier td-' + U.esc(cp.tier) + '">' + U.esc(cp.tier) + '</span>' +
-        '<span class="sr-name">' + U.esc(displayName(cp)) + '</span>' +
-        '<span class="sr-n">名次 <b>' + cp.avgPlace + '</b></span>' +
-        '<span class="sr-n">胜率 <b>' + pct(cp.winRate) + '</b></span>' +
-        '<span class="sr-n">前四 <b>' + pct(cp.top4Rate) + '</b></span>' +
-        '<span class="sr-n dim">' + fmtNum(cp.games) + ' 场</span></div>';
-    }).join('');
-    let html = '<div class="m-grid c2" style="align-items:start">' +
-      '<div>' + tiers.map(function (t) {
-        const list = (M.tiers && M.tiers[t]) || [];
-        if (!list.length) return '';
-        return '<div class="tier-row"><div class="tier-label tier-' + t + '">' + t + '</div><div class="tier-items">' +
-          list.map(cp => compCardHTML(cp, t)).join('') +
-          '</div></div>';
-      }).join('') + '</div>' +
-      '<div style="display:flex;flex-direction:column;gap:8px">' +
-      '<div class="card"><h4>羁绊热度排行</h4><div class="chart-wrap" style="height:220px"><canvas id="metaTraitChart"></canvas></div></div>' +
-      (isReal
-        ? '<div class="card"><h4>实时统计（按平均名次）<span class="dim">OP.GG 对局采样</span></h4><div class="stat-list">' + statsRows + '</div></div>'
-        : (isLocal ? '' :
-          '<div class="card"><h4>各费用主C阵容数</h4><div class="chart-wrap" style="height:200px"><canvas id="metaHeatChart"></canvas></div></div>' +
-          '<div class="card"><h4>克制关系图</h4><div id="metaCounter" class="log-list" style="max-height:160px"></div></div>')) +
-      '</div></div>';
-    const hasAny = tiers.some(t => ((M.tiers[t] || []).length));
-    const title = (isLocal ? '本地推断阵容榜' : isReal ? 'OP.GG 实时阵容榜' : 'Meta 梯度榜') + ' · ' + (M.set || '') + (M.updatedAt ? '（补丁 ' + M.updatedAt + '）' : '');
-    if (!hasAny) {
-      TFT.UI.modal({ title: title, size: 'md', body: '<div class="dim">该赛季暂无阵容数据。</div>' });
-      return;
-    }
-    const intro = isReal
-      ? '<div class="meta-src">来源：' + (M.sourceUrl ? '<a href="' + U.esc(M.sourceUrl) + '" target="_blank" rel="noopener">' + U.esc(M.source) + '</a>' : U.esc(M.source)) +
-        ' · 补丁 ' + U.esc(M.updatedAt || '') + (M.fetchedAt ? ' · 抓取 ' + U.esc(M.fetchedAt) : '') +
-        ' · 共 ' + allComps.length + ' 套，平均名次 / 胜率 / 前四率 / 场次均为实时对局统计，非本站推断。</div>'
-      : (isLocal ? '<div class="dim" style="margin-bottom:8px">按该赛季真实棋子 / 羁绊 / 费用由本地规则引擎推断，非 MetaTFT 胜率数据；羁绊热度曲线与克制关系无官方口径，故不展示。</div>' : '');
-    TFT.UI.modal({ title: title, size: 'wide', body: intro + html });
-    $$('#modalBody [data-comp]').forEach(c => c.onclick = function () { Main.openCompDetail(c.dataset.comp); });
+    const snap = compSnapshots();
+    if (!isReal || !snap) { openMetaLegacy(M); return; }
 
-    /* 图表 */
-    if (window.Chart) {
-      const tr = M.traitRanking || [];
-      TFT.UI.chart($('#metaTraitChart'), {
-        type: 'bar',
-        data: {
-          labels: tr.map(x => x.name),
-          datasets: [{ label: '出现阵容数', data: tr.map(x => x.count), backgroundColor: 'rgba(34,211,238,.6)', borderRadius: 4 }]
-        },
-        options: {
-          indexAxis: 'y', responsive: true, maintainAspectRatio: false,
-          plugins: { legend: { display: false } },
-          scales: {
-            x: { ticks: { color: '#93a4c4', font: { size: 9 } }, grid: { color: 'rgba(255,255,255,.06)' } },
-            y: { ticks: { color: '#cfe3ff', font: { size: 9 } }, grid: { display: false } }
-          }
-        }
+    const order = snap.order || Object.keys(snap.tiers);
+    if (!snap.tiers[metaUI.tier]) metaUI.tier = 'all' in snap.tiers ? 'all' : order[0];
+
+    const tierOpts = order.map(function (k) {
+      const t = snap.tiers[k] || {};
+      return '<option value="' + U.esc(k) + '"' + (k === metaUI.tier ? ' selected' : '') + '>' +
+        U.esc(t.label || k) + '（' + (t.count || 0) + ' 套）</option>';
+    }).join('');
+    const blocks = ['ALL', 'OP', 'S', 'A', 'B', 'C', 'D'].map(function (b) {
+      return '<button class="fbtn' + (metaUI.block === b ? ' on' : '') + '" data-mblock="' + b + '">' +
+        (b === 'ALL' ? '全部档位' : b + ' 档') + '</button>';
+    }).join('');
+    const sorts = [['avgPlace', '平均名次'], ['pickRate', '出场率'], ['top4Rate', '前四率'], ['winRate', '登顶率']];
+    const sortOpts = sorts.map(function (s) {
+      return '<option value="' + s[0] + '"' + (metaUI.sort === s[0] ? ' selected' : '') + '>' + s[1] + '</option>';
+    }).join('');
+
+    const body =
+      '<div class="meta-toolbar">' +
+        '<div class="mt-row">' +
+          '<span class="mt-lbl">段位</span><select class="sel sel-sm" id="metaTier">' + tierOpts + '</select>' +
+          '<span class="mt-lbl">排序</span><select class="sel sel-sm" id="metaSort">' + sortOpts + '</select>' +
+          '<button class="fbtn' + (metaUI.rare ? ' on' : '') + '" id="metaRare" title="只保留出场率低于本档位中位数的阵容">冷门挖掘</button>' +
+          '<input class="txt sm" id="metaQ" placeholder="榜内搜索：棋子 / 装备 / 羁绊（空格为且）" value="' + U.esc(metaUI.q) + '">' +
+        '</div>' +
+        '<div class="mt-row" id="metaBlocks">' + blocks + '</div>' +
+        '<div class="meta-src">来源：<a href="' + U.esc((snap.tiers[metaUI.tier] || {}).url || M.sourceUrl || '') + '" target="_blank" rel="noopener">OP.GG 实时阵容榜</a>' +
+          ' · 补丁 ' + U.esc(M.updatedAt || '') + ' · <b>近 24 小时</b>对局样本' +
+          (snap.fetchedAt ? ' · 抓取 ' + U.esc(snap.fetchedAt) : '') +
+          ' · 段位切换为独立样本；出场率 / 前四率 / 登顶率（第一名占比）/ 平均名次均为原始统计。</div>' +
+      '</div>' +
+      '<div class="meta-kpi" id="metaKpi"></div>' +
+      '<div id="metaList"></div>';
+
+    TFT.UI.modal({ title: 'OP.GG 实时阵容榜 · ' + (M.set || '') + '（补丁 ' + U.esc(M.updatedAt || '') + '）', size: 'wide', body: body });
+
+    const render = function () {
+      let list = metaCompsForTier(metaUI.tier) || [];
+      if (metaUI.block !== 'ALL') list = list.filter(cp => cp.tier === metaUI.block);
+      if (metaUI.rare && list.length) {
+        const ps = list.map(cp => cp.pickRate || 0).sort((a, b) => a - b);
+        const mid = ps[Math.floor(ps.length / 2)] || 0;
+        list = list.filter(cp => (cp.pickRate || 0) <= mid);
+      }
+      const tokens = metaUI.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      if (tokens.length) list = list.filter(cp => metaMatches(cp, tokens));
+      list = list.slice().sort(function (a, b) {
+        if (metaUI.sort === 'avgPlace') return (a.avgPlace || 99) - (b.avgPlace || 99);
+        if (metaUI.sort === 'pickRate') return (b.pickRate || 0) - (a.pickRate || 0);
+        if (metaUI.sort === 'top4Rate') return (b.top4Rate || 0) - (a.top4Rate || 0);
+        return (b.winRate || 0) - (a.winRate || 0);
       });
-      const hc = M.heatCurve || { labels: [], series: [] };
-      const colors = ['#22d3ee', '#f5c542', '#f43f5e', '#8b5cf6', '#34d399', '#fb923c', '#3b82f6'];
-      if ($('#metaHeatChart')) TFT.UI.chart($('#metaHeatChart'), {
-        type: 'line',
-        data: {
-          labels: hc.labels,
-          datasets: (hc.series || []).map((s, i) => ({ label: s.name, data: s.data, borderColor: colors[i % colors.length], backgroundColor: 'transparent', tension: 0.3, borderWidth: 2, pointRadius: 2 }))
-        },
-        options: {
-          responsive: true, maintainAspectRatio: false,
-          plugins: { legend: { labels: { color: '#93a4c4', font: { size: 9 }, boxWidth: 10 } } },
-          scales: {
-            x: { ticks: { color: '#93a4c4', font: { size: 9 } }, grid: { color: 'rgba(255,255,255,.06)' } },
-            y: { ticks: { color: '#93a4c4', font: { size: 9 } }, grid: { color: 'rgba(255,255,255,.06)' } }
+
+      const kpi = $('#metaKpi');
+      if (kpi) {
+        const all = metaCompsForTier(metaUI.tier) || [];
+        const best = all.slice().sort((a, b) => (b.winRate || 0) - (a.winRate || 0))[0];
+        const hot = all.slice().sort((a, b) => (b.pickRate || 0) - (a.pickRate || 0))[0];
+        kpi.innerHTML =
+          '<span class="mk"><em>当前档位</em><b>' + (snap.tiers[metaUI.tier] || {}).label + '</b></span>' +
+          '<span class="mk"><em>阵容</em><b>' + all.length + ' 套</b></span>' +
+          '<span class="mk"><em>最高登顶率</em><b>' + (best ? pct(best.winRate) : '—') + '</b></span>' +
+          '<span class="mk"><em>最热门</em><b>' + (hot ? U.esc(displayName(hot)) + ' · ' + pct(hot.pickRate) : '—') + '</b></span>' +
+          '<span class="mk"><em>筛选后</em><b>' + list.length + ' 套</b></span>';
+      }
+      const box = $('#metaList');
+      if (!box) return;
+      box.innerHTML = list.length
+        ? '<div class="comp-grid">' + list.map(function (cp, i) { return compCardHTML(cp, cp.tier, null, i + 1); }).join('') + '</div>'
+        : '<div class="empty-note">没有符合筛选条件的阵容，试试清空搜索或切换档位。</div>';
+      $$('#metaList [data-comp]').forEach(c => c.onclick = function () { Main.openCompDetail(c.dataset.comp); });
+    };
+
+    $('#metaTier').onchange = function () { metaUI.tier = this.value; render(); };
+    $('#metaSort').onchange = function () { metaUI.sort = this.value; render(); };
+    $('#metaRare').onclick = function () { metaUI.rare = !metaUI.rare; this.classList.toggle('on', metaUI.rare); render(); };
+    $('#metaQ').oninput = function () { metaUI.q = this.value; render(); };
+    $$('#metaBlocks [data-mblock]').forEach(function (b) {
+      b.onclick = function () {
+        metaUI.block = b.dataset.mblock;
+        $$('#metaBlocks [data-mblock]').forEach(x => x.classList.toggle('on', x.dataset.mblock === metaUI.block));
+        render();
+      };
+    });
+    render();
+  };
+
+  /* ==================== 神器适配榜 / 羁绊天梯（由 OP.GG 真实出装与站位聚合） ==================== */
+  function compListOfCurrent() {
+    const cd = D.compData && D.compData[D.currentSlug];
+    return (cd && cd.comps) || [];
+  }
+
+  function artifactUsage() {
+    const list = compListOfCurrent();
+    const artNames = {};
+    (D.itemsForSeason().artifacts || []).forEach(function (a) { artNames[a.name] = true; });
+    const map = {};
+    list.forEach(function (cp) {
+      (cp.units || []).forEach(function (u) {
+        (u.items || []).forEach(function (id) {
+          const it = D.item(id); if (!it) return;
+          const rec = map[it.name] || (map[it.name] = {
+            name: it.name, icon: it.icon || null,
+            artifact: !!it.artifact || !!artNames[it.name],
+            carriers: {}, comps: [], rankSum: 0, best: null
+          });
+          rec.carriers[u.name] = (rec.carriers[u.name] || 0) + 1;
+          if (rec.comps.indexOf(cp.id) < 0) {
+            rec.comps.push(cp.id);
+            rec.rankSum += (cp.avgPlace || 99);
+            if (!rec.best || (cp.avgPlace || 99) < (rec.best.avgPlace || 99)) rec.best = cp;
           }
-        }
+        });
       });
-    }
-    const cg = M.counterGraph || { edges: [] };
-    const counterEl = $('#metaCounter');
-    if (counterEl) counterEl.innerHTML = (cg.edges || []).map(e => '<div class="log-item">' +
-      '<span style="color:#86efac">' + U.esc(e.source) + '</span>' +
-      '<span class="dim">克制</span><span style="color:#fda4af">' + U.esc(e.target) + '</span></div>').join('') || '<div class="dim">暂无数据</div>';
+    });
+    return Object.keys(map).map(function (k) {
+      const r = map[k];
+      return Object.assign(r, {
+        cnt: r.comps.length,
+        avg: r.comps.length ? r.rankSum / r.comps.length : 99,
+        topCarriers: Object.keys(r.carriers).sort(function (a, b) { return r.carriers[b] - r.carriers[a]; }).slice(0, 3)
+      });
+    }).sort(function (a, b) { return (a.avg || 99) - (b.avg || 99); });
+  }
+
+  let artUI = { onlyArtifact: false };
+
+  Main.openArtifactBoard = function () {
+    const all = artifactUsage();
+    const render = function () {
+      let rows = all.slice();
+      if (artUI.onlyArtifact) rows = rows.filter(r => r.artifact);
+      rows = rows.slice(0, 30);
+      const box = $('#abList');
+      if (!box) return;
+      box.innerHTML = rows.length ? rows.map(function (r, i) {
+        const ico = U.itemIcon({ icon: r.icon });
+        return '<div class="ab-row" data-ab="' + U.esc(r.name) + '">' +
+          '<span class="ab-rank">' + (i + 1) + '</span>' +
+          '<span class="ab-ico">' + (ico ? '<img src="' + ico + '" alt="" onerror="this.remove()">' : '') + '</span>' +
+          '<span class="ab-main"><b>' + U.esc(r.name) + (r.artifact ? '<em class="ab-tag">神器</em>' : '') + '</b>' +
+            '<i>适配携带者：' + U.esc(r.topCarriers.join(' / ') || '—') + '</i></span>' +
+          '<span class="ab-n"><em>适配阵容</em><b>' + r.cnt + ' 套</b></span>' +
+          '<span class="ab-n"><em>平均名次</em><b>' + (r.avg || 99).toFixed(2) + '</b></span>' +
+          '<span class="ab-go">查看 →</span></div>';
+      }).join('') : '<div class="empty-note">当前筛选下没有装备可展示。OP.GG representative 阵容样本中暂未出现奥恩神器出装，本站不做伪造。</div>';
+      $$('#abList [data-ab]').forEach(function (el) {
+        el.onclick = function () {
+          const name = el.dataset.ab;
+          const rec = all.filter(x => x.name === name)[0];
+          const comps = (rec ? rec.comps : []).map(function (id) { return compCache[id]; }).filter(Boolean);
+          TFT.UI.modal({
+            title: '适配阵容 · ' + name, size: 'wide',
+            body: '<div class="meta-src">统计口径：OP.GG 近 24 小时对局采样中，携带「' + U.esc(name) + '」的阵容。按平均名次排序。</div>' +
+              '<div class="comp-grid">' + comps.slice().sort((a, b) => (a.avgPlace || 99) - (b.avgPlace || 99)).map(function (cp) { return compCardHTML(cp, cp.tier); }).join('') + '</div>'
+          });
+          $$('#modalBody [data-comp]').forEach(c => c.onclick = function () { Main.openCompDetail(c.dataset.comp); });
+        };
+      });
+    };
+    const compCache = {};
+    compListOfCurrent().forEach(function (cp) { compCache[cp.id] = cp; });
+    const body =
+      '<div class="meta-toolbar"><div class="mt-row">' +
+        '<button class="fbtn' + (artUI.onlyArtifact ? ' on' : '') + '" id="abOnly">只看神器</button>' +
+        '<span class="mt-lbl">按平均名次排序 · 聚合自真实出装</span>' +
+      '</div><div class="meta-src">聚合当前赛季 OP.GG 真实阵容中每件装备的「携带者 → 阵容成绩」，用于判断装备适配；'
+        + 'OP.GG 样本中没有神器出装时，神器筛选会为空，本站不做伪造。</div></div>' +
+      '<div id="abList" class="ab-list"></div>';
+    TFT.UI.modal({ title: '装备适配榜 · ' + (D.currentSlug || '').toUpperCase(), size: 'wide', body: body });
+    $('#abOnly').onclick = function () { artUI.onlyArtifact = !artUI.onlyArtifact; this.classList.toggle('on', artUI.onlyArtifact); render(); };
+    render();
+  };
+
+  function traitLadderData() {
+    const map = {};
+    compListOfCurrent().forEach(function (cp) {
+      (cp.traits || []).forEach(function (t) {
+        const rec = map[t.name] || (map[t.name] = { name: t.name, count: 0, maxActive: 0, best: null, comps: [] });
+        rec.count++;
+        if (t.active > rec.maxActive) rec.maxActive = t.active;
+        rec.comps.push(cp.id);
+        if (!rec.best || (cp.avgPlace || 99) < (rec.best.avgPlace || 99)) rec.best = cp;
+      });
+    });
+    return Object.keys(map).map(k => map[k]).sort(function (a, b) {
+      return ((a.best && a.best.avgPlace) || 99) - ((b.best && b.best.avgPlace) || 99);
+    });
+  }
+
+  Main.openTraitLadder = function () {
+    const rows = traitLadderData();
+    const compCache = {};
+    compListOfCurrent().forEach(function (cp) { compCache[cp.id] = cp; });
+    const body = '<div class="meta-src">按「该羁绊最强阵容的平均名次」排序；最高激活数为阵容中实际达成的羁绊人数。点击查看对应阵容。</div>' +
+      '<div class="tl-list">' + rows.map(function (r, i) {
+        const b = r.best || {};
+        return '<div class="tl-row" data-tl="' + U.esc(r.name) + '">' +
+          '<span class="tl-rank">' + (i + 1) + '</span>' +
+          '<span class="tl-name"><b>' + U.esc(r.name) + '</b><i>' + r.count + ' 套阵容使用</i></span>' +
+          '<span class="tl-active"><em>最高激活</em><b>' + r.maxActive + '</b></span>' +
+          '<span class="tl-best"><em>最强阵容</em><b>' + pct(b.top4Rate) + ' 前四 · 均名 ' + (b.avgPlace || '—') + '</b></span>' +
+          '<span class="ab-go">查看 →</span></div>';
+      }).join('') + '</div>';
+    TFT.UI.modal({ title: '羁绊天梯 · ' + (D.currentSlug || '').toUpperCase(), size: 'wide', body: body });
+    $$('#modalBody [data-tl]').forEach(function (el) {
+      el.onclick = function () {
+        const name = el.dataset.tl;
+        const rec = rows.filter(x => x.name === name)[0];
+        const comps = (rec ? rec.comps : []).map(function (id) { return compCache[id]; }).filter(Boolean);
+        TFT.UI.modal({
+          title: '羁绊阵容 · ' + name, size: 'wide',
+          body: '<div class="meta-src">包含「' + U.esc(name) + '」的 OP.GG 实时阵容（按平均名次排序）。</div>' +
+            '<div class="comp-grid">' + comps.slice().sort((a, b) => (a.avgPlace || 99) - (b.avgPlace || 99)).map(function (cp) { return compCardHTML(cp, cp.tier); }).join('') + '</div>'
+        });
+        $$('#modalBody [data-comp]').forEach(c => c.onclick = function () { Main.openCompDetail(c.dataset.comp); });
+      };
+    });
   };
 
   Main.findComp = function (id) {
@@ -1114,8 +1332,12 @@ window.TFT = window.TFT || {};
             ? '<a href="' + U.esc(cp.sourceUrl || (D.compData && D.compData.sourceUrl) || '') + '" target="_blank" rel="noopener">OP.GG 实时数据</a>'
             : U.esc(cp.source || 'MetaTFT') + (cp.cluster ? ' · 集群 #' + cp.cluster : '')) + '</span></div>' +
           (isRealComp
-            ? '<div class="kv"><span class="k">真实对局统计</span><span class="v">胜率 <b>' + pct(cp.winRate) + '</b> · 前四率 <b>' + pct(cp.top4Rate) + '</b> · 选取率 ' + pct(cp.pickRate) + '</span></div>' +
-              '<div class="kv"><span class="k">样本</span><span class="v">' + fmtNum(cp.games) + ' 场 · OP 评分 ' + cp.opScore + '</span></div>'
+            ? '<div class="kv"><span class="k">真实对局统计</span><span class="v">出场率 <b>' + pct(cp.pickRate) + '</b> · 前四率 <b>' + pct(cp.top4Rate) + '</b> · 登顶率 <b>' + pct(cp.winRate) + '</b></span></div>' +
+              '<div class="kv"><span class="k">样本</span><span class="v">' + fmtNum(cp.games) + ' 场 · OP 评分 ' + cp.opScore + '</span></div>' +
+              (cp.badge && Number(cp.badge.reroll) > 0
+                ? '<div class="kv"><span class="k">玩法标签</span><span class="v">Lvl ' + Number(cp.badge.reroll) + ' Roll' +
+                  (Number(cp.badge.difficulty) ? ' · 难度 ' + Number(cp.badge.difficulty) + '/3' : '') +
+                  (cp.badge.ppm ? ' · PPM ' + U.esc(String(cp.badge.ppm)) : '') + '（OP.GG 标注）</span></div>' : '')
             : '') +
           (cp.confidence ? '<div class="kv"><span class="k">推断置信度</span><span class="v">' + U.esc(cp.confidence) + '（规则推断，非实测胜率）</span></div>' : '') +
           '<div class="kv"><span class="k">主C</span><span class="v">' + U.esc(cp.mainC || '-') + '</span></div>' +
@@ -1956,7 +2178,7 @@ window.TFT = window.TFT || {};
           '<div class="comp-grid">' + arr.map(function (cp) { return compCardHTML(cp, t); }).join('') + '</div>';
       });
       const gridNote = metaReal
-        ? '<div class="dim" style="margin-bottom:6px">以下为 <b>OP.GG 实时阵容榜</b>（补丁 ' + U.esc(M.updatedAt || '') + '），带真实平均名次 / 胜率 / 前四率 / 场次，非本站推断</div>'
+        ? '<div class="dim" style="margin-bottom:6px">以下为 <b>OP.GG 实时阵容榜</b>（补丁 ' + U.esc(M.updatedAt || '') + ' · 近 24 小时），带真实平均名次 / 登顶率 / 前四率 / 出场率，非本站推断</div>'
         : metaLocal
           ? '<div class="dim" style="margin-bottom:6px">以下榜单由本地规则引擎按该赛季真实棋子 / 羁绊 / 费用推断，非 MetaTFT 胜率数据</div>'
           : (!metaIsCurrent ? '<div class="dim" style="margin-bottom:6px">以下评级来自 ' + U.esc(metaSet) + '，当前赛季 ' + U.esc(curSet) + ' 暂无 MetaTFT 梯度数据</div>' : '');
@@ -1969,7 +2191,7 @@ window.TFT = window.TFT || {};
           (top.cp.units || []).length + ' 人口' + (top.cp.source ? ' · ' + U.esc(top.cp.source) : '') + '</span>' +
         '<div class="cc-tags">' + (top.cp.traits || []).slice(0, 5).map(function (t) { return '<span class="mini-tag">' + U.esc(t.name) + ' ' + t.active + '</span>'; }).join('') + '</div></div>' +
         '<div class="ht-side">' + (top.cp.sourceReal
-          ? '<span class="dim">平均名次</span>' + strengthBar(top.cp.strength) + '<b>' + top.cp.avgPlace + '</b><span class="dim" style="font-size:10px">胜率 ' + pct(top.cp.winRate) + '</span>'
+          ? '<span class="dim">平均名次</span>' + strengthBar(top.cp.strength) + '<b>' + top.cp.avgPlace + '</b><span class="dim" style="font-size:10px">登顶率 ' + pct(top.cp.winRate) + '</span>'
           : '<span class="dim">强度</span>' + strengthBar(top.cp.strength) + '<b>' + strengthLabel(top.cp.strength) + '</b>') +
         '</div></div>' : '';
       grid.innerHTML = cards ? gridNote + topHtml + cards
@@ -2055,28 +2277,55 @@ window.TFT = window.TFT || {};
       if (mcNote) mcNote.textContent = (metaReal ? 'OP.GG 真实统计' : metaLocal ? '本地推断' : '真实统计') + ' · 主C出现阵容数 · 共 ' + list.length + ' 套';
     }
 
-    /* —— 羁绊热度天梯 —— */
+    /* —— 羁绊天梯（按最强阵容平均名次） —— */
     const ladder = $('#homeTraitLadder');
-    const tr = (M.traitRanking || []).slice(0, 12);
-    const maxN = tr.length ? tr[0].count : 1;
+    let tr = [];
+    if (metaReal) {
+      tr = traitLadderData().slice(0, 10).map(function (x) {
+        return { name: x.name, count: x.maxActive, avg: (x.best && x.best.avgPlace) || 99, comps: x.count };
+      });
+    } else {
+      tr = (M.traitRanking || []).slice(0, 10);
+    }
+    const maxN = tr.length ? Math.max.apply(null, tr.map(x => x.count || 1)) : 1;
     if (ladder) ladder.innerHTML = tr.length ? tr.map(function (x, i) {
       const w = U.clamp(Math.round((x.count / maxN) * 100), 6, 100);
-      return '<div class="stat-row"><span class="sr-rank">' + (i + 1) + '</span>' +
-        '<span class="sr-name">' + U.esc(x.name) + '</span>' +
+      return '<div class="stat-row' + (metaReal ? ' clickable" data-ladder="' + U.esc(x.name) : '') + '">' +
+        '<span class="sr-rank">' + (i + 1) + '</span>' +
+        '<span class="sr-name">' + U.esc(x.name) + (metaReal ? ' <span class="dim">激活 ' + x.count + '</span>' : '') + '</span>' +
         '<span class="sr-bar"><i style="width:' + w + '%"></i></span>' +
-        '<span class="sr-val">' + x.count + '</span></div>';
+        '<span class="sr-val">' + (metaReal ? '均名 ' + (x.avg === 99 ? '—' : x.avg) : x.count) + '</span></div>';
     }).join('') : '<div class="dim">暂无数据</div>';
+    if (ladder && metaReal) $$('#homeTraitLadder [data-ladder]').forEach(el => el.onclick = function () { Main.openTraitLadder(); });
     const tn = $('#homeTraitNote');
-    if (tn) tn.textContent = (M.traitRanking || []).length + ' 个羁绊 · 出现阵容数';
+    if (tn) tn.textContent = metaReal ? tr.length + ' 个羁绊 · 最高激活 / 最强阵容均名' : (M.traitRanking || []).length + ' 个羁绊 · 出现阵容数';
 
-    /* —— 克制关系 —— */
+    /* —— 装备适配榜（真实出装聚合） —— */
+    const cTitle = $('#homeCounterTitle'), cBtn = $('#homeCounterBtn');
+    if (cTitle) cTitle.textContent = metaReal ? '装备适配榜' : '克制关系';
+    if (cBtn) cBtn.style.display = metaReal ? '' : 'none';
     const counter = $('#homeCounter');
     if (counter) {
-      const edges = (M.counterGraph && M.counterGraph.edges) || [];
-      counter.innerHTML = metaReal ? '<div class="dim">OP.GG 实时榜单未提供克制关系数据，故不展示（本站未做推断）</div>' : edges.length ? edges.map(e => '<div class="log-item">' +
-        '<span style="color:#86efac">' + U.esc(e.source) + '</span>' +
-        '<span class="dim">克制</span><span style="color:#fda4af">' + U.esc(e.target) + '</span></div>').join('')
-        : '<div class="dim">暂无数据</div>';
+      if (metaReal) {
+        const arts = artifactUsage();
+        const show = (arts.filter(r => r.artifact).length ? arts.filter(r => r.artifact) : arts).slice(0, 6);
+        counter.innerHTML = show.length ? show.map(function (r, i) {
+          const ico = U.itemIcon({ icon: r.icon });
+          return '<div class="ab-row compact" data-home-art="' + U.esc(r.name) + '">' +
+            '<span class="ab-rank">' + (i + 1) + '</span>' +
+            '<span class="ab-ico">' + (ico ? '<img src="' + ico + '" alt="" onerror="this.remove()">' : '') + '</span>' +
+            '<span class="ab-main"><b>' + U.esc(r.name) + '</b><i>' + U.esc(r.topCarriers.join(' / ') || '—') + '</i></span>' +
+            '<span class="ab-n"><em>阵容</em><b>' + r.cnt + '</b></span>' +
+            '<span class="ab-n"><em>均名</em><b>' + (r.avg || 99).toFixed(2) + '</b></span></div>';
+        }).join('') : '<div class="dim">当前榜单暂无可聚合的出装数据</div>';
+        $$('#homeCounter [data-home-art]').forEach(el => el.onclick = function () { Main.openArtifactBoard(); });
+      } else {
+        const edges = (M.counterGraph && M.counterGraph.edges) || [];
+        counter.innerHTML = edges.length ? edges.map(e => '<div class="log-item">' +
+          '<span style="color:#86efac">' + U.esc(e.source) + '</span>' +
+          '<span class="dim">克制</span><span style="color:#fda4af">' + U.esc(e.target) + '</span></div>').join('')
+          : '<div class="dim">暂无数据</div>';
+      }
     }
 
     /* —— 奥恩神器 —— */
@@ -2093,6 +2342,7 @@ window.TFT = window.TFT || {};
       /* 与「工具中心」同源：名称/描述/图标直接取自菜单项，避免两处维护 */
       const HOME_TOOLS = [
         { act: 'app', grp: 'start' }, { act: 'meta', grp: 'ana' },
+        { act: 'artifacts', grp: 'ana' }, { act: 'ladder', grp: 'ana' },
         { act: 'optimizer', grp: 'ana' }, { act: 'charts', grp: 'ana' }, { act: 'roll', grp: 'ana' },
         { act: 'quiz', grp: 'ana' }, { act: 'trait', grp: 'ana' }, { act: 'battle', grp: 'sim' },
         { act: 'power', grp: 'ana' }, { act: 'opponents', grp: 'ana' }, { act: 'review', grp: 'ana' },
@@ -2103,12 +2353,16 @@ window.TFT = window.TFT || {};
       const GRP_CN = { start: '快速开始', sim: '对局模拟', ana: '分析工具', share: '分享与数据', ai: 'AI 设置' };
       const FALLBACK_ICO = {
         app: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2.4" width="12" height="11.2" rx="1.6"/><path d="M2.4 6.4h11.2M6 6.6v6.6"/></svg>',
-        meta: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 2.6h6.8v3.2a3.4 3.4 0 0 1-6.8 0z"/><path d="M4.6 3.6H2.8v1.2a2.2 2.2 0 0 0 2.2 2.2M11.4 3.6h1.8v1.2a2.2 2.2 0 0 1-2.2 2.2"/><path d="M8 9.2v2.4M5.6 13.4h4.8"/></svg>'
+        meta: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 2.6h6.8v3.2a3.4 3.4 0 0 1-6.8 0z"/><path d="M4.6 3.6H2.8v1.2a2.2 2.2 0 0 0 2.2 2.2M11.4 3.6h1.8v1.2a2.2 2.2 0 0 1-2.2 2.2"/><path d="M8 9.2v2.4M5.6 13.4h4.8"/></svg>',
+        artifacts: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.2 13 5v6L8 13.8 3 11V5z"/><path d="M3 5l5 2.8L13 5M8 7.8v6"/></svg>',
+        ladder: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 12.4V9M8 12.4V5.2M12.6 12.4V7"/><path d="M2.4 13.6h11.2"/></svg>'
       };
       /* 菜单里没有、只出现在首页的入口（工作台 / 梯度榜）补充文案 */
       const FALLBACK_META = {
         app: { t: '阵容工作台', d: '棋盘 / 羁绊 / 概率 / AI 多智能体' },
-        meta: { t: 'Meta 梯度榜', d: 'S/A/B/C 评级与羁绊热度' }
+        meta: { t: 'Meta 阵容榜', d: '段位快照 / 真实四指标 / 玩法标签' },
+        artifacts: { t: '装备适配榜', d: '装备 → 携带者 → 阵容成绩' },
+        ladder: { t: '羁绊天梯', d: '最高激活与最强羁绊阵容' }
       };
       const metaOf = function (act) {
         const b = $('#moreMenu [data-act="' + act + '"]');
@@ -2168,6 +2422,8 @@ window.TFT = window.TFT || {};
       case 'optimizer': Main.go('app'); Main.openOptimizer(); break;
       case 'share': Main.copyShareLink(); break;
       case 'meta': Main.openMeta(); break;
+      case 'artifacts': Main.openArtifactBoard(); break;
+      case 'ladder': Main.openTraitLadder(); break;
       case 'forge': Main.go('app'); Main.setTab('forge'); break;
       case 'charts': Main.openCharts(); break;
       case 'roll': Main.openRollSim(); break;
@@ -2949,34 +3205,73 @@ window.TFT = window.TFT || {};
   };
 
 
-  /* ==================== 认卡竞速（20 题） ==================== */
+  /* ==================== 认卡竞速（20 题经典 / 40 秒极速 · 本机排行榜） ==================== */
   let quiz = null;
+  const QUIZ_KEY = 'tftQuizBoardV1';
+
+  function quizBoard() {
+    try { return JSON.parse(localStorage.getItem(QUIZ_KEY) || '[]') || []; } catch (e) { return []; }
+  }
+
+  function quizSave(entry) {
+    const list = quizBoard();
+    list.push(entry);
+    list.sort(function (a, b) {
+      if ((b.correct || 0) !== (a.correct || 0)) return (b.correct || 0) - (a.correct || 0);
+      return (a.sec || 0) - (b.sec || 0);
+    });
+    try { localStorage.setItem(QUIZ_KEY, JSON.stringify(list.slice(0, 40))); } catch (e) { }
+  }
+
+  function quizBoardHTML(mode) {
+    const list = quizBoard().filter(x => x.mode === mode).slice(0, 5);
+    if (!list.length) return '<div class="qz-empty">本机暂无记录 · 完成一局即可上榜（仅保存在当前浏览器）</div>';
+    return '<div class="qz-board">' + list.map(function (x, i) {
+      return '<div class="qz-brow"><span class="qz-brk">' + (i + 1) + '</span><b>' + (x.correct || 0) + '</b>' +
+        '<span class="dim">题 · ' + (x.sec || 0) + ' 秒 · ' + U.esc(x.time || '') + '</span></div>';
+    }).join('') + '</div>';
+  }
 
   function finishQuiz() {
+    if (quiz && quiz.timer) { clearInterval(quiz.timer); quiz.timer = null; }
     const w = $('#quizWrap'); const qz = quiz; if (!w || !qz) return;
-    const sec = Math.max(1, Math.round((Date.now() - qz.start) / 1000));
-    const acc = Math.round((qz.correct / qz.total) * 100);
+    if (w.dataset.done) return;
+    w.dataset.done = '1';
+
+    const answered = Math.max(qz.idx, 0);
+    const sec = qz.mode === 'timed' ? 40 : Math.max(1, Math.round((Date.now() - qz.start) / 1000));
+    const acc = answered ? Math.round((qz.correct / answered) * 100) : 0;
+    const entry = { mode: qz.mode, correct: qz.correct, answered: answered, sec: sec, time: new Date().toLocaleString('zh-CN') };
+    const before = quizBoard().filter(x => x.mode === qz.mode);
+    const topBefore = before.length ? before[0].correct : -1;
+    quizSave(entry);
+    const isBest = qz.correct > topBefore;
+
     const best = TFT.Store.prefs().quizBest;
-    const isBest = !best || qz.correct > best.correct || (qz.correct === best.correct && sec < best.sec);
-    if (isBest) TFT.Store.setPrefs({ quizBest: { correct: qz.correct, total: qz.total, sec: sec, time: new Date().toLocaleString('zh-CN') } });
-    const bestNow = TFT.Store.prefs().quizBest;
+    if (qz.mode === 'classic' && (!best || qz.correct > best.correct || (qz.correct === best.correct && sec < best.sec))) {
+      TFT.Store.setPrefs({ quizBest: { correct: qz.correct, total: answered, sec: sec, time: new Date().toLocaleString('zh-CN') } });
+    }
+
     w.innerHTML =
       '<div class="qz-result">' +
-        '<div class="qz-score">' + qz.correct + ' <span class="dim">/ ' + qz.total + '</span></div>' +
-        '<div class="qz-meta">正确率 ' + acc + '% · 用时 ' + sec + ' 秒' + (isBest ? ' · <b style="color:var(--gold)">新纪录！</b>' : '') + '</div>' +
-        (bestNow ? '<div class="dim" style="font-size:11px;margin-top:8px">历史最佳：' + bestNow.correct + '/' + bestNow.total + ' · ' + U.esc(bestNow.time || '') + '</div>' : '') +
-        '<div class="m-row" style="justify-content:center;margin-top:14px"><button class="btn btn-primary" id="qzAgain">再来一局</button></div>' +
+        '<div class="qz-score">' + qz.correct + ' <span class="dim">/ ' + answered + ' 题</span></div>' +
+        '<div class="qz-meta">正确率 ' + acc + '% · 用时 ' + sec + ' 秒' +
+          (isBest ? ' · <b style="color:var(--gold)">本机新纪录！</b>' : '') + '</div>' +
+        '<div class="qz-lead">' + (qz.mode === 'timed' ? '40 秒极速' : '20 题经典') + ' · 本机排行榜</div>' +
+        quizBoardHTML(qz.mode) +
+        '<div class="m-row" style="justify-content:center;margin-top:14px">' +
+          '<button class="btn btn-primary" id="qzAgain">再来一局</button>' +
+          '<button class="btn" id="qzBack">切换模式</button>' +
+        '</div>' +
       '</div>';
-    $('#qzAgain').onclick = function () {
-      quiz = { pool: qz.pool, total: 20, idx: 0, correct: 0, wrong: 0, q: null, answered: false, start: Date.now() };
-      nextQuiz();
-    };
+    $('#qzAgain').onclick = function () { startQuiz(qz.mode); };
+    $('#qzBack').onclick = function () { Main.openCardQuiz(); };
   }
 
   function nextQuiz() {
     const w = $('#quizWrap'); const qz = quiz;
     if (!w || !qz) return;
-    if (qz.idx >= qz.total) { finishQuiz(); return; }
+    if (qz.mode !== 'timed' && qz.idx >= qz.total) { finishQuiz(); return; }
     const ans = qz.pool[Math.floor(Math.random() * qz.pool.length)];
     let cands = qz.pool.filter(c => c.id !== ans.id && c.cost === ans.cost);
     if (cands.length < 3) cands = qz.pool.filter(c => c.id !== ans.id);
@@ -2985,10 +3280,17 @@ window.TFT = window.TFT || {};
     qz.q = { ans: ans, opts: opts };
     qz.answered = false;
 
+    const headRight = qz.mode === 'timed'
+      ? '<span>剩余 <b id="qzTimer">' + Math.max(0, (qz.deadline - Date.now()) / 1000).toFixed(1) + 's</b></span>'
+      : '<span>第 <b>' + (qz.idx + 1) + '</b> / ' + qz.total + ' 题</span>';
+    const prog = qz.mode === 'timed'
+      ? '<div class="qz-prog timed"><i id="qzProg" style="width:100%"></i></div>'
+      : '<div class="qz-prog"><i style="width:' + Math.round((qz.idx / qz.total) * 100) + '%"></i></div>';
+
     w.innerHTML =
-      '<div class="qz-head"><span>第 <b>' + (qz.idx + 1) + '</b> / ' + qz.total + ' 题</span>' +
+      '<div class="qz-head">' + headRight +
       '<span>答对 <b style="color:#34d399">' + qz.correct + '</b> · 答错 <b style="color:#fda4af">' + qz.wrong + '</b></span></div>' +
-      '<div class="qz-prog"><i style="width:' + Math.round((qz.idx / qz.total) * 100) + '%"></i></div>' +
+      prog +
       '<div class="qz-stage">' +
         '<div class="qz-card c' + ans.cost + '">' +
           '<span class="qz-mark">?</span>' +
@@ -3012,18 +3314,49 @@ window.TFT = window.TFT || {};
     if (right) { qz.correct++; TFT.UI.toast('✓ 正确：' + qz.q.ans.name, 'ok', 900); }
     else { qz.wrong++; TFT.UI.toast('✗ 正确答案：' + qz.q.ans.name, 'err', 1500); }
     qz.idx++;
-    setTimeout(nextQuiz, right ? 420 : 880);
+    setTimeout(nextQuiz, right ? 380 : 800);
   }
 
-  Main.openCardQuiz = function () {
+  function startQuiz(mode) {
     const pool = D.champions().filter(c => c.icon);
     if (pool.length < 8) {
       TFT.UI.toast('当前赛季带图标的棋子不足 8 个，无法开始认卡竞速（可切换赛季后重试）', 'warn', 3600);
       return;
     }
-    quiz = { pool: pool, total: 20, idx: 0, correct: 0, wrong: 0, q: null, answered: false, start: Date.now() };
-    TFT.UI.modal({ title: '认卡竞速 · 20 题', body: '<div id="quizWrap"></div>' });
+    if (quiz && quiz.timer) clearInterval(quiz.timer);
+    quiz = {
+      mode: mode, pool: pool, total: 20, idx: 0, correct: 0, wrong: 0,
+      q: null, answered: false, start: Date.now()
+    };
+    if (mode === 'timed') {
+      quiz.total = 99;
+      quiz.deadline = Date.now() + 40000;
+      quiz.timer = setInterval(function () {
+        const left = Math.max(0, quiz.deadline - Date.now());
+        const el = $('#qzTimer'); const bar = $('#qzProg');
+        if (el) el.textContent = (left / 1000).toFixed(1) + 's';
+        if (bar) bar.style.width = (left / 400) + '%';
+        if (left <= 0) finishQuiz();
+      }, 100);
+    }
+    TFT.UI.modal({ title: '认卡竞速 · ' + (mode === 'timed' ? '40 秒极速' : '20 题经典'), size: 'md', body: '<div id="quizWrap"></div>' });
     nextQuiz();
+  }
+
+  Main.openCardQuiz = function () {
+    TFT.UI.modal({
+      title: '认卡竞速', size: 'md',
+      body:
+        '<div class="qz-intro">看棋子头像，从四个名字中选出正确的一张。题目取自当前赛季真实棋子与图标，与本站阵容数据同源。</div>' +
+        '<div class="qz-modes">' +
+          '<button class="qz-mode" data-qmode="classic"><b>20 题经典</b><i>不限时 · 答完 20 题结算正确率与用时</i></button>' +
+          '<button class="qz-mode" data-qmode="timed"><b>40 秒极速</b><i>限时 40 秒 · 尽量多答，答错不额外扣时</i></button>' +
+        '</div>' +
+        '<div class="qz-lead">本机排行榜 · 20 题经典</div>' + quizBoardHTML('classic') +
+        '<div class="qz-lead">本机排行榜 · 40 秒极速</div>' + quizBoardHTML('timed') +
+        '<div class="qz-note">排行榜仅保存在当前浏览器本地，不伪造公共排行数据。</div>'
+    });
+    $$('#modalBody [data-qmode]').forEach(function (b) { b.onclick = function () { startQuiz(b.dataset.qmode); }; });
   };
 
   /* ==================== URL 分享链接 ==================== */

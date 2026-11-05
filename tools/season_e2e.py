@@ -172,7 +172,7 @@ f.onload = function () {
             compSrc: hs18 ? hs18.textContent.indexOf('S18 阵容') >= 0 : false,
             realSource: W.TFT.D.meta.source || '',
             tierOP: ((W.TFT.D.meta.tiers || {}).OP || []).length,
-            stats: d().querySelectorAll('#homeTierGrid .cc-real').length,
+            stats: d().querySelectorAll('#homeTierGrid .cc-metrics').length,
             enTag: W.TFT.D.champions().every(function (c) { return c.ability && c.ability.lang === 'en'; }),
             comps: (function () { var t = W.TFT.D.meta.tiers || {}, n = 0;
               Object.keys(t).forEach(function (k) { n += (t[k] || []).length; }); return n; })()
@@ -297,6 +297,32 @@ f.onload = function () {
                 R.reviewUI = { hero: d().querySelectorAll('.rv-hero').length,
                   stats: d().querySelectorAll('.rv-stat').length };
                 W.TFT.UI.closeModal();
+                /* 第四批界面深化：段位榜 / 神器适配榜 / 羁绊天梯（固定用 S18 验证段位快照） */
+                var prevSlug = W.TFT.D.currentSlug;
+                W.TFT.D.setSeason('s18');
+                W.TFT.Main.openMeta();
+                R.metaUI = { toolbar: d().querySelectorAll('#modalBody .meta-toolbar').length,
+                  kpi: d().querySelectorAll('#metaKpi .mk').length,
+                  tiers: d().querySelectorAll('#metaTier option').length,
+                  cards: d().querySelectorAll('#metaList .comp-card').length,
+                  metrics: d().querySelectorAll('#metaList .cc-metrics').length,
+                  play: d().querySelectorAll('#metaList .cc-play').length };
+                var mtier = d().getElementById('metaTier');
+                if (mtier) { mtier.value = 'diamond'; mtier.dispatchEvent(new W.Event('change', { bubbles: true })); }
+                R.metaUI.diamond = d().querySelectorAll('#metaList .comp-card').length;
+                var mq = d().getElementById('metaQ');
+                if (mq) { mq.value = '斗士'; mq.dispatchEvent(new W.Event('input', { bubbles: true })); }
+                R.metaUI.search = d().querySelectorAll('#metaList .comp-card').length;
+                W.TFT.UI.closeModal();
+                W.TFT.Main.openArtifactBoard();
+                R.artUI = { rows: d().querySelectorAll('#abList .ab-row').length,
+                  only: d().querySelectorAll('#abOnly').length };
+                W.TFT.UI.closeModal();
+                W.TFT.Main.openTraitLadder();
+                R.ladderUI = { rows: d().querySelectorAll('#modalBody .tl-row').length,
+                  heads: d().querySelectorAll('#modalBody .tl-name').length };
+                W.TFT.UI.closeModal();
+                W.TFT.D.setSeason(prevSlug);
                 W.TFT.Main.openRollSim();
                 R.rollUI = { stats: d().querySelectorAll('.rs-stat').length };
                 W.TFT.UI.closeModal();
@@ -304,8 +330,14 @@ f.onload = function () {
                 R.chartUI = { stats: d().querySelectorAll('.ch-stat').length };
                 W.TFT.UI.closeModal();
                 W.TFT.Main.openCardQuiz();
-                R.quizUI = { prog: d().querySelectorAll('.qz-prog').length,
-                  opts: d().querySelectorAll('.qz-opt').length };
+                R.quizUI = { modes: d().querySelectorAll('#modalBody .qz-mode').length,
+                  boards: d().querySelectorAll('#modalBody .qz-board, #modalBody .qz-empty').length };
+                var timedBtn = d().querySelector('#modalBody [data-qmode="timed"]');
+                if (timedBtn) timedBtn.click();
+                R.quizUI.prog = d().querySelectorAll('.qz-prog').length;
+                R.quizUI.timedProg = d().querySelectorAll('.qz-prog.timed').length;
+                R.quizUI.timer = d().querySelectorAll('#qzTimer').length;
+                R.quizUI.opts = d().querySelectorAll('.qz-opt').length;
                 W.TFT.UI.closeModal();
                 W.TFT.Main.openOptimizer();
                 R.optUI = { sum: d().querySelectorAll('.opm-sum').length,
@@ -440,7 +472,7 @@ def run(keep=False):
     check('S18 首页标注来源为第三方', s18.get('srcNote') is True)
     check('S18 技能文本标记为英文原文', s18.get('enTag') is True)
     check('S18 阵容榜单为 OP.GG 实时数据', 'OP.GG' in (s18.get('realSource') or ''), s18.get('realSource'))
-    check('S18 实时阵容共 51 套', s18.get('comps') == 51, s18.get('comps'))
+    check('S18 实时阵容不少于 50 套', s18.get('comps') >= 50, s18.get('comps'))
     check('S18 含 OP 档阵容', s18.get('tierOP', 0) > 0, s18.get('tierOP'))
     check('S18 首页卡片展示真实统计', s18.get('stats', 0) > 0, s18.get('stats'))
     check('S18 首页标注阵容数据来源', s18.get('compSrc') is True)
@@ -453,7 +485,7 @@ def run(keep=False):
     check('S18 详情标注 OP.GG 来源', s18d.get('src') is True)
     check('S18 详情不再标注引擎推荐', s18d.get('noEngine') is True)
     check('S18 详情展示阵容说明', s18d.get('desc', 0) >= 1)
-    check('阵容说明含主C与真实统计', '主C' in (s18d.get('descText') or '') and '胜率' in (s18d.get('descText') or ''),
+    check('阵容说明含主C与真实统计', '主C' in (s18d.get('descText') or '') and '登顶率' in (s18d.get('descText') or ''),
           (s18d.get('descText') or '')[:40])
     check('S18 详情展示核心棋子', s18d.get('core', 0) >= 1, s18d.get('core'))
     check('核心棋子含图标与出装', s18d.get('coreImgs', 0) >= 1 and s18d.get('coreItems', 0) >= 1,
@@ -478,12 +510,12 @@ def run(keep=False):
     check('工具中心可正常收起', more.get('closed') is True)
 
     grid = result.get('grid', {})
-    check('首页全部工具宫格 18 项', grid.get('found') is True and grid.get('items') == 18,
+    check('首页全部工具宫格 20 项', grid.get('found') is True and grid.get('items') == 20,
           '%s / %s' % (grid.get('found'), grid.get('items')))
-    check('首页宫格每条含图标/标题/分组', grid.get('svgs') == 18 and grid.get('titles') == 18
-          and grid.get('grp') == 18,
+    check('首页宫格每条含图标/标题/分组', grid.get('svgs') == 20 and grid.get('titles') == 20
+          and grid.get('grp') == 20,
           'svg=%s title=%s grp=%s' % (grid.get('svgs'), grid.get('titles'), grid.get('grp')))
-    check('首页宫格与工具中心同源计数', '18' in grid.get('count', ''), grid.get('count'))
+    check('首页宫格与工具中心同源计数', '20' in grid.get('count', ''), grid.get('count'))
 
     check('载入 S3 存档后下拉同步', load.get('select') == 's3', load.get('select'))
     check('载入 S3 存档后数据同步', load.get('slug') == 's3' and load.get('metaSet') == 'S3',
@@ -546,6 +578,19 @@ def run(keep=False):
           'score=%s hero=%s' % (pwr.get('score'), pwr.get('hero')))
     check('社区分享弹窗含代码框与预览卡', shr.get('code') == 1 and shr.get('preview') == 1,
           'code=%s preview=%s' % (shr.get('code'), shr.get('preview')))
+    mui, aui, lui = result.get('metaUI', {}), result.get('artUI', {}), result.get('ladderUI', {})
+    check('阵容榜含段位工具栏与 KPI', mui.get('toolbar') == 1 and mui.get('kpi') == 5
+          and mui.get('tiers') == 6,
+          'bar=%s kpi=%s tiers=%s' % (mui.get('toolbar'), mui.get('kpi'), mui.get('tiers')))
+    check('阵容卡片含四指标与玩法标签', mui.get('cards', 0) > 0
+          and mui.get('metrics', 0) == mui.get('cards') and mui.get('play', 0) >= mui.get('cards'),
+          'cards=%s metrics=%s play=%s' % (mui.get('cards'), mui.get('metrics'), mui.get('play')))
+    check('切换钻石档位与榜内搜索可用', mui.get('diamond', 0) > 0 and mui.get('search', -1) >= 0,
+          'diamond=%s search=%s' % (mui.get('diamond'), mui.get('search')))
+    check('神器适配榜可聚合装备', aui.get('rows', 0) > 0 and aui.get('only') == 1,
+          'rows=%s only=%s' % (aui.get('rows'), aui.get('only')))
+    check('羁绊天梯可列出羁绊', lui.get('rows', 0) > 0 and lui.get('heads', 0) == lui.get('rows'),
+          'rows=%s heads=%s' % (lui.get('rows'), lui.get('heads')))
     oui, rvi, rli = result.get('oppUI', {}), result.get('reviewUI', {}), result.get('rollUI', {})
     check('对手多棋盘含总览条', oui.get('sum') == 1 and oui.get('items') == 4 and oui.get('tabs', 0) >= 1,
           'sum=%s items=%s tabs=%s' % (oui.get('sum'), oui.get('items'), oui.get('tabs')))
@@ -554,8 +599,11 @@ def run(keep=False):
     check('抽卡模拟器含统计条', rli.get('stats') == 4, 'stats=%s' % rli.get('stats'))
     cui, qzi, omi = result.get('chartUI', {}), result.get('quizUI', {}), result.get('optUI', {})
     check('数据图表含总览统计条', cui.get('stats') == 5, 'stats=%s' % cui.get('stats'))
-    check('认卡竞速含进度条与选项', qzi.get('prog') == 1 and qzi.get('opts') == 4,
-          'prog=%s opts=%s' % (qzi.get('prog'), qzi.get('opts')))
+    check('认卡竞速含双模式与本机榜', qzi.get('modes') == 2 and qzi.get('boards', 0) >= 1,
+          'modes=%s boards=%s' % (qzi.get('modes'), qzi.get('boards')))
+    check('认卡竞速 40 秒模式含计时与选项', qzi.get('timedProg') == 1 and qzi.get('timer') == 1
+          and qzi.get('opts') == 4,
+          'timed=%s timer=%s opts=%s' % (qzi.get('timedProg'), qzi.get('timer'), qzi.get('opts')))
     check('阵容优化器含状态总览条', omi.get('sum') == 1 and omi.get('cards', 0) >= 1,
           'sum=%s cards=%s' % (omi.get('sum'), omi.get('cards')))
     tst = result.get('toastUI', {})

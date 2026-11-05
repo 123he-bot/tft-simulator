@@ -6,7 +6,7 @@
 <title>金铲铲 AI 多智能体阵容模拟器</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a1222'/%3E%3Cpath d='M16 5l9 5.2v9.6L16 25l-9-5.2v-9.6z' fill='none' stroke='%2322d3ee' stroke-width='1.8'/%3E%3Ccircle cx='16' cy='15.5' r='3.2' fill='%23f5c542'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/tailwind.css?v=1.4.3">
-<link rel="stylesheet" href="css/style.css?v=1.10.2">
+<link rel="stylesheet" href="css/style.css?v=1.11.0">
 </head>
 <body>
 
@@ -392,12 +392,12 @@
     </div>
     <aside class="home-side">
       <section class="card">
-        <div class="home-sec-head"><h3>羁绊热度天梯</h3><span class="dim" id="homeTraitNote"></span></div>
+        <div class="home-sec-head"><h3>羁绊天梯</h3><span class="dim" id="homeTraitNote"></span><button class="btn btn-xs" data-home-act="ladder">完整天梯 →</button></div>
         <div id="homeTraitLadder" class="stat-table"></div>
       </section>
       <section class="card">
-        <div class="home-sec-head"><h3>克制关系</h3></div>
-        <div id="homeCounter" class="log-list"></div>
+        <div class="home-sec-head"><h3 id="homeCounterTitle">装备适配榜</h3><button class="btn btn-xs" data-home-act="artifacts" id="homeCounterBtn">全部装备 →</button></div>
+        <div id="homeCounter" class="ab-list compact"></div>
       </section>
       <section class="card">
         <div class="home-sec-head"><h3>奥恩神器 / 纹章合成</h3><button class="btn btn-xs" data-home-act="forge">全部神器 →</button></div>
@@ -440,7 +440,7 @@
 <script src="js/vendor/purify.min.js"></script>
 <script src="js/vendor/html2canvas.min.js"></script>
 <script src="js/vendor/chart.umd.min.js"></script>
-<script src="js/data.bundle.js?v=1.6.3"></script>
+<script src="js/data.bundle.js?v=1.6.4"></script>
 <script src="js/utils.js?v=1.4.6"></script>
 <script src="js/storage.js?v=1.6.5"></script>
 <script src="js/recommend.js?v=1.0.2"></script>
@@ -451,6 +451,6 @@
 <script src="js/drag.js?v=1.4.3"></script>
 <script src="js/battle_sim.js?v=1.4.8"></script>
 <script src="js/ai_api.js?v=1.5.3"></script>
-<script src="js/main.js?v=1.11.6"></script>
+<script src="js/main.js?v=1.12.0"></script>
 </body>
 </html>

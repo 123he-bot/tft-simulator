@@ -1758,6 +1758,106 @@ body::after{
 .rv-stat span{display:block;font-size:9px;color:var(--mute)}
 .rv-stat b{display:block;font-size:14px;color:#ede9fe;margin-top:2px;font-variant-numeric:tabular-nums}
 
+/* ================= 模块界面深化 · 第八批：Meta 段位榜 / 玩法标签 / 神器与羁绊模块 ================= */
+/* --- Meta 榜单工具栏 --- */
+.meta-toolbar{display:flex;flex-direction:column;gap:8px;padding:10px 12px;margin-bottom:9px;
+  border:1px solid var(--border);border-radius:10px;
+  background:linear-gradient(180deg,rgba(20,31,53,.92),rgba(11,18,33,.92))}
+.mt-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.mt-lbl{font-size:10px;color:var(--mute);letter-spacing:.06em}
+#metaQ{flex:1;min-width:190px}
+.meta-toolbar .meta-src{margin-bottom:0}
+.meta-kpi{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.mk{flex:1;min-width:118px;padding:7px 10px;border:1px solid var(--border);border-radius:9px;
+  background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.012));position:relative;overflow:hidden}
+.mk::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--cyan),transparent)}
+.mk em{display:block;font-style:normal;font-size:9px;color:var(--mute)}
+.mk b{display:block;font-size:12px;color:#eaf6ff;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.empty-note{padding:26px;text-align:center;color:var(--mute);border:1px dashed var(--border);border-radius:10px;font-size:12px}
+
+/* --- 阵容卡片：四指标 + 玩法标签 + 费用分布 --- */
+.comp-card .cc-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-top:6px}
+.cc-metrics span{display:flex;flex-direction:column;padding:4px 6px;border-radius:6px;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.055);min-width:0}
+.cc-metrics em{font-style:normal;font-size:9px;color:var(--mute);letter-spacing:.04em}
+.cc-metrics b{font-size:11px;color:#7dd3fc;font-weight:800;font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cc-metrics span:nth-child(3) b{color:var(--gold)}
+.cc-metrics span:nth-child(4) b{color:#c4b5fd}
+.comp-card .cc-play{display:flex;align-items:center;gap:5px;margin-top:6px;flex-wrap:wrap}
+.cc-pill{font-size:9px;padding:1px 7px;border-radius:20px;white-space:nowrap;
+  border:1px solid rgba(34,211,238,.35);background:rgba(34,211,238,.1);color:#bff1ff}
+.cc-pill.diff{border-color:rgba(245,197,66,.35);background:rgba(245,197,66,.1);color:#fde68a}
+.cc-pill.diff.d3{border-color:rgba(244,63,94,.4);background:rgba(244,63,94,.12);color:#fda4af}
+.cc-costbar{display:flex;flex:1;min-width:44px;height:6px;border-radius:4px;overflow:hidden;background:var(--surface-3)}
+.cc-costbar .cb{display:block;height:100%;min-width:2px}
+.cc-costbar .c1{background:#94a3b8}.cc-costbar .c2{background:#22d3ee}
+.cc-costbar .c3{background:#34d399}.cc-costbar .c4{background:#8b5cf6}
+.cc-costbar .c5{background:#f5c542}
+
+/* --- 神器适配榜 / 羁绊天梯列表 --- */
+.ab-list,.tl-list{display:flex;flex-direction:column;gap:6px}
+.ab-row,.tl-row{display:flex;align-items:center;gap:10px;padding:8px 10px;cursor:pointer;
+  border:1px solid var(--border);border-radius:9px;background:rgba(255,255,255,.025);
+  transition:border-color .16s,background .16s,transform .16s}
+.ab-row:hover,.tl-row:hover{border-color:rgba(34,211,238,.42);background:rgba(34,211,238,.06);transform:translateY(-1px)}
+.ab-rank,.tl-rank{width:18px;flex:none;text-align:center;font-size:10px;color:var(--mute);font-variant-numeric:tabular-nums}
+.ab-ico{width:26px;height:26px;flex:none;border-radius:7px;overflow:hidden;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+.ab-ico img{width:100%;height:100%;object-fit:cover;display:block}
+.ab-main,.tl-name{flex:1;min-width:0}
+.ab-main b,.tl-name b{display:block;font-size:12px;color:#eaf6ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ab-main em.ab-tag{font-style:normal;font-size:9px;margin-left:6px;padding:0 5px;border-radius:20px;
+  border:1px solid rgba(245,197,66,.4);color:var(--gold);background:rgba(245,197,66,.1)}
+.ab-main i,.tl-name i{display:block;font-style:normal;font-size:10px;color:var(--mute);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ab-n{width:64px;flex:none;text-align:right}
+.ab-n em,.tl-active em,.tl-best em{display:block;font-style:normal;font-size:9px;color:var(--mute)}
+.ab-n b,.tl-active b,.tl-best b{font-size:12px;color:#7dd3fc;font-variant-numeric:tabular-nums}
+.ab-go{flex:none;font-size:10px;color:var(--cyan);white-space:nowrap}
+.ab-list.compact .ab-row{padding:6px 8px}
+.ab-list.compact .ab-ico{width:22px;height:22px}
+.ab-list.compact .ab-n{width:52px}
+.tl-active{width:64px;flex:none;text-align:right}
+.tl-best{width:176px;flex:none;text-align:right}
+.stat-row.clickable{cursor:pointer}
+.stat-row.clickable:hover{background:rgba(34,211,238,.06)}
+
+/* --- 认卡竞速：模式选择 / 本机排行榜 --- */
+.qz-intro{font-size:12px;color:var(--mute);line-height:1.7;margin-bottom:10px}
+.qz-modes{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.qz-mode{text-align:left;padding:12px 14px;border-radius:10px;cursor:pointer;color:var(--text);
+  border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
+  transition:border-color .16s,background .16s,transform .16s}
+.qz-mode:hover{border-color:rgba(34,211,238,.5);background:rgba(34,211,238,.08);transform:translateY(-1px)}
+.qz-mode b{display:block;font-size:13px;color:#eaf6ff;margin-bottom:3px}
+.qz-mode i{display:block;font-style:normal;font-size:10px;color:var(--mute);line-height:1.5}
+.qz-lead{margin:10px 0 5px;font-size:10px;letter-spacing:.08em;color:var(--mute)}
+.qz-board{display:flex;flex-direction:column;gap:3px}
+.qz-brow{display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:6px;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);font-size:11px}
+.qz-brk{width:14px;flex:none;color:var(--mute);font-size:10px}
+.qz-brow b{color:var(--gold);min-width:20px;font-variant-numeric:tabular-nums}
+.qz-empty{font-size:11px;color:var(--mute);padding:8px 10px;border:1px dashed var(--border);border-radius:8px}
+.qz-note{margin-top:10px;font-size:10px;color:var(--mute);line-height:1.6}
+.qz-prog.timed i{background:linear-gradient(90deg,#f43f5e,#f5c542)}
+
+/* --- 响应式：1000px / 768px 断点 --- */
+@media (max-width:1000px){
+  .comp-card .cc-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ab-n{width:56px}
+  .tl-best{width:130px}
+}
+@media (max-width:768px){
+  .meta-toolbar .mt-row{gap:6px}
+  #metaQ{min-width:100%;flex-basis:100%}
+  .mk{min-width:calc(50% - 4px)}
+  .ab-row,.tl-row{gap:8px;padding:7px 8px}
+  .ab-row .ab-n,.tl-row .tl-active,.tl-row .tl-best,.ab-go{display:none}
+  .qz-modes{grid-template-columns:1fr}
+  .comp-grid{grid-template-columns:1fr}
+  .meta-kpi{gap:6px}
+}
+
 /* ================= 模块界面深化 · 第八批：数据图表 / 认卡竞速 / 阵容优化器 ================= */
 /* --- 数据图表：数据总览条 --- */
 .ch-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;margin:8px 0 12px}

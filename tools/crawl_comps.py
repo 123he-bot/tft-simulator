@@ -3,11 +3,14 @@
 crawl_comps.py —— 抓取 S18「阵容推荐」真实数据并生成 data/comps.json。
 
 数据源：op.gg 中文站 Meta 阵容页（https://op.gg/zh-cn/tft/meta-trends/comps?version=18.5）
-该页 RSC 内嵌全部 51 套 representative 阵容，包含真实对局统计
-（平均名次 / 胜率 / 前四率 / 选取率 / 场次）、真实棋子星级与出装、真实站位。
+该页 RSC 内嵌全部 representative 阵容，包含真实对局统计
+（平均名次 / 登顶率 / 前四率 / 出场率 / 场次）、真实棋子星级与出装、真实站位。
+
+段位口径：OP.GG 的 tier 参数分别对应「全段位 / 铂金 / 翡翠 / 钻石 / 大师 / 大师+」，
+每个档位是独立对局样本（近 24 小时），阵容集合与统计各不相同，因此逐档抓取并存为快照。
 
 产出：
-  data/comps.json           # 按赛季分组的真实阵容榜（含装备图标目录）
+  data/comps.json           # 按赛季分组的真实阵容榜（含段位快照与装备图标目录）
   assets/icons/opgg_*.png   # 从 op.gg 下载的装备图标（本地化，避免外链失效）
 
 用法： python tools/crawl_comps.py
@@ -19,8 +22,23 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'data')
 ASSETS = os.path.join(ROOT, 'assets', 'icons')
 PATCH = '18.5'
-URL = 'https://op.gg/zh-cn/tft/meta-trends/comps?version=' + PATCH
+BASE_URL = 'https://op.gg/zh-cn/tft/meta-trends/comps?version=' + PATCH
 UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/126 Safari/537.36'}
+
+# (接口参数, 展示名) —— 宗师/王者近 24 小时样本不足，OP.GG 返回空榜，故不纳入
+TIERS = [
+    ('all', '全段位'),
+    ('platinum', '铂金'),
+    ('emerald', '翡翠'),
+    ('diamond', '钻石'),
+    ('master', '大师'),
+    ('master+', '大师+'),
+]
+
+
+def tier_url(tier):
+    q = 'master%2B' if tier == 'master+' else tier
+    return BASE_URL + '&tier=' + q
 
 
 def fetch(url):
@@ -147,17 +165,69 @@ def build_position(units, champ_by_name):
     return out
 
 
+def badge_map(comp):
+    """OP.GG 的玩法标签：difficulty / tempo / reroll / honey / ppm。"""
+    out = {}
+    for b in comp.get('badge') or []:
+        k = (b or {}).get('key')
+        if k:
+            out[k] = b.get('value')
+    return out
+
+
+def snapshot_entry(comp):
+    stat = comp.get('stat') or {}
+    deck = stat.get('deck') or {}
+    return {
+        'avgPlace': round(num(deck.get('avgPlacement')), 2),
+        'winRate': round(num(deck.get('winRate')), 4),
+        'top4Rate': round(num(deck.get('top4Rate')), 4),
+        'pickRate': round(num(deck.get('pickRate')), 6),
+        'games': int(num(deck.get('compsCount'), 0)),
+        'opScore': round(num(stat.get('opScore')), 2),
+        'tier': stat.get('opTier') or 'C',
+        'badge': badge_map(comp),
+    }
+
+
 def main():
-    print('下载', URL)
-    html = fetch(URL)
-    text = decode_rsc(html)
-    comps = parse_comps(text)
-    print('解析到阵容', len(comps))
-    if not comps:
+    pages = {}
+    for key, label in TIERS:
+        url = tier_url(key)
+        print('下载', label, url)
+        html = fetch(url)
+        comps = parse_comps(decode_rsc(html))
+        print('  %s 解析到 %d 套' % (label, len(comps)))
+        pages[key] = comps
+    if not pages.get('all'):
         raise SystemExit('未解析到任何阵容，页面结构可能已变化')
 
+    # 去重合并：先 all 的顺序，再补各档位独有阵容
+    pool, order = {}, []
+    for key, _label in TIERS:
+        for comp in pages[key]:
+            oh = (comp.get('stat') or {}).get('originHash')
+            if not oh or oh in pool:
+                continue
+            pool[oh] = comp
+            order.append(oh)
+
+    snapshots = {}
+    for key, label in TIERS:
+        entries = {}
+        for comp in pages[key]:
+            oh = (comp.get('stat') or {}).get('originHash')
+            if oh:
+                entries['og_' + oh] = snapshot_entry(comp)
+        snapshots[key] = {
+            'label': label,
+            'url': tier_url(key),
+            'count': len(entries),
+            'entries': entries,
+        }
+    print('合并后阵容', len(order))
+
     season = load_json('s18.json')
-    items_legacy = load_json('items.json')
     champ_by_id = {c['id']: c for c in season['champions']}
     champ_by_name = {c['name']: c for c in season['champions']}
     trait_def = {t['name']: t for t in season['traits']}
@@ -180,7 +250,8 @@ def main():
 
     # 装备：统一用 op_<apiName> 作为站内 id，图标本地化
     item_catalog = {}
-    for comp in comps:
+    for oh in order:
+        comp = pool[oh]
         for u in comp.get('units') or []:
             for im in u.get('itemMetas') or []:
                 if not im or not im.get('apiName'):
@@ -194,14 +265,31 @@ def main():
                     'name': im.get('name') or api,
                     'icon': 'assets/icons/opgg_' + api + '.png',
                     'stat': '',
+                    # OP.GG 的神器 apiName 形如 DA_Artifact_Dawncore，据此与成装区分
+                    'artifact': 'Artifact' in api,
                     '_remote': im.get('imageUrl') or '',
                 }
 
     missing_units = set()
     out_comps = []
-    for comp in comps:
-        stat = comp.get('stat') or {}
-        deck = stat.get('deck') or {}
+    for oh in order:
+        comp = pool[oh]
+        cid = 'og_' + oh
+        primary = snapshots['all']['entries'].get(cid)
+        if not primary:
+            for key, _label in TIERS:
+                primary = snapshots[key]['entries'].get(cid)
+                if primary:
+                    break
+        if not primary:
+            continue
+        badge = {}
+        for key, _label in TIERS:
+            b = snapshots[key]['entries'].get(cid, {}).get('badge') or {}
+            if b:
+                badge = b
+                break
+
         units, pos_units = [], []
         for u in comp.get('units') or []:
             ch = resolve_champ(u.get('key'), (u.get('meta') or {}).get('name'))
@@ -281,25 +369,44 @@ def main():
             [x for x in traits if x['style'] >= 1], key=lambda x: -x['active'])][:3]
         main_items = '、'.join(item_name.get(i, i) for i in main_unit.get('items') or [])
         pop = len(tagged)
+
+        # 费用分布（真实棋子费用统计）
+        cost_curve = {}
+        for u in tagged:
+            c = int(u.get('cost') or 1)
+            cost_curve[str(c)] = cost_curve.get(str(c), 0) + 1
+        # 升级节奏：OP.GG 的 early/middle level + reroll 刷新等级
+        early = comp.get('early') or {}
+        middle = comp.get('middle') or {}
+        leveling = {
+            'early': int(num(early.get('level'), 0)),
+            'mid': int(num(middle.get('level'), 0)),
+            'reroll': int(num(badge.get('reroll'), 0)),
+        }
+
         desc = (f'围绕 {"、".join(active_names) if active_names else "当前羁绊组合"} 展开，主C {mainC}'
                 f'（{main_unit.get("cost") or 1} 费 / {main_unit.get("star") or 1} 星'
                 f'{("，出装 " + main_items) if main_items else ""}）。核心棋子：'
                 f'{"、".join(u["name"] for u in core_units)}。{pop} 人口成型，OP.GG 采样 '
-                f'{int(num(deck.get("compsCount"), 0))} 场：平均名次 {round(num(deck.get("avgPlacement")), 2)}'
-                f'、胜率 {round(num(deck.get("winRate")) * 100, 1)}%、前四率 '
-                f'{round(num(deck.get("top4Rate")) * 100, 1)}%。')
+                f'{int(num(primary.get("games"), 0))} 场：平均名次 {primary["avgPlace"]}'
+                f'、登顶率 {round(num(primary.get("winRate")) * 100, 1)}%、前四率 '
+                f'{round(num(primary.get("top4Rate")) * 100, 1)}%、出场率 '
+                f'{round(num(primary.get("pickRate")) * 100, 2)}%。')
         out_comps.append({
-            'id': 'og_' + stat['originHash'],
+            'id': cid,
             'name': (comp.get('name') or {}).get('zh_CN') or (comp.get('name') or {}).get('en_US') or '未命名阵容',
             'mainC': mainC,
-            'tier': stat.get('opTier') or 'C',
-            'strength': round(num(deck.get('avgPlacement'), 99), 2),
-            'avgPlace': round(num(deck.get('avgPlacement')), 2),
-            'winRate': round(num(deck.get('winRate')), 4),
-            'top4Rate': round(num(deck.get('top4Rate')), 4),
-            'pickRate': round(num(deck.get('pickRate')), 6),
-            'games': int(num(deck.get('compsCount'), 0)),
-            'opScore': round(num(stat.get('opScore')), 2),
+            'tier': primary.get('tier') or 'C',
+            'strength': primary.get('avgPlace') or 99,
+            'avgPlace': primary.get('avgPlace') or 0,
+            'winRate': primary.get('winRate') or 0,
+            'top4Rate': primary.get('top4Rate') or 0,
+            'pickRate': primary.get('pickRate') or 0,
+            'games': primary.get('games') or 0,
+            'opScore': primary.get('opScore') or 0,
+            'badge': badge,
+            'leveling': leveling,
+            'costCurve': cost_curve,
             'units': tagged,
             'coreUnits': core_units,
             'description': desc,
@@ -352,19 +459,28 @@ def main():
 
     payload = {
         'source': 'OP.GG 实时阵容榜（中文站）',
-        'sourceUrl': URL,
+        'sourceUrl': BASE_URL,
         'fetchedAt': fetched_at,
         'patch': PATCH,
-        'note': '阵容、出装、站位与胜率类统计均来自 OP.GG 实时对局采样；本站未做任何推断或补全。',
+        'note': '阵容、出装、站位与胜率类统计均来自 OP.GG 实时对局采样（近 24 小时窗口）；本站未做任何推断或补全。',
+        'winRateNote': 'winRate 为登顶率（第一名占比），不是前四率；pickRate 为出场率。',
         'itemCatalog': catalog,
         's18': {
             'set': 'S18',
             'patch': PATCH,
             'source': 'OP.GG 实时阵容榜（中文站）',
-            'sourceUrl': URL,
+            'sourceUrl': BASE_URL,
             'updatedAt': PATCH,
             'fetchedAt': fetched_at,
-            'note': '51 套 representative 阵容，统计口径为 OP.GG 对局样本；补丁 %s。' % PATCH,
+            'note': 'OP.GG representative 阵容，统计口径为近 24 小时对局样本；补丁 %s。' % PATCH,
+            'metricNote': '平均名次 / 登顶率 / 前四率 / 出场率 / 场次均来自 OP.GG 对局样本；'
+                          '段位切换为独立样本，阵容集合可能不同。',
+            'snapshots': {
+                'fetchedAt': fetched_at,
+                'note': 'OP.GG 仅提供近 24 小时窗口；各段位独立采样。',
+                'order': [k for k, _ in TIERS],
+                'tiers': snapshots,
+            },
             'comps': out_comps,
         },
     }
