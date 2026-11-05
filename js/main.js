@@ -698,6 +698,7 @@ window.TFT = window.TFT || {};
       if (b.classList.contains('cc-fav-btn')) b.textContent = on ? '★ 已收藏' : '☆ 收藏';
       else b.textContent = on ? '★' : '☆';
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.setAttribute('title', on ? '取消收藏' : '收藏阵容');
     });
   }
 
@@ -2394,6 +2395,63 @@ window.TFT = window.TFT || {};
     else if (B && B.renderAll) B.renderAll();
   };
 
+  /* 首页「我的阵容」面板：收藏 / 对比 / 最近浏览（单独刷新，避免收藏后整页重渲染打断轮播） */
+  Main.renderHomeMine = function () {
+    const mine = $('#homeMineBody'), mineNote = $('#homeMineNote');
+    if (!mine) return;
+    const favRefs = TFT.Store.favsFor(D.currentSlug).map(function (f) {
+      const hit = Main.findComp(f.id); return hit ? { cp: hit.cp, tier: hit.tier, at: f.at } : null;
+    }).filter(Boolean).slice(0, 8);
+    const recentRefs = TFT.Store.recentFor(D.currentSlug).map(function (r) {
+      const hit = Main.findComp(r.id); return hit ? { cp: hit.cp, tier: hit.tier, at: r.at } : null;
+    }).filter(Boolean).slice(0, 5);
+    const cmpRefs = TFT.Store.compareFor(D.currentSlug).map(function (c) {
+      const hit = Main.findComp(c.id); return hit ? { cp: hit.cp, tier: hit.tier } : null;
+    }).filter(Boolean);
+    const row = function (x, isRecent) {
+      return '<div class="mine-row" data-home-comp="' + U.esc(x.cp.id) + '" title="查看阵容详情">' +
+        '<span class="tier-dot td-' + U.esc(x.tier) + '">' + U.esc(x.tier) + '</span>' +
+        '<span class="mine-name">' + U.esc(displayName(x.cp)) +
+        '<i>' + U.esc(x.cp.mainC || '—') + ' · ' + (x.cp.units || []).length + ' 人</i></span>' +
+        '<span class="mine-meta">' + (x.cp.sourceReal && x.cp.avgPlace ? x.cp.avgPlace : '') + '</span>' +
+        (isRecent ? '<span class="mine-ago">' + agoText(x.at) + '</span>' : favBtnHTML(x.cp, 'sm')) +
+        '</div>';
+    };
+    let html = '';
+    if (favRefs.length) {
+      html += '<div class="mine-sub">收藏 <span class="dim">' + favRefs.length + '</span></div>' +
+        favRefs.map(function (x) { return row(x, false); }).join('');
+    }
+    if (cmpRefs.length) {
+      html += '<div class="mine-sub">对比栏 <span class="dim">' + cmpRefs.length + '/2</span></div>' +
+        '<div class="mine-cmp">' + cmpRefs.map(function (x) {
+          return '<span class="mine-cmp-chip" data-cmp-del="' + U.esc(x.cp.id) + '">' + U.esc(displayName(x.cp)) + '<em>×</em></span>';
+        }).join('') +
+        (cmpRefs.length === 2 ? '<button class="btn btn-xs btn-primary" id="homeCmpGo">开始对比</button>' : '<span class="dim mine-hint">再选 1 套即可对比</span>') +
+        '</div>';
+    }
+    if (!favRefs.length && !cmpRefs.length) {
+      html += '<div class="mine-empty">点阵容卡右下角的 ☆ 收藏，或从详情页加入对比</div>';
+    }
+    if (recentRefs.length) {
+      html += '<div class="mine-sub" style="margin-top:8px">最近浏览 <span class="dim">' + recentRefs.length + '</span></div>' +
+        recentRefs.map(function (x) { return row(x, true); }).join('');
+    }
+    mine.innerHTML = html;
+    if (mineNote) mineNote.textContent = favRefs.length ? '收藏 ' + favRefs.length + ' 套' : '本机保存';
+    $$('#homeMineBody [data-home-comp]').forEach(function (el) {
+      el.onclick = function (e) {
+        if (e.target.closest('[data-fav]') || e.target.closest('[data-cmp-del]')) return;
+        Main.openCompDetail(el.dataset.homeComp);
+      };
+    });
+    $$('#homeMineBody [data-cmp-del]').forEach(function (el) {
+      el.onclick = function () { TFT.Store.toggleCompare(D.currentSlug, el.dataset.cmpDel); Main.renderHomeMine(); };
+    });
+    const go = $('#homeCmpGo');
+    if (go) go.onclick = function () { Main.openCompare(); };
+  };
+
   /* ==================== 首页门户渲染（全部数据来自站内真实字段） ==================== */
   Main.renderHome = function () {
     const hero = $('#homeHero');
@@ -2649,61 +2707,8 @@ window.TFT = window.TFT || {};
       $$('#homeTierGrid [data-comp]').forEach(c => c.onclick = function () { Main.openCompDetail(c.dataset.comp); });
     }
 
-    /* —— 我的阵容：收藏 / 对比 / 最近浏览 —— */
-    const mine = $('#homeMineBody'), mineNote = $('#homeMineNote');
-    if (mine) {
-      const favRefs = TFT.Store.favsFor(D.currentSlug).map(function (f) {
-        const hit = Main.findComp(f.id); return hit ? { cp: hit.cp, tier: hit.tier, at: f.at } : null;
-      }).filter(Boolean).slice(0, 8);
-      const recentRefs = TFT.Store.recentFor(D.currentSlug).map(function (r) {
-        const hit = Main.findComp(r.id); return hit ? { cp: hit.cp, tier: hit.tier, at: r.at } : null;
-      }).filter(Boolean).slice(0, 5);
-      const cmpRefs = TFT.Store.compareFor(D.currentSlug).map(function (c) {
-        const hit = Main.findComp(c.id); return hit ? { cp: hit.cp, tier: hit.tier } : null;
-      }).filter(Boolean);
-      const row = function (x, isRecent) {
-        return '<div class="mine-row" data-home-comp="' + U.esc(x.cp.id) + '" title="查看阵容详情">' +
-          '<span class="tier-dot td-' + U.esc(x.tier) + '">' + U.esc(x.tier) + '</span>' +
-          '<span class="mine-name">' + U.esc(displayName(x.cp)) +
-          '<i>' + U.esc(x.cp.mainC || '—') + ' · ' + (x.cp.units || []).length + ' 人</i></span>' +
-          '<span class="mine-meta">' + (x.cp.sourceReal && x.cp.avgPlace ? x.cp.avgPlace : '') + '</span>' +
-          (isRecent ? '<span class="mine-ago">' + agoText(x.at) + '</span>' : favBtnHTML(x.cp, 'sm')) +
-          '</div>';
-      };
-      let html = '';
-      if (favRefs.length) {
-        html += '<div class="mine-sub">收藏 <span class="dim">' + favRefs.length + '</span></div>' +
-          favRefs.map(function (x) { return row(x, false); }).join('');
-      }
-      if (cmpRefs.length) {
-        html += '<div class="mine-sub">对比栏 <span class="dim">' + cmpRefs.length + '/2</span></div>' +
-          '<div class="mine-cmp">' + cmpRefs.map(function (x) {
-            return '<span class="mine-cmp-chip" data-cmp-del="' + U.esc(x.cp.id) + '">' + U.esc(displayName(x.cp)) + '<em>×</em></span>';
-          }).join('') +
-          (cmpRefs.length === 2 ? '<button class="btn btn-xs btn-primary" id="homeCmpGo">开始对比</button>' : '<span class="dim mine-hint">再选 1 套即可对比</span>') +
-          '</div>';
-      }
-      if (!favRefs.length && !cmpRefs.length) {
-        html += '<div class="mine-empty">点阵容卡右下角的 ☆ 收藏，或从详情页加入对比</div>';
-      }
-      if (recentRefs.length) {
-        html += '<div class="mine-sub" style="margin-top:8px">最近浏览 <span class="dim">' + recentRefs.length + '</span></div>' +
-          recentRefs.map(function (x) { return row(x, true); }).join('');
-      }
-      mine.innerHTML = html;
-      if (mineNote) mineNote.textContent = favRefs.length ? '收藏 ' + favRefs.length + ' 套' : '本机保存';
-      $$('#homeMineBody [data-home-comp]').forEach(function (el) {
-        el.onclick = function (e) {
-          if (e.target.closest('[data-fav]') || e.target.closest('[data-cmp-del]')) return;
-          Main.openCompDetail(el.dataset.homeComp);
-        };
-      });
-      $$('#homeMineBody [data-cmp-del]').forEach(function (el) {
-        el.onclick = function () { TFT.Store.toggleCompare(D.currentSlug, el.dataset.cmpDel); Main.renderHome(); };
-      });
-      const go = $('#homeCmpGo');
-      if (go) go.onclick = function () { Main.openCompare(); };
-    }
+    /* —— 我的阵容：收藏 / 对比 / 最近浏览（独立渲染，供收藏后局部刷新） —— */
+    Main.renderHomeMine();
 
     /* —— 图表：费用分布 + 强度曲线 —— */
     const note = $('#homeChartNote');
@@ -3966,7 +3971,8 @@ window.TFT = window.TFT || {};
       syncFavButtons(b.dataset.fav, on);
       TFT.UI.toast(on ? '已收藏，首页「我的阵容」可快速找回' : '已取消收藏', 'ok');
       const modalOpen = TFT.UI.modalOpen && TFT.UI.modalOpen();
-      if (!modalOpen) setTimeout(function () { Main.renderHome(); }, 0);
+      /* 只刷新「我的阵容」面板：保留轮播当前张与自动播放进度 */
+      if (!modalOpen) setTimeout(function () { Main.renderHomeMine(); }, 0);
     }, true);
 
     Main.go(overrideView || (location.hash.slice(1).split('&')[0]) || prefs.lastView || 'home');
