@@ -1128,6 +1128,9 @@ b,strong{font-weight:700}
 }
 .hero-art img{width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block;filter:saturate(1.12)}
 .hero-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,7,12,0) 42%,rgba(4,7,12,.82))}
+/* 无原画回退：96px 棋子图标按接近原始尺寸展示，避免被拉伸放大 */
+.hero-art.tile{background:radial-gradient(circle at 50% 40%,rgba(47,224,238,.18),rgba(9,13,21,0) 64%),linear-gradient(160deg,#0c1626,#0a1120)}
+.hero-art.tile img{width:104px;height:104px;min-height:0;object-fit:contain;position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);filter:saturate(1.05);opacity:.96}
 .ha-cap{position:absolute;left:9px;right:9px;bottom:7px;z-index:2;display:flex;flex-direction:column;gap:1px}
 .ha-cap em{font-style:normal;font-size:8.5px;letter-spacing:.08em;color:#8fe9f3}
 .ha-cap b{font-size:11.5px;color:#fff;font-weight:700;text-shadow:0 1px 4px rgba(0,0,0,.8)}
@@ -1640,6 +1643,9 @@ b,strong{font-weight:700}
 .hot-art{position:absolute;inset:0}
 .hot-art img{width:100%;height:100%;object-fit:cover;object-position:center 16%;filter:brightness(1.04) saturate(1.14);display:block}
 .hot-mask{position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,7,14,.95) 0%,rgba(3,7,14,.8) 40%,rgba(3,7,14,.28) 72%,rgba(3,7,14,.55) 100%),linear-gradient(0deg,rgba(3,7,14,.92),rgba(3,7,14,0) 58%)}
+/* 无原画回退：小图标右对齐展示，避免 96px 图拉满整块背景 */
+.hot-art.tile{display:flex;align-items:center;justify-content:flex-end;padding-right:54px;background:radial-gradient(circle at 80% 42%,rgba(47,224,238,.22),rgba(10,18,34,0) 58%),linear-gradient(135deg,#0a1222,#101c31)}
+.hot-art.tile img{width:150px;height:150px;min-height:0;object-fit:contain;filter:drop-shadow(0 10px 26px rgba(0,0,0,.55));opacity:.96}
 .hot-body{position:relative;z-index:2;padding:16px 18px;width:min(72%,600px);display:flex;flex-direction:column;gap:7px}
 .hot-meta{display:flex;flex-wrap:wrap;align-items:center;gap:5px}
 .hot-tier{font-size:9px;font-weight:700;letter-spacing:.05em;padding:2px 7px;border-radius:999px;border:1px solid var(--line-2);color:var(--text);background:rgba(255,255,255,.06)}

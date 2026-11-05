@@ -683,6 +683,12 @@ window.TFT = window.TFT || {};
       if (Math.abs(dx) > 40) { go(idx + (dx < 0 ? 1 : -1)); play(); }
     });
     go(0); play();
+    /* 预取其余幻灯片原画，避免切到下一张时短暂空白 */
+    setTimeout(function () {
+      root.querySelectorAll('.hot-art img').forEach(function (im) {
+        if (!im.complete) { const p = new Image(); p.src = im.src; }
+      });
+    }, 700);
   }
   function favBtnHTML(cp, extra) {
     const on = isFavNow(cp.id);
@@ -2511,7 +2517,7 @@ window.TFT = window.TFT || {};
         '<span class="hr-foot">' + roster.length + ' 位高频核心 · 数据来自真实对局采样</span></div>'
       : '';
     /* 榜首主C 原画：作为 Hero 右侧角色卡，让首页有真实游戏画面 */
-    let heroArtUrl = '', heroArtName = '', heroArtFallback = '';
+    let heroArtUrl = '', heroArtName = '', heroArtFallback = '', heroArtTile = false;
     if (list.length && list[0].cp) {
       const cus = (list[0].cp.units || []).slice().sort(function (a, b) {
         return (b.core ? 1 : 0) - (a.core ? 1 : 0);
@@ -2519,14 +2525,19 @@ window.TFT = window.TFT || {};
       const cu = cus[0];
       const ach = cu ? (D.champ(cu.id) || D.champByName(cu.name)) : null;
       if (ach) {
-        heroArtUrl = ach.splash || ach.icon || '';
+        /* 部分非英雄单位（如 Krug）的 splash 实际指向 96px 的 tiles 小图，不能当原画放大 */
+        const tileShot = !!ach.splash && ach.splash.indexOf('/tiles/') !== -1;
+        heroArtUrl = tileShot ? (ach.icon || ach.splash) : (ach.splash || ach.icon || '');
         heroArtFallback = ach.icon || '';
+        heroArtTile = !ach.splash || tileShot || !ach.icon;
         heroArtName = ach.name || (cu && cu.name) || '';
       }
     }
     hero.innerHTML =
       '<div class="hero-glow"></div>' +
-      (heroArtUrl ? '<div class="hero-art"><img src="' + U.esc(heroArtUrl) + '" alt="" onload="this.parentNode.classList.add(\'loaded\')" onerror="if(!this.dataset.f&&this.dataset.fb){this.dataset.f=1;this.src=this.dataset.fb}else{this.parentNode.style.display=\'none\'}" data-fb="' + U.esc(heroArtFallback) + '">' +
+      (heroArtUrl ? '<div class="hero-art' + (heroArtTile ? ' tile' : '') + '"><img src="' + U.esc(heroArtUrl) + '" alt="" referrerpolicy="no-referrer"' +
+        ' onload="this.parentNode.classList.add(\'loaded\')"' +
+        ' onerror="if(!this.dataset.f&&this.dataset.fb){this.dataset.f=1;this.parentNode.classList.add(\'tile\');this.src=this.dataset.fb}else{this.parentNode.style.display=\'none\'}" data-fb="' + U.esc(heroArtFallback) + '">' +
         '<div class="ha-cap"><em>榜首主C</em><b>' + U.esc(heroArtName) + '</b></div></div>' : '') +
       '<div class="hero-inner">' +
         '<div class="hero-main-col">' +
@@ -2569,14 +2580,21 @@ window.TFT = window.TFT || {};
         const slides = hotItems.map(function (x, i) {
           const cp = x.cp, tier = x.tier;
           const ch = D.champByName(cp.mainC || '') || {};
-          const art = ch.splash || ch.icon || '';
+          const splash = ch.splash || '';
+          const icon = ch.icon || '';
+          /* 部分单位 splash 指向 96px 的 tiles 小图，按图标块展示而不是拉满背景 */
+          const tileShot = !!splash && splash.indexOf('/tiles/') !== -1;
+          const art = (splash && !tileShot) ? splash : (icon || splash);
+          const tile = !splash || tileShot || !icon;
           const pick = cp.sourceReal && cp.pickRate ? pct(cp.pickRate) : '—';
           const top4 = cp.sourceReal && cp.top4Rate != null ? pct(cp.top4Rate) : '—';
           const avg = cp.sourceReal && cp.avgPlace ? cp.avgPlace : (cp.strength ? strengthLabel(cp.strength) : '—');
           const rank = compRankInfo(cp).rank || (i + 1);
           const un = (cp.units || []).slice(0, 8);
           return '<div class="hot-slide' + (i === 0 ? ' on' : '') + '">' +
-            (art ? '<div class="hot-art"><img src="' + U.esc(art) + '" alt="" loading="' + (i === 0 ? 'eager' : 'lazy') + '" onload="this.parentNode.classList.add(\'loaded\')" onerror="this.style.display=\'none\'"></div>' : '') +
+            (art ? '<div class="hot-art' + (tile ? ' tile' : '') + '"><img src="' + U.esc(art) + '" alt="" loading="' + (i === 0 ? 'eager' : 'lazy') + '" referrerpolicy="no-referrer"' +
+              ' data-fb="' + U.esc(icon) + '" onload="this.parentNode.classList.add(\'loaded\')"' +
+              ' onerror="if(!this.dataset.f&&this.dataset.fb){this.dataset.f=1;this.parentNode.classList.add(\'tile\');this.src=this.dataset.fb}else{this.style.display=\'none\'}"></div>' : '') +
             '<div class="hot-mask"></div>' +
             '<div class="hot-body">' +
               '<div class="hot-meta"><span class="hot-tier t' + U.esc(tier) + '">' + U.esc(tier) + ' 档 · #' + rank + '</span>' +
