@@ -650,10 +650,46 @@ window.TFT = window.TFT || {};
     if (isNaN(t.getTime())) return '';
     return '（' + agoText(t.getTime()) + '）';
   }
+
+  /* 热门阵容轮播：自动播放 + 箭头/圆点 + 指针滑动，鼠标悬停暂停 */
+  function initHotCarousel(root) {
+    const track = root.querySelector('.hot-track');
+    const n = root.querySelectorAll('.hot-slide').length;
+    if (!track || n < 1) return;
+    const dots = root.querySelectorAll('[data-hot-dot]');
+    let idx = 0;
+    function stop() { if (Main.hotTimer) { clearInterval(Main.hotTimer); Main.hotTimer = null; } }
+    function play() { stop(); if (n > 1) Main.hotTimer = setInterval(function () { go(idx + 1); }, 5200); }
+    function go(i) {
+      idx = (i + n) % n;
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      dots.forEach(function (d, k) { d.classList.toggle('on', k === idx); });
+    }
+    root.querySelectorAll('[data-hot-prev]').forEach(function (b) { b.onclick = function () { go(idx - 1); play(); }; });
+    root.querySelectorAll('[data-hot-next]').forEach(function (b) { b.onclick = function () { go(idx + 1); play(); }; });
+    dots.forEach(function (d, k) { d.onclick = function () { go(k); play(); }; });
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', play);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', play);
+    let sx = null;
+    root.addEventListener('pointerdown', function (e) {
+      if (e.target.closest('button')) return;
+      sx = e.clientX;
+    });
+    root.addEventListener('pointerup', function (e) {
+      if (sx == null) return;
+      const dx = e.clientX - sx; sx = null;
+      if (Math.abs(dx) > 40) { go(idx + (dx < 0 ? 1 : -1)); play(); }
+    });
+    go(0); play();
+  }
   function favBtnHTML(cp, extra) {
     const on = isFavNow(cp.id);
+    const labeled = !!(extra && /cc-fav-btn/.test(extra));
+    const txt = labeled ? (on ? '★ 已收藏' : '☆ 收藏') : (on ? '★' : '☆');
     return '<button class="cc-fav' + (on ? ' on' : '') + (extra ? ' ' + extra : '') + '" data-fav="' + U.esc(cp.id) + '"' +
-      ' title="' + (on ? '取消收藏' : '收藏阵容') + '" aria-pressed="' + (on ? 'true' : 'false') + '">' + (on ? '★' : '☆') + '</button>';
+      ' title="' + (on ? '取消收藏' : '收藏阵容') + '" aria-pressed="' + (on ? 'true' : 'false') + '">' + txt + '</button>';
   }
   /* 收藏状态变化后，同步页面上所有同 ID 星标（避免整页重渲染） */
   function syncFavButtons(id, on) {
@@ -2389,6 +2425,7 @@ window.TFT = window.TFT || {};
       }
     }
     TFT.UI.destroyCharts();
+    if (Main.hotTimer) { clearInterval(Main.hotTimer); Main.hotTimer = null; }
 
     /* —— Hero —— */
     const hsRow = function (k, v) {
@@ -2463,6 +2500,60 @@ window.TFT = window.TFT || {};
           '<button class="btn btn-block hs-btn" data-home-act="solve">按当前棋盘求解</button>' +
         '</div>' +
       '</div>' + rosterHTML;
+
+    /* —— 热门阵容轮播（当前段位出场率 TOP 5） —— */
+    const hotEl = $('#homeHot'), hotNote = $('#homeHotNote');
+    if (hotEl) {
+      const hotItems = (list || []).slice().sort(function (a, b) {
+        return ((b.cp.pickRate || 0) - (a.cp.pickRate || 0)) || ((a.rank || 99) - (b.rank || 99));
+      }).slice(0, 5);
+      if (hotItems.length) {
+        const slides = hotItems.map(function (x, i) {
+          const cp = x.cp, tier = x.tier;
+          const ch = D.champByName(cp.mainC || '') || {};
+          const art = ch.splash || ch.icon || '';
+          const pick = cp.sourceReal && cp.pickRate ? pct(cp.pickRate) : '—';
+          const top4 = cp.sourceReal && cp.top4Rate != null ? pct(cp.top4Rate) : '—';
+          const avg = cp.sourceReal && cp.avgPlace ? cp.avgPlace : (cp.strength ? strengthLabel(cp.strength) : '—');
+          const rank = compRankInfo(cp).rank || (i + 1);
+          const un = (cp.units || []).slice(0, 8);
+          return '<div class="hot-slide' + (i === 0 ? ' on' : '') + '">' +
+            (art ? '<div class="hot-art"><img src="' + U.esc(art) + '" alt="" loading="' + (i === 0 ? 'eager' : 'lazy') + '" onload="this.parentNode.classList.add(\'loaded\')" onerror="this.style.display=\'none\'"></div>' : '') +
+            '<div class="hot-mask"></div>' +
+            '<div class="hot-body">' +
+              '<div class="hot-meta"><span class="hot-tier t' + U.esc(tier) + '">' + U.esc(tier) + ' 档 · #' + rank + '</span>' +
+              '<span class="hot-pill">出场 <b>' + pick + '</b></span><span class="hot-pill">前四 <b>' + top4 + '</b></span>' +
+              '<span class="hot-pill">均名 <b>' + avg + '</b></span></div>' +
+              '<h4>' + U.esc(displayName(cp)) + '</h4>' +
+              '<div class="hot-sub">主C <b>' + U.esc(cp.mainC || '—') + '</b>' + (ch.cost ? '（' + ch.cost + ' 费）' : '') +
+              ' · ' + un.length + ' 人口 · ' + (cp.tierLabel || tier) + '</div>' +
+              '<div class="hot-avs">' + un.map(function (u) {
+                const uc = D.champByName(u.name);
+                return '<span class="hot-av c' + U.clamp(u.cost || 0, 1, 5) + '" title="' + U.esc(u.name) + '">' +
+                  (uc ? '<img src="' + U.esc(U.champIcon(uc)) + '" alt="" loading="lazy">' : U.esc(u.name.slice(0, 1))) + '</span>';
+              }).join('') + '</div>' +
+              '<div class="hot-actions"><button class="btn btn-xs btn-primary" data-comp="' + U.esc(cp.id) + '">查看攻略</button>' +
+              favBtnHTML(cp, 'cc-fav-btn hot-star') + '</div>' +
+            '</div></div>';
+        }).join('');
+        const dots = hotItems.length > 1
+          ? '<div class="hot-dots">' + hotItems.map(function (_, i) {
+            return '<button data-hot-dot="' + i + '" class="' + (i === 0 ? 'on' : '') + '" aria-label="第 ' + (i + 1) + ' 套"></button>';
+          }).join('') + '</div>' : '';
+        hotEl.innerHTML = '<div class="hot-viewport"><div class="hot-track">' + slides + '</div></div>' +
+          (hotItems.length > 1 ? '<button class="hot-nav prev" data-hot-prev aria-label="上一套">‹</button><button class="hot-nav next" data-hot-next aria-label="下一套">›</button>' : '') +
+          dots;
+        $$('#homeHot [data-comp]').forEach(function (b) {
+          b.onclick = function () { Main.openCompDetail(b.dataset.comp); };
+        });
+        initHotCarousel(hotEl);
+        if (hotNote) hotNote.textContent = metaReal
+          ? 'OP.GG ' + (homeTierLabel || '全段位') + ' · 近 24 小时出场率 TOP ' + hotItems.length
+          : '按当前榜单排名推荐 · TOP ' + hotItems.length;
+      } else {
+        hotEl.innerHTML = '<div class="dim" style="padding:14px">当前筛选下暂无阵容</div>';
+      }
+    }
 
     /* —— KPI —— */
     const kpi = $('#homeKpiRow');
