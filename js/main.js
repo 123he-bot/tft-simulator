@@ -657,7 +657,16 @@ window.TFT = window.TFT || {};
         '<span><em>均名</em><b>' + cp.avgPlace + '</b></span>' +
         '</div>'
       : '';
-    return '<div class="comp-card" data-comp="' + U.esc(cp.id) + '">' +
+    const ua = (cp.units || []).slice(0, 5).map(function (u) {
+      const ch = D.champ(u.id) || D.champByName(u.name);
+      const ic = ch && ch.icon;
+      return '<span class="cc-u c' + U.clamp(u.cost || 1, 1, 5) + (u.core ? ' core' : '') + '" title="' + U.esc(u.name) + '">' +
+        (ic ? '<img src="' + U.esc(ic) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
+        '<i>' + U.esc(String(u.name || '?').slice(0, 1)) + '</i></span>';
+    }).join('');
+    const uMore = (cp.units || []).length > 5 ? '<span class="cc-u more">+' + ((cp.units || []).length - 5) + '</span>' : '';
+    return '<div class="comp-card ct-' + U.esc(tier || 'NA') + '" data-comp="' + U.esc(cp.id) + '">' +
+      '<div class="cc-art">' + ua + uMore + '</div>' +
       '<div class="cc-head"><span class="tier-dot td-' + U.esc(tier) + '">' + U.esc(tier) + '</span>' +
       '<span class="cc-name">' + (nameHTML || U.esc(displayName(cp))) + '</span><span class="cc-rank">' + rankTxt + '</span></div>' +
       '<div class="cc-line">主C <b>' + U.esc(cp.mainC || '-') + '</b> · ' + ((cp.units || []).length) + ' 人口 · ' + U.esc(cp.source || '') +
@@ -2115,8 +2124,41 @@ window.TFT = window.TFT || {};
     const hsRow = function (k, v) {
       return '<div class="hs"><span class="hs-k">' + U.esc(k) + '</span><span class="hs-v">' + U.esc(v) + '</span></div>';
     };
+    const roster = [];
+    outer: for (let i = 0; i < (list || []).length && roster.length < 7; i++) {
+      const us = ((list[i] && list[i].cp && list[i].cp.units) || []).slice().sort(function (a, b) {
+        return (b.core ? 1 : 0) - (a.core ? 1 : 0);
+      });
+      for (let j = 0; j < us.length; j++) {
+        const ch = D.champ(us[j].id) || D.champByName(us[j].name);
+        if (!ch || !ch.icon) continue;
+        if (!roster.some(function (x) { return x.id === ch.id; })) roster.push(ch);
+        if (roster.length >= 7) break outer;
+      }
+    }
+    const rosterHTML = roster.length
+      ? '<div class="hero-roster"><span class="hr-title">本季核心棋子</span>' +
+        roster.map(function (ch) {
+          return '<span class="hr-item" title="' + U.esc(ch.name) + '">' +
+            '<img class="hr-av c' + U.clamp(ch.cost || 1, 1, 5) + '" src="' + U.esc(ch.icon) + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' +
+            '<b>' + U.esc(ch.name) + '</b></span>';
+        }).join('') +
+        '<span class="hr-foot">' + roster.length + ' 位高频核心 · 数据来自真实对局采样</span></div>'
+      : '';
+    /* 榜首主C 原画：作为 Hero 右侧角色卡，让首页有真实游戏画面 */
+    let heroArtUrl = '', heroArtName = '';
+    if (list.length && list[0].cp) {
+      const cus = (list[0].cp.units || []).slice().sort(function (a, b) {
+        return (b.core ? 1 : 0) - (a.core ? 1 : 0);
+      });
+      const cu = cus[0];
+      const ach = cu ? (D.champ(cu.id) || D.champByName(cu.name)) : null;
+      if (ach) { heroArtUrl = ach.splash || ach.icon || ''; heroArtName = ach.name || (cu && cu.name) || ''; }
+    }
     hero.innerHTML =
       '<div class="hero-glow"></div>' +
+      (heroArtUrl ? '<div class="hero-art"><img src="' + U.esc(heroArtUrl) + '" alt="" onerror="this.parentNode.style.display=\'none\'">' +
+        '<div class="ha-cap"><em>榜首主C</em><b>' + U.esc(heroArtName) + '</b></div></div>' : '') +
       '<div class="hero-inner">' +
         '<div class="hero-main-col">' +
           '<div class="hero-badge">' + U.esc(curSet || '—') +
@@ -2146,7 +2188,7 @@ window.TFT = window.TFT || {};
           hsRow('数据源', metaReal ? 'OP.GG · 实时阵容榜' : metaLocal ? '本地规则推断' : (metaIsCurrent ? 'MetaTFT · 可溯源' : 'MetaTFT · ' + metaSet)) +
           '<button class="btn btn-block hs-btn" data-home-act="solve">按当前棋盘求解</button>' +
         '</div>' +
-      '</div>';
+      '</div>' + rosterHTML;
 
     /* —— KPI —— */
     const kpi = $('#homeKpiRow');
@@ -2290,8 +2332,12 @@ window.TFT = window.TFT || {};
     const maxN = tr.length ? Math.max.apply(null, tr.map(x => x.count || 1)) : 1;
     if (ladder) ladder.innerHTML = tr.length ? tr.map(function (x, i) {
       const w = U.clamp(Math.round((x.count / maxN) * 100), 6, 100);
+      const tt = D.trait(x.name);
+      const ico = (tt && tt.icon)
+        ? '<span class="sr-ico"><img src="' + U.esc(tt.icon) + '" alt="" loading="lazy" onerror="this.parentNode.style.visibility=\'hidden\'"></span>'
+        : '<span class="sr-ico"></span>';
       return '<div class="stat-row' + (metaReal ? ' clickable" data-ladder="' + U.esc(x.name) : '') + '">' +
-        '<span class="sr-rank">' + (i + 1) + '</span>' +
+        '<span class="sr-rank">' + (i + 1) + '</span>' + ico +
         '<span class="sr-name">' + U.esc(x.name) + (metaReal ? ' <span class="dim">激活 ' + x.count + '</span>' : '') + '</span>' +
         '<span class="sr-bar"><i style="width:' + w + '%"></i></span>' +
         '<span class="sr-val">' + (metaReal ? '均名 ' + (x.avg === 99 ? '—' : x.avg) : x.count) + '</span></div>';
