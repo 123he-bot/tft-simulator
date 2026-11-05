@@ -225,6 +225,11 @@ def main():
         traits = []
         for t in comp.get('traits') or []:
             name = (t.get('meta') or {}).get('name') or t.get('key') or ''
+            # OP.GG 会把「日蚀骑士 + 月蚀骑士」合并成聚合羁绊（如「日月双蚀」），
+            # 这类不在站内真实羁绊表里的名字会让图标/阈值查询落空，直接跳过。
+            if name not in trait_def:
+                print('skip unknown trait:', name)
+                continue
             active = int(num(t.get('numUnits'), 0))
             need, style = need_style(trait_def.get(name), active)
             if not style:
