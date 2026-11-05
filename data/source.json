@@ -4,7 +4,7 @@
   "https://raw.communitydragon.org/latest/cdragon/tft/zh_cn.json",
   "https://raw.communitydragon.org/latest/cdragon/tft/en_us.json"
  ],
- "fetchedAt": "2026-11-02 02:21:32",
+ "fetchedAt": "2026-11-05 02:27:27",
  "locale": "zh_cn",
  "sets": [
   "s3",
@@ -13,8 +13,7 @@
   "s14",
   "s15",
   "s16",
-  "s17",
-  "s18"
+  "s17"
  ],
  "counts": {
   "augments": 973,
@@ -90,15 +89,6 @@
    "name": "自然之力",
    "champions": 65,
    "traits": 35
-  }
- },
- "extraSource": {
-  "S18": {
-   "label": "S18 自然之力",
-   "source": "op.gg 中文站内嵌数据（原始来源为 Riot 游戏文件）",
-   "url": "https://op.gg/zh-cn/tft/meta-trends/champion?version=18.5",
-   "note": "官方 CommunityDragon JSON 尚未收录 Set18；技能文本为英文原文，未作翻译",
-   "detail": "data/source_set18.json"
   }
  }
 }
