@@ -27,6 +27,10 @@ jobs:
         continue-on-error: true
         run: python tools/crawl_comps.py
 
+      - name: Crawl S18 augments & items
+        continue-on-error: true
+        run: python tools/crawl_set18.py --catalog-only
+
       - name: Crawl official data
         run: python tools/crawl_cdragon.py --refresh --no-archive
 
