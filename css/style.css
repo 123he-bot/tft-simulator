@@ -1986,6 +1986,19 @@ b,strong{font-weight:700}
 .dc-dist-item{display:inline-flex;align-items:center;gap:5px;font-size:9.5px;color:var(--dim);white-space:nowrap}
 .dc-dist-item i{width:7px;height:7px;border-radius:2px;flex-shrink:0}
 .dc-dist-item b{color:var(--text);font-variant-numeric:tabular-nums}
+/* 图表点击筛选态 */
+.dc-bar-row.actable{cursor:pointer;border-radius:5px;margin:-2px -5px;padding:2px 5px;transition:background .12s}
+.dc-bar-row.actable:hover{background:rgba(47,224,238,.07)}
+.dc-bar-row.actable.on{background:rgba(47,224,238,.1)}
+.dc-bar-row.actable.on .dc-bar-label{color:var(--accent);font-weight:700}
+.dc-bar-row.actable.on .dc-bar-track{box-shadow:0 0 0 1px var(--accent-line)}
+.dc-bar-row.actable:focus-visible,.dc-dist-seg.actable:focus-visible,.dc-dist-item.actable:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.dc-dist-seg.actable{cursor:pointer;transition:filter .12s,opacity .12s}
+.dc-dist-seg.actable:hover{filter:brightness(1.3)}
+.dc-dist-item.actable{cursor:pointer;border-radius:4px;margin:-2px -4px;padding:2px 4px;transition:background .12s,color .12s}
+.dc-dist-item.actable:hover{background:rgba(47,224,238,.07)}
+.dc-dist-item.on{color:var(--accent);font-weight:700}
+.dc-dist-item.on b{color:var(--accent)}
 .dc-note{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:9.5px;line-height:1.7;color:var(--mute)}
 
 .dc-detail-head{display:flex;align-items:center;gap:12px;padding-bottom:10px;border-bottom:1px solid var(--line)}

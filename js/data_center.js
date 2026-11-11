@@ -37,10 +37,10 @@ window.TFT = window.TFT || {};
 
   const S = DC.state = {
     tab: 'explorer', tier: null, q: '',
-    costs: [], trait: '', sort: 'avgPlace', compare: [],
+    costs: [], trait: '', sort: 'avgPlace', compare: [], grades: [],
     unitCosts: [], unitTrait: '', unitMainOnly: false, unitSort: 'comps',
     itemCat: 'all', itemSort: 'grade',
-    traitGraded: false, traitSort: 'grade',
+    traitGraded: false, traitSort: 'grade', traitGrade: '',
     augRarity: 'all', augTier: 'all', augTrait: '', augSort: 'grade'
   };
 
@@ -64,6 +64,7 @@ window.TFT = window.TFT || {};
     if (sp.has('trait')) o.trait = sp.get('trait');
     if (sp.has('sort')) o.sort = sp.get('sort');
     if (sp.has('cmp')) o.cmp = String(sp.get('cmp') || '').split(',').filter(Boolean).slice(0, 3);
+    if (sp.has('grades')) o.grades = String(sp.get('grades') || '').split(',').filter(function (g) { return GRADE_RANK[g] != null; });
     if (sp.has('ucosts')) o.ucosts = nums(sp.get('ucosts'), COSTS);
     if (sp.has('utrait')) o.utrait = sp.get('utrait');
     if (sp.has('umain')) o.umain = sp.get('umain') === '1';
@@ -72,6 +73,7 @@ window.TFT = window.TFT || {};
     if (sp.has('isort')) o.isort = sp.get('isort');
     if (sp.has('tgraded')) o.tgraded = sp.get('tgraded') === '1';
     if (sp.has('tsort')) o.tsort = sp.get('tsort');
+    if (sp.has('tgrade')) o.tgrade = sp.get('tgrade');
     if (sp.has('ararity')) o.ararity = sp.get('ararity');
     if (sp.has('atier')) o.atier = sp.get('atier');
     if (sp.has('afit')) o.afit = sp.get('afit');
@@ -86,6 +88,7 @@ window.TFT = window.TFT || {};
     if (o.trait != null) S.trait = String(o.trait);
     if (URL_SORTS.explorer.indexOf(o.sort) >= 0) S.sort = o.sort;
     if (o.cmp) S.compare = o.cmp.filter(function (id, i, arr) { return arr.indexOf(id) === i; }).slice(0, 3);
+    if (o.grades) S.grades = o.grades.slice();
     if (o.ucosts) S.unitCosts = o.ucosts.slice();
     if (o.utrait != null) S.unitTrait = String(o.utrait);
     if (o.umain != null) S.unitMainOnly = !!o.umain;
@@ -94,6 +97,7 @@ window.TFT = window.TFT || {};
     if (URL_SORTS.items.indexOf(o.isort) >= 0) S.itemSort = o.isort;
     if (o.tgraded != null) S.traitGraded = !!o.tgraded;
     if (URL_SORTS.traits.indexOf(o.tsort) >= 0) S.traitSort = o.tsort;
+    if (o.tgrade === '' || ['S', 'A', 'B', 'C', 'D', '—'].indexOf(o.tgrade) >= 0) S.traitGrade = String(o.tgrade);
     if (RARITIES.some(function (r) { return r.key === o.ararity; })) S.augRarity = o.ararity;
     if (o.atier === 'all' || AUG_TIERS.indexOf(o.atier) >= 0) S.augTier = o.atier;
     if (o.afit != null) S.augTrait = String(o.afit);
@@ -104,9 +108,9 @@ window.TFT = window.TFT || {};
   function tabFilters() {
     if (S.tab === 'units') return { ucosts: S.unitCosts.slice(), utrait: S.unitTrait, umain: S.unitMainOnly, usort: S.unitSort };
     if (S.tab === 'items') return { cat: S.itemCat, isort: S.itemSort };
-    if (S.tab === 'traits') return { tgraded: S.traitGraded, tsort: S.traitSort };
+    if (S.tab === 'traits') return { tgraded: S.traitGraded, tsort: S.traitSort, tgrade: S.traitGrade };
     if (S.tab === 'augments') return { ararity: S.augRarity, atier: S.augTier, afit: S.augTrait, asort: S.augSort };
-    return { costs: S.costs.slice(), trait: S.trait, sort: S.sort, cmp: S.compare.slice() };
+    return { costs: S.costs.slice(), trait: S.trait, sort: S.sort, cmp: S.compare.slice(), grades: S.grades.slice() };
   }
 
   function queryString() {
@@ -117,6 +121,7 @@ window.TFT = window.TFT || {};
     if (f.trait) p.push('trait=' + encodeURIComponent(f.trait));
     if (f.sort) p.push('sort=' + encodeURIComponent(f.sort));
     if (f.cmp && f.cmp.length) p.push('cmp=' + f.cmp.map(encodeURIComponent).join(','));
+    if (f.grades && f.grades.length) p.push('grades=' + f.grades.map(encodeURIComponent).join(','));
     if (f.ucosts && f.ucosts.length) p.push('ucosts=' + f.ucosts.slice().sort().join(','));
     if (f.utrait) p.push('utrait=' + encodeURIComponent(f.utrait));
     if (f.umain) p.push('umain=1');
@@ -125,6 +130,7 @@ window.TFT = window.TFT || {};
     if (f.isort) p.push('isort=' + encodeURIComponent(f.isort));
     if (f.tgraded) p.push('tgraded=1');
     if (f.tsort) p.push('tsort=' + encodeURIComponent(f.tsort));
+    if (f.tgrade) p.push('tgrade=' + encodeURIComponent(f.tgrade));
     if (f.ararity) p.push('ararity=' + encodeURIComponent(f.ararity));
     if (f.atier) p.push('atier=' + encodeURIComponent(f.atier));
     if (f.afit) p.push('afit=' + encodeURIComponent(f.afit));
@@ -475,11 +481,12 @@ window.TFT = window.TFT || {};
   function renderTraits() {
     const all = traitAgg(S.tier);
     const q = S.q;
-    const list = all.filter(function (a) {
+    const base = all.filter(function (a) {
       if (S.traitGraded && a.grade === '—') return false;
       if (q && !matchQ(a.name.toLowerCase(), q)) return false;
       return true;
     });
+    const list = base.filter(function (a) { return !S.traitGrade || a.grade === S.traitGrade; });
     const sorters = {
       grade: function (x, y) {
         const gx = x.grade === '—' ? 9 : 'SABCD'.indexOf(x.grade);
@@ -497,9 +504,11 @@ window.TFT = window.TFT || {};
     const hasStats = games > 0;
     const top4 = wavg(list, 'top4Rate');
 
-    const gradeMap = countBy(list, function (a) { return a.grade; });
+    const gradeMap = countBy(base, function (a) { return a.grade; });
     const gradeDist = ['S', 'A', 'B', 'C', 'D', '—'].filter(function (g) { return gradeMap[g]; })
-      .map(function (g) { return { label: g === '—' ? '未评级' : g + ' 级', value: gradeMap[g], color: GRADE_COLOR[g] }; });
+      .map(function (g) {
+        return { label: g === '—' ? '未评级' : g + ' 级', value: gradeMap[g], color: GRADE_COLOR[g], act: 'charttgrade', key: g, on: S.traitGrade === g };
+      });
 
     const rows = list.map(function (a) {
       const icon = traitIcon(a.name);
@@ -531,7 +540,7 @@ window.TFT = window.TFT || {};
         { v: hasStats ? fnum(games) : '—', k: '阵容样本', s: hasStats ? comps.length + ' 套阵容合计' : '该赛季无对局统计' },
         { v: hasStats ? fp(top4) : '—', k: '加权前四率', s: '当前筛选按局数加权' }
       ]) +
-      '<div class="dc-charts one">' + distCard('羁绊评级分布', all.length + ' 个羁绊', gradeDist) + '</div>' +
+      '<div class="dc-charts one">' + distCard('羁绊评级分布', '点击筛选评级', gradeDist) + '</div>' +
       '<div class="dc-table-wrap"><table class="dc-table"><thead><tr>' +
         '<th>评级</th><th>羁绊</th><th class="num">样本局数</th><th class="num">登场占比</th><th class="num">均名</th><th class="num">前四</th><th class="num">登顶</th><th class="dc-col-opt">代表阵容</th>' +
       '</tr></thead><tbody>' + (rows || '<tr><td colspan="8"><div class="dc-empty">当前筛选下没有羁绊。试试关闭「仅看有评级」。</div></td></tr>') + '</tbody></table></div>' +
@@ -647,7 +656,11 @@ window.TFT = window.TFT || {};
       '<div class="dc-bars">' + (rows || []).map(function (r, i) {
         const v = Number(r.value) || 0;
         const pct = v > 0 ? Math.max(2, (v / max) * 100) : 0;
-        return '<div class="dc-bar-row" title="' + esc(r.label + '：' + v + (o.unit || '')) + '">' +
+        const cls = 'dc-bar-row' + (r.act ? ' actable' : '') + (r.on ? ' on' : '');
+        const attrs = r.act
+          ? ' role="button" tabindex="0" data-dc-act="' + r.act + '" data-key="' + esc(String(r.key)) + '" aria-pressed="' + (r.on ? 'true' : 'false') + '"'
+          : '';
+        return '<div class="' + cls + '"' + attrs + ' title="' + esc(r.label + '：' + v + (o.unit || '') + (r.act ? '（点击筛选）' : '')) + '">' +
           '<span class="dc-bar-label">' + esc(r.label) + '</span>' +
           '<span class="dc-bar-track"><i class="dc-bar-fill' + (r.cls ? ' ' + r.cls : '') + '" style="--w:' + pct.toFixed(1) + '%;animation-delay:' + (i * 28) + 'ms"></i></span>' +
           '<b class="dc-bar-val">' + fnum(v) + '</b></div>';
@@ -656,22 +669,27 @@ window.TFT = window.TFT || {};
 
   function distCard(title, sub, rows) {
     const vis = (rows || []).filter(function (r) { return (Number(r.value) || 0) > 0; });
+    const attrsOf = function (r, extra) {
+      return r.act
+        ? ' role="button" tabindex="0" data-dc-act="' + r.act + '" data-key="' + esc(String(r.key)) + '" aria-pressed="' + (r.on ? 'true' : 'false') + '"' + (extra || '')
+        : '';
+    };
     return '<div class="dc-chart-card dc-dist-card">' +
       '<div class="dc-chart-head"><b>' + esc(title) + '</b><em>' + esc(sub) + '</em></div>' +
       '<div class="dc-dist-bar" role="img" aria-label="' + esc(title + '：' + (vis.length ? vis.map(function (r) { return r.label + ' ' + r.value; }).join('，') : '暂无数据')) + '">' +
         (vis.length ? vis.map(function (r) {
-          return '<i class="dc-dist-seg" style="flex:' + (Number(r.value) || 0) + ';background:' + (r.color || 'var(--panel-4)') + '" title="' + esc(r.label + ' ' + r.value) + '"></i>';
+          return '<i class="dc-dist-seg' + (r.act ? ' actable' : '') + '" style="flex:' + (Number(r.value) || 0) + ';background:' + (r.color || 'var(--panel-4)') + '"' + attrsOf(r) + ' title="' + esc(r.label + ' ' + r.value + (r.act ? '（点击筛选）' : '')) + '"></i>';
         }).join('') : '<i class="dc-dist-seg" style="flex:1"></i>') +
       '</div>' +
       '<div class="dc-dist-legend">' + (rows || []).map(function (r) {
-        return '<span class="dc-dist-item"><i style="background:' + (r.color || 'var(--panel-4)') + '"></i>' + esc(r.label) + '<b>' + fnum(Number(r.value) || 0) + '</b></span>';
+        return '<span class="dc-dist-item' + (r.act ? ' actable' : '') + (r.on ? ' on' : '') + '"' + attrsOf(r) + '><i style="background:' + (r.color || 'var(--panel-4)') + '"></i>' + esc(r.label) + '<b>' + fnum(Number(r.value) || 0) + '</b></span>';
       }).join('') + '</div>' +
     '</div>';
   }
 
   function gradeRowsOf(map, order) {
     return (order || ['S', 'A', 'B', 'C', 'D', '—']).filter(function (g) { return map[g]; }).map(function (g) {
-      return { label: g === '—' ? '未评级' : g + ' 级', value: map[g], cls: 'g-' + (g === '—' ? 'na' : g.toLowerCase()) };
+      return { label: g === '—' ? '未评级' : g + ' 级', value: map[g], cls: 'g-' + (g === '—' ? 'na' : g.toLowerCase()), key: g };
     });
   }
 
@@ -743,7 +761,11 @@ window.TFT = window.TFT || {};
   /* ==================== 渲染：数据检索器 ==================== */
   function explorerCharts(list) {
     const gm = countBy(list, function (cp) { return cp.tier || '—'; });
-    const gradeRows = gradeRowsOf(gm, ['OP', 'S', 'A', 'B', 'C', 'D', '—']);
+    const gradeRows = gradeRowsOf(gm, ['OP', 'S', 'A', 'B', 'C', 'D', '—']).map(function (r) {
+      r.act = 'chartgrade';
+      r.on = S.grades.indexOf(r.key) >= 0;
+      return r;
+    });
     const cm = {};
     list.forEach(function (cp) {
       (cp.units || []).forEach(function (u) {
@@ -752,18 +774,18 @@ window.TFT = window.TFT || {};
       });
     });
     const costRows = COSTS.map(function (c) {
-      return { label: c + ' 费', value: cm[c] || 0, cls: 'c' + c };
+      return { label: c + ' 费', value: cm[c] || 0, cls: 'c' + c, act: 'chartcost', key: c, on: S.costs.indexOf(c) >= 0 };
     });
     const tm = {};
     list.forEach(function (cp) {
       (cp.traits || []).forEach(function (t) { if (t && t.name) tm[t.name] = (tm[t.name] || 0) + 1; });
     });
     const traitRows = Object.keys(tm).sort(function (a, b) { return tm[b] - tm[a]; }).slice(0, 6)
-      .map(function (n) { return { label: n, value: tm[n], cls: 'trait' }; });
+      .map(function (n) { return { label: n, value: tm[n], cls: 'trait', act: 'charttrait', key: n, on: S.trait === n }; });
     return '<div class="dc-charts">' +
-      barChart('阵容评级分布', list.length + ' 套阵容', gradeRows, { unit: ' 套' }) +
-      barChart('上阵费用分布', '按棋子出现次数', costRows, { unit: ' 次' }) +
-      barChart('核心羁绊热度', '携带套数 Top 6', traitRows, { unit: ' 套' }) +
+      barChart('阵容评级分布', list.length + ' 套 · 点击筛选', gradeRows, { unit: ' 套' }) +
+      barChart('上阵费用分布', '点击筛选费用', costRows, { unit: ' 次' }) +
+      barChart('核心羁绊热度', '点击筛选羁绊', traitRows, { unit: ' 套' }) +
       '</div>';
   }
 
@@ -771,11 +793,14 @@ window.TFT = window.TFT || {};
     const comps = compsForTier(S.tier);
     const costs = S.costs;
     const q = S.q;
-    const list = comps.filter(function (cp) {
+    const base = comps.filter(function (cp) {
       if (costs.length && !(cp.units || []).some(function (u) { return costs.indexOf(Number(u.cost)) >= 0; })) return false;
       if (S.trait && !(cp.traits || []).some(function (t) { return t.name === S.trait; })) return false;
       if (q && !matchQ(compHay(cp), q)) return false;
       return true;
+    });
+    const list = base.filter(function (cp) {
+      return !S.grades.length || S.grades.indexOf(cp.tier || '—') >= 0;
     });
     const sorters = {
       avgPlace: function (a, b) { return (a.avgPlace || 99) - (b.avgPlace || 99); },
@@ -824,7 +849,7 @@ window.TFT = window.TFT || {};
         { v: fplace(wavg(list, 'avgPlace')), k: '加权均名', s: '按对局数加权' },
         { v: fp(wavg(list, 'top4Rate')), k: '加权前四率', s: strong + ' 套 S/OP' }
       ]) +
-      explorerCharts(list) +
+      explorerCharts(base) +
       '<div class="dc-table-wrap"><table class="dc-table"><thead><tr>' +
         '<th class="dc-col-pick">对比</th><th>评级</th><th>阵容</th><th class="dc-col-opt">核心羁绊</th><th class="num">均名</th><th class="num">前四</th><th class="num">登顶</th><th class="num dc-col-opt">选取</th><th class="num">对局</th>' +
       '</tr></thead><tbody>' + (rows || '<tr><td colspan="9"><div class="dc-empty">当前筛选下没有阵容。试试放宽费用 / 羁绊条件。</div></td></tr>') + '</tbody></table></div>' +
@@ -905,14 +930,14 @@ window.TFT = window.TFT || {};
     const real = hasRealS18();
     const all = real ? itemRowsReal() : itemRowsFromComps(S.tier);
     const q = S.q;
-    const list = (all || []).filter(function (r) {
-      if (S.itemCat !== 'all' && r.category !== S.itemCat) return false;
+    const base = (all || []).filter(function (r) {
       if (q) {
         const hay = [r.name, r.desc, (r.wearers || []).map(function (w) { return w.name; }).join(' '), (r.recipeNames || []).join(' ')].join(' ').toLowerCase();
         if (!matchQ(hay, q)) return false;
       }
       return true;
     });
+    const list = base.filter(function (r) { return S.itemCat === 'all' || r.category === S.itemCat; });
     const sorters = {
       grade: function (a, b) { return (GRADE_RANK[a.grade] || 6) - (GRADE_RANK[b.grade] || 6) || (a.avgPlace || 99) - (b.avgPlace || 99); },
       avgPlace: function (a, b) { return (a.avgPlace || 99) - (b.avgPlace || 99); },
@@ -924,9 +949,11 @@ window.TFT = window.TFT || {};
     const totalGames = list.reduce(function (s, r) { return s + (Number(r.total) || 0); }, 0);
     const top4W = list.reduce(function (s, r) { return s + (Number(r.top4Rate) || 0) * (Number(r.total) || 0); }, 0);
     const best = list.filter(function (r) { return r.grade === 'S' || r.grade === 'A'; }).length;
-    const catMap = countBy(list, function (r) { return r.category || 'misc'; });
+    const catMap = countBy(base, function (r) { return r.category || 'misc'; });
     const catRows = Object.keys(catMap).sort(function (a, b) { return catMap[b] - catMap[a]; })
-      .map(function (k) { return { label: CAT_LABEL[k] || k, value: catMap[k], color: CAT_COLOR[k] || '#5d697d' }; });
+      .map(function (k) {
+        return { label: CAT_LABEL[k] || k, value: catMap[k], color: CAT_COLOR[k] || '#5d697d', act: 'chartcat', key: k, on: S.itemCat === k };
+      });
     const rows = list.map(function (r) {
       return '<tr class="dc-row" tabindex="0" data-dc-act="item" data-id="' + esc(r.id) + '" title="查看装备详情">' +
         '<td>' + gtag(r.grade) + '</td>' +
@@ -958,7 +985,7 @@ window.TFT = window.TFT || {};
         { v: totalGames ? fp(top4W / totalGames) : '—', k: '加权前四率', s: '按出场数加权' },
         { v: best, k: 'S/A 评级', s: real ? '同类装备内分位' : '样本不足不评级' }
       ]) +
-      '<div class="dc-charts one">' + distCard('装备类型分布', '当前筛选 ' + list.length + ' 件', catRows) + '</div>' +
+      '<div class="dc-charts one">' + distCard('装备类型分布', '点击筛选类型', catRows) + '</div>' +
       '<div class="dc-table-wrap"><table class="dc-table"><thead><tr>' +
         '<th>评级</th><th>装备</th><th class="num">出场</th><th class="num">前四</th><th class="num">登顶</th><th class="num">均名</th><th class="dc-col-opt">常见携带者</th><th class="dc-col-opt">配方</th>' +
       '</tr></thead><tbody>' + (rows || '<tr><td colspan="8"><div class="dc-empty">当前筛选下没有装备。</div></td></tr>') + '</tbody></table></div>' +
@@ -1296,10 +1323,10 @@ window.TFT = window.TFT || {};
 
   function resetFilters() {
     S.q = '';
-    if (S.tab === 'explorer') { S.costs = []; S.trait = ''; S.sort = 'avgPlace'; S.compare = []; }
+    if (S.tab === 'explorer') { S.costs = []; S.trait = ''; S.sort = 'avgPlace'; S.compare = []; S.grades = []; }
     else if (S.tab === 'units') { S.unitCosts = []; S.unitTrait = ''; S.unitMainOnly = false; S.unitSort = 'comps'; }
     else if (S.tab === 'items') { S.itemCat = 'all'; S.itemSort = 'grade'; }
-    else if (S.tab === 'traits') { S.traitGraded = false; S.traitSort = 'grade'; }
+    else if (S.tab === 'traits') { S.traitGraded = false; S.traitSort = 'grade'; S.traitGrade = ''; }
     else if (S.tab === 'augments') { S.augRarity = 'all'; S.augTier = 'all'; S.augTrait = ''; S.augSort = 'grade'; }
     renderBody();
   }
@@ -1316,6 +1343,8 @@ window.TFT = window.TFT || {};
       S.trait = '';
       S.unitTrait = '';
       S.compare = [];
+      S.grades = [];
+      S.traitGrade = '';
       renderShell();
       return;
     }
@@ -1342,6 +1371,19 @@ window.TFT = window.TFT || {};
     if (act === 'icat') { S.itemCat = key; renderBody(); return; }
     if (act === 'ararity') { S.augRarity = key; renderBody(); return; }
     if (act === 'atier') { S.augTier = key; renderBody(); return; }
+    if (act === 'chartgrade') {
+      const i = S.grades.indexOf(key);
+      if (i >= 0) S.grades.splice(i, 1); else S.grades.push(key);
+      renderBody(); return;
+    }
+    if (act === 'chartcost') {
+      const c = Number(key), i = S.costs.indexOf(c);
+      if (i >= 0) S.costs.splice(i, 1); else S.costs.push(c);
+      renderBody(); return;
+    }
+    if (act === 'charttrait') { S.trait = (S.trait === key ? '' : key); renderBody(); return; }
+    if (act === 'chartcat') { S.itemCat = (S.itemCat === key ? 'all' : key); renderBody(); return; }
+    if (act === 'charttgrade') { S.traitGrade = (S.traitGrade === key ? '' : key); renderBody(); return; }
   }
 
   function onChange(e) {
@@ -1372,7 +1414,7 @@ window.TFT = window.TFT || {};
 
   function onKeydown(e) {
     if (e.key !== 'Enter' && e.key !== ' ') return;
-    const row = e.target.closest('tr[data-dc-act]');
+    const row = e.target.closest('tr[data-dc-act], [data-dc-act][role="button"]');
     if (!row) return;
     e.preventDefault();
     row.click();

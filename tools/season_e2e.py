@@ -164,6 +164,33 @@ function dataCenter() {
     chartBars: v ? v.querySelectorAll('#dcBody .dc-bar-fill').length : 0,
     title: v ? ((v.querySelector('.dc-title') || {}).textContent || '') : ''
   };
+  var cg = v.querySelector('#dcBody [data-dc-act="chartgrade"]');
+  if (cg) {
+    res.cgOrig = dcRows();
+    cg.click();
+    res.cgOn = !!v.querySelector('#dcBody [data-dc-act="chartgrade"].on');
+    res.cgHash = f.contentWindow.location.hash;
+    res.cgRows = dcRows();
+    var cgOn = v.querySelector('#dcBody [data-dc-act="chartgrade"].on');
+    if (cgOn) cgOn.click();
+    res.cgOffRows = dcRows();
+  }
+  var cc = v.querySelector('#dcBody [data-dc-act="chartcost"][data-key="5"]');
+  if (cc) {
+    cc.click();
+    res.ccOn = !!v.querySelector('#dcBody [data-dc-act="chartcost"][data-key="5"].on');
+    res.ccHash = f.contentWindow.location.hash;
+    var ccOn = v.querySelector('#dcBody [data-dc-act="chartcost"][data-key="5"].on');
+    if (ccOn) ccOn.click();
+  }
+  var ct = v.querySelector('#dcBody [data-dc-act="charttrait"]');
+  if (ct) {
+    ct.click();
+    res.ctOn = !!v.querySelector('#dcBody [data-dc-act="charttrait"].on');
+    res.ctHash = f.contentWindow.location.hash;
+    var ctOn = v.querySelector('#dcBody [data-dc-act="charttrait"].on');
+    if (ctOn) ctOn.click();
+  }
   var t = v.querySelector('[data-dc-act="tier"][data-key="platinum"]');
   if (t) { t.click(); res.tierRows = dcRows(); }
   var c = v.querySelector('[data-dc-act="cost"][data-key="5"]');
@@ -176,6 +203,14 @@ function dataCenter() {
   res.itemRows = dcRows();
   res.itemGrades = v.querySelectorAll('#dcBody .dc-grade').length;
   res.itemDist = v.querySelectorAll('#dcBody .dc-dist-card').length;
+  var ic = v.querySelector('#dcBody [data-dc-act="chartcat"]');
+  if (ic) {
+    ic.click();
+    res.icOn = !!v.querySelector('#dcBody [data-dc-act="chartcat"].on');
+    res.icHash = f.contentWindow.location.hash;
+    var icOn = v.querySelector('#dcBody [data-dc-act="chartcat"].on');
+    if (icOn) icOn.click();
+  }
   var ia = v.querySelector('[data-dc-act="icat"][data-key="artifact"]');
   if (ia) { ia.click(); res.artifactRows = dcRows(); res.artifactOn = !!v.querySelector('[data-dc-act="icat"][data-key="artifact"].on'); }
   var ir = v.querySelector('#dcBody .dc-row');
@@ -197,6 +232,17 @@ function dataCenter() {
   res.traitRows = dcRows();
   res.traitGrades = v.querySelectorAll('#dcBody .dc-grade').length;
   res.traitDist = v.querySelectorAll('#dcBody .dc-dist-card').length;
+  var tgd = v.querySelector('#dcBody [data-dc-act="charttgrade"]');
+  if (tgd) {
+    res.tgOrig = dcRows();
+    tgd.click();
+    res.tgOn = !!v.querySelector('#dcBody [data-dc-act="charttgrade"].on');
+    res.tgHash = f.contentWindow.location.hash;
+    res.tgRows = dcRows();
+    var tgdOn = v.querySelector('#dcBody [data-dc-act="charttgrade"].on');
+    if (tgdOn) tgdOn.click();
+    res.tgOffRows = dcRows();
+  }
   var tg = v.querySelector('[data-dc-act="tgraded"]');
   if (tg) { tg.click(); res.traitGradedRows = dcRows(); res.traitGradedOn = !!v.querySelector('[data-dc-act="tgraded"].on'); }
   var tr = v.querySelector('#dcBody .dc-row');
@@ -657,6 +703,22 @@ def run(keep=False):
     check('装备/羁绊/符文页含分布图', dc.get('itemDist', 0) >= 1 and dc.get('traitDist', 0) >= 1
           and dc.get('augDist', 0) >= 2,
           'item=%s trait=%s aug=%s' % (dc.get('itemDist'), dc.get('traitDist'), dc.get('augDist')))
+    check('点击检索器图表可联动筛选并写回链接',
+          dc.get('cgOn') is True and 'grades=' in (dc.get('cgHash') or '')
+          and 0 < dc.get('cgRows', 0) < dc.get('cgOrig', 0) and dc.get('cgOffRows') == dc.get('cgOrig')
+          and dc.get('ccOn') is True and 'costs=5' in (dc.get('ccHash') or '')
+          and dc.get('ctOn') is True and 'trait=' in (dc.get('ctHash') or ''),
+          'grade on=%s hash=%s rows=%s/%s off=%s；cost on=%s；trait on=%s'
+          % (dc.get('cgOn'), dc.get('cgHash'), dc.get('cgRows'), dc.get('cgOrig'), dc.get('cgOffRows'),
+             dc.get('ccOn'), dc.get('ctOn')))
+    check('点击装备类型图例可筛选并写回链接',
+          dc.get('icOn') is True and 'cat=' in (dc.get('icHash') or ''),
+          'on=%s hash=%s' % (dc.get('icOn'), dc.get('icHash')))
+    check('点击羁绊评级图可筛选并写回链接',
+          dc.get('tgOn') is True and 'tgrade=' in (dc.get('tgHash') or '')
+          and 0 < dc.get('tgRows', 0) < dc.get('tgOrig', 0) and dc.get('tgOffRows') == dc.get('tgOrig'),
+          'on=%s hash=%s rows=%s/%s off=%s'
+          % (dc.get('tgOn'), dc.get('tgHash'), dc.get('tgRows'), dc.get('tgOrig'), dc.get('tgOffRows')))
     check('强化符文梯度榜含专家评级', dc.get('augRows', 0) >= 200 and dc.get('augGrades', 0) > 0
           and dc.get('augTierChips', 0) >= 5 and dc.get('prismRows', 0) > 0 and dc.get('augModal') is True,
           'rows=%s grade=%s chips=%s prism=%s modal=%s' % (dc.get('augRows'), dc.get('augGrades'), dc.get('augTierChips'), dc.get('prismRows'), dc.get('augModal')))
