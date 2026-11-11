@@ -259,7 +259,28 @@ def build(zh, en, refresh=False):
                 names.append(n)
         a['traits'] = names
 
+    # 社区直采赛季（如 S18，官方 JSON 尚未收录）的条目在每日刷新时保留，避免被覆盖
+    augments = merge_local(augments, 'augments.full.json')
+    items = merge_local(items, 'items.full.json')
     return augments, items, set_by_name
+
+
+def merge_local(fresh, name):
+    """保留本地全量目录中「非官方赛季」的扩展条目（sets 里含 SETS 之外的 slug）。"""
+    p = os.path.join(DATA, name)
+    if not os.path.exists(p):
+        return fresh
+    try:
+        old = json.load(open(p, encoding='utf-8'))
+    except Exception:
+        return fresh
+    ids = {e.get('id') for e in fresh}
+    extra = [e for e in old
+             if e.get('id') not in ids
+             and any(s not in SETS for s in (e.get('sets') or []))]
+    if extra:
+        print('  保留本地扩展条目', name, len(extra))
+    return fresh + extra
 
 
 def discover_sets(zh):
@@ -490,6 +511,8 @@ def rebuild_bundle(augments, items):
     bundle['source'] = load('source.json')
     if os.path.exists(os.path.join(DATA, 'comps.json')):
         bundle['comps'] = load('comps.json')
+    if os.path.exists(os.path.join(DATA, 's18_stats.json')):
+        bundle['s18Stats'] = load('s18_stats.json')
 
     out = os.path.join(ROOT, 'js', 'data.bundle.js')
     with open(out, 'w', encoding='utf-8') as f:
@@ -580,16 +603,26 @@ def main():
         for s in i.get('sets', []):
             per_set_item[s] = per_set_item.get(s, 0) + 1
 
+    all_sets = sorted(set(list(SETS.keys()) + list(per_set_aug.keys()) + list(per_set_item.keys())),
+                      key=lambda s: int(re.match(r'^s(\d+)$', s).group(1)) if re.match(r'^s(\d+)$', s) else 0)
     source = {
         'source': 'Riot CommunityDragon（官方）',
         'sourceUrls': [f'{CDN}/zh_cn.json', f'{CDN}/en_us.json'],
         'fetchedAt': time.strftime('%Y-%m-%d %H:%M:%S'),
         'locale': 'zh_cn',
-        'sets': list(SETS.keys()),
+        'sets': all_sets,
         'counts': {'augments': len(augments), 'items': len(items)},
-        'perSet': {s: {'augments': per_set_aug.get(s, 0), 'items': per_set_item.get(s, 0)} for s in SETS},
+        'perSet': {s: {'augments': per_set_aug.get(s, 0), 'items': per_set_item.get(s, 0)} for s in all_sets},
         'seasons': season_stats(),
     }
+    sp = os.path.join(DATA, 'source.json')
+    if os.path.exists(sp):
+        try:
+            prev = json.load(open(sp, encoding='utf-8'))
+            if prev.get('extraSource'):
+                source['extraSource'] = prev['extraSource']
+        except Exception:
+            pass
     localize_assets(augments, items)
     for name, obj in (('augments.full.json', augments), ('items.full.json', items), ('source.json', source)):
         p = os.path.join(DATA, name)

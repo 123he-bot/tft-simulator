@@ -149,6 +149,46 @@ function homeGrid() {
   return { found: true, items: items.length, svgs: svgs, titles: titles, grp: grp,
     count: cnt ? cnt.textContent : '', firstAct: items[0] ? items[0].dataset.homeAct : '' };
 }
+function dcRows() { return d().querySelectorAll('#dcBody .dc-table tbody tr').length; }
+function dataCenter() {
+  var M = W.TFT.Main, v = d().getElementById('viewData');
+  M.go('data');
+  var res = {
+    visible: !!v && !v.classList.contains('hidden'),
+    tabs: v ? v.querySelectorAll('.dc-tab').length : 0,
+    hero: v ? v.querySelectorAll('.dc-hs').length : 0,
+    rows: dcRows(),
+    kpis: v ? v.querySelectorAll('#dcBody .dc-kpi').length : 0,
+    note: v ? !!v.querySelector('.dc-note') : false,
+    title: v ? ((v.querySelector('.dc-title') || {}).textContent || '') : ''
+  };
+  var t = v.querySelector('[data-dc-act="tier"][data-key="platinum"]');
+  if (t) { t.click(); res.tierRows = dcRows(); }
+  var c = v.querySelector('[data-dc-act="cost"][data-key="5"]');
+  if (c) { c.click(); res.costOn = !!v.querySelector('[data-dc-act="cost"][data-key="5"].on'); res.costRows = dcRows(); v.querySelector('[data-dc-act="cost"][data-key="5"]').click(); }
+  var ut = v.querySelector('.dc-tab[data-key="units"]'); if (ut) ut.click();
+  res.unitRows = dcRows();
+  var ur = v.querySelector('#dcBody .dc-row');
+  if (ur) { ur.click(); res.unitModal = !!d().querySelector('#modalBody .dc-detail-head'); W.TFT.UI.closeModal(); }
+  var it = v.querySelector('.dc-tab[data-key="items"]'); if (it) it.click();
+  res.itemRows = dcRows();
+  res.itemGrades = v.querySelectorAll('#dcBody .dc-grade').length;
+  var ia = v.querySelector('[data-dc-act="icat"][data-key="artifact"]');
+  if (ia) { ia.click(); res.artifactRows = dcRows(); res.artifactOn = !!v.querySelector('[data-dc-act="icat"][data-key="artifact"].on'); }
+  var ir = v.querySelector('#dcBody .dc-row');
+  if (ir) { ir.click(); res.itemModal = !!d().querySelector('#modalBody .dc-detail-head'); W.TFT.UI.closeModal(); }
+  var at = v.querySelector('.dc-tab[data-key="augments"]'); if (at) at.click();
+  res.augRows = dcRows();
+  res.augGrades = v.querySelectorAll('#dcBody .dc-grade').length;
+  res.augTierChips = v.querySelectorAll('[data-dc-act="atier"]').length;
+  var ar = v.querySelector('[data-dc-act="ararity"][data-key="prismatic"]');
+  if (ar) { ar.click(); res.prismRows = dcRows(); res.prismOn = ar.classList.contains('on'); }
+  var aug = v.querySelector('#dcBody .dc-row');
+  if (aug) { aug.click(); res.augModal = !!d().querySelector('#modalBody .dc-detail-head'); W.TFT.UI.closeModal(); }
+  M.go('home');
+  res.backHome = d().getElementById('viewData').classList.contains('hidden');
+  return res;
+}
 function finish() { out.textContent = JSON.stringify(R); }
 f.onload = function () {
   W = f.contentWindow;
@@ -171,6 +211,9 @@ f.onload = function () {
             srcNote: hs18 ? hs18.textContent.indexOf('S18 来源') >= 0 : false,
             compSrc: hs18 ? hs18.textContent.indexOf('S18 阵容') >= 0 : false,
             realSource: W.TFT.D.meta.source || '',
+            augs: W.TFT.D.augmentList('s18').length,
+            itemStats: ((W.TFT.D.raw || {}).s18Stats || { items: {} }).items
+              ? (((W.TFT.D.raw || {}).s18Stats || {}).items || {}).stats.length : 0,
             tierOP: ((W.TFT.D.meta.tiers || {}).OP || []).length,
             stats: d().querySelectorAll('#homeTierGrid .cc-metrics').length,
             enTag: W.TFT.D.champions().every(function (c) { return c.ability && c.ability.lang === 'en'; }),
@@ -197,6 +240,7 @@ f.onload = function () {
             };
             W.TFT.UI.closeModal();
           }
+          R.dc = dataCenter();
           /* 回到 S17 后载入一份 S3 存档，验证赛季 UI 同步 */
           setSeason('s17');
           var si = d().getElementById('searchInput');
@@ -476,6 +520,8 @@ def run(keep=False):
     check('S18 含 OP 档阵容', s18.get('tierOP', 0) > 0, s18.get('tierOP'))
     check('S18 首页卡片展示真实统计', s18.get('stats', 0) > 0, s18.get('stats'))
     check('S18 首页标注阵容数据来源', s18.get('compSrc') is True)
+    check('S18 强化符文已补齐', s18.get('augs', 0) >= 250, s18.get('augs'))
+    check('S18 装备统计已补齐', s18.get('itemStats', 0) >= 100, s18.get('itemStats'))
     s18d = s18.get('detail') or {}
     check('S18 阵容详情可打开', s18d.get('found') is True)
     check('S18 详情展示全部上阵单位', s18d.get('units', 0) >= 8, s18d.get('units'))
@@ -510,12 +556,31 @@ def run(keep=False):
     check('工具中心可正常收起', more.get('closed') is True)
 
     grid = result.get('grid', {})
-    check('首页全部工具宫格 20 项', grid.get('found') is True and grid.get('items') == 20,
+    check('首页全部工具宫格 21 项', grid.get('found') is True and grid.get('items') == 21,
           '%s / %s' % (grid.get('found'), grid.get('items')))
-    check('首页宫格每条含图标/标题/分组', grid.get('svgs') == 20 and grid.get('titles') == 20
-          and grid.get('grp') == 20,
+    check('首页宫格每条含图标/标题/分组', grid.get('svgs') == 21 and grid.get('titles') == 21
+          and grid.get('grp') == 21,
           'svg=%s title=%s grp=%s' % (grid.get('svgs'), grid.get('titles'), grid.get('grp')))
-    check('首页宫格与工具中心同源计数', '20' in grid.get('count', ''), grid.get('count'))
+    check('首页宫格与工具中心同源计数', '21' in grid.get('count', ''), grid.get('count'))
+
+    dc = result.get('dc', {})
+    check('数据中心可打开且四页签', dc.get('visible') is True and dc.get('tabs') == 4
+          and '数据中心' in (dc.get('title') or ''), '%s / %s / %s' % (dc.get('visible'), dc.get('tabs'), dc.get('title')))
+    check('数据中心首屏 KPI / 表格 / 口径', dc.get('hero') == 4 and dc.get('kpis') == 4
+          and dc.get('rows', 0) > 0 and dc.get('note') is True,
+          'hero=%s kpi=%s rows=%s note=%s' % (dc.get('hero'), dc.get('kpis'), dc.get('rows'), dc.get('note')))
+    check('数据中心段位 / 费用筛选生效', dc.get('tierRows', 0) > 0 and dc.get('costOn') is True
+          and dc.get('costRows', 999) <= dc.get('rows', 0),
+          'tier=%s cost=%s/%s' % (dc.get('tierRows'), dc.get('costOn'), dc.get('costRows')))
+    check('棋子大数据可下钻', dc.get('unitRows', 0) > 0 and dc.get('unitModal') is True,
+          'rows=%s modal=%s' % (dc.get('unitRows'), dc.get('unitModal')))
+    check('装备评级含真实统计与筛选', dc.get('itemRows', 0) >= 100 and dc.get('itemGrades', 0) > 0
+          and dc.get('artifactRows', 0) > 0 and dc.get('artifactOn') is True and dc.get('itemModal') is True,
+          'rows=%s grade=%s art=%s modal=%s' % (dc.get('itemRows'), dc.get('itemGrades'), dc.get('artifactRows'), dc.get('itemModal')))
+    check('强化符文梯度榜含专家评级', dc.get('augRows', 0) >= 200 and dc.get('augGrades', 0) > 0
+          and dc.get('augTierChips', 0) >= 5 and dc.get('prismRows', 0) > 0 and dc.get('augModal') is True,
+          'rows=%s grade=%s chips=%s prism=%s modal=%s' % (dc.get('augRows'), dc.get('augGrades'), dc.get('augTierChips'), dc.get('prismRows'), dc.get('augModal')))
+    check('数据中心可返回首页', dc.get('backHome') is True)
 
     check('载入 S3 存档后下拉同步', load.get('select') == 's3', load.get('select'))
     check('载入 S3 存档后数据同步', load.get('slug') == 's3' and load.get('metaSet') == 'S3',

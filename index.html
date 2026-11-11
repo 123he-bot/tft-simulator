@@ -23,7 +23,7 @@
 {"@context":"https://schema.org","@type":"WebSite","name":"金铲铲 AI 多智能体阵容模拟器","url":"https://123he-bot.github.io/tft-simulator/","description":"金铲铲之战 S18 阵容数据站，提供 OP.GG 实时阵容榜、段位快照、出装站位与棋盘模拟。","inLanguage":"zh-CN"}
 </script>
 <link rel="stylesheet" href="css/tailwind.css?v=1.4.3">
-<link rel="stylesheet" href="css/style.css?v=2.5.2">
+<link rel="stylesheet" href="css/style.css?v=2.5.4">
 </head>
 <body>
 
@@ -36,6 +36,7 @@
 
   <nav class="nav-tabs" id="navTabs" aria-label="视图切换">
     <button class="nav-tab on" id="btnNavHome" data-view="home">首页</button>
+    <button class="nav-tab" id="btnNavData" data-view="data">数据中心</button>
     <button class="nav-tab" id="btnNavApp" data-view="app">工作台</button>
   </nav>
 
@@ -447,6 +448,9 @@
   </section>
 </div>
 
+<!-- ============ 数据中心（检索器 / 棋子 / 装备 / 强化符文） ============ -->
+<div id="viewData" class="home-view hidden"></div>
+
 <!-- ============ 浮层弹窗容器（层级高于主页面，一次只开一个） ============ -->
 <div id="modalRoot" class="modal-root hidden">
   <div class="modal-backdrop" data-close="1"></div>
@@ -481,6 +485,7 @@
 <script src="js/drag.js?v=1.4.3"></script>
 <script src="js/battle_sim.js?v=1.4.8"></script>
 <script src="js/ai_api.js?v=1.5.3"></script>
-<script src="js/main.js?v=1.16.4"></script>
+<script src="js/data_center.js?v=1.0.1"></script>
+<script src="js/main.js?v=1.17.0"></script>
 </body>
 </html>

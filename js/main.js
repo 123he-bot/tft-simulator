@@ -30,7 +30,7 @@ window.TFT = window.TFT || {};
     te: { trait: '', must: '', emblem: '', results: [] }
   };
 
-  const uiState = { season: 's17', patch: '14.18' };
+  const uiState = { season: 's18', patch: '18.6' };
 
   /* ==================== 小工具 ==================== */
   function pool() { return U.poolStatus(); }
@@ -2093,6 +2093,8 @@ window.TFT = window.TFT || {};
       /* 首页内容依赖当前赛季，处于首页视图时必须重渲染，否则界面上看不到任何变化 */
       const homeView = $('#viewHome');
       if (homeView && !homeView.classList.contains('hidden')) Main.renderHome();
+      const dataView = $('#viewData');
+      if (dataView && !dataView.classList.contains('hidden') && TFT.DataCenter) TFT.DataCenter.render();
       TFT.UI.toast('已切换到 ' + slug.toUpperCase() + '，棋盘已清空', 'ok');
     };
     if (hasContent) TFT.UI.confirm('切换赛季', '切换赛季会清空当前棋盘与备战区（海克斯同步清空），是否继续？', doIt, '切换并清空', true);
@@ -2386,18 +2388,26 @@ window.TFT = window.TFT || {};
     });
   }
 
-  /* ==================== 视图切换：数据站首页 / 阵容工作台 ==================== */
+  /* ==================== 视图切换：数据站首页 / 数据中心 / 阵容工作台 ==================== */
   Main.go = function (view) {
-    const v = (view === 'app') ? 'app' : 'home';
+    const raw = String(view || '').split('/')[0];
+    const v = (raw === 'app') ? 'app' : (raw === 'data' ? 'data' : 'home');
     TFT.UI.closeModal();
     TFT.UI.destroyCharts();
-    const app = $('#app'), home = $('#viewHome');
+    const app = $('#app'), home = $('#viewHome'), data = $('#viewData');
     if (app) app.classList.toggle('hidden', v !== 'app');
     if (home) home.classList.toggle('hidden', v !== 'home');
+    if (data) data.classList.toggle('hidden', v !== 'data');
     $$('#navTabs .nav-tab').forEach(function (b) { b.classList.toggle('on', b.dataset.view === v); });
     TFT.Store.setPrefs({ lastView: v });
-    if (location.hash.slice(1) !== v) { try { history.replaceState(null, '', '#' + v); } catch (e) { } }
+    const hash = location.hash.slice(1);
+    if (v === 'data') {
+      if (!/^data(\/|$)/.test(hash)) { try { history.replaceState(null, '', '#data/' + (TFT.DataCenter && TFT.DataCenter.state ? TFT.DataCenter.state.tab : 'explorer')); } catch (e) { } }
+    } else if (hash !== v) {
+      try { history.replaceState(null, '', '#' + v); } catch (e) { }
+    }
     if (v === 'home') Main.renderHome();
+    else if (v === 'data') { if (TFT.DataCenter) TFT.DataCenter.render(); }
     else if (B && B.renderAll) B.renderAll();
   };
 
@@ -2874,7 +2884,7 @@ window.TFT = window.TFT || {};
     if (gn) {
       /* 与「工具中心」同源：名称/描述/图标直接取自菜单项，避免两处维护 */
       const HOME_TOOLS = [
-        { act: 'app', grp: 'start' }, { act: 'meta', grp: 'ana' },
+        { act: 'app', grp: 'start' }, { act: 'data', grp: 'start' }, { act: 'meta', grp: 'ana' },
         { act: 'artifacts', grp: 'ana' }, { act: 'ladder', grp: 'ana' },
         { act: 'optimizer', grp: 'ana' }, { act: 'charts', grp: 'ana' }, { act: 'roll', grp: 'ana' },
         { act: 'quiz', grp: 'ana' }, { act: 'trait', grp: 'ana' }, { act: 'battle', grp: 'sim' },
@@ -2886,6 +2896,7 @@ window.TFT = window.TFT || {};
       const GRP_CN = { start: '快速开始', sim: '对局模拟', ana: '分析工具', share: '分享与数据', ai: 'AI 设置' };
       const FALLBACK_ICO = {
         app: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2.4" width="12" height="11.2" rx="1.6"/><path d="M2.4 6.4h11.2M6 6.6v6.6"/></svg>',
+        data: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="8" cy="3.8" rx="4.8" ry="1.9"/><path d="M3.2 3.8v8.4c0 1 2.1 1.9 4.8 1.9s4.8-.9 4.8-1.9V3.8"/><path d="M3.2 8c0 1 2.1 1.9 4.8 1.9S12.8 9 12.8 8"/></svg>',
         meta: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 2.6h6.8v3.2a3.4 3.4 0 0 1-6.8 0z"/><path d="M4.6 3.6H2.8v1.2a2.2 2.2 0 0 0 2.2 2.2M11.4 3.6h1.8v1.2a2.2 2.2 0 0 1-2.2 2.2"/><path d="M8 9.2v2.4M5.6 13.4h4.8"/></svg>',
         artifacts: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.2 13 5v6L8 13.8 3 11V5z"/><path d="M3 5l5 2.8L13 5M8 7.8v6"/></svg>',
         ladder: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 12.4V9M8 12.4V5.2M12.6 12.4V7"/><path d="M2.4 13.6h11.2"/></svg>'
@@ -2893,6 +2904,7 @@ window.TFT = window.TFT || {};
       /* 菜单里没有、只出现在首页的入口（工作台 / 梯度榜）补充文案 */
       const FALLBACK_META = {
         app: { t: '阵容工作台', d: '棋盘 / 羁绊 / 概率 / AI 多智能体' },
+        data: { t: '数据中心', d: '检索阵容 / 棋子 / 装备 / 强化符文' },
         meta: { t: 'Meta 阵容榜', d: '段位快照 / 真实四指标 / 玩法标签' },
         artifacts: { t: '装备适配榜', d: '装备 → 携带者 → 阵容成绩' },
         ladder: { t: '羁绊天梯', d: '最高激活与最强羁绊阵容' }
@@ -2952,6 +2964,7 @@ window.TFT = window.TFT || {};
   Main.homeAction = function (act) {
     switch (act) {
       case 'app': Main.go('app'); break;
+      case 'data': Main.go('data'); break;
       case 'solve': Main.openSolver(); break;
       case 'optimizer': Main.go('app'); Main.openOptimizer(); break;
       case 'share': Main.copyShareLink(); break;

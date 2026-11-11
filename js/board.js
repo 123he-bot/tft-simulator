@@ -23,8 +23,8 @@ window.TFT = window.TFT || {};
 
   const state = TFT.state = {
     version: TFT.APP_VERSION,
-    season: 's17',
-    patch: '14.18',
+    season: 's18',
+    patch: '18.6',
     board: {},          // "r-c" -> unit（仅我方半场 r>=4）
     bench: [null, null, null, null, null],
     augments: [],       // augment id 数组（最多 3）
