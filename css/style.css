@@ -380,6 +380,11 @@ b,strong{font-weight:700}
 .pool-row.low .right{color:var(--red)}
 .pool-row.high .right{color:var(--green)}
 
+/* 超大屏：整体限宽居中，右侧信息区加宽，避免棋盘区一家独大 */
+@media (min-width:1400px){
+  #app{max-width:1560px;margin:0 auto;grid-template-columns:minmax(0,1fr) 480px}
+}
+
 /* 宽屏：状态面板改为棋盘右侧竖栏，把纵向空间尽量留给棋盘 */
 @media (min-width:1181px){
   .left-col{display:grid;grid-template-columns:minmax(0,1fr) 296px;grid-template-rows:minmax(0,1fr) auto;gap:8px}
