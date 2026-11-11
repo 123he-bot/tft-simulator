@@ -12,6 +12,7 @@ window.TFT = window.TFT || {};
     { key: 'explorer', name: '数据检索器', short: '检索' },
     { key: 'units', name: '棋子大数据', short: '棋子' },
     { key: 'items', name: '装备评级', short: '装备' },
+    { key: 'traits', name: '羁绊评级', short: '羁绊' },
     { key: 'augments', name: '强化符文梯度榜', short: '符文' }
   ];
   const COSTS = [1, 2, 3, 4, 5];
@@ -34,6 +35,7 @@ window.TFT = window.TFT || {};
     costs: [], trait: '', sort: 'avgPlace',
     unitCosts: [], unitTrait: '', unitMainOnly: false, unitSort: 'comps',
     itemCat: 'all', itemSort: 'grade',
+    traitGraded: false, traitSort: 'grade',
     augRarity: 'all', augTier: 'all', augTrait: '', augSort: 'grade'
   };
 
@@ -43,6 +45,7 @@ window.TFT = window.TFT || {};
     explorer: ['avgPlace', 'top4', 'win', 'pick', 'games'],
     units: ['comps', 'main', 'core', 'avgPlace', 'pickShare'],
     items: ['grade', 'avgPlace', 'top4', 'win', 'total'],
+    traits: ['grade', 'games', 'avgPlace', 'top4'],
     augments: ['grade', 'rarity', 'fit', 'name']
   };
 
@@ -61,6 +64,8 @@ window.TFT = window.TFT || {};
     if (sp.has('usort')) o.usort = sp.get('usort');
     if (sp.has('cat')) o.cat = sp.get('cat');
     if (sp.has('isort')) o.isort = sp.get('isort');
+    if (sp.has('tgraded')) o.tgraded = sp.get('tgraded') === '1';
+    if (sp.has('tsort')) o.tsort = sp.get('tsort');
     if (sp.has('ararity')) o.ararity = sp.get('ararity');
     if (sp.has('atier')) o.atier = sp.get('atier');
     if (sp.has('afit')) o.afit = sp.get('afit');
@@ -80,6 +85,8 @@ window.TFT = window.TFT || {};
     if (URL_SORTS.units.indexOf(o.usort) >= 0) S.unitSort = o.usort;
     if (ITEM_CATS.some(function (c) { return c.key === o.cat; })) S.itemCat = o.cat;
     if (URL_SORTS.items.indexOf(o.isort) >= 0) S.itemSort = o.isort;
+    if (o.tgraded != null) S.traitGraded = !!o.tgraded;
+    if (URL_SORTS.traits.indexOf(o.tsort) >= 0) S.traitSort = o.tsort;
     if (RARITIES.some(function (r) { return r.key === o.ararity; })) S.augRarity = o.ararity;
     if (o.atier === 'all' || AUG_TIERS.indexOf(o.atier) >= 0) S.augTier = o.atier;
     if (o.afit != null) S.augTrait = String(o.afit);
@@ -90,6 +97,7 @@ window.TFT = window.TFT || {};
   function tabFilters() {
     if (S.tab === 'units') return { ucosts: S.unitCosts.slice(), utrait: S.unitTrait, umain: S.unitMainOnly, usort: S.unitSort };
     if (S.tab === 'items') return { cat: S.itemCat, isort: S.itemSort };
+    if (S.tab === 'traits') return { tgraded: S.traitGraded, tsort: S.traitSort };
     if (S.tab === 'augments') return { ararity: S.augRarity, atier: S.augTier, afit: S.augTrait, asort: S.augSort };
     return { costs: S.costs.slice(), trait: S.trait, sort: S.sort };
   }
@@ -107,6 +115,8 @@ window.TFT = window.TFT || {};
     if (f.usort) p.push('usort=' + encodeURIComponent(f.usort));
     if (f.cat) p.push('cat=' + encodeURIComponent(f.cat));
     if (f.isort) p.push('isort=' + encodeURIComponent(f.isort));
+    if (f.tgraded) p.push('tgraded=1');
+    if (f.tsort) p.push('tsort=' + encodeURIComponent(f.tsort));
     if (f.ararity) p.push('ararity=' + encodeURIComponent(f.ararity));
     if (f.atier) p.push('atier=' + encodeURIComponent(f.atier));
     if (f.afit) p.push('afit=' + encodeURIComponent(f.afit));
@@ -389,6 +399,133 @@ window.TFT = window.TFT || {};
     });
   }
 
+  /* ==================== 羁绊数据 ==================== */
+  let traitMeta = null;
+  function traitInfo(name) {
+    if (D.currentSlug !== 's18') return null;
+    if (!traitMeta) {
+      traitMeta = {};
+      ((sd() && sd().traits) || []).forEach(function (t) { if (t && t.name) traitMeta[t.name] = t; });
+    }
+    return traitMeta[name] || null;
+  }
+  function traitIcon(name) {
+    const t = traitInfo(name);
+    return t && t.icon ? t.icon : '';
+  }
+
+  function traitAgg(tier) {
+    const key = 'trait|' + (D.currentSlug || '') + '|' + (tier || 'all');
+    if (cache.comps[key]) return cache.comps[key];
+    const comps = compsForTier(tier);
+    const map = {};
+    comps.forEach(function (cp) {
+      const g = Number(cp.games) || 0;
+      (cp.traits || []).forEach(function (t) {
+        if (!t || !t.name) return;
+        let a = map[t.name];
+        if (!a) a = map[t.name] = { name: t.name, comps: 0, games: 0, placeW: 0, top4W: 0, winW: 0, activeW: 0, activeN: 0, best: null };
+        a.comps += 1;
+        a.games += g;
+        a.placeW += (Number(cp.avgPlace) || 0) * g;
+        a.top4W += (Number(cp.top4Rate) || 0) * g;
+        a.winW += (Number(cp.winRate) || 0) * g;
+        a.activeW += (Number(t.active) || 0) * g;
+        a.activeN += g;
+        if (!a.best || (Number(cp.games) || 0) > (Number(a.best.games) || 0)) a.best = cp;
+      });
+    });
+    const totalGames = comps.reduce(function (s, cp) { return s + (Number(cp.games) || 0); }, 0);
+    const list = Object.keys(map).map(function (k) {
+      const a = map[k];
+      a.avgPlace = a.games ? a.placeW / a.games : null;
+      a.top4Rate = a.games ? a.top4W / a.games : null;
+      a.winRate = a.games ? a.winW / a.games : null;
+      a.active = a.activeN ? a.activeW / a.activeN : null;
+      a.share = totalGames ? a.games / totalGames : null;
+      a.grade = '—';
+      return a;
+    });
+    // 评级：仅对有足够样本的羁绊（>=800 局且 >=2 套阵容）按加权均名分位
+    const valid = list.filter(function (a) { return a.games >= 800 && a.comps >= 2 && isFinite(a.avgPlace); })
+      .sort(function (x, y) { return x.avgPlace - y.avgPlace; });
+    if (valid.length >= 6) {
+      valid.forEach(function (a, i) {
+        const p = i / valid.length;
+        a.grade = p < 0.15 ? 'S' : p < 0.4 ? 'A' : p < 0.7 ? 'B' : p < 0.9 ? 'C' : 'D';
+      });
+    }
+    list.sort(function (x, y) {
+      const gx = x.grade === '—' ? 9 : 'SABCD'.indexOf(x.grade);
+      const gy = y.grade === '—' ? 9 : 'SABCD'.indexOf(y.grade);
+      return gx - gy || (y.games || 0) - (x.games || 0);
+    });
+    cache.comps[key] = list;
+    return list;
+  }
+
+  function renderTraits() {
+    const all = traitAgg(S.tier);
+    const q = S.q;
+    const list = all.filter(function (a) {
+      if (S.traitGraded && a.grade === '—') return false;
+      if (q && !matchQ(a.name.toLowerCase(), q)) return false;
+      return true;
+    });
+    const sorters = {
+      grade: function (x, y) {
+        const gx = x.grade === '—' ? 9 : 'SABCD'.indexOf(x.grade);
+        const gy = y.grade === '—' ? 9 : 'SABCD'.indexOf(y.grade);
+        return gx - gy || (x.avgPlace || 99) - (y.avgPlace || 99);
+      },
+      games: function (x, y) { return y.games - x.games; },
+      avgPlace: function (x, y) { return (x.avgPlace || 99) - (y.avgPlace || 99); },
+      top4: function (x, y) { return (y.top4Rate || 0) - (x.top4Rate || 0); }
+    };
+    list.sort(sorters[S.traitSort] || sorters.grade);
+    const comps = compsForTier(S.tier);
+    const games = comps.reduce(function (s, cp) { return s + (Number(cp.games) || 0); }, 0);
+    const graded = all.filter(function (a) { return a.grade !== '—'; }).length;
+    const hasStats = games > 0;
+    const top4 = wavg(list, 'top4Rate');
+
+    const rows = list.map(function (a) {
+      const icon = traitIcon(a.name);
+      return '<tr class="dc-row" tabindex="0" data-dc-act="traitinfo" data-key="' + esc(a.name) + '" title="查看该羁绊的阵容">' +
+        '<td>' + gtag(a.grade) + '</td>' +
+        '<td><div class="dc-name dc-with-av"><span class="dc-av">' + (icon ? '<img src="' + esc(icon) + '" alt="" loading="lazy" referrerpolicy="no-referrer">' : '') + '</span>' +
+          '<span><b>' + esc(a.name) + '</b><i>' + (a.active ? '平均激活 ' + (Math.round(a.active * 10) / 10) : '—') + ' · ' + a.comps + ' 套阵容</i></span></div></td>' +
+        '<td class="num strong">' + (hasStats ? fnum(a.games) : '—') + '</td>' +
+        '<td class="num">' + (hasStats ? fp(a.share) : '—') + '</td>' +
+        '<td class="num">' + fplace(a.avgPlace) + '</td>' +
+        '<td class="num">' + fp(a.top4Rate) + '</td>' +
+        '<td class="num">' + fp(a.winRate) + '</td>' +
+        '<td class="dc-col-opt dim">' + esc(a.best ? a.best.name : '—') + '</td>' +
+        '</tr>';
+    }).join('');
+
+    return '<section class="dc-panel">' +
+      '<div class="dc-toolbar">' + searchBox('搜索羁绊') +
+        chip('tgraded', '', '仅看有评级', S.traitGraded) +
+        selectBox('dcTSort', 'tsort', [
+          { key: 'grade', label: '评级优先' }, { key: 'games', label: '样本局数 ↓' },
+          { key: 'avgPlace', label: '平均名次 ↑' }, { key: 'top4', label: '前四率 ↓' }
+        ], S.traitSort, '排序') +
+        '<button type="button" class="btn btn-xs dc-reset" data-dc-act="reset">重置</button>' +
+      '</div>' +
+      kpis([
+        { v: all.length, k: '羁绊数', s: '当前赛季收录' },
+        { v: graded, k: '有评级', s: '样本 ≥800 局' },
+        { v: hasStats ? fnum(games) : '—', k: '阵容样本', s: hasStats ? comps.length + ' 套阵容合计' : '该赛季无对局统计' },
+        { v: hasStats ? fp(top4) : '—', k: '加权前四率', s: '当前筛选按局数加权' }
+      ]) +
+      '<div class="dc-table-wrap"><table class="dc-table"><thead><tr>' +
+        '<th>评级</th><th>羁绊</th><th class="num">样本局数</th><th class="num">登场占比</th><th class="num">均名</th><th class="num">前四</th><th class="num">登顶</th><th class="dc-col-opt">代表阵容</th>' +
+      '</tr></thead><tbody>' + (rows || '<tr><td colspan="8"><div class="dc-empty">当前筛选下没有羁绊。试试关闭「仅看有评级」。</div></td></tr>') + '</tbody></table></div>' +
+      note('羁绊评级口径：统计包含该羁绊的阵容对局，按对局数加权均名 / 前四率 / 登顶率；同一局会同时计入多个羁绊，因此登场占比不可相加。样本不足 800 局或少于 2 套阵容不评级（显示 —），评级按当前段位内的加权均名分位计算。' + (hasStats ? '' : ' 当前赛季没有对局统计，仅展示羁绊结构。')) +
+    '</section>';
+  }
+
   /* ==================== 强化符文数据 ==================== */
   let s18TraitNames = null;
   function fitTraits(desc) {
@@ -504,7 +641,7 @@ window.TFT = window.TFT || {};
         '<div class="dc-hero-main">' +
           '<div class="dc-kicker">DATA CENTER · ' + esc(slug) + ' · PATCH ' + esc(patch) + '</div>' +
           '<h1 class="dc-title">数据中心</h1>' +
-          '<p class="dc-sub">把当前赛季的真实阵容、装备对局统计与强化符文拆成可检索的数据表：先看结论，再下钻到阵容、棋子与携带者。</p>' +
+          '<p class="dc-sub">把当前赛季的真实阵容、装备对局统计、羁绊表现与强化符文拆成可检索的数据表：先看结论，再下钻到阵容、棋子与携带者。</p>' +
           '<div class="dc-hero-tags"><span>阵容 ' + comps.length + ' 套</span><span>段位 ' + esc(tierLabel()) + '</span><span>更新 ' + esc(String(fetched).slice(0, 16) || '—') + '</span><span>不估算缺失数据</span></div>' +
         '</div>' +
         '<div class="dc-hero-stats">' + heroStats.map(function (x) {
@@ -517,7 +654,7 @@ window.TFT = window.TFT || {};
       }).join('') + '</nav>' +
       '<div class="dc-tierbar"><span class="dc-field-label">段位</span>' + tierList().map(function (t) {
         return chip('tier', t.key, t.label, S.tier === t.key);
-      }).join('') + '<span class="dc-tier-note">筛选联动四张数据表</span>' +
+      }).join('') + '<span class="dc-tier-note">筛选联动五张数据表</span>' +
         '<button type="button" class="btn btn-xs dc-share" data-dc-act="share">复制筛选链接</button></div>' +
       '<div id="dcBody"></div>';
     renderBody();
@@ -529,6 +666,7 @@ window.TFT = window.TFT || {};
     let out;
     if (S.tab === 'units') out = renderUnits();
     else if (S.tab === 'items') out = renderItems();
+    else if (S.tab === 'traits') out = renderTraits();
     else if (S.tab === 'augments') out = renderAugments();
     else out = renderExplorer();
     body.innerHTML = out;
@@ -880,6 +1018,34 @@ window.TFT = window.TFT || {};
     TFT.UI.modal({ title: '装备详情 · ' + r.name, size: 'wide', body: html });
   }
 
+  function openTrait(name) {
+    const a = traitAgg(S.tier).filter(function (x) { return x.name === name; })[0];
+    if (!a) return;
+    const related = compsForTier(S.tier).filter(function (cp) {
+      return (cp.traits || []).some(function (t) { return t && t.name === name; });
+    }).sort(function (x, y) { return (Number(y.games) || 0) - (Number(x.games) || 0); });
+    const icon = traitIcon(name);
+    const rows = related.map(function (cp) {
+      return '<tr class="dc-row" data-dc-mcomp="' + esc(cp.id) + '">' +
+        '<td>' + gtag(cp.tier) + '</td><td>' + esc(cp.name) + '</td>' +
+        '<td class="num">' + fplace(cp.avgPlace) + '</td><td class="num">' + fp(cp.top4Rate) + '</td><td class="num">' + fnum(cp.games) + '</td></tr>';
+    }).join('');
+    const html =
+      '<div class="dc-detail-head"><span class="dc-av xl">' + (icon ? '<img src="' + esc(icon) + '" alt="" referrerpolicy="no-referrer">' : '') + '</span>' +
+        '<div><h3>' + esc(name) + ' ' + gtag(a.grade) + '</h3>' +
+        '<p>平均激活 ' + (a.active ? (Math.round(a.active * 10) / 10) : '—') + ' · 收录 ' + a.comps + ' 套阵容</p></div></div>' +
+      modalKpis([
+        { v: a.grade, k: '评级' }, { v: fnum(a.games), k: '样本局数' },
+        { v: fp(a.top4Rate), k: '加权前四率' }, { v: fplace(a.avgPlace), k: '加权均名' }
+      ]) +
+      '<div class="dc-subhead">包含该羁绊的阵容 · ' + related.length + '</div>' +
+      '<div class="dc-table-wrap"><table class="dc-table"><thead><tr><th>评级</th><th>阵容</th><th class="num">均名</th><th class="num">前四</th><th class="num">对局</th></tr></thead><tbody>' +
+        (rows || '<tr><td colspan="5"><div class="dc-empty">暂无阵容</div></td></tr>') + '</tbody></table></div>' +
+      note('口径：统计包含「' + name + '」的阵容对局并按对局数加权，同一局可能同时计入多个羁绊；样本不足 800 局或少于 2 套阵容不评级。');
+    TFT.UI.modal({ title: '羁绊详情 · ' + name, size: 'wide', body: html });
+    bindModalCompLinks();
+  }
+
   function openAugment(id) {
     const real = hasRealS18();
     const a = (real ? augRowsReal() : augRowsLegacy(S.tier)).filter(function (x) { return x.id === id; })[0];
@@ -920,6 +1086,7 @@ window.TFT = window.TFT || {};
     if (S.tab === 'explorer') { S.costs = []; S.trait = ''; S.sort = 'avgPlace'; }
     else if (S.tab === 'units') { S.unitCosts = []; S.unitTrait = ''; S.unitMainOnly = false; S.unitSort = 'comps'; }
     else if (S.tab === 'items') { S.itemCat = 'all'; S.itemSort = 'grade'; }
+    else if (S.tab === 'traits') { S.traitGraded = false; S.traitSort = 'grade'; }
     else if (S.tab === 'augments') { S.augRarity = 'all'; S.augTier = 'all'; S.augTrait = ''; S.augSort = 'grade'; }
     renderBody();
   }
@@ -942,6 +1109,8 @@ window.TFT = window.TFT || {};
     if (act === 'unit') { openUnit(el.getAttribute('data-id')); return; }
     if (act === 'item') { openItem(el.getAttribute('data-id')); return; }
     if (act === 'aug') { openAugment(el.getAttribute('data-id')); return; }
+    if (act === 'traitinfo') { openTrait(key); return; }
+    if (act === 'tgraded') { S.traitGraded = !S.traitGraded; renderBody(); return; }
     if (act === 'reset') { resetFilters(); return; }
     if (act === 'cost') {
       const c = Number(key), i = S.costs.indexOf(c);
@@ -968,6 +1137,7 @@ window.TFT = window.TFT || {};
     else if (act === 'utrait') { S.unitTrait = el.value; renderBody(); }
     else if (act === 'usort') { S.unitSort = el.value; renderBody(); }
     else if (act === 'isort') { S.itemSort = el.value; renderBody(); }
+    else if (act === 'tsort') { S.traitSort = el.value; renderBody(); }
     else if (act === 'afit') { S.augTrait = el.value; renderBody(); }
     else if (act === 'asort') { S.augSort = el.value; renderBody(); }
   }

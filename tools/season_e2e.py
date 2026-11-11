@@ -189,6 +189,19 @@ function dataCenter() {
   res.memTier = !!v.querySelector('[data-dc-act="tier"][data-key="master"].on');
   res.memCat = !!v.querySelector('[data-dc-act="icat"][data-key="artifact"].on');
   res.memSort = (v.querySelector('[data-dc-act="isort"]') || {}).value;
+  var ta = v.querySelector('[data-dc-act="tier"][data-key="all"]'); if (ta) ta.click();
+  var tt = v.querySelector('.dc-tab[data-key="traits"]'); if (tt) tt.click();
+  res.traitRows = dcRows();
+  res.traitGrades = v.querySelectorAll('#dcBody .dc-grade').length;
+  var tg = v.querySelector('[data-dc-act="tgraded"]');
+  if (tg) { tg.click(); res.traitGradedRows = dcRows(); res.traitGradedOn = !!v.querySelector('[data-dc-act="tgraded"].on'); }
+  var tr = v.querySelector('#dcBody .dc-row');
+  if (tr) {
+    tr.click();
+    res.traitModal = !!d().querySelector('#modalBody .dc-detail-head');
+    res.traitModalRows = d().querySelectorAll('#modalBody .dc-table tbody tr').length;
+    W.TFT.UI.closeModal();
+  }
   var at = v.querySelector('.dc-tab[data-key="augments"]'); if (at) at.click();
   res.augRows = dcRows();
   res.augGrades = v.querySelectorAll('#dcBody .dc-grade').length;
@@ -576,7 +589,7 @@ def run(keep=False):
     check('首页宫格与工具中心同源计数', '21' in grid.get('count', ''), grid.get('count'))
 
     dc = result.get('dc', {})
-    check('数据中心可打开且四页签', dc.get('visible') is True and dc.get('tabs') == 4
+    check('数据中心可打开且五页签', dc.get('visible') is True and dc.get('tabs') == 5
           and '数据中心' in (dc.get('title') or ''), '%s / %s / %s' % (dc.get('visible'), dc.get('tabs'), dc.get('title')))
     check('数据中心首屏 KPI / 表格 / 口径', dc.get('hero') == 4 and dc.get('kpis') == 4
           and dc.get('rows', 0) > 0 and dc.get('note') is True,
@@ -596,6 +609,12 @@ def run(keep=False):
           'tier=%s cat=%s sort=%s rows=%s' % (dc.get('deepTier'), dc.get('deepCat'), dc.get('deepSort'), dc.get('deepRows')))
     check('再次进入记住筛选', dc.get('memTier') is True and dc.get('memCat') is True
           and dc.get('memSort') == 'total', 'tier=%s cat=%s sort=%s' % (dc.get('memTier'), dc.get('memCat'), dc.get('memSort')))
+    check('羁绊评级页签有评级与样本', dc.get('traitRows', 0) >= 20 and dc.get('traitGrades', 0) > 0,
+          'rows=%s grades=%s' % (dc.get('traitRows'), dc.get('traitGrades')))
+    check('羁绊仅看有评级可筛选', dc.get('traitGradedOn') is True and 0 < dc.get('traitGradedRows', 0) < dc.get('traitRows', 0),
+          'on=%s rows=%s/%s' % (dc.get('traitGradedOn'), dc.get('traitGradedRows'), dc.get('traitRows')))
+    check('羁绊详情可下钻阵容', dc.get('traitModal') is True and dc.get('traitModalRows', 0) > 0,
+          'modal=%s rows=%s' % (dc.get('traitModal'), dc.get('traitModalRows')))
     check('强化符文梯度榜含专家评级', dc.get('augRows', 0) >= 200 and dc.get('augGrades', 0) > 0
           and dc.get('augTierChips', 0) >= 5 and dc.get('prismRows', 0) > 0 and dc.get('augModal') is True,
           'rows=%s grade=%s chips=%s prism=%s modal=%s' % (dc.get('augRows'), dc.get('augGrades'), dc.get('augTierChips'), dc.get('prismRows'), dc.get('augModal')))

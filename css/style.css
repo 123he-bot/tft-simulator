@@ -1974,7 +1974,7 @@ b,strong{font-weight:700}
   .dc-sub{font-size:11px}
   .dc-hero-stats{grid-template-columns:1fr 1fr;gap:6px}
   .dc-tabs{overflow-x:auto;flex-wrap:nowrap;padding:4px}
-  .dc-tab{flex:0 0 auto;padding:7px 11px}
+  .dc-tab{flex:0 0 auto;padding:7px 6px;font-size:10.5px;gap:0}
   .dc-tab i{display:none}
   .dc-panel{padding:11px 10px 12px}
   .dc-toolbar{gap:6px}
