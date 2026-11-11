@@ -315,7 +315,7 @@ b,strong{font-weight:700}
 .bench-row{display:grid;grid-template-columns:minmax(0,1fr) 116px 138px;gap:8px;align-items:stretch}
 .bench-block{padding:6px 8px 8px}
 .bench-grid{display:grid;grid-template-columns:repeat(5,minmax(52px,1fr));gap:5px}
-.bench-slot{height:60px;min-width:0;border-radius:var(--r-sm);border:1px dashed var(--line-2);background:rgba(255,255,255,.018);display:grid;place-items:center;position:relative;transition:.14s}
+.bench-slot{height:76px;min-width:0;border-radius:var(--r-sm);border:1px dashed var(--line-2);background:rgba(255,255,255,.018);display:grid;place-items:center;position:relative;transition:.14s}
 .bench-slot:hover{border-color:var(--accent-line);background:var(--accent-soft)}
 .bench-slot.drop-ok{border-color:var(--green);background:rgba(63,217,154,.1)}
 .bench-slot.drop-bad{border-color:var(--red);background:rgba(255,92,114,.1)}
@@ -391,6 +391,7 @@ b,strong{font-weight:700}
   .board-block{grid-column:1;grid-row:1}
   .bench-row{grid-column:1/-1;grid-row:2}
   .state-panel{grid-column:2;grid-row:1;overflow:hidden}
+  .bench-slot{height:88px}
   .board-block .block-head{flex-wrap:wrap}
   .state-controls{grid-template-columns:repeat(2,1fr)}
   .state-body{display:flex;flex-direction:column;flex:1 1 auto;min-height:0}
