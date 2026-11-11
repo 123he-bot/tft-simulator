@@ -372,7 +372,30 @@ window.TFT = window.TFT || {};
     el.board.innerHTML = html + emptyHint;
     Board.bindCellEvents();
     Board.renderRangeHighlights();
+    Board.fitBoard();
   };
+
+  /* 棋盘自适应当前面板：保持 64×72 的比例，整体缩放到可用宽高内，避免被裁切或留下大片空白 */
+  Board.fitBoard = function () {
+    const box = el.board || U.$('#board');
+    if (!box) return;
+    const availW = box.clientWidth - 8;
+    const availH = box.clientHeight - 8;
+    if (availW < 100 || availH < 100) return;
+    const BASE_W = 64, BASE_H = 72, GAP = 3;
+    // 宽度含固定间距（不随缩放变化），高度按行重叠比例线性缩放
+    const wByW = (availW - 15 * GAP) / 7.5;
+    const wByH = availH / (6.18 * BASE_H / BASE_W);
+    const w = Math.max(28, Math.min(96, wByW, wByH));
+    box.style.setProperty('--hex-w', w.toFixed(1) + 'px');
+    box.style.setProperty('--hex-h', (w * BASE_H / BASE_W).toFixed(1) + 'px');
+  };
+
+  let fitTimer = null;
+  window.addEventListener('resize', function () {
+    clearTimeout(fitTimer);
+    fitTimer = setTimeout(Board.fitBoard, 120);
+  });
 
   /* 敌方半场（镜像映射：对手 row0..3 → 我方显示 row 0..3） */
   TFT.stateEnemyUnit = function (opp, r, c) {
