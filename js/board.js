@@ -382,10 +382,10 @@ window.TFT = window.TFT || {};
     const availW = box.clientWidth - 8;
     const availH = box.clientHeight - 8;
     if (availW < 100 || availH < 100) return;
-    const BASE_W = 64, BASE_H = 72, GAP = 3;
-    // 宽度含固定间距（不随缩放变化），高度按行重叠比例线性缩放
+    const BASE_W = 64, BASE_H = 74, GAP = 0;
+    // 宽度含固定间距（不随缩放变化），高度按 25% 行重叠与正六边形比例线性缩放
     const wByW = (availW - 15 * GAP) / 7.5;
-    const wByH = availH / (6.18 * BASE_H / BASE_W);
+    const wByH = availH / (6.25 * BASE_H / BASE_W);
     const w = Math.max(28, Math.min(96, wByW, wByH));
     box.style.setProperty('--hex-w', w.toFixed(1) + 'px');
     box.style.setProperty('--hex-h', (w * BASE_H / BASE_W).toFixed(1) + 'px');
