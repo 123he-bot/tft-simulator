@@ -160,6 +160,8 @@ function dataCenter() {
     rows: dcRows(),
     kpis: v ? v.querySelectorAll('#dcBody .dc-kpi').length : 0,
     note: v ? !!v.querySelector('.dc-note') : false,
+    chartCards: v ? v.querySelectorAll('#dcBody .dc-chart-card').length : 0,
+    chartBars: v ? v.querySelectorAll('#dcBody .dc-bar-fill').length : 0,
     title: v ? ((v.querySelector('.dc-title') || {}).textContent || '') : ''
   };
   var t = v.querySelector('[data-dc-act="tier"][data-key="platinum"]');
@@ -173,6 +175,7 @@ function dataCenter() {
   var it = v.querySelector('.dc-tab[data-key="items"]'); if (it) it.click();
   res.itemRows = dcRows();
   res.itemGrades = v.querySelectorAll('#dcBody .dc-grade').length;
+  res.itemDist = v.querySelectorAll('#dcBody .dc-dist-card').length;
   var ia = v.querySelector('[data-dc-act="icat"][data-key="artifact"]');
   if (ia) { ia.click(); res.artifactRows = dcRows(); res.artifactOn = !!v.querySelector('[data-dc-act="icat"][data-key="artifact"].on'); }
   var ir = v.querySelector('#dcBody .dc-row');
@@ -193,6 +196,7 @@ function dataCenter() {
   var tt = v.querySelector('.dc-tab[data-key="traits"]'); if (tt) tt.click();
   res.traitRows = dcRows();
   res.traitGrades = v.querySelectorAll('#dcBody .dc-grade').length;
+  res.traitDist = v.querySelectorAll('#dcBody .dc-dist-card').length;
   var tg = v.querySelector('[data-dc-act="tgraded"]');
   if (tg) { tg.click(); res.traitGradedRows = dcRows(); res.traitGradedOn = !!v.querySelector('[data-dc-act="tgraded"].on'); }
   var tr = v.querySelector('#dcBody .dc-row');
@@ -230,6 +234,7 @@ function dataCenter() {
   var at = v.querySelector('.dc-tab[data-key="augments"]'); if (at) at.click();
   res.augRows = dcRows();
   res.augGrades = v.querySelectorAll('#dcBody .dc-grade').length;
+  res.augDist = v.querySelectorAll('#dcBody .dc-dist-card').length;
   res.augTierChips = v.querySelectorAll('[data-dc-act="atier"]').length;
   var ar = v.querySelector('[data-dc-act="ararity"][data-key="prismatic"]');
   if (ar) { ar.click(); res.prismRows = dcRows(); res.prismOn = ar.classList.contains('on'); }
@@ -647,6 +652,11 @@ def run(keep=False):
           and dc.get('cmpDeepPicked') == 2 and dc.get('cmpDeepOn') is True,
           'hash=%s deep=%s on=%s' % (dc.get('cmpHash'), dc.get('cmpDeepPicked'), dc.get('cmpDeepOn')))
     check('重置清空对比选择', dc.get('cmpAfterReset') == 0, dc.get('cmpAfterReset'))
+    check('检索器首屏含三张概览图', dc.get('chartCards') == 3 and dc.get('chartBars', 0) >= 15,
+          'cards=%s bars=%s' % (dc.get('chartCards'), dc.get('chartBars')))
+    check('装备/羁绊/符文页含分布图', dc.get('itemDist', 0) >= 1 and dc.get('traitDist', 0) >= 1
+          and dc.get('augDist', 0) >= 2,
+          'item=%s trait=%s aug=%s' % (dc.get('itemDist'), dc.get('traitDist'), dc.get('augDist')))
     check('强化符文梯度榜含专家评级', dc.get('augRows', 0) >= 200 and dc.get('augGrades', 0) > 0
           and dc.get('augTierChips', 0) >= 5 and dc.get('prismRows', 0) > 0 and dc.get('augModal') is True,
           'rows=%s grade=%s chips=%s prism=%s modal=%s' % (dc.get('augRows'), dc.get('augGrades'), dc.get('augTierChips'), dc.get('prismRows'), dc.get('augModal')))

@@ -28,6 +28,11 @@ window.TFT = window.TFT || {};
   ];
   const AUG_TIERS = ['OP', 'S', 'A', 'B', 'C'];
   const GRADE_RANK = { OP: 0, S: 1, A: 2, B: 3, C: 4, D: 5, '—': 6 };
+  const GRADE_COLOR = { OP: '#ffcf6b', S: '#f0c25a', A: '#3fd99a', B: '#4f8cff', C: '#8f83f5', D: '#5d697d', '—': '#3a4454' };
+  const CAT_COLOR = {
+    completed: '#2fe0ee', artifact: '#f0c25a', emblem: '#8f83f5',
+    radiant: '#fb923c', component: '#4f8cff', support: '#3fd99a', misc: '#5d697d'
+  };
   const RARITY_RANK = { prismatic: 0, gold: 1, silver: 2, unknown: 3 };
 
   const S = DC.state = {
@@ -492,6 +497,10 @@ window.TFT = window.TFT || {};
     const hasStats = games > 0;
     const top4 = wavg(list, 'top4Rate');
 
+    const gradeMap = countBy(list, function (a) { return a.grade; });
+    const gradeDist = ['S', 'A', 'B', 'C', 'D', '—'].filter(function (g) { return gradeMap[g]; })
+      .map(function (g) { return { label: g === '—' ? '未评级' : g + ' 级', value: gradeMap[g], color: GRADE_COLOR[g] }; });
+
     const rows = list.map(function (a) {
       const icon = traitIcon(a.name);
       return '<tr class="dc-row" tabindex="0" data-dc-act="traitinfo" data-key="' + esc(a.name) + '" title="查看该羁绊的阵容">' +
@@ -522,6 +531,7 @@ window.TFT = window.TFT || {};
         { v: hasStats ? fnum(games) : '—', k: '阵容样本', s: hasStats ? comps.length + ' 套阵容合计' : '该赛季无对局统计' },
         { v: hasStats ? fp(top4) : '—', k: '加权前四率', s: '当前筛选按局数加权' }
       ]) +
+      '<div class="dc-charts one">' + distCard('羁绊评级分布', all.length + ' 个羁绊', gradeDist) + '</div>' +
       '<div class="dc-table-wrap"><table class="dc-table"><thead><tr>' +
         '<th>评级</th><th>羁绊</th><th class="num">样本局数</th><th class="num">登场占比</th><th class="num">均名</th><th class="num">前四</th><th class="num">登顶</th><th class="dc-col-opt">代表阵容</th>' +
       '</tr></thead><tbody>' + (rows || '<tr><td colspan="8"><div class="dc-empty">当前筛选下没有羁绊。试试关闭「仅看有评级」。</div></td></tr>') + '</tbody></table></div>' +
@@ -618,6 +628,53 @@ window.TFT = window.TFT || {};
   }
   function note(html) { return '<div class="dc-note">' + html + '</div>'; }
 
+  /* ==================== 图表组件（纯 CSS 条形 / 分布条） ==================== */
+  function countBy(list, fn) {
+    const m = {};
+    (list || []).forEach(function (x) {
+      const k = fn(x);
+      if (k == null || k === '') return;
+      m[k] = (m[k] || 0) + 1;
+    });
+    return m;
+  }
+
+  function barChart(title, sub, rows, opt) {
+    const o = opt || {};
+    const max = (rows || []).reduce(function (m, r) { return Math.max(m, Number(r.value) || 0); }, 0) || 1;
+    return '<div class="dc-chart-card">' +
+      '<div class="dc-chart-head"><b>' + esc(title) + '</b><em>' + esc(sub) + '</em></div>' +
+      '<div class="dc-bars">' + (rows || []).map(function (r, i) {
+        const v = Number(r.value) || 0;
+        const pct = v > 0 ? Math.max(2, (v / max) * 100) : 0;
+        return '<div class="dc-bar-row" title="' + esc(r.label + '：' + v + (o.unit || '')) + '">' +
+          '<span class="dc-bar-label">' + esc(r.label) + '</span>' +
+          '<span class="dc-bar-track"><i class="dc-bar-fill' + (r.cls ? ' ' + r.cls : '') + '" style="--w:' + pct.toFixed(1) + '%;animation-delay:' + (i * 28) + 'ms"></i></span>' +
+          '<b class="dc-bar-val">' + fnum(v) + '</b></div>';
+      }).join('') + '</div></div>';
+  }
+
+  function distCard(title, sub, rows) {
+    const vis = (rows || []).filter(function (r) { return (Number(r.value) || 0) > 0; });
+    return '<div class="dc-chart-card dc-dist-card">' +
+      '<div class="dc-chart-head"><b>' + esc(title) + '</b><em>' + esc(sub) + '</em></div>' +
+      '<div class="dc-dist-bar" role="img" aria-label="' + esc(title + '：' + (vis.length ? vis.map(function (r) { return r.label + ' ' + r.value; }).join('，') : '暂无数据')) + '">' +
+        (vis.length ? vis.map(function (r) {
+          return '<i class="dc-dist-seg" style="flex:' + (Number(r.value) || 0) + ';background:' + (r.color || 'var(--panel-4)') + '" title="' + esc(r.label + ' ' + r.value) + '"></i>';
+        }).join('') : '<i class="dc-dist-seg" style="flex:1"></i>') +
+      '</div>' +
+      '<div class="dc-dist-legend">' + (rows || []).map(function (r) {
+        return '<span class="dc-dist-item"><i style="background:' + (r.color || 'var(--panel-4)') + '"></i>' + esc(r.label) + '<b>' + fnum(Number(r.value) || 0) + '</b></span>';
+      }).join('') + '</div>' +
+    '</div>';
+  }
+
+  function gradeRowsOf(map, order) {
+    return (order || ['S', 'A', 'B', 'C', 'D', '—']).filter(function (g) { return map[g]; }).map(function (g) {
+      return { label: g === '—' ? '未评级' : g + ' 级', value: map[g], cls: 'g-' + (g === '—' ? 'na' : g.toLowerCase()) };
+    });
+  }
+
   function renderShell() {
     const root = $('#viewData');
     if (!root) return;
@@ -684,6 +741,32 @@ window.TFT = window.TFT || {};
   }
 
   /* ==================== 渲染：数据检索器 ==================== */
+  function explorerCharts(list) {
+    const gm = countBy(list, function (cp) { return cp.tier || '—'; });
+    const gradeRows = gradeRowsOf(gm, ['OP', 'S', 'A', 'B', 'C', 'D', '—']);
+    const cm = {};
+    list.forEach(function (cp) {
+      (cp.units || []).forEach(function (u) {
+        const c = Number(u.cost) || 0;
+        if (c >= 1 && c <= 5) cm[c] = (cm[c] || 0) + 1;
+      });
+    });
+    const costRows = COSTS.map(function (c) {
+      return { label: c + ' 费', value: cm[c] || 0, cls: 'c' + c };
+    });
+    const tm = {};
+    list.forEach(function (cp) {
+      (cp.traits || []).forEach(function (t) { if (t && t.name) tm[t.name] = (tm[t.name] || 0) + 1; });
+    });
+    const traitRows = Object.keys(tm).sort(function (a, b) { return tm[b] - tm[a]; }).slice(0, 6)
+      .map(function (n) { return { label: n, value: tm[n], cls: 'trait' }; });
+    return '<div class="dc-charts">' +
+      barChart('阵容评级分布', list.length + ' 套阵容', gradeRows, { unit: ' 套' }) +
+      barChart('上阵费用分布', '按棋子出现次数', costRows, { unit: ' 次' }) +
+      barChart('核心羁绊热度', '携带套数 Top 6', traitRows, { unit: ' 套' }) +
+      '</div>';
+  }
+
   function renderExplorer() {
     const comps = compsForTier(S.tier);
     const costs = S.costs;
@@ -741,6 +824,7 @@ window.TFT = window.TFT || {};
         { v: fplace(wavg(list, 'avgPlace')), k: '加权均名', s: '按对局数加权' },
         { v: fp(wavg(list, 'top4Rate')), k: '加权前四率', s: strong + ' 套 S/OP' }
       ]) +
+      explorerCharts(list) +
       '<div class="dc-table-wrap"><table class="dc-table"><thead><tr>' +
         '<th class="dc-col-pick">对比</th><th>评级</th><th>阵容</th><th class="dc-col-opt">核心羁绊</th><th class="num">均名</th><th class="num">前四</th><th class="num">登顶</th><th class="num dc-col-opt">选取</th><th class="num">对局</th>' +
       '</tr></thead><tbody>' + (rows || '<tr><td colspan="9"><div class="dc-empty">当前筛选下没有阵容。试试放宽费用 / 羁绊条件。</div></td></tr>') + '</tbody></table></div>' +
@@ -840,6 +924,9 @@ window.TFT = window.TFT || {};
     const totalGames = list.reduce(function (s, r) { return s + (Number(r.total) || 0); }, 0);
     const top4W = list.reduce(function (s, r) { return s + (Number(r.top4Rate) || 0) * (Number(r.total) || 0); }, 0);
     const best = list.filter(function (r) { return r.grade === 'S' || r.grade === 'A'; }).length;
+    const catMap = countBy(list, function (r) { return r.category || 'misc'; });
+    const catRows = Object.keys(catMap).sort(function (a, b) { return catMap[b] - catMap[a]; })
+      .map(function (k) { return { label: CAT_LABEL[k] || k, value: catMap[k], color: CAT_COLOR[k] || '#5d697d' }; });
     const rows = list.map(function (r) {
       return '<tr class="dc-row" tabindex="0" data-dc-act="item" data-id="' + esc(r.id) + '" title="查看装备详情">' +
         '<td>' + gtag(r.grade) + '</td>' +
@@ -871,6 +958,7 @@ window.TFT = window.TFT || {};
         { v: totalGames ? fp(top4W / totalGames) : '—', k: '加权前四率', s: '按出场数加权' },
         { v: best, k: 'S/A 评级', s: real ? '同类装备内分位' : '样本不足不评级' }
       ]) +
+      '<div class="dc-charts one">' + distCard('装备类型分布', '当前筛选 ' + list.length + ' 件', catRows) + '</div>' +
       '<div class="dc-table-wrap"><table class="dc-table"><thead><tr>' +
         '<th>评级</th><th>装备</th><th class="num">出场</th><th class="num">前四</th><th class="num">登顶</th><th class="num">均名</th><th class="dc-col-opt">常见携带者</th><th class="dc-col-opt">配方</th>' +
       '</tr></thead><tbody>' + (rows || '<tr><td colspan="8"><div class="dc-empty">当前筛选下没有装备。</div></td></tr>') + '</tbody></table></div>' +
@@ -907,6 +995,15 @@ window.TFT = window.TFT || {};
     })();
     const rated = (all || []).filter(function (a) { return a.grade !== '—'; }).length;
     const sTier = (all || []).filter(function (a) { return a.grade === 'OP' || a.grade === 'S'; }).length;
+    const rarityMap = countBy(list, function (a) { return a.rarityKey || 'unknown'; });
+    const rarityRows = [
+      { label: '棱彩', value: rarityMap.prismatic || 0, color: '#c084fc' },
+      { label: '金', value: rarityMap.gold || 0, color: '#f0c25a' },
+      { label: '银', value: rarityMap.silver || 0, color: '#cbd5e1' }
+    ];
+    const gradeMap = countBy(list, function (a) { return a.grade || '—'; });
+    const augGradeRows = ['OP', 'S', 'A', 'B', 'C', 'D', '—'].filter(function (g) { return gradeMap[g]; })
+      .map(function (g) { return { label: g === '—' ? '未评级' : g + ' 级', value: gradeMap[g], color: GRADE_COLOR[g] }; });
     const rows = list.map(function (a) {
       return '<tr class="dc-row" tabindex="0" data-dc-act="aug" data-id="' + esc(a.id) + '" title="查看符文详情">' +
         '<td>' + (real ? gtag(a.grade) : '<span class="dc-fit">' + Math.round((a.fitScore || 0) * 100) + '</span>') + '</td>' +
@@ -941,6 +1038,10 @@ window.TFT = window.TFT || {};
         { v: real ? sTier : '—', k: 'OP / S 级', s: real ? '高优先级' : '—' },
         { v: list.filter(function (a) { return a.fit.length > 0; }).length, k: '有羁绊关联', s: '描述命中 S18 羁绊' }
       ]) +
+      '<div class="dc-charts' + (real ? ' two' : ' one') + '">' +
+        distCard('稀有度分布', '当前筛选 ' + list.length + ' 条', rarityRows) +
+        (real ? distCard('专家评级分布', 'OP.GG 专家榜', augGradeRows) : '') +
+      '</div>' +
       '<div class="dc-table-wrap"><table class="dc-table dc-aug-table">' +
         '<colgroup><col class="c-grade"><col class="c-name"><col class="c-rarity"><col class="c-fit"><col class="c-desc"></colgroup>' +
         '<thead><tr>' +
