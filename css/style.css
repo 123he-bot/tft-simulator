@@ -389,11 +389,13 @@ b,strong{font-weight:700}
 @media (min-width:1181px){
   .left-col{display:grid;grid-template-columns:minmax(0,1fr) 296px;grid-template-rows:minmax(0,1fr) auto;gap:8px}
   .board-block{grid-column:1;grid-row:1}
-  .bench-row{grid-column:1/-1;grid-row:2;grid-template-columns:minmax(0,1.7fr) minmax(150px,.62fr) minmax(170px,.7fr)}
+  .bench-row{grid-column:1/-1;grid-row:2;grid-template-columns:minmax(0,2.05fr) minmax(150px,.55fr) minmax(170px,.62fr)}
   .state-panel{grid-column:2;grid-row:1;overflow:hidden}
   /* 备战格随可用宽度自适应为方形，避免宽扁形变；出售/回合块按比例加宽 */
   .bench-grid{grid-template-columns:repeat(5,minmax(72px,1fr));gap:6px}
   .bench-slot{height:auto;aspect-ratio:1/1}
+  /* 棋盘收窄一档，把视觉重心让给底部备战区 */
+  .hex-board{width:92%;margin:0 auto}
   .board-block .block-head{flex-wrap:wrap}
   .state-controls{grid-template-columns:repeat(2,1fr)}
   .state-body{display:flex;flex-direction:column;flex:1 1 auto;min-height:0}
