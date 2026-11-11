@@ -2004,4 +2004,6 @@ b,strong{font-weight:700}
 .dc-tierbar{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:-3px 0 10px;padding:0 2px}
 .dc-tierbar .dc-field-label{margin-right:2px}
 .dc-tier-note{margin-left:auto;font-size:9.5px;color:var(--mute)}
-@media (max-width:640px){.dc-tier-note{display:none}}
+.dc-share{height:26px;padding:0 10px;font-size:10.5px;color:var(--dim)}
+.dc-share:hover{color:var(--text);border-color:var(--accent-line)}
+@media (max-width:640px){.dc-tier-note{display:none}.dc-share{margin-left:auto}}

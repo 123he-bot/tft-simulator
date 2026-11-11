@@ -38,6 +38,105 @@ window.TFT = window.TFT || {};
   };
 
   const cache = { comps: {}, units: {} };
+  const DC_KEY = 'tft.dc.filters';
+  const URL_SORTS = {
+    explorer: ['avgPlace', 'top4', 'win', 'pick', 'games'],
+    units: ['comps', 'main', 'core', 'avgPlace', 'pickShare'],
+    items: ['grade', 'avgPlace', 'top4', 'win', 'total'],
+    augments: ['grade', 'rarity', 'fit', 'name']
+  };
+
+  /* ==================== 状态 ⇄ URL / 本地记忆 ==================== */
+  function readParams(sp) {
+    const o = {};
+    const nums = function (raw, allowed) {
+      return String(raw || '').split(',').map(Number).filter(function (n) { return allowed.indexOf(n) >= 0; });
+    };
+    if (sp.has('costs')) o.costs = nums(sp.get('costs'), COSTS);
+    if (sp.has('trait')) o.trait = sp.get('trait');
+    if (sp.has('sort')) o.sort = sp.get('sort');
+    if (sp.has('ucosts')) o.ucosts = nums(sp.get('ucosts'), COSTS);
+    if (sp.has('utrait')) o.utrait = sp.get('utrait');
+    if (sp.has('umain')) o.umain = sp.get('umain') === '1';
+    if (sp.has('usort')) o.usort = sp.get('usort');
+    if (sp.has('cat')) o.cat = sp.get('cat');
+    if (sp.has('isort')) o.isort = sp.get('isort');
+    if (sp.has('ararity')) o.ararity = sp.get('ararity');
+    if (sp.has('atier')) o.atier = sp.get('atier');
+    if (sp.has('afit')) o.afit = sp.get('afit');
+    if (sp.has('asort')) o.asort = sp.get('asort');
+    if (sp.has('q')) o.q = sp.get('q');
+    return o;
+  }
+
+  function applyFilters(o) {
+    if (!o) return;
+    if (o.costs) S.costs = o.costs.slice();
+    if (o.trait != null) S.trait = String(o.trait);
+    if (URL_SORTS.explorer.indexOf(o.sort) >= 0) S.sort = o.sort;
+    if (o.ucosts) S.unitCosts = o.ucosts.slice();
+    if (o.utrait != null) S.unitTrait = String(o.utrait);
+    if (o.umain != null) S.unitMainOnly = !!o.umain;
+    if (URL_SORTS.units.indexOf(o.usort) >= 0) S.unitSort = o.usort;
+    if (ITEM_CATS.some(function (c) { return c.key === o.cat; })) S.itemCat = o.cat;
+    if (URL_SORTS.items.indexOf(o.isort) >= 0) S.itemSort = o.isort;
+    if (RARITIES.some(function (r) { return r.key === o.ararity; })) S.augRarity = o.ararity;
+    if (o.atier === 'all' || AUG_TIERS.indexOf(o.atier) >= 0) S.augTier = o.atier;
+    if (o.afit != null) S.augTrait = String(o.afit);
+    if (URL_SORTS.augments.indexOf(o.asort) >= 0) S.augSort = o.asort;
+    if (o.q != null) S.q = String(o.q).slice(0, 60);
+  }
+
+  function tabFilters() {
+    if (S.tab === 'units') return { ucosts: S.unitCosts.slice(), utrait: S.unitTrait, umain: S.unitMainOnly, usort: S.unitSort };
+    if (S.tab === 'items') return { cat: S.itemCat, isort: S.itemSort };
+    if (S.tab === 'augments') return { ararity: S.augRarity, atier: S.augTier, afit: S.augTrait, asort: S.augSort };
+    return { costs: S.costs.slice(), trait: S.trait, sort: S.sort };
+  }
+
+  function queryString() {
+    const p = ['tier=' + encodeURIComponent(S.tier || 'all')];
+    if (S.q) p.push('q=' + encodeURIComponent(S.q));
+    const f = tabFilters();
+    if (f.costs && f.costs.length) p.push('costs=' + f.costs.slice().sort().join(','));
+    if (f.trait) p.push('trait=' + encodeURIComponent(f.trait));
+    if (f.sort) p.push('sort=' + encodeURIComponent(f.sort));
+    if (f.ucosts && f.ucosts.length) p.push('ucosts=' + f.ucosts.slice().sort().join(','));
+    if (f.utrait) p.push('utrait=' + encodeURIComponent(f.utrait));
+    if (f.umain) p.push('umain=1');
+    if (f.usort) p.push('usort=' + encodeURIComponent(f.usort));
+    if (f.cat) p.push('cat=' + encodeURIComponent(f.cat));
+    if (f.isort) p.push('isort=' + encodeURIComponent(f.isort));
+    if (f.ararity) p.push('ararity=' + encodeURIComponent(f.ararity));
+    if (f.atier) p.push('atier=' + encodeURIComponent(f.atier));
+    if (f.afit) p.push('afit=' + encodeURIComponent(f.afit));
+    if (f.asort) p.push('asort=' + encodeURIComponent(f.asort));
+    return p.join('&');
+  }
+
+  function syncUrl() {
+    const h = '#data/' + S.tab + '?' + queryString();
+    if (location.hash === h) return;
+    try { history.replaceState(null, '', h); } catch (e) { }
+  }
+
+  function saveMemory() {
+    try {
+      const all = JSON.parse(localStorage.getItem(DC_KEY) || '{}') || {};
+      all.tier = S.tier;
+      all[S.tab] = tabFilters();
+      localStorage.setItem(DC_KEY, JSON.stringify(all));
+    } catch (e) { }
+  }
+
+  function restoreMemory() {
+    let all = null;
+    try { all = JSON.parse(localStorage.getItem(DC_KEY) || 'null'); } catch (e) { all = null; }
+    if (!all) return;
+    const tiers = tierList().map(function (t) { return t.key; });
+    if (all.tier && tiers.indexOf(all.tier) >= 0) S.tier = all.tier;
+    applyFilters(all[S.tab]);
+  }
 
   /* ==================== 基础工具 ==================== */
   function fp(v, d) {
@@ -418,7 +517,8 @@ window.TFT = window.TFT || {};
       }).join('') + '</nav>' +
       '<div class="dc-tierbar"><span class="dc-field-label">段位</span>' + tierList().map(function (t) {
         return chip('tier', t.key, t.label, S.tier === t.key);
-      }).join('') + '<span class="dc-tier-note">筛选联动四张数据表</span></div>' +
+      }).join('') + '<span class="dc-tier-note">筛选联动四张数据表</span>' +
+        '<button type="button" class="btn btn-xs dc-share" data-dc-act="share">复制筛选链接</button></div>' +
       '<div id="dcBody"></div>';
     renderBody();
   }
@@ -438,6 +538,8 @@ window.TFT = window.TFT || {};
       try { input.setSelectionRange(input.value.length, input.value.length); } catch (e) { }
       S._focusSearch = false;
     }
+    syncUrl();
+    saveMemory();
   }
 
   /* ==================== 渲染：数据检索器 ==================== */
@@ -637,6 +739,7 @@ window.TFT = window.TFT || {};
   /* ==================== 渲染：强化符文梯度榜 ==================== */
   function renderAugments() {
     const real = hasRealS18();
+    if (!real && S.augSort === 'grade') S.augSort = 'fit';
     const all = real ? augRowsReal() : augRowsLegacy(S.tier);
     const q = S.q;
     const list = (all || []).filter(function (a) {
@@ -793,6 +896,17 @@ window.TFT = window.TFT || {};
   }
 
   /* ==================== 交互 ==================== */
+  function copyShareLink() {
+    syncUrl();
+    const url = location.origin + location.pathname + location.search + location.hash;
+    const done = function (ok) {
+      if (TFT.UI && TFT.UI.toast) TFT.UI.toast(ok ? '筛选链接已复制' : '复制失败，请手动复制地址栏', ok ? 'ok' : 'err');
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function () { done(true); }, function () { done(false); });
+    } else done(false);
+  }
+
   function switchTab(key) {
     if (!TABS.some(function (t) { return t.key === key; })) key = 'explorer';
     S.tab = key;
@@ -816,6 +930,7 @@ window.TFT = window.TFT || {};
     const act = el.getAttribute('data-dc-act');
     const key = el.getAttribute('data-key');
     if (act === 'tab') { switchTab(key); return; }
+    if (act === 'share') { copyShareLink(); return; }
     if (act === 'tier') {
       S.tier = key;
       S.trait = '';
@@ -889,18 +1004,31 @@ window.TFT = window.TFT || {};
 
   DC.render = function () {
     DC.init();
-    const m = /^data\/(\w+)/.exec(location.hash.slice(1));
+    const raw = location.hash.slice(1);
+    const m = /^data\/(\w+)(?:\?(.*))?$/.exec(raw);
     const tab = m && TABS.some(function (t) { return t.key === m[1]; }) ? m[1] : 'explorer';
+    const hasQuery = !!(m && m[2] != null);
     S.tab = tab;
     S.q = '';
     initTier();
+    if (hasQuery) {
+      const sp = new URLSearchParams(m[2]);
+      const t = sp.get('tier');
+      const tiers = tierList().map(function (x) { return x.key; });
+      if (t && tiers.indexOf(t) >= 0) S.tier = t;
+      applyFilters(readParams(sp));
+    } else {
+      restoreMemory();
+    }
     renderShell();
   };
 
   DC.open = function (tab) {
-    S.tab = tab || 'explorer';
+    const key = TABS.some(function (t) { return t.key === tab; }) ? tab : 'explorer';
+    S.tab = key;
     S.q = '';
+    try { history.replaceState(null, '', '#data/' + key); } catch (e) { }
     if (TFT.Main && TFT.Main.go) TFT.Main.go('data');
-    else { try { location.hash = '#data/' + S.tab; } catch (e) { } }
+    else { try { location.hash = '#data/' + key; } catch (e) { } }
   };
 })(window.TFT);

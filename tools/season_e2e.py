@@ -177,6 +177,18 @@ function dataCenter() {
   if (ia) { ia.click(); res.artifactRows = dcRows(); res.artifactOn = !!v.querySelector('[data-dc-act="icat"][data-key="artifact"].on'); }
   var ir = v.querySelector('#dcBody .dc-row');
   if (ir) { ir.click(); res.itemModal = !!d().querySelector('#modalBody .dc-detail-head'); W.TFT.UI.closeModal(); }
+  res.itemHash = f.contentWindow.location.hash;
+  f.contentWindow.location.hash = '#data/items?tier=master&cat=artifact&isort=total';
+  W.TFT.DataCenter.render();
+  res.deepTier = !!v.querySelector('[data-dc-act="tier"][data-key="master"].on');
+  res.deepCat = !!v.querySelector('[data-dc-act="icat"][data-key="artifact"].on');
+  res.deepSort = (v.querySelector('[data-dc-act="isort"]') || {}).value;
+  res.deepRows = dcRows();
+  f.contentWindow.location.hash = '#data/items';
+  W.TFT.DataCenter.render();
+  res.memTier = !!v.querySelector('[data-dc-act="tier"][data-key="master"].on');
+  res.memCat = !!v.querySelector('[data-dc-act="icat"][data-key="artifact"].on');
+  res.memSort = (v.querySelector('[data-dc-act="isort"]') || {}).value;
   var at = v.querySelector('.dc-tab[data-key="augments"]'); if (at) at.click();
   res.augRows = dcRows();
   res.augGrades = v.querySelectorAll('#dcBody .dc-grade').length;
@@ -577,6 +589,13 @@ def run(keep=False):
     check('装备评级含真实统计与筛选', dc.get('itemRows', 0) >= 100 and dc.get('itemGrades', 0) > 0
           and dc.get('artifactRows', 0) > 0 and dc.get('artifactOn') is True and dc.get('itemModal') is True,
           'rows=%s grade=%s art=%s modal=%s' % (dc.get('itemRows'), dc.get('itemGrades'), dc.get('artifactRows'), dc.get('itemModal')))
+    check('筛选状态写入分享链接', 'data/items' in (dc.get('itemHash') or '')
+          and 'cat=artifact' in (dc.get('itemHash') or ''), dc.get('itemHash'))
+    check('深链还原段位 / 类型 / 排序', dc.get('deepTier') is True and dc.get('deepCat') is True
+          and dc.get('deepSort') == 'total' and dc.get('deepRows', 0) > 0,
+          'tier=%s cat=%s sort=%s rows=%s' % (dc.get('deepTier'), dc.get('deepCat'), dc.get('deepSort'), dc.get('deepRows')))
+    check('再次进入记住筛选', dc.get('memTier') is True and dc.get('memCat') is True
+          and dc.get('memSort') == 'total', 'tier=%s cat=%s sort=%s' % (dc.get('memTier'), dc.get('memCat'), dc.get('memSort')))
     check('强化符文梯度榜含专家评级', dc.get('augRows', 0) >= 200 and dc.get('augGrades', 0) > 0
           and dc.get('augTierChips', 0) >= 5 and dc.get('prismRows', 0) > 0 and dc.get('augModal') is True,
           'rows=%s grade=%s chips=%s prism=%s modal=%s' % (dc.get('augRows'), dc.get('augGrades'), dc.get('augTierChips'), dc.get('prismRows'), dc.get('augModal')))
