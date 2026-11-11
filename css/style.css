@@ -1427,7 +1427,7 @@ b,strong{font-weight:700}
 .ht-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
 .ht-kicker{font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
 .ht-main > b{font-size:13.5px;font-weight:800;color:#fff6e0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ht-sub{font-size:9.5px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ht-sub{font-size:9.5px;color:var(--mute);line-height:1.45;white-space:normal;overflow-wrap:anywhere}
 .ht-side{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:3px;min-width:96px;text-align:right}
 .ht-side b{font-size:16px;font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums;line-height:1.1}
 .ht-side .str-bar{width:100%}
@@ -1586,8 +1586,19 @@ b,strong{font-weight:700}
   .search-wrap{margin-left:0}
   #btnSearch{display:none}
   .brand{padding-right:8px}
-  .top-actions .btn{padding:5px 8px;font-size:10.5px}
+  .brand-text{display:none}
+  #topbar{gap:8px;padding:0 8px}
+  /* 顶栏按钮不再被压缩：按内容宽度排列，超出部分随顶栏横向滚动，避免向左溢出压住导航与搜索 */
+  #topActions{flex:0 0 auto;min-width:auto;justify-content:flex-start}
+  .top-actions .btn{padding:6px 9px;font-size:10.5px;min-height:30px}
+  /* 首屏优先露出「求解这一局」与「更多」，存档/Meta 随顶栏横滑可达 */
+  #topActions>*{order:2}
+  #btnSolver{order:0}
+  #topActions>.more-wrap{order:1}
+  .search-wrap{flex:0 0 96px;min-width:96px}
   #btnLLM{display:none}
+  /* 顶栏可横向滚动会裁切绝对定位菜单，移动端改用视口定位 */
+  .more-menu{position:fixed;top:var(--nav-h);left:8px;right:8px;width:auto;max-height:calc(100vh - var(--nav-h) - 12px);overflow:auto}
   .hero-main-col{padding:16px 16px 14px}
   .hero-title{font-size:21px}
   .hero-sub{font-size:11px}
