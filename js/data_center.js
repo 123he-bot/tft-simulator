@@ -32,7 +32,7 @@ window.TFT = window.TFT || {};
 
   const S = DC.state = {
     tab: 'explorer', tier: null, q: '',
-    costs: [], trait: '', sort: 'avgPlace',
+    costs: [], trait: '', sort: 'avgPlace', compare: [],
     unitCosts: [], unitTrait: '', unitMainOnly: false, unitSort: 'comps',
     itemCat: 'all', itemSort: 'grade',
     traitGraded: false, traitSort: 'grade',
@@ -58,6 +58,7 @@ window.TFT = window.TFT || {};
     if (sp.has('costs')) o.costs = nums(sp.get('costs'), COSTS);
     if (sp.has('trait')) o.trait = sp.get('trait');
     if (sp.has('sort')) o.sort = sp.get('sort');
+    if (sp.has('cmp')) o.cmp = String(sp.get('cmp') || '').split(',').filter(Boolean).slice(0, 3);
     if (sp.has('ucosts')) o.ucosts = nums(sp.get('ucosts'), COSTS);
     if (sp.has('utrait')) o.utrait = sp.get('utrait');
     if (sp.has('umain')) o.umain = sp.get('umain') === '1';
@@ -79,6 +80,7 @@ window.TFT = window.TFT || {};
     if (o.costs) S.costs = o.costs.slice();
     if (o.trait != null) S.trait = String(o.trait);
     if (URL_SORTS.explorer.indexOf(o.sort) >= 0) S.sort = o.sort;
+    if (o.cmp) S.compare = o.cmp.filter(function (id, i, arr) { return arr.indexOf(id) === i; }).slice(0, 3);
     if (o.ucosts) S.unitCosts = o.ucosts.slice();
     if (o.utrait != null) S.unitTrait = String(o.utrait);
     if (o.umain != null) S.unitMainOnly = !!o.umain;
@@ -99,7 +101,7 @@ window.TFT = window.TFT || {};
     if (S.tab === 'items') return { cat: S.itemCat, isort: S.itemSort };
     if (S.tab === 'traits') return { tgraded: S.traitGraded, tsort: S.traitSort };
     if (S.tab === 'augments') return { ararity: S.augRarity, atier: S.augTier, afit: S.augTrait, asort: S.augSort };
-    return { costs: S.costs.slice(), trait: S.trait, sort: S.sort };
+    return { costs: S.costs.slice(), trait: S.trait, sort: S.sort, cmp: S.compare.slice() };
   }
 
   function queryString() {
@@ -109,6 +111,7 @@ window.TFT = window.TFT || {};
     if (f.costs && f.costs.length) p.push('costs=' + f.costs.slice().sort().join(','));
     if (f.trait) p.push('trait=' + encodeURIComponent(f.trait));
     if (f.sort) p.push('sort=' + encodeURIComponent(f.sort));
+    if (f.cmp && f.cmp.length) p.push('cmp=' + f.cmp.map(encodeURIComponent).join(','));
     if (f.ucosts && f.ucosts.length) p.push('ucosts=' + f.ucosts.slice().sort().join(','));
     if (f.utrait) p.push('utrait=' + encodeURIComponent(f.utrait));
     if (f.umain) p.push('umain=1');
@@ -705,7 +708,9 @@ window.TFT = window.TFT || {};
     const strong = list.filter(function (cp) { return cp.tier === 'S' || cp.tier === 'OP'; }).length;
     const rows = list.map(function (cp) {
       const traits = (cp.traits || []).slice().sort(function (a, b) { return (b.style || 0) - (a.style || 0); }).slice(0, 3);
-      return '<tr class="dc-row" tabindex="0" data-dc-act="comp" data-id="' + esc(cp.id) + '" title="查看阵容详情">' +
+      const picked = S.compare.indexOf(cp.id) >= 0;
+      return '<tr class="dc-row' + (picked ? ' picked' : '') + '" tabindex="0" data-dc-act="comp" data-id="' + esc(cp.id) + '" title="查看阵容详情">' +
+        '<td class="dc-col-pick"><button type="button" class="dc-pick' + (picked ? ' on' : '') + '" data-dc-act="cmptoggle" data-id="' + esc(cp.id) + '" aria-pressed="' + picked + '" title="' + (picked ? '移出对比' : '加入对比（最多 3 套）') + '">' + (picked ? '✓' : '+') + '</button></td>' +
         '<td>' + gtag(cp.tier) + '</td>' +
         '<td><div class="dc-name"><b>' + esc(cp.name) + '</b><i>' + esc(cp.mainC || '—') + ' · ' + (cp.units || []).length + ' 人 · ' + (cp.games ? fnum(cp.games) + ' 局' : '—') + '</i></div></td>' +
         '<td class="dc-col-opt"><div class="dc-tags">' + (traits.length ? traits.map(function (t) { return chipTag(t.name); }).join('') : '<span class="dim">—</span>') + '</div></td>' +
@@ -727,6 +732,7 @@ window.TFT = window.TFT || {};
           { key: 'avgPlace', label: '平均名次 ↑' }, { key: 'top4', label: '前四率 ↓' },
           { key: 'win', label: '登顶率 ↓' }, { key: 'pick', label: '选取率 ↓' }, { key: 'games', label: '对局数 ↓' }
         ], S.sort, '排序') +
+        '<button type="button" class="btn btn-xs dc-cmp-open" data-dc-act="cmpopen"' + (S.compare.length < 2 ? ' disabled' : '') + '>对比已选 ' + S.compare.length + '/3</button>' +
         '<button type="button" class="btn btn-xs dc-reset" data-dc-act="reset">重置</button>' +
       '</div>' +
       kpis([
@@ -736,8 +742,8 @@ window.TFT = window.TFT || {};
         { v: fp(wavg(list, 'top4Rate')), k: '加权前四率', s: strong + ' 套 S/OP' }
       ]) +
       '<div class="dc-table-wrap"><table class="dc-table"><thead><tr>' +
-        '<th>评级</th><th>阵容</th><th class="dc-col-opt">核心羁绊</th><th class="num">均名</th><th class="num">前四</th><th class="num">登顶</th><th class="num dc-col-opt">选取</th><th class="num">对局</th>' +
-      '</tr></thead><tbody>' + (rows || '<tr><td colspan="8"><div class="dc-empty">当前筛选下没有阵容。试试放宽费用 / 羁绊条件。</div></td></tr>') + '</tbody></table></div>' +
+        '<th class="dc-col-pick">对比</th><th>评级</th><th>阵容</th><th class="dc-col-opt">核心羁绊</th><th class="num">均名</th><th class="num">前四</th><th class="num">登顶</th><th class="num dc-col-opt">选取</th><th class="num">对局</th>' +
+      '</tr></thead><tbody>' + (rows || '<tr><td colspan="9"><div class="dc-empty">当前筛选下没有阵容。试试放宽费用 / 羁绊条件。</div></td></tr>') + '</tbody></table></div>' +
       note('阵容与段位快照来自 OP.GG 中文站（' + esc(tierLabel()) + '，补丁 ' + esc(((D.compData && D.compData[D.currentSlug] && D.compData[D.currentSlug].patch) || (D.meta && D.meta.updatedAt) || '—')) + '）。均名越低越好；选取率为该段位阵容出场占比，非棋子选取率。' + (hasStats ? '' : ' 当前赛季没有对局统计，表格仅展示阵容结构。')) +
     '</section>';
   }
@@ -1046,6 +1052,112 @@ window.TFT = window.TFT || {};
     bindModalCompLinks();
   }
 
+  /* ==================== 弹窗：阵容对比 ==================== */
+  const CMP_METRICS = [
+    { k: '平均名次', sub: '越低越好', get: function (cp) { return cp.avgPlace; }, fmt: fplace, low: true },
+    { k: '前四率', get: function (cp) { return cp.top4Rate; }, fmt: function (v) { return fp(v); } },
+    { k: '登顶率', get: function (cp) { return cp.winRate; }, fmt: function (v) { return fp(v); } },
+    { k: '选取率', get: function (cp) { return cp.pickRate; }, fmt: function (v) { return fp(v, 2); } },
+    { k: '对局样本', get: function (cp) { return cp.games; }, fmt: fnum }
+  ];
+
+  function pickedComps() {
+    const all = compsForTier(S.tier);
+    return S.compare.map(function (id) {
+      return all.filter(function (cp) { return cp.id === id; })[0];
+    }).filter(Boolean);
+  }
+
+  function toggleCompare(id) {
+    if (!id) return;
+    const i = S.compare.indexOf(id);
+    if (i >= 0) S.compare.splice(i, 1);
+    else if (S.compare.length >= 3) {
+      if (TFT.UI.toast) TFT.UI.toast('最多同时对比 3 套阵容', 'err');
+      return;
+    } else S.compare.push(id);
+    renderBody();
+  }
+
+  function bestValue(list, m) {
+    const vals = list.map(function (cp) {
+      const v = Number(m.get(cp));
+      return isFinite(v) && v > 0 ? v : null;
+    }).filter(function (v) { return v != null; });
+    const uniq = vals.filter(function (v, i) { return vals.indexOf(v) === i; });
+    if (uniq.length < 2) return null;
+    return m.low ? Math.min.apply(null, uniq) : Math.max.apply(null, uniq);
+  }
+
+  function cmpUnits(cp) {
+    let us = (cp.coreUnits && cp.coreUnits.length ? cp.coreUnits : (cp.units || []).filter(function (u) {
+      return u.core || u.tag === 'main' || u.tag === 'sub';
+    }));
+    if (!us.length) us = (cp.units || []).slice();
+    us = us.slice().sort(function (a, b) { return (b.cost || 0) - (a.cost || 0); }).slice(0, 6);
+    return us.map(function (u) {
+      const id = u.id || u.name;
+      const icon = u.icon || champIcon(id);
+      const its = (u.items || []).slice(0, 3).map(function (iid) {
+        const it = itemInfo(iid);
+        if (!it) return '';
+        return '<span class="dc-cmp-it" title="' + esc(it.name || iid) + '">' +
+          (it.icon ? '<img src="' + esc(it.icon) + '" alt="" loading="lazy" referrerpolicy="no-referrer">' : '') + '</span>';
+      }).join('');
+      return '<div class="dc-cmp-unit"><span class="dc-av">' + (icon ? '<img src="' + esc(icon) + '" alt="" loading="lazy" referrerpolicy="no-referrer">' : '') + '</span>' +
+        '<span class="dc-cmp-uname">' + esc(u.name || id) + '</span>' +
+        '<span class="dc-cost c' + (Number(u.cost) || 0) + '">' + (u.cost || '?') + '</span>' +
+        (its ? '<span class="dc-cmp-its">' + its + '</span>' : '') + '</div>';
+    }).join('') || '<span class="dim">—</span>';
+  }
+
+  function cmpTraits(cp) {
+    const ts = (cp.traits || []).slice().sort(function (a, b) {
+      return (b.style || 0) - (a.style || 0) || (b.active || 0) - (a.active || 0);
+    }).slice(0, 4);
+    if (!ts.length) return '<span class="dim">—</span>';
+    return ts.map(function (t) {
+      return '<span class="dc-tag">' + esc(t.name) + ' ' + esc(String(t.active || 0) + '/' + String(t.need || 0)) + '</span>';
+    }).join('');
+  }
+
+  function openCompare() {
+    const list = pickedComps();
+    if (list.length < 2) {
+      if (TFT.UI.toast) TFT.UI.toast('至少勾选 2 套阵容再对比', 'err');
+      return;
+    }
+    const cells = [];
+    cells.push('<div class="dc-cmp-corner">对比项</div>');
+    list.forEach(function (cp) {
+      cells.push('<div class="dc-cmp-head">' +
+        '<div class="dc-cmp-h1">' + gtag(cp.tier) + '<b>' + esc(cp.name) + '</b></div>' +
+        '<i>' + esc(cp.mainC || '—') + ' · ' + (cp.units || []).length + ' 人</i></div>');
+    });
+    CMP_METRICS.forEach(function (m) {
+      const best = bestValue(list, m);
+      cells.push('<div class="dc-cmp-label">' + esc(m.k) + (m.sub ? '<em>' + esc(m.sub) + '</em>' : '') + '</div>');
+      list.forEach(function (cp) {
+        const v = m.get(cp);
+        const hit = best != null && Number(v) === best;
+        cells.push('<div class="dc-cmp-val' + (hit ? ' is-best' : '') + '">' + m.fmt(v) + '</div>');
+      });
+    });
+    cells.push('<div class="dc-cmp-label">核心棋子</div>');
+    list.forEach(function (cp) { cells.push('<div class="dc-cmp-cell">' + cmpUnits(cp) + '</div>'); });
+    cells.push('<div class="dc-cmp-label">核心羁绊</div>');
+    list.forEach(function (cp) { cells.push('<div class="dc-cmp-cell"><div class="dc-tags">' + cmpTraits(cp) + '</div></div>'); });
+    cells.push('<div class="dc-cmp-label">操作</div>');
+    list.forEach(function (cp) {
+      cells.push('<div class="dc-cmp-cell"><button type="button" class="btn btn-xs" data-dc-mcomp="' + esc(cp.id) + '">查看攻略</button></div>');
+    });
+    const html =
+      '<div class="dc-cmp-scroll"><div class="dc-cmp-grid" style="--n:' + list.length + '">' + cells.join('') + '</div></div>' +
+      note('对比数据来自当前段位「' + esc(tierLabel()) + '」快照；每行数值中的高亮为该对比组最优，样本为 0 或缺失的项不参与比较。最多同时对比 3 套，窄屏可横向滑动查看全部列。');
+    TFT.UI.modal({ title: '阵容对比 · ' + list.length + ' 套', size: 'wide', body: html });
+    bindModalCompLinks();
+  }
+
   function openAugment(id) {
     const real = hasRealS18();
     const a = (real ? augRowsReal() : augRowsLegacy(S.tier)).filter(function (x) { return x.id === id; })[0];
@@ -1083,7 +1195,7 @@ window.TFT = window.TFT || {};
 
   function resetFilters() {
     S.q = '';
-    if (S.tab === 'explorer') { S.costs = []; S.trait = ''; S.sort = 'avgPlace'; }
+    if (S.tab === 'explorer') { S.costs = []; S.trait = ''; S.sort = 'avgPlace'; S.compare = []; }
     else if (S.tab === 'units') { S.unitCosts = []; S.unitTrait = ''; S.unitMainOnly = false; S.unitSort = 'comps'; }
     else if (S.tab === 'items') { S.itemCat = 'all'; S.itemSort = 'grade'; }
     else if (S.tab === 'traits') { S.traitGraded = false; S.traitSort = 'grade'; }
@@ -1102,10 +1214,13 @@ window.TFT = window.TFT || {};
       S.tier = key;
       S.trait = '';
       S.unitTrait = '';
+      S.compare = [];
       renderShell();
       return;
     }
     if (act === 'comp') { TFT.Main.openCompDetail(el.getAttribute('data-id')); return; }
+    if (act === 'cmptoggle') { toggleCompare(el.getAttribute('data-id')); return; }
+    if (act === 'cmpopen') { openCompare(); return; }
     if (act === 'unit') { openUnit(el.getAttribute('data-id')); return; }
     if (act === 'item') { openItem(el.getAttribute('data-id')); return; }
     if (act === 'aug') { openAugment(el.getAttribute('data-id')); return; }

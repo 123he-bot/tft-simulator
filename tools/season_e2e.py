@@ -202,6 +202,31 @@ function dataCenter() {
     res.traitModalRows = d().querySelectorAll('#modalBody .dc-table tbody tr').length;
     W.TFT.UI.closeModal();
   }
+  var et = v.querySelector('.dc-tab[data-key="explorer"]'); if (et) et.click();
+  var picks = v.querySelectorAll('[data-dc-act="cmptoggle"]');
+  if (picks.length >= 2) { picks[0].click(); }
+  picks = v.querySelectorAll('[data-dc-act="cmptoggle"]');
+  if (picks.length >= 2) { picks[1].click(); }
+  res.cmpPicked = v.querySelectorAll('[data-dc-act="cmptoggle"].on').length;
+  res.cmpHash = f.contentWindow.location.hash;
+  var cb = v.querySelector('[data-dc-act="cmpopen"]');
+  if (cb) {
+    cb.click();
+    res.cmpCols = d().querySelectorAll('#modalBody .dc-cmp-head').length;
+    res.cmpBest = d().querySelectorAll('#modalBody .dc-cmp-val.is-best').length;
+    res.cmpUnits = d().querySelectorAll('#modalBody .dc-cmp-unit').length;
+    W.TFT.UI.closeModal();
+  }
+  var cmpIds = [];
+  v.querySelectorAll('#dcBody tr[data-dc-act="comp"]').forEach(function (r) {
+    if (cmpIds.length < 2 && cmpIds.indexOf(r.getAttribute('data-id')) < 0) cmpIds.push(r.getAttribute('data-id'));
+  });
+  f.contentWindow.location.hash = '#data/explorer?tier=all&cmp=' + cmpIds.map(encodeURIComponent).join(',');
+  W.TFT.DataCenter.render();
+  res.cmpDeepPicked = v.querySelectorAll('[data-dc-act="cmptoggle"].on').length;
+  res.cmpDeepOn = !(v.querySelector('[data-dc-act="cmpopen"]') || {}).disabled;
+  var rr = v.querySelector('[data-dc-act="reset"]');
+  if (rr) { rr.click(); res.cmpAfterReset = v.querySelectorAll('[data-dc-act="cmptoggle"].on').length; }
   var at = v.querySelector('.dc-tab[data-key="augments"]'); if (at) at.click();
   res.augRows = dcRows();
   res.augGrades = v.querySelectorAll('#dcBody .dc-grade').length;
@@ -615,6 +640,13 @@ def run(keep=False):
           'on=%s rows=%s/%s' % (dc.get('traitGradedOn'), dc.get('traitGradedRows'), dc.get('traitRows')))
     check('羁绊详情可下钻阵容', dc.get('traitModal') is True and dc.get('traitModalRows', 0) > 0,
           'modal=%s rows=%s' % (dc.get('traitModal'), dc.get('traitModalRows')))
+    check('阵容可勾选对比并打开面板', dc.get('cmpPicked') == 2 and dc.get('cmpCols') == 2
+          and dc.get('cmpUnits', 0) > 0, 'picked=%s cols=%s best=%s units=%s' % (dc.get('cmpPicked'), dc.get('cmpCols'), dc.get('cmpBest'), dc.get('cmpUnits')))
+    check('对比面板高亮最优指标', dc.get('cmpBest', 0) > 0, dc.get('cmpBest'))
+    check('对比状态写入链接并可通过深链还原', 'cmp=' in (dc.get('cmpHash') or '')
+          and dc.get('cmpDeepPicked') == 2 and dc.get('cmpDeepOn') is True,
+          'hash=%s deep=%s on=%s' % (dc.get('cmpHash'), dc.get('cmpDeepPicked'), dc.get('cmpDeepOn')))
+    check('重置清空对比选择', dc.get('cmpAfterReset') == 0, dc.get('cmpAfterReset'))
     check('强化符文梯度榜含专家评级', dc.get('augRows', 0) >= 200 and dc.get('augGrades', 0) > 0
           and dc.get('augTierChips', 0) >= 5 and dc.get('prismRows', 0) > 0 and dc.get('augModal') is True,
           'rows=%s grade=%s chips=%s prism=%s modal=%s' % (dc.get('augRows'), dc.get('augGrades'), dc.get('augTierChips'), dc.get('prismRows'), dc.get('augModal')))
