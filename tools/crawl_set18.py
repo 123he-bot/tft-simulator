@@ -596,10 +596,12 @@ def localize(payload):
 
 
 if __name__ == '__main__':
-    # --catalog-only：只刷新强化符文 / 装备目录与统计，不重抓棋子羁绊（CI 每日任务用）
-    if '--catalog-only' in sys.argv:
+    # --stats-only：只刷新强化符文 / 装备统计（专家评级），目录与 bundle 交给官方抓取步骤重建（CI 每日任务用）
+    # --catalog-only：只刷新强化符文 / 装备目录与统计，不重抓棋子羁绊
+    stats_only = '--stats-only' in sys.argv
+    if '--catalog-only' in sys.argv or stats_only:
         p = json.load(open(os.path.join(DATA, 's18.json'), encoding='utf-8'))
-        print('仅刷新 S18 强化符文 / 装备目录')
+        print('仅刷新 S18 强化符文 / 装备统计' if stats_only else '仅刷新 S18 强化符文 / 装备目录')
     else:
         p = build()
         localize(p)
@@ -608,7 +610,10 @@ if __name__ == '__main__':
     with open(os.path.join(DATA, 's18_stats.json'), 'w', encoding='utf-8') as f:
         json.dump(cat, f, ensure_ascii=False, indent=1)
     print('已写入 data/s18_stats.json')
-    merge_full_catalogs(cat)
-    update_source(cat)
-    rebuild_bundle()
-    print('完成：data/s18_stats.json 与 js/data.bundle.js 已更新')
+    if stats_only:
+        print('完成：data/s18_stats.json 已更新（目录与 bundle 由官方抓取步骤重建）')
+    else:
+        merge_full_catalogs(cat)
+        update_source(cat)
+        rebuild_bundle()
+        print('完成：data/s18_stats.json 与 js/data.bundle.js 已更新')

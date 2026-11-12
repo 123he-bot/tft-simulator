@@ -221,8 +221,19 @@ window.TFT = window.TFT || {};
     if (!D.itemsFull.length) return [];
     slug = slug || D.currentSlug;
     if (D._itemCache[slug]) return D._itemCache[slug];
-    const list = D.itemsFull
-      .filter(i => !i.sets || !i.sets.length || i.sets.indexOf(slug) >= 0)
+    const src = D.itemsFull
+      .filter(i => !i.sets || !i.sets.length || i.sets.indexOf(slug) >= 0);
+    // S18 官方目录同时收录新（DA_）旧两套 id：同名只保留 DA_ 版本；无 DA_ 版本的历史赛季同名条目照常保留
+    const daPick = new Map();
+    src.forEach(function (i) {
+      const k = (i.category || '') + '|' + (i.name || i.id);
+      if (/^DA_/.test(i.id) && !daPick.has(k)) daPick.set(k, i);
+    });
+    const list = src
+      .filter(function (i) {
+        const pick = daPick.get((i.category || '') + '|' + (i.name || i.id));
+        return !pick || i === pick;
+      })
       .map(function (i) {
         return {
           id: i.id, name: i.name, en: i.en || null, category: i.category,
