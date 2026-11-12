@@ -20,7 +20,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得20金币。你的下一个强化符文位阶降低一阶。",
-    "icon": "assets/icons/AdvancedLoan_II.png"
+    "icon": "assets/icons/advancedloan_ii.png"
    },
    {
     "id": "DA_AdvancedLoanPlus",
@@ -29,7 +29,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得33金币。你的下一个强化符文位阶降低一阶。",
-    "icon": "assets/icons/AdvancedLoan_II.png"
+    "icon": "assets/icons/advancedloan_ii.png"
    },
    {
     "id": "DA_ArcaneViktory",
@@ -38,7 +38,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "在战斗开始8秒后，晕眩敌方队伍1.51.5秒。在战斗18秒后，重复该效果。\n\n2024云顶之弈澳门公开赛",
-    "icon": "assets/icons/ArcaneViktory_II.png"
+    "icon": "assets/icons/arcaneviktory_ii.png"
    },
    {
     "id": "DA_Ascension",
@@ -47,7 +47,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "在战斗开始12秒后，你的单位们获得35%伤害增幅。",
-    "icon": "assets/icons/Ascension2.png"
+    "icon": "assets/icons/ascension2.png"
    },
    {
     "id": "DA_AugmentedPower",
@@ -56,7 +56,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "你的下一个强化符文位阶提高一阶。",
-    "icon": "assets/icons/PowerUp_I.png"
+    "icon": "assets/icons/powerup_i.png"
    },
    {
     "id": "DA_BacklineBlueprint",
@@ -65,7 +65,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得1个3费非坦克弈子，以及一个与其职业相匹配的纹章。",
-    "icon": "assets/icons/BacklineBlueprint_II.png"
+    "icon": "assets/icons/backlineblueprint_ii.png"
    },
    {
     "id": "DA_BackupBows",
@@ -74,7 +74,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "获得1个【反曲之弓】。在你的弈子们攻击1000次后，额外获得2个。",
-    "icon": "assets/icons/RecurveWrecker_I.png"
+    "icon": "assets/icons/recurvewrecker_i.png"
    },
    {
     "id": "DA_BandOfThieves",
@@ -83,7 +83,7 @@
     "tier": "银",
     "opTier": "S",
     "desc": "获得1个【窃贼手套】。",
-    "icon": "assets/icons/BandThieves1.png"
+    "icon": "assets/icons/bandthieves1.png"
    },
    {
     "id": "DA_BandOfThievesII",
@@ -92,7 +92,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "获得2个【窃贼手套】。在5场玩家对战回合后，获得另一个。",
-    "icon": "assets/icons/BandThieves3.png"
+    "icon": "assets/icons/bandthieves3.png"
    },
    {
     "id": "DA_BandOfThievesIIPlus",
@@ -101,7 +101,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "获得2个【窃贼手套】。在5场玩家对战回合后，获得另一个。",
-    "icon": "assets/icons/BandThieves3.png"
+    "icon": "assets/icons/bandthieves3.png"
    },
    {
     "id": "DA_BandOfThievesIIPlusPlus",
@@ -110,7 +110,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "获得2个【窃贼手套】。在3场玩家对战回合后，获得另一个。",
-    "icon": "assets/icons/BandThieves3.png"
+    "icon": "assets/icons/bandthieves3.png"
    },
    {
     "id": "DA_BaronsLair",
@@ -119,7 +119,7 @@
     "tier": "棱彩",
     "opTier": "OP",
     "desc": "获得1件随机坦克装备。在战斗开始8秒后，你的队伍每秒获得4%额外物理加成和法术加成，持续至战斗结束。\n\n2025云顶之弈巴黎公开赛",
-    "icon": "assets/icons/TheBaronsLair_III.png"
+    "icon": "assets/icons/thebaronslair_iii.png"
    },
    {
     "id": "DA_BeltOverflow",
@@ -128,7 +128,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "获得4个【巨人腰带】。你的【巨人腰带】提供+85额外生命值。",
-    "icon": "assets/icons/BeltOverflow_III.png"
+    "icon": "assets/icons/beltoverflow_iii.png"
    },
    {
     "id": "DA_18_BigGrabBag",
@@ -137,7 +137,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "获得3件随机基础装备、2金币和1个【装备重铸器】。",
-    "icon": "assets/icons/Grab-Bag-II.png"
+    "icon": "assets/icons/grab-bag-ii.png"
    },
    {
     "id": "DA_BirthdayPresent",
@@ -146,7 +146,7 @@
     "tier": "棱彩",
     "opTier": "C",
     "desc": "在你每次升级时提供1个2星弈子和1金币。这个弈子的费用位阶是你的等级减4(最大值：5费)。",
-    "icon": "assets/icons/Golden-Gifts-III.png"
+    "icon": "assets/icons/golden-gifts-iii.png"
    },
    {
     "id": "DA_BirthdayReunion",
@@ -155,7 +155,7 @@
     "tier": "金",
     "opTier": "B",
     "desc": "获得1个随机2星2费弈子。在6级时，获得1件随机基础装备。在9级时，获得1个随机2星5费弈子。\n\n2024【画中灵】全球总决赛",
-    "icon": "assets/icons/BirthdayReunion_II.png"
+    "icon": "assets/icons/birthdayreunion_ii.png"
    },
    {
     "id": "DA_BlackthornTraitAugment",
@@ -182,7 +182,7 @@
     "tier": "金",
     "opTier": "B",
     "desc": "友军获得15护甲和魔法抗性，每玩家等级提升该加成2。\n\n2022【双城之战】全球总决赛",
-    "icon": "assets/icons/BodyguardsTraining_II.png"
+    "icon": "assets/icons/bodyguardstraining_ii.png"
    },
    {
     "id": "DA_BonusGift",
@@ -209,7 +209,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得价值12金币的随机弈子。(保证至少一个3费弈子！)",
-    "icon": "assets/icons/BoosterPack1_II.png"
+    "icon": "assets/icons/boosterpack1_ii.png"
    },
    {
     "id": "DA_BoosterPackPlus",
@@ -218,7 +218,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得价值18金币的随机弈子。(保证至少一个4费弈子！)",
-    "icon": "assets/icons/BoosterPack1_II.png"
+    "icon": "assets/icons/boosterpack1_ii.png"
    },
    {
     "id": "DA_BoosterPackPlusPlus",
@@ -227,7 +227,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得价值26金币的随机弈子。(保证至少一个5费弈子！)",
-    "icon": "assets/icons/BoosterPack1_II.png"
+    "icon": "assets/icons/boosterpack1_ii.png"
    },
    {
     "id": "DA_BoxingLessons",
@@ -236,7 +236,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "战斗开始时，前排每有1个弈子，你的队伍获得30生命值。",
-    "icon": "assets/icons/BoxingLessons_I.png"
+    "icon": "assets/icons/boxinglessons_i.png"
    },
    {
     "id": "DA_18_BranchingOut",
@@ -245,7 +245,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "获得1个随机纹章。",
-    "icon": "assets/icons/Branching-Out-I.png"
+    "icon": "assets/icons/branching-out-i.png"
    },
    {
     "id": "DA_18_BranchingOutPlus",
@@ -254,7 +254,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "获得1个随机纹章和1个【装备重铸器】。",
-    "icon": "assets/icons/Branching-Out-I.png"
+    "icon": "assets/icons/branching-out-i.png"
    },
    {
     "id": "DA_BronzeForLifeI",
@@ -263,7 +263,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "每拥有1个黄铜级羁绊，你的队伍获得2.5%伤害增幅。",
-    "icon": "assets/icons/BronzeForLife_II.png"
+    "icon": "assets/icons/bronzeforlife_ii.png"
    },
    {
     "id": "DA_BronzeForLifeII",
@@ -272,7 +272,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "每拥有1个黄铜级羁绊，你的队伍获得2.5%伤害增幅和2.5护甲与魔法抗性。",
-    "icon": "assets/icons/BronzeForLife_III.png"
+    "icon": "assets/icons/bronzeforlife_iii.png"
    },
    {
     "id": "DA_BuriedTreasuresIII",
@@ -281,7 +281,7 @@
     "tier": "棱彩",
     "opTier": "S",
     "desc": "立刻以及接下来的6个回合开始时，获得1件随机基础装备。",
-    "icon": "assets/icons/Buried-Treasures-III.png"
+    "icon": "assets/icons/buried-treasures-iii.png"
    },
    {
     "id": "DA_CalculatedLoss",
@@ -290,7 +290,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "在你输掉对战后，获得2金币和1次免费的商店刷新。",
-    "icon": "assets/icons/CalculatedLoss2.png"
+    "icon": "assets/icons/calculatedloss2.png"
    },
    {
     "id": "DA_CalledShot",
@@ -299,7 +299,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "将你的连胜数设为+4。获得4金币。",
-    "icon": "assets/icons/CalledShot_I.png"
+    "icon": "assets/icons/calledshot_i.png"
    },
    {
     "id": "DA_CallToChaos",
@@ -308,7 +308,7 @@
     "tier": "棱彩",
     "opTier": "S",
     "desc": "获得1个强大的随机奖励。",
-    "icon": "assets/icons/CallToChaos_III.png"
+    "icon": "assets/icons/calltochaos_iii.png"
    },
    {
     "id": "DA_CapitalGainsI",
@@ -335,7 +335,7 @@
     "tier": "银",
     "opTier": "S",
     "desc": "立刻获得1个随机2费弈子。在你每次升级时，再次获得1个相同弈子。\n\n弈子：0",
-    "icon": "assets/icons/Caretaker_s-Chosen-I.png"
+    "icon": "assets/icons/caretaker_s-chosen-i.png"
    },
    {
     "id": "DA_CaretakersFavor",
@@ -344,7 +344,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "在你到达5、6、7和8级时，获得1个【基础装备锻造器】。\n\n【基础装备锻造器】提供4个选项。",
-    "icon": "assets/icons/Caretaker_s-Chosen-II.png"
+    "icon": "assets/icons/caretaker_s-chosen-ii.png"
    },
    {
     "id": "DA_CarveAPath",
@@ -353,7 +353,7 @@
     "tier": "银",
     "opTier": "S",
     "desc": "获得1个【暴风大剑】。在你的弈子们造成65000物理伤害后，额外获得2个。",
-    "icon": "assets/icons/CarveAPath_I.png"
+    "icon": "assets/icons/carveapath_i.png"
    },
    {
     "id": "DA_CelestialBlessingI",
@@ -362,7 +362,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "你的队伍获得12%全能吸血。溢出的治疗量会转换为护盾，至多转化为200生命值护盾。",
-    "icon": "assets/icons/CelestialBlessing1.png"
+    "icon": "assets/icons/celestialblessing1.png"
    },
    {
     "id": "DA_CelestialBlessingII",
@@ -371,7 +371,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "你的队伍获得18%全能吸血。溢出的治疗量会转换为护盾，至多转化为400生命值护盾。",
-    "icon": "assets/icons/CelestialBlessing2.png"
+    "icon": "assets/icons/celestialblessing2.png"
    },
    {
     "id": "DA_CelestialBlessingIII",
@@ -380,7 +380,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "你的队伍获得25%全能吸血。溢出的治疗量会转换为护盾，至多转化为1000生命值护盾。",
-    "icon": "assets/icons/CelestialBlessing3.png"
+    "icon": "assets/icons/celestialblessing3.png"
    },
    {
     "id": "DA_ChampDelivery",
@@ -416,7 +416,7 @@
     "tier": "金",
     "opTier": "B",
     "desc": "如果在玩家对战回合结束时，你的备战席没有任何弈子，则获得3经验值。",
-    "icon": "assets/icons/ClearMind2.png"
+    "icon": "assets/icons/clearmind2.png"
    },
    {
     "id": "DA_ClockworkAccelerator",
@@ -425,7 +425,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "你的队伍在战斗中每过3秒就会获得12%攻击速度。",
-    "icon": "assets/icons/ClockworkAccelerator_II.png"
+    "icon": "assets/icons/clockworkaccelerator_ii.png"
    },
    {
     "id": "DA_ClutteredMind",
@@ -434,7 +434,7 @@
     "tier": "金",
     "opTier": "B",
     "desc": "立刻获得4个1费弈子。如果在玩家对战回合结束时，你的备战席已满，则获得3经验值。",
-    "icon": "assets/icons/Dizzy-II.png"
+    "icon": "assets/icons/dizzy-ii.png"
    },
    {
     "id": "DA_CognitiveOverload",
@@ -443,7 +443,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得7金币、1个2星1费弈子、1个2费弈子、2个3费弈子、1经验值以及1次商店刷新。",
-    "icon": "assets/icons/CognitiveOverload_II.png"
+    "icon": "assets/icons/cognitiveoverload_ii.png"
    },
    {
     "id": "DA_CognitiveTax",
@@ -452,7 +452,7 @@
     "tier": "银",
     "opTier": "B",
     "desc": "获得8金币和1经验值。",
-    "icon": "assets/icons/CognitiveTax_I.png"
+    "icon": "assets/icons/cognitivetax_i.png"
    },
    {
     "id": "DA_CognitiveTaxPlus",
@@ -461,7 +461,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "获得12金币和3经验值。",
-    "icon": "assets/icons/CognitiveTax_I.png"
+    "icon": "assets/icons/cognitivetax_i.png"
    },
    {
     "id": "DA_ComebackStory",
@@ -470,7 +470,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "每损失1玩家生命值，你的队伍获得4生命值和0.3%攻击速度。",
-    "icon": "assets/icons/ComebackStory_III.png"
+    "icon": "assets/icons/comebackstory_iii.png"
    },
    {
     "id": "DA_CommerceCore",
@@ -479,7 +479,7 @@
     "tier": "棱彩",
     "opTier": "S",
     "desc": "立刻获得16次免费商店刷新，并在剩余游戏时间内每回合获得3次免费商店刷新。",
-    "icon": "assets/icons/Trade3.png"
+    "icon": "assets/icons/trade3.png"
    },
    {
     "id": "DA_ComponentBuffet",
@@ -488,7 +488,7 @@
     "tier": "银",
     "opTier": null,
     "desc": "每当你将要获得1件基础装备时，转而获得1个【基础装备锻造器】。获得1件随机基础装备。这个锻造器提供4个选项。",
-    "icon": "assets/icons/The-customer-is-always-right-I.png"
+    "icon": "assets/icons/the-customer-is-always-right-i.png"
    },
    {
     "id": "DA_ComponentQuest",
@@ -506,7 +506,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "在每回合开始时，所有持有【金锅锅】或【金铲铲】装备的友军都会为最近的弈子提供70永久生命值。获得1个【金锅锅】。",
-    "icon": "assets/icons/CookingPot_II.png"
+    "icon": "assets/icons/cookingpot_ii.png"
    },
    {
     "id": "DA_Coronation",
@@ -515,7 +515,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "获得1个【金铲铲冠冕】。【金铲铲冠冕】、【金锅锅冠冕】和【金锅铲冠冕】为携带者提供20%攻击速度、25%物理加成和30%法术加成。",
-    "icon": "assets/icons/Coronation_III.png"
+    "icon": "assets/icons/coronation_iii.png"
    },
    {
     "id": "DA_Corrosion",
@@ -524,7 +524,7 @@
     "tier": "银",
     "opTier": "S",
     "desc": "前两排的敌人每2秒损失4护甲和魔法抗性。",
-    "icon": "assets/icons/Corrosion_I.png"
+    "icon": "assets/icons/corrosion_i.png"
    },
    {
     "id": "DA_18_CovenTraitAugment",
@@ -542,7 +542,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "每当你打造1件成装时，获得2次刷新。",
-    "icon": "assets/icons/CraftedCrafting_I.png"
+    "icon": "assets/icons/craftedcrafting_i.png"
    },
    {
     "id": "DA_CryMeARiver",
@@ -551,7 +551,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "获得1个【女神之泪】。你的队伍获得1法力回复。战斗开始12秒后，该数值提升至3。",
-    "icon": "assets/icons/CryMeARiver_II.png"
+    "icon": "assets/icons/crymeariver_ii.png"
    },
    {
     "id": "DA_CursedCrown",
@@ -560,7 +560,7 @@
     "tier": "棱彩",
     "opTier": null,
     "desc": "Gain +2 max team size, but take double player damage when you lose a player combat.",
-    "icon": "assets/icons/CursedCrown-III.png"
+    "icon": "assets/icons/cursedcrown-iii.png"
    },
    {
     "id": "DA_DeadlierBlades",
@@ -578,7 +578,7 @@
     "tier": "金",
     "opTier": null,
     "desc": "When you field exactly 2 copies of a champion, they both gain 25% Attack Damage and Ability Power and 25 Armor, and Magic Resist. When you 3-star, gain a 2-star copy.",
-    "icon": "assets/icons/Double-Trouble-II.png"
+    "icon": "assets/icons/double-trouble-ii.png"
    },
    {
     "id": "DA_Dummify",
@@ -587,7 +587,7 @@
     "tier": "银",
     "opTier": "C",
     "desc": "失去你棋盘上和备战席的所有弈子。获得1个【训练假人】，其生命值为所有失去弈子总生命值的60%。假人每阶段获得1150生命值。获得1个随机2星2费非坦克弈子。\n\nStarting Health: 1500.",
-    "icon": "assets/icons/Dummify_I.png"
+    "icon": "assets/icons/dummify_i.png"
    },
    {
     "id": "DA_18_DuoQueue",
@@ -596,7 +596,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得2个随机5费弈子和2件相同的随机基础装备。",
-    "icon": "assets/icons/DuoQueue_II.png"
+    "icon": "assets/icons/duoqueue_ii.png"
    },
    {
     "id": "DA_EarlyLearnings",
@@ -605,7 +605,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "你的队伍获得3%物理加成和法术加成。在每场玩家对战回合结束后，该加成提升1%。1费弈子们获得双倍该加成。",
-    "icon": "assets/icons/EarlyLearning_II.png"
+    "icon": "assets/icons/earlylearning_ii.png"
    },
    {
     "id": "DA_18_ElderwoodTraitAugment",
@@ -623,7 +623,7 @@
     "tier": "银",
     "opTier": "OP",
     "desc": "友军每受到4次攻击，就会对附近的敌人造成25-80(基于当前阶段)魔法伤害(1秒冷却)。",
-    "icon": "assets/icons/Electrocharge-I.png"
+    "icon": "assets/icons/electrocharge-i.png"
    },
    {
     "id": "DA_ElectrochargeII",
@@ -632,7 +632,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "友军每受到4次攻击，会对附近的敌人造成50~140(基于当前阶段)魔法伤害(1秒冷却)。",
-    "icon": "assets/icons/Electrocharge-II.png"
+    "icon": "assets/icons/electrocharge-ii.png"
    },
    {
     "id": "DA_EpicRolldown",
@@ -641,7 +641,7 @@
     "tier": "金",
     "opTier": "B",
     "desc": "在你到达8级时，获得20次商店刷新。\n\n2023【符文大陆传说】全球总决赛",
-    "icon": "assets/icons/EpicRolldown_II.png"
+    "icon": "assets/icons/epicrolldown_ii.png"
    },
    {
     "id": "DA_Epoch",
@@ -650,7 +650,7 @@
     "tier": "金",
     "opTier": "B",
     "desc": "立刻以及每阶段开始时，获得4经验值和2次免费刷新。",
-    "icon": "assets/icons/Epoch_II.png"
+    "icon": "assets/icons/epoch_ii.png"
    },
    {
     "id": "DA_EpochPlus",
@@ -659,7 +659,7 @@
     "tier": "金",
     "opTier": "B",
     "desc": "立刻以及每阶段开始时，获得8经验值和2次免费刷新。",
-    "icon": "assets/icons/Epoch_II.png"
+    "icon": "assets/icons/epoch_ii.png"
    },
    {
     "id": "DA_ExclusiveCustomization",
@@ -668,7 +668,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "获得1个【幸运装备宝箱】、1个【装备拆卸器】和7金币。",
-    "icon": "assets/icons/ExclusiveCustomization_II.png"
+    "icon": "assets/icons/exclusivecustomization_ii.png"
    },
    {
     "id": "DA_Expedition",
@@ -677,7 +677,7 @@
     "tier": "银",
     "opTier": "C",
     "desc": "在每回合开始时，失去备战席最右侧栏位的弈子。当你通过这种方式失去的弈子总价值达到33金币时，获得强力奖励。立刻获得1个3费弈子。",
-    "icon": "assets/icons/Expedition_I.png"
+    "icon": "assets/icons/expedition_i.png"
    },
    {
     "id": "DA_ExplosiveGrowth",
@@ -686,7 +686,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "立刻以及接下来的3个回合开始时，获得7经验值。",
-    "icon": "assets/icons/ExplosiveGrowth_II.png"
+    "icon": "assets/icons/explosivegrowth_ii.png"
    },
    {
     "id": "DA_ExplosiveGrowthPlus",
@@ -695,7 +695,7 @@
     "tier": "金",
     "opTier": "B",
     "desc": "立刻以及接下来的3个回合开始时，获得9经验值。",
-    "icon": "assets/icons/ExplosiveGrowth_II.png"
+    "icon": "assets/icons/explosivegrowth_ii.png"
    },
    {
     "id": "DA_ExtraBuckles",
@@ -704,7 +704,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "获得1个【巨人腰带】。在你的弈子们承受75000伤害后，额外获得2个。",
-    "icon": "assets/icons/ExtraBuckles_I.png"
+    "icon": "assets/icons/extrabuckles_i.png"
    },
    {
     "id": "DA_18_FaeTraitAugment",
@@ -722,7 +722,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "获得12金币，然后抛掷1枚硬币。如果硬币正面朝上，额外获得4金币。",
-    "icon": "assets/icons/FeelingLucky_I.png"
+    "icon": "assets/icons/feelinglucky_i.png"
    },
    {
     "id": "DA_FindYourCenter",
@@ -731,7 +731,7 @@
     "tier": "银",
     "opTier": "S",
     "desc": "战斗开始时，位于棋盘中心的那个己方弈子获得15%伤害增幅和25%最大生命值。",
-    "icon": "assets/icons/FindYourCenter_I.png"
+    "icon": "assets/icons/findyourcenter_i.png"
    },
    {
     "id": "DA_Flexible",
@@ -767,7 +767,7 @@
     "tier": "银",
     "opTier": "S",
     "desc": "获得1个【女神之泪】。在你的弈子们消耗7000法力值后，额外获得2个。",
-    "icon": "assets/icons/GriefoftheGreatGoddess_I.png"
+    "icon": "assets/icons/griefofthegreatgoddess_i.png"
    },
    {
     "id": "DA_FocusedFire",
@@ -776,7 +776,7 @@
     "tier": "银",
     "opTier": "S",
     "desc": "你的队伍获得10%物理加成。每5秒，额外获得5%。",
-    "icon": "assets/icons/MarksMan_I.png"
+    "icon": "assets/icons/marksman_i.png"
    },
    {
     "id": "DA_ForgedInStrength",
@@ -785,7 +785,7 @@
     "tier": "棱彩",
     "opTier": "B",
     "desc": "获得1件随机神器。当你降至35生命值时，额外获得1件随机神器、1件随机成装、以及2件随机基础装备。\n\n2023【强音争霸】全球总决赛",
-    "icon": "assets/icons/ForgedInStrength_III.png"
+    "icon": "assets/icons/forgedinstrength_iii.png"
    },
    {
     "id": "DA_18_FOURcing",
@@ -803,7 +803,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得1个2星1费坦克弈子，以及一个与其职业相匹配的纹章。",
-    "icon": "assets/icons/FrontlineFoundation_II.png"
+    "icon": "assets/icons/frontlinefoundation_ii.png"
    },
    {
     "id": "DA_FutureFocused",
@@ -821,7 +821,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得21金币。",
-    "icon": "assets/icons/Windfall2.png"
+    "icon": "assets/icons/windfall2.png"
    },
    {
     "id": "DA_GiantAndMighty",
@@ -830,7 +830,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "你的队伍体型变大，获得225生命值和10%最大生命值。",
-    "icon": "assets/icons/GiantandMighty_III.png"
+    "icon": "assets/icons/giantandmighty_iii.png"
    },
    {
     "id": "DA_GildedSteel",
@@ -839,7 +839,7 @@
     "tier": "金",
     "opTier": "B",
     "desc": "获得2个5费弈子。如果你登场了至少一个5费弈子，你的1至4费弈子们获得8%伤害减免。\n\n2025【天下无双格斗大赛】全球总决赛",
-    "icon": "assets/icons/GildedSteel_II.png"
+    "icon": "assets/icons/gildedsteel_ii.png"
    },
    {
     "id": "DA_GlassCannon_Gold",
@@ -848,7 +848,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "在后排开始战斗的友军，在战斗开始时的生命值为80%，但会获得25%伤害增幅。",
-    "icon": "assets/icons/GlassCannon_II.png"
+    "icon": "assets/icons/glasscannon_ii.png"
    },
    {
     "id": "DA_GlassCannon_Silver",
@@ -857,7 +857,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "在后排开始战斗的友军，在战斗开始时的生命值为80%，但会获得16%伤害增幅。",
-    "icon": "assets/icons/GlassCannon_I.png"
+    "icon": "assets/icons/glasscannon_i.png"
    },
    {
     "id": "DA_GoingLong",
@@ -866,7 +866,7 @@
     "tier": "棱彩",
     "opTier": "B",
     "desc": "你不再获得利息。立刻获得10金币。在每场玩家对战后，获得4经验值。\n\n利息是你每储存10金币时获得的额外金币。",
-    "icon": "assets/icons/Going-Long-III.png"
+    "icon": "assets/icons/going-long-iii.png"
    },
    {
     "id": "DA_GoldenEgg",
@@ -875,7 +875,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "获得1个大金蛋，需要11个回合来孵化，在孵化时提供大量战利品。赢得玩家对战回合后会使孵化倒计时加快1个额外回合。",
-    "icon": "assets/icons/The-Golden-Egg-III.png"
+    "icon": "assets/icons/the-golden-egg-iii.png"
    },
    {
     "id": "DA_GoldenGamble",
@@ -884,7 +884,7 @@
     "tier": "棱彩",
     "opTier": "S",
     "desc": "获得2金币，并抛掷1枚硬币。如果硬币正面朝上，获得1个【光明版幸运装备宝箱】。如果硬币反面朝上，获得2个【成装锻造器】。",
-    "icon": "assets/icons/GoldenGamble_III.png"
+    "icon": "assets/icons/goldengamble_iii.png"
    },
    {
     "id": "DA_GoldenGamblePlus",
@@ -893,7 +893,7 @@
     "tier": "棱彩",
     "opTier": "S",
     "desc": "获得3金币，并抛掷1枚硬币。如果硬币正面朝上，获得1个【光明版幸运装备宝箱】。如果硬币反面朝上，获得2个【成装锻造器】。",
-    "icon": "assets/icons/GoldenGamble_III.png"
+    "icon": "assets/icons/goldengamble_iii.png"
    },
    {
     "id": "DA_GoldenGamblePlusPlus",
@@ -902,7 +902,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "获得6金币，并抛掷1枚硬币。如果硬币正面朝上，获得1个【光明版幸运装备宝箱】。如果硬币反面朝上，获得2个【成装锻造器】。",
-    "icon": "assets/icons/GoldenGamble_III.png"
+    "icon": "assets/icons/goldengamble_iii.png"
    },
    {
     "id": "DA_18_GoodForSomethingI",
@@ -911,7 +911,7 @@
     "tier": "银",
     "opTier": null,
     "desc": "未携带装备的弈子们在阵亡时有40%几率掉落1金币。",
-    "icon": "assets/icons/Good-For-Something-I.png"
+    "icon": "assets/icons/good-for-something-i.png"
    },
    {
     "id": "DA_GroupHugI",
@@ -920,7 +920,7 @@
     "tier": "银",
     "opTier": "C",
     "desc": "战斗开始时：弈子为其他邻格弈子提供7护甲和魔抗。这个效果可以叠加。",
-    "icon": "assets/icons/GroupHug1_I.png"
+    "icon": "assets/icons/grouphug1_i.png"
    },
    {
     "id": "DA_GroupHugII",
@@ -929,7 +929,7 @@
     "tier": "金",
     "opTier": "B",
     "desc": "战斗开始时：弈子为其他邻格弈子提供10护甲和魔抗。这个效果可以叠加。",
-    "icon": "assets/icons/GroupHug2_II.png"
+    "icon": "assets/icons/grouphug2_ii.png"
    },
    {
     "id": "DA_HardBargain",
@@ -938,7 +938,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "你无法选择你的选秀奖励。每次选秀回合获得额外的6玩家生命值和8金币。\n若你没有选择选秀奖励，你会获得1个未被选择的弈子和其携带的装备。",
-    "icon": "assets/icons/HardBargain_II.png"
+    "icon": "assets/icons/hardbargain_ii.png"
    },
    {
     "id": "DA_HardCommit",
@@ -947,7 +947,7 @@
     "tier": "棱彩",
     "opTier": "B",
     "desc": "获得1个随机纹章。立刻以及每阶段开始时，获得该羁绊的1个1星弈子，且该弈子的费用相当于当前阶段数(最多为5)，并获得3金币。",
-    "icon": "assets/icons/HardCommit_III.png"
+    "icon": "assets/icons/hardcommit_iii.png"
    },
    {
     "id": "DA_HealingOrbsI",
@@ -956,7 +956,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "当1名敌人阵亡时，1名附近的友军治疗250生命值。",
-    "icon": "assets/icons/Healing-Orbs-I.png"
+    "icon": "assets/icons/healing-orbs-i.png"
    },
    {
     "id": "DA_HealingOrbsII",
@@ -965,7 +965,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "当1名敌人阵亡时，1名附近的友军治疗575生命值。",
-    "icon": "assets/icons/Healing-Orbs-II.png"
+    "icon": "assets/icons/healing-orbs-ii.png"
    },
    {
     "id": "DA_HedgeFund",
@@ -974,7 +974,7 @@
     "tier": "棱彩",
     "opTier": "B",
     "desc": "获得22金币。你的最大利息提升至10金币。",
-    "icon": "assets/icons/RichGetRicher3.png"
+    "icon": "assets/icons/richgetricher3.png"
    },
    {
     "id": "DA_HeroicGrabBag",
@@ -983,7 +983,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "获得2个【次级英雄复制器】。获得6金币。",
-    "icon": "assets/icons/Heroic-Grab-Bag-II.png"
+    "icon": "assets/icons/heroic-grab-bag-ii.png"
    },
    {
     "id": "DA_HeroicGrabBagPlus",
@@ -992,7 +992,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "获得2个【次级英雄复制器】。获得8金币。",
-    "icon": "assets/icons/Heroic-Grab-Bag-II.png"
+    "icon": "assets/icons/heroic-grab-bag-ii.png"
    },
    {
     "id": "DA_HeroicGrabBagPlusPlus",
@@ -1001,7 +1001,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "获得2个【次级英雄复制器】。获得14金币。",
-    "icon": "assets/icons/Heroic-Grab-Bag-II.png"
+    "icon": "assets/icons/heroic-grab-bag-ii.png"
    },
    {
     "id": "DA_HoldTheLine",
@@ -1010,7 +1010,7 @@
     "tier": "棱彩",
     "opTier": "B",
     "desc": "战斗开始时，你的前排每有1名弈子，后两排的弈子就会获得11%法术加成和11%物理加成。",
-    "icon": "assets/icons/HoldTheLine_III.png"
+    "icon": "assets/icons/holdtheline_iii.png"
    },
    {
     "id": "DA_Hustler",
@@ -1019,7 +1019,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "你不再获得利息，但会在每个玩家对战回合开始时获得3金币。立刻获得3金币。\n\n利息是你每储存10金币时获得的额外金币。",
-    "icon": "assets/icons/Hyperroll2.png"
+    "icon": "assets/icons/hyperroll2.png"
    },
    {
     "id": "DA_18_InfernoTraitAugment",
@@ -1037,7 +1037,7 @@
     "tier": "金",
     "opTier": null,
     "desc": "Gain 3 gold now. On Stage 3-7, gain an Infinity Force. Infinity Force gives allies in the same row a 12% Health shield.\n\nMonsters Attack Championship, 2023",
-    "icon": "assets/icons/InfinityProtection_II.png"
+    "icon": "assets/icons/infinityprotection_ii.png"
    },
    {
     "id": "DA_InvestedPlus",
@@ -1046,7 +1046,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "获得26金币。在每回合开始时，超过50金币后，每拥有10金币就会获得1次商店刷新(最多80金币)。",
-    "icon": "assets/icons/Invested-III.png"
+    "icon": "assets/icons/invested-iii.png"
    },
    {
     "id": "DA_InvestedPlusPlus",
@@ -1055,7 +1055,7 @@
     "tier": "棱彩",
     "opTier": "S",
     "desc": "获得45金币。在每回合开始时，超过50金币后，每拥有10金币就会获得1次商店刷新(最多80金币)。",
-    "icon": "assets/icons/Invested-III.png"
+    "icon": "assets/icons/invested-iii.png"
    },
    {
     "id": "DA_InvestmentStrategy",
@@ -1064,7 +1064,7 @@
     "tier": "棱彩",
     "opTier": "C",
     "desc": "你每获得1利息，你弈子们获得12永久最大生命值。你的最大利息提升2。立刻获得6金币。",
-    "icon": "assets/icons/InvestmentStrategy_III.png"
+    "icon": "assets/icons/investmentstrategy_iii.png"
    },
    {
     "id": "DA_InvestmentStrategyI",
@@ -1073,7 +1073,7 @@
     "tier": "金",
     "opTier": "B",
     "desc": "你每获得1利息，你弈子们获得9永久最大生命值。立刻获得3金币。",
-    "icon": "assets/icons/InvestmentStrategy_II.png"
+    "icon": "assets/icons/investmentstrategy_ii.png"
    },
    {
     "id": "DA_IronAssets",
@@ -1082,7 +1082,7 @@
     "tier": "银",
     "opTier": "S",
     "desc": "获得1个【基础装备锻造器】和3金币。",
-    "icon": "assets/icons/Iron-Assets-I.png"
+    "icon": "assets/icons/iron-assets-i.png"
    },
    {
     "id": "DA_ItemGrabBag",
@@ -1091,7 +1091,7 @@
     "tier": "银",
     "opTier": "OP",
     "desc": "获得1件随机成装。",
-    "icon": "assets/icons/ItemGrabBag1.png"
+    "icon": "assets/icons/itemgrabbag1.png"
    },
    {
     "id": "DA_JeweledLotus_I",
@@ -1100,7 +1100,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "你的队伍获得15%暴击几率和技能暴击。\n\n【技能暴击】：技能伤害可以造成暴击。额外的【技能暴击】提供10%暴击伤害。",
-    "icon": "assets/icons/Jeweled-Lotus-II.png"
+    "icon": "assets/icons/jeweled-lotus-ii.png"
    },
    {
     "id": "DA_JeweledLotus_II",
@@ -1109,7 +1109,7 @@
     "tier": "棱彩",
     "opTier": "OP",
     "desc": "你的队伍获得25%暴击几率，10%暴击伤害和【技能暴击】。\n\n【技能暴击】：技能伤害可以造成暴击。额外的【技能暴击】提供10%暴击伤害。",
-    "icon": "assets/icons/Jeweled-Lotus-III.png"
+    "icon": "assets/icons/jeweled-lotus-iii.png"
    },
    {
     "id": "DA_KickStart",
@@ -1118,7 +1118,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "获得1个随机2星2费弈子和1金币。",
-    "icon": "assets/icons/KickStart_I.png"
+    "icon": "assets/icons/kickstart_i.png"
    },
    {
     "id": "DA_Kingslayer",
@@ -1127,7 +1127,7 @@
     "tier": "银",
     "opTier": "B",
     "desc": "在赢得玩家对战回合后，获得1金币。如果这位玩家之前的生命值多于你的生命值，转而获得6金币。获得1金币。",
-    "icon": "assets/icons/Kingslayer_I.png"
+    "icon": "assets/icons/kingslayer_i.png"
    },
    {
     "id": "DA_LateGameScaling",
@@ -1136,7 +1136,7 @@
     "tier": "金",
     "opTier": "B",
     "desc": "在每场玩家战斗回合开始时，获得2经验值。你的5费弈子们获得12%生命值和12%攻击速度。\n\n2025【赛博之城】全球总决赛",
-    "icon": "assets/icons/LateGameScaling_II.png"
+    "icon": "assets/icons/lategamescaling_ii.png"
    },
    {
     "id": "DA_LateGameSpecialist",
@@ -1145,7 +1145,7 @@
     "tier": "银",
     "opTier": "C",
     "desc": "当你到达9级时，获得27金币。",
-    "icon": "assets/icons/Late-Game-Specialist-I.png"
+    "icon": "assets/icons/late-game-specialist-i.png"
    },
    {
     "id": "DA_LatentForge",
@@ -1154,7 +1154,7 @@
     "tier": "银",
     "opTier": "S",
     "desc": "在8场玩家对战回合后，获得1个【神器锻造器】。",
-    "icon": "assets/icons/Long-time-Crafting-I.png"
+    "icon": "assets/icons/long-time-crafting-i.png"
    },
    {
     "id": "DA_LegionOfThrees",
@@ -1163,7 +1163,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得1个随机纹章。你的3费弈子们和携带着纹章的友军获得150生命值和12%攻击速度。\n\n2021【光明与黑暗】全球总决赛",
-    "icon": "assets/icons/LegionofThrees_II.png"
+    "icon": "assets/icons/legionofthrees_ii.png"
    },
    {
     "id": "DA_LevelUp",
@@ -1172,7 +1172,7 @@
     "tier": "棱彩",
     "opTier": "B",
     "desc": "在你购买经验值时，获得额外2经验值。立刻获得10经验值。",
-    "icon": "assets/icons/LevelUp3.png"
+    "icon": "assets/icons/levelup3.png"
    },
    {
     "id": "DA_LivingForge",
@@ -1181,7 +1181,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "立刻以及每10场玩家对战回合后，获得1个【神器锻造器】。",
-    "icon": "assets/icons/Living-Forge-III.png"
+    "icon": "assets/icons/living-forge-iii.png"
    },
    {
     "id": "DA_LoadedDice",
@@ -1199,7 +1199,7 @@
     "tier": "棱彩",
     "opTier": "S",
     "desc": "【窃贼手套】总会为你的弈子们提供理想的装备。获得2个【拳套】和4金币。",
-    "icon": "assets/icons/Lucky-Gloves-III.png"
+    "icon": "assets/icons/lucky-gloves-iii.png"
    },
    {
     "id": "DA_LuckyGlovesPlus",
@@ -1208,7 +1208,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "【窃贼手套】总会为你的弈子们提供理想的装备。立刻获得2个【拳套】，然后在4场玩家对战回合后获得另一个。",
-    "icon": "assets/icons/Lucky-Gloves-III.png"
+    "icon": "assets/icons/lucky-gloves-iii.png"
    },
    {
     "id": "DA_LuxurySubscription",
@@ -1217,7 +1217,7 @@
     "tier": "棱彩",
     "opTier": "B",
     "desc": "获得1个包裹，包含1个5费弈子、1个2星1费弈子和5金币。\n\n在接下来的2个阶段开始时，再次获得该包裹。",
-    "icon": "assets/icons/LuxurySubscription_III.png"
+    "icon": "assets/icons/luxurysubscription_iii.png"
    },
    {
     "id": "DA_MagicRoll",
@@ -1226,7 +1226,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "投掷3个骰子。基于总点数获得奖励。",
-    "icon": "assets/icons/A-Magical-Roll-II.png"
+    "icon": "assets/icons/a-magical-roll-ii.png"
    },
    {
     "id": "DA_MakeshiftArmorI",
@@ -1235,7 +1235,7 @@
     "tier": "银",
     "opTier": "B",
     "desc": "没有携带任何装备的弈子获得30护甲和魔抗。",
-    "icon": "assets/icons/Makeshift1.png"
+    "icon": "assets/icons/makeshift1.png"
    },
    {
     "id": "DA_MakeshiftArmorII",
@@ -1244,7 +1244,7 @@
     "tier": "金",
     "opTier": null,
     "desc": "没有携带任何装备的弈子获得50护甲和魔抗。",
-    "icon": "assets/icons/Makeshift2.png"
+    "icon": "assets/icons/makeshift2.png"
    },
    {
     "id": "DA_MaliciousMonetization",
@@ -1253,7 +1253,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得6金币。接下来的2个回合，敌方弈子在被击杀时会掉落2金币。",
-    "icon": "assets/icons/MirroredMonetization_II.png"
+    "icon": "assets/icons/mirroredmonetization_ii.png"
    },
    {
     "id": "DA_MaxBuild",
@@ -1262,7 +1262,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得10次免费商店刷新。当你到达9级时，获得3次免费商店刷新和1个【英雄复制器】。\n\n2020【银河战争】全球总决赛",
-    "icon": "assets/icons/MaxBuild_II.png"
+    "icon": "assets/icons/maxbuild_ii.png"
    },
    {
     "id": "DA_MoneyHungry_NotBroken",
@@ -1271,7 +1271,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "立刻获得7金币，然后在每阶段开始时获得7金币。拾取金币会令你的小小英雄变大。",
-    "icon": "assets/icons/MoneyHungry1_II.png"
+    "icon": "assets/icons/moneyhungry1_ii.png"
    },
    {
     "id": "DA_MoneyHungryPlus",
@@ -1289,7 +1289,7 @@
     "tier": "棱彩",
     "opTier": "B",
     "desc": "立刻并在剩余游戏时间内每回合获得7金币。",
-    "icon": "assets/icons/MoneyMonsoon_III.png"
+    "icon": "assets/icons/moneymonsoon_iii.png"
    },
    {
     "id": "DA_NestingAnvils",
@@ -1316,7 +1316,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "参与玩家对战回合后，弈子无法再回到备战席或出售。在玩家对战回合后，你的队伍获得1%生命值、1%物理加成和法术加成。",
-    "icon": "assets/icons/NoScoutNoPivot_II.png"
+    "icon": "assets/icons/noscoutnopivot_ii.png"
    },
    {
     "id": "DA_OneBuffTwoBuff",
@@ -1325,7 +1325,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "获得1个【红霸符】、1个【蓝霸符】和1个【英雄复制器】。",
-    "icon": "assets/icons/OneBuffTwoBuff_III.png"
+    "icon": "assets/icons/onebufftwobuff_iii.png"
    },
    {
     "id": "DA_18_OnesTwosThree",
@@ -1343,7 +1343,7 @@
     "tier": "银",
     "opTier": "B",
     "desc": "获得1件随机基础装备、2金币和1个随机5费弈子。",
-    "icon": "assets/icons/One-Two-Five-I.png"
+    "icon": "assets/icons/one-two-five-i.png"
    },
    {
     "id": "DA_PandorasItemsI",
@@ -1352,7 +1352,7 @@
     "tier": "银",
     "opTier": "OP",
     "desc": "回合开始时：你备战席的装备会随机变化。\n\n获得1件随机基础装备。",
-    "icon": "assets/icons/Pandora1.png"
+    "icon": "assets/icons/pandora1.png"
    },
    {
     "id": "DA_PandorasItemsIII",
@@ -1361,7 +1361,7 @@
     "tier": "棱彩",
     "opTier": "S",
     "desc": "回合开始时：你备战席的装备会随机变化。\n\n获得1件光明武器。",
-    "icon": "assets/icons/Pandora3.png"
+    "icon": "assets/icons/pandora3.png"
    },
    {
     "id": "DA_PartialAscension",
@@ -1370,7 +1370,7 @@
     "tier": "银",
     "opTier": "S",
     "desc": "在战斗开始12秒后，你的单位们获得20%伤害增幅。",
-    "icon": "assets/icons/Ascension1.png"
+    "icon": "assets/icons/ascension1.png"
    },
    {
     "id": "DA_PatienceIsAVirtue",
@@ -1379,7 +1379,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "立刻获得5次刷新。每回合，如果你在上回合未购买任何弈子，则会获得1次免费刷新。",
-    "icon": "assets/icons/PatienceIsAVirtue_I.png"
+    "icon": "assets/icons/patienceisavirtue_i.png"
    },
    {
     "id": "DA_PatientStudy",
@@ -1388,7 +1388,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "在玩家对战回合后，如果你赢了则获得2经验值，如果你输了则获得3经验值。",
-    "icon": "assets/icons/Learning-From-Experience-II.png"
+    "icon": "assets/icons/learning-from-experience-ii.png"
    },
    {
     "id": "DA_Pilfer",
@@ -1397,7 +1397,7 @@
     "tier": "金",
     "opTier": "B",
     "desc": "每回合，获得你在上场对战中首先击杀的那个弈子的1个1星复制体。当你通过这种方式获得的弈子总价值达到21金币时，获得1个【窃贼手套】。",
-    "icon": "assets/icons/Pilfer_II.png"
+    "icon": "assets/icons/pilfer_ii.png"
    },
    {
     "id": "DA_PortableForge",
@@ -1406,7 +1406,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "在4件神器中选择1件。神器是可以提供独特效果的强力装备。",
-    "icon": "assets/icons/PortableForge2.png"
+    "icon": "assets/icons/portableforge2.png"
    },
    {
     "id": "DA_PrismaticTicket",
@@ -1415,7 +1415,7 @@
     "tier": "棱彩",
     "opTier": "OP",
     "desc": "每当你的商店刷新时，你都有45%几率获得1次免费刷新。",
-    "icon": "assets/icons/GoldenTicket3.png"
+    "icon": "assets/icons/goldenticket3.png"
    },
    {
     "id": "DA_PromisedProtection",
@@ -1424,7 +1424,7 @@
     "tier": "金",
     "opTier": "B",
     "desc": "获得1个【圣盾使的誓约】。【圣盾使的誓约】为其携带者提供自所有来源的20%额外法力值和175最大生命值。",
-    "icon": "assets/icons/PromisedProtection_II.png"
+    "icon": "assets/icons/promisedprotection_ii.png"
    },
    {
     "id": "DA_QuickStreaks",
@@ -1442,7 +1442,7 @@
     "tier": "棱彩",
     "opTier": "S",
     "desc": "获得1个【光明版窃贼手套】。每回合装备2件随机光明武器。",
-    "icon": "assets/icons/Roll-the-Dice-III.png"
+    "icon": "assets/icons/roll-the-dice-iii.png"
    },
    {
     "id": "DA_RadiantRelic",
@@ -1451,7 +1451,7 @@
     "tier": "棱彩",
     "opTier": "OP",
     "desc": "从5件光明武器中选择1件。获得1个【装备拆卸器】。",
-    "icon": "assets/icons/RadiantRelic-III.png"
+    "icon": "assets/icons/radiantrelic-iii.png"
    },
    {
     "id": "DA_Recombobulator",
@@ -1460,7 +1460,7 @@
     "tier": "银",
     "opTier": "B",
     "desc": "你棋盘上的弈子们永久变形为1个比自身高1费的随机弈子(最高5费)。获得2个【装备拆卸器】和3次免费刷新。",
-    "icon": "assets/icons/Recombobulator-I.png"
+    "icon": "assets/icons/recombobulator-i.png"
    },
    {
     "id": "DA_Replication",
@@ -1469,7 +1469,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "在3件基础装备中选择1件。在接下来的2个回合，都会获得1件该基础装备。",
-    "icon": "assets/icons/Replication-II.png"
+    "icon": "assets/icons/replication-ii.png"
    },
    {
     "id": "DA_18_ResidualMagic",
@@ -1505,7 +1505,7 @@
     "tier": "棱彩",
     "opTier": "S",
     "desc": "获得2个【正义之手】。携带【正义之手】的友军获得技能暴击和15%暴击几率。\n\n【技能暴击】：技能伤害可以造成暴击。额外的【技能暴击】提供10%暴击伤害。",
-    "icon": "assets/icons/Retribution_III.png"
+    "icon": "assets/icons/retribution_iii.png"
    },
    {
     "id": "DA_18_RiftbeastTraitAugment",
@@ -1532,7 +1532,7 @@
     "tier": "银",
     "opTier": "OP",
     "desc": "获得10次免费商店刷新。",
-    "icon": "assets/icons/Rolling-For-Days-I.png"
+    "icon": "assets/icons/rolling-for-days-i.png"
    },
    {
     "id": "DA_SalvageBin",
@@ -1541,7 +1541,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "立刻获得1件随机成装，并在8场玩家对战回合后获得1件基础装备。出售弈子会将其携带的成装拆分成基础装备(冠冕系装备和纹章除外)。",
-    "icon": "assets/icons/Salvage2.png"
+    "icon": "assets/icons/salvage2.png"
    },
    {
     "id": "DA_SalvageBinPlus",
@@ -1550,7 +1550,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "立刻获得1件随机成装，并在4场玩家对战回合后获得1件基础装备。出售弈子会将其携带的成装拆分成基础装备(冠冕系装备和纹章除外)。",
-    "icon": "assets/icons/Salvage2.png"
+    "icon": "assets/icons/salvage2.png"
    },
    {
     "id": "DA_SeraphimsStaff",
@@ -1559,7 +1559,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "获得1个【大天使之杖】。如果【大天使之杖】的携带者拥有110%或以上的法术加成，【大天使之杖】还会为其额外提供2法力回复。",
-    "icon": "assets/icons/SeraphimsStaff_II.png"
+    "icon": "assets/icons/seraphimsstaff_ii.png"
    },
    {
     "id": "DA_ShimmerscaleEssence",
@@ -1568,7 +1568,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "获得1个【投机者之刃】。在6场玩家对战回合后，获得1个【大亨之铠】。",
-    "icon": "assets/icons/ShimmerscaleEssence_III.png"
+    "icon": "assets/icons/shimmerscaleessence_iii.png"
    },
    {
     "id": "DA_ShoppingSpree",
@@ -1577,7 +1577,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "在你升级时，获得相当于你等级数+1的免费商店刷新次数。获得7金币。",
-    "icon": "assets/icons/Silver-ticket-III.png"
+    "icon": "assets/icons/silver-ticket-iii.png"
    },
    {
     "id": "DA_SilverSpoon",
@@ -1586,7 +1586,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "获得10经验值。",
-    "icon": "assets/icons/Silver-Spoon-I.png"
+    "icon": "assets/icons/silver-spoon-i.png"
    },
    {
     "id": "DA_Slammin",
@@ -1595,7 +1595,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得3金币。在每场玩家对战回合结束时，如果你的备战席没有任何装备(消耗品除外)，获得2经验值。",
-    "icon": "assets/icons/Slammin_II.png"
+    "icon": "assets/icons/slammin_ii.png"
    },
    {
     "id": "DA_SlamminPlus",
@@ -1604,7 +1604,7 @@
     "tier": "金",
     "opTier": "B",
     "desc": "立刻获得4金币和10经验值。在每场玩家对战回合结束时，如果你的备战席没有任何装备(消耗品除外)，获得2经验值。",
-    "icon": "assets/icons/Slammin_II.png"
+    "icon": "assets/icons/slammin_ii.png"
    },
    {
     "id": "DA_SliceOfLife",
@@ -1613,7 +1613,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "每阶段2次，获得1个随机弈子。其费用会随阶段数提升。这个效果会在收到1个5费弈子后结束。",
-    "icon": "assets/icons/Slice_of_Life_I.png"
+    "icon": "assets/icons/slice_of_life_i.png"
    },
    {
     "id": "DA_SlightlyMagicRoll",
@@ -1622,7 +1622,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "投掷1个骰子。基于总点数获得奖励。",
-    "icon": "assets/icons/SlightlyMagicRoll_I.png"
+    "icon": "assets/icons/slightlymagicroll_i.png"
    },
    {
     "id": "DA_SmallGrabBag",
@@ -1631,7 +1631,7 @@
     "tier": "银",
     "opTier": "OP",
     "desc": "获得2件随机基础装备。",
-    "icon": "assets/icons/SmallGrabBag_I.png"
+    "icon": "assets/icons/smallgrabbag_i.png"
    },
    {
     "id": "DA_SoloLeveling",
@@ -1640,7 +1640,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "在接下来的5场对战，你的队伍规模为1，但你登场的那个弈子拥有巨幅提升过的各属性。该弈子的每次击杀都会使你获得1经验值。在此之后，获得2件基础装备。",
-    "icon": "assets/icons/SoloLeveling_II.png"
+    "icon": "assets/icons/sololeveling_ii.png"
    },
    {
     "id": "DA_SoloPlate",
@@ -1649,7 +1649,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "获得1个【石像鬼石板甲】。战斗开始时：如果友军是所在排的唯一弈子并携带了【石像鬼石板甲】，该弈子获得17%最大生命值。",
-    "icon": "assets/icons/SoloPlate_II.png"
+    "icon": "assets/icons/soloplate_ii.png"
    },
    {
     "id": "DA_SoulAwakening",
@@ -1658,7 +1658,7 @@
     "tier": "棱彩",
     "opTier": "OP",
     "desc": "战斗开始时：你的队伍每秒获得1.5%物理加成和法术加成，持续10秒。在最大层数时，造成12%额外真实伤害。",
-    "icon": "assets/icons/AwakenedSoul_III.png"
+    "icon": "assets/icons/awakenedsoul_iii.png"
    },
    {
     "id": "DA_SpeedyDoubleKill",
@@ -1667,7 +1667,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得1个【鬼索的狂暴之刃】。当2名玩家淘汰后，获得40金币。\n\n2021【命运之轮】全球总决赛",
-    "icon": "assets/icons/SpeedyDoubleKill_II.png"
+    "icon": "assets/icons/speedydoublekill_ii.png"
    },
    {
     "id": "DA_SpiritOfRedemption",
@@ -1676,7 +1676,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得1个【振奋盔甲】。每5秒，【振奋盔甲】会治疗1格内的友军9%已损失生命值。",
-    "icon": "assets/icons/SpiritofRedemption_II.png"
+    "icon": "assets/icons/spiritofredemption_ii.png"
    },
    {
     "id": "DA_SpreadingRoots",
@@ -1685,7 +1685,7 @@
     "tier": "金",
     "opTier": "B",
     "desc": "获得一个随机纹章。在3场玩家对战回合后，获得另一个。",
-    "icon": "assets/icons/SpreadingRoots_II.png"
+    "icon": "assets/icons/spreadingroots_ii.png"
    },
    {
     "id": "DA_SpreadingRootsPlus",
@@ -1694,7 +1694,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得2个随机纹章和2金币。",
-    "icon": "assets/icons/SpreadingRoots_II.png"
+    "icon": "assets/icons/spreadingroots_ii.png"
    },
    {
     "id": "DA_Staffsmith",
@@ -1703,7 +1703,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "获得2件由【无用大棒】合成的随机成装。",
-    "icon": "assets/icons/Rodsmith_II.png"
+    "icon": "assets/icons/rodsmith_ii.png"
    },
    {
     "id": "DA_StandUnited",
@@ -1712,7 +1712,7 @@
     "tier": "银",
     "opTier": "B",
     "desc": "在你的队伍之中，每有1个已激活的非唯一羁绊，你的单位们就会获得1.5%物理加成和1.5%法术加成。",
-    "icon": "assets/icons/StandUnited1.png"
+    "icon": "assets/icons/standunited1.png"
    },
    {
     "id": "DA_SweetTreats",
@@ -1721,7 +1721,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "获得1个【神器锻造器】。你的弈子们每携带1件装备，你的队伍就会获得16生命值。",
-    "icon": "assets/icons/SweetTreats_III.png"
+    "icon": "assets/icons/sweettreats_iii.png"
    },
    {
     "id": "DA_SwordOverflow",
@@ -1730,7 +1730,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "获得4个【暴风大剑】。你的【暴风大剑】提供+4攻击速度。",
-    "icon": "assets/icons/BladeOverflow_III.png"
+    "icon": "assets/icons/bladeoverflow_iii.png"
    },
    {
     "id": "DA_Swordsmith",
@@ -1739,7 +1739,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "获得2件由【暴风大剑】合成的随机成装。",
-    "icon": "assets/icons/Swordsmith_II.png"
+    "icon": "assets/icons/swordsmith_ii.png"
    },
    {
     "id": "DA_TacticiansKitchen",
@@ -1748,7 +1748,7 @@
     "tier": "棱彩",
     "opTier": "B",
     "desc": "获得1个随机纹章。在3个回合后，获得1个【金锅铲冠冕】。",
-    "icon": "assets/icons/TacticiansKitchen_III.png"
+    "icon": "assets/icons/tacticianskitchen_iii.png"
    },
    {
     "id": "DA_TeamBuilding",
@@ -1757,7 +1757,7 @@
     "tier": "银",
     "opTier": "S",
     "desc": "获得1个【次级英雄复制器】。在5场玩家对战回合后获得另一个。\n\n这个物品允许你能复制1个3费或以下的弈子。",
-    "icon": "assets/icons/Building-an-army-I.png"
+    "icon": "assets/icons/building-an-army-i.png"
    },
    {
     "id": "DA_TheGoldenDragon",
@@ -1766,7 +1766,7 @@
     "tier": "金",
     "opTier": null,
     "desc": "获得1个【大亨之铠】。携带【大亨之铠】的弈子们占用1个弈子栏位，但获得600生命值和15%伤害减免。\n\n【大亨之铠】提供金币，以及战斗力。\n2022【巨龙之境】全球总决赛",
-    "icon": "assets/icons/TheGoldenDragon_II.png"
+    "icon": "assets/icons/thegoldendragon_ii.png"
    },
    {
     "id": "DA_TheTower",
@@ -1775,7 +1775,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "获得1个巨大的【训练假人】。每4秒，电击距离最近的3个敌人，造成5%最大生命值的真实伤害。",
-    "icon": "assets/icons/TheTower_I.png"
+    "icon": "assets/icons/thetower_i.png"
    },
    {
     "id": "DA_TheTraitTree",
@@ -1784,7 +1784,7 @@
     "tier": "棱彩",
     "opTier": "B",
     "desc": "获得3个随机纹章和2金币。",
-    "icon": "assets/icons/TheTraitTree_III.png"
+    "icon": "assets/icons/thetraittree_iii.png"
    },
    {
     "id": "DA_TheTraitTreePlus",
@@ -1793,7 +1793,7 @@
     "tier": "棱彩",
     "opTier": "B",
     "desc": "获得3个随机纹章、1个【装备重铸器】和4金币。",
-    "icon": "assets/icons/TheTraitTree_III.png"
+    "icon": "assets/icons/thetraittree_iii.png"
    },
    {
     "id": "DA_TimeSkip",
@@ -1802,7 +1802,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "在接下来的3个回合中禁用你的商店。然后获得32经验值。",
-    "icon": "assets/icons/TimeSkip_II.png"
+    "icon": "assets/icons/timeskip_ii.png"
    },
    {
     "id": "DA_TonsOfStatsI",
@@ -1811,7 +1811,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "你的队伍获得44生命值、4%物理加成、4%法术加成、4护甲、4魔法抗性、4%攻击速度和4法力值。",
-    "icon": "assets/icons/Tons-of-Stats-II.png"
+    "icon": "assets/icons/tons-of-stats-ii.png"
    },
    {
     "id": "DA_TonsOfStatsII",
@@ -1829,7 +1829,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "每回合获得1次免费商店刷新。获得2金币。",
-    "icon": "assets/icons/Trade2.png"
+    "icon": "assets/icons/trade2.png"
    },
    {
     "id": "DA_TradeSectorPlus",
@@ -1838,7 +1838,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "每回合获得1次免费商店刷新。获得8金币。",
-    "icon": "assets/icons/Trade2.png"
+    "icon": "assets/icons/trade2.png"
    },
    {
     "id": "DA_TraitLadder",
@@ -1856,7 +1856,7 @@
     "tier": "银",
     "opTier": "B",
     "desc": "如果你的第一排有且只有2名友军，为他们提供100生命值、35护甲和35魔法抗性。",
-    "icon": "assets/icons/TwinGuardians_I.png"
+    "icon": "assets/icons/twinguardians_i.png"
    },
    {
     "id": "DA_UpwardMobility",
@@ -1865,7 +1865,7 @@
     "tier": "棱彩",
     "opTier": "B",
     "desc": "购买经验值的费用减少1。每当你升级时，获得2生命值和2次刷新。",
-    "icon": "assets/icons/UpwardMobility_III.png"
+    "icon": "assets/icons/upwardmobility_iii.png"
    },
    {
     "id": "DA_URF",
@@ -1874,7 +1874,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "获得1个【金铲铲】。携带了【金铲铲】或【金锅锅】系装备的弈子们获得20%攻击速度和3法力回复。",
-    "icon": "assets/icons/UltraRapidFire_II.png"
+    "icon": "assets/icons/ultrarapidfire_ii.png"
    },
    {
     "id": "DA_UrfsGrabBag",
@@ -1883,7 +1883,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "获得1个【金铲铲】、3件随机基础装备和5金币。",
-    "icon": "assets/icons/Urfs-Grab-Bag-III.png"
+    "icon": "assets/icons/urfs-grab-bag-iii.png"
    },
    {
     "id": "DA_VerticalityI",
@@ -1919,7 +1919,7 @@
     "tier": "棱彩",
     "opTier": "S",
     "desc": "获得4个【无用大棒】。你的【无用大棒】提供+5攻击速度。",
-    "icon": "assets/icons/WandOverflow_III.png"
+    "icon": "assets/icons/wandoverflow_iii.png"
    },
    {
     "id": "DA_Warpath",
@@ -1928,7 +1928,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得1个2星2费弈子。在造成80玩家伤害后，获得1个装有高费弈子们和装备的宝箱。",
-    "icon": "assets/icons/Warpath_II.png"
+    "icon": "assets/icons/warpath_ii.png"
    },
    {
     "id": "DA_18_WeightTheWorth",
@@ -1946,7 +1946,7 @@
     "tier": "棱彩",
     "opTier": "S",
     "desc": "获得1个随机纹章和1个【成装锻造器】。与该纹章有同一羁绊的友军获得30%攻击速度。0 0\n\n2025【双城之战2】全球总决赛",
-    "icon": "assets/icons/WeStickTogether_III.png"
+    "icon": "assets/icons/westicktogether_iii.png"
    },
    {
     "id": "DA_18_WispRebatePlus",
@@ -1973,7 +1973,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得1个随机1费弈子。每回合开始时都会获得该弈子的又一个1星复制体，持续至本局游戏结束。",
-    "icon": "assets/icons/WorthTheWait_II.png"
+    "icon": "assets/icons/worththewait_ii.png"
    },
    {
     "id": "DA_WorththeWaitII",
@@ -1982,7 +1982,7 @@
     "tier": "棱彩",
     "opTier": "S",
     "desc": "获得1个随机2费弈子的2个1星复制体。每回合开始时都会获得该弈子的又一个1星复制体，持续至本局游戏结束。",
-    "icon": "assets/icons/WorthTheWait_III.png"
+    "icon": "assets/icons/worththewait_iii.png"
    },
    {
     "id": "DA_WovenMagic",
@@ -1991,7 +1991,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得1件随机基础装备。你的弈子们每消耗2200法力值，就会提供1件额外基础装备(最大：0/3)。",
-    "icon": "assets/icons/WovenMagic_III.png"
+    "icon": "assets/icons/wovenmagic_iii.png"
    },
    {
     "id": "DA_YoungAndWildAndFree",
@@ -2000,7 +2000,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "选秀环节期间，你可自由移动。获得5金币。",
-    "icon": "assets/icons/Young-and-wild-and-free-I.png"
+    "icon": "assets/icons/young-and-wild-and-free-i.png"
    },
    {
     "id": "DA_18_CovenTraitAugment_LootToAP",
@@ -2018,7 +2018,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "你携带1件装备的弈子们获得100生命值和15%物理加成。获得1个【暴风大剑】。",
-    "icon": "assets/icons/Cybernetic2.png"
+    "icon": "assets/icons/cybernetic2.png"
    },
    {
     "id": "DA_CyberneticUplink_Gold",
@@ -2027,7 +2027,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "你携带1件装备的弈子们获得100生命值和2法力回复。获得1个【女神之泪】。",
-    "icon": "assets/icons/Cybernetic-Uplink-II.png"
+    "icon": "assets/icons/cybernetic-uplink-ii.png"
    },
    {
     "id": "DA_18_LunarTraitAugment",
@@ -2063,7 +2063,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "你的队伍获得10护甲和魔法抗性。在生命值降至50%以下时，这个加成提升至40，持续至战斗结束。",
-    "icon": "assets/icons/PlotArmor_II.png"
+    "icon": "assets/icons/plotarmor_ii.png"
    },
    {
     "id": "DA_18_PrimalAugment_Nidalee",
@@ -2162,7 +2162,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "获得1个随机黄金阶强化符文和3金币。",
-    "icon": "assets/icons/GoldenDestiny_II.png"
+    "icon": "assets/icons/goldendestiny_ii.png"
    },
    {
     "id": "DA_GoldDestinyPlus",
@@ -2171,7 +2171,7 @@
     "tier": "金",
     "opTier": "A",
     "desc": "获得1个随机黄金阶强化符文和5金币。",
-    "icon": "assets/icons/GoldenDestiny_II.png"
+    "icon": "assets/icons/goldendestiny_ii.png"
    },
    {
     "id": "DA_Min_Max",
@@ -2180,7 +2180,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "获得1个【金制拆卸器】和4件随机基础装备。\n\nGain 4 gold.",
-    "icon": "assets/icons/MinMax_III.png"
+    "icon": "assets/icons/minmax_iii.png"
    },
    {
     "id": "DA_MissedConnections",
@@ -2189,7 +2189,7 @@
     "tier": "银",
     "opTier": "S",
     "desc": "获得每个1费弈子各1个。",
-    "icon": "assets/icons/Missed-Connections-I.png"
+    "icon": "assets/icons/missed-connections-i.png"
    },
    {
     "id": "DA_PrismaticDestiny",
@@ -2198,7 +2198,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "获得1个随机棱彩阶强化符文和2金币。",
-    "icon": "assets/icons/PrismaticDestiny_III.png"
+    "icon": "assets/icons/prismaticdestiny_iii.png"
    },
    {
     "id": "DA_PrismaticDestinyPlus",
@@ -2207,7 +2207,7 @@
     "tier": "棱彩",
     "opTier": "A",
     "desc": "获得1个随机棱彩阶强化符文和7金币。",
-    "icon": "assets/icons/PrismaticDestiny_III.png"
+    "icon": "assets/icons/prismaticdestiny_iii.png"
    },
    {
     "id": "DA_SilverDestiny",
@@ -2216,7 +2216,7 @@
     "tier": "银",
     "opTier": "S",
     "desc": "获得1个随机白银阶强化符文和2金币。",
-    "icon": "assets/icons/SilverDestiny_I.png"
+    "icon": "assets/icons/silverdestiny_i.png"
    },
    {
     "id": "DA_SilverDestinyPlus",
@@ -2225,7 +2225,7 @@
     "tier": "银",
     "opTier": "B",
     "desc": "获得1个随机白银阶强化符文和4金币。",
-    "icon": "assets/icons/SilverDestiny_I.png"
+    "icon": "assets/icons/silverdestiny_i.png"
    },
    {
     "id": "DA_SilverDestinyPlusPlus",
@@ -2234,7 +2234,7 @@
     "tier": "银",
     "opTier": "A",
     "desc": "获得1个随机白银阶强化符文和7金币。",
-    "icon": "assets/icons/SilverDestiny_I.png"
+    "icon": "assets/icons/silverdestiny_i.png"
    },
    {
     "id": "DA_18_SprykinAugment",
@@ -2252,7 +2252,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "你购买的下个1费弈子变为3星。获得2金币。",
-    "icon": "assets/icons/ConstructaCompanion_III.png"
+    "icon": "assets/icons/constructacompanion_iii.png"
    },
    {
     "id": "DA_ForgeAFriend",
@@ -2270,7 +2270,7 @@
     "tier": "棱彩",
     "opTier": "S",
     "desc": "获得1个随机3星1费弈子。获得9金币。",
-    "icon": "assets/icons/ConstructaCompanion_III.png"
+    "icon": "assets/icons/constructacompanion_iii.png"
    },
    {
     "id": "DA_ExpectedUnexpectedness",
@@ -2279,7 +2279,7 @@
     "tier": "棱彩",
     "opTier": "S",
     "desc": "立刻以及下2个阶段开始时，投掷3个骰子。基于总点数获得各种奖励。",
-    "icon": "assets/icons/Addicted-to-Rolling-III.png"
+    "icon": "assets/icons/addicted-to-rolling-iii.png"
    },
    {
     "id": "DA_KnowYourEnemy",
@@ -2288,7 +2288,7 @@
     "tier": "金",
     "opTier": null,
     "desc": "你可以看到你下回合将要和谁战斗。你的队伍获得8%伤害增幅。如果你和你的对手有任何相同的已激活羁绊，转而获得15%伤害增幅。",
-    "icon": "assets/icons/Know-Your-Enemy-II.png"
+    "icon": "assets/icons/know-your-enemy-ii.png"
    },
    {
     "id": "DA_PandorasItemsIIMinus",
@@ -2297,7 +2297,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "回合开始时：你备战席上的装备会随机变化。\n获得2件随机基础装备和1金币。",
-    "icon": "assets/icons/Pandora2.png"
+    "icon": "assets/icons/pandora2.png"
    },
    {
     "id": "DA_PandorasItemsIIPlus",
@@ -2306,7 +2306,7 @@
     "tier": "金",
     "opTier": "S",
     "desc": "回合开始时：你备战席上的装备会随机变化。\n获得2件随机基础装备和4金币。",
-    "icon": "assets/icons/Pandora2.png"
+    "icon": "assets/icons/pandora2.png"
    },
    {
     "id": "DA_PandorasItemsIIPlusPlus",
@@ -2315,7 +2315,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "回合开始时：你备战席上的装备会随机变化。\n获得2件随机基础装备和6金币。",
-    "icon": "assets/icons/Pandora2.png"
+    "icon": "assets/icons/pandora2.png"
    },
    {
     "id": "DA_ChallengersGrace",
@@ -2324,7 +2324,7 @@
     "tier": "金",
     "opTier": "OP",
     "desc": "战斗开始时，友军获得30%攻击速度，持续4秒。参与击杀后，友军冲向下一个目标，并再次获得此加成。",
-    "icon": "assets/icons/PrecisionGrace_II.png"
+    "icon": "assets/icons/precisiongrace_ii.png"
    }
   ]
  },
@@ -2540,7 +2540,7 @@
     "recipeNames": [],
     "desc": "将这个用在一个【新星特攻队】弈子身上，即可在【能量激增】触发时激活其特攻效果。",
     "stat": "",
-    "icon": "assets/icons/TFT17_DRXSelector.png"
+    "icon": "assets/icons/tft17_drxselector.png"
    },
    {
     "id": "DA_Artifact_EternalPact",

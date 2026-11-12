@@ -417,6 +417,8 @@ def localize_catalog(cat):
     """把 S18 符文 / 装备图标下载到本地，保证离线可用；已存在的文件跳过。"""
     os.makedirs(ASSETS, exist_ok=True)
     jobs, seen = [], {}
+    # 磁盘上已有图标：小写名 -> 实际文件名，复用其大小写，避免产生大小写重复文件
+    existing = {n.lower(): n for n in os.listdir(ASSETS)}
 
     def register(url):
         if not url or not str(url).startswith('http'):
@@ -424,6 +426,7 @@ def localize_catalog(cat):
         base = url.split('?')[0].rsplit('/', 1)[-1]
         if not base:
             return None
+        base = existing.get(base.lower(), base)
         if base in seen and seen[base] != url:
             base = hashlib.md5(url.encode()).hexdigest()[:8] + '_' + base
         seen[base] = url
@@ -540,6 +543,8 @@ def localize(payload):
     """把 op.gg 图标下载到 assets/icons/，并把 JSON 内链接改写为本地路径。"""
     os.makedirs(ASSETS, exist_ok=True)
     jobs, seen = [], {}
+    # 磁盘上已有图标：小写名 -> 实际文件名，复用其大小写，避免产生大小写重复文件
+    existing = {n.lower(): n for n in os.listdir(ASSETS)}
 
     def register(url):
         if not url or not str(url).startswith('http'):
@@ -547,6 +552,7 @@ def localize(payload):
         base = url.split('?')[0].rsplit('/', 1)[-1]
         if not base:
             return None
+        base = existing.get(base.lower(), base)
         if base in seen and seen[base] != url:
             base = str(abs(hash(url)) % 0xfffffff) + '_' + base
         seen[base] = url

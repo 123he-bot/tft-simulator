@@ -429,6 +429,9 @@ def localize_assets(augments=None, items=None):
     augments / items 为内存中的全量目录（会直接进入 bundle），也一并改写。"""
     os.makedirs(ASSETS, exist_ok=True)
     jobs, seen = [], {}
+    # 磁盘上已有图标：小写名 -> 实际文件名。源站偶尔会变更图标 URL 的大小写，
+    # 复用已有文件名可避免仓库出现仅大小写不同的重复文件（Windows 上会互相覆盖）。
+    existing = {n.lower(): n for n in os.listdir(ASSETS)}
 
     BAD = {'none', 'null', 'undefined', ''}
 
@@ -438,6 +441,7 @@ def localize_assets(augments=None, items=None):
         base = url.split('?')[0].rsplit('/', 1)[-1]
         if base.lower() in BAD:            # 官方源里偶有的坏图标 URL（.../None）
             return None
+        base = existing.get(base.lower(), base)
         if base in seen and seen[base] != url:
             base = hashlib.md5(url.encode()).hexdigest()[:8] + '_' + base
         seen[base] = url
