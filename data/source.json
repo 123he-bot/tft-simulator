@@ -4,7 +4,7 @@
   "https://raw.communitydragon.org/latest/cdragon/tft/zh_cn.json",
   "https://raw.communitydragon.org/latest/cdragon/tft/en_us.json"
  ],
- "fetchedAt": "2026-11-12 09:57:22",
+ "fetchedAt": "2026-11-12 02:25:53",
  "locale": "zh_cn",
  "sets": [
   "s3",
@@ -100,7 +100,7 @@
   "S18": {
    "source": "OP.GG 中文站（页面内嵌 RSC，原始来源为 Riot 游戏文件）",
    "url": "https://op.gg/zh-cn/tft/meta-trends/item",
-   "fetchedAt": "2026-11-11 17:39:16",
+   "fetchedAt": "2026-11-12 02:25:45",
    "augments": 257,
    "items": 140,
    "note": "S18 尚未进入 CommunityDragon cdragon/tft JSON；符文专家评级源版本 16.22"
