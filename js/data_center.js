@@ -21,7 +21,8 @@ window.TFT = window.TFT || {};
   const ITEM_CATS = [
     { key: 'all', label: '全部' }, { key: 'completed', label: '成装' },
     { key: 'artifact', label: '神器' }, { key: 'emblem', label: '纹章' },
-    { key: 'radiant', label: '光明装' }, { key: 'component', label: '组件' }
+    { key: 'radiant', label: '光明装' }, { key: 'component', label: '组件' },
+    { key: 'support', label: '辅助' }
   ];
   const CAT_LABEL = { completed: '成装', artifact: '神器', emblem: '纹章', radiant: '光明装', component: '组件', support: '辅助', misc: '其他' };
   const RARITIES = [
@@ -307,30 +308,50 @@ window.TFT = window.TFT || {};
     if (cache.units[key]) return cache.units[key];
     const comps = compsForTier(tier);
     const map = {};
-    comps.forEach(function (cp) {
+    comps.forEach(function (cp, ci) {
       const g = Number(cp.games) || 0;
+      const ap = (cp.avgPlace == null || cp.avgPlace === '') ? null : Number(cp.avgPlace);
+      const compKey = cp.id || ('#' + ci);
       (cp.units || []).forEach(function (u) {
-        const id = u.id || u.name;
-        let a = map[id];
+        const c = champOf(u.id) || (u.name && D.champByName(u.name)) || null;
+        const name = (c && c.name) || u.name || u.id;
+        let a = map[name];
         if (!a) {
-          a = map[id] = {
-            id: id, name: u.name || id, cost: Number(u.cost) || 0,
+          a = map[name] = {
+            id: (c && c.id) || u.id || name, name: name, cost: (c && c.cost) || Number(u.cost) || 0,
             comps: 0, mainC: 0, core: 0, games: 0, placeW: 0, top4W: 0, winW: 0,
-            items: {}, best: null
+            items: {}, best: null, _seen: {}
           };
         }
-        a.comps += 1;
-        if (u.tag === 'main' || cp.mainC === u.name) a.mainC += 1;
-        if (u.core) a.core += 1;
-        a.games += g;
-        a.placeW += (Number(cp.avgPlace) || 0) * g;
-        a.top4W += (Number(cp.top4Rate) || 0) * g;
-        a.winW += (Number(cp.winRate) || 0) * g;
-        (u.items || []).forEach(function (it) { a.items[it] = (a.items[it] || 0) + 1; });
-        if (!a.best || (Number(cp.avgPlace) || 99) < (Number(a.best.avgPlace) || 99)) {
-          a.best = { id: cp.id, name: cp.name, avgPlace: cp.avgPlace, tier: cp.tier, games: cp.games };
+        if (!a._seen[compKey]) {
+          // 同一阵容里可能出现同名形态（如两个李青），登场套数 / 战绩只按阵容计一次
+          a._seen[compKey] = 1;
+          a.comps += 1;
+          if (u.tag === 'main' || cp.mainC === u.name || cp.mainC === name) a.mainC += 1;
+          if (u.core) a.core += 1;
+          a.games += g;
+          a.placeW += (ap || 0) * g;
+          a.top4W += (Number(cp.top4Rate) || 0) * g;
+          a.winW += (Number(cp.winRate) || 0) * g;
+          if (ap != null && isFinite(ap) && (!a.best || ap < a.best.avgPlace)) {
+            a.best = { id: cp.id, name: cp.name, avgPlace: ap, tier: cp.tier, games: cp.games };
+          }
         }
+        (u.items || []).forEach(function (it) { a.items[it] = (a.items[it] || 0) + 1; });
       });
+    });
+    // 补齐本赛季完整棋子目录：未进入任何阵容的棋子也列出，统计显示 0 / —，避免历史赛季只看到部分棋子
+    D.champions().forEach(function (c) {
+      if (!c || !c.name) return;
+      if (!map[c.name]) {
+        map[c.name] = {
+          id: c.id, name: c.name, cost: Number(c.cost) || 0,
+          comps: 0, mainC: 0, core: 0, games: 0, placeW: 0, top4W: 0, winW: 0,
+          items: {}, best: null, _seen: {}
+        };
+      } else if (!map[c.name].id) {
+        map[c.name].id = c.id;
+      }
     });
     const rows = Object.keys(map).map(function (k) {
       const a = map[k];
@@ -345,6 +366,7 @@ window.TFT = window.TFT || {};
         const it = itemInfo(id);
         return { id: id, name: (it && it.name) || id, icon: (it && it.icon) || '', count: a.items[id] };
       });
+      delete a._seen;
       return a;
     });
     cache.units[key] = rows;
@@ -409,6 +431,23 @@ window.TFT = window.TFT || {};
         });
       });
     });
+    // 补齐本赛季完整装备目录：没有阵容携带记录的装备也列出（成装 / 神器 / 纹章 / 光明装 / 组件 / 辅助），
+    // 统计显示 0 / —，避免历史赛季因为缺少阵容出装数据而出现空表。
+    const EQUIP_CATS = { completed: 1, artifact: 1, emblem: 1, radiant: 1, component: 1, support: 1 };
+    const equipNames = {};
+    Object.keys(map).forEach(function (k) { equipNames[map[k].name] = 1; });
+    (D.officialItems(D.currentSlug) || []).forEach(function (it) {
+      if (!it || !it.id || !EQUIP_CATS[it.category] || map[it.id]) return;
+      // 官方目录里混入的随机神器 / 锻造器 / 装备商店工具不是装备本体，不进入评级表
+      if (/MarketOffering|ItemArmory|GrantOrnnAnvil|Assist_RandomOrnnItem/.test(it.id)) return;
+      if (equipNames[it.name]) return;
+      equipNames[it.name] = 1;
+      map[it.id] = {
+        id: it.id, name: it.name || it.id, icon: it.icon || '', category: it.category,
+        desc: it.desc || '', recipeNames: it.recipeNames || [],
+        total: 0, placeW: 0, top4W: 0, winW: 0, comps: 0, wearers: []
+      };
+    });
     return Object.keys(map).map(function (k) {
       const a = map[k];
       a.avgPlace = a.total ? a.placeW / a.total : null;
@@ -431,7 +470,9 @@ window.TFT = window.TFT || {};
   }
   function traitIcon(name) {
     const t = traitInfo(name);
-    return t && t.icon ? t.icon : '';
+    if (t && t.icon) return t.icon;
+    const local = D.trait(name);
+    return (local && local.icon) || '';
   }
 
   function traitAgg(tier) {
@@ -456,6 +497,11 @@ window.TFT = window.TFT || {};
       });
     });
     const totalGames = comps.reduce(function (s, cp) { return s + (Number(cp.games) || 0); }, 0);
+    // 补齐本赛季完整羁绊目录：没有进入阵容的羁绊也列出，统计显示 0 / —，避免历史赛季只看得到部分羁绊
+    D.traits().forEach(function (t) {
+      if (!t || !t.name || map[t.name]) return;
+      map[t.name] = { name: t.name, comps: 0, games: 0, placeW: 0, top4W: 0, winW: 0, activeW: 0, activeN: 0, best: null };
+    });
     const list = Object.keys(map).map(function (k) {
       const a = map[k];
       a.avgPlace = a.games ? a.placeW / a.games : null;
@@ -566,17 +612,23 @@ window.TFT = window.TFT || {};
   }
 
   /* ==================== 强化符文数据 ==================== */
-  let s18TraitNames = null;
+  const traitNamesCache = {};
   function fitTraits(desc) {
-    if (!s18TraitNames) {
-      const st = sd();
-      s18TraitNames = ((st && st.traits) || []).map(function (t) { return t.name; })
-        .filter(function (n) { return n && n.length >= 2; })
-        .sort(function (a, b) { return b.length - a.length; });
+    const slug = D.currentSlug || '';
+    let names = traitNamesCache[slug];
+    if (!names) {
+      const seen = {};
+      const add = function (n) { if (n && n.length >= 2 && !seen[n]) { seen[n] = 1; names.push(n); } };
+      names = [];
+      D.traits().forEach(function (t) { add(t && t.name); });
+      // S18 的真实统计里可能还有目录未收录的羁绊名，只在该赛季合并
+      if (slug === 's18') ((sd() && sd().traits) || []).forEach(function (t) { add(t && t.name); });
+      names.sort(function (a, b) { return b.length - a.length; });
+      traitNamesCache[slug] = names;
     }
     const out = [];
-    for (let i = 0; i < s18TraitNames.length; i++) {
-      const n = s18TraitNames[i];
+    for (let i = 0; i < names.length; i++) {
+      const n = names[i];
       if (out.some(function (x) { return x.indexOf(n) >= 0; })) continue;
       if (desc.indexOf(n) >= 0) out.push(n);
       if (out.length >= 4) break;
@@ -586,7 +638,7 @@ window.TFT = window.TFT || {};
 
   function augOriginOf(a) {
     const id = String((a && a.id) || '');
-    if (/^DA_/.test(id)) return { key: 'new', label: 'S18 新增' };
+    if (/^DA_/.test(id)) return { key: 'new', label: (D.currentSlug || 's18').toUpperCase() + ' 新增' };
     const m = /^TFT(\d+)_/.exec(id);
     if (m && Number(m[1]) < 18) return { key: 'legacy', label: '继承 S' + m[1] };
     return { key: 'legacy', label: '历史目录' };
@@ -789,8 +841,8 @@ window.TFT = window.TFT || {};
     const real = !!(cd && cd.comps && cd.comps.length);
     const heroStats = [
       { v: comps.length || '—', k: real ? '真实阵容' : '站内阵容', s: real ? 'OP.GG 段位快照' : 'Meta / 本地推断' },
-      { v: units.length || '—', k: '上场棋子', s: '当前段位聚合' },
-      { v: (items && items.length) || '—', k: hasRealS18() ? '装备统计' : '装备条目', s: hasRealS18() ? '真实对局样本' : '阵容携带聚合' },
+      { v: units.length || '—', k: '棋子覆盖', s: '全赛季目录 · 当前段位聚合' },
+      { v: (items && items.length) || '—', k: hasRealS18() ? '装备统计' : '装备条目', s: hasRealS18() ? '真实对局样本' : '官方目录 + 阵容携带' },
       { v: (augs && augs.length) || '—', k: '强化符文', s: hasRealS18() ? '含专家评级' : '站内适配排序' }
     ];
     const patch = (st && st.patch) || (cd && cd.patch) || meta.updatedAt || '—';
@@ -798,16 +850,21 @@ window.TFT = window.TFT || {};
     root.innerHTML =
       '<section class="dc-hero">' +
         '<div class="dc-hero-main">' +
-          '<div class="dc-kicker">DATA CENTER · ' + esc(slug) + ' · PATCH ' + esc(patch) + '</div>' +
+          '<div class="dc-kicker">DATA CENTER · ' + esc(slug) + (hasRealS18() ? ' · PATCH ' + esc(patch) : ' · 历史档案') + '</div>' +
           '<h1 class="dc-title">数据中心</h1>' +
-          '<p class="dc-sub">把当前赛季的真实阵容、装备对局统计、羁绊表现与强化符文拆成可检索的数据表：先看结论，再下钻到阵容、棋子与携带者。</p>' +
+          '<p class="dc-sub">' + (hasRealS18()
+            ? '把当前赛季的真实阵容、装备对局统计、羁绊表现与强化符文拆成可检索的数据表：先看结论，再下钻到阵容、棋子与携带者。'
+            : '当前赛季没有官方对局统计：这里汇总官方棋子 / 羁绊 / 装备 / 符文目录与站内阵容结构，缺失的胜率、均名与评级显示「—」，不做估算。') + '</p>' +
           '<div class="dc-hero-tags"><span>阵容 ' + comps.length + ' 套</span>' +
             (S.tab === 'trends'
               ? '<span>快照 ' + esc(String((D.raw.trend && D.raw.trend.snapshotCount) || 0)) + ' 份</span>'
               : S.tab === 'about'
                 ? '<span>数据口径与评级定义</span>'
                 : '<span>段位 ' + esc(tierLabel()) + '</span>') +
-            '<span>更新 ' + esc(String(fetched).slice(0, 16) || '—') + '</span><span>不估算缺失数据</span></div>' +
+            (hasRealS18()
+              ? '<span>更新 ' + esc(String(fetched).slice(0, 16) || '—') + '</span>'
+              : '<span>历史档案 · 无对局统计</span>') +
+            '<span>不估算缺失数据</span></div>' +
         '</div>' +
         '<div class="dc-hero-stats">' + heroStats.map(function (x) {
           return '<div class="dc-hs"><b>' + esc(String(x.v)) + '</b><span>' + esc(x.k) + '</span><em>' + esc(x.s) + '</em></div>';
@@ -957,6 +1014,11 @@ window.TFT = window.TFT || {};
   }
 
   function renderTrends() {
+    if (D.currentSlug !== 's18') {
+      return '<section class="dc-panel"><div class="dc-empty">' + esc((D.currentSlug || '').toUpperCase()) +
+        ' 暂无归档快照。趋势与差异从 S18 起按每日抓取归档，历史赛季不做回溯推测；切换到 S18 可查看现有快照与版本差异。</div>' +
+        note('趋势与差异只读取 data/archive/ 中真实归档的快照，不估算、不虚构历史赛季趋势。') + '</section>';
+    }
     const t = D.raw.trend;
     if (!t || !t.snapshots || !t.snapshots.length) {
       return '<section class="dc-panel"><div class="dc-empty">暂无趋势快照。每日数据抓取后会自动归档，明日起可查看阵容 / 装备 / 符文的评级变化。</div></section>';
@@ -1028,12 +1090,14 @@ window.TFT = window.TFT || {};
     const fetched = st.fetchedAt || meta.fetchedAt || meta.updatedAt || '—';
     const tiers = tierList();
     const rows = [
-      { k: '阵容与段位统计', v: 'OP.GG TFT 阵容页', f: 'data/comps.json', d: '按段位抓取的阵容档位、均名、前四率、登顶率、选取率与对局数。' },
-      { k: '装备对局统计', v: 'OP.GG 装备页', f: 'data/s18_stats.json', d: '装备出场数、均名、前四率、登顶率与常见携带者。' },
-      { k: '强化符文专家评级', v: 'OP.GG 符文页', f: 'data/s18_stats.json', d: 'OP / S / A / B 级专家评级；未覆盖的符文显示「—」。' },
-      { k: '符文 / 装备全量目录', v: 'Riot CommunityDragon', f: 'data/augments.full.json、data/items.full.json', d: '图标、描述、稀有度、配方等静态目录。' },
-      { k: 'S18 棋子与羁绊', v: '第三方站点 + OP.GG 目录混合', f: 'data/s18.json', d: '棋子/羁绊结构来自第三方，名称、费用、图标用 OP.GG 目录补全；技能文本保持第三方。' },
-      { k: '历史赛季 Meta', v: 'MetaTFT', f: 'data/meta.json', d: 'S17 及更早赛季的静态 meta 档位，仅用于对比。' }
+      { k: 'S18 阵容与段位统计', v: 'OP.GG TFT 阵容页', f: 'data/comps.json', d: '按段位抓取的 S18 阵容档位、均名、前四率、登顶率、选取率与对局数。' },
+      { k: 'S18 装备对局统计', v: 'OP.GG 装备页', f: 'data/s18_stats.json', d: '装备出场数、均名、前四率、登顶率与常见携带者。' },
+      { k: 'S18 强化符文专家评级', v: 'OP.GG 符文页', f: 'data/s18_stats.json', d: 'OP / S / A / B 级专家评级；未覆盖的符文显示「—」。' },
+      { k: 'S17 历史阵容', v: 'MetaTFT', f: 'data/meta.json', d: 'S17 归档的静态 meta 档位与羁绊结构；逐阵容胜率已被官方归档，站内不做估算。' },
+      { k: 'S16 及更早阵容', v: '站内规则推断', f: 'data/s13–s16.json 等', d: '按该赛季真实棋子 / 羁绊 / 费用规则生成 24 套参考阵容，不含胜率或对局数。' },
+      { k: '历史赛季图鉴', v: 'Riot CommunityDragon', f: 'data/s3–s17.json', d: 'S3 / S7 / S13–S17 的棋子、羁绊、费用、技能与图标；缺失字段按官方目录补齐。' },
+      { k: '符文 / 装备全量目录', v: 'Riot CommunityDragon', f: 'data/augments.full.json、data/items.full.json', d: '图标、描述、稀有度、配方等静态目录，按 sets 字段归属到各赛季。' },
+      { k: 'S18 棋子与羁绊', v: '第三方站点 + OP.GG 目录混合', f: 'data/s18.json', d: '棋子/羁绊结构来自第三方，名称、费用、图标用 OP.GG 目录补全；技能文本保持第三方。' }
     ];
     const gradeRows = [
       { k: 'OP / S / A / B / C / D', v: '阵容评级', d: '沿用 OP.GG 阵容档位，不是站内二次计算。' },
@@ -1046,7 +1110,7 @@ window.TFT = window.TFT || {};
       '<div class="dc-about-hero">' +
         '<h2>数据口径说明</h2>' +
         '<p>本站是本地 TFT 模拟器的静态数据页，所有数字都来自实际抓取的公开数据；缺失就显示「—」，不做估算、插值或虚构样本。</p>' +
-        '<div class="dc-hero-tags"><span>补丁 ' + esc(String(patch)) + '</span><span>抓取 ' + esc(String(fetched).slice(0, 16)) + '</span><span>段位 ' + esc(tiers.map(function (x) { return x.label; }).join(' / ')) + '</span></div>' +
+        '<div class="dc-hero-tags"><span>S18 补丁 ' + esc(String(patch)) + '</span><span>抓取 ' + esc(String(fetched).slice(0, 16)) + '</span><span>段位 ' + esc(tiers.map(function (x) { return x.label; }).join(' / ')) + '</span></div>' +
       '</div>' +
       '<div class="dc-subhead"><b>数据来源</b><em>抓取后写入 data/*.json</em></div>' +
       '<div class="dc-table-wrap"><table class="dc-table dc-about-table"><thead><tr><th>数据项</th><th>来源</th><th>本地文件</th><th>说明</th></tr></thead><tbody>' +
@@ -1214,15 +1278,24 @@ window.TFT = window.TFT || {};
         '<button type="button" class="btn btn-xs dc-reset" data-dc-act="reset">重置</button>' +
       '</div>' +
       kpis([
-        { v: list.length, k: '覆盖棋子', s: '当前筛选' },
+        { v: list.length, k: '覆盖棋子', s: '当前筛选 · 全赛季 ' + (function () {
+          const m = {};
+          D.champions().forEach(function (c) { if (c && c.name) m[c.name] = 1; });
+          return Object.keys(m).length;
+        })() + ' 个棋子名' },
         { v: list.filter(function (u) { return u.mainC > 0; }).length, k: '有主C记录', s: '至少 1 套阵容' },
-        { v: list.length ? fp(list[0].pickShare) : '—', k: '最高登场率', s: list.length ? list[0].name : '—' },
-        { v: fplace(list.length ? Math.min.apply(null, list.map(function (u) { return u.avgPlace || 99; })) : null), k: '最佳均名', s: '当前筛选' }
+        { v: list.length ? fp(list[0].pickShare) : '—', k: '最高登场率', s: (list.length && list[0].comps) ? list[0].name : '该赛季无对局统计' },
+        { v: (function () {
+          let best = null;
+          list.forEach(function (u) { if (u.avgPlace != null && isFinite(u.avgPlace) && (best == null || u.avgPlace < best)) best = u.avgPlace; });
+          return best == null ? '—' : fplace(best);
+        })(), k: '最佳均名', s: '当前筛选' }
       ]) +
       '<div class="dc-table-wrap"><table class="dc-table"><thead><tr>' +
         '<th class="rank">#</th><th>棋子</th><th>费用</th><th class="num">登场套数</th><th class="num">登场率</th><th class="num">主C</th><th class="num">核心率</th><th class="num">均名</th><th class="num">前四</th><th>常见装备</th>' +
       '</tr></thead><tbody>' + (rows || '<tr><td colspan="10"><div class="dc-empty">当前筛选下没有棋子。</div></td></tr>') + '</tbody></table></div>' +
-      note('登场率 = 携带该棋子的阵容套数 ÷ 当前段位阵容总数（' + compsForTier(S.tier).length + ' 套）；核心率 = 被标记为核心 / 主C 的阵容占比。这是阵容覆盖率，不是对局选取率。') +
+      note('登场率 = 携带该棋子的阵容套数 ÷ 当前段位阵容总数（' + compsForTier(S.tier).length + ' 套）；核心率 = 被标记为核心 / 主C 的阵容占比。这是阵容覆盖率，不是对局选取率。' +
+        (compsForTier(S.tier).some(function (cp) { return Number(cp.games) > 0; }) ? '' : ' 当前赛季没有官方对局统计，未进入站内阵容的棋子显示 0 套 / —。')) +
     '</section>';
   }
 
@@ -1293,10 +1366,10 @@ window.TFT = window.TFT || {};
         '<button type="button" class="btn btn-xs dc-reset" data-dc-act="reset">重置</button>' +
       '</div>' +
       kpis([
-        { v: list.length, k: '装备条目', s: real ? 'S18 真实统计' : '阵容携带聚合' },
-        { v: fnum(totalGames), k: '出场样本', s: '当前筛选合计' },
+        { v: list.length, k: '装备条目', s: real ? 'S18 真实统计' : '官方目录 + 阵容携带' },
+        { v: totalGames ? fnum(totalGames) : '—', k: '出场样本', s: totalGames ? '当前筛选合计' : '该赛季无对局统计' },
         { v: totalGames ? fp(top4W / totalGames) : '—', k: '加权前四率', s: '按出场数加权' },
-        { v: best, k: 'S/A 评级', s: real ? '同类装备内分位' : '样本不足不评级' }
+        { v: real ? best : '—', k: 'S/A 评级', s: real ? '同类装备内分位' : '样本不足不评级' }
       ]) +
       '<div class="dc-charts one">' + distCard('装备类型分布', '点击筛选类型', catRows) + '</div>' +
       '<div class="dc-table-wrap"><table class="dc-table"><thead><tr>' +
@@ -1304,7 +1377,7 @@ window.TFT = window.TFT || {};
       '</tr></thead><tbody>' + (rows || '<tr><td colspan="8"><div class="dc-empty">当前筛选下没有装备。</div></td></tr>') + '</tbody></table></div>' +
       note(real
         ? '装备统计来自 OP.GG 中文站 S18（补丁 ' + esc((sd() && sd().patch) || '—') + '，全球 ' + esc((sd() && sd().tierScope) || 'ALL') + ' 段位）。评级在同类装备内按平均名次分位：S 前 12%、A 前 35%、B 前 65%、C 前 85%，其余 D；样本 <300 或同类不足 6 件不评级。'
-        : '当前赛季没有官方装备对局统计，这里按阵容携带情况聚合，均名来自携带该装备的阵容；不生成胜率评级。') +
+        : '当前赛季没有官方装备对局统计，这里展示该赛季官方装备目录（成装 / 神器 / 纹章 / 光明装 / 组件 / 辅助）；有阵容携带记录的装备会额外聚合出场数据，均名来自携带该装备的阵容，不生成胜率评级。') +
     '</section>';
   }
 
@@ -1371,7 +1444,7 @@ window.TFT = window.TFT || {};
           return chip('ararity', r.key, r.label, S.augRarity === r.key);
         }).join('') + '</div>' +
         '<div class="dc-chips"><span class="dc-field-label">来源</span>' + [
-          { key: 'all', label: '全部' }, { key: 'new', label: 'S18 新增' }, { key: 'legacy', label: '历史继承' }
+          { key: 'all', label: '全部' }, { key: 'new', label: (D.currentSlug || 's18').toUpperCase() + ' 新增' }, { key: 'legacy', label: '历史继承' }
         ].map(function (o) {
           return chip('aorigin', o.key, o.label, S.augOrigin === o.key);
         }).join('') + '</div>' +
@@ -1392,7 +1465,7 @@ window.TFT = window.TFT || {};
         { v: list.length, k: '符文条目', s: '当前筛选' },
         { v: real ? rated : '—', k: '有专家评级', s: real ? 'OP.GG 专家榜' : '当前赛季无评级' },
         { v: real ? sTier : '—', k: 'OP / S 级', s: real ? '高优先级' : '—' },
-        { v: list.filter(function (a) { return a.fit.length > 0; }).length, k: '有羁绊关联', s: '描述命中 S18 羁绊' }
+        { v: list.filter(function (a) { return a.fit.length > 0; }).length, k: '有羁绊关联', s: '描述命中 ' + (D.currentSlug || '').toUpperCase() + ' 羁绊' }
       ]) +
       '<div class="dc-charts' + (real ? ' two' : ' one') + '">' +
         distCard('稀有度分布', '当前筛选 ' + list.length + ' 条', rarityRows) +
@@ -1477,7 +1550,7 @@ window.TFT = window.TFT || {};
       (r.recipeNames && r.recipeNames.length ? '<div class="dc-subhead">合成配方</div><div class="dc-recipe">' + r.recipeNames.map(function (n) { return chipTag(n); }).join('') + '</div>' : '') +
       '<div class="dc-subhead">常见携带者 · ' + wearers.length + '</div>' +
       '<div class="dc-table-wrap"><table class="dc-table"><thead><tr><th>棋子</th><th class="num">场次</th><th class="num">均名</th><th class="num">前四</th></tr></thead><tbody>' + (rows || '<tr><td colspan="4"><div class="dc-empty">暂无携带者数据</div></td></tr>') + '</tbody></table></div>' +
-      note(real ? '装备统计来自 OP.GG 中文站 S18（全球 ' + esc((sd() && sd().tierScope) || 'ALL') + ' 段位）；评级为同口径平均名次分位，样本 <300 不评级。' : '当前赛季无官方装备统计，数据由阵容携带聚合，均名来自携带该装备的阵容。');
+      note(real ? '装备统计来自 OP.GG 中文站 S18（全球 ' + esc((sd() && sd().tierScope) || 'ALL') + ' 段位）；评级为同口径平均名次分位，样本 <300 不评级。' : '当前赛季无官方装备统计，装备条目来自官方目录；出场与携带者数据由站内阵容携带聚合，未携带时显示 0 / —。');
     TFT.UI.modal({ title: '装备详情 · ' + r.name, size: 'wide', body: html });
   }
 

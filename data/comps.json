@@ -3518,8 +3518,8 @@
    },
    {
     "id": "og_25e6c08cee3fb517b00a8c3cb27179a7",
-    "name": "峡谷野怪 Elder Dragon",
-    "mainC": "Krug",
+    "name": "峡谷野怪 远古巨龙",
+    "mainC": "远古石甲虫",
     "tier": "OP",
     "strength": 2.49,
     "avgPlace": 2.49,
@@ -3549,7 +3549,7 @@
     },
     "units": [
      {
-      "name": "Pebbles",
+      "name": "苍蓝哨戒",
       "id": "DA_18_Sentry",
       "cost": 1,
       "star": 3,
@@ -3562,7 +3562,7 @@
       "tag": "other"
      },
      {
-      "name": "Murkwolf",
+      "name": "暗影狼",
       "id": "DA_Murkwolf18",
       "cost": 2,
       "star": 2,
@@ -3575,7 +3575,7 @@
       "tag": "other"
      },
      {
-      "name": "Krug",
+      "name": "远古石甲虫",
       "id": "DA_Krug18",
       "cost": 3,
       "star": 3,
@@ -3592,7 +3592,7 @@
       "tag": "main"
      },
      {
-      "name": "Brambleback",
+      "name": "绯红印记树怪",
       "id": "DA_Brambleback18",
       "cost": 4,
       "star": 3,
@@ -3609,7 +3609,7 @@
       "tag": "sub"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -3626,7 +3626,7 @@
       "tag": "other"
      },
      {
-      "name": "Elder Dragon",
+      "name": "远古巨龙",
       "id": "DA_18_ElderDragon",
       "cost": 5,
       "star": 2,
@@ -3671,7 +3671,7 @@
     ],
     "coreUnits": [
      {
-      "name": "Krug",
+      "name": "远古石甲虫",
       "id": "DA_Krug18",
       "cost": 3,
       "star": 3,
@@ -3688,7 +3688,7 @@
       "tag": "main"
      },
      {
-      "name": "Elder Dragon",
+      "name": "远古巨龙",
       "id": "DA_18_ElderDragon",
       "cost": 5,
       "star": 2,
@@ -3705,7 +3705,7 @@
       "tag": "sub"
      },
      {
-      "name": "Brambleback",
+      "name": "绯红印记树怪",
       "id": "DA_Brambleback18",
       "cost": 4,
       "star": 3,
@@ -3722,7 +3722,7 @@
       "tag": "sub"
      }
     ],
-    "description": "围绕 峡谷野怪、斗士、神谕 展开，主C Krug（3 费 / 3 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：Krug、Elder Dragon、Brambleback。8 人口成型，OP.GG 采样 14415 场：平均名次 2.49、登顶率 35.2%、前四率 88.0%、出场率 1.83%。",
+    "description": "围绕 峡谷野怪、斗士、神谕 展开，主C 远古石甲虫（3 费 / 3 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：远古石甲虫、远古巨龙、绯红印记树怪。8 人口成型，OP.GG 采样 14415 场：平均名次 2.49、登顶率 35.2%、前四率 88.0%、出场率 1.83%。",
     "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
@@ -3784,32 +3784,32 @@
      [
       1,
       3,
-      "Pebbles"
+      "苍蓝哨戒"
      ],
      [
       2,
       4,
-      "Murkwolf"
+      "暗影狼"
      ],
      [
       3,
       2,
-      "Krug"
+      "远古石甲虫"
      ],
      [
       2,
       5,
-      "Brambleback"
+      "绯红印记树怪"
      ],
      [
       3,
       1,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ],
      [
       2,
       6,
-      "Elder Dragon"
+      "远古巨龙"
      ],
      [
       2,
@@ -5868,7 +5868,7 @@
       "tag": "other"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -5898,7 +5898,7 @@
       "tag": "main"
      },
      {
-      "name": "Elder Dragon",
+      "name": "远古巨龙",
       "id": "DA_18_ElderDragon",
       "cost": 5,
       "star": 2,
@@ -5977,7 +5977,7 @@
       "tag": "main"
      },
      {
-      "name": "Elder Dragon",
+      "name": "远古巨龙",
       "id": "DA_18_ElderDragon",
       "cost": 5,
       "star": 2,
@@ -6011,7 +6011,7 @@
       "tag": "sub"
      }
     ],
-    "description": "围绕 峡谷野怪、猎人、主宰 展开，主C 艾希（5 费 / 2 星，出装 最后的轻语、红霸符、朔极之矛）。核心棋子：艾希、Elder Dragon、茂凯。8 人口成型，OP.GG 采样 144 场：平均名次 3.08、登顶率 30.6%、前四率 74.3%、出场率 0.02%。",
+    "description": "围绕 峡谷野怪、猎人、主宰 展开，主C 艾希（5 费 / 2 星，出装 最后的轻语、红霸符、朔极之矛）。核心棋子：艾希、远古巨龙、茂凯。8 人口成型，OP.GG 采样 144 场：平均名次 3.08、登顶率 30.6%、前四率 74.3%、出场率 0.02%。",
     "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
@@ -6095,7 +6095,7 @@
      [
       3,
       2,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ],
      [
       1,
@@ -6105,7 +6105,7 @@
      [
       2,
       1,
-      "Elder Dragon"
+      "远古巨龙"
      ],
      [
       1,
@@ -6528,7 +6528,7 @@
       "tag": "sub"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -6562,7 +6562,7 @@
       "tag": "main"
      },
      {
-      "name": "Elder Dragon",
+      "name": "远古巨龙",
       "id": "DA_18_ElderDragon",
       "cost": 5,
       "star": 2,
@@ -6628,7 +6628,7 @@
       "tag": "sub"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -6645,7 +6645,7 @@
       "tag": "sub"
      }
     ],
-    "description": "围绕 重装战士、魔女、峡谷野怪 展开，主C 拉露恩（5 费 / 2 星，出装 珠光护手、纳什之牙、朔极之矛）。核心棋子：拉露恩、莫甘娜、Sentinel。8 人口成型，OP.GG 采样 4974 场：平均名次 3.08、登顶率 31.9%、前四率 75.5%、出场率 0.63%。",
+    "description": "围绕 重装战士、魔女、峡谷野怪 展开，主C 拉露恩（5 费 / 2 星，出装 珠光护手、纳什之牙、朔极之矛）。核心棋子：拉露恩、莫甘娜、苍蓝雕纹魔像。8 人口成型，OP.GG 采样 4974 场：平均名次 3.08、登顶率 31.9%、前四率 75.5%、出场率 0.63%。",
     "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
@@ -6733,7 +6733,7 @@
      [
       3,
       1,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ],
      [
       1,
@@ -6743,7 +6743,7 @@
      [
       2,
       0,
-      "Elder Dragon"
+      "远古巨龙"
      ],
      [
       3,
@@ -7508,7 +7508,7 @@
       "tag": "other"
      },
      {
-      "name": "Krug",
+      "name": "远古石甲虫",
       "id": "DA_Krug18",
       "cost": 3,
       "star": 3,
@@ -7709,7 +7709,7 @@
      [
       3,
       1,
-      "Krug"
+      "远古石甲虫"
      ],
      [
       3,
@@ -7795,7 +7795,7 @@
       "tag": "other"
      },
      {
-      "name": "Scuttlecrab",
+      "name": "峡谷迅捷蟹",
       "id": "DA_Scuttlecrab18",
       "cost": 2,
       "star": 2,
@@ -8033,7 +8033,7 @@
      [
       3,
       2,
-      "Scuttlecrab"
+      "峡谷迅捷蟹"
      ],
      [
       3,
@@ -8461,7 +8461,7 @@
       "tag": "other"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -8474,7 +8474,7 @@
       "tag": "other"
      },
      {
-      "name": "Elder Dragon",
+      "name": "远古巨龙",
       "id": "DA_18_ElderDragon",
       "cost": 5,
       "star": 2,
@@ -8587,7 +8587,7 @@
       "tag": "main"
      },
      {
-      "name": "Elder Dragon",
+      "name": "远古巨龙",
       "id": "DA_18_ElderDragon",
       "cost": 5,
       "star": 2,
@@ -8621,7 +8621,7 @@
       "tag": "sub"
      }
     ],
-    "description": "围绕 峡谷野怪、地狱火、主宰 展开，主C 茂凯（5 费 / 2 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：茂凯、Elder Dragon、德莱文。8 人口成型，OP.GG 采样 10706 场：平均名次 3.28、登顶率 30.7%、前四率 70.1%、出场率 1.36%。",
+    "description": "围绕 峡谷野怪、地狱火、主宰 展开，主C 茂凯（5 费 / 2 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：茂凯、远古巨龙、德莱文。8 人口成型，OP.GG 采样 10706 场：平均名次 3.28、登顶率 30.7%、前四率 70.1%、出场率 1.36%。",
     "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
@@ -8700,12 +8700,12 @@
      [
       3,
       4,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ],
      [
       2,
       2,
-      "Elder Dragon"
+      "远古巨龙"
      ],
      [
       1,
@@ -8774,7 +8774,7 @@
     },
     "units": [
      {
-      "name": "Pebbles",
+      "name": "苍蓝哨戒",
       "id": "DA_18_Sentry",
       "cost": 1,
       "star": 2,
@@ -8843,7 +8843,7 @@
       "tag": "sub"
      },
      {
-      "name": "Brambleback",
+      "name": "绯红印记树怪",
       "id": "DA_Brambleback18",
       "cost": 4,
       "star": 2,
@@ -8860,7 +8860,7 @@
       "tag": "other"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -8943,7 +8943,7 @@
       "tag": "sub"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -8960,7 +8960,7 @@
       "tag": "sub"
      }
     ],
-    "description": "围绕 神谕、重装战士、峡谷野怪 展开，主C 拉露恩（5 费 / 2 星，出装 神谕纹章、珠光护手、强袭者的链枷）。核心棋子：拉露恩、莫甘娜、Sentinel。9 人口成型，OP.GG 采样 486 场：平均名次 3.28、登顶率 20.2%、前四率 75.1%、出场率 0.06%。",
+    "description": "围绕 神谕、重装战士、峡谷野怪 展开，主C 拉露恩（5 费 / 2 星，出装 神谕纹章、珠光护手、强袭者的链枷）。核心棋子：拉露恩、莫甘娜、苍蓝雕纹魔像。9 人口成型，OP.GG 采样 486 场：平均名次 3.28、登顶率 20.2%、前四率 75.1%、出场率 0.06%。",
     "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
@@ -9040,7 +9040,7 @@
      [
       1,
       3,
-      "Pebbles"
+      "苍蓝哨戒"
      ],
      [
       2,
@@ -9065,12 +9065,12 @@
      [
       2,
       6,
-      "Brambleback"
+      "绯红印记树怪"
      ],
      [
       3,
       0,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ],
      [
       1,
@@ -9094,7 +9094,7 @@
    },
    {
     "id": "og_598ec6c215fe1139dbce7aa896627fcd",
-    "name": "永恒之森 Mama Beak",
+    "name": "永恒之森 深红锋喙鸟",
     "mainC": "赫卡里姆",
     "tier": "B",
     "strength": 3.29,
@@ -9180,7 +9180,7 @@
       "tag": "main"
      },
      {
-      "name": "Mama Beak",
+      "name": "深红锋喙鸟",
       "id": "DA_CrimsonRaptor18",
       "cost": 3,
       "star": 3,
@@ -9197,7 +9197,7 @@
       "tag": "sub"
      },
      {
-      "name": "Krug",
+      "name": "远古石甲虫",
       "id": "DA_Krug18",
       "cost": 3,
       "star": 3,
@@ -9231,7 +9231,7 @@
       "tag": "other"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -9263,7 +9263,7 @@
       "tag": "main"
      },
      {
-      "name": "Mama Beak",
+      "name": "深红锋喙鸟",
       "id": "DA_CrimsonRaptor18",
       "cost": 3,
       "star": 3,
@@ -9280,7 +9280,7 @@
       "tag": "sub"
      },
      {
-      "name": "Krug",
+      "name": "远古石甲虫",
       "id": "DA_Krug18",
       "cost": 3,
       "star": 3,
@@ -9297,7 +9297,7 @@
       "tag": "sub"
      }
     ],
-    "description": "围绕 召唤师、永恒之森、峡谷野怪 展开，主C 赫卡里姆（3 费 / 3 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：赫卡里姆、Mama Beak、Krug。8 人口成型，OP.GG 采样 941 场：平均名次 3.29、登顶率 14.0%、前四率 76.7%、出场率 0.12%。",
+    "description": "围绕 召唤师、永恒之森、峡谷野怪 展开，主C 赫卡里姆（3 费 / 3 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：赫卡里姆、深红锋喙鸟、远古石甲虫。8 人口成型，OP.GG 采样 941 场：平均名次 3.29、登顶率 14.0%、前四率 76.7%、出场率 0.12%。",
     "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
@@ -9391,12 +9391,12 @@
      [
       1,
       1,
-      "Mama Beak"
+      "深红锋喙鸟"
      ],
      [
       3,
       6,
-      "Krug"
+      "远古石甲虫"
      ],
      [
       1,
@@ -9406,7 +9406,7 @@
      [
       3,
       3,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ]
     ],
     "positioning": "OP.GG 实战站位（按真实对局采样）",
@@ -9852,7 +9852,7 @@
       "tag": "sub"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -10086,7 +10086,7 @@
      [
       3,
       6,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ],
      [
       1,
@@ -10736,8 +10736,8 @@
    },
    {
     "id": "og_199fc60ef48d77b2b6e59fe673f58509",
-    "name": "猎人 Scuttlecrab",
-    "mainC": "Scuttlecrab",
+    "name": "猎人 峡谷迅捷蟹",
+    "mainC": "峡谷迅捷蟹",
     "tier": "B",
     "strength": 3.42,
     "avgPlace": 3.42,
@@ -10814,7 +10814,7 @@
       "tag": "other"
      },
      {
-      "name": "Scuttlecrab",
+      "name": "峡谷迅捷蟹",
       "id": "DA_Scuttlecrab18",
       "cost": 2,
       "star": 3,
@@ -10889,7 +10889,7 @@
     ],
     "coreUnits": [
      {
-      "name": "Scuttlecrab",
+      "name": "峡谷迅捷蟹",
       "id": "DA_Scuttlecrab18",
       "cost": 2,
       "star": 3,
@@ -10940,7 +10940,7 @@
       "tag": "sub"
      }
     ],
-    "description": "围绕 猎人、主宰、花仙子 展开，主C Scuttlecrab（2 费 / 3 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：Scuttlecrab、希维尔、凯特琳。8 人口成型，OP.GG 采样 478 场：平均名次 3.42、登顶率 9.6%、前四率 76.8%、出场率 0.06%。",
+    "description": "围绕 猎人、主宰、花仙子 展开，主C 峡谷迅捷蟹（2 费 / 3 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：峡谷迅捷蟹、希维尔、凯特琳。8 人口成型，OP.GG 采样 478 场：平均名次 3.42、登顶率 9.6%、前四率 76.8%、出场率 0.06%。",
     "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
@@ -11023,7 +11023,7 @@
      [
       3,
       5,
-      "Scuttlecrab"
+      "峡谷迅捷蟹"
      ],
      [
       1,
@@ -11513,7 +11513,7 @@
       "tag": "sub"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -11676,7 +11676,7 @@
      [
       3,
       4,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ]
     ],
     "positioning": "OP.GG 实战站位（按真实对局采样）",
@@ -12416,7 +12416,7 @@
       "tag": "other"
      },
      {
-      "name": "Mama Beak",
+      "name": "深红锋喙鸟",
       "id": "DA_CrimsonRaptor18",
       "cost": 3,
       "star": 2,
@@ -12472,7 +12472,7 @@
       "tag": "other"
      },
      {
-      "name": "Brambleback",
+      "name": "绯红印记树怪",
       "id": "DA_Brambleback18",
       "cost": 4,
       "star": 2,
@@ -12489,7 +12489,7 @@
       "tag": "sub"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -12542,7 +12542,7 @@
       "tag": "main"
      },
      {
-      "name": "Brambleback",
+      "name": "绯红印记树怪",
       "id": "DA_Brambleback18",
       "cost": 4,
       "star": 2,
@@ -12559,7 +12559,7 @@
       "tag": "sub"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -12576,7 +12576,7 @@
       "tag": "sub"
      }
     ],
-    "description": "围绕 重装战士、峡谷野怪、月蚀骑士 展开，主C 厄斐琉斯（4 费 / 2 星，出装 巨人杀手、鬼索的狂暴之刃、海妖之怒）。核心棋子：厄斐琉斯、Brambleback、Sentinel。9 人口成型，OP.GG 采样 184 场：平均名次 3.62、登顶率 8.2%、前四率 70.1%、出场率 0.02%。",
+    "description": "围绕 重装战士、峡谷野怪、月蚀骑士 展开，主C 厄斐琉斯（4 费 / 2 星，出装 巨人杀手、鬼索的狂暴之刃、海妖之怒）。核心棋子：厄斐琉斯、绯红印记树怪、苍蓝雕纹魔像。9 人口成型，OP.GG 采样 184 场：平均名次 3.62、登顶率 8.2%、前四率 70.1%、出场率 0.02%。",
     "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
@@ -12660,7 +12660,7 @@
      [
       1,
       2,
-      "Mama Beak"
+      "深红锋喙鸟"
      ],
      [
       1,
@@ -12680,12 +12680,12 @@
      [
       2,
       0,
-      "Brambleback"
+      "绯红印记树怪"
      ],
      [
       3,
       3,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ],
      [
       3,
@@ -12704,8 +12704,8 @@
    },
    {
     "id": "og_ec4c737b5836635daa916e4510e45196",
-    "name": "峡谷野怪 Brambleback",
-    "mainC": "Brambleback",
+    "name": "峡谷野怪 绯红印记树怪",
+    "mainC": "绯红印记树怪",
     "tier": "A",
     "strength": 3.64,
     "avgPlace": 3.64,
@@ -12734,7 +12734,7 @@
     },
     "units": [
      {
-      "name": "Pebbles",
+      "name": "苍蓝哨戒",
       "id": "DA_18_Sentry",
       "cost": 1,
       "star": 3,
@@ -12750,7 +12750,7 @@
       "tag": "sub"
      },
      {
-      "name": "Cinderling",
+      "name": "绯红树怪",
       "id": "DA_Cinderling18",
       "cost": 1,
       "star": 3,
@@ -12763,7 +12763,7 @@
       "tag": "other"
      },
      {
-      "name": "Gromp",
+      "name": "魔沼蛙",
       "id": "DA_Gromp18_AP",
       "cost": 2,
       "star": 3,
@@ -12776,7 +12776,7 @@
       "tag": "other"
      },
      {
-      "name": "Murkwolf",
+      "name": "暗影狼",
       "id": "DA_Murkwolf18",
       "cost": 2,
       "star": 3,
@@ -12789,7 +12789,7 @@
       "tag": "other"
      },
      {
-      "name": "Scuttlecrab",
+      "name": "峡谷迅捷蟹",
       "id": "DA_Scuttlecrab18",
       "cost": 2,
       "star": 3,
@@ -12802,7 +12802,7 @@
       "tag": "other"
      },
      {
-      "name": "Mama Beak",
+      "name": "深红锋喙鸟",
       "id": "DA_CrimsonRaptor18",
       "cost": 3,
       "star": 2,
@@ -12815,7 +12815,7 @@
       "tag": "other"
      },
      {
-      "name": "Krug",
+      "name": "远古石甲虫",
       "id": "DA_Krug18",
       "cost": 3,
       "star": 3,
@@ -12832,7 +12832,7 @@
       "tag": "sub"
      },
      {
-      "name": "Brambleback",
+      "name": "绯红印记树怪",
       "id": "DA_Brambleback18",
       "cost": 4,
       "star": 2,
@@ -12849,7 +12849,7 @@
       "tag": "main"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -12868,7 +12868,7 @@
     ],
     "coreUnits": [
      {
-      "name": "Brambleback",
+      "name": "绯红印记树怪",
       "id": "DA_Brambleback18",
       "cost": 4,
       "star": 2,
@@ -12885,7 +12885,7 @@
       "tag": "main"
      },
      {
-      "name": "Krug",
+      "name": "远古石甲虫",
       "id": "DA_Krug18",
       "cost": 3,
       "star": 3,
@@ -12902,7 +12902,7 @@
       "tag": "sub"
      },
      {
-      "name": "Pebbles",
+      "name": "苍蓝哨戒",
       "id": "DA_18_Sentry",
       "cost": 1,
       "star": 3,
@@ -12918,7 +12918,7 @@
       "tag": "sub"
      }
     ],
-    "description": "围绕 峡谷野怪、神谕、狂战士 展开，主C Brambleback（4 费 / 2 星，出装 饮血剑、斯特拉克的挑战护手、泰坦的坚决）。核心棋子：Brambleback、Krug、Pebbles。9 人口成型，OP.GG 采样 2822 场：平均名次 3.64、登顶率 10.4%、前四率 70.4%、出场率 0.36%。",
+    "description": "围绕 峡谷野怪、神谕、狂战士 展开，主C 绯红印记树怪（4 费 / 2 星，出装 饮血剑、斯特拉克的挑战护手、泰坦的坚决）。核心棋子：绯红印记树怪、远古石甲虫、苍蓝哨戒。9 人口成型，OP.GG 采样 2822 场：平均名次 3.64、登顶率 10.4%、前四率 70.4%、出场率 0.36%。",
     "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
@@ -12986,47 +12986,47 @@
      [
       1,
       3,
-      "Pebbles"
+      "苍蓝哨戒"
      ],
      [
       1,
       4,
-      "Cinderling"
+      "绯红树怪"
      ],
      [
       1,
       2,
-      "Gromp"
+      "魔沼蛙"
      ],
      [
       2,
       5,
-      "Murkwolf"
+      "暗影狼"
      ],
      [
       3,
       1,
-      "Scuttlecrab"
+      "峡谷迅捷蟹"
      ],
      [
       1,
       6,
-      "Mama Beak"
+      "深红锋喙鸟"
      ],
      [
       3,
       0,
-      "Krug"
+      "远古石甲虫"
      ],
      [
       2,
       3,
-      "Brambleback"
+      "绯红印记树怪"
      ],
      [
       3,
       4,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ]
     ],
     "positioning": "OP.GG 实战站位（按真实对局采样）",
@@ -14362,7 +14362,7 @@
       "tag": "main"
      },
      {
-      "name": "Murkwolf",
+      "name": "暗影狼",
       "id": "DA_Murkwolf18",
       "cost": 2,
       "star": 3,
@@ -14405,7 +14405,7 @@
       "tag": "other"
      },
      {
-      "name": "Krug",
+      "name": "远古石甲虫",
       "id": "DA_Krug18",
       "cost": 3,
       "star": 2,
@@ -14435,7 +14435,7 @@
       "tag": "sub"
      },
      {
-      "name": "Brambleback",
+      "name": "绯红印记树怪",
       "id": "DA_Brambleback18",
       "cost": 4,
       "star": 2,
@@ -14488,7 +14488,7 @@
       "tag": "sub"
      },
      {
-      "name": "Murkwolf",
+      "name": "暗影狼",
       "id": "DA_Murkwolf18",
       "cost": 2,
       "star": 3,
@@ -14505,7 +14505,7 @@
       "tag": "sub"
      }
     ],
-    "description": "围绕 黑荆棘、狂战士、峡谷野怪 展开，主C 沃里克（2 费 / 3 星，出装 朔极之矛、斯特拉克的挑战护手、泰坦的坚决）。核心棋子：沃里克、墨菲特、Murkwolf。8 人口成型，OP.GG 采样 2422 场：平均名次 3.72、登顶率 8.5%、前四率 70.3%、出场率 0.31%。",
+    "description": "围绕 黑荆棘、狂战士、峡谷野怪 展开，主C 沃里克（2 费 / 3 星，出装 朔极之矛、斯特拉克的挑战护手、泰坦的坚决）。核心棋子：沃里克、墨菲特、暗影狼。8 人口成型，OP.GG 采样 2422 场：平均名次 3.72、登顶率 8.5%、前四率 70.3%、出场率 0.31%。",
     "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
@@ -14577,7 +14577,7 @@
      [
       2,
       2,
-      "Murkwolf"
+      "暗影狼"
      ],
      [
       1,
@@ -14592,7 +14592,7 @@
      [
       3,
       6,
-      "Krug"
+      "远古石甲虫"
      ],
      [
       3,
@@ -14602,7 +14602,7 @@
      [
       2,
       3,
-      "Brambleback"
+      "绯红印记树怪"
      ]
     ],
     "positioning": "OP.GG 实战站位（按真实对局采样）",
@@ -15273,7 +15273,7 @@
     },
     "units": [
      {
-      "name": "Pebbles",
+      "name": "苍蓝哨戒",
       "id": "DA_18_Sentry",
       "cost": 1,
       "star": 2,
@@ -15346,7 +15346,7 @@
       "tag": "other"
      },
      {
-      "name": "Krug",
+      "name": "远古石甲虫",
       "id": "DA_Krug18",
       "cost": 3,
       "star": 2,
@@ -15376,7 +15376,7 @@
       "tag": "sub"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -15514,7 +15514,7 @@
      [
       1,
       3,
-      "Pebbles"
+      "苍蓝哨戒"
      ],
      [
       1,
@@ -15539,7 +15539,7 @@
      [
       3,
       6,
-      "Krug"
+      "远古石甲虫"
      ],
      [
       2,
@@ -15549,7 +15549,7 @@
      [
       3,
       3,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ]
     ],
     "positioning": "OP.GG 实战站位（按真实对局采样）",
@@ -15912,7 +15912,7 @@
     },
     "units": [
      {
-      "name": "Pebbles",
+      "name": "苍蓝哨戒",
       "id": "DA_18_Sentry",
       "cost": 1,
       "star": 2,
@@ -15938,7 +15938,7 @@
       "tag": "other"
      },
      {
-      "name": "Krug",
+      "name": "远古石甲虫",
       "id": "DA_Krug18",
       "cost": 3,
       "star": 2,
@@ -16002,7 +16002,7 @@
       "tag": "sub"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -16141,7 +16141,7 @@
      [
       1,
       3,
-      "Pebbles"
+      "苍蓝哨戒"
      ],
      [
       1,
@@ -16151,7 +16151,7 @@
      [
       3,
       2,
-      "Krug"
+      "远古石甲虫"
      ],
      [
       1,
@@ -16171,7 +16171,7 @@
      [
       3,
       0,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ],
      [
       3,
@@ -16955,7 +16955,7 @@
       "tag": "sub"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -17130,7 +17130,7 @@
      [
       3,
       0,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ]
     ],
     "positioning": "OP.GG 实战站位（按真实对局采样）",
@@ -17213,7 +17213,7 @@
       "tag": "other"
      },
      {
-      "name": "Krug",
+      "name": "远古石甲虫",
       "id": "DA_Krug18",
       "cost": 3,
       "star": 2,
@@ -17430,7 +17430,7 @@
      [
       3,
       5,
-      "Krug"
+      "远古石甲虫"
      ],
      [
       1,
@@ -17464,8 +17464,8 @@
    },
    {
     "id": "og_fa65a41c4d955272cde4b9fdc14e90c5",
-    "name": "峡谷野怪 Krug",
-    "mainC": "Krug",
+    "name": "峡谷野怪 远古石甲虫",
+    "mainC": "远古石甲虫",
     "tier": "D",
     "strength": 4.91,
     "avgPlace": 4.91,
@@ -17488,7 +17488,7 @@
     },
     "units": [
      {
-      "name": "Pebbles",
+      "name": "苍蓝哨戒",
       "id": "DA_18_Sentry",
       "cost": 1,
       "star": 3,
@@ -17505,7 +17505,7 @@
       "tag": "sub"
      },
      {
-      "name": "Cinderling",
+      "name": "绯红树怪",
       "id": "DA_Cinderling18",
       "cost": 1,
       "star": 3,
@@ -17522,7 +17522,7 @@
       "tag": "other"
      },
      {
-      "name": "Gromp",
+      "name": "魔沼蛙",
       "id": "DA_Gromp18_AP",
       "cost": 2,
       "star": 3,
@@ -17535,7 +17535,7 @@
       "tag": "other"
      },
      {
-      "name": "Murkwolf",
+      "name": "暗影狼",
       "id": "DA_Murkwolf18",
       "cost": 2,
       "star": 3,
@@ -17548,7 +17548,7 @@
       "tag": "other"
      },
      {
-      "name": "Scuttlecrab",
+      "name": "峡谷迅捷蟹",
       "id": "DA_Scuttlecrab18",
       "cost": 2,
       "star": 3,
@@ -17561,7 +17561,7 @@
       "tag": "other"
      },
      {
-      "name": "Krug",
+      "name": "远古石甲虫",
       "id": "DA_Krug18",
       "cost": 3,
       "star": 3,
@@ -17578,7 +17578,7 @@
       "tag": "main"
      },
      {
-      "name": "Brambleback",
+      "name": "绯红印记树怪",
       "id": "DA_Brambleback18",
       "cost": 4,
       "star": 2,
@@ -17595,7 +17595,7 @@
       "tag": "sub"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -17610,7 +17610,7 @@
     ],
     "coreUnits": [
      {
-      "name": "Krug",
+      "name": "远古石甲虫",
       "id": "DA_Krug18",
       "cost": 3,
       "star": 3,
@@ -17627,7 +17627,7 @@
       "tag": "main"
      },
      {
-      "name": "Brambleback",
+      "name": "绯红印记树怪",
       "id": "DA_Brambleback18",
       "cost": 4,
       "star": 2,
@@ -17644,7 +17644,7 @@
       "tag": "sub"
      },
      {
-      "name": "Pebbles",
+      "name": "苍蓝哨戒",
       "id": "DA_18_Sentry",
       "cost": 1,
       "star": 3,
@@ -17661,7 +17661,7 @@
       "tag": "sub"
      }
     ],
-    "description": "围绕 峡谷野怪、神谕、狂战士 展开，主C Krug（3 费 / 3 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：Krug、Brambleback、Pebbles。8 人口成型，OP.GG 采样 488 场：平均名次 4.91、登顶率 2.7%、前四率 42.8%、出场率 0.24%。",
+    "description": "围绕 峡谷野怪、神谕、狂战士 展开，主C 远古石甲虫（3 费 / 3 星，出装 石像鬼石板甲、振奋盔甲、狂徒铠甲）。核心棋子：远古石甲虫、绯红印记树怪、苍蓝哨戒。8 人口成型，OP.GG 采样 488 场：平均名次 4.91、登顶率 2.7%、前四率 42.8%、出场率 0.24%。",
     "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
@@ -17717,42 +17717,42 @@
      [
       1,
       3,
-      "Pebbles"
+      "苍蓝哨戒"
      ],
      [
       1,
       4,
-      "Cinderling"
+      "绯红树怪"
      ],
      [
       1,
       2,
-      "Gromp"
+      "魔沼蛙"
      ],
      [
       2,
       5,
-      "Murkwolf"
+      "暗影狼"
      ],
      [
       3,
       1,
-      "Scuttlecrab"
+      "峡谷迅捷蟹"
      ],
      [
       3,
       6,
-      "Krug"
+      "远古石甲虫"
      ],
      [
       2,
       0,
-      "Brambleback"
+      "绯红印记树怪"
      ],
      [
       3,
       3,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ]
     ],
     "positioning": "OP.GG 实战站位（按真实对局采样）",
@@ -17808,7 +17808,7 @@
       "tag": "other"
      },
      {
-      "name": "Cinderling",
+      "name": "绯红树怪",
       "id": "DA_Cinderling18",
       "cost": 1,
       "star": 2,
@@ -17834,7 +17834,7 @@
       "tag": "other"
      },
      {
-      "name": "Krug",
+      "name": "远古石甲虫",
       "id": "DA_Krug18",
       "cost": 3,
       "star": 2,
@@ -17898,7 +17898,7 @@
       "tag": "sub"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -18040,7 +18040,7 @@
      [
       1,
       4,
-      "Cinderling"
+      "绯红树怪"
      ],
      [
       1,
@@ -18050,7 +18050,7 @@
      [
       3,
       5,
-      "Krug"
+      "远古石甲虫"
      ],
      [
       3,
@@ -18070,7 +18070,7 @@
      [
       3,
       4,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ]
     ],
     "positioning": "OP.GG 实战站位（按真实对局采样）",
@@ -18084,8 +18084,8 @@
    },
    {
     "id": "og_36cdb1a1be00e17a46ace3ae83bb45f3",
-    "name": "迅捷射手 Brambleback",
-    "mainC": "Brambleback",
+    "name": "迅捷射手 绯红印记树怪",
+    "mainC": "绯红印记树怪",
     "tier": "D",
     "strength": 5.23,
     "avgPlace": 5.23,
@@ -18152,7 +18152,7 @@
       "tag": "other"
      },
      {
-      "name": "Mama Beak",
+      "name": "深红锋喙鸟",
       "id": "DA_CrimsonRaptor18",
       "cost": 3,
       "star": 2,
@@ -18199,7 +18199,7 @@
       "tag": "sub"
      },
      {
-      "name": "Brambleback",
+      "name": "绯红印记树怪",
       "id": "DA_Brambleback18",
       "cost": 4,
       "star": 2,
@@ -18216,7 +18216,7 @@
       "tag": "main"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -18235,7 +18235,7 @@
     ],
     "coreUnits": [
      {
-      "name": "Brambleback",
+      "name": "绯红印记树怪",
       "id": "DA_Brambleback18",
       "cost": 4,
       "star": 2,
@@ -18286,7 +18286,7 @@
       "tag": "sub"
      }
     ],
-    "description": "围绕 迅捷射手、峡谷野怪、花仙子 展开，主C Brambleback（4 费 / 2 星，出装 迅捷射手纹章、夜之锋刃、斯特拉克的挑战护手）。核心棋子：Brambleback、厄斐琉斯、阿木木。8 人口成型，OP.GG 采样 478 场：平均名次 5.23、登顶率 2.9%、前四率 33.9%、出场率 0.06%。",
+    "description": "围绕 迅捷射手、峡谷野怪、花仙子 展开，主C 绯红印记树怪（4 费 / 2 星，出装 迅捷射手纹章、夜之锋刃、斯特拉克的挑战护手）。核心棋子：绯红印记树怪、厄斐琉斯、阿木木。8 人口成型，OP.GG 采样 478 场：平均名次 5.23、登顶率 2.9%、前四率 33.9%、出场率 0.06%。",
     "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
@@ -18375,7 +18375,7 @@
      [
       1,
       5,
-      "Mama Beak"
+      "深红锋喙鸟"
      ],
      [
       1,
@@ -18390,12 +18390,12 @@
      [
       2,
       0,
-      "Brambleback"
+      "绯红印记树怪"
      ],
      [
       3,
       4,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ]
     ],
     "positioning": "OP.GG 实战站位（按真实对局采样）",
@@ -18409,8 +18409,8 @@
    },
    {
     "id": "og_8b62a9e30f2e6c669cd9dd220513d8d2",
-    "name": "峡谷野怪 Brambleback",
-    "mainC": "Brambleback",
+    "name": "峡谷野怪 绯红印记树怪",
+    "mainC": "绯红印记树怪",
     "tier": "D",
     "strength": 5.24,
     "avgPlace": 5.24,
@@ -18433,7 +18433,7 @@
     },
     "units": [
      {
-      "name": "Pebbles",
+      "name": "苍蓝哨戒",
       "id": "DA_18_Sentry",
       "cost": 1,
       "star": 3,
@@ -18450,7 +18450,7 @@
       "tag": "sub"
      },
      {
-      "name": "Cinderling",
+      "name": "绯红树怪",
       "id": "DA_Cinderling18",
       "cost": 1,
       "star": 3,
@@ -18467,7 +18467,7 @@
       "tag": "other"
      },
      {
-      "name": "Murkwolf",
+      "name": "暗影狼",
       "id": "DA_Murkwolf18",
       "cost": 2,
       "star": 2,
@@ -18480,7 +18480,7 @@
       "tag": "other"
      },
      {
-      "name": "Scuttlecrab",
+      "name": "峡谷迅捷蟹",
       "id": "DA_Scuttlecrab18",
       "cost": 2,
       "star": 3,
@@ -18493,7 +18493,7 @@
       "tag": "other"
      },
      {
-      "name": "Krug",
+      "name": "远古石甲虫",
       "id": "DA_Krug18",
       "cost": 3,
       "star": 3,
@@ -18523,7 +18523,7 @@
       "tag": "other"
      },
      {
-      "name": "Brambleback",
+      "name": "绯红印记树怪",
       "id": "DA_Brambleback18",
       "cost": 4,
       "star": 2,
@@ -18540,7 +18540,7 @@
       "tag": "main"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -18555,7 +18555,7 @@
     ],
     "coreUnits": [
      {
-      "name": "Brambleback",
+      "name": "绯红印记树怪",
       "id": "DA_Brambleback18",
       "cost": 4,
       "star": 2,
@@ -18572,7 +18572,7 @@
       "tag": "main"
      },
      {
-      "name": "Krug",
+      "name": "远古石甲虫",
       "id": "DA_Krug18",
       "cost": 3,
       "star": 3,
@@ -18589,7 +18589,7 @@
       "tag": "sub"
      },
      {
-      "name": "Pebbles",
+      "name": "苍蓝哨戒",
       "id": "DA_18_Sentry",
       "cost": 1,
       "star": 3,
@@ -18606,7 +18606,7 @@
       "tag": "sub"
      }
     ],
-    "description": "围绕 峡谷野怪、神谕、斗士 展开，主C Brambleback（4 费 / 2 星，出装 夜之锋刃、鬼索的狂暴之刃、水银）。核心棋子：Brambleback、Krug、Pebbles。8 人口成型，OP.GG 采样 243 场：平均名次 5.24、登顶率 2.9%、前四率 34.2%、出场率 0.18%。",
+    "description": "围绕 峡谷野怪、神谕、斗士 展开，主C 绯红印记树怪（4 费 / 2 星，出装 夜之锋刃、鬼索的狂暴之刃、水银）。核心棋子：绯红印记树怪、远古石甲虫、苍蓝哨戒。8 人口成型，OP.GG 采样 243 场：平均名次 5.24、登顶率 2.9%、前四率 34.2%、出场率 0.18%。",
     "descriptionSource": "基于 OP.GG 真实阵容字段自动生成",
     "traits": [
      {
@@ -18662,27 +18662,27 @@
      [
       1,
       3,
-      "Pebbles"
+      "苍蓝哨戒"
      ],
      [
       1,
       4,
-      "Cinderling"
+      "绯红树怪"
      ],
      [
       2,
       2,
-      "Murkwolf"
+      "暗影狼"
      ],
      [
       3,
       5,
-      "Scuttlecrab"
+      "峡谷迅捷蟹"
      ],
      [
       3,
       1,
-      "Krug"
+      "远古石甲虫"
      ],
      [
       3,
@@ -18692,12 +18692,12 @@
      [
       2,
       0,
-      "Brambleback"
+      "绯红印记树怪"
      ],
      [
       3,
       3,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ]
     ],
     "positioning": "OP.GG 实战站位（按真实对局采样）",
@@ -19162,7 +19162,7 @@
       "tag": "sub"
      },
      {
-      "name": "Sentinel",
+      "name": "苍蓝雕纹魔像",
       "id": "DA_Sentinel18",
       "cost": 4,
       "star": 2,
@@ -19329,7 +19329,7 @@
      [
       3,
       3,
-      "Sentinel"
+      "苍蓝雕纹魔像"
      ]
     ],
     "positioning": "OP.GG 实战站位（按真实对局采样）",
@@ -20052,7 +20052,7 @@
       "tag": "other"
      },
      {
-      "name": "Scuttlecrab",
+      "name": "峡谷迅捷蟹",
       "id": "DA_Scuttlecrab18",
       "cost": 2,
       "star": 2,
@@ -20275,7 +20275,7 @@
      [
       3,
       5,
-      "Scuttlecrab"
+      "峡谷迅捷蟹"
      ],
      [
       3,

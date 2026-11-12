@@ -291,11 +291,15 @@ def main():
                 break
 
         units, pos_units = [], []
+        name_alias = {}
         for u in comp.get('units') or []:
             ch = resolve_champ(u.get('key'), (u.get('meta') or {}).get('name'))
             if not ch:
                 missing_units.add(u.get('key'))
                 continue
+            raw_name = (u.get('meta') or {}).get('name') or ''
+            if raw_name and raw_name != ch['name']:
+                name_alias[raw_name] = ch['name']
             item_ids = []
             for im in u.get('itemMetas') or []:
                 api = (im or {}).get('apiName')
@@ -326,6 +330,9 @@ def main():
 
         core = [u for u in units if u['core']]
         comp_name = (comp.get('name') or {}).get('zh_CN') or (comp.get('name') or {}).get('en_US') or ''
+        # OP.GG 阵容名常带英文野怪名（Sentinel / Krug 等），按站内官方目录统一替换为中文
+        for raw, zh in sorted(name_alias.items(), key=lambda x: -len(x[0])):
+            comp_name = re.sub(r'(?<![A-Za-z])' + re.escape(raw) + r'(?![A-Za-z])', zh, comp_name)
         # 阵容名通常为「羁绊 主C」，以名末棋子作为主C；否则回到 isCore 首位
         name_tail = comp_name.split()[-1] if comp_name else ''
         main_unit = {}

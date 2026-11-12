@@ -2414,22 +2414,6 @@
  ],
  "traits": [
   {
-   "name": "绝命毒师",
-   "desc": "获得1个2星【提莫】。【辛吉德】的伤害会刷新【提莫】的中毒效果，并且【提莫】的伤害会为【辛吉德】提供不断增长的法术加成。每场玩家对战回合结束后，获得一个【提莫】。",
-   "icon": "assets/icons/teamup_trait_poisonpals.png",
-   "levels": [
-    {
-     "min": 2,
-     "max": null,
-     "style": 4,
-     "vars": {
-      "SingedAPGain": 2,
-      "TeemoDamageReq": 100
-     }
-    }
-   ]
-  },
-  {
    "name": "远古巫灵",
    "desc": "在每个对战回合结束后，一个【飞升法杖】会出现在你的商店。它们拥有强大的效果，并且能够用金币购买。@TFTUnitProperty.trait:TFT16_XerathUnique_PurchasedCharmDisplay@在【恭喜发财】中，【忠实追随者】随机法杖在你达到7级之前不会出现。",
    "icon": "assets/icons/trait_icon_12_ascendant.png",
@@ -2885,22 +2869,6 @@
    ]
   },
   {
-   "name": "与狼共舞",
-   "desc": "当【千珏】施放技能时，【安蓓萨】总会获得他们的庇护，免于死亡，并且在被庇护时获得40%%物理加成。当【安蓓萨】施放技能时，狼灵会撕咬所有被命中的敌人，造成30%%伤害。",
-   "icon": "assets/icons/teamup_trait_chosenwolves.png",
-   "levels": [
-    {
-     "min": 2,
-     "max": null,
-     "style": 4,
-     "vars": {
-      "AmbessaBonusAD": 0.4000000059604645,
-      "WolfDamage": 0.30000001192092896
-     }
-    }
-   ]
-  },
-  {
    "name": "解脱者",
    "desc": "【塞拉斯】可在3种不同技能之间轮换，取决于当时哪种技能效果最佳。他无法连续两次施放同一种技能。",
    "icon": "assets/icons/trait_icon_16_chainbreaker.png",
@@ -2956,31 +2924,6 @@
      "style": 5,
      "vars": {
       "InventionFireTime": 8.0
-     }
-    }
-   ]
-  },
-  {
-   "name": "时间旅者",
-   "desc": "在有【艾克】参与的每场战斗之后，获得2经验值。在将【艾克】升到3星之后，获得1个【基兰】。【艾克】的强化攻击会将10%%原伤害回响至所有受到你最强大的那个【基兰】的技能伤害的敌人。",
-   "icon": "assets/icons/teamup_trait_timewinders.png",
-   "levels": [
-    {
-     "min": 1,
-     "max": 1,
-     "style": 4,
-     "vars": {
-      "DamageShare": 0.10000000149011612,
-      "TOOLTIPONLYXP": 2
-     }
-    },
-    {
-     "min": 2,
-     "max": null,
-     "style": 4,
-     "vars": {
-      "DamageShare": 0.10000000149011612,
-      "TOOLTIPONLYXP": 2
      }
     }
    ]
@@ -3084,25 +3027,6 @@
      "max": null,
      "style": 4,
      "vars": {}
-    }
-   ]
-  },
-  {
-   "name": "巨龙卫士",
-   "desc": "当【嘉文四世】施放技能时，【希瓦娜】获得他75%%护盾值。当【希瓦娜】施放技能时，【嘉文四世】会跳向敌人，在半径2格的范围内造成相当于他100%/100%/125%/150%%护甲和魔抗的魔法伤害。",
-   "icon": "assets/icons/teamup_trait_uncompromisingwill.png",
-   "levels": [
-    {
-     "min": 2,
-     "max": null,
-     "style": 4,
-     "vars": {
-      "JarvanResistDamage1": 1.0,
-      "JarvanResistDamage2": 1.0,
-      "JarvanResistDamage3": 1.25,
-      "JarvanResistDamage4": 1.5,
-      "JarvanShieldShare": 0.75
-     }
     }
    ]
   },
@@ -4049,23 +3973,6 @@
      "vars": {
       "BonusArmorMR": 80.0,
       "TeamwideArmorMR": 12
-     }
-    }
-   ]
-  },
-  {
-   "name": "光明哨兵",
-   "desc": "当【薇恩】向被施加了黑雾的敌人施放技能时，她会额外发射效能为25%%的2支弩箭。当【薇恩】参与一次击杀时，【卢锡安和赛娜】获得50%%攻击速度。",
-   "icon": "assets/icons/teamup_trait_sentinelsoflight.png",
-   "levels": [
-    {
-     "min": 2,
-     "max": null,
-     "style": 4,
-     "vars": {
-      "BoltEffectiveness": 0.25,
-      "LucianSennaAS": 0.5,
-      "NumBonusBolts": 2
      }
     }
    ]

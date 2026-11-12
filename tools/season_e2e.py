@@ -359,6 +359,52 @@ function dataCenter() {
   res.backHome = d().getElementById('viewData').classList.contains('hidden');
   return res;
 }
+function coverage() {
+  var M = W.TFT.Main, res = {}, slugs = ['s17', 's16', 's15', 's14', 's13', 's7', 's3'];
+  slugs.forEach(function (slug) {
+    W.TFT.D.setSeason(slug);
+    M.go('data');
+    W.TFT.DataCenter.render();
+    var row = { champs: W.TFT.D.champions().length };
+    row.uniqueNames = (function () {
+      var m = {};
+      W.TFT.D.champions().forEach(function (c) { if (c && c.name) m[c.name] = 1; });
+      return Object.keys(m).length;
+    })();
+    row.traitsCatalog = W.TFT.D.traits().length;
+    row.iconMissing = W.TFT.D.champions().filter(function (c) { return !c.icon; }).length;
+    ['units', 'items', 'traits'].forEach(function (key) {
+      var t = d().querySelector('.dc-tab[data-key="' + key + '"]');
+      if (!t) { row[key] = null; return; }
+      t.click();
+      // 数据页筛选会跨赛季记忆，覆盖率检查前先重置当前页签筛选
+      var reset = d().querySelector('#dcBody .dc-reset[data-dc-act="reset"]');
+      if (reset) reset.click();
+      var b = d().getElementById('dcBody');
+      var broken = 0;
+      b.querySelectorAll('img').forEach(function (im) {
+        if (im.complete && im.naturalWidth === 0) broken++;
+      });
+      row[key] = {
+        rows: b.querySelectorAll('.dc-row').length,
+        empty: b.querySelectorAll('.dc-empty').length,
+        broken: broken,
+        kpis: Array.prototype.map.call(b.querySelectorAll('.dc-kpi'), function (x) {
+          return (x.textContent || '').replace(/\s+/g, ' ').trim();
+        })
+      };
+    });
+    var tt = d().querySelector('.dc-tab[data-key="trends"]');
+    if (tt) {
+      tt.click();
+      row.trendEmpty = d().getElementById('dcBody').textContent.indexOf('暂无归档快照') >= 0;
+    }
+    res[slug] = row;
+  });
+  W.TFT.D.setSeason('s18');
+  M.go('home');
+  return res;
+}
 function finish() { out.textContent = JSON.stringify(R); }
 f.onload = function () {
   W = f.contentWindow;
@@ -562,6 +608,7 @@ f.onload = function () {
                 var lastT = toasts[toasts.length - 1];
                 R.toastUI = { ico: lastT ? lastT.querySelectorAll('.toast-ico.ti-ok').length : 0,
                   msg: lastT ? (lastT.querySelector('.toast-msg') || {}).textContent || '' : '' };
+                R.coverage = coverage();
                 finish();
               }, 600);
             }, 400);
@@ -907,6 +954,28 @@ def run(keep=False):
     tst = result.get('toastUI', {})
     check('Toast 含类型图标与文本', tst.get('ico') == 1 and tst.get('msg') == 'e2e-test',
           'ico=%s msg=%s' % (tst.get('ico'), tst.get('msg')))
+
+    cov = result.get('coverage', {})
+    for slug in ['s17', 's16', 's15', 's14', 's13', 's7', 's3']:
+        c = cov.get(slug) or {}
+        units, items, traits = c.get('units') or {}, c.get('items') or {}, c.get('traits') or {}
+        tag = slug.upper()
+        check('%s 棋子页覆盖完整' % tag,
+              units.get('rows') == c.get('uniqueNames') and units.get('broken') == 0,
+              'rows=%s / names=%s broken=%s' % (units.get('rows'), c.get('uniqueNames'), units.get('broken')))
+        check('%s 装备页非空且无破图' % tag,
+              items.get('rows', 0) >= 70 and items.get('broken') == 0,
+              'rows=%s broken=%s' % (items.get('rows'), items.get('broken')))
+        check('%s 羁绊页覆盖完整' % tag,
+              traits.get('rows') == c.get('traitsCatalog') and traits.get('broken') == 0,
+              'rows=%s / catalog=%s' % (traits.get('rows'), c.get('traitsCatalog')))
+        check('%s 棋子图标字段齐全' % tag, c.get('iconMissing') == 0, c.get('iconMissing'))
+        check('%s 趋势页有归档空态' % tag, c.get('trendEmpty') is True)
+    s17cov = cov.get('s17') or {}
+    s17units = s17cov.get('units') or {}
+    kpi_text = ' '.join(s17units.get('kpis') or [])
+    check('S17 历史赛季不显示虚构均名 99.00', '99.00' not in kpi_text, kpi_text[:80])
+    check('S17 最佳均名显示占位符', '—' in kpi_text and '最佳均名' in kpi_text, kpi_text[:80])
 
     # index.html 资源引用一致性：版本号格式统一、同一资源不重复版本、本地文件存在
     with open(os.path.join(ROOT, 'index.html'), encoding='utf-8') as fh:

@@ -393,6 +393,21 @@ def season_payload(zh, key, slug):
                            'icon': icon_url(t.get('icon')), 'levels': levels})
     out_traits.sort(key=lambda x: x['name'])
 
+    # 官方目录里混有「强化符文式」的机制羁绊（MechanicTrait）和双人组队羁绊（teamup_trait），
+    # 它们没有棋子引用，不应出现在羁绊选择器 / 羁绊大数据里；保留真正有棋子引用的羁绊。
+    used_traits = set(t for c in out_champs for t in (c.get('traits') or []))
+    def _mechanic_trait(t):
+        icon = (t.get('icon') or '').lower()
+        desc = (t.get('desc') or '').lower()
+        return 'teamup_trait_' in icon or 'mechanictrait' in desc or 'secrettechnique' in icon
+    out_traits = [t for t in out_traits if t.get('name') in used_traits or not _mechanic_trait(t)]
+
+    # 棋子 traits 里偶尔混入目录中不存在的占位羁绊（如 S17 厄运小姐的「选择羁绊」），统一剔除
+    valid_traits = set(t.get('name') for t in out_traits)
+    for ch in out_champs:
+        if ch.get('traits'):
+            ch['traits'] = [t for t in ch['traits'] if t in valid_traits]
+
     # 官方 name 与 slug 编号一致时直接用（如 Set17）；错挂变体（S18 挂在 Set10 名下）按 mutator 编号生成
     m = re.search(r'TFTSet(\d+)', variants[0].get('mutator') or '')
     set_name = variants[0].get('name') or ''
@@ -463,6 +478,13 @@ def localize_assets(augments=None, items=None):
         if not os.path.exists(p):
             continue
         d = json.load(open(p, encoding='utf-8'))
+        # 少数老赛季（如 S3）官方目录不提供棋子方形图标字段，按 CommunityDragon 命名规则补齐
+        for ch in d.get('champions') or []:
+            if not ch.get('icon'):
+                m = re.match(r'^(TFT\d+_[A-Za-z0-9]+)$', ch.get('id') or '')
+                if m:
+                    low = m.group(1).lower()
+                    ch['icon'] = 'https://raw.communitydragon.org/latest/game/assets/characters/%s/hud/%s_square.png' % (low, low)
         rewrite(d.get('champions'))
         rewrite(d.get('traits'))
         with open(p, 'w', encoding='utf-8') as f:

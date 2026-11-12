@@ -1502,21 +1502,6 @@
    ]
   },
   {
-   "name": "危险人物",
-   "desc": "【爆爆】获得【统领】但不再受益于【家人】。当她的猴子爆炸时，它会生成3.0个【希尔科】的畸变体。",
-   "icon": "assets/icons/teamup_trait_menaces.png",
-   "levels": [
-    {
-     "min": 2,
-     "max": null,
-     "style": 4,
-     "vars": {
-      "NumMonstrosities": 3.0
-     }
-    }
-   ]
-  },
-  {
    "name": "法师",
    "desc": "你的队伍获得10.0法术强度。【法师】们获得更多法术强度。(—) 20.0 (—) 20.0 (—) 20.0 ，技能会对其目标造成持续—秒的@DamageDecrease*100@%伤害削减",
    "icon": "assets/icons/trait_icon_3_sorcerer.png",
@@ -1728,22 +1713,6 @@
    ]
   },
   {
-   "name": "军事管制",
-   "desc": "当【安蓓萨】施放技能时，【凯特琳】对该目标进行一次强化攻击，造成200%%伤害。【安蓓萨】获得【凯特琳】的18%%攻击力。",
-   "icon": "assets/icons/teamup_trait_mentorship.png",
-   "levels": [
-    {
-     "min": 2,
-     "max": null,
-     "style": 4,
-     "vars": {
-      "ADShare": 0.18000000715255737,
-      "CaitAD": 2.0
-     }
-    }
-   ]
-  },
-  {
    "name": "哨兵",
    "desc": "你的队伍获得护甲和魔抗。【哨兵】们获得三倍。(—) 12.0",
    "icon": "assets/icons/trait_icon_10_warden.png",
@@ -1773,22 +1742,6 @@
      "vars": {
       "BonusArmor": 42.0,
       "{5921fc26}": 2.0
-     }
-    }
-   ]
-  },
-  {
-   "name": "重新联合",
-   "desc": "当【蔚】施放技能时，【艾克】会朝她的目标释放3个残影，每个残影造成40%%伤害。当【艾克】施放技能时，【蔚】会对他的目标打出一道地震波，造成100%%伤害。",
-   "icon": "assets/icons/teamup_trait_reunion.png",
-   "levels": [
-    {
-     "min": 2,
-     "max": null,
-     "style": 4,
-     "vars": {
-      "EkkoAfterImageReducedDamage": 0.4000000059604645,
-      "ViEarthquakeReducedDamage": 1.0
      }
     }
    ]
@@ -1878,24 +1831,6 @@
       "CritChance": 0.550000011920929,
       "CritDamage": 0.25,
       "DamageReductionPct": 0.15000000596046448
-     }
-    }
-   ]
-  },
-  {
-   "name": "姐妹",
-   "desc": "当【金克丝】参与一次击杀后，【蔚】会获得持续10.0秒的80%%额外攻击力。当【蔚】参与一次击杀后，【金克丝】会获得持续10.0秒的80%%额外攻速。",
-   "icon": "assets/icons/teamup_trait_sisters.png",
-   "levels": [
-    {
-     "min": 2,
-     "max": null,
-     "style": 4,
-     "vars": {
-      "ADBuff": 0.800000011920929,
-      "ASBuff": 0.800000011920929,
-      "JinxDuration": 10.0,
-      "ViDuration": 10.0
      }
     }
    ]
@@ -2341,22 +2276,6 @@
    ]
   },
   {
-   "name": "本可发生之事",
-   "desc": "【希尔科】每次施放技能时，【范德尔】就会获得@TFTTrait.TFT13_Teamup_BloodBrothers.1:MaxHealthGainPerCast@永久最大生命值。【范德尔】每次阵亡时，【希尔科】就会获得@TFTTrait.TFT13_Teamup_BloodBrothers.1:APGainPerDeath@永久法术强度。加成：@TFTUnitProperty.trait:TFT13_Sidekick_BloodBrothers_HealthGained@  | @TFTUnitProperty.trait:TFT13_Sidekick_BloodBrothers_APGained@",
-   "icon": "assets/icons/teamup_trait_bloodbrothers.png",
-   "levels": [
-    {
-     "min": 2,
-     "max": null,
-     "style": 4,
-     "vars": {
-      "APGainPerDeath": 6.0,
-      "MaxHealthGainPerCast": 30.0
-     }
-    }
-   ]
-  },
-  {
    "name": "执法官",
    "desc": "战斗开始时：【执法官】们获得护盾值和伤害增幅。生命值最高的敌人们会被通缉！当一个被通缉的敌人阵亡时，【执法官】们获得30%%攻击速度。(—) 1.0个敌人被通缉； @PercentMaxHealthShield*100*100@% ，12%% (—) 1.0个敌人被通缉； @PercentMaxHealthShield*100*100@% ， 12%% (—) 1.0个敌人被通缉； @PercentMaxHealthShield*100*100@% ， 12%% (—) 1.0个敌人被通缉； @PercentMaxHealthShield*100*100@% ， 12%% (—) 所有敌人都被通缉；@PercentMaxHealthShield*100*100@% ，12%% ；战斗开始时：没收敌人的所有装备！",
    "icon": "assets/icons/trait_icon_13_squad.png",
@@ -2464,24 +2383,6 @@
       "PercentDamageTakenHeal": 0.44999998807907104,
       "{0a9a9714}": 3.5,
       "{3c0d594a}": 1.0
-     }
-    }
-   ]
-  },
-  {
-   "name": "意外搭档",
-   "desc": "【金克丝】和【塞薇卡】获得10%%攻击力和100生命值。当其中一个施放技能时，会给另一个提供10法力值。【塞薇卡】的钢臂会更加幸运。",
-   "icon": "assets/icons/teamup_trait_unlikelyduo.png",
-   "levels": [
-    {
-     "min": 2,
-     "max": null,
-     "style": 4,
-     "vars": {
-      "AD": 0.10000000149011612,
-      "Health": 100,
-      "Mana": 10,
-      "{1e90fa01}": 0.10000000149011612
      }
     }
    ]
@@ -2681,24 +2582,6 @@
       "ShieldDuration": 3.0,
       "TeamwideAS": null,
       "{bdb9953b}": 200.0
-     }
-    }
-   ]
-  },
-  {
-   "name": "天才",
-   "desc": "当【黑默丁格】施放技能时，【艾克】会释放3.0个残影，每个残影造成50%%伤害。当【艾克】施放技能时，【黑默丁格】会发射3.0枚导弹，每枚导弹造成150%%伤害。",
-   "icon": "assets/icons/teamup_trait_geniuses.png",
-   "levels": [
-    {
-     "min": 2,
-     "max": null,
-     "style": 4,
-     "vars": {
-      "NumEkkoAfterImages": 3.0,
-      "NumHeimerMissiles": 3.0,
-      "ReducedEkkoDamage": 0.5,
-      "ReducedHeimerDamage": 1.5
      }
     }
    ]

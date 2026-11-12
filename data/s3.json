@@ -23,7 +23,7 @@
     "name": "炸弹！",
     "desc": "对当前目标造成70.0 ()魔法伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_ziggs_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_ziggs_mobile.png"
   },
   {
@@ -47,7 +47,7 @@
     "name": "罪恶快感",
     "desc": "被动：在首次参与击杀后，获得—额外攻击速度。在第二次参与击杀后，切换成导弹发射器，使攻击对小范围内的所有敌人造成— ()额外魔法伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_jinx_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_jinx_mobile.png"
   },
   {
@@ -71,7 +71,7 @@
     "name": "人造卫星陷阱",
     "desc": "在相距最近的那个敌人附近投掷3个陷阱。陷阱会在有敌人接近(或在0.0秒后)爆炸，对附近的敌人们造成0.0 ()伤害和持续0.0秒的移动速度减缓。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_teemo_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_teemo_mobile.png"
   },
   {
@@ -95,7 +95,7 @@
     "name": "狂风绝息斩",
     "desc": "传送至距离内相距最远的敌人。将其晕眩1.0秒并对其进行— ()次攻击。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_yasuo_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_yasuo_mobile.png"
   },
   {
@@ -119,7 +119,7 @@
     "name": "能量护盾",
     "desc": "被动：战斗开始时：获得— ()护盾值。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_malphite_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_malphite_mobile.png"
   },
   {
@@ -143,7 +143,7 @@
     "name": "天选之子",
     "desc": "在6.0秒的持续时间里，获得移动速度提升并且攻击造成— ()额外真实伤害。在处于激活状态时，每秒治疗自身— ()生命值。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_masteryi_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_masteryi_mobile.png"
   },
   {
@@ -167,7 +167,7 @@
     "name": "调动舰队",
     "desc": "派出4.0架战斗机飞向随机的敌人们，造成0.0 ()魔法伤害并汲取0.0法力值，然后返航。后续施放会派出所有已返航的战斗机，外加2.0架额外战斗机。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_aurelionsol_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_aurelionsol_mobile.png"
   },
   {
@@ -191,7 +191,7 @@
     "name": "死亡射线",
     "desc": "在彼此相距最远的2名敌人之间灼烧出一条路径，首先造成0.0% ()最大生命值的魔法伤害，并于1秒后在相同路径上引发一次爆炸，造成0.0 ()魔法伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_viktor_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_viktor_mobile.png"
   },
   {
@@ -215,7 +215,7 @@
     "name": "弹幕",
     "desc": "在3.0秒的持续时间里，获得无限攻击距离、60.0%攻击速度并且每次攻击造成目标0.0% ()最大生命值的额外魔法伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_kogmaw_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_kogmaw_mobile.png"
   },
   {
@@ -239,7 +239,7 @@
     "name": "超越死亡的恐惧",
     "desc": "朝相距最远的那个敌人发射一个钻头并在0.0秒里将命中的第一个目标持续拖进体内。一旦拖进体内，就会快速地反复造成2000.0真实伤害，直至其阵亡。在他首次成功施放技能后，这个技能的法力消耗就会缩减0.0 ()。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_urgot_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_urgot_mobile.png"
   },
   {
@@ -287,7 +287,7 @@
     "name": "劳伦特心眼刀",
     "desc": "在1.5秒里，免疫伤害和敌方的技能效果。然后，对一个附近的敌人造成0.0 ()魔法伤害和1.5秒晕眩。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_fiora_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_fiora_mobile.png"
   },
   {
@@ -311,7 +311,7 @@
     "name": "天霸横空烈轰",
     "desc": "冲向相距最远的那个敌人，震开沿途的敌人并对他们造成0.0 ()魔法伤害。当接触到目标时，对其造成100.0 ()魔法伤害和1.5秒晕眩。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_vi_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_vi_mobile.png"
   },
   {
@@ -360,7 +360,7 @@
     "name": "圆盾投掷",
     "desc": "对相距最远的那个敌人扔出盾牌，造成50.0 ()魔法伤害。在它弹回时，获得— ()护盾值。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_poppy_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_poppy_mobile.png"
   },
   {
@@ -408,7 +408,7 @@
     "name": "欺诈宝珠",
     "desc": "沿直线发射一颗宝珠，对沿途的所有敌人造成150.0 ()魔法伤害。随后它会折返回阿狸处，对沿途的所有敌人造成150.0 ()真实伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_ahri_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_ahri_mobile.png"
   },
   {
@@ -481,7 +481,7 @@
     "name": "轨道打击",
     "desc": "召唤1.0道轨道打击至当前目标上。在2.0秒后，对3格内的所有敌人造成0.0 ()魔法伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_gangplank_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_gangplank_mobile.png"
   },
   {
@@ -505,7 +505,7 @@
     "name": "恐惧新星断头台",
     "desc": "造成50.0 ()魔法伤害。如果这个技能击杀了目标，立刻再次施放这个技能。低于50.0%生命值的目标们会受到双倍伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_darius_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_darius_mobile.png"
   },
   {
@@ -529,7 +529,7 @@
     "name": "苍穹之跃！",
     "desc": "对邻格的敌人们造成300.0 ()魔法伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_jayce_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_jayce_mobile.png"
   },
   {
@@ -577,7 +577,7 @@
     "name": "巨鲨强袭",
     "desc": "对当前目标投掷一个诱饵。在一段延迟后，一条鲨鱼会浮现而出，对2格内的所有敌人造成0.0 ()魔法伤害和1.0秒晕眩效果并将他们击退。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_fizz_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_fizz_mobile.png"
   },
   {
@@ -649,7 +649,7 @@
     "name": "未来庇护",
     "desc": "附近的所有己方弈子自动闪避即将到来的普通攻击，持续2.0秒。在激活状态下，获得— ()魔抗。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_shen_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_shen_mobile.png"
   },
   {
@@ -673,7 +673,7 @@
     "name": "大闹宇宙",
     "desc": "在3.0秒持续时间里对附近的敌人们造成200.0 ()魔法伤害。每个敌人在第一次被命中时，会被晕眩1.5秒。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_wukong_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_wukong_mobile.png"
   },
   {
@@ -697,7 +697,7 @@
     "name": "时空通道",
     "desc": "朝着你的备战区上的1.0个随机弈子投掷一个灯笼，将其拉到战场上并为其提供— ()额外法力值。羁绊计数不受影响。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_thresh_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_thresh_mobile.png"
   },
   {
@@ -721,7 +721,7 @@
     "name": "让子弹飞",
     "desc": "在一段延迟后，朝相距最远的那个敌人发射一颗子弹，对命中的第一个敌人造成0.0 ()魔法伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_caitlyn_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_caitlyn_mobile.png"
   },
   {
@@ -745,7 +745,7 @@
     "name": "万能牌",
     "desc": "沿锥形掷出三张卡牌，对沿途的每个敌人造成— ()魔法伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_twistedfate_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_twistedfate_mobile.png"
   },
   {
@@ -769,7 +769,7 @@
     "name": "三重爪击",
     "desc": "攻击当前目标三次，共造成— ()物理伤害。第三次打击会对目标造成1.0秒晕眩和— ()额外魔法伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_xinzhao_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_xinzhao_mobile.png"
   },
   {
@@ -793,7 +793,7 @@
     "name": "群体变形",
     "desc": "对相距最近的0.0个敌人造成0.0秒变形，使他们晕眩并漫无目的地蹦跶。被变形的敌人们会受到0.02500000037252903 ()额外伤害(来自所有来源)。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_lulu_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_lulu_mobile.png"
   },
   {
@@ -817,7 +817,7 @@
     "name": "致死羽衣",
     "desc": "获得持续8.0秒的— ()攻击速度。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_xayah_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_xayah_mobile.png"
   },
   {
@@ -841,7 +841,7 @@
     "name": "盛大登场",
     "desc": "朝着距离内相距最远的敌人突进，对1.0格内的敌人们造成1.0秒击飞效果和75.0 ()魔法伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_rakan_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_rakan_mobile.png"
   },
   {
@@ -865,7 +865,7 @@
     "name": "魔法水晶箭",
     "desc": "朝距离最远的敌人射出一支魔法水晶箭。魔法水晶箭会在命中第一个目标后爆炸，对其附近所有敌人造成250.0 ()魔法伤害和2.0秒晕眩。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_ashe_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_ashe_mobile.png"
   },
   {
@@ -937,7 +937,7 @@
     "name": "永恒军旗",
     "desc": "3.0格内的己方弈子们获得持续6.0秒的— ()攻击速度。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_jarvaniv_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_jarvan_mobile.png"
   },
   {
@@ -985,7 +985,7 @@
     "name": "低语",
     "desc": "被动：攻击速度恒定为0.0。将1%额外攻击速度转化为0.8%攻击力。每第四发子弹造成— ()物理伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_jhin_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_jhin_mobile.png"
   },
   {
@@ -1033,7 +1033,7 @@
     "name": "机械飞爪",
     "desc": "将相距最远的那个敌人拉到近战距离，造成-50.0 ()魔法伤害和2.0秒晕眩。己方弈子会优先攻击该敌人。【布里茨】的下次攻击造成1秒晕眩。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_blitzcrank_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_blitzcrank_mobile.png"
   },
   {
@@ -1081,7 +1081,7 @@
     "name": "冷酷追击",
     "desc": "冲刺并远离当前目标，然后对其进行两次攻击，第二次攻击造成— ()魔法伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_lucian_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_lucian_mobile.png"
   },
   {
@@ -1105,7 +1105,7 @@
     "name": "烟幕弹",
     "desc": "朝拥有最高攻击速度的那个敌人发射一颗烟雾弹。它会在碰撞时爆炸，对邻格的敌人们造成0.0 ()魔法伤害和持续1.0秒的缴械效果。缴械：无法移动或攻击"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_graves_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_graves_mobile.png"
   },
   {
@@ -1129,7 +1129,7 @@
     "name": "深渊轰炸",
     "desc": "在6.0秒的持续期间里，将普通攻击替换为召唤流星，来打击多个随机的敌人。流星在撞击时造成— ()魔法伤害，并且如果击杀了目标，邻格的所有敌人们也会受到175.0 ()魔法伤害和1.5秒晕眩。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_xerath_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_xerath_mobile.png"
   },
   {
@@ -1153,7 +1153,7 @@
     "name": "呐啊！",
     "desc": "变身并获得50.0生命值和0%%攻击力。跳跃并越过当前目标，然后对邻格的敌人们造成击退和1.0秒晕眩，以及100.0 ()魔法伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_gnar_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_gnar_mobile.png"
   },
   {
@@ -1201,7 +1201,7 @@
     "name": "触手猛击",
     "desc": "沿一条直线拍下一条触手，造成0.0 ()魔法伤害，并从命中的每个目标那里窃取持续0.0秒的0.0%护甲和魔抗。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_illaoi_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_illaoi_mobile.png"
   },
   {
@@ -1225,7 +1225,7 @@
     "name": "无言恐惧",
     "desc": "对目标造成200.0秒晕眩并在持续期间造成共200.0 ()魔法伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_nocturne_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_nocturne_mobile.png"
   },
   {
@@ -1249,7 +1249,7 @@
     "name": "瘟毒爆炸",
     "desc": "对相距最近且未中毒的那个敌人放出毒液，在0.0秒里持续造成共0.0 ()魔法伤害，并使新的护盾的效能降低—%。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_cassiopeia_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_cassiopeia_mobile.png"
   },
   {
@@ -1273,7 +1273,7 @@
     "name": "终极时刻",
     "desc": "进入持续0.0 ()秒的专注状态，立刻翻滚远离当前目标，并且在之后的每第三次攻击也会这样。在翻滚后，变为不可被选取状态，摆脱各个负面效果，并且下次攻击造成— ()物理伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_vayne_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_vayne_mobile.png"
   },
   {
@@ -1297,7 +1297,7 @@
     "name": "飓风呼啸",
     "desc": "召唤5道龙卷风，呈扇形向前飞出。为命中的己方弈子提供持续0.0秒的0.0% ()攻击速度。对命中的敌人们造成0.0秒晕眩。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_janna_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_janna_mobile.png"
   },
   {
@@ -1321,7 +1321,7 @@
     "name": "能量斩",
     "desc": "冲刺并获得— ()护盾值。然后，对邻格的敌人们造成50.0 ()魔法伤害。每第三次施放会发射一道能量波，来造成0.0 ()魔法伤害。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_riven_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_riven_mobile.png"
   },
   {
@@ -1345,7 +1345,7 @@
     "name": "旅者的召唤",
     "desc": "被动：攻击提供0.0 ()额外法力值。在没有敌方英雄的回合中不会提供法力值。主动：在备战区生成一个木灵。木灵可售出以换取1经验值。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_bard_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_bard_mobile.png"
   },
   {
@@ -1369,7 +1369,7 @@
     "name": "影忍法：灭魂劫",
     "desc": "被动：每第三次攻击，造成0.0 ()额外魔法伤害并窃取当前目标的25%%攻击力。"
    },
-   "icon": null,
+   "icon": "assets/icons/tft3_zed_square.png",
    "splash": "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft3_zed_mobile.png"
   }
  ],
