@@ -41,7 +41,7 @@ window.TFT = window.TFT || {};
     unitCosts: [], unitTrait: '', unitMainOnly: false, unitSort: 'comps',
     itemCat: 'all', itemSort: 'grade',
     traitGraded: false, traitSort: 'grade', traitGrade: '',
-    augRarity: 'all', augTier: 'all', augTrait: '', augSort: 'grade'
+    augRarity: 'all', augTier: 'all', augTrait: '', augSort: 'grade', augRatedOnly: false
   };
 
   const cache = { comps: {}, units: {} };
@@ -1025,6 +1025,7 @@ window.TFT = window.TFT || {};
     const list = (all || []).filter(function (a) {
       if (S.augRarity !== 'all' && a.rarityKey !== S.augRarity) return false;
       if (real && S.augTier !== 'all' && a.grade !== S.augTier) return false;
+      if (real && S.augRatedOnly && a.grade === '—') return false;
       if (S.augTrait && a.fit.indexOf(S.augTrait) < 0) return false;
       if (q && !matchQ([a.name, a.desc].join(' ').toLowerCase(), q)) return false;
       return true;
@@ -1070,7 +1071,7 @@ window.TFT = window.TFT || {};
         }).join('') + '</div>' +
         (real ? '<div class="dc-chips"><span class="dc-field-label">评级</span>' + ['all'].concat(AUG_TIERS).map(function (g) {
           return chip('atier', g, g === 'all' ? '全部' : g, S.augTier === g);
-        }).join('') + '</div>' : '') +
+        }).join('') + chip('arated', '1', '仅有评级', S.augRatedOnly) + '</div>' : '') +
         selectBox('dcAFit', 'afit', [{ key: '', label: '全部羁绊' }].concat(fitOpts.map(function (n) { return { key: n, label: n }; })), S.augTrait, '适配羁绊') +
         selectBox('dcASort', 'asort', real ? [
           { key: 'grade', label: '评级优先' }, { key: 'rarity', label: '稀有度' },
@@ -1348,7 +1349,7 @@ window.TFT = window.TFT || {};
     else if (S.tab === 'units') { S.unitCosts = []; S.unitTrait = ''; S.unitMainOnly = false; S.unitSort = 'comps'; }
     else if (S.tab === 'items') { S.itemCat = 'all'; S.itemSort = 'grade'; }
     else if (S.tab === 'traits') { S.traitGraded = false; S.traitSort = 'grade'; S.traitGrade = ''; }
-    else if (S.tab === 'augments') { S.augRarity = 'all'; S.augTier = 'all'; S.augTrait = ''; S.augSort = 'grade'; }
+    else if (S.tab === 'augments') { S.augRarity = 'all'; S.augTier = 'all'; S.augTrait = ''; S.augSort = 'grade'; S.augRatedOnly = false; }
     renderBody();
   }
 
@@ -1392,6 +1393,7 @@ window.TFT = window.TFT || {};
     if (act === 'icat') { S.itemCat = key; renderBody(); return; }
     if (act === 'ararity') { S.augRarity = key; renderBody(); return; }
     if (act === 'atier') { S.augTier = key; renderBody(); return; }
+    if (act === 'arated') { S.augRatedOnly = !S.augRatedOnly; renderBody(); return; }
     if (act === 'chartgrade') {
       const i = S.grades.indexOf(key);
       if (i >= 0) S.grades.splice(i, 1); else S.grades.push(key);
