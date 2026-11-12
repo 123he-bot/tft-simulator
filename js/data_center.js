@@ -569,14 +569,35 @@ window.TFT = window.TFT || {};
 
   function augRowsReal() {
     const st = sd();
-    if (!st || !st.augments) return null;
-    return (st.augments.items || []).map(function (a) {
+    const expert = (st && st.augments && st.augments.items) || [];
+    const byId = {}, byName = {}, nameCnt = {};
+    expert.forEach(function (e) {
+      if (e.id) byId[e.id] = e;
+      if (e.name) {
+        if (!byName[e.name]) { byName[e.name] = e; nameCnt[e.name] = 0; }
+        nameCnt[e.name]++;
+      }
+    });
+    // 主体：官方全量目录（含描述 / 稀有度 / 图标）；专家评级优先按 id 连接，名称仅在双方唯一时兜底
+    const base = D.augmentList(D.currentSlug) || [];
+    const officialCnt = {};
+    base.forEach(function (a) { officialCnt[a.name] = (officialCnt[a.name] || 0) + 1; });
+    // 官方部分描述缺数值变量（如「获得%物理加成」），回退到 OP.GG 的完整中文描述
+    const brokenDesc = /[\u4e00-\u9fa5]%|获得%|造成%|持续秒|为%|和%|，%|提升%。/;
+    const rows = base.map(function (a) {
+      const e = byId[a.id] || (officialCnt[a.name] === 1 && nameCnt[a.name] === 1 ? byName[a.name] : null) || null;
+      let desc = a.desc || (e && e.desc) || '';
+      if (brokenDesc.test(desc) && e && e.desc && /[\u4e00-\u9fa5]/.test(e.desc) && /\d/.test(e.desc)) {
+        desc = e.desc;
+      }
       return {
-        id: a.id, name: a.name, rarityKey: a.rarityKey, rarity: a.tier,
-        grade: a.opTier || '—', desc: a.desc || '', icon: a.icon || '',
-        fit: fitTraits(a.desc || ''), fitScore: null, real: true
+        id: a.id, name: a.name, rarityKey: a.rarityKey, rarity: a.rarity,
+        grade: (e && e.opTier) || '—', desc: desc, icon: a.icon || (e && e.icon) || '',
+        fit: (a.traits && a.traits.length) ? a.traits.slice(0, 4) : fitTraits(desc),
+        fitScore: null, real: true, expert: !!e
       };
     });
+    return rows;
   }
 
   function augRowsLegacy(tier) {
@@ -1075,7 +1096,7 @@ window.TFT = window.TFT || {};
         '<th>' + (real ? '评级' : '适配分') + '</th><th>符文</th><th class="dc-col-rarity">稀有度</th><th class="dc-col-fit">适配羁绊</th><th class="dc-col-desc">描述</th>' +
       '</tr></thead><tbody>' + (rows || '<tr><td colspan="5"><div class="dc-empty">当前筛选下没有符文。</div></td></tr>') + '</tbody></table></div>' +
       note(real
-        ? '符文目录与稀有度来自 OP.GG 中文站 S18；专家评级来自 OP.GG 专家榜（源版本 ' + esc((sd() && sd().augments && sd().augments.tierSourceVersion) || '—') + '，部分新符文无评级）。「适配羁绊」由描述文本匹配 S18 羁绊名，仅用于筛选，不代表胜率。'
+        ? '符文目录与描述来自 Riot 官方 CommunityDragon S18 全量目录（' + (all || []).length + ' 条），少量官方缺数值的描述回退到 OP.GG 文本；专家评级来自 OP.GG 专家榜（源版本 ' + esc((sd() && sd().augments && sd().augments.tierSourceVersion) || '—') + '，仅覆盖部分符文）。「适配羁绊」优先取官方关联羁绊，缺失时按描述文本匹配，仅用于筛选，不代表胜率。'
         : '当前赛季没有官方符文胜率数据。「适配分」= 符文关联羁绊在阵容中的覆盖度，仅用于站内排序，不是胜率或强度结论。') +
     '</section>';
   }
