@@ -4,7 +4,7 @@
   "https://raw.communitydragon.org/latest/cdragon/tft/zh_cn.json",
   "https://raw.communitydragon.org/latest/cdragon/tft/en_us.json"
  ],
- "fetchedAt": "2026-11-11 02:18:39",
+ "fetchedAt": "2026-11-12 09:57:22",
  "locale": "zh_cn",
  "sets": [
   "s3",
@@ -17,8 +17,8 @@
   "s18"
  ],
  "counts": {
-  "augments": 973,
-  "items": 1409
+  "augments": 1225,
+  "items": 1914
  },
  "perSet": {
   "s3": {
@@ -50,8 +50,8 @@
    "items": 803
   },
   "s18": {
-   "augments": 257,
-   "items": 140
+   "augments": 594,
+   "items": 776
   }
  },
  "seasons": {

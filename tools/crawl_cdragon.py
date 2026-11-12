@@ -174,17 +174,16 @@ def build(zh, en, refresh=False):
         if i.get('apiName'):
             zh_items[i['apiName']] = i
 
-    # 按官方集合名归并该赛季的全部官方变体（主模式 + PAIRS/TURBO/PVEMODE/活动）
-    set_by_name = {}
-    supported = set(SETS.values())
+    # 按赛季键归并该赛季的全部官方变体（主模式 + PAIRS/TURBO/PVEMODE/活动）
+    set_by_slug = {}
     for d in zh.get('setData', []):
-        nm = d.get('name')
-        if nm in supported:
-            set_by_name.setdefault(nm, []).append(d)
+        for slug, key in SETS.items():
+            if variant_matches(d, key):
+                set_by_slug.setdefault(slug, []).append(d)
 
     augment_sets, item_sets = {}, {}
     for slug, nm in SETS.items():
-        variants = set_by_name.get(nm, [])
+        variants = set_by_slug.get(slug, [])
         if not variants:
             print('  跳过（官方无该集合）:', slug, nm)
             continue
@@ -262,7 +261,7 @@ def build(zh, en, refresh=False):
     # 社区直采赛季（如 S18，官方 JSON 尚未收录）的条目在每日刷新时保留，避免被覆盖
     augments = merge_local(augments, 'augments.full.json')
     items = merge_local(items, 'items.full.json')
-    return augments, items, set_by_name
+    return augments, items, set_by_slug
 
 
 def merge_local(fresh, name):
@@ -284,21 +283,45 @@ def merge_local(fresh, name):
 
 
 def discover_sets(zh):
-    """从官方 setData 里发现可用集合：历史白名单 + 编号大于已知最大 Set 的新赛季。"""
-    mapping = dict(NAME_TO_SLUG)
-    known = set(NAME_TO_SLUG.values())
+    """从官方 setData 里发现可用集合。
+    正常赛季按 name=SetN 归组；若官方 name 与 mutator 编号冲突（如 S18 数据暂挂在 Set10 名下），
+    以 mutator=TFTSetN 为准，用 'mut:TFTSetN' 作为变体键。"""
+    sets = {slug: nm for nm, slug in NAME_TO_SLUG.items()}
+    known = set(sets)
     max_known = max(int(re.match(r'^Set(\d+)$', nm).group(1)) for nm in NAME_TO_SLUG
                     if re.match(r'^Set(\d+)$', nm))
-    names = sorted({d.get('name') for d in zh.get('setData', []) if d.get('name')})
-    for nm in names:
-        m = re.match(r'^Set(\d+)$', nm)
-        if not m:
+    for d in zh.get('setData', []):
+        nm = d.get('name') or ''
+        mut = d.get('mutator') or ''
+        m_name = re.match(r'^Set(\d+)$', nm)
+        m_mut = re.match(r'^TFTSet(\d+)', mut)
+        n_name = int(m_name.group(1)) if m_name else None
+        n_mut = int(m_mut.group(1)) if m_mut else None
+        if n_name and n_name > max_known:
+            slug = 's%d' % n_name
+            if slug not in known:
+                sets[slug] = nm
+                known.add(slug)
+                print('  发现新赛季', nm, '->', slug)
             continue
-        slug = 's' + m.group(1)
-        if int(m.group(1)) > max_known and slug not in known:
-            mapping[nm] = slug
-            print('  发现新赛季', nm, '->', slug)
-    return mapping
+        if n_mut and n_mut > max_known and n_name != n_mut:
+            slug = 's%d' % n_mut
+            if slug not in known:
+                sets[slug] = 'mut:' + mut
+                known.add(slug)
+                print('  发现新赛季', mut, '（官方 name=%s）->' % nm, slug)
+    return sets
+
+
+def variant_matches(d, key):
+    """判断官方 setData 变体是否属于某个赛季键（name 或 mut:TFTSetN）。"""
+    if not key:
+        return False
+    if key.startswith('mut:'):
+        mut = d.get('mutator') or ''
+        base = key[4:]
+        return mut == base or mut.startswith(base + '_')
+    return d.get('name') == key
 
 
 def is_playable(c):
@@ -313,9 +336,9 @@ def is_playable(c):
     return bool(api) and 1 <= cost <= 5 and bool(c.get('traits'))
 
 
-def season_payload(zh, set_name, slug):
+def season_payload(zh, key, slug):
     """把官方 setData 的棋子 / 羁绊转换成应用使用的 data/<slug>.json 结构。"""
-    variants = [d for d in zh.get('setData', []) if d.get('name') == set_name]
+    variants = [d for d in zh.get('setData', []) if variant_matches(d, key)]
     if not variants:
         return None
     trait_meta, champs = {}, {}
@@ -370,16 +393,24 @@ def season_payload(zh, set_name, slug):
                            'icon': icon_url(t.get('icon')), 'levels': levels})
     out_traits.sort(key=lambda x: x['name'])
 
+    # 官方 name 与 slug 编号一致时直接用（如 Set17）；错挂变体（S18 挂在 Set10 名下）按 mutator 编号生成
+    m = re.search(r'TFTSet(\d+)', variants[0].get('mutator') or '')
+    set_name = variants[0].get('name') or ''
+    expect = m.group(1) if m else slug.lstrip('s')
+    if set_name != 'Set' + expect:
+        set_name = 'S' + expect
     return {'set': slug.upper(), 'name': set_name, 'champions': out_champs, 'traits': out_traits}
 
 
-def write_season_files(zh, force=False):
+def write_season_files(zh, force=False, only=None):
     """为「本地还没有」的赛季生成 data/<slug>.json；已有文件默认不动，避免无意改动线上数据。
-    --rebuild-sets 可强制按官方数据重写全部赛季文件。"""
+    --rebuild-sets 可强制按官方数据重写全部赛季文件；--only=s18 可只重建指定赛季。"""
     added = []
     for slug, nm in SETS.items():
+        if only and slug not in only:
+            continue
         p = os.path.join(DATA, slug + '.json')
-        if os.path.exists(p) and not force:
+        if os.path.exists(p) and not force and not only:
             continue
         payload = season_payload(zh, nm, slug)
         if not payload or not payload['champions']:
@@ -581,16 +612,19 @@ def main():
     refresh = '--refresh' in sys.argv
     force_sets = '--rebuild-sets' in sys.argv
     no_archive = '--no-archive' in sys.argv
+    only = None
+    for a in sys.argv:
+        if a.startswith('--only='):
+            only = {s.strip() for s in a.split('=', 1)[1].split(',') if s.strip()}
     zh = fetch('zh_cn', refresh)
     en = fetch('en_us', refresh)
     print('官方数据版本 zh_cn / en_us 已就绪')
 
     global SETS
-    mapping = discover_sets(zh)
-    SETS = {slug: nm for nm, slug in mapping.items()}
+    SETS = discover_sets(zh)
 
     # 新赛季（官方新增、本地还没有 data/sN.json）自动生成，历史赛季默认不动
-    write_season_files(zh, force=force_sets)
+    write_season_files(zh, force=force_sets, only=only)
     # 新生成文件里的图标需要重新走一遍本地化，因此 SETS 需在 localize_assets 之前就绪
 
     augments, items, _ = build(zh, en, refresh)
