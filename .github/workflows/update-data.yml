@@ -32,7 +32,10 @@ jobs:
         run: python tools/crawl_set18.py --stats-only
 
       - name: Crawl official data
-        run: python tools/crawl_cdragon.py --refresh --no-archive
+        run: python tools/crawl_cdragon.py --refresh
+
+      - name: Build trend snapshots
+        run: python tools/build_trend.py --rebuild
 
       - name: Validate bundle
         run: |

@@ -286,6 +286,75 @@ function dataCenter() {
   if (ar) { ar.click(); res.prismRows = dcRows(); res.prismOn = ar.classList.contains('on'); }
   var aug = v.querySelector('#dcBody .dc-row');
   if (aug) { aug.click(); res.augModal = !!d().querySelector('#modalBody .dc-detail-head'); W.TFT.UI.closeModal(); }
+  /* 仅有评级开关 */
+  var rsta = v.querySelector('#dcBody [data-dc-act="reset"]'); if (rsta) rsta.click();
+  res.augAllRows = dcRows();
+  var rated = v.querySelector('[data-dc-act="arated"]');
+  if (rated) {
+    rated.click();
+    res.augRatedOn = !!v.querySelector('#dcBody [data-dc-act="arated"].on');
+    res.augRatedRows = dcRows();
+    var dash = 0;
+    v.querySelectorAll('#dcBody .dc-aug-table tbody tr').forEach(function (r) {
+      if (r.cells[0] && r.cells[0].textContent.trim() === '—') dash++;
+    });
+    res.augRatedDash = dash;
+    var ratedOn = v.querySelector('#dcBody [data-dc-act="arated"].on');
+    if (ratedOn) ratedOn.click();
+  }
+  /* 符文来源筛选：历史继承 / S18 新增 */
+  var legacy = v.querySelector('[data-dc-act="aorigin"][data-key="legacy"]');
+  if (legacy) {
+    legacy.click();
+    res.augLegacyOn = !!v.querySelector('#dcBody [data-dc-act="aorigin"][data-key="legacy"].on');
+    res.augLegacyRows = dcRows();
+    var badOrigin = 0;
+    v.querySelectorAll('#dcBody .dc-aug-table tbody tr').forEach(function (r) {
+      var tx = r.cells[1] ? r.cells[1].textContent : '';
+      if (tx.indexOf('继承') < 0 && tx.indexOf('历史') < 0) badOrigin++;
+    });
+    res.augLegacyBad = badOrigin;
+  }
+  var created = v.querySelector('[data-dc-act="aorigin"][data-key="new"]');
+  if (created) { created.click(); res.augNewRows = dcRows(); }
+  res.exportBtns = v.querySelectorAll('#dcBody .dc-export').length;
+  /* 装备目录同名去重（P0 回归）：DA_ 与旧 id 同名只保留 DA_，其余历史同名变体保留 */
+  var rawItems = (W.TFT.D.itemsFull || []).filter(function (i) {
+    return !i.sets || !i.sets.length || i.sets.indexOf('s18') >= 0;
+  });
+  res.itemRawCount = rawItems.length;
+  res.itemCount = W.TFT.D.officialItems('s18').length;
+  res.itemDedupeDrop = rawItems.length - res.itemCount;
+  res.itemMixedDup = (function () {
+    var byName = {}, mixed = 0;
+    W.TFT.D.officialItems('s18').forEach(function (i) {
+      var k = (i.category || '') + '|' + (i.name || i.id);
+      (byName[k] = byName[k] || []).push(i.id);
+    });
+    Object.keys(byName).forEach(function (k) {
+      var ids = byName[k];
+      if (ids.length > 1 && ids.some(function (id) { return /^DA_/.test(id); })
+        && ids.some(function (id) { return !/^DA_/.test(id); })) mixed++;
+    });
+    return mixed;
+  })();
+  /* 趋势与口径页 */
+  var ttab = v.querySelector('.dc-tab[data-key="trends"]');
+  if (ttab) {
+    ttab.click();
+    res.trendKpis = v.querySelectorAll('#dcBody .dc-kpi').length;
+    res.trendCards = v.querySelectorAll('#dcBody .dc-trend-card').length;
+    res.trendLines = v.querySelectorAll('#dcBody .dc-trend-wrap svg path').length;
+    res.trendDiffCards = v.querySelectorAll('#dcBody .dc-diff-card').length;
+    res.trendTierbar = !!v.querySelector('.dc-tierbar');
+  }
+  var atab = v.querySelector('.dc-tab[data-key="about"]');
+  if (atab) {
+    atab.click();
+    res.aboutHero = !!v.querySelector('#dcBody .dc-about-hero');
+    res.aboutRows = v.querySelectorAll('#dcBody .dc-about-table tbody tr').length;
+    res.aboutTierbar = !!v.querySelector('.dc-tierbar');
+  }
   M.go('home');
   res.backHome = d().getElementById('viewData').classList.contains('hidden');
   return res;
@@ -665,7 +734,7 @@ def run(keep=False):
     check('首页宫格与工具中心同源计数', '21' in grid.get('count', ''), grid.get('count'))
 
     dc = result.get('dc', {})
-    check('数据中心可打开且五页签', dc.get('visible') is True and dc.get('tabs') == 5
+    check('数据中心可打开且七页签', dc.get('visible') is True and dc.get('tabs') == 7
           and '数据中心' in (dc.get('title') or ''), '%s / %s / %s' % (dc.get('visible'), dc.get('tabs'), dc.get('title')))
     check('数据中心首屏 KPI / 表格 / 口径', dc.get('hero') == 4 and dc.get('kpis') == 4
           and dc.get('rows', 0) > 0 and dc.get('note') is True,
@@ -722,6 +791,28 @@ def run(keep=False):
     check('强化符文梯度榜含专家评级', dc.get('augRows', 0) >= 200 and dc.get('augGrades', 0) > 0
           and dc.get('augTierChips', 0) >= 5 and dc.get('prismRows', 0) > 0 and dc.get('augModal') is True,
           'rows=%s grade=%s chips=%s prism=%s modal=%s' % (dc.get('augRows'), dc.get('augGrades'), dc.get('augTierChips'), dc.get('prismRows'), dc.get('augModal')))
+    check('装备目录同名去重（回归）',
+          dc.get('itemRawCount', 0) > dc.get('itemCount', 0) > 0
+          and dc.get('itemDedupeDrop', 0) > 0 and dc.get('itemMixedDup') == 0,
+          'raw=%s kept=%s drop=%s mixed=%s' % (dc.get('itemRawCount'), dc.get('itemCount'),
+                                               dc.get('itemDedupeDrop'), dc.get('itemMixedDup')))
+    check('符文「仅有评级」开关生效',
+          dc.get('augRatedOn') is True and 0 < dc.get('augRatedRows', 0) < dc.get('augAllRows', 0)
+          and dc.get('augRatedDash') == 0,
+          'on=%s rows=%s/%s dash=%s' % (dc.get('augRatedOn'), dc.get('augRatedRows'), dc.get('augAllRows'), dc.get('augRatedDash')))
+    check('符文历史来源可筛选',
+          dc.get('augLegacyOn') is True and 0 < dc.get('augLegacyRows', 0) < dc.get('augAllRows', 0)
+          and dc.get('augLegacyBad') == 0 and 0 < dc.get('augNewRows', 0) < dc.get('augAllRows', 0),
+          'legacy=%s bad=%s new=%s all=%s' % (dc.get('augLegacyRows'), dc.get('augLegacyBad'), dc.get('augNewRows'), dc.get('augAllRows')))
+    check('数据页提供 CSV 导出', dc.get('exportBtns', 0) >= 1, dc.get('exportBtns'))
+    check('趋势页含三张趋势图与差异卡',
+          dc.get('trendKpis') == 4 and dc.get('trendCards') == 3
+          and dc.get('trendLines', 0) >= 3 and dc.get('trendDiffCards', 0) >= 1,
+          'kpis=%s cards=%s lines=%s diff=%s' % (dc.get('trendKpis'), dc.get('trendCards'), dc.get('trendLines'), dc.get('trendDiffCards')))
+    check('趋势/口径页隐藏段位栏', dc.get('trendTierbar') is False and dc.get('aboutTierbar') is False,
+          '%s/%s' % (dc.get('trendTierbar'), dc.get('aboutTierbar')))
+    check('数据口径页可打开', dc.get('aboutHero') is True and dc.get('aboutRows', 0) >= 8,
+          '%s/%s' % (dc.get('aboutHero'), dc.get('aboutRows')))
     check('数据中心可返回首页', dc.get('backHome') is True)
 
     check('载入 S3 存档后下拉同步', load.get('select') == 's3', load.get('select'))
@@ -816,6 +907,28 @@ def run(keep=False):
     tst = result.get('toastUI', {})
     check('Toast 含类型图标与文本', tst.get('ico') == 1 and tst.get('msg') == 'e2e-test',
           'ico=%s msg=%s' % (tst.get('ico'), tst.get('msg')))
+
+    # index.html 资源引用一致性：版本号格式统一、同一资源不重复版本、本地文件存在
+    with open(os.path.join(ROOT, 'index.html'), encoding='utf-8') as fh:
+        html = fh.read()
+    refs = re.findall(r'(?:src|href)="([^"]+)"', html)
+    local_refs = [r for r in refs if not r.startswith(('http://', 'https://', '//', '#', 'data:', 'mailto:', 'javascript:'))]
+    missing, bad_ver, vers = [], [], {}
+    for r in local_refs:
+        path = r.split('?', 1)[0]
+        if not os.path.exists(os.path.join(ROOT, path.lstrip('./'))):
+            missing.append(path)
+        if '?v=' in r:
+            base, ver = r.split('?v=', 1)
+            base = base.lstrip('./')
+            ver = ver.split('&', 1)[0]
+            if not re.match(r'^\d+\.\d+\.\d+$', ver):
+                bad_ver.append(r)
+            vers.setdefault(base, set()).add(ver)
+    multi = sorted(p for p, vs in vers.items() if len(vs) > 1)
+    check('index.html 本地资源均存在', not missing, ','.join(missing[:3]))
+    check('index.html 版本引用一致', not bad_ver and not multi and 'js/data.bundle.js' in vers,
+          'bad=%s multi=%s bundle=%s' % (bad_ver[:2], multi[:2], sorted(vers.get('js/data.bundle.js') or [])))
 
     width = max(len(n) for n, _, _ in checks)
     failed = 0

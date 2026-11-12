@@ -13,7 +13,9 @@ window.TFT = window.TFT || {};
     { key: 'units', name: '棋子大数据', short: '棋子' },
     { key: 'items', name: '装备评级', short: '装备' },
     { key: 'traits', name: '羁绊评级', short: '羁绊' },
-    { key: 'augments', name: '强化符文梯度榜', short: '符文' }
+    { key: 'augments', name: '强化符文梯度榜', short: '符文' },
+    { key: 'trends', name: '版本趋势与差异', short: '趋势' },
+    { key: 'about', name: '数据口径说明', short: '口径' }
   ];
   const COSTS = [1, 2, 3, 4, 5];
   const ITEM_CATS = [
@@ -41,7 +43,7 @@ window.TFT = window.TFT || {};
     unitCosts: [], unitTrait: '', unitMainOnly: false, unitSort: 'comps',
     itemCat: 'all', itemSort: 'grade',
     traitGraded: false, traitSort: 'grade', traitGrade: '',
-    augRarity: 'all', augTier: 'all', augTrait: '', augSort: 'grade', augRatedOnly: false
+    augRarity: 'all', augTier: 'all', augTrait: '', augSort: 'grade', augRatedOnly: false, augOrigin: 'all'
   };
 
   const cache = { comps: {}, units: {} };
@@ -78,6 +80,7 @@ window.TFT = window.TFT || {};
     if (sp.has('atier')) o.atier = sp.get('atier');
     if (sp.has('afit')) o.afit = sp.get('afit');
     if (sp.has('asort')) o.asort = sp.get('asort');
+    if (sp.has('aorigin')) o.aorigin = sp.get('aorigin');
     if (sp.has('q')) o.q = sp.get('q');
     return o;
   }
@@ -102,6 +105,7 @@ window.TFT = window.TFT || {};
     if (o.atier === 'all' || AUG_TIERS.indexOf(o.atier) >= 0) S.augTier = o.atier;
     if (o.afit != null) S.augTrait = String(o.afit);
     if (URL_SORTS.augments.indexOf(o.asort) >= 0) S.augSort = o.asort;
+    if (['all', 'new', 'legacy'].indexOf(o.aorigin) >= 0) S.augOrigin = o.aorigin;
     if (o.q != null) S.q = String(o.q).slice(0, 60);
   }
 
@@ -109,7 +113,8 @@ window.TFT = window.TFT || {};
     if (S.tab === 'units') return { ucosts: S.unitCosts.slice(), utrait: S.unitTrait, umain: S.unitMainOnly, usort: S.unitSort };
     if (S.tab === 'items') return { cat: S.itemCat, isort: S.itemSort };
     if (S.tab === 'traits') return { tgraded: S.traitGraded, tsort: S.traitSort, tgrade: S.traitGrade };
-    if (S.tab === 'augments') return { ararity: S.augRarity, atier: S.augTier, afit: S.augTrait, asort: S.augSort };
+    if (S.tab === 'augments') return { ararity: S.augRarity, atier: S.augTier, afit: S.augTrait, asort: S.augSort, aorigin: S.augOrigin };
+    if (S.tab === 'trends' || S.tab === 'about') return {};
     return { costs: S.costs.slice(), trait: S.trait, sort: S.sort, cmp: S.compare.slice(), grades: S.grades.slice() };
   }
 
@@ -135,6 +140,7 @@ window.TFT = window.TFT || {};
     if (f.atier) p.push('atier=' + encodeURIComponent(f.atier));
     if (f.afit) p.push('afit=' + encodeURIComponent(f.afit));
     if (f.asort) p.push('asort=' + encodeURIComponent(f.asort));
+    if (f.aorigin && f.aorigin !== 'all') p.push('aorigin=' + encodeURIComponent(f.aorigin));
     return p.join('&');
   }
 
@@ -525,6 +531,16 @@ window.TFT = window.TFT || {};
         '</tr>';
     }).join('');
 
+    S._export = {
+      filename: csvName('traits'),
+      header: ['羁绊', '评级', '登场套数', '样本局数', '登场占比', '平均激活', '平均名次', '前四率', '登顶率', '代表阵容'],
+      rows: list.map(function (a) {
+        return [a.name, a.grade, a.comps, hasStats ? a.games : '', hasStats ? fp(a.share) : '',
+          a.active ? Math.round(a.active * 10) / 10 : '', a.avgPlace == null ? '' : a.avgPlace,
+          fp(a.top4Rate), fp(a.winRate), a.best ? a.best.name : ''];
+      })
+    };
+
     return '<section class="dc-panel">' +
       '<div class="dc-toolbar">' + searchBox('搜索羁绊') +
         chip('tgraded', '', '仅看有评级', S.traitGraded) +
@@ -532,6 +548,7 @@ window.TFT = window.TFT || {};
           { key: 'grade', label: '评级优先' }, { key: 'games', label: '样本局数 ↓' },
           { key: 'avgPlace', label: '平均名次 ↑' }, { key: 'top4', label: '前四率 ↓' }
         ], S.traitSort, '排序') +
+        exportBtn() +
         '<button type="button" class="btn btn-xs dc-reset" data-dc-act="reset">重置</button>' +
       '</div>' +
       kpis([
@@ -567,6 +584,14 @@ window.TFT = window.TFT || {};
     return out;
   }
 
+  function augOriginOf(a) {
+    const id = String((a && a.id) || '');
+    if (/^DA_/.test(id)) return { key: 'new', label: 'S18 新增' };
+    const m = /^TFT(\d+)_/.exec(id);
+    if (m && Number(m[1]) < 18) return { key: 'legacy', label: '继承 S' + m[1] };
+    return { key: 'legacy', label: '历史目录' };
+  }
+
   function augRowsReal() {
     const st = sd();
     const expert = (st && st.augments && st.augments.items) || [];
@@ -590,11 +615,13 @@ window.TFT = window.TFT || {};
       if (brokenDesc.test(desc) && e && e.desc && /[\u4e00-\u9fa5]/.test(e.desc) && /\d/.test(e.desc)) {
         desc = e.desc;
       }
+      const origin = augOriginOf(a);
       return {
         id: a.id, name: a.name, rarityKey: a.rarityKey, rarity: a.rarity,
         grade: (e && e.opTier) || '—', desc: desc, icon: a.icon || (e && e.icon) || '',
         fit: (a.traits && a.traits.length) ? a.traits.slice(0, 4) : fitTraits(desc),
-        fitScore: null, real: true, expert: !!e
+        fitScore: null, real: true, expert: !!e,
+        originKey: origin.key, originLabel: origin.label
       };
     });
     return rows;
@@ -611,10 +638,11 @@ window.TFT = window.TFT || {};
       const fit = a.traits || [];
       const c = fit.reduce(function (s, t) { return s + (cover[t] || 0); }, 0);
       const score = comps.length && fit.length ? clamp(c / (comps.length * fit.length), 0, 1) : 0;
+      const origin = augOriginOf(a);
       return {
         id: a.id, name: a.name, rarityKey: a.rarityKey, rarity: a.rarity,
         grade: '—', desc: a.desc || '', icon: a.icon || '', fit: fit,
-        fitScore: score, real: false
+        fitScore: score, real: false, originKey: origin.key, originLabel: origin.label
       };
     });
   }
@@ -708,6 +736,38 @@ window.TFT = window.TFT || {};
     '</div>';
   }
 
+  function csvCell(v) {
+    const s = v == null ? '' : String(v);
+    return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }
+
+  function exportBtn() {
+    return '<button type="button" class="btn btn-xs dc-export" data-dc-act="export" title="导出当前筛选结果为 CSV（Excel 可直接打开）">导出 CSV</button>';
+  }
+
+  function exportCsv() {
+    const e = S._export;
+    if (!e || !e.rows || !e.rows.length) {
+      if (TFT.UI && TFT.UI.toast) TFT.UI.toast('当前筛选没有可导出的数据', 'err');
+      return;
+    }
+    const lines = [e.header.map(csvCell).join(',')].concat(e.rows.map(function (r) { return r.map(csvCell).join(','); }));
+    const blob = new Blob(['\ufeff' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = e.filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 600);
+    if (TFT.UI && TFT.UI.toast) TFT.UI.toast('已导出 ' + e.rows.length + ' 行 CSV', 'ok');
+  }
+
+  function csvName(tab) {
+    const d = new Date();
+    const pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    return 'tft-' + tab + '-' + d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + '.csv';
+  }
+
   function gradeRowsOf(map, order) {
     return (order || ['S', 'A', 'B', 'C', 'D', '—']).filter(function (g) { return map[g]; }).map(function (g) {
       return { label: g === '—' ? '未评级' : g + ' 级', value: map[g], cls: 'g-' + (g === '—' ? 'na' : g.toLowerCase()), key: g };
@@ -741,7 +801,13 @@ window.TFT = window.TFT || {};
           '<div class="dc-kicker">DATA CENTER · ' + esc(slug) + ' · PATCH ' + esc(patch) + '</div>' +
           '<h1 class="dc-title">数据中心</h1>' +
           '<p class="dc-sub">把当前赛季的真实阵容、装备对局统计、羁绊表现与强化符文拆成可检索的数据表：先看结论，再下钻到阵容、棋子与携带者。</p>' +
-          '<div class="dc-hero-tags"><span>阵容 ' + comps.length + ' 套</span><span>段位 ' + esc(tierLabel()) + '</span><span>更新 ' + esc(String(fetched).slice(0, 16) || '—') + '</span><span>不估算缺失数据</span></div>' +
+          '<div class="dc-hero-tags"><span>阵容 ' + comps.length + ' 套</span>' +
+            (S.tab === 'trends'
+              ? '<span>快照 ' + esc(String((D.raw.trend && D.raw.trend.snapshotCount) || 0)) + ' 份</span>'
+              : S.tab === 'about'
+                ? '<span>数据口径与评级定义</span>'
+                : '<span>段位 ' + esc(tierLabel()) + '</span>') +
+            '<span>更新 ' + esc(String(fetched).slice(0, 16) || '—') + '</span><span>不估算缺失数据</span></div>' +
         '</div>' +
         '<div class="dc-hero-stats">' + heroStats.map(function (x) {
           return '<div class="dc-hs"><b>' + esc(String(x.v)) + '</b><span>' + esc(x.k) + '</span><em>' + esc(x.s) + '</em></div>';
@@ -751,10 +817,11 @@ window.TFT = window.TFT || {};
         return '<button type="button" class="dc-tab' + (S.tab === t.key ? ' on' : '') + '" data-dc-act="tab" data-key="' + t.key + '">' +
           '<b>' + esc(t.name) + '</b><i>' + esc(t.short) + '</i></button>';
       }).join('') + '</nav>' +
-      '<div class="dc-tierbar"><span class="dc-field-label">段位</span>' + tierList().map(function (t) {
-        return chip('tier', t.key, t.label, S.tier === t.key);
-      }).join('') + '<span class="dc-tier-note">筛选联动五张数据表</span>' +
-        '<button type="button" class="btn btn-xs dc-share" data-dc-act="share">复制筛选链接</button></div>' +
+      (S.tab === 'trends' || S.tab === 'about' ? '' :
+        '<div class="dc-tierbar"><span class="dc-field-label">段位</span>' + tierList().map(function (t) {
+          return chip('tier', t.key, t.label, S.tier === t.key);
+        }).join('') + '<span class="dc-tier-note">筛选联动五张数据表</span>' +
+          '<button type="button" class="btn btn-xs dc-share" data-dc-act="share">复制筛选链接</button></div>') +
       '<div id="dcBody"></div>';
     renderBody();
   }
@@ -767,6 +834,8 @@ window.TFT = window.TFT || {};
     else if (S.tab === 'items') out = renderItems();
     else if (S.tab === 'traits') out = renderTraits();
     else if (S.tab === 'augments') out = renderAugments();
+    else if (S.tab === 'trends') out = renderTrends();
+    else if (S.tab === 'about') out = renderAbout();
     else out = renderExplorer();
     body.innerHTML = out;
     const input = $('#dcSearch');
@@ -810,6 +879,196 @@ window.TFT = window.TFT || {};
       '</div>';
   }
 
+  /* ==================== 渲染：版本趋势与差异 ==================== */
+  function niceMax(v) {
+    if (!v || v <= 0) return 1;
+    const p = Math.pow(10, Math.floor(Math.log(v) / Math.LN10));
+    const n = v / p;
+    return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * p;
+  }
+
+  function trendLabels(pts) {
+    return pts.map(function (p) {
+      let s = String(p.archivedAt || p.file || '');
+      s = s.replace(/^snapshot_/, '').replace(/\.json$/, '');
+      return s.slice(5, 16).replace('_', ' ');
+    });
+  }
+
+  function trendChart(title, sub, labels, series, unit) {
+    const W = 520, H = 190, L = 34, R = 14, T = 16, B = 30;
+    const vals = [];
+    series.forEach(function (s) { s.values.forEach(function (v) { if (v != null) vals.push(v); }); });
+    const max = niceMax(Math.max.apply(null, vals.concat([1])));
+    const n = labels.length;
+    const x = function (i) { return L + (n <= 1 ? (W - L - R) / 2 : i * (W - L - R) / (n - 1)); };
+    const y = function (v) { return T + (H - T - B) * (1 - v / max); };
+    const grid = [0, 0.25, 0.5, 0.75, 1].map(function (p) {
+      const v = max * p;
+      return '<line x1="' + L + '" y1="' + y(v).toFixed(1) + '" x2="' + (W - R) + '" y2="' + y(v).toFixed(1) + '" class="dc-trend-grid"/>' +
+        '<text x="' + (L - 6) + '" y="' + (y(v) + 3).toFixed(1) + '" text-anchor="end" class="dc-trend-y">' + Math.round(v) + '</text>';
+    }).join('');
+    const paths = series.map(function (s) {
+      let d = '';
+      s.values.forEach(function (v, i) {
+        if (v == null) return;
+        d += (d ? ' L' : 'M') + x(i).toFixed(1) + ',' + y(v).toFixed(1);
+      });
+      const dots = s.values.map(function (v, i) {
+        if (v == null) return '';
+        return '<circle cx="' + x(i).toFixed(1) + '" cy="' + y(v).toFixed(1) + '" r="3.2" fill="' + s.color + '"><title>' +
+          esc(s.label + ' · ' + labels[i] + '：' + v + (unit || '')) + '</title></circle>';
+      }).join('');
+      return (d ? '<path d="' + d + '" fill="none" stroke="' + s.color + '" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>' : '') + dots;
+    }).join('');
+    const step = Math.ceil(n / 6);
+    const xlabels = labels.map(function (l, i) {
+      if (n > 6 && i % step !== 0 && i !== n - 1) return '';
+      return '<text x="' + x(i).toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle" class="dc-trend-x">' + esc(l.slice(0, 5)) + '</text>';
+    }).join('');
+    const legend = series.map(function (s) {
+      return '<span><i style="background:' + s.color + '"></i>' + esc(s.label) + '</span>';
+    }).join('');
+    return '<div class="dc-chart-card dc-trend-card">' +
+      '<div class="dc-chart-head"><b>' + esc(title) + '</b><em>' + esc(sub) + '</em></div>' +
+      '<div class="dc-trend-wrap"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(title) + '">' +
+        grid + xlabels + paths + '</svg></div>' +
+      '<div class="dc-trend-legend">' + legend + '</div></div>';
+  }
+
+  function diffCard(title, d, tip) {
+    if (!d) return '';
+    const rows = [];
+    (d.added || []).slice(0, 10).forEach(function (x) {
+      rows.push('<li class="dc-diff-add"><span>+ ' + esc(x.name || x.id) + '</span><em>' + esc(x.tier || x.grade || '新增') + '</em></li>');
+    });
+    (d.removed || []).slice(0, 10).forEach(function (x) {
+      rows.push('<li class="dc-diff-del"><span>− ' + esc(x.name || x.id) + '</span><em>' + esc(x.tier || x.grade || '移除') + '</em></li>');
+    });
+    (d.changed || []).slice(0, 14).forEach(function (x) {
+      rows.push('<li><span>' + esc(x.name || x.id) + '</span><em>' + esc(x.from) + ' → ' + esc(x.to) + '</em></li>');
+    });
+    const more = Math.max(0, (d.addedCount || 0) - 10) + Math.max(0, (d.removedCount || 0) - 10) + Math.max(0, (d.changedCount || 0) - 14);
+    return '<div class="dc-chart-card dc-diff-card">' +
+      '<div class="dc-chart-head"><b>' + esc(title) + '</b><em>' + esc(tip || '') + '</em></div>' +
+      (rows.length ? '<ul class="dc-diff-list">' + rows.join('') + '</ul>' : '<div class="dc-empty sm">本期无变化</div>') +
+      (more ? '<div class="dc-diff-more">另有 ' + more + ' 项变化未展开</div>' : '') +
+    '</div>';
+  }
+
+  function renderTrends() {
+    const t = D.raw.trend;
+    if (!t || !t.snapshots || !t.snapshots.length) {
+      return '<section class="dc-panel"><div class="dc-empty">暂无趋势快照。每日数据抓取后会自动归档，明日起可查看阵容 / 装备 / 符文的评级变化。</div></section>';
+    }
+    const all = t.snapshots;
+    const pts = all.slice(-12);
+    const labels = trendLabels(pts);
+    const first = all[0], last = all[all.length - 1];
+    const day = function (p) { return String(p.archivedAt || '').slice(5, 10) || '—'; };
+    const clock = function (p) { return String(p.archivedAt || '').slice(11, 16).replace('-', ':') || ''; };
+    const seriesOf = function (key, grades) {
+      return grades.map(function (g) {
+        return {
+          label: g + ' 级', color: GRADE_COLOR[g] || '#5d697d',
+          values: pts.map(function (p) { return p[key] ? (p[key][g] || 0) : null; })
+        };
+      });
+    };
+    const compSeries = seriesOf('comps', ['OP', 'S', 'A', 'B', 'C', 'D']);
+    const itemSeries = seriesOf('itemGrades', ['S', 'A', 'B', 'C', 'D']);
+    const augSeries = seriesOf('augGrades', ['OP', 'S', 'A', 'B', 'C', 'D']);
+    const diff = t.diff;
+    const diffBlock = !diff ? '<div class="dc-empty">至少需要两份快照才能比较版本差异，当前仅 ' + pts.length + ' 份。</div>' : (function () {
+      const c = diff.comparable || {};
+      const from = (diff.from.archivedAt || diff.from.file || '').replace(/^snapshot_/, '').replace(/\.json$/, '').replace('_', ' ');
+      const to = (diff.to.archivedAt || diff.to.file || '').replace(/^snapshot_/, '').replace(/\.json$/, '').replace('_', ' ');
+      const firstTime = function (flag) {
+        return flag ? '' : '<div class="dc-diff-note">上一份快照尚无 S18 数据，本项从下一份快照开始展示实际变化；当前为首次接入。</div>';
+      };
+      const movers = (diff.itemMovers || []).filter(function (m) { return Math.abs(m.delta) > 0.001; });
+      return '<div class="dc-diff-head"><b>' + esc(from) + ' → ' + esc(to) + '</b>' +
+        '<em>补丁 ' + esc(diff.from.patch || '—') + ' → ' + esc(diff.to.patch || '—') + '</em></div>' +
+        '<div class="dc-diff-grid">' + diffCard('阵容档位变化', diff.comps, '按阵容 id 对比') + firstTime(c.comps) +
+        diffCard('装备评级变化', diff.items, '同类分位评级') + firstTime(c.items) +
+        diffCard('符文评级变化', diff.augments, 'OP.GG 专家评级') + firstTime(c.augments) + '</div>' +
+        (movers.length
+          ? '<div class="dc-chart-card"><div class="dc-chart-head"><b>装备均名波动 Top ' + movers.length + '</b><em>负值 = 平均名次变好</em></div>' +
+            '<div class="dc-table-wrap"><table class="dc-table dc-diff-table"><thead><tr><th>装备</th><th class="num">上一份</th><th class="num">最新</th><th class="num">变化</th></tr></thead><tbody>' +
+            movers.map(function (m) {
+              return '<tr><td>' + esc(m.name || m.id) + '</td><td class="num">' + m.from.toFixed(2) + '</td><td class="num">' + m.to.toFixed(2) + '</td>' +
+                '<td class="num ' + (m.delta < 0 ? 'up' : 'down') + '">' + (m.delta > 0 ? '+' : '') + m.delta.toFixed(2) + '</td></tr>';
+            }).join('') + '</tbody></table></div></div>'
+          : '');
+    })();
+
+    return '<section class="dc-panel">' +
+      kpis([
+        { v: esc(String(t.snapshotCount || all.length)), k: '快照份数', s: '最多保留 50 份' },
+        { v: esc(day(first)), k: '最早快照', s: clock(first) + ' 归档' },
+        { v: esc(day(last)), k: '最新快照', s: clock(last) + ' · 补丁 ' + (last.patch || '—') },
+        { v: esc(String(last.compTotal || '—')), k: '最新阵容数', s: '装备 ' + (last.itemTotal || '—') + ' · 符文 ' + (last.augTotal || '—') }
+      ]) +
+      (all.length > 12 ? note('趋势图仅展示最近 12 份快照，更早数据仍保留在 data/archive/。') : '') +
+      '<div class="dc-charts one">' + trendChart('阵容评级分布', '每份快照的 S18 阵容档位数量', labels, compSeries, ' 套') + '</div>' +
+      '<div class="dc-charts two">' +
+        trendChart('装备评级分布', '同类装备按均名分位', labels, itemSeries, ' 件') +
+        trendChart('符文评级分布', 'OP.GG 专家评级', labels, augSeries, ' 条') +
+      '</div>' +
+      '<div class="dc-subhead"><b>版本差异</b><em>最近两份快照</em></div>' + diffBlock +
+      note((t.note || '') + ' 趋势与差异只读取已归档快照，不回溯推测历史数据。') +
+    '</section>';
+  }
+
+  /* ==================== 渲染：数据口径说明 ==================== */
+  function renderAbout() {
+    const st = sd() || {};
+    const meta = D.meta || {};
+    const patch = st.patch || meta.updatedAt || '—';
+    const fetched = st.fetchedAt || meta.fetchedAt || meta.updatedAt || '—';
+    const tiers = tierList();
+    const rows = [
+      { k: '阵容与段位统计', v: 'OP.GG TFT 阵容页', f: 'data/comps.json', d: '按段位抓取的阵容档位、均名、前四率、登顶率、选取率与对局数。' },
+      { k: '装备对局统计', v: 'OP.GG 装备页', f: 'data/s18_stats.json', d: '装备出场数、均名、前四率、登顶率与常见携带者。' },
+      { k: '强化符文专家评级', v: 'OP.GG 符文页', f: 'data/s18_stats.json', d: 'OP / S / A / B 级专家评级；未覆盖的符文显示「—」。' },
+      { k: '符文 / 装备全量目录', v: 'Riot CommunityDragon', f: 'data/augments.full.json、data/items.full.json', d: '图标、描述、稀有度、配方等静态目录。' },
+      { k: 'S18 棋子与羁绊', v: '第三方站点 + OP.GG 目录混合', f: 'data/s18.json', d: '棋子/羁绊结构来自第三方，名称、费用、图标用 OP.GG 目录补全；技能文本保持第三方。' },
+      { k: '历史赛季 Meta', v: 'MetaTFT', f: 'data/meta.json', d: 'S17 及更早赛季的静态 meta 档位，仅用于对比。' }
+    ];
+    const gradeRows = [
+      { k: 'OP / S / A / B / C / D', v: '阵容评级', d: '沿用 OP.GG 阵容档位，不是站内二次计算。' },
+      { k: 'S → D', v: '装备评级', d: '同一类型内按平均名次排序：S 前 12%、A 12–35%、B 35–65%、C 65–85%、D 后 15%；样本 <300 或同类 <6 件不评级。' },
+      { k: 'S → D', v: '羁绊评级', d: '按当前段位内加权均名分位；样本 <800 局或少于 2 套阵容不评级。' },
+      { k: 'OP → D', v: '符文评级', d: 'OP.GG 专家榜；未上榜显示「—」，不做站内推断。' },
+      { k: '0–100', v: '适配分', d: '符文关联羁绊在当前段位阵容中的覆盖度，仅用于排序，不代表胜率或强度。' }
+    ];
+    return '<section class="dc-panel">' +
+      '<div class="dc-about-hero">' +
+        '<h2>数据口径说明</h2>' +
+        '<p>本站是本地 TFT 模拟器的静态数据页，所有数字都来自实际抓取的公开数据；缺失就显示「—」，不做估算、插值或虚构样本。</p>' +
+        '<div class="dc-hero-tags"><span>补丁 ' + esc(String(patch)) + '</span><span>抓取 ' + esc(String(fetched).slice(0, 16)) + '</span><span>段位 ' + esc(tiers.map(function (x) { return x.label; }).join(' / ')) + '</span></div>' +
+      '</div>' +
+      '<div class="dc-subhead"><b>数据来源</b><em>抓取后写入 data/*.json</em></div>' +
+      '<div class="dc-table-wrap"><table class="dc-table dc-about-table"><thead><tr><th>数据项</th><th>来源</th><th>本地文件</th><th>说明</th></tr></thead><tbody>' +
+        rows.map(function (r) {
+          return '<tr><td><b>' + esc(r.k) + '</b></td><td>' + esc(r.v) + '</td><td><code>' + esc(r.f) + '</code></td><td class="dc-desc">' + esc(r.d) + '</td></tr>';
+        }).join('') + '</tbody></table></div>' +
+      '<div class="dc-subhead"><b>评级定义</b><em>先看口径再看榜</em></div>' +
+      '<div class="dc-table-wrap"><table class="dc-table dc-about-table"><thead><tr><th>档位</th><th>适用</th><th>定义</th></tr></thead><tbody>' +
+        gradeRows.map(function (r) {
+          return '<tr><td><b>' + esc(r.k) + '</b></td><td>' + esc(r.v) + '</td><td class="dc-desc">' + esc(r.d) + '</td></tr>';
+        }).join('') + '</tbody></table></div>' +
+      '<div class="dc-subhead"><b>更新与快照</b><em>GitHub Actions 每日任务</em></div>' +
+      '<div class="dc-about-grid">' +
+        '<div class="dc-chart-card"><div class="dc-chart-head"><b>更新频率</b><em>北京时间每日 09:30</em></div><p class="dc-prose">GitHub Actions 定时抓取 OP.GG 与 CommunityDragon；数据没有变化时不会产生提交，抓取失败时线上保留上一份成功数据。</p></div>' +
+        '<div class="dc-chart-card"><div class="dc-chart-head"><b>快照与趋势</b><em>最多 50 份</em></div><p class="dc-prose">每次抓取后把精简快照写入 <code>data/archive/</code>，趋势页读取其中的阵容 / 装备 / 符文评级分布，并对比最近两份快照。S18 真实统计从 2026-11-12 起才有快照。</p></div>' +
+        '<div class="dc-chart-card"><div class="dc-chart-head"><b>段位口径</b><em>筛选联动五张表</em></div><p class="dc-prose">段位切换会重新聚合阵容、棋子、装备、羁绊与符文；不同段位的样本量差异很大，低段位样本更多但波动也更小。</p></div>' +
+        '<div class="dc-chart-card"><div class="dc-chart-head"><b>导出与复现</b><em>CSV / 筛选链接</em></div><p class="dc-prose">每个数据页可把当前筛选结果导出为带 BOM 的 CSV（Excel 直接打开不乱码）；「复制筛选链接」可复现同一组筛选条件。</p></div>' +
+      '</div>' +
+      note('数据仅供阵容搭配参考，不构成对局结果承诺。第三方站点抓取频率与字段可能变化，页面会保留最近一次成功数据并在快照中记录补丁号。') +
+    '</section>';
+  }
+
   function renderExplorer() {
     const comps = compsForTier(S.tier);
     const costs = S.costs;
@@ -851,6 +1110,15 @@ window.TFT = window.TFT || {};
         '</tr>';
     }).join('');
 
+    S._export = {
+      filename: csvName('comps'),
+      header: ['阵容', '评级', '主C', '核心羁绊', '平均名次', '前四率', '登顶率', '选取率', '对局数'],
+      rows: list.map(function (cp) {
+        return [cp.name, cp.tier, cp.mainC, (cp.traits || []).map(function (t) { return t.name; }).join('/'),
+          cp.avgPlace == null ? '' : cp.avgPlace, fp(cp.top4Rate), fp(cp.winRate), fp(cp.pickRate), cp.games || 0];
+      })
+    };
+
     return '<section class="dc-panel">' +
       '<div class="dc-toolbar">' + searchBox('搜索阵容 / 主C / 棋子 / 羁绊 / 装备') +
         '<div class="dc-chips"><span class="dc-field-label">费用</span>' + COSTS.map(function (c) {
@@ -862,6 +1130,7 @@ window.TFT = window.TFT || {};
           { key: 'win', label: '登顶率 ↓' }, { key: 'pick', label: '选取率 ↓' }, { key: 'games', label: '对局数 ↓' }
         ], S.sort, '排序') +
         '<button type="button" class="btn btn-xs dc-cmp-open" data-dc-act="cmpopen"' + (S.compare.length < 2 ? ' disabled' : '') + '>对比已选 ' + S.compare.length + '/3</button>' +
+        exportBtn() +
         '<button type="button" class="btn btn-xs dc-reset" data-dc-act="reset">重置</button>' +
       '</div>' +
       kpis([
@@ -920,6 +1189,16 @@ window.TFT = window.TFT || {};
         '</tr>';
     }).join('');
 
+    S._export = {
+      filename: csvName('units'),
+      header: ['棋子', '费用', '羁绊', '登场套数', '登场率', '主C次数', '核心率', '平均名次', '前四率', '常用装备'],
+      rows: list.map(function (u) {
+        return [u.name, u.cost || '', u.traits.join('/'), u.comps, fp(u.pickShare), u.mainC || 0,
+          fp(u.coreRate), u.avgPlace == null ? '' : u.avgPlace, fp(u.top4Rate),
+          u.topItems.map(function (it) { return it.name + '×' + it.count; }).join('/')];
+      })
+    };
+
     return '<section class="dc-panel">' +
       '<div class="dc-toolbar">' + searchBox('搜索棋子 / 羁绊') +
         '<div class="dc-chips"><span class="dc-field-label">费用</span>' + COSTS.map(function (c) {
@@ -931,6 +1210,7 @@ window.TFT = window.TFT || {};
           { key: 'core', label: '核心率 ↓' }, { key: 'avgPlace', label: '平均名次 ↑' }, { key: 'pickShare', label: '登场率 ↓' }
         ], S.unitSort, '排序') +
         chip('umain', '1', '仅主C', S.unitMainOnly) +
+        exportBtn() +
         '<button type="button" class="btn btn-xs dc-reset" data-dc-act="reset">重置</button>' +
       '</div>' +
       kpis([
@@ -989,6 +1269,17 @@ window.TFT = window.TFT || {};
         '</tr>';
     }).join('');
 
+    S._export = {
+      filename: csvName('items'),
+      header: ['装备', '类型', '评级', '出场数', '前四率', '登顶率', '平均名次', '常见携带者', '配方'],
+      rows: list.map(function (r) {
+        return [r.name, CAT_LABEL[r.category] || r.category || '', r.grade,
+          r.total || 0, fp(r.top4Rate), fp(r.winRate), r.avgPlace == null ? '' : r.avgPlace,
+          (r.wearers || []).map(function (w) { return w.name; }).join('/'),
+          (r.recipeNames || []).join('/')];
+      })
+    };
+
     return '<section class="dc-panel">' +
       '<div class="dc-toolbar">' + searchBox('搜索装备 / 携带者 / 配方') +
         '<div class="dc-chips">' + ITEM_CATS.map(function (c) {
@@ -998,6 +1289,7 @@ window.TFT = window.TFT || {};
           { key: 'grade', label: '评级优先' }, { key: 'avgPlace', label: '平均名次 ↑' },
           { key: 'top4', label: '前四率 ↓' }, { key: 'win', label: '登顶率 ↓' }, { key: 'total', label: '出场数 ↓' }
         ], S.itemSort, '排序') +
+        exportBtn() +
         '<button type="button" class="btn btn-xs dc-reset" data-dc-act="reset">重置</button>' +
       '</div>' +
       kpis([
@@ -1024,6 +1316,7 @@ window.TFT = window.TFT || {};
     const q = S.q;
     const list = (all || []).filter(function (a) {
       if (S.augRarity !== 'all' && a.rarityKey !== S.augRarity) return false;
+      if (S.augOrigin !== 'all' && a.originKey !== S.augOrigin) return false;
       if (real && S.augTier !== 'all' && a.grade !== S.augTier) return false;
       if (real && S.augRatedOnly && a.grade === '—') return false;
       if (S.augTrait && a.fit.indexOf(S.augTrait) < 0) return false;
@@ -1057,17 +1350,30 @@ window.TFT = window.TFT || {};
       return '<tr class="dc-row" tabindex="0" data-dc-act="aug" data-id="' + esc(a.id) + '" title="查看符文详情">' +
         '<td>' + (real ? gtag(a.grade) : '<span class="dc-fit">' + Math.round((a.fitScore || 0) * 100) + '</span>') + '</td>' +
         '<td><div class="dc-name dc-with-av"><span class="dc-av lg aug">' + (a.icon ? '<img src="' + esc(a.icon) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'">' : '') + '</span>' +
-          '<span><b>' + esc(a.name) + '</b><i>' + esc(a.rarity || '—') + '</i></span></div></td>' +
+          '<span><b>' + esc(a.name) + '</b><i>' + esc(a.rarity || '—') + ' · ' + esc(a.originLabel || '—') + '</i></span></div></td>' +
         '<td class="dc-col-rarity"><span class="dc-rarity r-' + esc(a.rarityKey || 'unknown') + '">' + esc(a.rarity || '—') + '</span></td>' +
         '<td class="dc-col-fit"><div class="dc-tags">' + (a.fit.length ? a.fit.map(function (t) { return chipTag(t); }).join('') : '<span class="dim">通用</span>') + '</div></td>' +
         '<td class="dc-desc dc-col-desc">' + esc(a.desc || '—') + '</td>' +
         '</tr>';
     }).join('');
 
+    S._export = {
+      filename: csvName('augments'),
+      header: ['符文', '稀有度', '评级', '来源', '适配羁绊', '描述'],
+      rows: list.map(function (a) {
+        return [a.name, a.rarity || '', a.grade, a.originLabel || '', a.fit.join('/'), a.desc || ''];
+      })
+    };
+
     return '<section class="dc-panel">' +
       '<div class="dc-toolbar">' + searchBox('搜索符文名称 / 描述') +
         '<div class="dc-chips">' + RARITIES.map(function (r) {
           return chip('ararity', r.key, r.label, S.augRarity === r.key);
+        }).join('') + '</div>' +
+        '<div class="dc-chips"><span class="dc-field-label">来源</span>' + [
+          { key: 'all', label: '全部' }, { key: 'new', label: 'S18 新增' }, { key: 'legacy', label: '历史继承' }
+        ].map(function (o) {
+          return chip('aorigin', o.key, o.label, S.augOrigin === o.key);
         }).join('') + '</div>' +
         (real ? '<div class="dc-chips"><span class="dc-field-label">评级</span>' + ['all'].concat(AUG_TIERS).map(function (g) {
           return chip('atier', g, g === 'all' ? '全部' : g, S.augTier === g);
@@ -1079,6 +1385,7 @@ window.TFT = window.TFT || {};
         ] : [
           { key: 'fit', label: '适配分 ↓' }, { key: 'rarity', label: '稀有度' }, { key: 'name', label: '名称' }
         ], S.augSort, '排序') +
+        exportBtn() +
         '<button type="button" class="btn btn-xs dc-reset" data-dc-act="reset">重置</button>' +
       '</div>' +
       kpis([
@@ -1349,7 +1656,7 @@ window.TFT = window.TFT || {};
     else if (S.tab === 'units') { S.unitCosts = []; S.unitTrait = ''; S.unitMainOnly = false; S.unitSort = 'comps'; }
     else if (S.tab === 'items') { S.itemCat = 'all'; S.itemSort = 'grade'; }
     else if (S.tab === 'traits') { S.traitGraded = false; S.traitSort = 'grade'; S.traitGrade = ''; }
-    else if (S.tab === 'augments') { S.augRarity = 'all'; S.augTier = 'all'; S.augTrait = ''; S.augSort = 'grade'; S.augRatedOnly = false; }
+    else if (S.tab === 'augments') { S.augRarity = 'all'; S.augTier = 'all'; S.augTrait = ''; S.augSort = 'grade'; S.augRatedOnly = false; S.augOrigin = 'all'; }
     renderBody();
   }
 
@@ -1392,7 +1699,9 @@ window.TFT = window.TFT || {};
     if (act === 'umain') { S.unitMainOnly = !S.unitMainOnly; renderBody(); return; }
     if (act === 'icat') { S.itemCat = key; renderBody(); return; }
     if (act === 'ararity') { S.augRarity = key; renderBody(); return; }
+    if (act === 'aorigin') { S.augOrigin = key; renderBody(); return; }
     if (act === 'atier') { S.augTier = key; renderBody(); return; }
+    if (act === 'export') { exportCsv(); return; }
     if (act === 'arated') { S.augRatedOnly = !S.augRatedOnly; renderBody(); return; }
     if (act === 'chartgrade') {
       const i = S.grades.indexOf(key);

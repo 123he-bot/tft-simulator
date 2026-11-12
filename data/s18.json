@@ -4,7 +4,7 @@
  "champions": [
   {
    "id": "DA_18_ElderDragon",
-   "name": "Elder Dragon",
+   "name": "远古巨龙",
    "cost": 5,
    "traits": [
     "顶级掠食者",
@@ -25,7 +25,8 @@
     "lang": "en"
    },
    "icon": "assets/icons/TheElderDragon.jpg",
-   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/TheElderDragon.jpg"
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/TheElderDragon.jpg",
+   "nameEn": "Elder Dragon"
   },
   {
    "id": "DA_18_Kennen",
@@ -253,7 +254,7 @@
   },
   {
    "id": "DA_Brambleback18",
-   "name": "Brambleback",
+   "name": "绯红印记树怪",
    "cost": 4,
    "traits": [
     "狂战士",
@@ -274,11 +275,12 @@
     "lang": "en"
    },
    "icon": "assets/icons/Brambleback.jpg",
-   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Brambleback.jpg"
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Brambleback.jpg",
+   "nameEn": "Brambleback"
   },
   {
    "id": "DA_Sentinel18",
-   "name": "Sentinel",
+   "name": "苍蓝雕纹魔像",
    "cost": 4,
    "traits": [
     "神谕",
@@ -300,7 +302,8 @@
     "lang": "en"
    },
    "icon": "assets/icons/AncientSentinel.jpg",
-   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/AncientSentinel.jpg"
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/AncientSentinel.jpg",
+   "nameEn": "Sentinel"
   },
   {
    "id": "DA_18_Ezreal",
@@ -604,7 +607,7 @@
   },
   {
    "id": "DA_Krug18",
-   "name": "Krug",
+   "name": "远古石甲虫",
    "cost": 3,
    "traits": [
     "斗士",
@@ -625,11 +628,12 @@
     "lang": "en"
    },
    "icon": "assets/icons/Krug.jpg",
-   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Krug.jpg"
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Krug.jpg",
+   "nameEn": "Krug"
   },
   {
    "id": "DA_CrimsonRaptor18",
-   "name": "Mama Beak",
+   "name": "深红锋喙鸟",
    "cost": 3,
    "traits": [
     "迅捷射手",
@@ -651,7 +655,8 @@
     "lang": "en"
    },
    "icon": "assets/icons/Raptor.jpg",
-   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Raptor.jpg"
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Raptor.jpg",
+   "nameEn": "Mama Beak"
   },
   {
    "id": "DA_KogMaw18_AD",
@@ -958,7 +963,7 @@
   },
   {
    "id": "DA_Gromp18_AP",
-   "name": "Gromp",
+   "name": "魔沼蛙",
    "cost": 2,
    "traits": [
     "魔战士",
@@ -979,11 +984,12 @@
     "lang": "en"
    },
    "icon": "assets/icons/Gromp.jpg",
-   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Gromp.jpg"
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Gromp.jpg",
+   "nameEn": "Gromp"
   },
   {
    "id": "DA_Murkwolf18",
-   "name": "Murkwolf",
+   "name": "暗影狼",
    "cost": 2,
    "traits": [
     "狂战士",
@@ -1004,11 +1010,12 @@
     "lang": "en"
    },
    "icon": "assets/icons/Murkwolf.jpg",
-   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Murkwolf.jpg"
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Murkwolf.jpg",
+   "nameEn": "Murkwolf"
   },
   {
    "id": "DA_Scuttlecrab18",
-   "name": "Scuttlecrab",
+   "name": "峡谷迅捷蟹",
    "cost": 2,
    "traits": [
     "主宰",
@@ -1029,7 +1036,8 @@
     "lang": "en"
    },
    "icon": "assets/icons/Scuttlecrab.jpg",
-   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Scuttlecrab.jpg"
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Scuttlecrab.jpg",
+   "nameEn": "Scuttlecrab"
   },
   {
    "id": "DA_18_LeBlanc",
@@ -1283,7 +1291,7 @@
   },
   {
    "id": "DA_Cinderling18",
-   "name": "Cinderling",
+   "name": "绯红树怪",
    "cost": 1,
    "traits": [
     "猎人",
@@ -1304,11 +1312,12 @@
     "lang": "en"
    },
    "icon": "assets/icons/Cinderling.jpg",
-   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Cinderling.jpg"
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Cinderling.jpg",
+   "nameEn": "Cinderling"
   },
   {
    "id": "DA_18_Sentry",
-   "name": "Pebbles",
+   "name": "苍蓝哨戒",
    "cost": 1,
    "traits": [
     "神谕",
@@ -1329,7 +1338,8 @@
     "lang": "en"
    },
    "icon": "assets/icons/Pebbles.jpg",
-   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Pebbles.jpg"
+   "splash": "https://c-tft-api.op.gg/img/set/18/tft-champion/tiles/Pebbles.jpg",
+   "nameEn": "Pebbles"
   },
   {
    "id": "DA_Karma18",

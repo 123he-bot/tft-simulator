@@ -548,6 +548,8 @@ def rebuild_bundle(augments, items):
         bundle['comps'] = load('comps.json')
     if os.path.exists(os.path.join(DATA, 's18_stats.json')):
         bundle['s18Stats'] = load('s18_stats.json')
+    if os.path.exists(os.path.join(DATA, 'trend.json')):
+        bundle['trend'] = load('trend.json')
 
     out = os.path.join(ROOT, 'js', 'data.bundle.js')
     with open(out, 'w', encoding='utf-8') as f:

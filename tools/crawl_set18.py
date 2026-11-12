@@ -294,6 +294,46 @@ def rsc_payload(url, marker):
     return json.loads(raw)
 
 
+def merge_official_champions(s18_payload, cat):
+    """用 OP.GG 官方目录补全第三方 S18 棋子 / 羁绊的可用字段。
+
+    保持第三方棋子数量不变（e2e 固定 65 个），只补缺失信息：
+    - 英文名 → 官方中文名，原英文名保留在 nameEn；
+    - 仅在本地缺失时补 cost / icon，已有值不覆盖；
+    - 羁绊只补缺失 icon，不新增本地未使用的羁绊。
+    返回修改的字段数。
+    """
+    off = {c.get('id'): c for c in (cat.get('champions') or [])}
+    off_traits = {t.get('name'): t for t in (cat.get('traits') or [])}
+    cjk = re.compile(r'[\u4e00-\u9fff]')
+    changed = 0
+    for ch in s18_payload.get('champions') or []:
+        o = off.get(ch.get('id'))
+        if not o:
+            continue
+        name = ch.get('name') or ''
+        if not cjk.search(name) and cjk.search(o.get('name') or ''):
+            ch.setdefault('nameEn', name)
+            ch['name'] = o['name']
+            changed += 1
+        if not ch.get('cost') and o.get('cost'):
+            ch['cost'] = o['cost']
+            changed += 1
+        if not ch.get('icon') and o.get('icon'):
+            ch['icon'] = o['icon']
+            changed += 1
+    for tr in s18_payload.get('traits') or []:
+        o = off_traits.get(tr.get('name'))
+        if o and not tr.get('icon') and o.get('icon'):
+            tr['icon'] = o['icon']
+            changed += 1
+    if changed:
+        with open(os.path.join(DATA, 's18.json'), 'w', encoding='utf-8') as f:
+            json.dump(s18_payload, f, ensure_ascii=False, indent=1)
+        print('官方目录补全 S18 字段：%d 处' % changed)
+    return changed
+
+
 def build_catalog(s18_payload):
     """抓取 S18 强化符文目录 / 专家评级、装备目录 / 真实对局统计。
 
@@ -613,6 +653,7 @@ if __name__ == '__main__':
         localize(p)
     cat = build_catalog(p)
     localize_catalog(cat)
+    merge_official_champions(p, cat)
     with open(os.path.join(DATA, 's18_stats.json'), 'w', encoding='utf-8') as f:
         json.dump(cat, f, ensure_ascii=False, indent=1)
     print('已写入 data/s18_stats.json')
