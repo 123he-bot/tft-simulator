@@ -4,7 +4,7 @@
   "https://raw.communitydragon.org/latest/cdragon/tft/zh_cn.json",
   "https://raw.communitydragon.org/latest/cdragon/tft/en_us.json"
  ],
- "fetchedAt": "2026-11-12 09:57:22",
+ "fetchedAt": "2026-11-13 02:20:44",
  "locale": "zh_cn",
  "sets": [
   "s3",
@@ -68,7 +68,7 @@
   "s13": {
    "name": "Set13",
    "champions": 60,
-   "traits": 33
+   "traits": 26
   },
   "s14": {
    "name": "Set14",
@@ -78,12 +78,12 @@
   "s15": {
    "name": "Set15",
    "champions": 65,
-   "traits": 173
+   "traits": 26
   },
   "s16": {
    "name": "Set16",
    "champions": 100,
-   "traits": 53
+   "traits": 48
   },
   "s17": {
    "name": "Set17",
